@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unified Temporal–Energetic Geometry</title>
+  <meta name="description" content="A speculative framework unifying time, distance, and energy into a single substrate." />
+
+  <!-- Inline favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPlQ8L3RleHQ+PC9zdmc+" />
+
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --accent:#7c3aed;
+      --accent-2:#f59e0b;
+      --rule:#2a3348;
+      --code:#0e1422;
+      --link:#9aa8ff;
+      --maxw:880px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --panel:#f6f7fb;
+        --ink:#0f1222;
+        --muted:#4a546e;
+        --rule:#e4e7f0;
+        --code:#f1f3f9;
+        --link:#2b59ff;
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+                 radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+                 var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
+    header{text-align:center;margin-bottom:32px}
+    .logo{
+      font-size:clamp(36px,6vw,64px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
+    .subtitle{color:var(--muted);font-size:15px}
+    .meta{margin-top:8px;color:var(--muted);font-size:14px}
+    nav{margin:26px auto;max-width:600px;text-align:left;background:var(--panel);
+        border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
+    nav a{color:var(--link);text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    nav ul{margin:0;padding-left:18px}
+    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);
+        border-radius:16px;padding:24px 20px;margin:18px 0}
+    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+    h3{margin:16px 0 8px;font-size:18px}
+    p{margin:10px 0 0}
+    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
+        border:1px solid var(--rule);border-radius:10px;font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
+    .abstract{font-style:italic;color:var(--muted)}
+    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    @media print{body{background:#fff}nav,section{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Time</div>
+      <h1>Unified Temporal–Energetic Geometry</h1>
+      <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
+      <div class="meta">Author: Tristan White • v1.0</div>
+      <nav aria-label="Contents">
+        <ul>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#postulates">2. Fundamental Postulates</a></li>
+          <li><a href="#equations">3. Core Equations</a></li>
+          <li><a href="#lagrangian">4. Lagrangian Formulation</a></li>
+          <li><a href="#quantum">5. Quantum Temporal Mechanics</a></li>
+          <li><a href="#predictions">6. Predictions</a></li>
+          <li><a href="#implications">7. Implications</a></li>
+          <li><a href="#conclusion">8. Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="abstract"><h2>Abstract</h2>
+        <p class="abstract">We propose a speculative theoretical framework in which time (T), distance (D), and energy (E) are fundamentally equivalent quantities, linked by universal constants and expressed through a single invariant. This ChronoEnergetic Field (CEF) extends the principles of relativity and quantum mechanics by treating spacetime and energy not as distinct domains, but as manifestations of one substrate.</p>
+      </section>
+
+      <section id="introduction"><h2>1. Introduction</h2>
+        <p>Modern physics rests on two pillars: general relativity, which unifies space and time as spacetime geometry, and quantum mechanics, which treats energy and probability as foundational. Despite their success, these frameworks remain conceptually distinct. We extend relativity’s unification by incorporating energy directly, positing that time, distance, and energy are equivalent aspects of a single continuum.</p>
+      </section>
+
+      <section id="postulates"><h2>2. Fundamental Postulates</h2>
+        <ol>
+          <li><strong>Equivalence Principle:</strong> <div class="equation">T ≡ D ≡ E</div></li>
+          <li><strong>ChronoEnergetic Field:</strong> Geometry and energy are excitations of the same substrate.</li>
+        </ol>
+      </section>
+
+      <section id="equations"><h2>3. Core Equations</h2>
+        <h3>Time–Energy Relation</h3><div class="equation">T = E / c³</div>
+        <h3>Mass–Time Relation</h3><div class="equation">t = m / c</div>
+        <h3>Unified Invariant</h3><div class="equation">U² = T² = D² = E²</div>
+      </section>
+
+      <section id="lagrangian"><h2>4. Lagrangian Formulation</h2>
+        <div class="equation">S = ∫ d⁴x √(-g) [ R/(16πG) + L_matter + L_temporal + L_interaction ]</div>
+      </section>
+
+      <section id="quantum"><h2>5. Quantum Temporal Mechanics</h2>
+        <div class="equation">Ψ_T = α |d⟩ + β |e⟩</div>
+        <div class="equation">ΔT_E · Δt ≥ ℏ/2</div>
+      </section>
+
+      <section id="predictions"><h2>6. Predictions</h2>
+        <ol>
+          <li>Temporal Redshift: <div class="equation">E_γ = E₀ (1 + Φ_T / c⁶)</div></li>
+          <li>Chronon Quantum: <div class="equation">E_chronon = ℏ c³ / t_Planck</div></li>
+          <li>Temporal Pressure: A candidate for dark energy.</li>
+        </ol>
+      </section>
+
+      <section id="implications"><h2>7. Implications</h2>
+        <ul>
+          <li>Cosmology: Expansion as temporal-pressure release.</li>
+          <li>Black Holes: Singularities as time–energy compression.</li>
+          <li>Unification: Bridge between GR and QFT.</li>
+        </ul>
+      </section>
+
+      <section id="conclusion"><h2>8. Conclusion</h2>
+        <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
+      </section>
+
+      <section id="references"><h2>References</h2>
+        <ol>
+          <li>Einstein, A. (1916). <em>The Foundation of the General Theory of Relativity</em>.</li>
+          <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
+          <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
+          <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  </div>
+  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
