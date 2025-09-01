@@ -88,7 +88,7 @@
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
       <!-- Keep timestamp unchanged per prior instruction -->
-      <div class="meta">Author: Tristan White • v1.2 • Updated: Mon, Sept 1, 2025, 8:57 AM EDT</div>
+      <div class="meta">Author: Tristan White • v1.2 • Updated: Sun, Aug 31, 2025, 8:47 PM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -166,3 +166,172 @@
         <ul>
           <li>Check that τ-rewrites (Dirac, KG, Schwarzschild, Friedmann) remain dimensionally correct.</li>
           <li>Cross-check with constants:
+            <ul>
+              <li><span class="equation">τ = m / c</span></li>
+              <li><span class="equation">E = c³ τ</span> recovers <span class="equation">E = m c²</span></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>9.2 Numerical Benchmarks</h3>
+        <ul>
+          <li>Compute τ for electron, proton, neutrino, Planck mass.</li>
+          <li>Derived scales:
+            <ul>
+              <li><span class="equation">λ_C = ħ / (c² τ)</span></li>
+              <li><span class="equation">t_C = ħ / (c³ τ)</span></li>
+            </ul>
+          </li>
+          <li>Compare to CODATA values.</li>
+        </ul>
+
+        <h3>9.3 Laboratory / Thought Experiments</h3>
+        <ul>
+          <li><strong>Atomic clocks:</strong> Test δτ/τ with co-located clocks.</li>
+          <li><strong>Cyclotron:</strong> <span class="equation">ω_c = qB/(c τ)</span>. Drifts → τ-variation.</li>
+          <li><strong>Spectroscopy:</strong> Lines scale ∝ 1/τ.</li>
+        </ul>
+
+        <h3>9.4 Cosmological Tests</h3>
+        <ul>
+          <li>Rewrite Friedmann with <span class="equation">u_τ = u/c³</span>.</li>
+          <li>Fit SN Ia + BAO + CMB with evolving u_τ(a).</li>
+          <li>Check if w ≈ -1 reproduces dark energy.</li>
+        </ul>
+
+        <h3>9.5 Simulation Tests</h3>
+        <ul>
+          <li>Implement <code>TauParticle(τ)</code> → auto-compute {E, m, λ_C, t_C}.</li>
+          <li>Run cosmology solver with τ-fluid vs ΛCDM.</li>
+          <li>Compare predictions to data.</li>
+        </ul>
+      </section>
+
+      <section id="references"><h2>References</h2>
+        <ol>
+          <li>Einstein, A. (1916). <em>The Foundation of the General Theory of Relativity</em>.</li>
+          <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
+          <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
+          <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
+        </ol>
+      </section>
+
+      <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
+        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace m → cτ, E → c³τ everywhere.</p>
+
+        <h3>A.1 Units & Dictionary</h3>
+        <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
+        <div class="equation">τ = m / c  [τ] = M·L⁻¹·T</div>
+        <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
+        <div class="equation">m = c τ  [m] = M</div>
+        <div class="equation">ω = E/ħ = (c³/ħ) τ</div>
+        <div class="equation">λ_C = ħ/(c² τ), t_C = ħ/(c³ τ)</div>
+
+        <h3>A.2 Mechanics & Gravity</h3>
+        <div class="equation">E² = p² c² + τ² c⁶</div>
+        <div class="equation">P^μ = γ(c² τ, c τ v)</div>
+        <div class="equation">U(r) = -G c² τ_1 τ_2 / r</div>
+        <div class="equation">r_s = (2G/c) τ</div>
+
+        <h3>A.3 Quantum & Atomic</h3>
+        <div class="equation">(□ + (c² τ/ħ)²)ψ = 0</div>
+        <div class="equation">(iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
+        <div class="equation">ω_c = qB/(c τ)</div>
+        <div class="equation">a₀ = 4π ε₀ ħ²/(c τ e²)</div>
+
+        <h3>A.4 Thermodynamics & Cosmology</h3>
+        <div class="equation">u_τ ≡ u/c³, P = (c³/3) u_τ</div>
+        <div class="equation">H² = (8πG/3)(c u_τ)</div>
+
+        <h3>A.5 Planck Relations</h3>
+        <div class="equation">τ_P = √(ħ/(G c))</div>
+        <div class="equation">t_P = ħ/(c³ τ_P), λ_P = ħ/(c² τ_P)</div>
+
+        <h3>A.6 Operational</h3>
+        <div class="equation">δω/ω = δτ/τ</div>
+        <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
+      </section>
+
+      <!-- NEW concise, copyable checklist appendix -->
+      <section id="appendix-b"><h2>Appendix B — Test Protocols (Checklist)</h2>
+
+        <h3>B.1 Minimal Parameterization</h3>
+        <table>
+          <tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr>
+          <tr><td><code>\u03BA</code></td><td>Gravitational-potential response: <code>\u03B4\u03C4/\u03C4 = \u03BA \u0394\u03A6/c^2</code></td><td>Dimensionless; compare to GR redshift.</td></tr>
+          <tr><td><code>\u03B2/M</code></td><td>EM (dilaton-like) coupling via <code>B(\u03C4)</code></td><td>Maps to <code>\u03B4\u03B1/\u03B1 \approx -(\u03B2/M)\u03B4\u03C4</code>.</td></tr>
+          <tr><td><code>\u03BE</code>, <code>m_\u03C6</code></td><td>Non-minimal gravity & scalar mass</td><td>Controls 5th-force strength/range.</td></tr>
+        </table>
+
+        <h3>B.2 Lockstep Signature (core falsifier)</h3>
+        <div class="equation">\u03B4\u03BB_C/\u03BB_C = \u03B4t_C/t_C = - \u03B4\u03C9_c/\u03C9_c = - \u03B4\u03C4/\u03C4</div>
+        <p>Any detected fractional drift across Compton-like, clock, and cyclotron observables must satisfy this correlation.</p>
+
+        <h3>B.3 Laboratory Protocols</h3>
+        <table>
+          <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Fit/Bound</th></tr>
+          <tr>
+            <td>Penning trap</td>
+            <td><code>\u03C9_c = qB/(c\u03C4)</code></td>
+            <td>Stabilize B; monitor diurnal/altitude cycles.</td>
+            <td><code>|\u02D9\u03C4/\u03C4| \le |\u02D9\u03C9_c/\u03C9_c|</code></td>
+          </tr>
+          <tr>
+            <td>Clock redshift residual</td>
+            <td><code>\u03B4f/f</code> vs height <code>\u0394h</code></td>
+            <td>Move two dissimilar clocks; subtract GR.</td>
+            <td><code>\u03BA</code> from residual <code>\u03B4f/f = \u03BA \u0394\u03A6/c^2</code></td>
+          </tr>
+          <tr>
+            <td>Multi-species comparison</td>
+            <td>Clock/cavity set</td>
+            <td>Use ≥3 references with known mass/α sensitivities.</td>
+            <td>Solve linear system for <code>\u03B4\u03C4/\u03C4</code>, <code>\u03B4\u03B1/\u03B1</code></td>
+          </tr>
+          <tr>
+            <td>Spectroscopy</td>
+            <td>Line positions</td>
+            <td>Track long-term drifts in atomic/molecular lines.</td>
+            <td>Check \u221D <code>1/\u03C4</code> scaling & lockstep rule</td>
+          </tr>
+        </table>
+
+        <h3>B.4 Fifth-Force / Gravity</h3>
+        <table>
+          <tr><th>Test</th><th>Observable</th><th>Prediction</th><th>Fit/Bound</th></tr>
+          <tr>
+            <td>Torsion balance / atom interferometry</td>
+            <td>Deviation from 1/r</td>
+            <td><code>V(r)= -Gm_1 m_2/r (1+\u03B1_\u03C4 e^{-r/\u03BB_\u03C6})</code></td>
+            <td>Exclude regions in (<code>\u03B1_\u03C4</code>, <code>\u03BB_\u03C6</code>) → map to (<code>\u03BE</code>, <code>m_\u03C6</code>)</td>
+          </tr>
+          <tr>
+            <td>Lunar laser ranging</td>
+            <td>EP/PPN constraints</td>
+            <td>Tiny composition-dependent effects if τ couples to matter</td>
+            <td>Upper limits on <code>\u03BE</code> & composition dependence</td>
+          </tr>
+        </table>
+
+        <h3>B.5 Cosmology (if pursued)</h3>
+        <table>
+          <tr><th>Dataset</th><th>Model Ingredient</th><th>Signature</th></tr>
+          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_\u03C4 \equiv u/c^3</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on \u0394m/m</td></tr>
+        </table>
+
+        <h3>B.6 Reporting Format (one page)</h3>
+        <ul>
+          <li>Quote <code>\u03BA</code>, <code>\u03B4\u03C4/\u03C4</code> (per day/year), <code>\u03B4\u03B1/\u03B1</code> if applicable.</li>
+          <li>Include a single “lockstep” residual plot overlaying the tracked observables.</li>
+          <li>State whether correlation <em>passes</em> or <em>fails</em> within 1σ.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  </div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
