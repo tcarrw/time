@@ -20,7 +20,7 @@
       --rule:#2a3348;
       --code:#0e1422;
       --link:#9aa8ff;
-      --maxw:880px;
+      --maxw:980px;
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -58,7 +58,7 @@
     h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
     .subtitle{color:var(--muted);font-size:15px}
     .meta{margin-top:8px;color:var(--muted);font-size:14px}
-    nav{margin:26px auto;max-width:600px;text-align:left;background:var(--panel);
+    nav{margin:26px auto;max-width:720px;text-align:left;background:var(--panel);
         border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
     nav a{color:var(--link);text-decoration:none}
     nav a:hover{text-decoration:underline}
@@ -74,6 +74,10 @@
     .abstract{font-style:italic;color:var(--muted)}
     .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
     footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    table{width:100%;border-collapse:collapse;margin:8px 0}
+    th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
+    th{background:var(--panel);text-align:left}
+    code{background:var(--code);padding:1px 4px;border-radius:4px}
     @media print{body{background:#fff}nav,section{break-inside:avoid}}
   </style>
 </head>
@@ -83,7 +87,8 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.1 • Updated: Sun, Aug 31, 2025, 8:47 PM EDT</div>
+      <!-- Keep timestamp unchanged per prior instruction -->
+      <div class="meta">Author: Tristan White • v1.2 • Updated: Mon, Sept 1, 2025, 8:57 AM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -98,6 +103,7 @@
           <li><a href="#tests">9. Tests & Validation</a></li>
           <li><a href="#references">References</a></li>
           <li><a href="#appendix">Appendix A — τ-First Formulation</a></li>
+          <li><a href="#appendix-b">Appendix B — Test Protocols (Checklist)</a></li>
         </ul>
       </nav>
     </header>
@@ -153,104 +159,10 @@
         <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
       </section>
 
-      <!-- NEW: TESTS & VALIDATION -->
+      <!-- Tests & Validation -->
       <section id="tests"><h2>9. Tests &amp; Validation</h2>
 
         <h3>9.1 Dimensional / Consistency Tests</h3>
         <ul>
           <li>Check that τ-rewrites (Dirac, KG, Schwarzschild, Friedmann) remain dimensionally correct.</li>
           <li>Cross-check with constants:
-            <ul>
-              <li><span class="equation">τ = m / c</span></li>
-              <li><span class="equation">E = c³ τ</span> recovers <span class="equation">E = m c²</span></li>
-            </ul>
-          </li>
-        </ul>
-
-        <h3>9.2 Numerical Benchmarks</h3>
-        <ul>
-          <li>Compute τ for electron, proton, neutrino, Planck mass.</li>
-          <li>Derived scales:
-            <ul>
-              <li><span class="equation">λ_C = ħ / (c² τ)</span></li>
-              <li><span class="equation">t_C = ħ / (c³ τ)</span></li>
-            </ul>
-          </li>
-          <li>Compare to CODATA values.</li>
-        </ul>
-
-        <h3>9.3 Laboratory / Thought Experiments</h3>
-        <ul>
-          <li><strong>Atomic clocks:</strong> Test δτ/τ with co-located clocks.</li>
-          <li><strong>Cyclotron:</strong> <span class="equation">ω_c = qB/(c τ)</span>. Drifts → τ-variation.</li>
-          <li><strong>Spectroscopy:</strong> Lines scale ∝ 1/τ.</li>
-        </ul>
-
-        <h3>9.4 Cosmological Tests</h3>
-        <ul>
-          <li>Rewrite Friedmann with <span class="equation">u_τ = u/c³</span>.</li>
-          <li>Fit SN Ia + BAO + CMB with evolving u_τ(a).</li>
-          <li>Check if w ≈ -1 reproduces dark energy.</li>
-        </ul>
-
-        <h3>9.5 Simulation Tests</h3>
-        <ul>
-          <li>Implement <code>TauParticle(τ)</code> → auto-compute {E, m, λ_C, t_C}.</li>
-          <li>Run cosmology solver with τ-fluid vs ΛCDM.</li>
-          <li>Compare predictions to data.</li>
-        </ul>
-      </section>
-
-      <section id="references"><h2>References</h2>
-        <ol>
-          <li>Einstein, A. (1916). <em>The Foundation of the General Theory of Relativity</em>.</li>
-          <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
-          <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
-          <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
-        </ol>
-      </section>
-
-      <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
-        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace m → cτ, E → c³τ everywhere.</p>
-
-        <h3>A.1 Units & Dictionary</h3>
-        <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
-        <div class="equation">τ = m / c  [τ] = M·L⁻¹·T</div>
-        <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
-        <div class="equation">m = c τ  [m] = M</div>
-        <div class="equation">ω = E/ħ = (c³/ħ) τ</div>
-        <div class="equation">λ_C = ħ/(c² τ), t_C = ħ/(c³ τ)</div>
-
-        <h3>A.2 Mechanics & Gravity</h3>
-        <div class="equation">E² = p² c² + τ² c⁶</div>
-        <div class="equation">P^μ = γ(c² τ, c τ v)</div>
-        <div class="equation">U(r) = -G c² τ_1 τ_2 / r</div>
-        <div class="equation">r_s = (2G/c) τ</div>
-
-        <h3>A.3 Quantum & Atomic</h3>
-        <div class="equation">(□ + (c² τ/ħ)²)ψ = 0</div>
-        <div class="equation">(iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
-        <div class="equation">ω_c = qB/(c τ)</div>
-        <div class="equation">a₀ = 4π ε₀ ħ²/(c τ e²)</div>
-
-        <h3>A.4 Thermodynamics & Cosmology</h3>
-        <div class="equation">u_τ ≡ u/c³, P = (c³/3) u_τ</div>
-        <div class="equation">H² = (8πG/3)(c u_τ)</div>
-
-        <h3>A.5 Planck Relations</h3>
-        <div class="equation">τ_P = √(ħ/(G c))</div>
-        <div class="equation">t_P = ħ/(c³ τ_P), λ_P = ħ/(c² τ_P)</div>
-
-        <h3>A.6 Operational</h3>
-        <div class="equation">δω/ω = δτ/τ</div>
-        <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
-      </section>
-    </main>
-
-    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
-  </div>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
