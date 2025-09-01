@@ -36,9 +36,10 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      background:radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
-                 radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
-                 var(--bg);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+        var(--bg);
       color:var(--ink);
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
@@ -68,7 +69,8 @@
     h3{margin:16px 0 8px;font-size:18px}
     p{margin:10px 0 0}
     .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
-        border:1px solid var(--rule);border-radius:10px;font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
+        border:1px solid var(--rule);border-radius:10px;
+        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
     .abstract{font-style:italic;color:var(--muted)}
     .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
     footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
@@ -81,7 +83,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.1 • Updated: Sun, Aug 31, 2025, 8:36 PM ET</div>
+      <div class="meta">Author: Tristan White • v1.1 • Updated: <span id="updated"></span></div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -93,6 +95,7 @@
           <li><a href="#predictions">6. Predictions</a></li>
           <li><a href="#implications">7. Implications</a></li>
           <li><a href="#conclusion">8. Conclusion</a></li>
+          <li><a href="#tests">9. Tests & Validation</a></li>
           <li><a href="#references">References</a></li>
           <li><a href="#appendix">Appendix A — τ-First Formulation</a></li>
         </ul>
@@ -150,6 +153,58 @@
         <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
       </section>
 
+      <!-- NEW: TESTS & VALIDATION -->
+      <section id="tests"><h2>9. Tests &amp; Validation</h2>
+
+        <h3>9.1 Dimensional / Consistency Tests</h3>
+        <ul>
+          <li>Use <em>dimensional analysis</em> to confirm that τ-rewrites of standard relations (Dirac, Klein–Gordon, Schwarzschild radius, Friedmann) remain dimensionally correct.</li>
+          <li>Cross-check against known constants:
+            <ul>
+              <li>For a particle: <span class="equation" style="display:inline-block">τ = m / c</span>.</li>
+              <li>Plug into <span class="equation" style="display:inline-block">E = c³ τ</span> and verify the rest energy <span class="equation" style="display:inline-block">E = m c²</span> is recovered.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="callout">Quick sanity check: the mapping must reproduce standard masses, energies, and lengths when rewritten via <em>m = cτ</em> and <em>E = c³τ</em>.</p>
+
+        <h3>9.2 Numerical Benchmarks</h3>
+        <ul>
+          <li>Compute <span class="equation" style="display:inline-block">τ</span> for electron, proton, neutrino (assumed mass), and Planck mass.</li>
+          <li>Derive characteristic scales:
+            <ul>
+              <li>Compton wavelength: <span class="equation" style="display:inline-block">λ_C = ħ / (c² τ)</span>.</li>
+              <li>Compton time: <span class="equation" style="display:inline-block">t_C = ħ / (c³ τ)</span>.</li>
+            </ul>
+          </li>
+          <li>Compare to standard tables (e.g., CODATA). Matching values validate the τ-dictionary.</li>
+        </ul>
+
+        <h3>9.3 Laboratory / Thought Experiments</h3>
+        <ul>
+          <li><strong>Atomic clocks:</strong> If <em>τ</em> is dynamical, all rest-frame frequencies co-shift with <span class="equation" style="display:inline-block">ω = (c³/ħ)τ</span>. Compare co-located clocks of different species → constrain <span class="equation" style="display:inline-block">δτ/τ</span>.</li>
+          <li><strong>Cyclotron frequency:</strong> <span class="equation" style="display:inline-block">ω_c = qB / (c τ)</span>. Look for unexplained drifts as a signature of τ-variation.</li>
+          <li><strong>Spectroscopy:</strong> Atomic line frequencies scale as <span class="equation" style="display:inline-block">∝ 1/τ</span>. Multi-species precision spectra can bound τ dynamics and couplings.</li>
+        </ul>
+
+        <h3>9.4 Cosmological Tests</h3>
+        <ul>
+          <li>Rewrite Friedmann with <span class="equation" style="display:inline-block">u_τ = u / c³</span> and fit SN Ia + BAO + CMB using <span class="equation" style="display:inline-block">u_τ(a)</span> in place of Λ.</li>
+          <li>If a τ-field yields <span class="equation" style="display:inline-block">w ≈ -1</span>, test whether it can replace dark energy while remaining consistent with structure growth.</li>
+        </ul>
+
+        <h3>9.5 Simulation Tests</h3>
+        <ul>
+          <li>Implement in Python/Mathematica:
+            <ul>
+              <li>Define a class <code>TauParticle(τ)</code> that auto-computes <span class="equation" style="display:inline-block">E, m, λ_C, t_C</span>.</li>
+              <li>Run a cosmology solver including a τ-fluid; compare predictions to ΛCDM baselines.</li>
+            </ul>
+          </li>
+          <li>Confront with data; update priors on any τ-coupling parameters.</li>
+        </ul>
+      </section>
+
       <section id="references"><h2>References</h2>
         <ol>
           <li>Einstein, A. (1916). <em>The Foundation of the General Theory of Relativity</em>.</li>
@@ -159,7 +214,6 @@
         </ol>
       </section>
 
-      <!-- NEW APPENDIX -->
       <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
         <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block;margin:0 6px;padding:4px 8px">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace <em>m</em>→<em>cτ</em> and <em>E</em>→<em>c³τ</em> everywhere.</p>
 
@@ -194,14 +248,21 @@
 
         <h3>A.6 Operational Signatures</h3>
         <div class="equation">δω/ω = δτ/τ (coherent shifts across rest-frame frequencies)</div>
-        <div class="equation">Temporal redshift (phenomenology): δτ/τ ≃ ζ·Φ/c²</div>
+        <div class="equation">Phenomenology example: δτ/τ ≃ ζ·Φ/c²</div>
       </section>
     </main>
 
     <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
   </div>
   <script>
-    document.getElementById("y").textContent=new Date().getFullYear();
+    // Footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+    // Header "Updated" timestamp (readable, local)
+    document.getElementById("updated").textContent =
+      new Date().toLocaleString('en-US', {
+        weekday:'short', month:'short', day:'2-digit', year:'numeric',
+        hour:'numeric', minute:'2-digit', hour12:true, timeZoneName:'short'
+      });
   </script>
 </body>
 </html>
