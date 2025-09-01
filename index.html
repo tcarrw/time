@@ -87,7 +87,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sep 1, 2025, 6:16 PM EDT</div>
+      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sep 1, 2025, 6:42 PM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -211,6 +211,41 @@
 
         <h3>9.6 Link back to the &tau; dictionary</h3>
         <p>Using &omega; = (c<sup>3</sup>/&hbar;)&thinsp;&tau; and &omega;<sub>c</sub> = qB/(c&thinsp;&tau;), any &tau;(&Phi;) coupling yields operational frequency shifts: <span class="equation" style="display:inline-block">&delta;&omega;/&omega; = &delta;&tau;/&tau;</span>.</p>
+
+        <!-- NEW: PRACTICAL TEST PROTOCOLS -->
+        <h3>9.7 Proposed Test Protocols</h3>
+
+        <h4>9.7.1 Tabletop Proof-of-Concept (DIY/low-cost)</h4>
+        <p><strong>Goal:</strong> Demonstrate the operational logic of &tau;-budgeting and create a public dataset; not yet competitive with state-of-the-art.</p>
+        <p><strong>Instruments:</strong> Two commercially available atomic clocks of <em>different species</em> (e.g., Rb and Cs or GPS-disciplined Rb + Cs), frequency counters, temperature/pressure logging, GNSS time reference.</p>
+        <p><strong>Geometry:</strong> Place Clock A at ground level and Clock B at height <em>h</em> (e.g., rooftop or upper floor) with continuous GNSS discipline to remove long-term drift. Maintain thermal stability (&plusmn;0.5&nbsp;&deg;C).</p>
+        <div class="equation">(\Delta \nu / \nu)_{\text{GR}} \approx g h / c^{2} \;\; \Rightarrow \;\; \text{expected (to subtract)} \sim 1.1 \times 10^{-16} \cdot (h/\text{m})</div>
+        <p><strong>Acquisition:</strong> Log the fractional frequency difference between A and B at 1–10&nbsp;s cadence over &ge;7&nbsp;days. Remove the GR term using barometric height and g. Average to reduce noise.</p>
+        <div class="equation">\text{Residual} \equiv \left[(\Delta \nu/\nu)_{i} - (\Delta \nu/\nu)_{j}\right] - (g h / c^{2}) \stackrel{?}{=} (\zeta_{\tau}^{(i)}-\zeta_{\tau}^{(j)}) (g h / c^{2})</div>
+        <p><strong>Outcome:</strong> Sensitivity will be limited (10<sup>&minus;12</sup>–10<sup>&minus;13</sup>). A null is expected; still valuable as an <em>open protocol</em> and demo of your &tau; formalism.</p>
+
+        <h4>9.7.2 Collaboration-Level Falsification (optical clocks)</h4>
+        <p><strong>Goal:</strong> Test P1 at discovery threshold.</p>
+        <p><strong>Partners:</strong> Optical lattice clock labs (Sr vs Yb or Al<sup>+</sup> vs Sr). Compare two co-located clocks moved through a controlled height <em>h</em> (10–30&nbsp;m) or use a lift platform.</p>
+        <div class="equation">\text{Signal after GR subtraction} = (\zeta_{\tau}^{(i)}-\zeta_{\tau}^{(j)}) (g h / c^{2})</div>
+        <p><strong>Sensitivity:</strong> With 10<sup>&minus;18</sup> comparisons and h=30&nbsp;m (g h / c<sup>2</sup> &approx; 3.3&times;10<sup>&minus;15</sup>), reach &vert;&zeta;<sub>&tau;</sub><sup>(i)</sup>&minus;&zeta;<sub>&tau;</sub><sup>(j)</sup>&vert; &sim; 3&times;10<sup>&minus;4</sup>.</p>
+
+        <h4>9.7.3 Penning-Trap Two-Potential Test (P2)</h4>
+        <p><strong>Goal:</strong> Probe &kappa;<sub>&tau;</sub><sup>(s)</sup> with single-particle precision.</p>
+        <p><strong>Partners:</strong> Proton/electron cyclotron groups. Compare &omega;<sub>c</sub> at two sites (surface vs deep shaft) or emulate &Delta;&Phi; via calibrated vertical separation in a tall lab.</p>
+        <div class="equation">\Delta \omega_{c}/\omega_{c} = \kappa_{\tau}^{(s)} (\Delta \Phi / c^{2}) \;\; \Rightarrow \;\; \text{sensitivity} \approx 10^{-11}\!-\!10^{-12}</div>
+        <p><strong>Target:</strong> Bounds/Discovery at &vert;&kappa;<sub>&tau;</sub><sup>(s)</sup>&vert; \u2265 10<sup>&minus;2</sup>.</p>
+
+        <h4>9.7.4 Atom-Interferometer Differential (P3)</h4>
+        <p><strong>Goal:</strong> Seek composition-dependent rest-mass phase anomaly.</p>
+        <div class="equation">\Delta \phi_{i}^{(\tau)} - \Delta \phi_{j}^{(\tau)} \propto \left(\eta_{\tau}^{(i)}-\eta_{\tau}^{(j)}\right) \int \Phi(t) \, dt / c^{2}</div>
+        <p><strong>Partners:</strong> Cold-atom gravimetry groups. Geometry reversals and common-mode rejection isolate the composition term.</p>
+
+        <h4>9.7.5 Single-Ion Cross-Ratio (P4)</h4>
+        <p><strong>Goal:</strong> Null test in one system: compare &nu;<sub>clock</sub> and &omega;<sub>c</sub> for the <em>same ion</em> while modulating &Phi;.</p>
+        <div class="equation">\frac{d}{d(\Phi/c^{2})}\ln(\nu_{\text{clock}}/\omega_{c}) = \zeta_{\tau}^{(\text{clock})} - \kappa_{\tau}^{(\text{ion})}</div>
+        <p><strong>Value:</strong> Many environmental systematics cancel; a clean falsifier for &zeta; vs &kappa;.</p>
+
       </section>
 
       <section id="references"><h2>References</h2>
