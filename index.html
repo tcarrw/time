@@ -81,7 +81,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.0</div>
+      <div class="meta">Author: Tristan White • v1.1 • Updated: Sun, Aug 31, 2025, 8:36 PM ET</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -94,6 +94,7 @@
           <li><a href="#implications">7. Implications</a></li>
           <li><a href="#conclusion">8. Conclusion</a></li>
           <li><a href="#references">References</a></li>
+          <li><a href="#appendix">Appendix A — τ-First Formulation</a></li>
         </ul>
       </nav>
     </header>
@@ -157,10 +158,50 @@
           <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
         </ol>
       </section>
+
+      <!-- NEW APPENDIX -->
+      <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
+        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block;margin:0 6px;padding:4px 8px">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace <em>m</em>→<em>cτ</em> and <em>E</em>→<em>c³τ</em> everywhere.</p>
+
+        <h3>A.1 Units & Dictionary</h3>
+        <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
+        <div class="equation">τ = m / c  [τ] = M·L⁻¹·T</div>
+        <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
+        <div class="equation">m = c τ  [m] = M</div>
+        <div class="equation">ω = E/ħ = (c³/ħ) τ</div>
+        <div class="equation">λ_C = ħ/(m c) = ħ/(c² τ), t_C = ħ/E = ħ/(c³ τ)</div>
+
+        <h3>A.2 Mechanics & Gravity</h3>
+        <div class="equation">E² = p² c² + m² c⁴ = p² c² + τ² c⁶</div>
+        <div class="equation">P^μ = γ(c² τ, c τ v_x, c τ v_y, c τ v_z)</div>
+        <div class="equation">U(r) = -G m_1 m_2 / r = -G c² τ_1 τ_2 / r</div>
+        <div class="equation">r_s = 2 G m / c² = (2G/c) τ</div>
+
+        <h3>A.3 Quantum & Atomic</h3>
+        <div class="equation">(□ + (m c/ħ)²)ψ = 0  → (□ + (c² τ/ħ)²)ψ = 0</div>
+        <div class="equation">(iħ γ^μ ∂_μ - m c)ψ = 0  → (iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
+        <div class="equation">ω_c = qB/m = qB/(c τ)</div>
+        <div class="equation">a₀ = 4π ε₀ ħ²/(m e²) = 4π ε₀ ħ²/(c τ e²)</div>
+
+        <h3>A.4 Thermodynamics & Cosmology</h3>
+        <div class="equation">u_τ ≡ u/c³, P = u/3 = (c³/3) u_τ</div>
+        <div class="equation">H² = (8πG/3) ρ, ρ = u/c² = c·u_τ</div>
+        <p>Encoding components via <code>u_τ(a)</code> provides a “temporal fluid” description; slow-roll dynamics of a τ-field can mimic dark energy without Λ.</p>
+
+        <h3>A.5 Planck Relations in τ</h3>
+        <div class="equation">τ_P = m_P/c = √(ħ/(G c))</div>
+        <div class="equation">t_P = ħ/(c³ τ_P), λ_P = ħ/(c² τ_P)</div>
+
+        <h3>A.6 Operational Signatures</h3>
+        <div class="equation">δω/ω = δτ/τ (coherent shifts across rest-frame frequencies)</div>
+        <div class="equation">Temporal redshift (phenomenology): δτ/τ ≃ ζ·Φ/c²</div>
+      </section>
     </main>
 
     <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
   </div>
-  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById("y").textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
