@@ -83,7 +83,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.1 • Updated: <span id="updated"></span></div>
+      <div class="meta">Author: Tristan White • v1.1 • Updated: Sun, Aug 31, 2025, 8:47 PM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -158,50 +158,46 @@
 
         <h3>9.1 Dimensional / Consistency Tests</h3>
         <ul>
-          <li>Use <em>dimensional analysis</em> to confirm that τ-rewrites of standard relations (Dirac, Klein–Gordon, Schwarzschild radius, Friedmann) remain dimensionally correct.</li>
-          <li>Cross-check against known constants:
+          <li>Check that τ-rewrites (Dirac, KG, Schwarzschild, Friedmann) remain dimensionally correct.</li>
+          <li>Cross-check with constants:
             <ul>
-              <li>For a particle: <span class="equation" style="display:inline-block">τ = m / c</span>.</li>
-              <li>Plug into <span class="equation" style="display:inline-block">E = c³ τ</span> and verify the rest energy <span class="equation" style="display:inline-block">E = m c²</span> is recovered.</li>
+              <li><span class="equation">τ = m / c</span></li>
+              <li><span class="equation">E = c³ τ</span> recovers <span class="equation">E = m c²</span></li>
             </ul>
           </li>
         </ul>
-        <p class="callout">Quick sanity check: the mapping must reproduce standard masses, energies, and lengths when rewritten via <em>m = cτ</em> and <em>E = c³τ</em>.</p>
 
         <h3>9.2 Numerical Benchmarks</h3>
         <ul>
-          <li>Compute <span class="equation" style="display:inline-block">τ</span> for electron, proton, neutrino (assumed mass), and Planck mass.</li>
-          <li>Derive characteristic scales:
+          <li>Compute τ for electron, proton, neutrino, Planck mass.</li>
+          <li>Derived scales:
             <ul>
-              <li>Compton wavelength: <span class="equation" style="display:inline-block">λ_C = ħ / (c² τ)</span>.</li>
-              <li>Compton time: <span class="equation" style="display:inline-block">t_C = ħ / (c³ τ)</span>.</li>
+              <li><span class="equation">λ_C = ħ / (c² τ)</span></li>
+              <li><span class="equation">t_C = ħ / (c³ τ)</span></li>
             </ul>
           </li>
-          <li>Compare to standard tables (e.g., CODATA). Matching values validate the τ-dictionary.</li>
+          <li>Compare to CODATA values.</li>
         </ul>
 
         <h3>9.3 Laboratory / Thought Experiments</h3>
         <ul>
-          <li><strong>Atomic clocks:</strong> If <em>τ</em> is dynamical, all rest-frame frequencies co-shift with <span class="equation" style="display:inline-block">ω = (c³/ħ)τ</span>. Compare co-located clocks of different species → constrain <span class="equation" style="display:inline-block">δτ/τ</span>.</li>
-          <li><strong>Cyclotron frequency:</strong> <span class="equation" style="display:inline-block">ω_c = qB / (c τ)</span>. Look for unexplained drifts as a signature of τ-variation.</li>
-          <li><strong>Spectroscopy:</strong> Atomic line frequencies scale as <span class="equation" style="display:inline-block">∝ 1/τ</span>. Multi-species precision spectra can bound τ dynamics and couplings.</li>
+          <li><strong>Atomic clocks:</strong> Test δτ/τ with co-located clocks.</li>
+          <li><strong>Cyclotron:</strong> <span class="equation">ω_c = qB/(c τ)</span>. Drifts → τ-variation.</li>
+          <li><strong>Spectroscopy:</strong> Lines scale ∝ 1/τ.</li>
         </ul>
 
         <h3>9.4 Cosmological Tests</h3>
         <ul>
-          <li>Rewrite Friedmann with <span class="equation" style="display:inline-block">u_τ = u / c³</span> and fit SN Ia + BAO + CMB using <span class="equation" style="display:inline-block">u_τ(a)</span> in place of Λ.</li>
-          <li>If a τ-field yields <span class="equation" style="display:inline-block">w ≈ -1</span>, test whether it can replace dark energy while remaining consistent with structure growth.</li>
+          <li>Rewrite Friedmann with <span class="equation">u_τ = u/c³</span>.</li>
+          <li>Fit SN Ia + BAO + CMB with evolving u_τ(a).</li>
+          <li>Check if w ≈ -1 reproduces dark energy.</li>
         </ul>
 
         <h3>9.5 Simulation Tests</h3>
         <ul>
-          <li>Implement in Python/Mathematica:
-            <ul>
-              <li>Define a class <code>TauParticle(τ)</code> that auto-computes <span class="equation" style="display:inline-block">E, m, λ_C, t_C</span>.</li>
-              <li>Run a cosmology solver including a τ-fluid; compare predictions to ΛCDM baselines.</li>
-            </ul>
-          </li>
-          <li>Confront with data; update priors on any τ-coupling parameters.</li>
+          <li>Implement <code>TauParticle(τ)</code> → auto-compute {E, m, λ_C, t_C}.</li>
+          <li>Run cosmology solver with τ-fluid vs ΛCDM.</li>
+          <li>Compare predictions to data.</li>
         </ul>
       </section>
 
@@ -215,7 +211,7 @@
       </section>
 
       <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
-        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block;margin:0 6px;padding:4px 8px">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace <em>m</em>→<em>cτ</em> and <em>E</em>→<em>c³τ</em> everywhere.</p>
+        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace m → cτ, E → c³τ everywhere.</p>
 
         <h3>A.1 Units & Dictionary</h3>
         <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
@@ -223,46 +219,38 @@
         <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
         <div class="equation">m = c τ  [m] = M</div>
         <div class="equation">ω = E/ħ = (c³/ħ) τ</div>
-        <div class="equation">λ_C = ħ/(m c) = ħ/(c² τ), t_C = ħ/E = ħ/(c³ τ)</div>
+        <div class="equation">λ_C = ħ/(c² τ), t_C = ħ/(c³ τ)</div>
 
         <h3>A.2 Mechanics & Gravity</h3>
-        <div class="equation">E² = p² c² + m² c⁴ = p² c² + τ² c⁶</div>
-        <div class="equation">P^μ = γ(c² τ, c τ v_x, c τ v_y, c τ v_z)</div>
-        <div class="equation">U(r) = -G m_1 m_2 / r = -G c² τ_1 τ_2 / r</div>
-        <div class="equation">r_s = 2 G m / c² = (2G/c) τ</div>
+        <div class="equation">E² = p² c² + τ² c⁶</div>
+        <div class="equation">P^μ = γ(c² τ, c τ v)</div>
+        <div class="equation">U(r) = -G c² τ_1 τ_2 / r</div>
+        <div class="equation">r_s = (2G/c) τ</div>
 
         <h3>A.3 Quantum & Atomic</h3>
-        <div class="equation">(□ + (m c/ħ)²)ψ = 0  → (□ + (c² τ/ħ)²)ψ = 0</div>
-        <div class="equation">(iħ γ^μ ∂_μ - m c)ψ = 0  → (iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
-        <div class="equation">ω_c = qB/m = qB/(c τ)</div>
-        <div class="equation">a₀ = 4π ε₀ ħ²/(m e²) = 4π ε₀ ħ²/(c τ e²)</div>
+        <div class="equation">(□ + (c² τ/ħ)²)ψ = 0</div>
+        <div class="equation">(iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
+        <div class="equation">ω_c = qB/(c τ)</div>
+        <div class="equation">a₀ = 4π ε₀ ħ²/(c τ e²)</div>
 
         <h3>A.4 Thermodynamics & Cosmology</h3>
-        <div class="equation">u_τ ≡ u/c³, P = u/3 = (c³/3) u_τ</div>
-        <div class="equation">H² = (8πG/3) ρ, ρ = u/c² = c·u_τ</div>
-        <p>Encoding components via <code>u_τ(a)</code> provides a “temporal fluid” description; slow-roll dynamics of a τ-field can mimic dark energy without Λ.</p>
+        <div class="equation">u_τ ≡ u/c³, P = (c³/3) u_τ</div>
+        <div class="equation">H² = (8πG/3)(c u_τ)</div>
 
-        <h3>A.5 Planck Relations in τ</h3>
-        <div class="equation">τ_P = m_P/c = √(ħ/(G c))</div>
+        <h3>A.5 Planck Relations</h3>
+        <div class="equation">τ_P = √(ħ/(G c))</div>
         <div class="equation">t_P = ħ/(c³ τ_P), λ_P = ħ/(c² τ_P)</div>
 
-        <h3>A.6 Operational Signatures</h3>
-        <div class="equation">δω/ω = δτ/τ (coherent shifts across rest-frame frequencies)</div>
-        <div class="equation">Phenomenology example: δτ/τ ≃ ζ·Φ/c²</div>
+        <h3>A.6 Operational</h3>
+        <div class="equation">δω/ω = δτ/τ</div>
+        <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
       </section>
     </main>
 
     <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
   </div>
   <script>
-    // Footer year
     document.getElementById("y").textContent = new Date().getFullYear();
-    // Header "Updated" timestamp (readable, local)
-    document.getElementById("updated").textContent =
-      new Date().toLocaleString('en-US', {
-        weekday:'short', month:'short', day:'2-digit', year:'numeric',
-        hour:'numeric', minute:'2-digit', hour12:true, timeZoneName:'short'
-      });
   </script>
 </body>
 </html>
