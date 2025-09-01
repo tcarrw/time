@@ -88,7 +88,7 @@
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
       <!-- Keep timestamp unchanged per prior instruction -->
-      <div class="meta">Author: Tristan White • v1.2 • Updated: Sun, Aug 31, 2025, 8:47 PM EDT</div>
+      <div class="meta">Author: Tristan White • v1.2 • Updated: Sun, Sept 1, 2025, 8:57 AM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -119,7 +119,7 @@
 
       <section id="postulates"><h2>2. Fundamental Postulates</h2>
         <ol>
-          <li><strong>Equivalence Principle:</strong> <div class="equation">T ≡ D ≡ E</div></li>
+          <li><strong>Equivalence Principle:</strong> <span class="equation">T ≡ D ≡ E</span></li>
           <li><strong>ChronoEnergetic Field:</strong> Geometry and energy are excitations of the same substrate.</li>
         </ol>
       </section>
@@ -230,7 +230,7 @@
         <h3>A.2 Mechanics & Gravity</h3>
         <div class="equation">E² = p² c² + τ² c⁶</div>
         <div class="equation">P^μ = γ(c² τ, c τ v)</div>
-        <div class="equation">U(r) = -G c² τ_1 τ_2 / r</div>
+        <div class="equation">U(r) = -G c² τ₁ τ₂ / r</div>
         <div class="equation">r_s = (2G/c) τ</div>
 
         <h3>A.3 Quantum & Atomic</h3>
@@ -252,19 +252,19 @@
         <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
       </section>
 
-      <!-- NEW concise, copyable checklist appendix -->
+      <!-- Appendix B with corrected Unicode symbols -->
       <section id="appendix-b"><h2>Appendix B — Test Protocols (Checklist)</h2>
 
         <h3>B.1 Minimal Parameterization</h3>
         <table>
           <tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr>
-          <tr><td><code>\u03BA</code></td><td>Gravitational-potential response: <code>\u03B4\u03C4/\u03C4 = \u03BA \u0394\u03A6/c^2</code></td><td>Dimensionless; compare to GR redshift.</td></tr>
-          <tr><td><code>\u03B2/M</code></td><td>EM (dilaton-like) coupling via <code>B(\u03C4)</code></td><td>Maps to <code>\u03B4\u03B1/\u03B1 \approx -(\u03B2/M)\u03B4\u03C4</code>.</td></tr>
-          <tr><td><code>\u03BE</code>, <code>m_\u03C6</code></td><td>Non-minimal gravity & scalar mass</td><td>Controls 5th-force strength/range.</td></tr>
+          <tr><td><code>κ</code></td><td>Gravitational-potential response: <code>δτ/τ = κ ΔΦ/c²</code></td><td>Dimensionless; compare to GR redshift.</td></tr>
+          <tr><td><code>β/M</code></td><td>EM (dilaton-like) coupling via <code>B(τ)</code></td><td>Maps to <code>δα/α ≈ −(β/M) δτ</code>.</td></tr>
+          <tr><td><code>ξ</code>, <code>mφ</code></td><td>Non-minimal gravity & scalar mass</td><td>Controls 5th-force strength/range.</td></tr>
         </table>
 
         <h3>B.2 Lockstep Signature (core falsifier)</h3>
-        <div class="equation">\u03B4\u03BB_C/\u03BB_C = \u03B4t_C/t_C = - \u03B4\u03C9_c/\u03C9_c = - \u03B4\u03C4/\u03C4</div>
+        <div class="equation">δλ_C/λ_C = δt_C/t_C = − δω_c/ω_c = − δτ/τ</div>
         <p>Any detected fractional drift across Compton-like, clock, and cyclotron observables must satisfy this correlation.</p>
 
         <h3>B.3 Laboratory Protocols</h3>
@@ -272,27 +272,27 @@
           <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Fit/Bound</th></tr>
           <tr>
             <td>Penning trap</td>
-            <td><code>\u03C9_c = qB/(c\u03C4)</code></td>
+            <td><code>ω_c = qB/(cτ)</code></td>
             <td>Stabilize B; monitor diurnal/altitude cycles.</td>
-            <td><code>|\u02D9\u03C4/\u03C4| \le |\u02D9\u03C9_c/\u03C9_c|</code></td>
+            <td><code>|τ̇/τ| ≤ |ω̇_c/ω_c|</code></td>
           </tr>
           <tr>
             <td>Clock redshift residual</td>
-            <td><code>\u03B4f/f</code> vs height <code>\u0394h</code></td>
+            <td><code>δf/f</code> vs height <code>Δh</code></td>
             <td>Move two dissimilar clocks; subtract GR.</td>
-            <td><code>\u03BA</code> from residual <code>\u03B4f/f = \u03BA \u0394\u03A6/c^2</code></td>
+            <td><code>κ</code> from residual <code>δf/f = κ ΔΦ/c²</code></td>
           </tr>
           <tr>
             <td>Multi-species comparison</td>
             <td>Clock/cavity set</td>
             <td>Use ≥3 references with known mass/α sensitivities.</td>
-            <td>Solve linear system for <code>\u03B4\u03C4/\u03C4</code>, <code>\u03B4\u03B1/\u03B1</code></td>
+            <td>Solve linear system for <code>δτ/τ</code>, <code>δα/α</code></td>
           </tr>
           <tr>
             <td>Spectroscopy</td>
             <td>Line positions</td>
             <td>Track long-term drifts in atomic/molecular lines.</td>
-            <td>Check \u221D <code>1/\u03C4</code> scaling & lockstep rule</td>
+            <td>Check ∝ <code>1/τ</code> scaling & lockstep rule</td>
           </tr>
         </table>
 
@@ -302,26 +302,26 @@
           <tr>
             <td>Torsion balance / atom interferometry</td>
             <td>Deviation from 1/r</td>
-            <td><code>V(r)= -Gm_1 m_2/r (1+\u03B1_\u03C4 e^{-r/\u03BB_\u03C6})</code></td>
-            <td>Exclude regions in (<code>\u03B1_\u03C4</code>, <code>\u03BB_\u03C6</code>) → map to (<code>\u03BE</code>, <code>m_\u03C6</code>)</td>
+            <td><code>V(r) = − G m₁ m₂ / r (1 + α_τ e^{−r/λφ})</code></td>
+            <td>Exclude regions in (<code>α_τ</code>, <code>λφ</code>) → map to (<code>ξ</code>, <code>mφ</code>)</td>
           </tr>
           <tr>
             <td>Lunar laser ranging</td>
             <td>EP/PPN constraints</td>
             <td>Tiny composition-dependent effects if τ couples to matter</td>
-            <td>Upper limits on <code>\u03BE</code> & composition dependence</td>
+            <td>Upper limits on <code>ξ</code> & composition dependence</td>
           </tr>
         </table>
 
         <h3>B.5 Cosmology (if pursued)</h3>
         <table>
           <tr><th>Dataset</th><th>Model Ingredient</th><th>Signature</th></tr>
-          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_\u03C4 \equiv u/c^3</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on \u0394m/m</td></tr>
+          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_τ ≡ u/c³</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on Δm/m</td></tr>
         </table>
 
         <h3>B.6 Reporting Format (one page)</h3>
         <ul>
-          <li>Quote <code>\u03BA</code>, <code>\u03B4\u03C4/\u03C4</code> (per day/year), <code>\u03B4\u03B1/\u03B1</code> if applicable.</li>
+          <li>Quote <code>κ</code>, <code>δτ/τ</code> (per day/year), <code>δα/α</code> if applicable.</li>
           <li>Include a single “lockstep” residual plot overlaying the tracked observables.</li>
           <li>State whether correlation <em>passes</em> or <em>fails</em> within 1σ.</li>
         </ul>
