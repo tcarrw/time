@@ -20,7 +20,7 @@
       --rule:#2a3348;
       --code:#0e1422;
       --link:#9aa8ff;
-      --maxw:980px;
+      --maxw:880px;
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -58,7 +58,7 @@
     h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
     .subtitle{color:var(--muted);font-size:15px}
     .meta{margin-top:8px;color:var(--muted);font-size:14px}
-    nav{margin:26px auto;max-width:720px;text-align:left;background:var(--panel);
+    nav{margin:26px auto;max-width:600px;text-align:left;background:var(--panel);
         border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
     nav a{color:var(--link);text-decoration:none}
     nav a:hover{text-decoration:underline}
@@ -87,8 +87,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <!-- Keep timestamp unchanged per prior instruction -->
-      <div class="meta">Author: Tristan White • v1.2 • Updated: Mon, Sept 1, 2025, 8:57 AM EDT</div>
+      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sep 1, 2025, 6:16 PM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -100,10 +99,9 @@
           <li><a href="#predictions">6. Predictions</a></li>
           <li><a href="#implications">7. Implications</a></li>
           <li><a href="#conclusion">8. Conclusion</a></li>
-          <li><a href="#tests">9. Tests & Validation</a></li>
+          <li><a href="#tests">9. Tests &amp; Validation</a></li>
           <li><a href="#references">References</a></li>
-          <li><a href="#appendix">Appendix A — τ-First Formulation</a></li>
-          <li><a href="#appendix-b">Appendix B — Test Protocols (Checklist)</a></li>
+          <li><a href="#appendix">Appendix A — &tau;-First Formulation</a></li>
         </ul>
       </nav>
     </header>
@@ -119,30 +117,30 @@
 
       <section id="postulates"><h2>2. Fundamental Postulates</h2>
         <ol>
-          <li><strong>Equivalence Principle:</strong> <span class="equation">T ≡ D ≡ E</span></li>
+          <li><strong>Equivalence Principle:</strong> <div class="equation">T &equiv; D &equiv; E</div></li>
           <li><strong>ChronoEnergetic Field:</strong> Geometry and energy are excitations of the same substrate.</li>
         </ol>
       </section>
 
       <section id="equations"><h2>3. Core Equations</h2>
-        <h3>Time–Energy Relation</h3><div class="equation">T = E / c³</div>
+        <h3>Time–Energy Relation</h3><div class="equation">T = E / c<sup>3</sup></div>
         <h3>Mass–Time Relation</h3><div class="equation">t = m / c</div>
-        <h3>Unified Invariant</h3><div class="equation">U² = T² = D² = E²</div>
+        <h3>Unified Invariant</h3><div class="equation">U<sup>2</sup> = T<sup>2</sup> = D<sup>2</sup> = E<sup>2</sup></div>
       </section>
 
       <section id="lagrangian"><h2>4. Lagrangian Formulation</h2>
-        <div class="equation">S = ∫ d⁴x √(-g) [ R/(16πG) + L_matter + L_temporal + L_interaction ]</div>
+        <div class="equation">S = &int; d<sup>4</sup>x &radic;(-g) [ R/(16&pi;G) + L<span style="letter-spacing:.1em">_matter</span> + L<span style="letter-spacing:.1em">_temporal</span> + L<span style="letter-spacing:.1em">_interaction</span> ]</div>
       </section>
 
       <section id="quantum"><h2>5. Quantum Temporal Mechanics</h2>
-        <div class="equation">Ψ_T = α |d⟩ + β |e⟩</div>
-        <div class="equation">ΔT_E · Δt ≥ ℏ/2</div>
+        <div class="equation">&Psi;<sub>T</sub> = &alpha; |d&rang; + &beta; |e&rang;</div>
+        <div class="equation">&Delta;T<sub>E</sub> &middot; &Delta;t &ge; &hbar;/2</div>
       </section>
 
       <section id="predictions"><h2>6. Predictions</h2>
         <ol>
-          <li>Temporal Redshift: <div class="equation">E_γ = E₀ (1 + Φ_T / c⁶)</div></li>
-          <li>Chronon Quantum: <div class="equation">E_chronon = ℏ c³ / t_Planck</div></li>
+          <li>Temporal Redshift: <div class="equation">E<sub>&gamma;</sub> = E<sub>0</sub> (1 + &Phi;<sub>T</sub> / c<sup>6</sup>)</div></li>
+          <li>Chronon Quantum: <div class="equation">E<sub>chronon</sub> = &hbar; c<sup>3</sup> / t<sub>Planck</sub></div></li>
           <li>Temporal Pressure: A candidate for dark energy.</li>
         </ol>
       </section>
@@ -159,52 +157,60 @@
         <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
       </section>
 
-      <!-- Tests & Validation -->
+      <!-- UPDATED: TESTS & VALIDATION v1.3 -->
       <section id="tests"><h2>9. Tests &amp; Validation</h2>
 
-        <h3>9.1 Dimensional / Consistency Tests</h3>
+        <p class="callout"><strong>Editorial note (v1.3):</strong> This section was expanded following a recommendation by <em>Michael Shara</em> to articulate <em>quantified, falsifiable</em> predictions that cannot be reduced to a change of units.</p>
+
+        <h3>9.1 Minimal &tau;-parameterization (beyond GR/QM)</h3>
+        <p>Let the core identity hold, &nbsp;<span class="equation" style="display:inline-block">&tau; &equiv; E/c<sup>3</sup> = m/c</span>. Introduce a dimensionless, <em>composition/transition-dependent</em> coupling violating Local Position Invariance (LPI):</p>
+        <div class="equation">&delta;<sub>&tau;</sub>(&Phi;) &equiv; \frac{ \tau(&Phi;) - \tau(0) }{ \tau(0) } = \zeta<sub>&tau;</sub> \frac{ \Phi }{ c<sup>2</sup> }, \quad \zeta<sub>&tau;</sub> \to \zeta<sub>&tau</sub><sup>(i)</sup></div>
+        <p>In GR, &zeta;<sub>&tau;</sub>=0 for all nongravitational physics; any <span style="white-space:nowrap">&zeta;<sub>&tau</sub><sup>(i)</sup> &ne; 0</span> yields observable, species-dependent effects that cannot be gauged away.</p>
+
+        <h3>9.2 Five falsifiable, quantified predictions</h3>
+
+        <h4>P1. Differential gravitational redshift between clock species</h4>
+        <div class="equation">\left(\frac{\Delta \nu}{\nu}\right)<sub>i</sub> - \left(\frac{\Delta \nu}{\nu}\right)<sub>j</sub> = \left( \zeta<sub>&tau</sub><sup>(i)</sup> - \zeta<sub>&tau</sub><sup>(j)</sup> \right) \frac{g h}{c<sup>2</sup>}</div>
+        <p><strong>GR:</strong> zero residual after removing the standard redshift. With h=1&nbsp;m, g h / c<sup>2</sup> &approx; 1.1&times;10<sup>-16</sup>. Optical clock comparisons at 1&times;10<sup>-18</sup> resolve <em>|&zeta;<sub>&tau</sub><sup>(i)</sup>-&zeta;<sub>&tau</sub><sup>(j)</sup>| &gtrsim 0.01</em>. Target claim: <strong>|&zeta;<sub>&tau</sub><sup>(i)</sup>-&zeta;<sub>&tau</sub><sup>(j)</sup)| &ge; 10<sup>-3</sup></strong>.</p>
+
+        <h4>P2. Penning-trap cyclotron frequency shift vs potential</h4>
+        <div class="equation">\frac{\Delta \omega_c}{\omega_c} = \kappa<sub>&tau</sub><sup>(s)</sup> \frac{\Delta \Phi}{c<sup>2</sup>}, \quad \omega_c=\frac{qB}{m}=\frac{qB}{c\,\tau}</div>
+        <p><strong>GR:</strong> 0. State-of-art &omega;<sub>c</sub> precision 10<sup>-11</sup>–10<sup>-12</sup>; for &Delta;&Phi;/c<sup>2</sup>&sim;3&times;10<sup>-10</sup>, sensitivity to <em>|&kappa;<sub>&tau</sub><sup>(s)</sup>|</em> at 0.03–0.3. Target: <strong>|&kappa;<sub>&tau</sub><sup>(s)</sup>| &ge; 10<sup>-2</sup></strong>.</p>
+
+        <h4>P3. Atom-interferometer rest-mass phase anomaly</h4>
+        <div class="equation">\Delta \phi<sub>i</sub><sup>(\tau)</sup> = \left(1+\eta<sub>&tau</sub><sup>(i)</sup>\right)\frac{m_i c^2}{\hbar} \int \frac{\Phi(t)}{c^2}\,dt</div>
+        <p><strong>GR:</strong> &eta;<sub>&tau</sub><sup>(i)</sup>=0. Cold-atom interferometers can reach differential sensitivities mapping to <strong>|&eta;<sub>&tau</sub><sup>(i)</sup>-&eta;<sub>&tau</sub><sup>(j)</sup)| &ge; 10<sup>-4</sup></strong>.</p>
+
+        <h4>P4. Cyclotron–clock cross-comparison (single ion)</h4>
+        <div class="equation">\frac{d}{d(\Phi/c^2)} \ln \!\left( \frac{\nu_{\text{clock}}}{\omega_c} \right) = \zeta<sub>&tau</sub><sup>(\text{clock})</sup> - \kappa<sub>&tau</sub><sup>(\text{ion})</sup></div>
+        <p><strong>GR:</strong> 0. Target: <strong>|&zeta;<sub>&tau</sub><sup>(\text{clock})</sup> - &kappa;<sub>&tau</sub><sup>(\text{ion})</sup>| &ge; 10<sup>-2</sup></strong>.</p>
+
+        <h4>P5. Quadratic redshift nonlinearity (spaceborne)</h4>
+        <div class="equation">\left(\frac{\Delta \nu}{\nu}\right)<sub>i</sub> = \frac{\Delta \Phi}{c^2} + \beta<sub>&tau</sub><sup>(i)</sup> \left(\frac{\Delta \Phi}{c^2}\right)^2</div>
+        <p><strong>GR:</strong> &beta;<sub>&tau</sub><sup>(i)</sup>=0. Ground&harr;MEO/GEO gives &Delta;&Phi;/c<sup>2</sup>&sim;10<sup>-10</sup>–10<sup>-9</sup>. With 10<sup>-16</sup> absolute accuracy, test <strong>|&beta;<sub>&tau</sub><sup>(i)</sup>| &gtrsim 10<sup>-6</sup></strong>.</p>
+
+        <h3>9.3 Concrete experiments (near-term)</h3>
         <ul>
-          <li>Check that τ-rewrites (Dirac, KG, Schwarzschild, Friedmann) remain dimensionally correct.</li>
-          <li>Cross-check with constants:
-            <ul>
-              <li><span class="equation">τ = m / c</span></li>
-              <li><span class="equation">E = c³ τ</span> recovers <span class="equation">E = m c²</span></li>
-            </ul>
-          </li>
+          <li><strong>E1:</strong> Two-height, two-species optical clocks (e.g., Sr vs Yb or Al<sup>+</sup>). Residual after GR removal &rarr; P1.</li>
+          <li><strong>E2:</strong> Penning-trap &omega;<sub>c</sub> at two gravitational potentials (surface vs deep mine / high altitude) &rarr; P2.</li>
+          <li><strong>E3:</strong> Atom-interferometer differential (Rb vs Cs or Sr vs Yb) with path asymmetry &rarr; P3.</li>
+          <li><strong>E4:</strong> Co-trapped ion: compare &nu;<sub>clock</sub> and &omega;<sub>c</sub> while modulating &Phi; (elevator/aircraft) &rarr; P4.</li>
+          <li><strong>E5:</strong> Space mission with two distinct optical transitions on an elliptical orbit &rarr; P5.</li>
         </ul>
 
-        <h3>9.2 Numerical Benchmarks</h3>
+        <h3>9.4 Discovery thresholds to state explicitly</h3>
         <ul>
-          <li>Compute τ for electron, proton, neutrino, Planck mass.</li>
-          <li>Derived scales:
-            <ul>
-              <li><span class="equation">λ_C = ħ / (c² τ)</span></li>
-              <li><span class="equation">t_C = ħ / (c³ τ)</span></li>
-            </ul>
-          </li>
-          <li>Compare to CODATA values.</li>
+          <li>P1: exists a pair (i,j) with <strong>|&zeta;<sub>&tau</sub><sup>(i)</sup>-&zeta;<sub>&tau</sub><sup>(j)</sup)| &ge; 10<sup>-3</sup></strong>.</li>
+          <li>P2: exists a species s with <strong>|&kappa;<sub>&tau</sub><sup>(s)</sup>| &ge; 10<sup>-2</sup></strong>.</li>
+          <li>P3: exists a pair with <strong>|&eta;<sub>&tau</sub><sup>(i)</sup>-&eta;<sub>&tau</sub><sup>(j)</sup)| &ge; 10<sup>-4</sup></strong>.</li>
+          <li>P5: exists a transition with <strong>|&beta;<sub>&tau</sub><sup>(i)</sup)| &ge; 10<sup>-6</sup></strong>.</li>
         </ul>
 
-        <h3>9.3 Laboratory / Thought Experiments</h3>
-        <ul>
-          <li><strong>Atomic clocks:</strong> Test δτ/τ with co-located clocks.</li>
-          <li><strong>Cyclotron:</strong> <span class="equation">ω_c = qB/(c τ)</span>. Drifts → τ-variation.</li>
-          <li><strong>Spectroscopy:</strong> Lines scale ∝ 1/τ.</li>
-        </ul>
+        <h3>9.5 Why not a unit change?</h3>
+        <p>Unit redefinitions cannot create <em>species-dependent</em> gravitational couplings. The observables above are ratios between different clocks/particles, leaving only genuine physics.</p>
 
-        <h3>9.4 Cosmological Tests</h3>
-        <ul>
-          <li>Rewrite Friedmann with <span class="equation">u_τ = u/c³</span>.</li>
-          <li>Fit SN Ia + BAO + CMB with evolving u_τ(a).</li>
-          <li>Check if w ≈ -1 reproduces dark energy.</li>
-        </ul>
-
-        <h3>9.5 Simulation Tests</h3>
-        <ul>
-          <li>Implement <code>TauParticle(τ)</code> → auto-compute {E, m, λ_C, t_C}.</li>
-          <li>Run cosmology solver with τ-fluid vs ΛCDM.</li>
-          <li>Compare predictions to data.</li>
-        </ul>
+        <h3>9.6 Link back to the &tau; dictionary</h3>
+        <p>Using &omega; = (c<sup>3</sup>/&hbar;)&tau; and &omega;<sub>c</sub> = qB/(c &tau;), any &tau;(&Phi;) coupling yields operational frequency shifts: <span class="equation" style="display:inline-block">&delta;&omega;/&omega; = &delta;&tau;/&tau;</span>.</p>
       </section>
 
       <section id="references"><h2>References</h2>
@@ -213,118 +219,45 @@
           <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
           <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
           <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
+          <li><em>Acknowledgment:</em> Section 9 expanded following a recommendation by Michael Shara (Curator, American Museum of Natural History).</li>
+
         </ol>
       </section>
 
-      <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
-        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace m → cτ, E → c³τ everywhere.</p>
+      <section id="appendix"><h2>Appendix A — &tau;-First Formulation</h2>
+        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">&tau; &equiv; E/c<sup>3</sup> &equiv; m/c</span> as the primitive “temporal charge.” Replace m &rarr; c&tau;, E &rarr; c<sup>3</sup>&tau; everywhere.</p>
 
-        <h3>A.1 Units & Dictionary</h3>
-        <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
-        <div class="equation">τ = m / c  [τ] = M·L⁻¹·T</div>
-        <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
-        <div class="equation">m = c τ  [m] = M</div>
-        <div class="equation">ω = E/ħ = (c³/ħ) τ</div>
-        <div class="equation">λ_C = ħ/(c² τ), t_C = ħ/(c³ τ)</div>
+        <h3>A.1 Units &amp; Dictionary</h3>
+        <div class="equation">&tau; = E / c<sup>3</sup>&emsp;[&tau;] = M·L<sup>-1</sup>·T</div>
+        <div class="equation">&tau; = m / c&emsp;[&tau;] = M·L<sup>-1</sup>·T</div>
+        <div class="equation">E = c<sup>3</sup> &tau;&emsp;[E] = M·L<sup>2</sup>·T<sup>-2</sup></div>
+        <div class="equation">m = c &tau;&emsp;[m] = M</div>
+        <div class="equation">&omega; = E/&hbar; = (c<sup>3</sup>/&hbar;)&tau;</div>
+        <div class="equation">&lambda;<sub>C</sub> = &hbar;/(c<sup>2</sup> &tau;),&emsp;t<sub>C</sub> = &hbar;/(c<sup>3</sup> &tau;)</div>
 
-        <h3>A.2 Mechanics & Gravity</h3>
-        <div class="equation">E² = p² c² + τ² c⁶</div>
-        <div class="equation">P^μ = γ(c² τ, c τ v)</div>
-        <div class="equation">U(r) = -G c² τ₁ τ₂ / r</div>
-        <div class="equation">r_s = (2G/c) τ</div>
+        <h3>A.2 Mechanics &amp; Gravity</h3>
+        <div class="equation">E<sup>2</sup> = p<sup>2</sup> c<sup>2</sup> + &tau;<sup>2</sup> c<sup>6</sup></div>
+        <div class="equation">P<sup>&mu;</sup> = &gamma;(c<sup>2</sup> &tau;, c &tau; v)</div>
+        <div class="equation">U(r) = -G c<sup>2</sup> &tau;<sub>1</sub> &tau;<sub>2</sub> / r</div>
+        <div class="equation">r<sub>s</sub> = (2G/c) &tau;</div>
 
-        <h3>A.3 Quantum & Atomic</h3>
-        <div class="equation">(□ + (c² τ/ħ)²)ψ = 0</div>
-        <div class="equation">(iħ γ^μ ∂_μ - c² τ)ψ = 0</div>
-        <div class="equation">ω_c = qB/(c τ)</div>
-        <div class="equation">a₀ = 4π ε₀ ħ²/(c τ e²)</div>
+        <h3>A.3 Quantum &amp; Atomic</h3>
+        <div class="equation">(\square + (c<sup>2</sup> &tau;/&hbar;)<sup>2</sup>)&psi; = 0</div>
+        <div class="equation">(i&hbar; &gamma;<sup>&mu;</sup> &partial;<sub>&mu;</sub> - c<sup>2</sup> &tau;)&psi; = 0</div>
+        <div class="equation">&omega;<sub>c</sub> = qB/(c &tau;)</div>
+        <div class="equation">a<sub>0</sub> = 4&pi; &epsilon;<sub>0</sub> &hbar;<sup>2</sup>/(c &tau; e<sup>2</sup>)</div>
 
-        <h3>A.4 Thermodynamics & Cosmology</h3>
-        <div class="equation">u_τ ≡ u/c³, P = (c³/3) u_τ</div>
-        <div class="equation">H² = (8πG/3)(c u_τ)</div>
+        <h3>A.4 Thermodynamics &amp; Cosmology</h3>
+        <div class="equation">u<sub>&tau;</sub> &equiv; u/c<sup>3</sup>,&emsp;P = (c<sup>3</sup>/3) u<sub>&tau;</sub></div>
+        <div class="equation">H<sup>2</sup> = (8&pi;G/3)(c\,u<sub>&tau;</sub>)</div>
 
         <h3>A.5 Planck Relations</h3>
-        <div class="equation">τ_P = √(ħ/(G c))</div>
-        <div class="equation">t_P = ħ/(c³ τ_P), λ_P = ħ/(c² τ_P)</div>
+        <div class="equation">&tau;<sub>P</sub> = &radic;(&hbar;/(G c))</div>
+        <div class="equation">t<sub>P</sub> = &hbar;/(c<sup>3</sup> &tau;<sub>P</sub>),&emsp;&lambda;<sub>P</sub> = &hbar;/(c<sup>2</sup> &tau;<sub>P</sub>)</div>
 
         <h3>A.6 Operational</h3>
-        <div class="equation">δω/ω = δτ/τ</div>
-        <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
-      </section>
-
-      <!-- Appendix B with corrected Unicode symbols -->
-      <section id="appendix-b"><h2>Appendix B — Test Protocols (Checklist)</h2>
-
-        <h3>B.1 Minimal Parameterization</h3>
-        <table>
-          <tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr>
-          <tr><td><code>κ</code></td><td>Gravitational-potential response: <code>δτ/τ = κ ΔΦ/c²</code></td><td>Dimensionless; compare to GR redshift.</td></tr>
-          <tr><td><code>β/M</code></td><td>EM (dilaton-like) coupling via <code>B(τ)</code></td><td>Maps to <code>δα/α ≈ −(β/M) δτ</code>.</td></tr>
-          <tr><td><code>ξ</code>, <code>mφ</code></td><td>Non-minimal gravity & scalar mass</td><td>Controls 5th-force strength/range.</td></tr>
-        </table>
-
-        <h3>B.2 Lockstep Signature (core falsifier)</h3>
-        <div class="equation">δλ_C/λ_C = δt_C/t_C = − δω_c/ω_c = − δτ/τ</div>
-        <p>Any detected fractional drift across Compton-like, clock, and cyclotron observables must satisfy this correlation.</p>
-
-        <h3>B.3 Laboratory Protocols</h3>
-        <table>
-          <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Fit/Bound</th></tr>
-          <tr>
-            <td>Penning trap</td>
-            <td><code>ω_c = qB/(cτ)</code></td>
-            <td>Stabilize B; monitor diurnal/altitude cycles.</td>
-            <td><code>|τ̇/τ| ≤ |ω̇_c/ω_c|</code></td>
-          </tr>
-          <tr>
-            <td>Clock redshift residual</td>
-            <td><code>δf/f</code> vs height <code>Δh</code></td>
-            <td>Move two dissimilar clocks; subtract GR.</td>
-            <td><code>κ</code> from residual <code>δf/f = κ ΔΦ/c²</code></td>
-          </tr>
-          <tr>
-            <td>Multi-species comparison</td>
-            <td>Clock/cavity set</td>
-            <td>Use ≥3 references with known mass/α sensitivities.</td>
-            <td>Solve linear system for <code>δτ/τ</code>, <code>δα/α</code></td>
-          </tr>
-          <tr>
-            <td>Spectroscopy</td>
-            <td>Line positions</td>
-            <td>Track long-term drifts in atomic/molecular lines.</td>
-            <td>Check ∝ <code>1/τ</code> scaling & lockstep rule</td>
-          </tr>
-        </table>
-
-        <h3>B.4 Fifth-Force / Gravity</h3>
-        <table>
-          <tr><th>Test</th><th>Observable</th><th>Prediction</th><th>Fit/Bound</th></tr>
-          <tr>
-            <td>Torsion balance / atom interferometry</td>
-            <td>Deviation from 1/r</td>
-            <td><code>V(r) = − G m₁ m₂ / r (1 + α_τ e^{−r/λφ})</code></td>
-            <td>Exclude regions in (<code>α_τ</code>, <code>λφ</code>) → map to (<code>ξ</code>, <code>mφ</code>)</td>
-          </tr>
-          <tr>
-            <td>Lunar laser ranging</td>
-            <td>EP/PPN constraints</td>
-            <td>Tiny composition-dependent effects if τ couples to matter</td>
-            <td>Upper limits on <code>ξ</code> & composition dependence</td>
-          </tr>
-        </table>
-
-        <h3>B.5 Cosmology (if pursued)</h3>
-        <table>
-          <tr><th>Dataset</th><th>Model Ingredient</th><th>Signature</th></tr>
-          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_τ ≡ u/c³</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on Δm/m</td></tr>
-        </table>
-
-        <h3>B.6 Reporting Format (one page)</h3>
-        <ul>
-          <li>Quote <code>κ</code>, <code>δτ/τ</code> (per day/year), <code>δα/α</code> if applicable.</li>
-          <li>Include a single “lockstep” residual plot overlaying the tracked observables.</li>
-          <li>State whether correlation <em>passes</em> or <em>fails</em> within 1σ.</li>
-        </ul>
+        <div class="equation">&delta;&omega;/&omega; = &delta;&tau;/&tau;</div>
+        <div class="equation">&delta;&tau;/&tau; &asymp; \zeta \, \Phi/c<sup>2</sup></div>
       </section>
     </main>
 
