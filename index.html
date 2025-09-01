@@ -87,7 +87,7 @@
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sept 1, 2025, 6:53 PM EDT</div>
+      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sep 1, 2025, 6:55 PM EDT</div>
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -158,10 +158,10 @@
         <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
       </section>
 
-      <!-- Tests & Validation (expanded for v3.0) -->
+      <!-- Tests & Validation (v1.3) -->
       <section id="tests"><h2>9. Tests &amp; Validation</h2>
 
-        <p class="callout"><strong>Editorial note (v3.0):</strong> Section 9 consolidates falsifiable predictions, explicit discovery thresholds, and DIY protocols. It also clarifies why these are not unit redefinitions.</p>
+        <p class="callout"><strong>Editorial note (v1.3):</strong> This section consolidates falsifiable predictions, explicit discovery thresholds, and DIY protocols. Expanded following a recommendation by <em>Michael Shara (Curator, American Museum of Natural History)</em> to state quantified, species-dependent tests that cannot be reduced to unit redefinitions.</p>
 
         <h3>9.1 Minimal τ-parameterization (beyond GR/QM)</h3>
         <p>Let the identity hold, <span class="equation" style="display:inline-block">τ ≡ E/c³ = m/c</span>. Introduce a dimensionless, composition/transition-dependent coupling that violates Local Position Invariance (LPI):</p>
@@ -232,7 +232,7 @@
           <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
           <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
           <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
-          <li><em>Acknowledgment:</em> Tests section shaped by discussions emphasizing quantified, falsifiable predictions.</li>
+          <li><em>Acknowledgment:</em> Section 9 expanded following a recommendation by Michael Shara (Curator, American Museum of Natural History).</li>
         </ol>
       </section>
 
@@ -288,4 +288,69 @@
 
         <h3>B.3 Laboratory Protocols</h3>
         <table>
-          <tr><
+          <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Fit/Bound</th></tr>
+          <tr>
+            <td>Penning trap</td>
+            <td><code>ω_c = qB/(cτ)</code></td>
+            <td>Stabilize B; monitor diurnal/altitude cycles.</td>
+            <td><code>|τ̇/τ| ≤ |ω̇_c/ω_c|</code></td>
+          </tr>
+          <tr>
+            <td>Clock redshift residual</td>
+            <td><code>δf/f</code> vs height <code>Δh</code></td>
+            <td>Move two dissimilar clocks; subtract GR.</td>
+            <td><code>κ</code> from residual <code>δf/f = κ ΔΦ/c²</code></td>
+          </tr>
+          <tr>
+            <td>Multi-species comparison</td>
+            <td>Clock/cavity set</td>
+            <td>Use ≥3 references with known mass/α sensitivities.</td>
+            <td>Solve linear system for <code>δτ/τ</code>, <code>δα/α</code></td>
+          </tr>
+          <tr>
+            <td>Spectroscopy</td>
+            <td>Line positions</td>
+            <td>Track long-term drifts in atomic/molecular lines.</td>
+            <td>Check ∝ <code>1/τ</code> scaling & lockstep rule</td>
+          </tr>
+        </table>
+
+        <h3>B.4 Fifth-Force / Gravity</h3>
+        <table>
+          <tr><th>Test</th><th>Observable</th><th>Prediction</th><th>Fit/Bound</th></tr>
+          <tr>
+            <td>Torsion balance / atom interferometry</td>
+            <td>Deviation from 1/r</td>
+            <td><code>V(r) = − G m₁ m₂ / r (1 + α_τ e^{−r/λφ})</code></td>
+            <td>Exclude regions in (<code>α_τ</code>, <code>λφ</code>) → map to (<code>ξ</code>, <code>mφ</code>)</td>
+          </tr>
+          <tr>
+            <td>Lunar laser ranging</td>
+            <td>EP/PPN constraints</td>
+            <td>Tiny composition-dependent effects if τ couples to matter</td>
+            <td>Upper limits on <code>ξ</code> & composition dependence</td>
+          </tr>
+        </table>
+
+        <h3>B.5 Cosmology (if pursued)</h3>
+        <table>
+          <tr><th>Dataset</th><th>Model Ingredient</th><th>Signature</th></tr>
+          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_τ ≡ u/c³</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on Δm/m</td></tr>
+        </table>
+
+        <h3>B.6 Reporting Format (one page)</h3>
+        <ul>
+          <li>Quote <code>κ</code>, <code>δτ/τ</code> (per day/year), <code>δα/α</code> if applicable.</li>
+          <li>Include a single “lockstep” residual plot overlaying the tracked observables.</li>
+          <li>State whether correlation <em>passes</em> or <em>fails</em> within 1σ.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  </div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
