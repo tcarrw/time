@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>time.plnt.earth — χ Framework (v2.2)</title>
+<title>time.plnt.earth — χ Framework (v2.3)</title>
 <meta name="description" content="time.plnt.earth — a public research note proposing a χ-framework where time, distance, energy, and matter are one field with testable predictions, integrated with the Illumina ecosystem." />
 <meta name="color-scheme" content="dark light" />
 <meta name="theme-color" content="#0b0b10" />
@@ -31,7 +31,7 @@
   html,body{
     margin:0; padding:0; background:var(--bg); color:var(--ink);
     font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji;
-    line-height:1.5; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased
+    line-height:1.5; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility
   }
   a{ color:var(--accent); text-decoration:none }
   a:hover{text-decoration:underline}
@@ -46,9 +46,8 @@
     padding-top: env(safe-area-inset-top);
   }
   .site-inner{
-    max-width:var(--maxw); margin:0 auto;
-    padding:8px 20px; block-size: calc(var(--header-h));
-    display:flex; align-items:center; gap:12px
+    max-width:var(--maxw); margin:0 auto; padding:8px 20px;
+    block-size: calc(var(--header-h)); display:flex; align-items:center; gap:12px
   }
   .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; white-space:nowrap }
   .dot{ inline-size:10px; block-size:10px; border-radius:50%; background:var(--accent);
@@ -67,8 +66,7 @@
     padding: calc(var(--header-h) + env(safe-area-inset-top) + 14px) 20px 64px;
   }
   .hero{
-    margin-top:0;
-    background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
+    margin-top:0; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
     border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)
   }
   h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px; line-height:1.15; letter-spacing:.2px }
@@ -80,10 +78,16 @@
   .grid{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:20px }
   @media (min-width:980px){ .grid{ grid-template-columns:260px 1fr } }
 
+  /* ===== TOC: sticky on desktop, NOT sticky on mobile ===== */
   nav.toc{
-    position:sticky; top: calc(var(--header-h) + env(safe-area-inset-top) + 10px);
     align-self:start; background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:12px; box-shadow:var(--shadow)
+    border-radius:var(--radius); padding:12px; box-shadow:var(--shadow); z-index:1
+  }
+  @media (min-width:980px){
+    nav.toc{ position:sticky; top: calc(var(--header-h) + env(safe-area-inset-top) + 10px); }
+  }
+  @media (max-width:979.98px){
+    nav.toc{ position:static; top:auto; }
   }
   nav.toc h3{ margin:0 0 8px; font-size:14px; color:var(--ink-dim) }
   nav.toc a{ display:block; padding:6px 8px; border-radius:8px; color:var(--ink-soft) }
@@ -148,7 +152,7 @@
     <h1>TIME = DISTANCE = ENERGY = MATTER<br><span class="sub">The χ Framework & Test Plan (time.plnt.earth)</span></h1>
     <div class="badges">
       <span class="badge">Author: Tristan White</span>
-      <span class="badge">Version: v2.2 (Oct 16, 2025)</span>
+      <span class="badge">Version: v2.3 (Oct 16, 2025)</span>
       <span class="badge">License: CC BY 4.0</span>
       <span class="badge">Ecosystem: Illumina / PLNT Earth</span>
       <span class="badge">Repo: tcarrw/time (may be private)</span>
@@ -361,10 +365,10 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
       <section id="changelog" class="card" aria-labelledby="changelog-h">
         <h2 id="changelog-h">Changelog</h2>
         <ul>
+          <li><strong>v2.3</strong> — TOC is no longer sticky on mobile (so it won’t cover content while scrolling); desktop stickiness retained.</li>
           <li><strong>v2.2</strong> — Compact mobile header (safe-area aware), refined paddings; repo link confirmed.</li>
           <li><strong>v2.1</strong> — Fixed header overlap; added repo badge and footer link.</li>
           <li><strong>v2.0</strong> — Tailored copy; Illumina Integration; References; single-file build.</li>
-          <li><strong>v1.x</strong> — Initial public note; early predictions and protocols.</li>
         </ul>
       </section>
 
