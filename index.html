@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>time.plnt.earth — χ Framework (v2.1)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>time.plnt.earth — χ Framework (v2.2)</title>
 <meta name="description" content="time.plnt.earth — a public research note proposing a χ-framework where time, distance, energy, and matter are one field with testable predictions, integrated with the Illumina ecosystem." />
 <meta name="color-scheme" content="dark light" />
 <meta name="theme-color" content="#0b0b10" />
@@ -15,12 +15,9 @@
     --accent:#9ad7ff; --accent-2:#a0ffa6; --callout:#1e2740;
     --border:#26263a; --shadow:0 8px 30px rgba(0,0,0,.35);
     --radius:14px; --maxw:960px;
-    /* Header fixes */
-    --header-h: 56px;
+    --header-h:56px;
   }
-  @media (min-width: 980px){
-    :root{ --header-h: 64px; }
-  }
+  @media (min-width:980px){ :root{ --header-h:64px } }
   @media (prefers-color-scheme: light){
     :root{
       --bg:#f9fafc; --bg-soft:#f1f4f8; --panel:#ffffff;
@@ -33,82 +30,102 @@
   *{ box-sizing:border-box }
   html,body{
     margin:0; padding:0; background:var(--bg); color:var(--ink);
-    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji; line-height:1.5
+    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji;
+    line-height:1.5; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased
   }
-  a{ color:var(--accent); text-decoration:none } a:hover{text-decoration:underline}
+  a{ color:var(--accent); text-decoration:none }
+  a:hover{text-decoration:underline}
 
-  /* Header */
+  /* ===== Sticky header (compact, safe-area aware) ===== */
   header.site{
     position:sticky; top:0; z-index:50;
+    background: color-mix(in oklab, var(--bg) 86%, transparent);
     backdrop-filter:saturate(120%) blur(6px);
-    background: color-mix(in oklab, var(--bg) 80%, transparent);
     border-bottom:1px solid var(--border);
-    block-size: var(--header-h);
+    block-size: calc(var(--header-h) + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
   }
   .site-inner{
     max-width:var(--maxw); margin:0 auto;
-    padding:8px 20px; block-size:100%;
+    padding:8px 20px; block-size: calc(var(--header-h));
     display:flex; align-items:center; gap:12px
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; white-space:nowrap }
   .dot{ inline-size:10px; block-size:10px; border-radius:50%; background:var(--accent);
     box-shadow:0 0 24px color-mix(in oklab, var(--accent) 70%, transparent) }
   .spacer{ flex:1 }
   .btn{
-    display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
+    display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
     background:var(--panel); color:var(--ink); border:1px solid var(--border); box-shadow:var(--shadow);
-    text-decoration:none; font-weight:600; font-size:14px
+    text-decoration:none; font-weight:600; font-size:13px; white-space:nowrap
   }
   .btn.secondary{ background:var(--bg-soft) }
 
-  /* Main wrapper: add top padding so content never hides under sticky header */
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:calc(var(--header-h) + 16px) 20px 64px }
-
-  .hero{
-    margin-top:0; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
-    border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)
+  /* ===== Layout & cards ===== */
+  .wrap{
+    max-width:var(--maxw); margin:0 auto;
+    padding: calc(var(--header-h) + env(safe-area-inset-top) + 14px) 20px 64px;
   }
-  h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px 0; line-height:1.15; letter-spacing:.2px }
+  .hero{
+    margin-top:0;
+    background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
+    border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)
+  }
+  h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px; line-height:1.15; letter-spacing:.2px }
   .sub{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px) }
-  .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
+  .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px }
   .badge{ font-size:12px; color:var(--ink-soft); background:var(--bg-soft);
     border:1px solid var(--border); padding:6px 10px; border-radius:999px }
 
-  .grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:24px }
+  .grid{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:20px }
   @media (min-width:980px){ .grid{ grid-template-columns:260px 1fr } }
 
   nav.toc{
-    position:sticky; top:calc(var(--header-h) + 8px); align-self:start;
-    background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)
+    position:sticky; top: calc(var(--header-h) + env(safe-area-inset-top) + 10px);
+    align-self:start; background:var(--panel); border:1px solid var(--border);
+    border-radius:var(--radius); padding:12px; box-shadow:var(--shadow)
   }
-  nav.toc h3{ margin:0 0 8px 0; font-size:14px; color:var(--ink-dim) }
+  nav.toc h3{ margin:0 0 8px; font-size:14px; color:var(--ink-dim) }
   nav.toc a{ display:block; padding:6px 8px; border-radius:8px; color:var(--ink-soft) }
   nav.toc a.active, nav.toc a:hover{ background:var(--bg-soft); color:var(--ink) }
 
   section.card{
-    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
-    /* Anchor scrolling offset so sticky header doesn't cover section titles */
-    scroll-margin-top: calc(var(--header-h) + 12px);
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+    scroll-margin-top: calc(var(--header-h) + env(safe-area-inset-top) + 12px);
   }
-  section.card h2{ margin:0 0 12px 0; font-size:22px }
-  h3{ margin:20px 0 8px 0; font-size:18px }
+  section.card h2{ margin:0 0 10px; font-size:22px }
+  h3{ margin:16px 0 8px; font-size:18px }
   p{ margin:10px 0 }
   .eq{
     background:var(--bg-soft); border:1px solid var(--border); border-radius:12px; padding:12px;
-    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; overflow:auto; font-size:14px; color:var(--ink)
+    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+    overflow:auto; font-size:14px; color:var(--ink)
   }
   .callout{ background:var(--callout); border:1px solid var(--border); border-radius:12px; padding:12px; color:var(--ink) }
   details{ border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--bg-soft) }
   details summary{ cursor:pointer; font-weight:600 }
 
-  .footer{ margin-top:32px; color:var(--ink-soft); font-size:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center }
+  .footer{
+    margin-top:28px; color:var(--ink-soft); font-size:14px;
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center
+  }
   .links{ display:flex; gap:10px; flex-wrap:wrap }
   .chip{ display:inline-flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-soft);
     border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--ink-soft) }
   .ok{ inline-size:8px; block-size:8px; border-radius:50%; background:var(--accent-2) }
-  hr.sep{ border:0; border-top:1px dashed var(--border); margin:20px 0 }
+  hr.sep{ border:0; border-top:1px dashed var(--border); margin:18px 0 }
 
+  /* ===== Extra-compact tweaks for small phones ===== */
+  @media (max-width:420px){
+    :root{ --header-h:44px }
+    .site-inner{ padding:6px 12px; gap:8px }
+    .btn{ padding:6px 10px; font-size:12px; border-radius:8px }
+    .hero{ padding:16px }
+    nav.toc{ padding:10px }
+    section.card{ padding:16px }
+  }
+
+  /* ===== Print to PDF ===== */
   @media print{
     header.site, nav.toc, .badges, .footer, .links { display:none !important }
     .wrap{ padding:0 } section.card{ break-inside:avoid } body{ background:#fff }
@@ -131,7 +148,7 @@
     <h1>TIME = DISTANCE = ENERGY = MATTER<br><span class="sub">The χ Framework & Test Plan (time.plnt.earth)</span></h1>
     <div class="badges">
       <span class="badge">Author: Tristan White</span>
-      <span class="badge">Version: v2.1 (Oct 16, 2025)</span>
+      <span class="badge">Version: v2.2 (Oct 16, 2025)</span>
       <span class="badge">License: CC BY 4.0</span>
       <span class="badge">Ecosystem: Illumina / PLNT Earth</span>
       <span class="badge">Repo: tcarrw/time (may be private)</span>
@@ -338,13 +355,14 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
           <li><span class="chip"><span class="ok"></span> Lens fit notebook (synthetic)</span></li>
           <li><span class="chip"><span class="ok"></span> Siren cross-checks</span></li>
         </ul>
-        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code> and the GitHub link points to <code>tcarrw/time</code>. For collaboration, add a contact block or issues link in your repo.</p>
+        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code>. The GitHub link points to <code>tcarrw/time</code>.</p>
       </section>
 
       <section id="changelog" class="card" aria-labelledby="changelog-h">
         <h2 id="changelog-h">Changelog</h2>
         <ul>
-          <li><strong>v2.1</strong> — Fixed sticky-header overlap on mobile (padding + scroll-margin); repo link updated; badge added.</li>
+          <li><strong>v2.2</strong> — Compact mobile header (safe-area aware), refined paddings; repo link confirmed.</li>
+          <li><strong>v2.1</strong> — Fixed header overlap; added repo badge and footer link.</li>
           <li><strong>v2.0</strong> — Tailored copy; Illumina Integration; References; single-file build.</li>
           <li><strong>v1.x</strong> — Initial public note; early predictions and protocols.</li>
         </ul>
@@ -368,6 +386,7 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
     var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
     if('IntersectionObserver' in window){
+      var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 56;
       var obs = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           var i = sections.indexOf(entry.target);
@@ -379,7 +398,7 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
             }
           }
         });
-      }, { rootMargin: "-" + (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) + 10) + "px 0px -60% 0px", threshold:0.01 });
+      }, { rootMargin: "-" + (headerH + 16) + "px 0px -60% 0px", threshold:0.01 });
       sections.forEach(function(s){ obs.observe(s); });
     }
 
