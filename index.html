@@ -1,413 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Unified Temporal–Energetic Geometry</title>
-  <meta name="description" content="A speculative framework unifying time, distance, and energy into a single substrate." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>time.plnt.earth — χ Framework (v2.0)</title>
+<meta name="description" content="time.plnt.earth — a public research note proposing a χ-framework where time, distance, energy, and matter are one field with testable predictions, integrated with the Illumina ecosystem." />
+<meta name="color-scheme" content="dark light" />
+<meta name="theme-color" content="#0b0b10" />
 
-  <!-- Inline favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPlQ8L3RleHQ+PC9zdmc+" />
-
-  <style>
+<style>
+  :root{
+    --bg:#0b0b10; --bg-soft:#12121a; --panel:#171723;
+    --ink:#e9e9ef; --ink-dim:#b7b7c6; --ink-soft:#8d8da1;
+    --accent:#9ad7ff; --accent-2:#a0ffa6; --callout:#1e2740;
+    --border:#26263a; --shadow:0 8px 30px rgba(0,0,0,.35);
+    --radius:14px; --maxw:960px;
+  }
+  @media (prefers-color-scheme: light){
     :root{
-      --bg:#0b0f19;
-      --panel:#121827;
-      --ink:#e6e8ee;
-      --muted:#a3acc2;
-      --accent:#7c3aed;
-      --accent-2:#f59e0b;
-      --rule:#2a3348;
-      --code:#0e1422;
-      --link:#9aa8ff;
-      --maxw:980px;
+      --bg:#f9fafc; --bg-soft:#f1f4f8; --panel:#ffffff;
+      --ink:#111217; --ink-dim:#303241; --ink-soft:#5b5e70;
+      --accent:#165dff; --accent-2:#0b9f52; --callout:#eaf2ff;
+      --border:#e6e8ee;
     }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#ffffff;
-        --panel:#f6f7fb;
-        --ink:#0f1222;
-        --muted:#4a546e;
-        --rule:#e4e7f0;
-        --code:#f1f3f9;
-        --link:#2b59ff;
-      }
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
-        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
-        var(--bg);
-      color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    }
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
-    header{text-align:center;margin-bottom:32px}
-    .logo{
-      font-size:clamp(36px,6vw,64px);
-      font-weight:800;
-      letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      display:inline-block;
-      margin-bottom:12px;
-    }
-    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
-    .subtitle{color:var(--muted);font-size:15px}
-    .meta{margin-top:8px;color:var(--muted);font-size:14px}
-    nav{margin:26px auto;max-width:720px;text-align:left;background:var(--panel);
-        border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
-    nav a{color:var(--link);text-decoration:none}
-    nav a:hover{text-decoration:underline}
-    nav ul{margin:0;padding-left:18px}
-    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);
-        border-radius:16px;padding:24px 20px;margin:18px 0}
-    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
-    h3{margin:16px 0 8px;font-size:18px}
-    p{margin:10px 0 0}
-    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
-        border:1px solid var(--rule);border-radius:10px;
-        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
-    .abstract{font-style:italic;color:var(--muted)}
-    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
-    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
-    table{width:100%;border-collapse:collapse;margin:8px 0}
-    th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
-    th{background:var(--panel);text-align:left}
-    code{background:var(--code);padding:1px 4px;border-radius:4px}
-    @media print{body{background:#fff}nav,section{break-inside:avoid}}
-  </style>
+  }
+  *{ box-sizing:border-box }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji; line-height:1.5 }
+  a{ color:var(--accent); text-decoration:none }
+  a:hover{text-decoration:underline}
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:24px 20px 64px }
+  header.site{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(6px);
+    background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid var(--border) }
+  .site-inner{ max-width:var(--maxw); margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:12px }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px }
+  .dot{ inline-size:10px; block-size:10px; border-radius:50%; background:var(--accent);
+    box-shadow:0 0 24px color-mix(in oklab, var(--accent) 70%, transparent) }
+  .spacer{ flex:1 }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
+    background:var(--panel); color:var(--ink); border:1px solid var(--border); box-shadow:var(--shadow);
+    text-decoration:none; font-weight:600; font-size:14px }
+  .btn.secondary{ background:var(--bg-soft) }
+  .hero{ margin-top:18px; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
+    border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow) }
+  h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px 0; line-height:1.15; letter-spacing:.2px }
+  .sub{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px) }
+  .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
+  .badge{ font-size:12px; color:var(--ink-soft); background:var(--bg-soft);
+    border:1px solid var(--border); padding:6px 10px; border-radius:999px }
+  .grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:24px }
+  @media (min-width:980px){ .grid{ grid-template-columns:260px 1fr } }
+  nav.toc{ position:sticky; top:64px; align-self:start; background:var(--panel); border:1px solid var(--border);
+    border-radius:var(--radius); padding:14px; box-shadow:var(--shadow) }
+  nav.toc h3{ margin:0 0 8px 0; font-size:14px; color:var(--ink-dim) }
+  nav.toc a{ display:block; padding:6px 8px; border-radius:8px; color:var(--ink-soft) }
+  nav.toc a.active, nav.toc a:hover{ background:var(--bg-soft); color:var(--ink) }
+  section.card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow) }
+  section.card h2{ margin:0 0 12px 0; font-size:22px }
+  h3{ margin:20px 0 8px 0; font-size:18px }
+  p{ margin:10px 0 }
+  .eq{ background:var(--bg-soft); border:1px solid var(--border); border-radius:12px; padding:12px;
+    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; overflow:auto; font-size:14px; color:var(--ink) }
+  .callout{ background:var(--callout); border:1px solid var(--border); border-radius:12px; padding:12px; color:var(--ink) }
+  details{ border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--bg-soft) }
+  details summary{ cursor:pointer; font-weight:600 }
+  .footer{ margin-top:32px; color:var(--ink-soft); font-size:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center }
+  .links{ display:flex; gap:10px; flex-wrap:wrap }
+  .chip{ display:inline-flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-soft);
+    border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--ink-soft) }
+  .ok{ inline-size:8px; block-size:8px; border-radius:50%; background:var(--accent-2) }
+  hr.sep{ border:0; border-top:1px dashed var(--border); margin:20px 0 }
+  @media print{
+    header.site, nav.toc, .badges, .footer, .links { display:none !important }
+    .wrap{ padding:0 } section.card{ break-inside:avoid } body{ background:#fff }
+  }
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">Time</div>
-      <h1>Unified Temporal–Energetic Geometry</h1>
-      <div class="subtitle">A speculative framework for the equivalence of time, distance, and energy</div>
-      <div class="meta">Author: Tristan White • v1.3 • Updated: Mon, Sep 1, 2025, 7:38 PM EDT</div>
-      <nav aria-label="Contents">
-        <ul>
-          <li><a href="#abstract">Abstract</a></li>
-          <li><a href="#introduction">1. Introduction</a></li>
-          <li><a href="#postulates">2. Fundamental Postulates</a></li>
-          <li><a href="#equations">3. Core Equations</a></li>
-          <li><a href="#lagrangian">4. Lagrangian Formulation</a></li>
-          <li><a href="#quantum">5. Quantum Temporal Mechanics</a></li>
-          <li><a href="#predictions">6. Predictions</a></li>
-          <li><a href="#implications">7. Implications</a></li>
-          <li><a href="#conclusion">8. Conclusion</a></li>
-          <li><a href="#tests">9. Tests &amp; Validation</a></li>
-          <li><a href="#references">References</a></li>
-          <li><a href="#appendix">Appendix A — τ-First Formulation</a></li>
-          <li><a href="#appendix-b">Appendix B — Test Protocols (Checklist)</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <section id="abstract"><h2>Abstract</h2>
-        <p class="abstract">We propose a speculative theoretical framework in which time (T), distance (D), and energy (E) are fundamentally equivalent quantities, linked by universal constants and expressed through a single invariant. This ChronoEnergetic Field (CEF) extends the principles of relativity and quantum mechanics by treating spacetime and energy not as distinct domains, but as manifestations of one substrate.</p>
-      </section>
-
-      <section id="introduction"><h2>1. Introduction</h2>
-        <p>Modern physics rests on two pillars: general relativity, which unifies space and time as spacetime geometry, and quantum mechanics, which treats energy and probability as foundational. Despite their success, these frameworks remain conceptually distinct. We extend relativity’s unification by incorporating energy directly, positing that time, distance, and energy are equivalent aspects of a single continuum.</p>
-      </section>
-
-      <section id="postulates"><h2>2. Fundamental Postulates</h2>
-        <ol>
-          <li><strong>Equivalence Principle:</strong> <span class="equation">T ≡ D ≡ E</span></li>
-          <li><strong>ChronoEnergetic Field:</strong> Geometry and energy are excitations of the same substrate.</li>
-        </ol>
-      </section>
-
-      <section id="equations"><h2>3. Core Equations</h2>
-        <h3>Time–Energy Relation</h3><div class="equation">T = E / c³</div>
-        <h3>Mass–Time Relation</h3><div class="equation">t = m / c</div>
-        <h3>Unified Invariant</h3><div class="equation">U² = T² = D² = E²</div>
-      </section>
-
-      <section id="lagrangian"><h2>4. Lagrangian Formulation</h2>
-        <div class="equation">S = ∫ d⁴x √(−g) [ R/(16πG) + L_matter + L_temporal + L_interaction ]</div>
-      </section>
-
-      <section id="quantum"><h2>5. Quantum Temporal Mechanics</h2>
-        <div class="equation">Ψ_T = α |d⟩ + β |e⟩</div>
-        <div class="equation">ΔT_E · Δt ≥ ℏ/2</div>
-      </section>
-
-      <section id="predictions"><h2>6. Predictions</h2>
-        <ol>
-          <li>Temporal Redshift: <div class="equation">E_γ = E₀ (1 + Φ_T / c⁶)</div></li>
-          <li>Chronon Quantum: <div class="equation">E_chronon = ℏ c³ / t_Planck</div></li>
-          <li>Temporal Pressure: A candidate for dark energy.</li>
-        </ol>
-      </section>
-
-      <section id="implications"><h2>7. Implications</h2>
-        <ul>
-          <li>Cosmology: Expansion as temporal-pressure release.</li>
-          <li>Black Holes: Singularities as time–energy compression.</li>
-          <li>Unification: Bridge between GR and QFT.</li>
-        </ul>
-      </section>
-
-      <section id="conclusion"><h2>8. Conclusion</h2>
-        <p>Unifying geometry, energy, and duration into one substrate invites fresh approaches to unification, dark energy, and the quantum nature of time.</p>
-      </section>
-
-      <!-- Tests & Validation (v1.3) -->
-      <section id="tests"><h2>9. Tests &amp; Validation</h2>
-
-        <p class="callout"><strong>Editorial note (v1.3):</strong> This section consolidates falsifiable predictions, explicit discovery thresholds, and DIY protocols. Expanded following a recommendation by <em>Michael Shara (Curator, American Museum of Natural History)</em> to state quantified, species-dependent tests that cannot be reduced to unit redefinitions.</p>
-
-        <h3>9.1 Minimal τ-parameterization (beyond GR/QM)</h3>
-        <p>Let the identity hold, <span class="equation" style="display:inline-block">τ ≡ E/c³ = m/c</span>. Introduce a dimensionless, composition/transition-dependent coupling that violates Local Position Invariance (LPI):</p>
-        <div class="equation">δ_τ(Φ) ≡ [τ(Φ) − τ(0)]/τ(0) = ζ_τ (Φ/c²), with ζ_τ → ζ_τ^(i)</div>
-        <p>In GR, ζ_τ = 0 for nongravitational physics; any ζ_τ^(i) ≠ 0 produces species-dependent observables that cannot be gauged away.</p>
-
-        <h3>9.2 Five falsifiable, quantified predictions</h3>
-
-        <h4>P1. Differential gravitational redshift between clock species</h4>
-        <div class="equation">(Δν/ν)_i − (Δν/ν)_j = (ζ_τ^(i) − ζ_τ^(j)) · (g h / c²)</div>
-        <p><span class="small"><strong>GR:</strong> zero residual after standard redshift removal. With h = 1 m, g h / c² ≈ 1.1×10⁻¹⁶. Optical clocks at 10⁻¹⁸ resolve |ζ_τ^(i) − ζ_τ^(j)| ≳ 10⁻²; target claim: ≥ 10⁻³.</span></p>
-
-        <h4>P2. Penning-trap cyclotron frequency shift vs potential</h4>
-        <div class="equation">Δω_c/ω_c = κ_τ^(s) (ΔΦ/c²), with ω_c = qB/m = qB/(c τ)</div>
-        <p class="small"><strong>GR:</strong> 0. State-of-the-art ω_c precision 10⁻¹¹–10⁻¹²; for ΔΦ/c² ∼ 3×10⁻¹⁰, sensitivity to |κ_τ^(s)| at 0.03–0.3. Target: ≥ 10⁻².</p>
-
-        <h4>P3. Atom-interferometer rest-mass phase anomaly</h4>
-        <div class="equation">Δφ_i^(τ) = (1+η_τ^(i)) · (m_i c²/ℏ) ∫ [Φ(t)/c²] dt</div>
-        <p class="small"><strong>GR:</strong> η_τ^(i) = 0. Differential comparisons can reach |η_τ^(i) − η_τ^(j)| ≥ 10⁻⁴.</p>
-
-        <h4>P4. Cyclotron–clock cross-comparison (single ion)</h4>
-        <div class="equation">d/d(Φ/c²) ln(ν_clock/ω_c) = ζ_τ^(clock) − κ_τ^(ion)</div>
-        <p class="small"><strong>GR:</strong> 0. Target: |ζ_τ^(clock) − κ_τ^(ion)| ≥ 10⁻².</p>
-
-        <h4>P5. Quadratic redshift nonlinearity (spaceborne)</h4>
-        <div class="equation">(Δν/ν)_i = (ΔΦ/c²) + β_τ^(i) (ΔΦ/c²)²</div>
-        <p class="small"><strong>GR:</strong> β_τ^(i) = 0. Ground↔MEO/GEO gives ΔΦ/c² ∼ 10⁻¹⁰–10⁻⁹; with 10⁻¹⁶ absolute accuracy, test |β_τ^(i)| ≳ 10⁻⁶.</p>
-
-        <h3>9.3 Concrete experiments (near-term)</h3>
-        <ul>
-          <li><strong>E1:</strong> Two-height, two-species optical clocks (Sr vs Yb or Al⁺). Residual after GR removal → P1.</li>
-          <li><strong>E2:</strong> Penning-trap ω_c at two gravitational potentials (surface vs deep mine / high altitude) → P2.</li>
-          <li><strong>E3:</strong> Atom-interferometer differential (Rb vs Cs or Sr vs Yb) with path asymmetry → P3.</li>
-          <li><strong>E4:</strong> Co-trapped ion: compare ν_clock and ω_c while modulating Φ (elevator/aircraft) → P4.</li>
-          <li><strong>E5:</strong> Space mission with two distinct optical transitions on an elliptical orbit → P5.</li>
-        </ul>
-
-        <h3>9.4 Discovery thresholds to state explicitly</h3>
-        <ul>
-          <li>P1: ∃ (i,j) with <strong>|ζ_τ^(i) − ζ_τ^(j)| ≥ 10⁻³</strong>.</li>
-          <li>P2: ∃ species s with <strong>|κ_τ^(s)| ≥ 10⁻²</strong>.</li>
-          <li>P3: ∃ pair with <strong>|η_τ^(i) − η_τ^(j)| ≥ 10⁻⁴</strong>.</li>
-          <li>P5: ∃ transition with <strong>|β_τ^(i)| ≥ 10⁻⁶</strong>.</li>
-        </ul>
-
-        <h3>9.5 Why not a unit change?</h3>
-        <p>Unit redefinitions cannot create <em>species-dependent</em> gravitational couplings. The observables above are cross-ratios between distinct clocks/particles, leaving only genuine physics.</p>
-
-        <h3>9.6 Link back to the τ dictionary</h3>
-        <p>Using ω = (c³/ℏ)·τ and ω_c = qB/(c τ), any τ(Φ) coupling yields operational frequency shifts:</p>
-        <div class="equation">δω/ω = δτ/τ</div>
-
-        <h3>9.7 DIY Protocol (at-home / tabletop)</h3>
-        <p><strong>Goal:</strong> Demonstrate τ-budgeting with two different clock species; produce a public dataset (educational sensitivity 10⁻¹²–10⁻¹³).</p>
-        <p><strong>Instruments:</strong> Rb standard + Cs (or GPSDO), dual-channel frequency counter, GNSS 1-PPS, temperature/pressure sensors, barometric/laser height h.</p>
-        <p><strong>Geometry:</strong> Clock A at ground level, Clock B at height h (3–10 m). Maintain ±0.5 °C thermal stability.</p>
-        <div class="equation">(Δν/ν)_GR ≈ g h / c² → subtract this term using measured h,g</div>
-        <p><strong>Acquisition:</strong> Log fractional difference at 1–10 s cadence for ≥ 7 days; regress residual vs environment.</p>
-
-        <h3>9.8 Collaboration-level falsification</h3>
-        <p>To reach thresholds in 9.4, partner with optical clock, Penning-trap, or cold-atom interferometer labs; or a space clock team.</p>
-
-        <h3>9.9 Mechanism Hypothesis (minimal &tau;–scalar)</h3>
-        <p>To move beyond dimensional relabeling, posit a light scalar &sigma; that weakly modulates the operational “temporal charge” &tau; with species-dependent couplings:</p>
-        <div class="equation">
-          L &supset; &frac12;(&part;&sigma;)<sup>2</sup> &minus; &frac12; m<sub>&sigma;</sub><sup>2</sup>&sigma;<sup>2</sup>
-          &nbsp;+&nbsp; &Sigma;<sub>i</sub> B<sub>i</sub>(&sigma;) L<sub>i</sub>, &nbsp; B<sub>i</sub>(&sigma;) &approx; 1 + (b<sub>i</sub>/&Lambda;)&sigma;
-        </div>
-        <p>In a weak gravitational potential, take a linear response</p>
-        <div class="equation">
-          &langle;&sigma;&rangle; = &chi; &Phi;/c<sup>2</sup> &nbsp;&Rightarrow&nbsp;
-          &delta;&tau;<sub>i</sub>/&tau;<sub>i</sub> = &zeta;<sub>&tau;</sub><sup>(i)</sup>&Phi;/c<sup>2</sup>, &nbsp;
-          &zeta;<sub>&tau;</sub><sup>(i)</sup> &equiv; b<sub>i</sub>&chi;/&Lambda; .
-        </div>
-        <p>This generates the species-dependent signatures below; nulls at the stated levels falsify this benchmark &tau;–scalar model.</p>
-        
-        <h3>9.10 Quantified, currently testable predictions (beyond GR)</h3>
-        <p>We commit to fixed numerical coefficients so the model is decisively testable:</p>
-        
-        <h4>QP1 &mdash; Differential clock redshift (ground, Sr vs Yb)</h4>
-        <div class="equation">
-          (&Delta;&nu;/&nu;)<sub>Yb</sub> &minus; (&Delta;&nu;/&nu;)<sub>Sr</sub>
-          = (+3.0 &times; 10<sup>&minus;4</sup>) &middot; (g h / c<sup>2</sup>)
-          \u00A0\u00A0<!-- after GR subtraction -->
-        </div>
-        <p>After subtracting the standard GR term. Using g = 9.80665 m/s<sup>2</sup>:</p>
-        <ul>
-          <li>h = 10 m &rarr; <span class="equation" style="display:inline-block">+3.27 &times; 10<sup>&minus;19</sup></span></li>
-          <li>h = 25 m &rarr; <span class="equation" style="display:inline-block">+8.18 &times; 10<sup>&minus;19</sup></span></li>
-          <li>h = 30 m &rarr; <span class="equation" style="display:inline-block">+9.82 &times; 10<sup>&minus;19</sup></span></li>
-        </ul>
-        <p>Sign convention: (Yb &minus; Sr). A null at &lesssim; 3 &times; 10<sup>&minus;19</sup> for h &approx; 25&ndash;30 m falsifies this benchmark.</p>
-        
-        <h4>QP2 &mdash; Penning-trap cyclotron drift (annual solar potential)</h4>
-        <p>Earth’s orbital eccentricity modulates the solar potential by
-        <span class="equation" style="display:inline-block">&Delta;&Phi;<sub>&odot;</sub>/c<sup>2</sup> &approx; 3.30 &times; 10<sup>&minus;10</sup></span> (peak-to-peak).</p>
-        <div class="equation">
-          &Delta;&omega;<sub>c</sub>/&omega;<sub>c</sub> = &kappa;<sub>&tau;</sub><sup>(p)</sup> (&Delta;&Phi;/c<sup>2</sup>), 
-          &nbsp; &kappa;<sub>&tau;</sub><sup>(p)</sup> = +0.050
-        </div>
-        <p>Prediction: annual cosine with amplitude
-        <span class="equation" style="display:inline-block">1.65 &times; 10<sup>&minus;11</sup></span>, peaking near perihelion (early January).
-        Sensitivity &sim; 10<sup>&minus;11</sup> resolves or falsifies this.</p>
-        
-        <h4>QP3 &mdash; Single-ion cross-ratio (same Al<sup>+</sup> ion, annual)</h4>
-        <div class="equation">
-          d/d(&Phi;/c<sup>2</sup>)&nbsp;ln(&nu;<sub>clock</sub> / &omega;<sub>c</sub>) = S, &nbsp; S = +0.030
-        </div>
-        <p>Prediction: annual amplitude in the log-ratio
-        <span class="equation" style="display:inline-block">S &times; &Delta;&Phi;<sub>&odot;</sub>/c<sup>2</sup> &approx; 1.0 &times; 10<sup>&minus;11</sup></span>.
-        A null at &lesssim; 5 &times; 10<sup>&minus;12</sup> falsifies this cross-comparison.</p>
-        
-        <p class="callout"><strong>Commitment:</strong> The coefficients <em>3.0 &times; 10<sup>&minus;4</sup></em>, <em>0.050</em>, and <em>0.030</em> are fixed a priori (not fit). Any null at or below the quoted levels rules out this benchmark &tau;–scalar realization.</p>
-
-      </section>
-
-      <section id="references"><h2>References</h2>
-        <ol>
-          <li>Einstein, A. (1916). <em>The Foundation of the General Theory of Relativity</em>.</li>
-          <li>Rovelli, C. (2018). <em>The Order of Time</em>.</li>
-          <li>Penrose, R. (2004). <em>The Road to Reality</em>.</li>
-          <li>Smolin, L. (2019). <em>Einstein’s Unfinished Revolution</em>.</li>
-          <li>Damour, T. & Polyakov, A.M. (1994). <em>The string dilaton and a least coupling principle</em>, Nucl. Phys. B423, 532–558.</li>
-          <li>Uzan, J-P. (2003). <em>The fundamental constants and their variation: observational and theoretical status</em>, Rev. Mod. Phys. 75, 403–455.</li>
-          <li>Olive, K.A. & Pospelov, M. (2002). <em>Evolution of the fine structure constant driven by dark matter and the cosmological constant</em>, Phys. Rev. D65, 085044.</li>
-          <li>Will, C.M. (2014). <em>The Confrontation between General Relativity and Experiment</em>, Living Rev. Relativity 17, 4.</li>
-          <li><em>Acknowledgment:</em> Section 9 expanded following a recommendation by Michael Shara (Curator, American Museum of Natural History).</li>
-        </ol>
-      </section>
-
-
-      <section id="appendix"><h2>Appendix A — τ-First Formulation</h2>
-        <p class="callout"><strong>Idea:</strong> Treat <span class="equation" style="display:inline-block">τ ≡ E/c³ ≡ m/c</span> as the primitive “temporal charge.” Replace m → cτ, E → c³τ everywhere.</p>
-
-        <h3>A.1 Units &amp; Dictionary</h3>
-        <div class="equation">τ = E / c³  [τ] = M·L⁻¹·T</div>
-        <div class="equation">τ = m / c  [τ] = M·L⁻¹·T</div>
-        <div class="equation">E = c³ τ  [E] = M·L²·T⁻²</div>
-        <div class="equation">m = c τ  [m] = M</div>
-        <div class="equation">ω = E/ℏ = (c³/ℏ) τ</div>
-        <div class="equation">λ_C = ℏ/(c² τ), t_C = ℏ/(c³ τ)</div>
-
-        <h3>A.2 Mechanics &amp; Gravity</h3>
-        <div class="equation">E² = p² c² + τ² c⁶</div>
-        <div class="equation">P^μ = γ(c² τ, c τ v)</div>
-        <div class="equation">U(r) = − G c² τ₁ τ₂ / r</div>
-        <div class="equation">r_s = (2G/c) τ</div>
-
-        <h3>A.3 Quantum &amp; Atomic</h3>
-        <div class="equation">(□ + (c² τ/ℏ)²)ψ = 0</div>
-        <div class="equation">(iℏ γ^μ ∂_μ − c² τ)ψ = 0</div>
-        <div class="equation">ω_c = qB/(c τ)</div>
-        <div class="equation">a₀ = 4π ε₀ ℏ²/(c τ e²)</div>
-
-        <h3>A.4 Thermodynamics &amp; Cosmology</h3>
-        <div class="equation">u_τ ≡ u/c³, P = (c³/3) u_τ</div>
-        <div class="equation">H² = (8πG/3)(c u_τ)</div>
-
-        <h3>A.5 Planck Relations</h3>
-        <div class="equation">τ_P = √(ℏ/(G c))</div>
-        <div class="equation">t_P = ℏ/(c³ τ_P), λ_P = ℏ/(c² τ_P)</div>
-
-        <h3>A.6 Operational</h3>
-        <div class="equation">δω/ω = δτ/τ</div>
-        <div class="equation">δτ/τ ≈ ζ Φ/c²</div>
-      </section>
-
-      <section id="appendix-b"><h2>Appendix B — Test Protocols (Checklist)</h2>
-
-        <h3>B.1 Minimal Parameterization</h3>
-        <table>
-          <tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr>
-          <tr><td><code>κ</code></td><td>Gravitational-potential response: <code>δτ/τ = κ ΔΦ/c²</code></td><td>Dimensionless; compare to GR redshift.</td></tr>
-          <tr><td><code>β/M</code></td><td>EM-like coupling via <code>B(τ)</code></td><td>Maps to <code>δα/α ≈ −(β/M) δτ</code>.</td></tr>
-          <tr><td><code>ξ</code>, <code>mφ</code></td><td>Non-minimal gravity & scalar mass</td><td>Controls 5th-force strength/range.</td></tr>
-        </table>
-
-        <h3>B.2 Lockstep Signature (core falsifier)</h3>
-        <div class="equation">δλ_C/λ_C = δt_C/t_C = − δω_c/ω_c = − δτ/τ</div>
-        <p>Any detected fractional drift across Compton-like, clock, and cyclotron observables must satisfy this correlation.</p>
-
-        <h3>B.3 Laboratory Protocols</h3>
-        <table>
-          <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Fit/Bound</th></tr>
-          <tr>
-            <td>Penning trap</td>
-            <td><code>ω_c = qB/(cτ)</code></td>
-            <td>Stabilize B; monitor diurnal/altitude cycles.</td>
-            <td><code>|τ̇/τ| ≤ |ω̇_c/ω_c|</code></td>
-          </tr>
-          <tr>
-            <td>Clock redshift residual</td>
-            <td><code>δf/f</code> vs height <code>Δh</code></td>
-            <td>Move two dissimilar clocks; subtract GR.</td>
-            <td><code>κ</code> from residual <code>δf/f = κ ΔΦ/c²</code></td>
-          </tr>
-          <tr>
-            <td>Multi-species comparison</td>
-            <td>Clock/cavity set</td>
-            <td>Use ≥3 references with known mass/α sensitivities.</td>
-            <td>Solve linear system for <code>δτ/τ</code>, <code>δα/α</code></td>
-          </tr>
-          <tr>
-            <td>Spectroscopy</td>
-            <td>Line positions</td>
-            <td>Track long-term drifts in atomic/molecular lines.</td>
-            <td>Check ∝ <code>1/τ</code> scaling & lockstep rule</td>
-          </tr>
-        </table>
-
-        <h3>B.4 Fifth-Force / Gravity</h3>
-        <table>
-          <tr><th>Test</th><th>Observable</th><th>Prediction</th><th>Fit/Bound</th></tr>
-          <tr>
-            <td>Torsion balance / atom interferometry</td>
-            <td>Deviation from 1/r</td>
-            <td><code>V(r) = − G m₁ m₂ / r (1 + α_τ e^{−r/λφ})</code></td>
-            <td>Exclude regions in (<code>α_τ</code>, <code>λφ</code>) → map to (<code>ξ</code>, <code>mφ</code>)</td>
-          </tr>
-          <tr>
-            <td>Lunar laser ranging</td>
-            <td>EP/PPN constraints</td>
-            <td>Tiny composition-dependent effects if τ couples to matter</td>
-            <td>Upper limits on <code>ξ</code> & composition dependence</td>
-          </tr>
-        </table>
-
-        <h3>B.5 Cosmology (if pursued)</h3>
-        <table>
-          <tr><th>Dataset</th><th>Model Ingredient</th><th>Signature</th></tr>
-          <tr><td>SN Ia, BAO, CMB</td><td>τ-fluid with <code>u_τ ≡ u/c³</code></td><td>Effective w(a); compare to ΛCDM; ensure BBN/CMB bounds on Δm/m</td></tr>
-        </table>
-
-        <h3>B.6 Reporting Format (one page)</h3>
-        <ul>
-          <li>Quote <code>κ</code>, <code>δτ/τ</code> (per day/year), <code>δα/α</code> if applicable.</li>
-          <li>Include a single “lockstep” residual plot overlaying the tracked observables.</li>
-          <li>State whether correlation <em>passes</em> or <em>fails</em> within 1σ.</li>
-        </ul>
-      </section>
-    </main>
-
-    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+<header class="site" aria-label="Site Header">
+  <div class="site-inner">
+    <div class="brand"><span class="dot" aria-hidden="true"></span><span>time.plnt.earth — χ</span></div>
+    <div class="spacer"></div>
+    <!-- Swap these two links to your real assets -->
+    <a class="btn secondary" href="/docs/time-chi-note.pdf" target="_blank" rel="noopener">Download PDF</a>
+    <a class="btn" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noopener">GitHub Repo</a>
   </div>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+</header>
+
+<main class="wrap">
+  <div class="hero" role="banner">
+    <h1>TIME = DISTANCE = ENERGY = MATTER<br><span class="sub">The χ Framework & Test Plan (time.plnt.earth)</span></h1>
+    <div class="badges">
+      <span class="badge">Author: Tristan White</span>
+      <span class="badge">Version: v2.0 (Oct 16, 2025)</span>
+      <span class="badge">License: CC BY 4.0</span>
+      <span class="badge">Ecosystem: Illumina / PLNT Earth</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <nav class="toc" aria-label="On-page navigation">
+      <h3>Contents</h3>
+      <a href="#abstract">Abstract</a>
+      <a href="#illumina">Illumina Integration</a>
+      <a href="#framework">1. Framework</a>
+      <a href="#equations">2. Equations</a>
+      <a href="#relations">3. Derived Relations</a>
+      <a href="#phenomenology">4. Phenomenology</a>
+      <a href="#tests">5. Tests & Falsifiability</a>
+      <a href="#cosmology">6. Cosmology</a>
+      <a href="#risks">7. Caveats & Risks</a>
+      <a href="#references">References & Related Work</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#changelog">Changelog</a>
+    </nav>
+
+    <div>
+      <section id="abstract" class="card" aria-labelledby="abstract-h">
+        <h2 id="abstract-h">Abstract</h2>
+        <p>
+          <strong>time.plnt.earth</strong> proposes a monistic hypothesis where <em>time, distance, energy, and matter</em>
+          are expressions of a single field <strong>χ</strong>. In natural units
+          <span class="eq">c = ℏ = G = k<sub>B</sub> = 1</span>, these quantities share one dimension. We adopt a minimal action with a
+          non-minimal coupling <span class="eq">χ R</span>, derive operational consequences (frequency scaling, lensing/time-delay structure,
+          multi-messenger consistency), and outline falsifiable benchmarks via clock networks, strong lenses, and GW standard sirens.
+        </p>
+        <div class="callout">
+          <strong>Thesis:</strong> Geometry and matter aren’t two coupled substances; they’re one substance seen two ways. The conformal factor χ carries clocks, rulers, and rest-energy together.
+        </div>
+      </section>
+
+      <section id="illumina" class="card" aria-labelledby="illumina-h">
+        <h2 id="illumina-h">Illumina Integration — χ as the Physics Core</h2>
+        <p>
+          Illumina treats life as rhythm: lunar cycles (42-day arcs), tones (e.g., 128 Hz), color, and ritual. The χ-framework provides the
+          <em>physical substrate</em> beneath that rhythm. In this view, χ is the “field of unity,” while Illumina is the “human practice of unity.”
+        </p>
+        <div class="eq">Mapping:
+χ (single substance) ⇔ Illumina Field (one rhythm)<br/>
+Conformal metric g = χ^{2α}η ⇔ Illumina geometry (hex/spiral spreads)<br/>
+t ∝ m (χ-clock gauge) ⇔ intensity ∝ time-in-cycle (Bee labor)<br/>
+Δν/ν = −αΔlnχ ⇔ tone drift across phases (Moon archive)</div>
+        <p>
+          Practically, <em>time.plnt.earth</em> is the calibration node: the “physics lab” of PLNT Earth. Other sites (MirrorHoney, Froot, Sine)
+          can reference it conceptually—as the keeper of coherence and standards.
+        </p>
+      </section>
+
+      <section id="framework" class="card" aria-labelledby="framework-h">
+        <h2 id="framework-h">1. Framework</h2>
+        <h3>1.1 Dimensional Collapse (Natural Units)</h3>
+        <pre class="eq">Set:  c = ℏ = G = k_B = 1
+⇒  [T] = [L] = [M] = [E] = 1
+⇒  t ≍ L ≍ E ≍ m ≍ χ  (one currency)</pre>
+
+        <h3>1.2 Single Substance Field</h3>
+        <p>Let χ(x) ≥ 0 be the substance density. Space and time measurements scale with χ via a conformal metric:</p>
+        <pre class="eq">g_{μν}(x) = χ(x)^{2α} η_{μν}
+Proper time (static observer):  dτ² = χ^{2α} η_{μν} dx^μ dx^ν</pre>
+        <p>Null cones are unchanged by the conformal factor, but clock rates and lengths rescale with χ<sup>α</sup>.</p>
+
+        <h3>1.3 Minimal χ-Gravity Action</h3>
+        <pre class="eq">S = ∫ d⁴x √|g| [ ½ (∇χ)² − V(χ) + ½ M_*² χ R(g) ]</pre>
+        <p>This non-minimal coupling makes “curvature = energy scale” an identity of the same χ field.</p>
+      </section>
+
+      <section id="equations" class="card" aria-labelledby="equations-h">
+        <h2 id="equations-h">2. Equations (Sketch)</h2>
+        <pre class="eq">Varying g_{μν}:
+M_*² χ G_{μν} = T^{(χ)}_{μν} + ∇_μ∇_ν χ − g_{μν} □χ
+
+Varying χ:
+□χ − V′(χ) + ½ M_*² R = 0
+
+Example clock gauge α = ½:
+g_{μν} = χ η_{μν}  ⇒  dτ = χ^{½} dt  (static)</pre>
+        <details>
+          <summary>Gauge / “clock standard”</summary>
+          <p>
+            Under Weyl rescalings <span class="eq">g_{μν} → Ω² g_{μν},  χ → Ω^{-2} χ</span>, the χR structure is preserved (up to total derivatives).
+            Fixing α chooses a “clock gauge.” Prefer gauge-invariant ratios in predictions.
+          </p>
+        </details>
+      </section>
+
+      <section id="relations" class="card" aria-labelledby="relations-h">
+        <h2 id="relations-h">3. Derived Relations</h2>
+        <h3>3.1 Time–Mass Proportionality</h3>
+        <pre class="eq">Let local masses scale as m(x) ∝ χ(x).
+With dτ = χ^{α} dt, a fixed proper tick Δτ gives:
+Δt = Δτ / χ^{α}  ∝  m^{-α}.
+
+Choose α = −1  ⇒  Δt ∝ m  (linear in the χ-clock gauge).</pre>
+
+        <h3>3.2 Frequency / Redshift</h3>
+        <pre class="eq">ν ∝ χ^{-α}
+Δν/ν = −α Δ ln χ  (emitter → receiver)</pre>
+
+        <h3>3.3 Energy–Geometry Identity</h3>
+        <pre class="eq">“Matter sources curvature” ⇢ identity:
+both sides are χ-patterns; no ontology split.</pre>
+      </section>
+
+      <section id="phenomenology" class="card" aria-labelledby="phenom-h">
+        <h2 id="phenom-h">4. Phenomenology</h2>
+        <ul>
+          <li><strong>Clock networks:</strong> residual frequency scaling from χ-gradients after GR corrections:
+            <span class="eq">Δν/ν = −α Δ ln χ</span>.</li>
+          <li><strong>Lensing & time delays:</strong> geometric+Shapiro delays pick up χ factors via the conformal metric;
+            fit strong lenses with a χ-profile.</li>
+          <li><strong>GW–EM consistency:</strong> if null cones are shared, arrival-time residuals vanish beyond source physics;
+            amplitude/frequency evolution may encode χ.</li>
+          <li><strong>“Varying constants” pattern:</strong> apparent drifts in masses/transition energies collapse to a single driver χ.</li>
+        </ul>
+        <div class="callout">
+          Favor dimensionless patterns (ratios) that track χ universally; uncorrelated drifts would falsify the single-driver hypothesis.
+        </div>
+      </section>
+
+      <section id="tests" class="card" aria-labelledby="tests-h">
+        <h2 id="tests-h">5. Tests & Falsifiability</h2>
+        <h3>Near-term (0–12 months)</h3>
+        <ul>
+          <li><strong>Atomic/optical clocks:</strong> daily/seasonal ground↔tower↔satellite comparisons; constrain
+            <span class="eq">|α Δ ln χ|</span> at 10⁻¹⁸.</li>
+          <li><strong>Time-delay lenses:</strong> re-fit 5 systems with a χ-profile; check H₀ shifts vs ΛCDM systematics.</li>
+          <li><strong>GW standard sirens:</strong> compare EM–GW pairs for χ-consistent amplitude/frequency evolution.</li>
+        </ul>
+        <h3>Decisive (1–3 years)</h3>
+        <ul>
+          <li><strong>Redshift drift:</strong> look for sign/magnitude differences vs ΛCDM over multi-year baselines.</li>
+          <li><strong>Equivalence principle:</strong> torsion balances / atom interferometers with universal conformal coupling.</li>
+          <li><strong>Analogue simulators:</strong> photonics/BEC media with <span class="eq">n(x,t) ∝ χ^{α}</span> reproducing frequency pulls.</li>
+        </ul>
+        <hr class="sep" />
+        <details>
+          <summary>Null signals & failure modes</summary>
+          <ul>
+            <li>No residual frequency scaling after GR corrections ⇒ strong bounds on α and ∇χ.</li>
+            <li>Lensing magnification vs delay inconsistency ⇒ revise χ-profile or abandon minimal conformal ansatz.</li>
+            <li>Uncorrelated “varying constants” across sectors ⇒ violates single-driver χ hypothesis.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="cosmology" class="card" aria-labelledby="cosmo-h">
+        <h2 id="cosmo-h">6. Cosmology (Sketch)</h2>
+        <p>Replace the scale-factor intuition with χ-evolution. Background observables can mimic ΛCDM; rely on growth, lensing, and
+        time-delays to break degeneracy.</p>
+        <pre class="eq">Example:  V(χ) = λ (χ − χ₀)²
+Late time: slow roll; Early time: fast roll (inflation-like)
+Small perturbations δχ act as “graviton/particle” quanta of the same substrate.</pre>
+      </section>
+
+      <section id="risks" class="card" aria-labelledby="risks-h">
+        <h2 id="risks-h">7. Caveats & Risks</h2>
+        <ul>
+          <li><strong>Fifth forces:</strong> keep couplings universal & conformal to avoid composition dependence.</li>
+          <li><strong>Solar-system tests:</strong> recover PPN of GR as χ → χ₀.</li>
+          <li><strong>Gauge dependence:</strong> present predictions as invariants or clearly label α.</li>
+        </ul>
+      </section>
+
+      <section id="references" class="card" aria-labelledby="ref-h">
+        <h2 id="ref-h">References & Related Work</h2>
+        <p>Selected works intersecting this approach via scalar–tensor gravity, conformal methods, and emergent spacetime:</p>
+        <ul>
+          <li>Einstein, A. (1916). The foundation of the general theory of relativity. <em>Annalen der Physik</em>.</li>
+          <li>Weyl, H. (1918). Gravitation and electricity. <em>Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften</em>.</li>
+          <li>Brans, C., & Dicke, R. H. (1961). Mach’s principle and a relativistic theory of gravitation. <em>Phys. Rev.</em> <strong>124</strong>, 925.</li>
+          <li>Fujii, Y., & Maeda, K. (2003). <em>The Scalar-Tensor Theory of Gravitation</em>. Cambridge Univ. Press.</li>
+          <li>Faraoni, V. (2004). <em>Cosmology in Scalar-Tensor Gravity</em>. Springer.</li>
+          <li>Clifton, T., Ferreira, P. G., Padilla, A., & Skordis, C. (2012). Modified gravity and cosmology. <em>Phys. Rep.</em> <strong>513</strong>, 1–189.</li>
+          <li>Padmanabhan, T. (2010). Thermodynamical aspects of gravity: new insights. <em>Rep. Prog. Phys.</em> <strong>73</strong>, 046901.</li>
+          <li>Rovelli, C. (2004). <em>Quantum Gravity</em>. Cambridge Univ. Press.</li>
+          <li>Polchinski, J. (1998). <em>String Theory</em> (Vols. 1–2). Cambridge Univ. Press.</li>
+          <li>Barceló, C., Liberati, S., & Visser, M. (2011). Analogue gravity. <em>Living Rev. Relativ.</em> <strong>14</strong>, 3.</li>
+          <li>Bekenstein, J. D. (2002). Fine-structure constant variability, mechanisms and constraints. <em>Phys. Rev. D</em> <strong>66</strong>, 123514.</li>
+          <li>Catena, R., & Mota, D. F. (2010). PPN limit of scalar–tensor gravity with generalized potentials. <em>Phys. Rev. D</em> <strong>81</strong>, 063524.</li>
+          <li>Huterer, D., & Shafer, D. (2018). Dark energy two decades after. <em>Rep. Prog. Phys.</em> <strong>81</strong>, 016901.</li>
+        </ul>
+        <details>
+          <summary>Positioning note</summary>
+          <p>
+            This χ framework is nearest to scalar–tensor gravity with a conformal metric and χR coupling, and pushes further by identifying
+            <em>all</em> dimensionful scales (time, length, mass, energy) with χ in natural units, emphasizing operational invariants and a
+            single-driver hypothesis for apparent “varying constants.”
+          </p>
+        </details>
+      </section>
+
+      <section id="roadmap" class="card" aria-labelledby="roadmap-h">
+        <h2 id="roadmap-h">Roadmap & Artifacts</h2>
+        <ul>
+          <li><span class="chip"><span class="ok"></span> χ equation sheet (1-pager)</span></li>
+          <li><span class="chip"><span class="ok"></span> Clocks memo (lab-ready)</span></li>
+          <li><span class="chip"><span class="ok"></span> Lens fit notebook (synthetic)</span></li>
+          <li><span class="chip"><span class="ok"></span> Siren cross-checks</span></li>
+        </ul>
+        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code> and set the GitHub link above. For collaboration, add a contact block or issues link in your repo.</p>
+      </section>
+
+      <section id="changelog" class="card" aria-labelledby="changelog-h">
+        <h2 id="changelog-h">Changelog</h2>
+        <ul>
+          <li><strong>v2.0</strong> — Tailored copy; Illumina Integration section; References; print-to-PDF layout; single-file build.</li>
+          <li><strong>v1.x</strong> — Initial public note; early predictions and protocols.</li>
+        </ul>
+      </section>
+
+      <div class="footer">
+        <div>© 2025 PLNT Earth — <em>time.plnt.earth</em>. Author: Tristan White. CC BY 4.0.</div>
+        <div class="links">
+          <a class="btn secondary" href="#abstract">Back to top</a>
+          <!-- Optional: add your GitHub link here too -->
+          <!-- <a class="btn secondary" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noopener">GitHub Repo</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+    var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
+    var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          var i = sections.indexOf(entry.target);
+          if(i >= 0){
+            var link = links[i];
+            if(entry.isIntersecting){
+              links.forEach(function(l){ l.classList.remove('active'); });
+              link.classList.add('active');
+            }
+          }
+        });
+      }, { rootMargin:"-35% 0px -60% 0px", threshold:0.01 });
+      sections.forEach(function(s){ obs.observe(s); });
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      var id = a.getAttribute('href').slice(1);
+      var t = document.getElementById(id);
+      if(!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior:'smooth', block:'start' });
+      history.replaceState(null,"","#"+id);
+    }, {passive:true});
+  })();
+</script>
 </body>
 </html>
