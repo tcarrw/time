@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>time.plnt.earth — χ Framework (v2.0)</title>
+<title>time.plnt.earth — χ Framework (v2.1)</title>
 <meta name="description" content="time.plnt.earth — a public research note proposing a χ-framework where time, distance, energy, and matter are one field with testable predictions, integrated with the Illumina ecosystem." />
 <meta name="color-scheme" content="dark light" />
 <meta name="theme-color" content="#0b0b10" />
@@ -15,6 +15,11 @@
     --accent:#9ad7ff; --accent-2:#a0ffa6; --callout:#1e2740;
     --border:#26263a; --shadow:0 8px 30px rgba(0,0,0,.35);
     --radius:14px; --maxw:960px;
+    /* Header fixes */
+    --header-h: 56px;
+  }
+  @media (min-width: 980px){
+    :root{ --header-h: 64px; }
   }
   @media (prefers-color-scheme: light){
     :root{
@@ -24,52 +29,86 @@
       --border:#e6e8ee;
     }
   }
+
   *{ box-sizing:border-box }
-  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink);
-    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji; line-height:1.5 }
-  a{ color:var(--accent); text-decoration:none }
-  a:hover{text-decoration:underline}
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:24px 20px 64px }
-  header.site{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(6px);
-    background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid var(--border) }
-  .site-inner{ max-width:var(--maxw); margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:12px }
+  html,body{
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji; line-height:1.5
+  }
+  a{ color:var(--accent); text-decoration:none } a:hover{text-decoration:underline}
+
+  /* Header */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(120%) blur(6px);
+    background: color-mix(in oklab, var(--bg) 80%, transparent);
+    border-bottom:1px solid var(--border);
+    block-size: var(--header-h);
+  }
+  .site-inner{
+    max-width:var(--maxw); margin:0 auto;
+    padding:8px 20px; block-size:100%;
+    display:flex; align-items:center; gap:12px
+  }
   .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px }
   .dot{ inline-size:10px; block-size:10px; border-radius:50%; background:var(--accent);
     box-shadow:0 0 24px color-mix(in oklab, var(--accent) 70%, transparent) }
   .spacer{ flex:1 }
-  .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
     background:var(--panel); color:var(--ink); border:1px solid var(--border); box-shadow:var(--shadow);
-    text-decoration:none; font-weight:600; font-size:14px }
+    text-decoration:none; font-weight:600; font-size:14px
+  }
   .btn.secondary{ background:var(--bg-soft) }
-  .hero{ margin-top:18px; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
-    border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow) }
+
+  /* Main wrapper: add top padding so content never hides under sticky header */
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:calc(var(--header-h) + 16px) 20px 64px }
+
+  .hero{
+    margin-top:0; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
+    border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)
+  }
   h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px 0; line-height:1.15; letter-spacing:.2px }
   .sub{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px) }
   .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
   .badge{ font-size:12px; color:var(--ink-soft); background:var(--bg-soft);
     border:1px solid var(--border); padding:6px 10px; border-radius:999px }
+
   .grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:24px }
   @media (min-width:980px){ .grid{ grid-template-columns:260px 1fr } }
-  nav.toc{ position:sticky; top:64px; align-self:start; background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:14px; box-shadow:var(--shadow) }
+
+  nav.toc{
+    position:sticky; top:calc(var(--header-h) + 8px); align-self:start;
+    background:var(--panel); border:1px solid var(--border);
+    border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)
+  }
   nav.toc h3{ margin:0 0 8px 0; font-size:14px; color:var(--ink-dim) }
   nav.toc a{ display:block; padding:6px 8px; border-radius:8px; color:var(--ink-soft) }
   nav.toc a.active, nav.toc a:hover{ background:var(--bg-soft); color:var(--ink) }
-  section.card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow) }
+
+  section.card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+    /* Anchor scrolling offset so sticky header doesn't cover section titles */
+    scroll-margin-top: calc(var(--header-h) + 12px);
+  }
   section.card h2{ margin:0 0 12px 0; font-size:22px }
   h3{ margin:20px 0 8px 0; font-size:18px }
   p{ margin:10px 0 }
-  .eq{ background:var(--bg-soft); border:1px solid var(--border); border-radius:12px; padding:12px;
-    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; overflow:auto; font-size:14px; color:var(--ink) }
+  .eq{
+    background:var(--bg-soft); border:1px solid var(--border); border-radius:12px; padding:12px;
+    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; overflow:auto; font-size:14px; color:var(--ink)
+  }
   .callout{ background:var(--callout); border:1px solid var(--border); border-radius:12px; padding:12px; color:var(--ink) }
   details{ border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--bg-soft) }
   details summary{ cursor:pointer; font-weight:600 }
+
   .footer{ margin-top:32px; color:var(--ink-soft); font-size:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center }
   .links{ display:flex; gap:10px; flex-wrap:wrap }
   .chip{ display:inline-flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-soft);
     border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--ink-soft) }
   .ok{ inline-size:8px; block-size:8px; border-radius:50%; background:var(--accent-2) }
   hr.sep{ border:0; border-top:1px dashed var(--border); margin:20px 0 }
+
   @media print{
     header.site, nav.toc, .badges, .footer, .links { display:none !important }
     .wrap{ padding:0 } section.card{ break-inside:avoid } body{ background:#fff }
@@ -82,9 +121,8 @@
   <div class="site-inner">
     <div class="brand"><span class="dot" aria-hidden="true"></span><span>time.plnt.earth — χ</span></div>
     <div class="spacer"></div>
-    <!-- Swap these two links to your real assets -->
     <a class="btn secondary" href="/docs/time-chi-note.pdf" target="_blank" rel="noopener">Download PDF</a>
-    <a class="btn" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noopener">GitHub Repo</a>
+    <a class="btn" href="https://github.com/tcarrw/time" target="_blank" rel="noopener">GitHub Repo</a>
   </div>
 </header>
 
@@ -93,9 +131,10 @@
     <h1>TIME = DISTANCE = ENERGY = MATTER<br><span class="sub">The χ Framework & Test Plan (time.plnt.earth)</span></h1>
     <div class="badges">
       <span class="badge">Author: Tristan White</span>
-      <span class="badge">Version: v2.0 (Oct 16, 2025)</span>
+      <span class="badge">Version: v2.1 (Oct 16, 2025)</span>
       <span class="badge">License: CC BY 4.0</span>
       <span class="badge">Ecosystem: Illumina / PLNT Earth</span>
+      <span class="badge">Repo: tcarrw/time (may be private)</span>
     </div>
   </div>
 
@@ -299,13 +338,14 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
           <li><span class="chip"><span class="ok"></span> Lens fit notebook (synthetic)</span></li>
           <li><span class="chip"><span class="ok"></span> Siren cross-checks</span></li>
         </ul>
-        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code> and set the GitHub link above. For collaboration, add a contact block or issues link in your repo.</p>
+        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code> and the GitHub link points to <code>tcarrw/time</code>. For collaboration, add a contact block or issues link in your repo.</p>
       </section>
 
       <section id="changelog" class="card" aria-labelledby="changelog-h">
         <h2 id="changelog-h">Changelog</h2>
         <ul>
-          <li><strong>v2.0</strong> — Tailored copy; Illumina Integration section; References; print-to-PDF layout; single-file build.</li>
+          <li><strong>v2.1</strong> — Fixed sticky-header overlap on mobile (padding + scroll-margin); repo link updated; badge added.</li>
+          <li><strong>v2.0</strong> — Tailored copy; Illumina Integration; References; single-file build.</li>
           <li><strong>v1.x</strong> — Initial public note; early predictions and protocols.</li>
         </ul>
       </section>
@@ -314,8 +354,7 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
         <div>© 2025 PLNT Earth — <em>time.plnt.earth</em>. Author: Tristan White. CC BY 4.0.</div>
         <div class="links">
           <a class="btn secondary" href="#abstract">Back to top</a>
-          <!-- Optional: add your GitHub link here too -->
-          <!-- <a class="btn secondary" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noopener">GitHub Repo</a> -->
+          <a class="btn secondary" href="https://github.com/tcarrw/time" target="_blank" rel="noopener">GitHub Repo</a>
         </div>
       </div>
     </div>
@@ -340,15 +379,14 @@ Small perturbations δχ act as “graviton/particle” quanta of the same subst
             }
           }
         });
-      }, { rootMargin:"-35% 0px -60% 0px", threshold:0.01 });
+      }, { rootMargin: "-" + (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) + 10) + "px 0px -60% 0px", threshold:0.01 });
       sections.forEach(function(s){ obs.observe(s); });
     }
+
     document.addEventListener('click', function(e){
-      var a = e.target.closest('a[href^="#"]');
-      if(!a) return;
+      var a = e.target.closest('a[href^="#"]'); if(!a) return;
       var id = a.getAttribute('href').slice(1);
-      var t = document.getElementById(id);
-      if(!t) return;
+      var t = document.getElementById(id); if(!t) return;
       e.preventDefault();
       t.scrollIntoView({ behavior:'smooth', block:'start' });
       history.replaceState(null,"","#"+id);
