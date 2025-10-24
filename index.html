@@ -1,420 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>time.plnt.earth — χ Framework (v2.3)</title>
-<meta name="description" content="time.plnt.earth — a public research note proposing a χ-framework where time, distance, energy, and matter are one field with testable predictions, integrated with the Illumina ecosystem." />
-<meta name="color-scheme" content="dark light" />
-<meta name="theme-color" content="#0b0b10" />
-
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Time · Synesthetic Bridge (v4)</title>
+<meta name="theme-color" content="#ffd76b"/>
 <style>
-  :root{
-    --bg:#0b0b10; --bg-soft:#12121a; --panel:#171723;
-    --ink:#e9e9ef; --ink-dim:#b7b7c6; --ink-soft:#8d8da1;
-    --accent:#9ad7ff; --accent-2:#a0ffa6; --callout:#1e2740;
-    --border:#26263a; --shadow:0 8px 30px rgba(0,0,0,.35);
-    --radius:14px; --maxw:960px;
-    --header-h:56px;
-  }
-  @media (min-width:980px){ :root{ --header-h:64px } }
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#f9fafc; --bg-soft:#f1f4f8; --panel:#ffffff;
-      --ink:#111217; --ink-dim:#303241; --ink-soft:#5b5e70;
-      --accent:#165dff; --accent-2:#0b9f52; --callout:#eaf2ff;
-      --border:#e6e8ee;
-    }
-  }
-
-  *{ box-sizing:border-box }
-  html,body{
-    margin:0; padding:0; background:var(--bg); color:var(--ink);
-    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji;
-    line-height:1.5; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility
-  }
-  a{ color:var(--accent); text-decoration:none }
-  a:hover{text-decoration:underline}
-
-  /* ===== Sticky header (compact, safe-area aware) ===== */
-  header.site{
-    position:sticky; top:0; z-index:50;
-    background: color-mix(in oklab, var(--bg) 86%, transparent);
-    backdrop-filter:saturate(120%) blur(6px);
-    border-bottom:1px solid var(--border);
-    block-size: calc(var(--header-h) + env(safe-area-inset-top));
-    padding-top: env(safe-area-inset-top);
-  }
-  .site-inner{
-    max-width:var(--maxw); margin:0 auto; padding:8px 20px;
-    block-size: calc(var(--header-h)); display:flex; align-items:center; gap:12px
-  }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; white-space:nowrap }
-  .dot{ inline-size:10px; block-size:10px; border-radius:50%; background:var(--accent);
-    box-shadow:0 0 24px color-mix(in oklab, var(--accent) 70%, transparent) }
-  .spacer{ flex:1 }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
-    background:var(--panel); color:var(--ink); border:1px solid var(--border); box-shadow:var(--shadow);
-    text-decoration:none; font-weight:600; font-size:13px; white-space:nowrap
-  }
-  .btn.secondary{ background:var(--bg-soft) }
-
-  /* ===== Layout & cards ===== */
-  .wrap{
-    max-width:var(--maxw); margin:0 auto;
-    padding: calc(var(--header-h) + env(safe-area-inset-top) + 14px) 20px 64px;
-  }
-  .hero{
-    margin-top:0; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), transparent 60%);
-    border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)
-  }
-  h1{ font-size:clamp(26px,3vw,38px); margin:0 0 10px; line-height:1.15; letter-spacing:.2px }
-  .sub{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px) }
-  .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px }
-  .badge{ font-size:12px; color:var(--ink-soft); background:var(--bg-soft);
-    border:1px solid var(--border); padding:6px 10px; border-radius:999px }
-
-  .grid{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:20px }
-  @media (min-width:980px){ .grid{ grid-template-columns:260px 1fr } }
-
-  /* ===== TOC: sticky on desktop, NOT sticky on mobile ===== */
-  nav.toc{
-    align-self:start; background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:12px; box-shadow:var(--shadow); z-index:1
-  }
-  @media (min-width:980px){
-    nav.toc{ position:sticky; top: calc(var(--header-h) + env(safe-area-inset-top) + 10px); }
-  }
-  @media (max-width:979.98px){
-    nav.toc{ position:static; top:auto; }
-  }
-  nav.toc h3{ margin:0 0 8px; font-size:14px; color:var(--ink-dim) }
-  nav.toc a{ display:block; padding:6px 8px; border-radius:8px; color:var(--ink-soft) }
-  nav.toc a.active, nav.toc a:hover{ background:var(--bg-soft); color:var(--ink) }
-
-  section.card{
-    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
-    scroll-margin-top: calc(var(--header-h) + env(safe-area-inset-top) + 12px);
-  }
-  section.card h2{ margin:0 0 10px; font-size:22px }
-  h3{ margin:16px 0 8px; font-size:18px }
-  p{ margin:10px 0 }
-  .eq{
-    background:var(--bg-soft); border:1px solid var(--border); border-radius:12px; padding:12px;
-    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-    overflow:auto; font-size:14px; color:var(--ink)
-  }
-  .callout{ background:var(--callout); border:1px solid var(--border); border-radius:12px; padding:12px; color:var(--ink) }
-  details{ border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--bg-soft) }
-  details summary{ cursor:pointer; font-weight:600 }
-
-  .footer{
-    margin-top:28px; color:var(--ink-soft); font-size:14px;
-    display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center
-  }
-  .links{ display:flex; gap:10px; flex-wrap:wrap }
-  .chip{ display:inline-flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-soft);
-    border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--ink-soft) }
-  .ok{ inline-size:8px; block-size:8px; border-radius:50%; background:var(--accent-2) }
-  hr.sep{ border:0; border-top:1px dashed var(--border); margin:18px 0 }
-
-  /* ===== Extra-compact tweaks for small phones ===== */
-  @media (max-width:420px){
-    :root{ --header-h:44px }
-    .site-inner{ padding:6px 12px; gap:8px }
-    .btn{ padding:6px 10px; font-size:12px; border-radius:8px }
-    .hero{ padding:16px }
-    nav.toc{ padding:10px }
-    section.card{ padding:16px }
-  }
-
-  /* ===== Print to PDF ===== */
-  @media print{
-    header.site, nav.toc, .badges, .footer, .links { display:none !important }
-    .wrap{ padding:0 } section.card{ break-inside:avoid } body{ background:#fff }
-  }
+:root{
+  --bg:#0b0d11; --ink:#fff9e6; --muted:#d6c891; --accent:#ffd76b; --rim:#ffecb3;
+  --glass:rgba(255,231,150,.08); --glass-strong:rgba(255,231,150,.15);
+  --ring:0 0 0 3px rgba(255,215,107,.35);
+  --radius:18px; --shadow:0 12px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  --tint-hue:45; --intensity:0.35; --phase:0;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: radial-gradient(1000px 700px at 20% -10%, #1a1300 0%, #0b0d11 55%), #0b0d11; color:var(--ink)}
+.container{max-width:1200px; margin:0 auto; padding:20px}
+.header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
+.logo{width:46px;height:46px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff3a6, #ffd76b 40%, #e5b74e 70%, #1a1300 100%); box-shadow:0 0 50px rgba(255,215,107,.4)}
+.title{font-size:20px}
+.badge{padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid rgba(255,255,255,.1); color:var(--muted)}
+.grid{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg, rgba(255,231,150,.06), rgba(255,231,150,.04)); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px}
+.card h2{font-size:15px; margin:0 0 10px 0}
+.row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.btn{background:var(--glass-strong); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:10px 12px; color:var(--ink); cursor:pointer; font-size:14px}
+.btn[aria-pressed="true"], .btn.primary{box-shadow:var(--ring)}
+.slider{width:220px}
+.meta{font-size:12px; color:var(--muted)}
+.phase{height:10px; border-radius:999px; background:linear-gradient(90deg, rgba(255,215,107,.25), rgba(255,215,107,.6)); position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.1)}
+.phase>.dot{position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg, rgba(255,230,160,.9), rgba(255,180,0,.95)); border-radius:999px}
+.modeToggle{display:flex; gap:8px}
+.canvasWrap{position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.1)}
+#wave{width:100%; height:180px; display:block; background:radial-gradient(circle at 50% 50%, rgba(255,215,107,.08), rgba(255,215,107,.02) 60%) }
+.aurora{position:absolute; inset:0; background:radial-gradient(circle at 40% 70%, rgba(255,215,107,calc(var(--intensity)*.6)), transparent 70%), radial-gradient(circle at 70% 20%, rgba(255,255,255,calc(var(--intensity)*.15)), transparent 80%); mix-blend-mode:screen; pointer-events:none; filter:hue-rotate(calc(var(--tint-hue)*1deg))}
+.poem{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 60%, rgba(0,0,0,.0), rgba(0,0,0,.65)); opacity:0; transition:opacity 1s ease; pointer-events:none}
+.poem .wrap{max-width:720px; padding:24px; text-align:center; line-height:1.35; font-size:20px; color:#fff8d9; text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.chips{display:flex; gap:8px; flex-wrap:wrap}
+.chip{padding:8px 10px; border-radius:12px; background:var(--glass); border:1px solid rgba(255,255,255,.1); cursor:pointer}
+.chip.active{box-shadow:var(--ring)}
+.code{background:rgba(12,10,6,.85); border:1px solid rgba(255,255,255,.12); padding:10px; border-radius:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:13px; color:#fff7d1; overflow:auto}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.hidden{display:none}
 </style>
 </head>
-
 <body>
-<header class="site" aria-label="Site Header">
-  <div class="site-inner">
-    <div class="brand"><span class="dot" aria-hidden="true"></span><span>time.plnt.earth — χ</span></div>
-    <div class="spacer"></div>
-    <a class="btn secondary" href="/docs/time-chi-note.pdf" target="_blank" rel="noopener">Download PDF</a>
-    <a class="btn" href="https://github.com/tcarrw/time" target="_blank" rel="noopener">GitHub Repo</a>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="hero" role="banner">
-    <h1>TIME = DISTANCE = ENERGY = MATTER<br><span class="sub">The χ Framework & Test Plan (time.plnt.earth)</span></h1>
-    <div class="badges">
-      <span class="badge">Author: Tristan White</span>
-      <span class="badge">Version: v2.3 (Oct 16, 2025)</span>
-      <span class="badge">License: CC BY 4.0</span>
-      <span class="badge">Ecosystem: Illumina / PLNT Earth</span>
-      <span class="badge">Repo: tcarrw/time (may be private)</span>
+<div class="container">
+  <div class="header">
+    <div class="row"><div class="logo"></div><div class="title">Time · Synesthetic Bridge</div></div>
+    <div class="modeToggle">
+      <button class="btn" id="modeArt" aria-pressed="true">Art Mode</button>
+      <button class="btn" id="modeScience" aria-pressed="false">Science Mode</button>
     </div>
+    <div class="badge">v4</div>
   </div>
 
   <div class="grid">
-    <nav class="toc" aria-label="On-page navigation">
-      <h3>Contents</h3>
-      <a href="#abstract">Abstract</a>
-      <a href="#illumina">Illumina Integration</a>
-      <a href="#framework">1. Framework</a>
-      <a href="#equations">2. Equations</a>
-      <a href="#relations">3. Derived Relations</a>
-      <a href="#phenomenology">4. Phenomenology</a>
-      <a href="#tests">5. Tests & Falsifiability</a>
-      <a href="#cosmology">6. Cosmology</a>
-      <a href="#risks">7. Caveats & Risks</a>
-      <a href="#references">References & Related Work</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#changelog">Changelog</a>
-    </nav>
+    <!-- LEFT: Audio + Synesthesia -->
+    <div class="card">
+      <h2>Phase · Tone · Color</h2>
+      <div class="row">
+        <button class="btn primary" id="start">Start Audio</button>
+        <button class="btn" data-f="off">Off</button>
+        <button class="btn" data-f="96">96</button>
+        <button class="btn" data-f="128">128</button>
+        <button class="btn" data-f="160">160</button>
+        <button class="btn" data-f="432">432</button>
+        <input class="slider" id="vol" type="range" min="0" max="1" step="0.001" value="0.3"/>
+        <span class="meta" id="volLabel">vol 0.30</span>
+        <button class="btn" id="binaural" aria-pressed="false">Binaural</button>
+        <input class="slider" id="beat" type="range" min="0" max="10" step="0.1" value="4"/>
+        <span class="meta" id="beatLabel">Δ 4.0 Hz</span>
+      </div>
+      <div class="phase" style="margin:8px 0 10px"><div class="dot" id="phaseDot"></div></div>
+      <div class="canvasWrap">
+        <canvas id="wave"></canvas>
+        <div class="aurora" id="aurora"></div>
+      </div>
+      <div class="meta" id="state">ctx: idle · tone: off</div>
+    </div>
 
-    <div>
-      <section id="abstract" class="card" aria-labelledby="abstract-h">
-        <h2 id="abstract-h">Abstract</h2>
-        <p>
-          <strong>time.plnt.earth</strong> proposes a monistic hypothesis where <em>time, distance, energy, and matter</em>
-          are expressions of a single field <strong>χ</strong>. In natural units
-          <span class="eq">c = ℏ = G = k<sub>B</sub> = 1</span>, these quantities share one dimension. We adopt a minimal action with a
-          non-minimal coupling <span class="eq">χ R</span>, derive operational consequences (frequency scaling, lensing/time-delay structure,
-          multi-messenger consistency), and outline falsifiable benchmarks via clock networks, strong lenses, and GW standard sirens.
-        </p>
-        <div class="callout">
-          <strong>Thesis:</strong> Geometry and matter aren’t two coupled substances; they’re one substance seen two ways. The conformal factor χ carries clocks, rulers, and rest-energy together.
+    <!-- RIGHT: Dictionary / Bridges -->
+    <div class="card">
+      <h2>Dictionary · t = e = d = m = f = c</h2>
+      <div class="chips" id="chips"></div>
+      <div class="two" style="margin-top:8px">
+        <div>
+          <div class="meta">Physics</div>
+          <div class="code">E = m c²
+τ = E / c³
+λ = h / p</div>
         </div>
-      </section>
-
-      <section id="illumina" class="card" aria-labelledby="illumina-h">
-        <h2 id="illumina-h">Illumina Integration — χ as the Physics Core</h2>
-        <p>
-          Illumina treats life as rhythm: lunar cycles (42-day arcs), tones (e.g., 128 Hz), color, and ritual. The χ-framework provides the
-          <em>physical substrate</em> beneath that rhythm. In this view, χ is the “field of unity,” while Illumina is the “human practice of unity.”
-        </p>
-        <div class="eq">Mapping:
-χ (single substance) ⇔ Illumina Field (one rhythm)<br/>
-Conformal metric g = χ^{2α}η ⇔ Illumina geometry (hex/spiral spreads)<br/>
-t ∝ m (χ-clock gauge) ⇔ intensity ∝ time-in-cycle (Bee labor)<br/>
-Δν/ν = −αΔlnχ ⇔ tone drift across phases (Moon archive)</div>
-        <p>
-          Practically, <em>time.plnt.earth</em> is the calibration node: the “physics lab” of PLNT Earth. Other sites (MirrorHoney, Froot, Sine)
-          can reference it conceptually—as the keeper of coherence and standards.
-        </p>
-      </section>
-
-      <section id="framework" class="card" aria-labelledby="framework-h">
-        <h2 id="framework-h">1. Framework</h2>
-        <h3>1.1 Dimensional Collapse (Natural Units)</h3>
-        <pre class="eq">Set:  c = ℏ = G = k_B = 1
-⇒  [T] = [L] = [M] = [E] = 1
-⇒  t ≍ L ≍ E ≍ m ≍ χ  (one currency)</pre>
-
-        <h3>1.2 Single Substance Field</h3>
-        <p>Let χ(x) ≥ 0 be the substance density. Space and time measurements scale with χ via a conformal metric:</p>
-        <pre class="eq">g_{μν}(x) = χ(x)^{2α} η_{μν}
-Proper time (static observer):  dτ² = χ^{2α} η_{μν} dx^μ dx^ν</pre>
-        <p>Null cones are unchanged by the conformal factor, but clock rates and lengths rescale with χ<sup>α</sup>.</p>
-
-        <h3>1.3 Minimal χ-Gravity Action</h3>
-        <pre class="eq">S = ∫ d⁴x √|g| [ ½ (∇χ)² − V(χ) + ½ M_*² χ R(g) ]</pre>
-        <p>This non-minimal coupling makes “curvature = energy scale” an identity of the same χ field.</p>
-      </section>
-
-      <section id="equations" class="card" aria-labelledby="equations-h">
-        <h2 id="equations-h">2. Equations (Sketch)</h2>
-        <pre class="eq">Varying g_{μν}:
-M_*² χ G_{μν} = T^{(χ)}_{μν} + ∇_μ∇_ν χ − g_{μν} □χ
-
-Varying χ:
-□χ − V′(χ) + ½ M_*² R = 0
-
-Example clock gauge α = ½:
-g_{μν} = χ η_{μν}  ⇒  dτ = χ^{½} dt  (static)</pre>
-        <details>
-          <summary>Gauge / “clock standard”</summary>
-          <p>
-            Under Weyl rescalings <span class="eq">g_{μν} → Ω² g_{μν},  χ → Ω^{-2} χ</span>, the χR structure is preserved (up to total derivatives).
-            Fixing α chooses a “clock gauge.” Prefer gauge-invariant ratios in predictions.
-          </p>
-        </details>
-      </section>
-
-      <section id="relations" class="card" aria-labelledby="relations-h">
-        <h2 id="relations-h">3. Derived Relations</h2>
-        <h3>3.1 Time–Mass Proportionality</h3>
-        <pre class="eq">Let local masses scale as m(x) ∝ χ(x).
-With dτ = χ^{α} dt, a fixed proper tick Δτ gives:
-Δt = Δτ / χ^{α}  ∝  m^{-α}.
-
-Choose α = −1  ⇒  Δt ∝ m  (linear in the χ-clock gauge).</pre>
-
-        <h3>3.2 Frequency / Redshift</h3>
-        <pre class="eq">ν ∝ χ^{-α}
-Δν/ν = −α Δ ln χ  (emitter → receiver)</pre>
-
-        <h3>3.3 Energy–Geometry Identity</h3>
-        <pre class="eq">“Matter sources curvature” ⇢ identity:
-both sides are χ-patterns; no ontology split.</pre>
-      </section>
-
-      <section id="phenomenology" class="card" aria-labelledby="phenom-h">
-        <h2 id="phenom-h">4. Phenomenology</h2>
-        <ul>
-          <li><strong>Clock networks:</strong> residual frequency scaling from χ-gradients after GR corrections:
-            <span class="eq">Δν/ν = −α Δ ln χ</span>.</li>
-          <li><strong>Lensing & time delays:</strong> geometric+Shapiro delays pick up χ factors via the conformal metric;
-            fit strong lenses with a χ-profile.</li>
-          <li><strong>GW–EM consistency:</strong> if null cones are shared, arrival-time residuals vanish beyond source physics;
-            amplitude/frequency evolution may encode χ.</li>
-          <li><strong>“Varying constants” pattern:</strong> apparent drifts in masses/transition energies collapse to a single driver χ.</li>
-        </ul>
-        <div class="callout">
-          Favor dimensionless patterns (ratios) that track χ universally; uncorrelated drifts would falsify the single-driver hypothesis.
+        <div>
+          <div class="meta">Consciousness</div>
+          <div class="code">change = will = relation = embodiment = pattern = witness</div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section id="tests" class="card" aria-labelledby="tests-h">
-        <h2 id="tests-h">5. Tests & Falsifiability</h2>
-        <h3>Near-term (0–12 months)</h3>
-        <ul>
-          <li><strong>Atomic/optical clocks:</strong> daily/seasonal ground↔tower↔satellite comparisons; constrain
-            <span class="eq">|α Δ ln χ|</span> at 10⁻¹⁸.</li>
-          <li><strong>Time-delay lenses:</strong> re-fit 5 systems with a χ-profile; check H₀ shifts vs ΛCDM systematics.</li>
-          <li><strong>GW standard sirens:</strong> compare EM–GW pairs for χ-consistent amplitude/frequency evolution.</li>
-        </ul>
-        <h3>Decisive (1–3 years)</h3>
-        <ul>
-          <li><strong>Redshift drift:</strong> look for sign/magnitude differences vs ΛCDM over multi-year baselines.</li>
-          <li><strong>Equivalence principle:</strong> torsion balances / atom interferometers with universal conformal coupling.</li>
-          <li><strong>Analogue simulators:</strong> photonics/BEC media with <span class="eq">n(x,t) ∝ χ^{α}</span> reproducing frequency pulls.</li>
-        </ul>
-        <hr class="sep" />
-        <details>
-          <summary>Null signals & failure modes</summary>
-          <ul>
-            <li>No residual frequency scaling after GR corrections ⇒ strong bounds on α and ∇χ.</li>
-            <li>Lensing magnification vs delay inconsistency ⇒ revise χ-profile or abandon minimal conformal ansatz.</li>
-            <li>Uncorrelated “varying constants” across sectors ⇒ violates single-driver χ hypothesis.</li>
-          </ul>
-        </details>
-      </section>
+    <!-- LEFT: Ritual + Snapshot -->
+    <div class="card">
+      <h2>Ritual Loop</h2>
+      <div class="row">
+        <button class="btn" id="slow">Slow‑time</button>
+        <button class="btn" id="poemBtn">Poem</button>
+        <button class="btn" id="immortal">Immortal Preset</button>
+        <span class="meta" id="timer">00:00</span>
+      </div>
+      <div class="meta" style="margin-top:8px">Auto cycle: 60s → slow‑time ramp, poem pulse, snapshot save.</div>
+      <div class="code" id="snapshot" style="min-height:56px; margin-top:8px"></div>
+    </div>
 
-      <section id="cosmology" class="card" aria-labelledby="cosmo-h">
-        <h2 id="cosmo-h">6. Cosmology (Sketch)</h2>
-        <p>Replace the scale-factor intuition with χ-evolution. Background observables can mimic ΛCDM; rely on growth, lensing, and
-        time-delays to break degeneracy.</p>
-        <pre class="eq">Example:  V(χ) = λ (χ − χ₀)²
-Late time: slow roll; Early time: fast roll (inflation-like)
-Small perturbations δχ act as “graviton/particle” quanta of the same substrate.</pre>
-      </section>
-
-      <section id="risks" class="card" aria-labelledby="risks-h">
-        <h2 id="risks-h">7. Caveats & Risks</h2>
-        <ul>
-          <li><strong>Fifth forces:</strong> keep couplings universal & conformal to avoid composition dependence.</li>
-          <li><strong>Solar-system tests:</strong> recover PPN of GR as χ → χ₀.</li>
-          <li><strong>Gauge dependence:</strong> present predictions as invariants or clearly label α.</li>
-        </ul>
-      </section>
-
-      <section id="references" class="card" aria-labelledby="ref-h">
-        <h2 id="ref-h">References & Related Work</h2>
-        <p>Selected works intersecting this approach via scalar–tensor gravity, conformal methods, and emergent spacetime:</p>
-        <ul>
-          <li>Einstein, A. (1916). The foundation of the general theory of relativity. <em>Annalen der Physik</em>.</li>
-          <li>Weyl, H. (1918). Gravitation and electricity. <em>Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften</em>.</li>
-          <li>Brans, C., & Dicke, R. H. (1961). Mach’s principle and a relativistic theory of gravitation. <em>Phys. Rev.</em> <strong>124</strong>, 925.</li>
-          <li>Fujii, Y., & Maeda, K. (2003). <em>The Scalar-Tensor Theory of Gravitation</em>. Cambridge Univ. Press.</li>
-          <li>Faraoni, V. (2004). <em>Cosmology in Scalar-Tensor Gravity</em>. Springer.</li>
-          <li>Clifton, T., Ferreira, P. G., Padilla, A., & Skordis, C. (2012). Modified gravity and cosmology. <em>Phys. Rep.</em> <strong>513</strong>, 1–189.</li>
-          <li>Padmanabhan, T. (2010). Thermodynamical aspects of gravity: new insights. <em>Rep. Prog. Phys.</em> <strong>73</strong>, 046901.</li>
-          <li>Rovelli, C. (2004). <em>Quantum Gravity</em>. Cambridge Univ. Press.</li>
-          <li>Polchinski, J. (1998). <em>String Theory</em> (Vols. 1–2). Cambridge Univ. Press.</li>
-          <li>Barceló, C., Liberati, S., & Visser, M. (2011). Analogue gravity. <em>Living Rev. Relativ.</em> <strong>14</strong>, 3.</li>
-          <li>Bekenstein, J. D. (2002). Fine-structure constant variability, mechanisms and constraints. <em>Phys. Rev. D</em> <strong>66</strong>, 123514.</li>
-          <li>Catena, R., & Mota, D. F. (2010). PPN limit of scalar–tensor gravity with generalized potentials. <em>Phys. Rev. D</em> <strong>81</strong>, 063524.</li>
-          <li>Huterer, D., & Shafer, D. (2018). Dark energy two decades after. <em>Rep. Prog. Phys.</em> <strong>81</strong>, 016901.</li>
-        </ul>
-        <details>
-          <summary>Positioning note</summary>
-          <p>
-            This χ framework is nearest to scalar–tensor gravity with a conformal metric and χR coupling, and pushes further by identifying
-            <em>all</em> dimensionful scales (time, length, mass, energy) with χ in natural units, emphasizing operational invariants and a
-            single-driver hypothesis for apparent “varying constants.”
-          </p>
-        </details>
-      </section>
-
-      <section id="roadmap" class="card" aria-labelledby="roadmap-h">
-        <h2 id="roadmap-h">Roadmap & Artifacts</h2>
-        <ul>
-          <li><span class="chip"><span class="ok"></span> χ equation sheet (1-pager)</span></li>
-          <li><span class="chip"><span class="ok"></span> Clocks memo (lab-ready)</span></li>
-          <li><span class="chip"><span class="ok"></span> Lens fit notebook (synthetic)</span></li>
-          <li><span class="chip"><span class="ok"></span> Siren cross-checks</span></li>
-        </ul>
-        <p>Place your compiled PDF at <code>/docs/time-chi-note.pdf</code>. The GitHub link points to <code>tcarrw/time</code>.</p>
-      </section>
-
-      <section id="changelog" class="card" aria-labelledby="changelog-h">
-        <h2 id="changelog-h">Changelog</h2>
-        <ul>
-          <li><strong>v2.3</strong> — TOC is no longer sticky on mobile (so it won’t cover content while scrolling); desktop stickiness retained.</li>
-          <li><strong>v2.2</strong> — Compact mobile header (safe-area aware), refined paddings; repo link confirmed.</li>
-          <li><strong>v2.1</strong> — Fixed header overlap; added repo badge and footer link.</li>
-          <li><strong>v2.0</strong> — Tailored copy; Illumina Integration; References; single-file build.</li>
-        </ul>
-      </section>
-
-      <div class="footer">
-        <div>© 2025 PLNT Earth — <em>time.plnt.earth</em>. Author: Tristan White. CC BY 4.0.</div>
-        <div class="links">
-          <a class="btn secondary" href="#abstract">Back to top</a>
-          <a class="btn secondary" href="https://github.com/tcarrw/time" target="_blank" rel="noopener">GitHub Repo</a>
+    <!-- RIGHT: Science Panel (visible in Science mode) -->
+    <div class="card" id="sciencePanel" class="hidden">
+      <h2>Science Panel</h2>
+      <div class="two">
+        <div>
+          <div class="meta">Constants</div>
+          <div class="code" id="constBox"></div>
+        </div>
+        <div>
+          <div class="meta">Live Metrics</div>
+          <div class="code" id="metricBox"></div>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>
+
+<div class="poem" id="poem"><div class="wrap" id="poemText"></div></div>
 
 <script>
-  (function(){
-    var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
-    var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
-    var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+(function(){
+  var LS = { tone:'off', volume:0.3, binaural:false, beat:4.0, hue:45, mode:'art', startTs:null, snapshots:[] };
+  try{ var raw=localStorage.getItem('time.v4'); if(raw){ var p=JSON.parse(raw); for(var k in p){ LS[k]=p[k]; } } }catch(_){ }
+  function save(){ try{ localStorage.setItem('time.v4', JSON.stringify(LS)); }catch(_){ } }
+  function setVar(k,v){ document.documentElement.style.setProperty(k, String(v)); }
 
-    if('IntersectionObserver' in window){
-      var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 56;
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          var i = sections.indexOf(entry.target);
-          if(i >= 0){
-            var link = links[i];
-            if(entry.isIntersecting){
-              links.forEach(function(l){ l.classList.remove('active'); });
-              link.classList.add('active');
-            }
-          }
-        });
-      }, { rootMargin: "-" + (headerH + 16) + "px 0px -60% 0px", threshold:0.01 });
-      sections.forEach(function(s){ obs.observe(s); });
-    }
+  // Mapping
+  function hueForFreq(f){ var map={ '96':0, '128':220, '160':280, '432':45 }; return map[String(f)]!=null?map[String(f)]:45; }
 
-    document.addEventListener('click', function(e){
-      var a = e.target.closest('a[href^="#"]'); if(!a) return;
-      var id = a.getAttribute('href').slice(1);
-      var t = document.getElementById(id); if(!t) return;
-      e.preventDefault();
-      t.scrollIntoView({ behavior:'smooth', block:'start' });
-      history.replaceState(null,"","#"+id);
-    }, {passive:true});
-  })();
+  // Elements
+  var start = document.getElementById('start');
+  var vol = document.getElementById('vol'); var volLabel=document.getElementById('volLabel');
+  var phaseDot = document.getElementById('phaseDot'); var state = document.getElementById('state');
+  var wave = document.getElementById('wave'); var ctx2d = wave.getContext('2d');
+  var aur = document.getElementById('aurora');
+  var beat = document.getElementById('beat'); var beatLabel=document.getElementById('beatLabel');
+  var poemEl = document.getElementById('poem'); var poemText=document.getElementById('poemText');
+  var slowBtn = document.getElementById('slow'); var poemBtn=document.getElementById('poemBtn'); var immortalBtn=document.getElementById('immortal');
+  var timer = document.getElementById('timer'); var snapshot = document.getElementById('snapshot');
+  var modeArt = document.getElementById('modeArt'); var modeScience = document.getElementById('modeScience'); var sciencePanel=document.getElementById('sciencePanel');
+
+  // Audio graph
+  var AudioCtx = window.AudioContext || window.webkitAudioContext;
+  var actx=null, gain=null, oscL=null, oscR=null, analyser=null, buffer=null;
+  function ensureCtx(){ if(!actx){ actx=new AudioCtx(); gain=actx.createGain(); gain.gain.value=LS.volume; analyser=actx.createAnalyser(); analyser.fftSize=1024; buffer=new Uint8Array(analyser.frequencyBinCount); gain.connect(analyser); analyser.connect(actx.destination); } return actx; }
+
+  function startTone(freq){ stopTone(true); if(!ensureCtx()) return; if(actx.state==='suspended') actx.resume();
+    oscL = actx.createOscillator(); oscR = actx.createOscillator(); oscL.type='sine'; oscR.type='sine';
+    var delta = LS.binaural?LS.beat:0; oscL.frequency.setValueAtTime(freq, actx.currentTime); oscR.frequency.setValueAtTime(freq+delta, actx.currentTime);
+    var gL = actx.createGain(), gR = actx.createGain(); gL.gain.value=1; gR.gain.value=1;
+    var panL=null, panR=null; try{ panL=actx.createStereoPanner(); panR=actx.createStereoPanner(); panL.pan.value=-0.7; panR.pan.value=0.7; }catch(_){ }
+    if(panL&&panR){ oscL.connect(gL); gL.connect(panL); panL.connect(gain); oscR.connect(gR); gR.connect(panR); panR.connect(gain); }
+    else { oscL.connect(gain); oscR.connect(gain); }
+    oscL.start(); oscR.start();
+    LS.tone=String(freq); LS.hue=hueForFreq(freq); setVar('--tint-hue', LS.hue); save(); updateState(); if(!LS.startTs){ LS.startTs=Date.now(); save(); }
+  }
+  function stopTone(keepPhase){ if(oscL){ try{oscL.stop();}catch(_){ } try{oscL.disconnect();}catch(_){ } oscL=null; } if(oscR){ try{oscR.stop();}catch(_){ } try{oscR.disconnect();}catch(_){ } oscR=null; if(!keepPhase){ setVar('--intensity', 0.0); } }
+  }
+
+  function updateState(){ state.textContent = 'ctx: '+(actx?(actx.state||'ready'):'idle')+' · tone: '+(LS.tone==='off'?'off':LS.tone+'Hz')+(LS.binaural?' · binaural':''); volLabel.textContent='vol '+Number(LS.volume).toFixed(2); }
+  function setVolume(v){ LS.volume=v; if(gain) gain.gain.setValueAtTime(v, actx?actx.currentTime:0); save(); updateState(); }
+
+  // Buttons
+  start.addEventListener('click', function(){ if(!ensureCtx())return; if(actx.state==='suspended') actx.resume(); updateState(); });
+  document.querySelectorAll('[data-f]').forEach(function(b){ b.addEventListener('click', function(){ var f=b.getAttribute('data-f'); if(f==='off'){ LS.tone='off'; stopTone(); updateState(); } else { startTone(parseFloat(f)); } }); });
+  vol.addEventListener('input', function(e){ setVolume(parseFloat(e.target.value||'0')); });
+
+  var binBtn=document.getElementById('binaural'); binBtn.addEventListener('click', function(){ LS.binaural=!LS.binaural; binBtn.setAttribute('aria-pressed', String(LS.binaural)); save(); if(LS.tone!=='off' && oscL && oscR){ startTone(parseFloat(LS.tone)); } updateState(); });
+  beat.addEventListener('input', function(e){ LS.beat=parseFloat(e.target.value||'0'); beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; save(); if(LS.binaural && LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }});
+
+  // Phase + waveform animation
+  var raf=null, pct=0; function loop(){ if(!ctx2d) return; if(analyser){ analyser.getByteTimeDomainData(buffer); var sum=0; for(var i=0;i<buffer.length;i++){ var v=(buffer[i]-128)/128; sum+=v*v; } var amp = Math.min(1, Math.sqrt(sum/buffer.length)*2); setVar('--intensity', (0.2 + amp*0.6).toFixed(3)); setVar('--phase', pct.toFixed(3)); drawWave(buffer, amp); }
+    pct=(pct+0.7)%100; phaseDot.style.width=pct+'%'; raf=requestAnimationFrame(loop); }
+  function drawWave(buf, amp){ var w=wave.width=wave.clientWidth, h=wave.height=wave.clientHeight; ctx2d.clearRect(0,0,w,h); ctx2d.lineWidth=2; var hue=LS.hue||45; var alpha=0.3+amp*0.5; ctx2d.strokeStyle='hsla('+hue+', 90%, 60%, '+alpha+')'; ctx2d.beginPath(); for(var i=0;i<buf.length;i++){ var x=i/buf.length*w; var y=h/2+(buf[i]-128)/128*(h/2-6); if(i===0) ctx2d.moveTo(x,y); else ctx2d.lineTo(x,y); } ctx2d.stroke(); if(LS.mode==='science'){ ctx2d.fillStyle='hsla('+hue+', 90%, 80%, 0.08)'; ctx2d.fillRect(0, h*(1-amp), w, h*amp); }
+  }
+  raf=requestAnimationFrame(loop);
+
+  // Poem resonance
+  var poems=[
+    'you are immortal in the present tense',
+    'mortality teaches flavor; coherence outlives the body',
+    'we don’t escape time; we sing in it until it remembers us',
+    'sex is power, love is phase‑lock',
+    'cuckoo loops the root; not hungry anymore releases the gold'
+  ];
+  function showPoem(){ poemText.textContent=poems[Math.floor(Math.random()*poems.length)]; poemEl.style.opacity='1'; setTimeout(function(){ poemEl.style.opacity='0'; }, 3600); }
+  poemBtn.addEventListener('click', showPoem);
+
+  // Slow‑time ramp
+  slowBtn.addEventListener('click', function(){ var prev=LS.volume; if(!ensureCtx()) return; var t0=actx.currentTime; if(gain){ var g=Math.max(0.02, prev*0.25); gain.gain.cancelScheduledValues(t0); gain.gain.setValueAtTime(prev, t0); gain.gain.linearRampToValueAtTime(g, t0+1.5); gain.gain.setValueAtTime(g, t0+2.5); gain.gain.linearRampToValueAtTime(prev, t0+4.0);} });
+
+  // Immortal preset
+  function immortal(){ startTone(432); setVolume(0.35); LS.hue=45; setVar('--tint-hue',45); save(); showPoem(); }
+  immortalBtn.addEventListener('click', immortal);
+
+  // Auto ritual: every 60s → slow-time + poem + snapshot
+  var lastCycle=Date.now(); function ritualTick(){ var now=Date.now(); if(now-lastCycle>60000){ lastCycle=now; showPoem(); slowBtn.click(); takeSnapshot(); } requestAnimationFrame(ritualTick); } ritualTick();
+
+  // Session timer
+  var timerRAF=null; function tickTimer(){ if(!LS.startTs){ timer.textContent='00:00'; timerRAF=requestAnimationFrame(tickTimer); return; } var s=Math.max(0, Math.floor((Date.now()-LS.startTs)/1000)); var m=Math.floor(s/60), sec=s%60; timer.textContent=(m<10?'0':'')+m+':' + (sec<10?'0':'')+sec; timerRAF=requestAnimationFrame(tickTimer);} timerRAF=requestAnimationFrame(tickTimer);
+
+  // Dictionary chips (with synesthetic colors)
+  var defs={ t:['t — time', 45], e:['e — energy', 200], d:['d — distance', 120], m:['m — matter', 280], f:['f — frequency', 320], c:['c — consciousness', 0] };
+  var chips=document.getElementById('chips'); Object.keys(defs).forEach(function(k){ var chip=document.createElement('div'); chip.className='chip'; chip.textContent=defs[k][0]; chip.style.borderColor='hsla('+defs[k][1]+',80%,60%,.6)'; chip.addEventListener('click', function(){ LS.hue=defs[k][1]; setVar('--tint-hue', LS.hue); save(); }); chips.appendChild(chip); });
+
+  // Snapshots
+  function takeSnapshot(){ var snap={ ts:Date.now(), tone:LS.tone, hue:LS.hue, volume:LS.volume, binaural:LS.binaural, beat:LS.beat }; LS.snapshots.push(snap); if(LS.snapshots.length>8) LS.snapshots.shift(); save(); renderSnapshot(); }
+  function renderSnapshot(){ var lines = LS.snapshots.slice().reverse().map(function(s){ return new Date(s.ts).toLocaleTimeString()+ ' — '+ (s.tone==='off'?'off':s.tone+'Hz') + (s.binaural?' · Δ'+s.beat+'Hz':'') + ' · hue '+s.hue + ' · vol '+s.volume.toFixed(2); }); snapshot.textContent = (lines.join('
+')||'no snapshots yet'); }
+
+  // Modes
+  function setMode(m){ LS.mode=m; save(); var art = (m==='art'); modeArt.setAttribute('aria-pressed', String(art)); modeScience.setAttribute('aria-pressed', String(!art)); sciencePanel.classList.toggle('hidden', art); }
+  modeArt.addEventListener('click', function(){ setMode('art'); });
+  modeScience.addEventListener('click', function(){ setMode('science'); });
+
+  // Science box
+  var constBox=document.getElementById('constBox'); var metricBox=document.getElementById('metricBox');
+  function renderConst(){ var c=299792458, h=6.62607015e-34; constBox.textContent = 'c = '+c+' m/s
+' + 'h = '+h+' J·s
+' + 'E = m c² (m=1) ≈ '+(c*c).toExponential(5)+' J'; }
+  function renderMetrics(){ var f=(LS.tone==='off'?0:parseFloat(LS.tone)); var delta=LS.binaural?LS.beat:0; var tau=(f? (f/(299792458*299792458*299792458)) : 0); metricBox.textContent = 'f = '+f+' Hz 
+Δ = '+delta+' Hz
+τ ~ '+tau.toExponential(3)+' (scaled units)
+vol = '+LS.volume.toFixed(2); }
+  function metricsLoop(){ renderMetrics(); requestAnimationFrame(metricsLoop); }
+
+  // Init
+  vol.value=LS.volume; beat.value=LS.beat; beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; binBtn.setAttribute('aria-pressed', String(LS.binaural)); setVar('--tint-hue', LS.hue); updateState(); renderConst(); metricsLoop(); renderSnapshot(); if(LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }
+})();
 </script>
 </body>
 </html>
