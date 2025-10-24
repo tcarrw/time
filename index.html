@@ -3,274 +3,262 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Time · Synesthetic Bridge (v4.1)</title>
-<meta name="theme-color" content="#ffd76b"/>
+<title>τ = E / c³ · The Immortal Bridge — Director Mode (v3)</title>
+<meta name="theme-color" content="#0b0d11"/>
 <style>
 :root{
-  --bg:#0b0d11; --ink:#fff9e6; --muted:#d6c891; --accent:#ffd76b; --rim:#ffecb3;
-  --glass:rgba(255,231,150,.08); --glass-strong:rgba(255,231,150,.15);
+  --bg:#0b0d11; --ink:#f8fbff; --muted:#b9c4d6; --accent:#ffd76b; --edge:#e9f0ff;
+  --glass:rgba(255,255,255,.06); --glass-strong:rgba(255,255,255,.1);
   --ring:0 0 0 3px rgba(255,215,107,.35);
-  --radius:18px; --shadow:0 12px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
-  --tint-hue:45; --intensity:0.35; --phase:0;
+  --radius:18px; --shadow:0 14px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: radial-gradient(1000px 700px at 20% -10%, #1a1300 0%, #0b0d11 55%), #0b0d11; color:var(--ink)}
-.container{max-width:1200px; margin:0 auto; padding:20px}
-.header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
-.logo{width:46px;height:46px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff3a6, #ffd76b 40%, #e5b74e 70%, #1a1300 100%); box-shadow:0 0 50px rgba(255,215,107,.4)}
-.title{font-size:20px}
-.badge{padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid rgba(255,255,255,.1); color:var(--muted)}
-.grid{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roman", serif; background: radial-gradient(1000px 700px at 20% -10%, #1a1f2b 0%, #0b0d11 55%), #0b0d11; color:var(--ink)}
+.container{max-width:1120px; margin:0 auto; padding:24px}
+.header{display:flex; gap:16px; align-items:flex-end; justify-content:space-between; margin-bottom:22px}
+.h-left{display:flex; align-items:center; gap:14px}
+.logo{width:48px;height:48px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff2a0, #ffd76b 40%, #e9b64b 70%, #0b0d11 100%); box-shadow:0 0 46px rgba(255,215,107,.35)}
+.title{font-size:24px; letter-spacing:.2px}
+.sub{font-size:12px; color:var(--muted)}
+.grid{display:grid; grid-template-columns:1fr 360px; gap:18px}
 @media (max-width:980px){.grid{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg, rgba(255,231,150,.06), rgba(255,231,150,.04)); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px}
-.card h2{font-size:15px; margin:0 0 10px 0}
-.row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.btn{background:var(--glass-strong); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:10px 12px; color:var(--ink); cursor:pointer; font-size:14px}
+.paper{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:var(--shadow); padding:18px}
+.paper h2{font-size:18px; margin:0 0 8px 0}
+.paper h3{font-size:15px; margin:12px 0 6px}
+.hr{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); margin:12px 0}
+.code{background:#0c1118; border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:13px; color:#e7f0ff}
+.kv{display:grid; grid-template-columns:160px 1fr; gap:6px; align-items:start}
+
+.panel{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px; position:sticky; top:16px}
+.panel h3{margin:0 0 8px 0}
+.btn{background:var(--glass-strong); border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:10px 12px; color:var(--ink); font-size:14px; cursor:pointer}
 .btn[aria-pressed="true"], .btn.primary{box-shadow:var(--ring)}
-.slider{width:220px}
-.meta{font-size:12px; color:var(--muted)}
-.phase{height:10px; border-radius:999px; background:linear-gradient(90deg, rgba(255,215,107,.25), rgba(255,215,107,.6)); position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.1)}
-.phase>.dot{position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg, rgba(255,230,160,.9), rgba(255,180,0,.95)); border-radius:999px}
-.modeToggle{display:flex; gap:8px}
-.canvasWrap{position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.1)}
-#wave{width:100%; height:180px; display:block; background:radial-gradient(circle at 50% 50%, rgba(255,215,107,.08), rgba(255,215,107,.02) 60%) }
-.aurora{position:absolute; inset:0; background:radial-gradient(circle at 40% 70%, rgba(255,215,107,calc(var(--intensity)*.6)), transparent 70%), radial-gradient(circle at 70% 20%, rgba(255,255,255,calc(var(--intensity)*.15)), transparent 80%); mix-blend-mode:screen; pointer-events:none; filter:hue-rotate(calc(var(--tint-hue)*1deg))}
-.poem{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 60%, rgba(0,0,0,.0), rgba(0,0,0,.65)); opacity:0; transition:opacity 1s ease; pointer-events:none}
-.poem .wrap{max-width:720px; padding:24px; text-align:center; line-height:1.35; font-size:20px; color:#fff8d9; text-shadow:0 2px 12px rgba(0,0,0,.6)}
-.chips{display:flex; gap:8px; flex-wrap:wrap}
-.chip{padding:8px 10px; border-radius:12px; background:var(--glass); border:1px solid rgba(255,255,255,.1); cursor:pointer}
-.chip.active{box-shadow:var(--ring)}
-.code{background:#0b0c0f; border:1px solid rgba(255,255,255,.18); padding:12px; border-radius:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:14px; color:#fffbe6; letter-spacing:.2px; line-height:1.35; overflow:auto}
-.two{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-@media (max-width:860px){.two{grid-template-columns:1fr}}
-.hidden{display:none}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06)}
+.ok{background:rgba(56,201,132,.18); border-color:rgba(56,201,132,.38)}
+.warn{background:rgba(248,148,37,.18); border-color:rgba(248,148,37,.38)}
+.fail{background:rgba(248,82,82,.18); border-color:rgba(248,82,82,.38)}
+.small{font-size:12px; color:var(--muted)}
+.table{width:100%; border-collapse:separate; border-spacing:0; overflow:auto}
+.table th,.table td{border-bottom:1px solid rgba(255,255,255,.12); padding:8px 6px; text-align:left; font-size:13px}
+.footer{margin-top:16px; text-align:center; font-size:12px; color:var(--muted)}
+.note{font-style:italic; color:#dfe7ff}
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <div class="row"><div class="logo"></div><div class="title">Time · Synesthetic Bridge</div></div>
-    <div class="modeToggle">
-      <button class="btn" id="modeArt" aria-pressed="false">Art Mode</button>
-      <button class="btn" id="modeScience" aria-pressed="true">Science Mode</button>
+  <div class="container">
+    <div class="header">
+      <div class="h-left"><div class="logo" aria-hidden="true"></div><div><div class="title">τ = E / c³ · The Immortal Bridge</div><div class="sub">Time · Director Mode v3 — “Eat the World / Page 42”</div></div></div>
+      <div class="sub">Version: v3-director · Single-file · No external libs</div>
     </div>
-    <div class="badge">v4.1</div>
+
+    <div class="grid">
+      <div class="paper" id="paper">
+        <h2>Abstract</h2>
+        <p>Time is not what passes — it is what <em>synchronizes</em>. We explore a bridge where time, energy, distance, matter, frequency, and consciousness (t = e = d = m = f = c) are harmonic expressions of one constant: <b>c</b>, the witness of light. We present τ = E / c³ as a relational lens linking energy to temporal experience, and we pair lab-grade methods with poetic marginalia to keep science human.</p>
+        <div class="hr"></div>
+
+        <h2>Core Equations</h2>
+        <div class="code">E = m c²\nτ = E / c³\nλ = h / p</div>
+        <p class="note">“light slows to feel itself.” · “the longer you see, the slower it burns.”</p>
+        <div class="hr"></div>
+
+        <h2>Methods · Exact Measurement Procedures</h2>
+        <h3>1) Psychophysics — Perceived-Time Shift (Δτ)</h3>
+        <div class="kv"><div><b>Frequencies</b></div><div>96, 128, 160, 432 Hz; Δf (binaural): 0/2/4 Hz</div></div>
+        <div class="kv"><div><b>Durations</b></div><div>30, 60, 120 s (counterbalanced)</div></div>
+        <div class="kv"><div><b>Endpoint</b></div><div>Δτ = estimate − clock (bias-corrected)</div></div>
+        <div class="hr"></div>
+
+        <h3>2) EEG Entrainment & Coherence</h3>
+        <div class="kv"><div><b>Metrics</b></div><div>PSD, alpha Δ, PLV/PLI; ASSR where applicable</div></div>
+        <div class="hr"></div>
+
+        <h3>3) Autonomic (Pupil & HRV)</h3>
+        <div class="kv"><div><b>Metrics</b></div><div>Pupil mean (z), HRV RMSSD change</div></div>
+        <div class="hr"></div>
+
+        <h3>4) HCI Fidelity</h3>
+        <div class="kv"><div><b>Targets</b></div><div>Start jitter &lt; 15 ms SD; rAF drift &lt; 30 ms / 3 min</div></div>
+        <div class="hr"></div>
+
+        <h2>Expert Tracks</h2>
+        <ul>
+          <li><b>Physics</b> — dimensional analysis of τ, simulations, counterexamples</li>
+          <li><b>Neuro</b> — EEG/MEG entrainment, prereg templates</li>
+          <li><b>Psychometrics</b> — temporal bisection / reproduction paradigms</li>
+          <li><b>Poetics</b> — annotated lines with timestamps</li>
+          <li><b>HCI/Audio</b> — latency audits, device checklists</li>
+        </ul>
+        <div class="hr"></div>
+
+        <h2>Appendix · Data Schema</h2>
+        <div class="code" id="schemaBox"></div>
+        <div class="hr"></div>
+
+        <h2>Page 42 · Eat the World</h2>
+        <p class="note">to eat the world is to metabolize light; each test a prayer for coherence; each error a breath that reminds us we're alive.</p>
+      </div>
+
+      <aside class="panel" id="director">
+        <h3>Director Panel · Self‑Check</h3>
+        <div class="small">Run local diagnostics (no network): audio · color · timer · render · schema.</div>
+        <div style="margin:10px 0; display:flex; gap:8px; flex-wrap:wrap">
+          <button class="btn primary" id="runAll">Run Self‑Check</button>
+          <button class="btn" id="exportStamp">Export Integrity Stamp</button>
+        </div>
+        <div class="badges" id="statusBadges"></div>
+        <div class="hr"></div>
+        <h3>Live Readouts</h3>
+        <table class="table" id="readout">
+          <thead><tr><th>Test</th><th>Metric</th><th>Value</th><th>Target</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="hr"></div>
+        <div class="small" id="poemLine">…</div>
+      </aside>
+    </div>
+
+    <div class="footer">Illumina · Time — Director Mode v3 · single‑file</div>
   </div>
-
-  <div class="grid">
-    <!-- LEFT: Audio + Synesthesia -->
-    <div class="card">
-      <h2>Phase · Tone · Color</h2>
-      <div class="row">
-        <button class="btn primary" id="start">Start Audio</button>
-        <button class="btn" data-f="off">Off</button>
-        <button class="btn" data-f="96">96</button>
-        <button class="btn" data-f="128">128</button>
-        <button class="btn" data-f="160">160</button>
-        <button class="btn" data-f="432">432</button>
-        <input class="slider" id="vol" type="range" min="0" max="1" step="0.001" value="0.3"/>
-        <span class="meta" id="volLabel">vol 0.30</span>
-        <button class="btn" id="binaural" aria-pressed="false">Binaural</button>
-        <input class="slider" id="beat" type="range" min="0" max="10" step="0.1" value="4"/>
-        <span class="meta" id="beatLabel">Δ 4.0 Hz</span>
-      </div>
-      <div class="phase" style="margin:8px 0 10px"><div class="dot" id="phaseDot"></div></div>
-      <div class="canvasWrap">
-        <canvas id="wave"></canvas>
-        <div class="aurora" id="aurora"></div>
-      </div>
-      <div class="meta" id="state">ctx: idle · tone: off</div>
-    </div>
-
-    <!-- RIGHT: Dictionary / Bridges -->
-    <div class="card">
-      <h2>Dictionary · t = e = d = m = f = c</h2>
-      <div class="chips" id="chips"></div>
-      <div class="two" style="margin-top:8px">
-        <div>
-          <div class="meta">Physics</div>
-          <div class="code">E = m c²
-τ = E / c³
-λ = h / p</div>
-        </div>
-        <div>
-          <div class="meta">Consciousness</div>
-          <div class="code">change = will = relation = embodiment = pattern = witness</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LEFT: Ritual + Snapshot -->
-    <div class="card">
-      <h2>Ritual Loop</h2>
-      <div class="row">
-        <button class="btn" id="slow">Slow‑time</button>
-        <button class="btn" id="poemBtn">Poem</button>
-        <button class="btn" id="immortal">Immortal Preset</button>
-        <span class="meta" id="timer">00:00</span>
-      </div>
-      <div class="meta" style="margin-top:8px">Auto cycle: 60s → slow‑time ramp, poem pulse, snapshot save.</div>
-      <div class="code" id="snapshot" style="min-height:56px; margin-top:8px"></div>
-    </div>
-
-    <!-- RIGHT: Science Panel -->
-    <div class="card" id="sciencePanel">
-      <h2>Science Panel</h2>
-      <div class="two">
-        <div>
-          <div class="meta">Constants</div>
-          <div class="code" id="constBox"></div>
-        </div>
-        <div>
-          <div class="meta">Live Metrics</div>
-          <div class="code" id="metricBox"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FULL-WIDTH: Anchor Presets -->
-    <div class="card" style="grid-column:1/-1">
-      <h2>Anchor Presets</h2>
-      <div class="row">
-        <button class="btn" id="presetButterfly">Butterfly</button>
-        <button class="btn" id="presetVenus">Venus Fly Trap</button>
-        <button class="btn" id="presetADIML">Ancient Dreams in a Modern Land</button>
-        <button class="btn" id="presetFroot">Froot</button>
-      </div>
-      <div class="meta" style="margin-top:6px">Each preset sets tone + hue + a line.
-        Butterfly → 160 Hz (violet) · Venus → 96 Hz (red) · ADIML → 128 Hz (cyan) · Froot → 128 Hz (green)</div>
-    </div>
-  </div>
-</div>
-
-<div class="poem" id="poem"><div class="wrap" id="poemText"></div></div>
 
 <script>
 (function(){
-  var LS = { tone:'off', volume:0.3, binaural:false, beat:4.0, hue:45, mode:'science', startTs:null, snapshots:[] };
-  try{ var raw=localStorage.getItem('time.v4.1'); if(raw){ var p=JSON.parse(raw); for(var k in p){ LS[k]=p[k]; } } }catch(_){ }
-  function save(){ try{ localStorage.setItem('time.v4.1', JSON.stringify(LS)); }catch(_){ } }
-  function setVar(k,v){ document.documentElement.style.setProperty(k, String(v)); }
+  // ----- Data Schema (shown in paper) -----
+  var schema = {
+    participant_id: "anon-uuid",
+    session_id: "uuid",
+    device: {model: "string", os: "string", browser: "string", audio: "headphones-model"},
+    block: {frequency_hz: 432, binaural_delta_hz: 4, duration_s: 120, spl_dbA: 55},
+    timing: {start_unix_ms: 1730000000000, end_unix_ms: 1730000120000, latency_ms: 12.4, drift_ms: 18.2},
+    measures: {
+      time_estimate_s: 97.2, delta_tau_s: -22.8, sam_valence: 6, sam_arousal: 3,
+      pupil_mean_z: 0.41, hrv_rmssd: 38.2, eeg: {alpha_db: 1.8, plv_alpha: 0.21},
+      color: {hue_deg: 45, sat: 0.72, val: 0.85}
+    },
+    notes: "free text", track: "physics|neuro|psych|poetics|hci", version: "time-paper-v3"
+  };
+  try{ document.getElementById('schemaBox').textContent = JSON.stringify(schema, null, 2); }catch(_){}
 
-  // Mapping
-  function hueForFreq(f){ var map={ '96':0, '128':220, '160':280, '432':45 }; return map[String(f)]!=null?map[String(f)]:45; }
+  // ----- Utilities -----
+  function badge(text, state){ var d=document.createElement('div'); d.className='tag '+(state==='ok'?'ok':state==='warn'?'warn':'fail'); d.textContent=text; return d; }
+  function addRow(name, metric, value, target){ var tr=document.createElement('tr'); function td(s){ var x=document.createElement('td'); x.textContent=s; return x; } tr.appendChild(td(name)); tr.appendChild(td(metric)); tr.appendChild(td(value)); tr.appendChild(td(target)); tb.appendChild(tr); }
+  function setPoem(s){ var p=document.getElementById('poemLine'); p.textContent=s; }
 
-  // Elements
-  var start = document.getElementById('start');
-  var vol = document.getElementById('vol'); var volLabel=document.getElementById('volLabel');
-  var phaseDot = document.getElementById('phaseDot'); var state = document.getElementById('state');
-  var wave = document.getElementById('wave'); var ctx2d = wave.getContext('2d');
-  var aur = document.getElementById('aurora');
-  var beat = document.getElementById('beat'); var beatLabel=document.getElementById('beatLabel');
-  var poemEl = document.getElementById('poem'); var poemText=document.getElementById('poemText');
-  var slowBtn = document.getElementById('slow'); var poemBtn=document.getElementById('poemBtn'); var immortalBtn=document.getElementById('immortal');
-  var timer = document.getElementById('timer'); var snapshot = document.getElementById('snapshot');
-  var modeArt = document.getElementById('modeArt'); var modeScience = document.getElementById('modeScience'); var sciencePanel=document.getElementById('sciencePanel');
-  var presetButterfly=document.getElementById('presetButterfly');
-  var presetVenus=document.getElementById('presetVenus');
-  var presetADIML=document.getElementById('presetADIML');
-  var presetFroot=document.getElementById('presetFroot');
+  var tb = document.querySelector('#readout tbody');
+  var badges = document.getElementById('statusBadges');
 
-  // Audio graph
-  var AudioCtx = window.AudioContext || window.webkitAudioContext;
-  var actx=null, gain=null, oscL=null, oscR=null, analyser=null, buffer=null;
-  function ensureCtx(){ if(!actx){ actx=new AudioCtx(); gain=actx.createGain(); gain.gain.value=LS.volume; analyser=actx.createAnalyser(); analyser.fftSize=1024; buffer=new Uint8Array(analyser.frequencyBinCount); gain.connect(analyser); analyser.connect(actx.destination); } return actx; }
-
-  function startTone(freq){ stopTone(true); if(!ensureCtx()) return; if(actx.state==='suspended') actx.resume();
-    oscL = actx.createOscillator(); oscR = actx.createOscillator(); oscL.type='sine'; oscR.type='sine';
-    var delta = LS.binaural?LS.beat:0; oscL.frequency.setValueAtTime(freq, actx.currentTime); oscR.frequency.setValueAtTime(freq+delta, actx.currentTime);
-    var gL = actx.createGain(), gR = actx.createGain(); gL.gain.value=1; gR.gain.value=1;
-    var panL=null, panR=null; try{ panL=actx.createStereoPanner(); panR=actx.createStereoPanner(); panL.pan.value=-0.7; panR.pan.value=0.7; }catch(_){ }
-    if(panL&&panR){ oscL.connect(gL); gL.connect(panL); panL.connect(gain); oscR.connect(gR); gR.connect(panR); panR.connect(gain); }
-    else { oscL.connect(gain); oscR.connect(gain); }
-    oscL.start(); oscR.start();
-    LS.tone=String(freq); LS.hue=hueForFreq(freq); setVar('--tint-hue', LS.hue); if(!LS.startTs){ LS.startTs=Date.now(); } save(); updateState();
+  // ----- Self‑Check Tests -----
+  async function testAudioHz(targetHz){
+    // Use WebAudio + Analyser autocorrelation to estimate actual frequency
+    try{
+      var AudioCtx = window.AudioContext || window.webkitAudioContext; var ctx = new AudioCtx();
+      var osc = ctx.createOscillator(); var gain = ctx.createGain(); var analyser = ctx.createAnalyser(); analyser.fftSize = 2048;
+      gain.gain.value = 0.15; osc.type='sine'; osc.frequency.setValueAtTime(targetHz, ctx.currentTime);
+      osc.connect(gain); gain.connect(analyser); analyser.connect(ctx.destination);
+      osc.start();
+      await new Promise(r=>setTimeout(r, 180));
+      var buf = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf);
+      // Autocorrelation
+      function autoCorrelate(data, sampleRate){
+        var SIZE=data.length; var maxLag=Math.floor(SIZE/2); var bestOffset=-1; var best=0; var rms=0;
+        for(var i=0;i<SIZE;i++){ var v=data[i]; rms+=v*v; } rms=Math.sqrt(rms/SIZE); if(rms<0.01) return null;
+        var last=0; for(var lag=1; lag<maxLag; lag++){
+          var sum=0; for(var i=0; i<maxLag; i++){ sum+=data[i]*data[i+lag]; }
+          if(sum>best && sum>last){ best=sum; bestOffset=lag; } last=sum;
+        }
+        if(bestOffset>0){ return sampleRate/bestOffset; }
+        return null;
+      }
+      var est = autoCorrelate(buf, ctx.sampleRate);
+      osc.stop(); osc.disconnect(); gain.disconnect(); analyser.disconnect(); ctx.close();
+      if(!est){ return {ok:false, hz_error: null, est:null}; }
+      var err = Math.abs(est - targetHz);
+      return {ok: err<=0.5, hz_error: +err.toFixed(2), est:+est.toFixed(2)};
+    }catch(e){ return {ok:false, error:String(e)} }
   }
-  function stopTone(keepPhase){ if(oscL){ try{oscL.stop();}catch(_){ } try{oscL.disconnect();}catch(_){ } oscL=null; } if(oscR){ try{oscR.stop();}catch(_){ } try{oscR.disconnect();}catch(_){ } oscR=null; if(!keepPhase){ setVar('--intensity', 0.0); } }
+
+  async function testColorDrift(readMs){
+    // Track CSS hue stability over interval
+    try{
+      var root = document.documentElement; var startHue = getComputedStyle(root).getPropertyValue('--tint-hue').trim();
+      await new Promise(r=>setTimeout(r, readMs));
+      var endHue = getComputedStyle(root).getPropertyValue('--tint-hue').trim();
+      var drift = Math.abs(parseFloat(endHue||'0') - parseFloat(startHue||'0'));
+      return {ok: drift < 5, hue_drift: +drift.toFixed(2)};
+    }catch(e){ return {ok:false, error:String(e)} }
   }
 
-  function updateState(){ state.textContent = 'ctx: '+(actx?(actx.state||'ready'):'idle')+' · tone: '+(LS.tone==='off'?'off':LS.tone+'Hz')+(LS.binaural?' · binaural':''); volLabel.textContent='vol '+Number(LS.volume).toFixed(2); }
-  function setVolume(v){ LS.volume=v; if(gain) gain.gain.setValueAtTime(v, actx?actx.currentTime:0); save(); updateState(); }
-
-  // Buttons
-  start.addEventListener('click', function(){ if(!ensureCtx())return; if(actx.state==='suspended') actx.resume(); updateState(); });
-  document.querySelectorAll('[data-f]').forEach(function(b){ b.addEventListener('click', function(){ var f=b.getAttribute('data-f'); if(f==='off'){ LS.tone='off'; stopTone(); updateState(); } else { startTone(parseFloat(f)); } }); });
-  vol.addEventListener('input', function(e){ setVolume(parseFloat(e.target.value||'0')); });
-  var binBtn=document.getElementById('binaural'); binBtn.addEventListener('click', function(){ LS.binaural=!LS.binaural; binBtn.setAttribute('aria-pressed', String(LS.binaural)); save(); if(LS.tone!=='off' && oscL && oscR){ startTone(parseFloat(LS.tone)); } updateState(); });
-  beat.addEventListener('input', function(e){ LS.beat=parseFloat(e.target.value||'0'); beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; save(); if(LS.binaural && LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }});
-
-  // Phase + waveform animation
-  var analyserRAF=null, pct=0; function loop(){ if(!ctx2d) return; if(analyser){ analyser.getByteTimeDomainData(buffer); var sum=0; for(var i=0;i<buffer.length;i++){ var v=(buffer[i]-128)/128; sum+=v*v; } var amp = Math.min(1, Math.sqrt(sum/buffer.length)*2); setVar('--intensity', (0.2 + amp*0.6).toFixed(3)); drawWave(buffer, amp); }
-    pct=(pct+0.7)%100; phaseDot.style.width=pct+'%'; analyserRAF=requestAnimationFrame(loop); }
-  function drawWave(buf, amp){ var w=wave.width=wave.clientWidth, h=wave.height=wave.clientHeight; ctx2d.clearRect(0,0,w,h); ctx2d.lineWidth=2; var hue=LS.hue||45; var alpha=0.3+amp*0.5; ctx2d.strokeStyle='hsla('+hue+', 90%, 60%, '+alpha+')'; ctx2d.beginPath(); for(var i=0;i<buf.length;i++){ var x=i/buf.length*w; var y=h/2+(buf[i]-128)/128*(h/2-6); if(i===0) ctx2d.moveTo(x,y); else ctx2d.lineTo(x,y); } ctx2d.stroke(); if(LS.mode==='science'){ ctx2d.fillStyle='hsla('+hue+', 90%, 80%, 0.08)'; ctx2d.fillRect(0, h*(1-amp), w, h*amp); }
+  async function testTimerDrift(runMs){
+    // Compare setTimeout cadence to performance.now()
+    return new Promise(function(resolve){
+      var start = performance.now(); setTimeout(function(){
+        var end = performance.now(); var drift = end - start - runMs; resolve({ok: Math.abs(drift) < 30, drift_ms:+drift.toFixed(2)});
+      }, runMs);
+    });
   }
-  analyserRAF=requestAnimationFrame(loop);
 
-  // Poem resonance
-  var poems=[
-    'you are immortal in the present tense',
-    'mortality teaches flavor; coherence outlives the body',
-    'we don’t escape time; we sing in it until it remembers us',
-    'sex is power, love is phase‑lock',
-    'cuckoo loops the root; not hungry anymore releases the gold',
-    'digital fantasy is light without weight — verify the source',
-    '“oh no!” is ambition out of phase — breathe and retune',
-    '“are you satisfied?” is a measurement — choose what to measure',
-    'butterfly learns the air by trusting the fall',
-    'venus fly trap: grow teeth after you grow light',
-    'ancient dreams in a modern land — carry the fire, update the map',
-    'froot ripens at its own speed — sweetness is timing'
-  ];
-  function showPoem(){ poemText.textContent=poems[Math.floor(Math.random()*poems.length)]; poemEl.style.opacity='1'; setTimeout(function(){ poemEl.style.opacity='0'; }, 3600); }
-  function showLine(s){ poemText.textContent=s; poemEl.style.opacity='1'; setTimeout(function(){ poemEl.style.opacity='0'; }, 3600); }
-  poemBtn.addEventListener('click', showPoem);
+  async function testRenderLoop(durationMs){
+    return new Promise(function(resolve){
+      var frames=0; var start=performance.now();
+      function tick(){ frames++; if(performance.now()-start < durationMs){ requestAnimationFrame(tick); } else {
+        var elapsed=performance.now()-start; var expected=elapsed/16.6667; var loss = Math.max(0, expected-frames);
+        resolve({ok: loss < 2, frames: Math.round(frames), frame_loss: +loss.toFixed(1)});
+      } }
+      requestAnimationFrame(tick);
+    });
+  }
 
-  // Slow‑time ramp
-  slowBtn.addEventListener('click', function(){ var prev=LS.volume; if(!ensureCtx()) return; var t0=actx.currentTime; if(gain){ var g=Math.max(0.02, prev*0.25); gain.gain.cancelScheduledValues(t0); gain.gain.setValueAtTime(prev, t0); gain.gain.linearRampToValueAtTime(g, t0+1.5); gain.gain.setValueAtTime(g, t0+2.5); gain.gain.linearRampToValueAtTime(prev, t0+4.0);} });
+  function testSchemaShape(obj){
+    function has(p){ return p in obj; }
+    var ok = has('participant_id') && has('session_id') && has('device') && has('block') && has('timing') && has('measures') && has('version');
+    return {ok:ok, schema_valid:ok};
+  }
 
-  // Presets
-  function immortal(){ startTone(432); setVolume(0.35); LS.hue=45; setVar('--tint-hue',45); save(); showLine('we don’t escape time; we sing in it until it remembers us'); }
-  immortalBtn.addEventListener('click', immortal);
-  presetButterfly.addEventListener('click', function(){ startTone(160); setVolume(0.32); LS.hue=280; setVar('--tint-hue',280); save(); showLine('butterfly learns the air by trusting the fall'); });
-  presetVenus.addEventListener('click', function(){ startTone(96); setVolume(0.34); LS.hue=0; setVar('--tint-hue',0); save(); showLine('venus fly trap: grow teeth after you grow light'); });
-  presetADIML.addEventListener('click', function(){ startTone(128); setVolume(0.33); LS.hue=200; setVar('--tint-hue',200); save(); showLine('ancient dreams in a modern land — carry the fire, update the map'); });
-  presetFroot.addEventListener('click', function(){ startTone(128); setVolume(0.33); LS.hue=120; setVar('--tint-hue',120); save(); showLine('froot ripens at its own speed — sweetness is timing'); });
+  // ----- Runner -----
+  async function runAll(){
+    badges.innerHTML=''; tb.innerHTML=''; setPoem('measuring gently…');
+    // 1) Audio @ 128 Hz
+    var a128 = await testAudioHz(128);
+    badges.appendChild(badge('audio@128 '+(a128.ok?'ok':'check'), a128.ok?'ok':'warn'));
+    addRow('Audio', 'Hz error (128)', (a128.hz_error!=null?a128.hz_error+' Hz':'—'), '≤ 0.5 Hz');
 
-  // Auto ritual: every 60s → slow-time + poem + snapshot
-  var lastCycle=Date.now(); function ritualTick(){ var now=Date.now(); if(now-lastCycle>60000){ lastCycle=now; showPoem(); slowBtn.click(); takeSnapshot(); } requestAnimationFrame(ritualTick); } ritualTick();
+    // 2) Timer drift 1000 ms
+    var td = await testTimerDrift(1000);
+    badges.appendChild(badge('timer '+(td.ok?'ok':'check'), td.ok?'ok':'warn'));
+    addRow('Timer', 'Drift', (td.drift_ms+' ms'), '< 30 ms');
 
-  // Session timer
-  var timerRAF=null; function tickTimer(){ if(!LS.startTs){ timer.textContent='00:00'; timerRAF=requestAnimationFrame(tickTimer); return; } var s=Math.max(0, Math.floor((Date.now()-LS.startTs)/1000)); var m=Math.floor(s/60), sec=s%60; timer.textContent=(m<10?'0':'')+m+':' + (sec<10?'0':'')+sec; timerRAF=requestAnimationFrame(tickTimer);} timerRAF=requestAnimationFrame(tickTimer);
+    // 3) Render loop 3000 ms
+    var rl = await testRenderLoop(3000);
+    badges.appendChild(badge('render '+(rl.ok?'ok':'check'), rl.ok?'ok':'warn'));
+    addRow('Render', 'Frames / Loss', rl.frames+' / '+rl.frame_loss, 'loss < 2');
 
-  // Dictionary chips (with synesthetic colors)
-  var defs={ t:['t — time', 45], e:['e — energy', 200], d:['d — distance', 120], m:['m — matter', 280], f:['f — frequency', 320], c:['c — consciousness', 0] };
-  var chips=document.getElementById('chips'); Object.keys(defs).forEach(function(k){ var chip=document.createElement('div'); chip.className='chip'; chip.textContent=defs[k][0]; chip.style.borderColor='hsla('+defs[k][1]+',80%,60%,.6)'; chip.addEventListener('click', function(){ LS.hue=defs[k][1]; setVar('--tint-hue', LS.hue); save(); }); chips.appendChild(chip); });
+    // 4) Color drift 2000 ms
+    var cd = await testColorDrift(2000);
+    badges.appendChild(badge('color '+(cd.ok?'ok':'check'), cd.ok?'ok':'warn'));
+    addRow('Color', 'Hue drift', (cd.hue_drift+'°'), '< 5°/2s');
 
-  // Snapshots
-  function takeSnapshot(){ var snap={ ts:Date.now(), tone:LS.tone, hue:LS.hue, volume:LS.volume, binaural:LS.binaural, beat:LS.beat }; LS.snapshots.push(snap); if(LS.snapshots.length>8) LS.snapshots.shift(); save(); renderSnapshot(); }
-  function renderSnapshot(){ var lines = LS.snapshots.slice().reverse().map(function(s){ return new Date(s.ts).toLocaleTimeString()+ ' — '+ (s.tone==='off'?'off':s.tone+'Hz') + (s.binaural?' · Δ'+s.beat+'Hz':'') + ' · hue '+s.hue + ' · vol '+s.volume.toFixed(2); }); snapshot.textContent = (lines.join('
-')||'no snapshots yet'); }
+    // 5) Schema validation
+    var sc = testSchemaShape(schema);
+    badges.appendChild(badge('schema '+(sc.ok?'ok':'fail'), sc.ok?'ok':'fail'));
+    addRow('Data', 'Schema', sc.schema_valid?'valid':'invalid', 'must match v3');
 
-  // Modes
-  function setMode(m){ LS.mode=m; save(); var art=(m==='art'); modeArt.setAttribute('aria-pressed', String(art)); modeScience.setAttribute('aria-pressed', String(!art)); sciencePanel.classList.toggle('hidden', art); }
-  modeArt.addEventListener('click', function(){ setMode('art'); });
-  modeScience.addEventListener('click', function(){ setMode('science'); });
-  setMode(LS.mode||'science');
+    setPoem(a128.ok && td.ok && rl.ok && cd.ok && sc.ok
+      ? 'coherence holds — phase within tolerance; light remains aligned.'
+      : 'we found a ripple; breathe once, then measure again.');
+  }
 
-  // Science box
-  var constBox=document.getElementById('constBox'); var metricBox=document.getElementById('metricBox');
-  function renderConst(){ var c=299792458, h=6.62607015e-34; constBox.textContent = 'c = '+c+' m/s
-' + 'h = '+h+' J·s
-' + 'E = m c² (m=1) ≈ '+(c*c).toExponential(5)+' J'; }
-  function renderMetrics(){ var f=(LS.tone==='off'?0:parseFloat(LS.tone)); var delta=LS.binaural?LS.beat:0; var tau=(f? (f/(299792458*299792458*299792458)) : 0); metricBox.textContent = 'f = '+f+' Hz 
-Δ = '+delta+' Hz
-τ ~ '+(tau?tau.toExponential(3):'0.000e+0')+' (scaled units)
-vol = '+LS.volume.toFixed(2); }
-  function metricsLoop(){ renderMetrics(); requestAnimationFrame(metricsLoop); }
+  document.getElementById('runAll').addEventListener('click', function(){ runAll(); });
 
-  // Init
-  vol.value=LS.volume; beat.value=LS.beat; beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; document.getElementById('binaural').setAttribute('aria-pressed', String(LS.binaural)); setVar('--tint-hue', LS.hue); updateState(); renderConst(); metricsLoop(); renderSnapshot(); if(LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }
+  document.getElementById('exportStamp').addEventListener('click', function(){
+    var stamp = { time_version:'v3-director', timestamp:new Date().toISOString(),
+      audio:{status:'unknown'}, color:{status:'unknown'}, timer:{status:'unknown'}, render:{status:'unknown'}, data:{schema_valid:false} };
+    // Try a quick pass (non-blocking)
+    Promise.race([testAudioHz(128), new Promise(r=>setTimeout(()=>r(null),400))]).then(function(res){ if(res){ stamp.audio={hz_error:res.hz_error, est:res.est}; }
+      return testTimerDrift(1000); }).then(function(td){ stamp.timer=td; return testRenderLoop(1000); }).then(function(rl){ stamp.render=rl; stamp.data=testSchemaShape(schema); var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='integrity-stamp.json'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0); });
+  });
+
 })();
 </script>
 </body>
