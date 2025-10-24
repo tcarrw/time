@@ -3,220 +3,178 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>τ = E / c³ · The Immortal Bridge — Director Mode (v3 · Deluxe)</title>
-<meta name="theme-color" content="#f5d477"/>
+<title>Time · Director v3 — Minimal</title>
+<meta name="theme-color" content="#0b0d11"/>
 <style>
-:root{
-  --bg:#0a0c10; --ink:#fff9eb; --muted:#d6cfa8; --gold:#f5d477; --gold-d:#cfae49; --glass:rgba(255,255,255,.06); --glass-2:rgba(255,255,255,.1);
-  --ring:0 0 0 4px rgba(245,212,119,.35); --radius:20px; --shadow:0 18px 48px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
-}
+:root{--bg:#0b0d11;--ink:#f5f7ff;--muted:#b8c4d6;--accent:#ffd76b;--glass:rgba(255,255,255,.06);--glass2:rgba(255,255,255,.12);--radius:16px}
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roman", serif; background: radial-gradient(1200px 800px at 15% -10%, #20190a 0%, #0a0c10 55%), #0a0c10; color:var(--ink); line-height:1.6; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
-.container{max-width:1140px; margin:0 auto; padding:24px}
-.header{display:flex; gap:16px; align-items:flex-end; justify-content:space-between; margin-bottom:22px}
-.brand{display:flex; align-items:center; gap:14px}
-.logo{width:52px;height:52px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff8c2, var(--gold) 45%, var(--gold-d) 72%, #0a0c10 100%); box-shadow:0 0 60px rgba(245,212,119,.45)}
-.title{font-size:26px; letter-spacing:.2px}
-.badge{padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid var(--glass-2); color:var(--muted)}
-.grid{display:grid; grid-template-columns:1fr 360px; gap:18px}
-@media (max-width:980px){.grid{grid-template-columns:1fr}}
-.paper{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative}
-.paper.deluxe-ok{box-shadow:0 0 0 2px rgba(245,212,119,.35), 0 0 80px rgba(245,212,119,.25), var(--shadow);} /* coherence halo */
-.paper h2{font-size:20px; margin:0 0 8px 0}
-.paper h3{font-size:16px; margin:12px 0 6px}
-.hr{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); margin:12px 0}
-pre.code, .code{background:#0b0f15; border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:14px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:18px; line-height:1.6; color:#f3f8ff; white-space:pre-wrap}
-.kv{display:grid; grid-template-columns:160px 1fr; gap:6px; align-items:start}
-.panel{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px; position:sticky; top:16px}
-.panel h3{margin:0 0 8px 0}
-.btn{background:rgba(245,212,119,.14); border:1px solid rgba(245,212,119,.35); border-radius:12px; padding:10px 12px; color:var(--ink); font-size:14px; cursor:pointer}
-.btn:hover{box-shadow:var(--ring)}
-.btn.secondary{background:var(--glass); border-color:var(--glass-2)}
-.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
-.tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06)}
-.ok{background:rgba(56,201,132,.18); border-color:rgba(56,201,132,.38)}
-.warn{background:rgba(248,148,37,.18); border-color:rgba(248,148,37,.38)}
-.fail{background:rgba(248,82,82,.18); border-color:rgba(248,82,82,.38)}
-.small{font-size:12px; color:var(--muted)}
-.table{width:100%; border-collapse:separate; border-spacing:0}
-.table th,.table td{border-bottom:1px solid rgba(255,255,255,.12); padding:8px 6px; text-align:left; font-size:13px}
-.watermark{position:absolute; right:16px; bottom:16px; font-weight:700; letter-spacing:.18em; font-size:12px; color:rgba(245,212,119,.7)}
-@media print{
-  .panel,.btn,.badges{display:none!important}
-  body{background:#fff;color:#000}
-  .paper{border:0; box-shadow:none}
-  .watermark{position:fixed; right:20px; bottom:20px; color:#bfa24a}
-}
-.paper.deluxe-ok{box-shadow:0 0 0 2px rgba(245,212,119,.35), 0 0 80px rgba(245,212,119,.25), var(--shadow);}
-body.deluxe{--ink:#fff9eb; --muted:#d6cfa8; --accent:#f5d477; --edge:#fff7d1;}
-/* Doechii/TikTok bar vibes */
-body.sans{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
-.bars-sticker{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(245,212,119,.18); border:1px solid rgba(245,212,119,.45); font-weight:600; font-size:12px; letter-spacing:.2px}
-.bars-quote{font-size:18px; font-weight:700; line-height:1.3; padding:10px 12px; border-left:4px solid var(--gold); background:rgba(245,212,119,.08); border-radius:10px}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0c0f16,#0b0d11);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.badge{padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid var(--glass2);color:var(--muted)}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:var(--glass);border:1px solid var(--glass2);border-radius:10px;padding:10px 12px;color:var(--ink);cursor:pointer;font-size:14px}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+@media (max-width:960px){.grid{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));border:1px solid var(--glass2);border-radius:var(--radius);padding:14px}
+.card h2{font-size:18px;margin:0 0 8px}
+hr{border:0;border-top:1px solid var(--glass2);margin:10px 0}
+.code{background:#0b0f15;border:1px solid var(--glass2);border-radius:12px;padding:12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#e9f2ff;white-space:pre-wrap}
+.table{width:100%;border-collapse:separate;border-spacing:0}
+.table th,.table td{padding:8px 6px;border-bottom:1px solid var(--glass2);font-size:14px;text-align:left}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--glass2);background:var(--glass)}
+.ok{background:rgba(56,201,132,.18);border-color:rgba(56,201,132,.38)}
+.warn{background:rgba(248,148,37,.18);border-color:rgba(248,148,37,.38)}
+.fail{background:rgba(248,82,82,.18);border-color:rgba(248,82,82,.38)}
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="brand"><div class="logo" aria-hidden="true"></div>
-        <div><div class="title">τ = E / c³ · The Immortal Bridge</div>
-        <div class="small">Director Mode v3 · Deluxe — PRINCESS OF POWER</div></div></div>
-      <div style="display:flex; gap:8px; align-items:center"><div class="badge">single‑file · deluxe skin</div><button class="btn" id="toggleDeluxe">Deluxe Skin</button><button class="btn" id="toggleSans">Typeface</button><button class="btn" id="toggleBars">Bars Mode</button></div>
-    </div>
-
-    <div class="grid">
-      <div class="paper" id="paper">
-        <div class="watermark">PRINCESS OF POWER · DELUXE</div>
-        <h2>Abstract <span class="bars-sticker" id="absSticker" style="display:none">TL;DR</span></h2>
-        <p>Time is not what passes — it is what <em>synchronizes</em>. We explore a bridge where time, energy, distance, matter, frequency, and consciousness (t = e = d = m = f = c) are harmonic expressions of one constant: <b>c</b>, the witness of light. We present τ = E / c³ as a relational lens linking energy to temporal experience, pairing lab-grade methods with poetic marginalia.</p>
-        <div class="hr"></div>
-
-        <h2>Core Equations</h2>
-        <pre class="code">E = m c²
-τ = E / c³
-λ = h / p</pre>
-        <p class="small">“light slows to feel itself.” · “the longer you see, the slower it burns.”</p>
-        <div class="hr"></div>
-        <div class="bars-quote" id="barsQuote" style="display:none">one clean move · measure, then move · coherence over chaos</div>
-        <div class="hr"></div>
-        <h2>Methods · Exact Measurement Procedures</h2>
-        <h3>Psychophysics — Perceived-Time Shift (Δτ)</h3>
-        <div class="kv"><div><b>Frequencies</b></div><div>96, 128, 160, 432 Hz; Δf (binaural): 0/2/4 Hz</div></div>
-        <div class="kv"><div><b>Durations</b></div><div>30, 60, 120 s (counterbalanced)</div></div>
-        <div class="kv"><div><b>Endpoint</b></div><div>Δτ = estimate − clock (bias-corrected)</div></div>
-        <div class="hr"></div>
-
-        <h2>Appendix · Data Schema</h2>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 8px">
-          <button class="btn" id="copyJson">Copy JSON</button>
-          <button class="btn secondary" id="downloadCsv">Download CSV</button>
-        </div>
-        <div class="code" id="schemaBox"></div>
-        <h3 style="margin-top:10px">Visual Table</h3>
-        <table class="table" id="schemaTable">
-          <thead><tr><th>Section</th><th>Field</th><th>Value</th></tr></thead>
-          <tbody></tbody>
-        </table>
-        <div class="hr"></div>
-
-        <h2>Page 42 · Eat the World</h2>
-        <p class="small">to eat the world is to metabolize light; each test a prayer for coherence; each error a breath that reminds us we're alive.</p>
-      </div>
-
-      <aside class="panel" id="director">
-        <h3>Director Panel · Self‑Check</h3>
-        <div class="small">Local diagnostics: audio · timer · render · schema.</div>
-        <div style="margin:10px 0; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn" id="runAll">Run Self‑Check</button>
-          <button class="btn secondary" id="exportStamp">Export Integrity Stamp</button>
-        </div>
-        <div class="badges" id="statusBadges"></div>
-        <div class="hr"></div>
-        <h3>Live Readouts</h3>
-        <table class="table" id="readout">
-          <thead><tr><th>Test</th><th>Metric</th><th>Value</th><th>Target</th></tr></thead>
-          <tbody></tbody>
-        </table>
-        <div class="hr"></div>
-        <div class="small" id="poemLine">…</div>
-      </aside>
+<div class="container">
+  <div class="header">
+    <div class="badge">single‑file · minimal</div>
+  <div class="marina-banner" id="marinaBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(255,215,107,.15);border:1px solid rgba(255,215,107,.4);font-weight:600">Marina Mode · Princess of Power (Deluxe)</div>
+  <div class="controls">
+      <button class="btn" id="run">Run Self‑Check</button>
+      <button class="btn" id="export">Export Integrity Stamp</button>
+      <button class="btn" id="copyJson">Copy JSON</button>
+      <button class="btn" id="downloadCsv">Download CSV</button>
     </div>
   </div>
 
+  <div class="grid">
+    <div class="card">
+      <h2>Abstract</h2>
+      <p>Time, energy, distance, matter, frequency, and consciousness are treated as harmonics of a single field. We test a practical bridge: <b>τ = E / c³</b>.</p>
+      <hr/>
+      <h2>Core Equations</h2>
+      <div class="code">E = m c²\nτ = E / c³\nλ = h / p</div>
+      <hr/>
+      <h2>Dimensions · Units</h2>
+      <table class="table" style="margin-bottom:10px">
+        <thead><tr><th>Quantity</th><th>Symbol</th><th>SI Unit</th><th>Dimension</th></tr></thead>
+        <tbody>
+          <tr><td>speed of light</td><td>c</td><td>m·s⁻¹</td><td>L T⁻¹</td></tr>
+          <tr><td>Planck constant</td><td>h</td><td>J·s</td><td>M L² T⁻¹</td></tr>
+          <tr><td>energy</td><td>E</td><td>J</td><td>M L² T⁻²</td></tr>
+          <tr><td>mass</td><td>m</td><td>kg</td><td>M</td></tr>
+          <tr><td>wavelength</td><td>λ</td><td>m</td><td>L</td></tr>
+          <tr><td>bridge term</td><td>τ = E / c³</td><td>kg·s·m⁻¹</td><td>M L⁻¹ T</td></tr>
+        </tbody>
+      </table>
+      <div class="code" style="margin-bottom:12px">Dimensional checks:
+E = m c² → [M][L T⁻¹]² = M L² T⁻²
+τ = E / c³ → [M L² T⁻²] / [L³ T⁻³] = M L⁻¹ T</div>
+
+      <h2>Dimensions · Units</h2>
+      <table class="table" style="margin-bottom:10px">
+        <thead><tr><th>Quantity</th><th>Symbol</th><th>SI Unit</th><th>Dimension</th></tr></thead>
+        <tbody>
+          <tr><td>speed of light</td><td>c</td><td>m·s⁻¹</td><td>L T⁻¹</td></tr>
+          <tr><td>Planck constant</td><td>h</td><td>J·s</td><td>M L² T⁻¹</td></tr>
+          <tr><td>energy</td><td>E</td><td>J</td><td>M L² T⁻²</td></tr>
+          <tr><td>mass</td><td>m</td><td>kg</td><td>M</td></tr>
+          <tr><td>wavelength</td><td>λ</td><td>m</td><td>L</td></tr>
+          <tr><td>bridge term</td><td>τ = E / c³</td><td>kg·s·m⁻¹</td><td>M L⁻¹ T</td></tr>
+        </tbody>
+      </table>
+      <div class="code" style="margin-bottom:12px">Dimensional checks:
+E = m c² → [M][L T⁻¹]² = M L² T⁻²
+τ = E / c³ → [M L² T⁻²] / [L³ T⁻³] = M L⁻¹ T</div>
+      
+      $1</h2>
+      <div class="code" id="schemaBox"></div>
+      <h3 style="margin:10px 0 6px">Visual Table</h3>
+      <table class="table" id="schemaTable">
+        <thead><tr><th>Section</th><th>Field</th><th>Value</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Director Panel · Self‑Check</h2>
+      <div class="tags" id="badges"></div>
+      <hr/>
+      <h3>Live Readouts</h3>
+      <table class="table" id="readout">
+        <thead><tr><th>Test</th><th>Metric</th><th>Value</th><th>Target</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="code" id="poem" style="margin-top:8px">…</div>
+    </div>
+  </div>
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  // ----- Schema -----
-  var schema = {
-    participant_id: "anon-uuid",
-    session_id: "uuid",
-    device: {model: "string", os: "string", browser: "string", audio: "headphones-model"},
-    block: {frequency_hz: 432, binaural_delta_hz: 4, duration_s: 120, spl_dbA: 55},
-    timing: {start_unix_ms: 1730000000000, end_unix_ms: 1730000120000, latency_ms: 12.4, drift_ms: 18.2},
-    measures: {
-      time_estimate_s: 97.2, delta_tau_s: -22.8, sam_valence: 6, sam_arousal: 3,
-      pupil_mean_z: 0.41, hrv_rmssd: 38.2, eeg: {alpha_db: 1.8, plv_alpha: 0.21},
-      color: {hue_deg: 45, sat: 0.72, val: 0.85}
-    },
-    notes: "free text", track: "physics|neuro|psych|poetics|hci", version: "time-paper-v3-deluxe"
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function badge(text, cls){ var d=document.createElement('div'); d.className='tag '+cls; d.textContent=text; return d; }
+  function addRow(tb, a,b,c,d){ var tr=document.createElement('tr'); [a,b,c,d].forEach(function(v){ var td=document.createElement('td'); td.textContent=v; tr.appendChild(td); }); tb.appendChild(tr); }
+  function setPoem(s){ var p=$('poem'); if(p) p.textContent=s; }
+
+  // Data schema
+  var schema={
+    participant_id:"anon-uuid",
+    session_id:"uuid",
+    device:{model:"string",os:"string",browser:"string",audio:"headphones-model"},
+    block:{frequency_hz:432,binaural_delta_hz:4,duration_s:120,spl_dbA:55},
+    timing:{start_unix_ms:1730000000000,end_unix_ms:1730000120000,latency_ms:12.4,drift_ms:18.2},
+    measures:{time_estimate_s:97.2,delta_tau_s:-22.8,sam_valence:6,sam_arousal:3,pupil_mean_z:0.41,hrv_rmssd:38.2,eeg:{alpha_db:1.8,plv_alpha:0.21},color:{hue_deg:45,sat:0.72,val:0.85}},
+    notes:"free text",track:"physics|neuro|psych|poetics|hci",version:"time-paper-v3-min"
   };
-  var schemaBox=document.getElementById('schemaBox'); schemaBox.textContent = JSON.stringify(schema, null, 2);
-  var tbody=document.querySelector('#schemaTable tbody');
-  function addRow(sec, field, val){ var tr=document.createElement('tr'); var td1=document.createElement('td'); td1.textContent=sec; var td2=document.createElement('td'); td2.textContent=field; var td3=document.createElement('td'); td3.textContent=(typeof val==='object'?JSON.stringify(val):String(val)); tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tbody.appendChild(tr); }
-  addRow('ids','participant_id',schema.participant_id); addRow('ids','session_id',schema.session_id);
-  Object.keys(schema.device).forEach(function(k){ addRow('device',k,schema.device[k]); });
-  Object.keys(schema.block).forEach(function(k){ addRow('block',k,schema.block[k]); });
-  Object.keys(schema.timing).forEach(function(k){ addRow('timing',k,schema.timing[k]); });
-  Object.keys(schema.measures).forEach(function(k){ addRow('measures',k,schema.measures[k]); });
-  addRow('meta','track',schema.track); addRow('meta','version',schema.version);
+  $('schemaBox').textContent = JSON.stringify(schema,null,2);
+  var tbody=$('schemaTable').querySelector('tbody');
+  function add(sec, field, val){ var v=(typeof val==='object')?JSON.stringify(val):String(val); addRow(tbody, sec, field, v, ''); }
+  add('ids','participant_id',schema.participant_id); add('ids','session_id',schema.session_id);
+  Object.keys(schema.device).forEach(function(k){ add('device',k,schema.device[k]); });
+  Object.keys(schema.block).forEach(function(k){ add('block',k,schema.block[k]); });
+  Object.keys(schema.timing).forEach(function(k){ add('timing',k,schema.timing[k]); });
+  Object.keys(schema.measures).forEach(function(k){ add('measures',k,schema.measures[k]); });
+  add('meta','track',schema.track); add('meta','version',schema.version);
 
-  // ----- Copy / CSV Tools -----
-  document.getElementById('copyJson').addEventListener('click', function(){
-    try{ navigator.clipboard.writeText(schemaBox.textContent).then(function(){ flash('JSON copied'); }); }catch(_){ fallbackCopy(schemaBox.textContent); }
-  });
-  function fallbackCopy(text){ var t=document.createElement('textarea'); t.value=text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); flash('JSON copied'); }
-  document.getElementById('downloadCsv').addEventListener('click', function(){
-    var rows=[["section","field","value"]];
-    Array.from(tbody.querySelectorAll('tr')).forEach(function(tr){ var cells=tr.querySelectorAll('td'); rows.push([cells[0].textContent,cells[1].textContent,cells[2].textContent]); });
-    var csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
-    var blob=new Blob([csv],{type:'text/csv'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='schema_table.csv'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0);
-  });
+  // Self-check
+  var badges=$('badges'); var tb=$('readout').querySelector('tbody');
+  function clear(){ badges.innerHTML=''; tb.innerHTML=''; }
 
-  function flash(msg){ var p=document.getElementById('poemLine'); p.textContent=msg; setTimeout(function(){ p.textContent='…'; }, 1800); }
+  function addBadge(name, ok){ badges.appendChild(badge(name+' '+(ok?'ok':'check'), ok?'ok':'warn')); }
 
-  // ----- Self‑Check -----
-  var tb = document.querySelector('#readout tbody'); var badges = document.getElementById('statusBadges'); var paperEl=document.getElementById('paper');
-  function badge(text, state){ var d=document.createElement('div'); d.className='tag '+(state==='ok'?'ok':state==='warn'?'warn':'fail'); d.textContent=text; return d; }
-  function addRow(name, metric, value, target){ var tr=document.createElement('tr'); function td(s){ var x=document.createElement('td'); x.textContent=s; return x; } tr.appendChild(td(name)); tr.appendChild(td(metric)); tr.appendChild(td(value)); tr.appendChild(td(target)); tb.appendChild(tr); }
-
-  async function testAudioHz(targetHz){ try{ var AudioCtx=window.AudioContext||window.webkitAudioContext; var ctx=new AudioCtx(); if(ctx.state==='suspended'){ try{ await ctx.resume(); }catch(_){ } } var osc=ctx.createOscillator(); var gain=ctx.createGain(); var analyser=ctx.createAnalyser(); analyser.fftSize=2048; gain.gain.value=0.12; osc.type='sine'; osc.frequency.setValueAtTime(targetHz, ctx.currentTime); osc.connect(gain); gain.connect(analyser); analyser.connect(ctx.destination); osc.start(); await new Promise(r=>setTimeout(r,180)); var buf=new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf); function auto(data, sr){ var SIZE=data.length, maxLag=Math.floor(SIZE/2), best=0, bestLag=-1, rms=0; for(var i=0;i<SIZE;i++){var v=data[i]; rms+=v*v;} rms=Math.sqrt(rms/SIZE); if(rms<0.01) return null; var last=0; for(var lag=1; lag<maxLag; lag++){ var sum=0; for(var j=0;j<maxLag; j++){ sum+=data[j]*data[j+lag]; } if(sum>best && sum>last){ best=sum; bestLag=lag; } last=sum; } return bestLag>0? sr/bestLag : null; } var est=auto(buf, ctx.sampleRate); osc.stop(); osc.disconnect(); gain.disconnect(); analyser.disconnect(); ctx.close(); if(!est) return {ok:false, hz_error:null, est:null}; var err=Math.abs(est-targetHz); return {ok:err<=0.5, hz_error:+err.toFixed(2), est:+est.toFixed(2)}; }catch(e){ return {ok:false, error:String(e)} } }
-  async function testTimerDrift(runMs){ return new Promise(function(resolve){ var start=performance.now(); setTimeout(function(){ var end=performance.now(); var drift=end-start-runMs; resolve({ok:Math.abs(drift)<30, drift_ms:+drift.toFixed(2)}); }, runMs); }); }
-  async function testRenderLoop(durationMs){ return new Promise(function(resolve){ var frames=0; var start=performance.now(); function tick(){ frames++; if(performance.now()-start<durationMs){ requestAnimationFrame(tick); } else { var elapsed=performance.now()-start; var expected=elapsed/16.6667; var loss=Math.max(0, expected-frames); resolve({ok: loss<2, frames:Math.round(frames), frame_loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
-  function testSchemaShape(obj){ function has(p){ return p in obj; } var ok=has('participant_id')&&has('session_id')&&has('device')&&has('block')&&has('timing')&&has('measures')&&has('version'); return {ok:ok, schema_valid:ok}; }
-
-  // Deluxe success cue
-  function successTone(){ try{ var AudioCtx=window.AudioContext||window.webkitAudioContext; var ctx=new AudioCtx(); var g=ctx.createGain(); g.gain.value=0.05; g.connect(ctx.destination); var o1=ctx.createOscillator(); var o2=ctx.createOscillator(); o1.type='sine'; o2.type='sine'; o1.frequency.setValueAtTime(128, ctx.currentTime); o2.frequency.setValueAtTime(432, ctx.currentTime); o1.connect(g); o2.connect(g); o1.start(); o2.start(); g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.linearRampToValueAtTime(0, ctx.currentTime+1.2); setTimeout(()=>{ try{o1.stop();o2.stop();ctx.close();}catch(_){ } }, 1300); }catch(_){ } }
-
-  // Deluxe + UI toggles
-  try{
-    var toggle=document.getElementById('toggleDeluxe');
-    if(toggle){ toggle.addEventListener('click', function(){
-      document.body.classList.toggle('deluxe');
-      var msg=document.body.classList.contains('deluxe')?'Deluxe skin on':'Deluxe skin off';
-      document.getElementById('poemLine').textContent=msg; setTimeout(function(){ document.getElementById('poemLine').textContent='…'; }, 1200);
-    }); }
-    var toggleSans=document.getElementById('toggleSans');
-    if(toggleSans){ toggleSans.addEventListener('click', function(){
-      document.body.classList.toggle('sans');
-      document.getElementById('poemLine').textContent = document.body.classList.contains('sans')?'Sans on':'Sans off';
-      setTimeout(function(){ document.getElementById('poemLine').textContent='…'; }, 1200);
-    }); }
-    var toggleBars=document.getElementById('toggleBars');
-    if(toggleBars){ toggleBars.addEventListener('click', function(){
-      var on = !document.body.classList.contains('bars');
-      document.body.classList.toggle('bars');
-      var q=document.getElementById('barsQuote'); var s=document.getElementById('absSticker');
-      if(q) q.style.display = on?'block':'none'; if(s) s.style.display = on?'inline-block':'none';
-      document.getElementById('poemLine').textContent = on?'Bars mode on':'Bars mode off';
-      setTimeout(function(){ document.getElementById('poemLine').textContent='…'; }, 1200);
-    }); }
-  }catch(_){ }
-
-  async function runAll(){ badges.innerHTML=''; tb.innerHTML=''; paperEl.classList.remove('deluxe-ok'); setPoem('measuring gently…');
-    var a128=await testAudioHz(128); badges.appendChild(badge('audio@128 '+(a128.ok?'ok':'check'), a128.ok?'ok':'warn')); addRow('Audio','Hz error (128)', (a128.hz_error!=null?a128.hz_error+' Hz':'—'),'≤ 0.5 Hz');
-    var td=await testTimerDrift(1000); badges.appendChild(badge('timer '+(td.ok?'ok':'check'), td.ok?'ok':'warn')); addRow('Timer','Drift', td.drift_ms+' ms','< 30 ms');
-    var rl=await testRenderLoop(2000); badges.appendChild(badge('render '+(rl.ok?'ok':'check'), rl.ok?'ok':'warn')); addRow('Render','Frames / Loss', rl.frames+' / '+rl.frame_loss,'loss < 2');
-    var sc=testSchemaShape(schema); badges.appendChild(badge('schema '+(sc.ok?'ok':'fail'), sc.ok?'ok':'fail')); addRow('Data','Schema', sc.schema_valid?'valid':'invalid','must match v3');
-    var allOk = (!!a128.ok) && (!!td.ok) && (!!rl.ok) && (!!sc.ok);
-    setPoem(allOk? 'coherence holds — phase within tolerance; light remains aligned.':'we found a ripple; breathe once, then measure again.');
-    if(allOk){ paperEl.classList.add('deluxe-ok'); successTone(); }
+  function testTimerDrift(ms){ return new Promise(function(resolve){ var t0=performance.now(); setTimeout(function(){ var d=(performance.now()-t0)-ms; resolve({ok:Math.abs(d)<30, drift_ms:+d.toFixed(2)}); }, ms); }); }
+  function testRender(ms){ return new Promise(function(resolve){ var frames=0; var s=performance.now(); function tick(){ frames++; if(performance.now()-s<ms){ requestAnimationFrame(tick); } else { var el=performance.now()-s; var exp=el/16.6667; var loss=Math.max(0,exp-frames); resolve({ok:loss<2, frames:Math.round(frames), loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
+  async function testAudio(hz){ try{ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return {ok:false, reason:'unsupported'}; var ctx=new AC(); if(ctx.state==='suspended'){ try{ await ctx.resume(); }catch(_){} }
+    var osc=ctx.createOscillator(); var g=ctx.createGain(); var an=ctx.createAnalyser(); an.fftSize=2048; g.gain.value=0.1; osc.type='sine'; osc.frequency.setValueAtTime(hz, ctx.currentTime); osc.connect(g); g.connect(an); an.connect(ctx.destination); osc.start(); await new Promise(function(r){ setTimeout(r,200); }); var buf=new Float32Array(an.fftSize); an.getFloatTimeDomainData(buf);
+    function auto(a,sr){ var size=a.length, m=Math.floor(size/2), best=0, lag=-1, rms=0; for(var i=0;i<size;i++){ var v=a[i]; rms+=v*v; } rms=Math.sqrt(rms/size); if(rms<0.008) return null; var last=0; for(var L=1;L<m;L++){ var sum=0; for(var j=0;j<m;j++){ sum+=a[j]*a[j+L]; } if(sum>best && sum>last){ best=sum; lag=L; } last=sum; } return lag>0? sr/lag : null; }
+    var est=auto(buf, ctx.sampleRate); try{ osc.stop(); }catch(_){ } try{ osc.disconnect(); g.disconnect(); an.disconnect(); }catch(_){ } try{ await ctx.close(); }catch(_){ }
+    if(!est) return {ok:false, reason:'no-signal'}; var err=Math.abs(est-hz); return {ok:err<=0.5, est:+est.toFixed(2), err:+err.toFixed(2)};
+  }catch(e){ return {ok:false, reason:'error'} }
   }
 
-  function setPoem(s){ document.getElementById('poemLine').textContent=s; }
-  var runBtn = document.getElementById('runAll'); if(runBtn){ runBtn.addEventListener('click', runAll); }
+  $('run').addEventListener('click', async function(){ clear(); setPoem('measuring…');
+    var a=await testAudio(128); addBadge('audio@128', a.ok); addRow(tb,'Audio','Hz error (128)', a.err!=null?(a.err+' Hz'):'—','≤ 0.5 Hz');
+    var t=await testTimerDrift(1000); addBadge('timer', t.ok); addRow(tb,'Timer','Drift', t.drift_ms+' ms','< 30 ms');
+    var r=await testRender(1800); addBadge('render', r.ok); addRow(tb,'Render','Frames / Loss', r.frames+' / '+r.loss,'loss < 2');
+    var ok = (!!a.ok) && (!!t.ok) && (!!r.ok); setPoem(ok?'coherence holds — phase within tolerance; light remains aligned.':'we found a ripple; breathe once, then measure again.');
+  });
 
-  var stampBtn = document.getElementById('exportStamp'); if(stampBtn){ stampBtn.addEventListener('click', function(){ var stamp={ time_version:'v3-deluxe', timestamp:new Date().toISOString(), device:{ua:navigator.userAgent}, results:{} }; Promise.race([testAudioHz(128), new Promise(r=>setTimeout(()=>r(null),400))]).then(function(res){ if(res){ stamp.results.audio=res; } return testTimerDrift(1000); }).then(function(td){ stamp.results.timer=td; return testRenderLoop(1000); }).then(function(rl){ stamp.results.render=rl; stamp.results.schema=testSchemaShape(schema); var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='integrity-stamp-deluxe.json'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0); }); });
-});
+  $('export').addEventListener('click', async function(){ var stamp={version:'time-v3-min', ts:new Date().toISOString(), results:{}}; var a=await testAudio(128); stamp.results.audio=a; var t=await testTimerDrift(1000); stamp.results.timer=t; var r=await testRender(1000); stamp.results.render=r; var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var aTag=document.createElement('a'); aTag.href=url; aTag.download='integrity-stamp.json'; document.body.appendChild(aTag); aTag.click(); setTimeout(function(){ URL.revokeObjectURL(url); aTag.remove(); },0); });
+
+  $('copyJson').addEventListener('click', function(){ try{ navigator.clipboard.writeText($('schemaBox').textContent); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); }catch(_){ var t=document.createElement('textarea'); t.value=$('schemaBox').textContent; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); } });
+  $('downloadCsv').addEventListener('click', function(){ var rows=[["section","field","value"]]; Array.from(tbody.querySelectorAll('tr')).forEach(function(tr){ var tds=tr.querySelectorAll('td'); rows.push([tds[0].textContent,tds[1].textContent,tds[2].textContent]); }); var csv=rows.map(function(r){ return r.map(function(x){ return '"'+String(x).replace(/"/g,'""')+'"'; }).join(','); }).join('\n'); var blob=new Blob([csv],{type:'text/csv'}); var url=URL.createObjectURL(blob); var aTag=document.createElement('a'); aTag.href=url; aTag.download='schema_table.csv'; document.body.appendChild(aTag); aTag.click(); setTimeout(function(){ URL.revokeObjectURL(url); aTag.remove(); },0); });
+})();
+// Marina Mode toggle
+  (function(){
+    function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
+    var banner=document.getElementById('marinaBanner');
+    var header=document.querySelector('.controls');
+    if(header){ var btn=document.createElement('button'); btn.textContent='Marina Mode'; btn.className='btn'; header.appendChild(btn);
+      btn.addEventListener('click',function(){ document.body.classList.toggle('marina'); var on=document.body.classList.contains('marina'); if(banner) banner.style.display=on?'block':'none'; flash(on?'Marina Mode on':'Marina Mode off'); });
+    }
+    // style injection
+    var s=document.createElement('style'); s.textContent='body.marina{background:radial-gradient(1200px 800px at 15% -10%,#1d0f18 0%,#0a0c10 55%),#0a0c10;color:#fff8fb;}'; document.head.appendChild(s);
+    // auto-enable via URL param
+    if(/[?#].*marina/i.test(window.location.href)){ document.body.classList.add('marina'); if(banner) banner.style.display='block'; flash('Marina Mode auto'); }
+  })();
 </script>
 </body>
 </html>
