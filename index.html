@@ -20,7 +20,6 @@
     --ring:#2b2f4a;
     --focus:#ffffff;
   }
-  /* Themes by tone */
   :root[data-theme="warm"]{ --accent:#ffb86c; --accent-weak:rgba(255,184,108,0.35); }
   :root[data-theme="cool"]{ --accent:#77bdf0; --accent-weak:rgba(119,189,240,0.35); }
   :root[data-theme="violet"]{ --accent:#c084fc; --accent-weak:rgba(192,132,252,0.35); }
@@ -51,11 +50,8 @@
   .chip.ok .dot{background:var(--chip-ok);} .chip.bad .dot{background:var(--chip-bad);}
   .chip.hint{opacity:0.85}
 
-  main{
-    display:grid; grid-template-columns: minmax(280px, 380px) 1fr; gap:18px; padding:14px 18px 8px 18px; min-height:0;
-  }
+  main{ display:grid; grid-template-columns: minmax(280px, 380px) 1fr; gap:18px; padding:14px 18px 8px 18px; min-height:0; }
 
-  /* Controls panel */
   .panel{
     border:1px solid var(--stroke); background:
       linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
@@ -68,9 +64,7 @@
   .row .col{display:flex; flex-direction:column; gap:6px;}
   label{font-size:12px; color:var(--muted);}
 
-  input[type="range"]{
-    -webkit-appearance:none; width:100%; height:28px; background:transparent;
-  }
+  input[type="range"]{ -webkit-appearance:none; width:100%; height:28px; background:transparent; }
   input[type="range"]::-webkit-slider-runnable-track{
     height:6px; background:linear-gradient(90deg, var(--accent-weak), rgba(255,255,255,0.12));
     border-radius:999px; border:1px solid var(--stroke);
@@ -84,9 +78,7 @@
   input[type="number"], input[type="text"]{
     width:100%; padding:8px 10px; border-radius:10px; border:1px solid var(--stroke); background:rgba(0,0,0,0.25); color:var(--fg);
   }
-  input[type="number"]:focus, input[type="text"]:focus, select:focus, button:focus, a:focus{
-    outline:2px solid var(--focus); outline-offset:2px;
-  }
+  input[type="number"]:focus, input[type="text"]:focus, select:focus, button:focus, a:focus{ outline:2px solid var(--focus); outline-offset:2px; }
   fieldset{border:1px dashed var(--stroke); border-radius:12px; padding:10px; margin:0;}
   legend{font-size:12px; color:#cfd6ea; padding:0 6px;}
   .modes{display:grid; grid-template-columns:1fr; gap:10px;}
@@ -105,13 +97,11 @@
   .btn:active{ transform:scale(0.98); }
   .btn-group{display:flex; gap:8px; flex-wrap:wrap;}
 
-  /* Canvas area */
   .stage{
     position:relative; border:1px solid var(--stroke); border-radius:14px; overflow:hidden; min-height:280px;
     background: radial-gradient(900px 600px at 50% 40%, rgba(255,255,255,0.04), rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 60%);
   }
   canvas{display:block; width:100%; height:100%;}
-  /* Readout overlay */
   .readout{
     position:absolute; left:12px; top:12px; background:var(--glass); border:1px solid var(--stroke); border-radius:12px; padding:10px;
     -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); min-width:250px;
@@ -121,7 +111,6 @@
   .read-grid .val{font-variant-numeric: tabular-nums lining-nums; text-align:right;}
   .examples-chip{position:absolute; right:12px; top:12px;}
 
-  /* Bottom orbit row */
   footer{
     position:relative; display:flex; flex-direction:column; gap:10px; padding:14px 18px 18px 18px;
     border-top:1px solid var(--stroke); background:linear-gradient(180deg, rgba(8,9,16,0.6), rgba(8,9,16,0.9));
@@ -133,10 +122,7 @@
     border:1px solid var(--stroke); background:radial-gradient(closest-side, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
     color:#cfd6ea; font-size:12px; position:relative; overflow:hidden;
   }
-  .ring::after{
-    content:""; position:absolute; inset:-30%; border-radius:50%; border:1px dashed rgba(255,255,255,0.08);
-    animation:spin 20s linear infinite;
-  }
+  .ring::after{ content:""; position:absolute; inset:-30%; border-radius:50%; border:1px dashed rgba(255,255,255,0.08); animation:spin 20s linear infinite; }
   @keyframes spin{to{transform:rotate(360deg)}}
 
   .ctas{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; position:relative;}
@@ -155,18 +141,11 @@
     to{transform:translateX(6px) translateY(4px) rotate(4deg);}
   }
 
-  /* Diagnostics overlay */
-  .diag{
-    position:fixed; right:12px; bottom:12px; z-index:30;
-    display:flex; gap:6px; flex-wrap:wrap; max-width:min(480px, 90vw);
-  }
+  .diag{ position:fixed; right:12px; bottom:12px; z-index:30; display:flex; gap:6px; flex-wrap:wrap; max-width:min(520px, 92vw); }
 
-  /* Accessibility helpers */
   .sr{position:absolute !important; left:-9999px !important; top:auto !important; width:1px !important; height:1px !important; overflow:hidden !important;}
   :focus-visible{outline:2px solid var(--focus); outline-offset:2px;}
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration: 0.001s !important; animation-iteration-count: 1 !important;}
-  }
+  @media (prefers-reduced-motion: reduce){ *{animation-duration: 0.001s !important; animation-iteration-count: 1 !important;} }
 </style>
 </head>
 <body>
@@ -181,7 +160,6 @@
   </header>
 
   <main>
-    <!-- Controls -->
     <aside class="panel" id="controls" aria-labelledby="controls-title">
       <h2 id="controls-title">Controls</h2>
 
@@ -206,7 +184,6 @@
             </div>
           </div>
 
-          <!-- Photon -->
           <div id="photonControls" class="row" role="group" aria-label="Photon controls">
             <div class="col">
               <label for="nu">Frequency ν (log): <span id="nuLabel">—</span></label>
@@ -221,7 +198,6 @@
             </div>
           </div>
 
-          <!-- Rest mass -->
           <div id="restControls" class="row" role="group" aria-label="Rest mass controls" hidden>
             <div class="col">
               <label for="m0">Mass m (log): <span id="m0Label">—</span></label>
@@ -233,7 +209,6 @@
             <div class="col" aria-hidden="true"></div>
           </div>
 
-          <!-- Relativistic -->
           <div id="relControls" class="row" role="group" aria-label="Relativistic kinetic controls" hidden>
             <div class="col">
               <label for="mr">Mass m (log): <span id="mrLabel">—</span></label>
@@ -302,7 +277,6 @@
       </section>
     </aside>
 
-    <!-- Canvas + readout -->
     <section class="stage" aria-label="Simulation canvas">
       <canvas id="cv" aria-hidden="true"></canvas>
       <div class="readout" role="status" aria-live="polite">
@@ -344,43 +318,36 @@
     </div>
   </footer>
 
-  <!-- Diagnostics overlay (tiny) -->
   <div class="diag" aria-live="polite">
     <div id="diagAudio" class="chip hint">✅ Audio active</div>
     <div id="diagFPS" class="chip hint">✅ Canvas ≥ 30 fps</div>
     <div id="diagTau" class="chip hint">✅ τ_eff updating</div>
     <div id="diagLS" class="chip hint">✅ localStorage working</div>
+    <div id="diagSW" class="chip hint">⚠️ Offline cache needs HTTPS/localhost</div>
   </div>
 
 <script>
 (function(){
   /* ======= CONSTANTS (SI) ======= */
   const C = Object.freeze({
-    c: 299792458,                      // m/s
-    h: 6.62607015e-34,                 // J·s
-    e: 1.602176634e-19,                // C
-    G: 6.67430e-11                     // m^3·kg^-1·s^-2
+    c: 299792458,
+    h: 6.62607015e-34,
+    e: 1.602176634e-19,
+    G: 6.67430e-11
   });
   const HBAR = C.h/(2*Math.PI);
-  const T_PLANCK = Math.sqrt(HBAR*C.G/Math.pow(C.c,5));
+  const T_PLANCK = Math.sqrt(HBAR*C.G/Math.pow(C.c,5)); // ~5.39e-44 s
 
   /* ======= STATE ======= */
   const state = {
     mode: 'photon',
-    photon: { slider: 775 }, // defaults near 500 THz
+    photon: { slider: 775 },
     rest: { slider: 900 },
     rel: { mSlider: 900, beta: 0.9 },
-    calib: { L: 1, M: 1 },   // K = L/M
-    E: 0,
-    EeV: 0,
-    tau: 0,
-    lambda: 0,
-    gamma: 1,
+    calib: { L: 1, M: 1 },
+    E: 0, EeV: 0, tau: 0, lambda: 0, gamma: 1, nuHz: NaN, mkg: NaN, bb: NaN,
     reduced: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-    audio: {
-      ctx: null, osc: null, gain: null, base: 160, alpha: 0.2,
-      on: false, unlocked: false, vol: 0.25, theme: 'cool'
-    },
+    audio: { ctx: null, osc: null, gain: null, base: 160, alpha: 0.2, on: false, unlocked: false, vol: 0.25, theme: 'cool' },
     time: { last: performance.now(), acc: 0, fps: 60 },
     ls: { ok: true, visits: 0, tau_total: 0, last_mode: 'photon', toneHz: 160, calibration:{Lref:1,Mref:1} },
     diag: { audio:false, fps:false, tau:false, ls:false },
@@ -388,54 +355,41 @@
   };
 
   /* ======= DOM ======= */
-  const $ = sel => document.querySelector(sel);
+  const $ = s=>document.querySelector(s);
   const cv = $('#cv'), ctx = cv.getContext('2d', { alpha:true });
   const modeSel = $('#mode');
-
-  const photonControls = $('#photonControls');
-  const restControls = $('#restControls');
-  const relControls = $('#relControls');
-
+  const photonControls = $('#photonControls'), restControls = $('#restControls'), relControls = $('#relControls');
   const Lref = $('#Lref'), Mref = $('#Mref');
   const nu = $('#nu'), nuLabel = $('#nuLabel'), lambdaOut = $('#lambda');
-
   const m0 = $('#m0'), m0Label = $('#m0Label');
   const mr = $('#mr'), mrLabel = $('#mrLabel'), beta = $('#beta'), betaLabel = $('#betaLabel');
-
   const audioToggle = $('#audioToggle'), volume = $('#volume'), alpha = $('#alpha');
   const toneButtons = Array.from(document.querySelectorAll('.tone'));
   const audioStatus = $('#audioStatus');
-
   const tauTotal = $('#tauTotal'), visits = $('#visits');
-
   const saveBtn = $('#save'), resetBtn = $('#reset');
-
   const modeVal = $('#modeVal'), kVal = $('#kVal'),
         nuVal = $('#nuVal'), lambdaVal = $('#lambdaVal'),
         mVal = $('#mVal'), bVal = $('#bVal'), gammaVal = $('#gammaVal'),
         EVal = $('#EVal'), EeVVal = $('#EeVVal'), tauVal = $('#tauVal');
-
   const examplesChip = $('#examplesChip');
-
   const audioChip = $('#audioChip'), fpsChip = $('#fpsChip'), tauChip = $('#tauChip'), lsChip = $('#lsChip');
-  const diagAudio = $('#diagAudio'), diagFPS = $('#diagFPS'), diagTau = $('#diagTau'), diagLS = $('#diagLS');
+  const diagAudio = $('#diagAudio'), diagFPS = $('#diagFPS'), diagTau = $('#diagTau'), diagLS = $('#diagLS'), diagSW = $('#diagSW');
 
   /* ======= UTILS ======= */
   const clamp = (x,a,b)=>Math.min(b,Math.max(a,x));
   const lerp = (a,b,t)=>a+(b-a)*t;
   const invLerp = (a,b,x)=> (x-a)/(b-a);
   const mapLog = (t, lo, hi)=> Math.pow(10, Math.log10(lo) + (Math.log10(hi)-Math.log10(lo))*t);
-  const unmapLog = (x, lo, hi)=> invLerp(Math.log10(lo), Math.log10(hi), Math.log10(x));
   const fmtSI = (v, unit, sig=4) => {
     if(!isFinite(v) || v===0) return `0 ${unit||''}`.trim();
     const abs = Math.abs(v);
     const prefixes = [
-      {p:1e-24,s:'y'}, {p:1e-21,s:'z'},{p:1e-18,s:'a'},{p:1e-15,s:'f'},{p:1e-12,s:'p'},
+      {p:1e-24,s:'y'},{p:1e-21,s:'z'},{p:1e-18,s:'a'},{p:1e-15,s:'f'},{p:1e-12,s:'p'},
       {p:1e-9,s:'n'},{p:1e-6,s:'μ'},{p:1e-3,s:'m'},{p:1,s:''},{p:1e3,s:'k'},
       {p:1e6,s:'M'},{p:1e9,s:'G'},{p:1e12,s:'T'},{p:1e15,s:'P'},{p:1e18,s:'E'},{p:1e21,s:'Z'},{p:1e24,s:'Y'}
     ];
-    let pick = prefixes[8];
-    for(const pr of prefixes){ if(abs>=pr.p) pick = pr; }
+    let pick = prefixes[8]; for(const pr of prefixes){ if(abs>=pr.p) pick = pr; }
     const val = (v/pick.p);
     return `${Number(val.toPrecision(sig))} ${pick.s}${unit||''}`.trim();
   };
@@ -448,7 +402,7 @@
     el.classList.toggle('ok', ok);
     el.classList.toggle('bad', !ok);
     const dot = el.querySelector('.dot');
-    if(!dot){ /* diagnostics chips have no dot */ el.textContent = ok? `✅ ${hintOK}` : `❌ ${hintBad}`; }
+    if(!dot){ el.textContent = ok? `✅ ${hintOK}` : `❌ ${hintBad}`; }
     else el.setAttribute('title', ok? hintOK : hintBad);
   };
 
@@ -456,11 +410,8 @@
   function loadLS(){
     try{
       const raw = localStorage.getItem('time_log');
-      if(raw){
-        state.ls = JSON.parse(raw);
-      }else{
-        state.ls = { visits:0, tau_total:0, last_mode:'photon', toneHz:160, calibration:{Lref:1, Mref:1} };
-      }
+      if(raw){ state.ls = JSON.parse(raw); }
+      else { state.ls = { visits:0, tau_total:0, last_mode:'photon', toneHz:160, calibration:{Lref:1, Mref:1} }; }
       state.ls.visits += 1;
       state.diag.ls = true;
       saveLS();
@@ -470,7 +421,6 @@
     }
     visits.textContent = String(state.ls.visits);
     tauTotal.textContent = fmtTimeAdaptive(state.ls.tau_total);
-    // Apply persisted
     Lref.value = state.ls.calibration?.Lref ?? 1;
     Mref.value = state.ls.calibration?.Mref ?? 1;
     state.audio.base = state.ls.toneHz || 160;
@@ -497,12 +447,8 @@
     const AC = window.AudioContext || window.webkitAudioContext;
     if(!AC) return;
     const ctxA = new AC({ latencyHint:'interactive' });
-    const gain = ctxA.createGain(); gain.gain.value = 0.0;
-    gain.connect(ctxA.destination);
-    const osc = ctxA.createOscillator(); osc.type = 'sine';
-    osc.frequency.value = state.audio.base;
-    osc.connect(gain);
-    osc.start();
+    const gain = ctxA.createGain(); gain.gain.value = 0.0; gain.connect(ctxA.destination);
+    const osc = ctxA.createOscillator(); osc.type = 'sine'; osc.frequency.value = state.audio.base; osc.connect(gain); osc.start();
     state.audio.ctx = ctxA; state.audio.osc = osc; state.audio.gain = gain;
   }
   function setToneTheme(f0){
@@ -512,33 +458,23 @@
     else { root.dataset.theme='cool'; state.audio.theme='cool'; }
   }
   function setAudio(on){
-    initAudio();
-    const A = state.audio;
-    if(!A.ctx) return;
+    initAudio(); const A = state.audio; if(!A.ctx) return;
     if(on){
       A.ctx.resume();
-      const t = A.ctx.currentTime;
-      A.gain.gain.cancelScheduledValues(t);
+      const t = A.ctx.currentTime; A.gain.gain.cancelScheduledValues(t);
       A.gain.gain.linearRampToValueAtTime(A.vol, t+0.08);
       state.audio.on = true; state.audio.unlocked = true;
-      audioToggle.setAttribute('aria-pressed','true');
-      audioToggle.textContent = 'Pause';
+      audioToggle.setAttribute('aria-pressed','true'); audioToggle.textContent = 'Pause';
       audioStatus.textContent = 'Audio running.';
     }else{
-      const t = A.ctx.currentTime;
-      A.gain.gain.cancelScheduledValues(t);
+      const t = A.ctx.currentTime; A.gain.gain.cancelScheduledValues(t);
       A.gain.gain.linearRampToValueAtTime(0.0, t+0.08);
-      state.audio.on = false;
-      audioToggle.setAttribute('aria-pressed','false');
-      audioToggle.textContent = 'Play';
+      state.audio.on = false; audioToggle.setAttribute('aria-pressed','false'); audioToggle.textContent = 'Play';
       audioStatus.textContent = 'Audio stopped.';
     }
   }
-  function onUserGesture(){
-    if(!state.audio.unlocked){ setAudio(true); }
-  }
+  function onUserGesture(){ if(!state.audio.unlocked){ setAudio(true); } }
   ['touchend','pointerup','keydown','mousedown'].forEach(ev=>document.addEventListener(ev, onUserGesture, {passive:true}));
-
   audioToggle.addEventListener('click', ()=> setAudio(!state.audio.on), {passive:true});
   volume.addEventListener('input', ()=>{ state.audio.vol = Number(volume.value); if(state.audio.ctx){ state.audio.gain.gain.setTargetAtTime(state.audio.vol, state.audio.ctx.currentTime, 0.03); }});
   alpha.addEventListener('input', ()=>{ state.audio.alpha = Number(alpha.value); });
@@ -548,18 +484,14 @@
       toneButtons.forEach(b=>b.setAttribute('aria-pressed','false'));
       btn.setAttribute('aria-pressed','true');
       const f = Number(btn.dataset.tone);
-      state.audio.base = f;
-      setToneTheme(f);
+      state.audio.base = f; setToneTheme(f);
       if(state.audio.ctx){ state.audio.osc.frequency.setTargetAtTime(f, state.audio.ctx.currentTime, 0.03); }
       state.ls.toneHz = f; saveLS();
     });
   });
 
   /* ======= MODE & SLIDERS ======= */
-  const NU_MIN = 20, NU_MAX = 1e20;
-  const M_MIN = 1e-9, M_MAX = 10;
-  const logLabel = v => Number(v).toExponential(2);
-
+  const NU_MIN = 20, NU_MAX = 1e20, M_MIN = 1e-9, M_MAX = 10;
   function switchMode(m){
     state.mode = m;
     photonControls.hidden = m!=='photon';
@@ -568,97 +500,59 @@
     state.ls.last_mode = m; saveLS();
   }
   modeSel.addEventListener('change', ()=> switchMode(modeSel.value));
+  const updateLabels = ()=>{
+    if(state.mode==='photon'){ nuLabel.textContent = fmtSI(state.nuHz,'Hz',3); }
+    if(state.mode==='rest'){  m0Label.textContent = fmtSI(state.mkg,'kg',3); }
+    if(state.mode==='rel'){   mrLabel.textContent = fmtSI(state.mkg,'kg',3); betaLabel.textContent = (state.bb??0).toFixed(3); }
+  };
 
-  nu.addEventListener('input', ()=>{
-    state.photon.slider = Number(nu.value);
-    const f = mapLog(state.photon.slider/1000, NU_MIN, NU_MAX);
-    nuLabel.textContent = `${fmtSI(f,'Hz',3)}`;
-  });
-  m0.addEventListener('input', ()=>{
-    state.rest.slider = Number(m0.value);
-    const m = mapLog(state.rest.slider/1000, M_MIN, M_MAX);
-    m0Label.textContent = `${fmtSI(m,'kg',3)}`;
-  });
-  mr.addEventListener('input', ()=>{
-    state.rel.mSlider = Number(mr.value);
-    const m = mapLog(state.rel.mSlider/1000, M_MIN, M_MAX);
-    mrLabel.textContent = `${fmtSI(m,'kg',3)}`;
-  });
-  beta.addEventListener('input', ()=>{
-    state.rel.beta = Number(beta.value);
-    betaLabel.textContent = state.rel.beta.toFixed(3);
-  });
+  const nuEl = nu, m0El = m0, mrEl = mr, betaEl = beta;
+  nuEl.addEventListener('input', ()=>{ state.photon.slider = Number(nuEl.value); });
+  m0El.addEventListener('input', ()=>{ state.rest.slider = Number(m0El.value); });
+  mrEl.addEventListener('input', ()=>{ state.rel.mSlider = Number(mrEl.value); });
+  betaEl.addEventListener('input', ()=>{ state.rel.beta = Number(betaEl.value); });
 
   [Lref,Mref].forEach(inp=> inp.addEventListener('change', ()=>{
-    const L = Math.max(1e-12, Number(Lref.value) || 1);
-    const M = Math.max(1e-12, Number(Mref.value) || 1);
-    state.calib.L = L; state.calib.M = M; saveLS();
+    state.calib.L = Math.max(1e-12, Number(Lref.value) || 1);
+    state.calib.M = Math.max(1e-12, Number(Mref.value) || 1);
+    saveLS();
   }));
 
-  // Initialize slider labels to defaults
-  (function initLabels(){
-    nu.dispatchEvent(new Event('input'));
-    m0.dispatchEvent(new Event('input'));
-    mr.dispatchEvent(new Event('input'));
-    beta.dispatchEvent(new Event('input'));
-  })();
+  (function initLabels(){ nuEl.dispatchEvent(new Event('input')); m0El.dispatchEvent(new Event('input')); mrEl.dispatchEvent(new Event('input')); betaEl.dispatchEvent(new Event('input')); })();
 
   /* ======= PHYSICS ======= */
   function energyAndTau(){
     const K = Number(Lref.value)/Number(Mref.value);
     let E=0, EeV=0, lambda=NaN, gam=1, nuHz=NaN, mkg=NaN, bb=NaN;
-
     if(state.mode==='photon'){
       nuHz = mapLog(state.photon.slider/1000, NU_MIN, NU_MAX);
-      E = C.h * nuHz;
-      lambda = C.c/nuHz;
-      EeV = E/C.e;
+      E = C.h * nuHz; lambda = C.c/nuHz; EeV = E/C.e;
     }else if(state.mode==='rest'){
       mkg = mapLog(state.rest.slider/1000, M_MIN, M_MAX);
-      E = mkg * C.c*C.c;
-      EeV = E/C.e;
-    }else{ // rel
+      E = mkg * C.c*C.c; EeV = E/C.e;
+    }else{
       mkg = mapLog(state.rel.mSlider/1000, M_MIN, M_MAX);
       bb = clamp(state.rel.beta, 0, 0.99);
       gam = 1/Math.sqrt(1-bb*bb);
-      E = (gam-1) * mkg * C.c*C.c; // kinetic energy
-      EeV = E/C.e;
+      E = (gam-1) * mkg * C.c*C.c; EeV = E/C.e;
     }
     const tau = (E/Math.pow(C.c,3)) * K;
-
-    // Persist to state
     Object.assign(state, { E, EeV, lambda, gamma:gam, tau, nuHz, mkg, bb });
-
     return state;
   }
 
   /* ======= EXAMPLES CHECK (K=1) ======= */
   function examplesOK(){
-    const eps = 0.005; // ±0.5 %
-    // 1) Photon 500 THz
-    const E1 = C.h * (500e12);
-    const tau1 = E1/Math.pow(C.c,3);
-    const eV1 = E1/C.e;
-    const lam1 = C.c/(500e12);
+    const eps = 0.005;
+    const E1 = C.h * (500e12), tau1 = E1/Math.pow(C.c,3), eV1 = E1/C.e, lam1 = C.c/(500e12);
     const ok1 = (Math.abs(E1-3.3130e-19)/3.3130e-19) <= eps &&
                 (Math.abs(eV1-2.0678)/2.0678) <= eps &&
                 (Math.abs(lam1-5.996e-7)/5.996e-7) <= eps &&
                 (Math.abs(tau1-1.2296e-44)/1.2296e-44) <= eps;
-
-    // 2) Rest mass 1 kg
-    const E2 = 1*Math.pow(C.c,2);
-    const tau2 = E2/Math.pow(C.c,3);
-    const ok2 = (Math.abs(E2-8.9876e16)/8.9876e16)<=eps &&
-                (Math.abs(tau2-3.3356e-9)/3.3356e-9)<=eps;
-
-    // 3) Relativistic kinetic 1 kg @ 0.90c
-    const gam3 = 1/Math.sqrt(1-0.9*0.9);
-    const E3 = (gam3-1)*Math.pow(C.c,2);
-    const tau3 = E3/Math.pow(C.c,3);
-    const ok3 = (Math.abs(gam3-2.294)/2.294)<=eps &&
-                (Math.abs(E3-1.1631e17)/1.1631e17)<=eps &&
-                (Math.abs(tau3-4.3168e-9)/4.3168e-9)<=eps;
-
+    const E2 = Math.pow(C.c,2), tau2 = E2/Math.pow(C.c,3);
+    const ok2 = (Math.abs(E2-8.9876e16)/8.9876e16)<=eps && (Math.abs(tau2-3.3356e-9)/3.3356e-9)<=eps;
+    const gam3 = 1/Math.sqrt(1-0.9*0.9), E3 = (gam3-1)*Math.pow(C.c,2), tau3 = E3/Math.pow(C.c,3);
+    const ok3 = (Math.abs(gam3-2.294)/2.294)<=eps && (Math.abs(E3-1.1631e17)/1.1631e17)<=eps && (Math.abs(tau3-4.3168e-9)/4.3168e-9)<=eps;
     const pass = ok1 && ok2 && ok3;
     state.examplesOK = pass;
     examplesChip.classList.toggle('ok', pass);
@@ -670,54 +564,41 @@
   function resize(){
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio||1));
     const rect = cv.getBoundingClientRect();
-    cv.width = Math.floor(rect.width * dpr);
-    cv.height = Math.floor(rect.height * dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cv.width = Math.floor(rect.width * dpr); cv.height = Math.floor(rect.height * dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  window.addEventListener('resize', resize, {passive:true});
-  resize();
+  window.addEventListener('resize', resize, {passive:true}); resize();
 
-  // Particle field
   const N = state.reduced ? 60 : 160;
-  const particles = [];
-  const center = { x:0, y:0 };
-  const rand = n=>Math.random()*n;
+  const particles = []; const center = { x:0, y:0 };
   const range = (a,b)=>a+Math.random()*(b-a);
   function resetParticle(p){
     const W = cv.clientWidth, H = cv.clientHeight, R = Math.min(W,H)*0.42;
-    const r = range(R*0.3, R*0.95);
-    const ang = Math.random()*Math.PI*2;
-    p.x = center.x + Math.cos(ang)*r;
-    p.y = center.y + Math.sin(ang)*r;
-    // tangential speed (aesthetic)
+    const r = range(R*0.3, R*0.95), ang = Math.random()*Math.PI*2;
+    p.x = center.x + Math.cos(ang)*r; p.y = center.y + Math.sin(ang)*r;
     const v = (0.6 + Math.random()*0.4) * (1.2 - r/(R*1.1));
-    p.vx = -Math.sin(ang)*v;
-    p.vy =  Math.cos(ang)*v;
-    p.life = 0;
+    p.vx = -Math.sin(ang)*v; p.vy =  Math.cos(ang)*v; p.life = 0;
   }
   for(let i=0;i<N;i++){ particles.push({x:0,y:0,vx:0,vy:0,life:0}); resetParticle(particles[i]); }
 
   /* ======= RENDER LOOP ======= */
   function update(){
     const now = performance.now();
-    const dt = Math.min(0.05, (now - state.time.last)/1000); // seconds
-    state.time.last = now;
-    state.time.acc = state.time.acc*0.9 + (1/dt)*0.1;
-    state.time.fps = state.time.acc;
+    const dt = Math.min(0.05, (now - state.time.last)/1000);
+    state.time.last = now; state.time.acc = state.time.acc*0.9 + (1/dt)*0.1; state.time.fps = state.time.acc;
 
     const { E, EeV, lambda, gamma, tau, nuHz, mkg, bb } = energyAndTau();
 
-    // Accumulate τ for localStorage
     state.ls.tau_total += Math.max(0, tau*dt);
-    // Attempt save occasionally without spamming storage
     if((now|0)%1500 < 17){ saveLS(); }
 
-    // Audio pitch bend (phase-locked-ish to render loop)
+    /* ===== Audible pitch: τ normalized & log-compressed (audio only) ===== */
     if(state.audio.ctx && state.audio.on){
       const t = state.audio.ctx.currentTime;
-      const f = state.audio.base / (1 + state.audio.alpha * tau);
-      const fClamped = clamp(f, 20, 18000);
-      state.audio.osc.frequency.setValueAtTime(fClamped, t);
+      const x = Math.max(0, tau / T_PLANCK);             // dimensionless
+      const tauAudio = Math.log10(1 + x) / 6;            // smooth, ~0..~6 across extremes
+      const f = state.audio.base / (1 + state.audio.alpha * tauAudio);
+      const fClamped = clamp(f, 20, 20000);
+      state.audio.osc.frequency.setTargetAtTime(fClamped, t, 0.01);
     }
 
     // Diagnostics
@@ -725,123 +606,78 @@
     state.diag.fps = state.time.fps >= 30;
     state.diag.tau = isFinite(tau);
     setChip(audioChip, state.diag.audio, 'Audio running', 'Tap Play to unlock audio');
-    setChip(fpsChip, state.diag.fps, 'Frame rate healthy', 'Frame rate low (reduce other tabs)');
+    setChip(fpsChip, state.diag.fps, 'Frame rate healthy', 'Frame rate low (close tabs)');
     setChip(tauChip, state.diag.tau, 'τ updated', 'τ not updating');
     setChip(lsChip, state.diag.ls, 'localStorage OK', 'localStorage disabled');
 
     diagAudio.textContent = state.diag.audio ? '✅ Audio active' : '❌ Audio inactive (press Play)';
-    diagFPS.textContent = state.diag.fps ? '✅ Canvas ≥ 30 fps' : '❌ Canvas < 30 fps';
-    diagTau.textContent = state.diag.tau ? '✅ τ_eff updating' : '❌ τ missing';
-    diagLS.textContent = state.diag.ls ? '✅ localStorage working' : '❌ localStorage blocked';
+    diagFPS.textContent   = state.diag.fps   ? '✅ Canvas ≥ 30 fps' : '❌ Canvas < 30 fps';
+    diagTau.textContent   = state.diag.tau   ? '✅ τ_eff updating' : '❌ τ missing';
+    diagLS.textContent    = state.diag.ls    ? '✅ localStorage working' : '❌ localStorage blocked';
 
     // UI Readouts
     const K = Number(Lref.value)/Number(Mref.value);
-    modeVal.textContent = state.mode;
-    kVal.innerHTML = Number.isFinite(K)? K.toPrecision(4) : '—';
+    modeVal.textContent = state.mode; kVal.innerHTML = Number.isFinite(K)? K.toPrecision(4) : '—';
 
     if(state.mode==='photon'){
-      const f = nuHz;
-      nuVal.textContent = fmtSI(f,'Hz',3);
-      lambdaVal.textContent = fmtSI(lambda,'m',3);
+      nuVal.textContent = fmtSI(nuHz,'Hz',3); lambdaVal.textContent = fmtSI(lambda,'m',3);
       mVal.textContent = '—'; bVal.textContent = '—'; gammaVal.textContent='—';
     }else if(state.mode==='rest'){
       nuVal.textContent = '—'; lambdaVal.textContent = '—'; bVal.textContent='—'; gammaVal.textContent='—';
       mVal.textContent = fmtSI(mkg,'kg');
     }else{
       nuVal.textContent = '—'; lambdaVal.textContent = '—';
-      mVal.textContent = fmtSI(mkg,'kg'); bVal.textContent = (bb??0).toFixed(3);
-      gammaVal.textContent = (gamma??1).toFixed(3);
+      mVal.textContent = fmtSI(mkg,'kg'); bVal.textContent = (bb??0).toFixed(3); gammaVal.textContent = (gamma??1).toFixed(3);
     }
-    EVal.textContent = `${fmtSI(E,'J',4)}`;
-    EeVVal.textContent = `${Number(EeV.toPrecision(4))} eV`;
-    const tauTxt = `${fmtTimeAdaptive(tau)}  (${(tau/T_PLANCK).toFixed(3)} tₚ)`;
-    tauVal.textContent = tauTxt;
+    EVal.textContent = `${fmtSI(E,'J',4)}`; EeVVal.textContent = `${Number(EeV.toPrecision(4))} eV`;
+    const tauTxt = `${fmtTimeAdaptive(tau)}  (${(tau/T_PLANCK).toFixed(3)} tₚ)`; tauVal.textContent = tauTxt;
     lambdaOut.textContent = state.mode==='photon' ? fmtSI(lambda,'m',3) : '—';
     tauTotal.textContent = fmtTimeAdaptive(state.ls.tau_total);
+    updateLabels();
 
-    // Update frequency label live
-    if(state.mode==='photon'){ nuLabel.textContent = fmtSI(nuHz,'Hz',3); }
-    if(state.mode==='rest'){ m0Label.textContent = fmtSI(mkg,'kg',3); }
-    if(state.mode==='rel'){ mrLabel.textContent = fmtSI(mkg,'kg',3); betaLabel.textContent = (bb??0).toFixed(3); }
-
-    // Examples validation (periodic)
     if(((now|0)%1000)<17) examplesOK();
 
-    // Draw
     draw(now, dt, tau);
-
     requestAnimationFrame(update);
   }
 
   function draw(now, dt, tau){
     const W = cv.clientWidth, H = cv.clientHeight;
-    center.x = W/2; center.y = H/2;
+    const center = { x: W/2, y: H/2 };
 
     const normTau = (()=>{
       const l = Math.log10(Math.max(1e-50, tau));
-      const t = clamp((l - (-46)) / ((-8) - (-46)), 0, 1); // map log10 τ from ~1e-46..1e-8 to 0..1
-      return t;
+      return clamp((l - (-46)) / ((-8) - (-46)), 0, 1);
     })();
-    const hue = 260 - 250*normTau; // low τ -> violet, high τ -> red
-    const clear = state.reduced ? 0.28 : lerp(0.08, 0.02, normTau); // longer trails with higher τ
+    const hue = 260 - 250*normTau; // violet -> red as τ grows
+    const clear = state.reduced ? 0.28 : lerp(0.08, 0.02, normTau);
 
-    // Trail clear
-    ctx.save();
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = clear;
-    ctx.fillStyle = '#05060b';
-    ctx.fillRect(0,0,W,H);
-    ctx.restore();
+    ctx.save(); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = clear;
+    ctx.fillStyle = '#05060b'; ctx.fillRect(0,0,W,H); ctx.restore();
 
-    // Gravity parameter (aesthetic curvature tied to M_ref/L_ref and τ)
-    const K = Number(Lref.value)/Number(Mref.value);
     const mu = (state.reduced? 250 : 600) * (Number(Mref.value)/Math.max(1e-12, Number(Lref.value))) * (1+ 0.15*normTau);
 
-    // Particles
     for(let i=0;i<particles.length;i++){
       const p = particles[i];
       const dx = (center.x - p.x), dy = (center.y - p.y);
-      const r2 = dx*dx + dy*dy;
-      const r = Math.sqrt(r2) + 0.0001;
-      // pseudo-gravity (curvature)
-      const acc = mu/(r2+80);
-      const ax = acc*(dx/r), ay = acc*(dy/r);
-      // integrate
-      p.vx += ax*dt*0.5;
-      p.vy += ay*dt*0.5;
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life += dt;
+      const r2 = dx*dx + dy*dy; const r = Math.sqrt(r2) + 0.0001;
+      const acc = mu/(r2+80); const ax = acc*(dx/r), ay = acc*(dy/r);
+      p.vx += ax*dt*0.5; p.vy += ay*dt*0.5; p.x += p.vx; p.y += p.vy; p.life += dt;
       if(r < 8 || r > Math.max(W,H)) resetParticle(p);
     }
 
-    // Draw star/glass and center mass
     const g = ctx.createRadialGradient(center.x, center.y, 0, center.x, center.y, Math.min(W,H)*0.5);
-    g.addColorStop(0, `hsla(${hue}, 90%, 65%, 0.10)`);
-    g.addColorStop(1, 'rgba(255,255,255,0.00)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0,0,W,H);
+    g.addColorStop(0, `hsla(${hue}, 90%, 65%, 0.10)`); g.addColorStop(1, 'rgba(255,255,255,0.00)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
 
-    // Central mass
-    ctx.beginPath();
-    ctx.arc(center.x, center.y, 10, 0, Math.PI*2);
-    ctx.fillStyle = `hsla(${hue}, 90%, 70%, 0.85)`;
-    ctx.shadowColor = `hsla(${hue},100%,70%,0.6)`;
-    ctx.shadowBlur = 16;
-    ctx.fill();
-    ctx.shadowBlur = 0;
+    ctx.beginPath(); ctx.arc(center.x, center.y, 10, 0, Math.PI*2);
+    ctx.fillStyle = `hsla(${hue}, 90%, 70%, 0.85)`; ctx.shadowColor = `hsla(${hue},100%,70%,0.6)`; ctx.shadowBlur = 16; ctx.fill(); ctx.shadowBlur = 0;
 
-    // Photon trails
     ctx.globalCompositeOperation = 'lighter';
     const trailAlpha = state.reduced ? 0.35 : lerp(0.28, 0.70, normTau);
-    ctx.strokeStyle = `hsla(${hue}, 100%, 70%, ${trailAlpha})`;
-    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = `hsla(${hue}, 100%, 70%, ${trailAlpha})`; ctx.lineWidth = 1.2;
     ctx.beginPath();
-    for(let i=0;i<particles.length;i++){
-      const p = particles[i];
-      ctx.moveTo(p.x, p.y);
-      ctx.lineTo(p.x - p.vx*2, p.y - p.vy*2);
-    }
+    for(let i=0;i<particles.length;i++){ const p = particles[i]; ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx*2, p.y - p.vy*2); }
     ctx.stroke();
     ctx.globalCompositeOperation = 'source-over';
   }
@@ -863,10 +699,8 @@
     };
     const blob = new Blob([JSON.stringify(snapshot,null,2)], {type:'application/json'});
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'time_illumina_v5_snapshot.json';
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
+    const a = document.createElement('a'); a.href = url; a.download = 'time_illumina_v5_snapshot.json';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   });
 
   resetBtn.addEventListener('click', ()=>{
@@ -879,46 +713,36 @@
   window.addEventListener('keydown', (e)=>{
     if(e.key==='p'){ setAudio(!state.audio.on); }
     else if(e.key==='t'){
-      const order=[128,160,432];
-      const idx = order.indexOf(state.audio.base);
+      const order=[128,160,432]; const idx = order.indexOf(state.audio.base);
       const next = order[(idx+1)%order.length];
       document.querySelector(`.tone[data-tone="${next}"]`).click();
     }else if(e.key==='m'){
-      const opts=['photon','rest','rel'];
-      const i=opts.indexOf(state.mode);
-      const next=opts[(i+1)%opts.length];
-      modeSel.value = next; switchMode(next);
+      const opts=['photon','rest','rel']; const i=opts.indexOf(state.mode);
+      const next=opts[(i+1)%opts.length]; modeSel.value = next; switchMode(next);
     }else if(e.key==='s'){ saveBtn.click(); }
     else if(e.key==='r'){ resetBtn.click(); }
   });
 
-  /* ======= SERVICE WORKER (inline via Blob) ======= */
+  /* ======= SERVICE WORKER (inline) ======= */
   (function registerSW(){
-    if(!('serviceWorker' in navigator)) return;
+    if(!('serviceWorker' in navigator)){ diagSW.textContent = '❌ Offline cache unsupported'; return; }
+    if(!window.isSecureContext){ diagSW.textContent = '⚠️ Open via HTTPS or localhost to enable offline'; return; }
     const swCode = `
       const CACHE = 'time-illumina-v5-cache-v1';
       self.addEventListener('install', e=>{
-        e.waitUntil((async()=>{
-          const c = await caches.open(CACHE);
-          await c.addAll([self.registration.scope || './', './']);
-          await self.skipWaiting();
-        })());
+        e.waitUntil((async()=>{ const c = await caches.open(CACHE); await c.addAll([self.registration.scope || './', './']); await self.skipWaiting(); })());
       });
-      self.addEventListener('activate', e=>{
-        e.waitUntil((async()=>{ await self.clients.claim(); })());
-      });
+      self.addEventListener('activate', e=>{ e.waitUntil(self.clients.claim()); });
       self.addEventListener('fetch', e=>{
-        const req = e.request;
-        if(req.method!=='GET') return;
+        const req = e.request; if(req.method!=='GET') return;
         if(req.mode==='navigate'){
           e.respondWith((async()=>{
             try{ const net = await fetch(req); const cc = await caches.open(CACHE); cc.put(req, net.clone()); return net; }
-            catch(_){ const c = await caches.open(CACHE); const r = await c.match(req) || await c.match('./'); return r; }
+            catch(_){ const c = await caches.open(CACHE); return await c.match(req) || await c.match('./'); }
           })());
         }else{
           e.respondWith((async()=>{
-            const c = await caches.open(CACHE);
-            const m = await c.match(req); if(m) return m;
+            const c = await caches.open(CACHE); const m = await c.match(req); if(m) return m;
             try{ const net = await fetch(req); c.put(req, net.clone()); return net; }catch(_){ return new Response('',{status:504}); }
           })());
         }
@@ -926,15 +750,12 @@
     `;
     const blob = new Blob([swCode], {type:'text/javascript'});
     const url = URL.createObjectURL(blob);
-    navigator.serviceWorker.register(url).catch(()=>{ /* silent */ });
+    navigator.serviceWorker.register(url).then(()=>{ diagSW.textContent = '✅ Offline cache ready'; }).catch(()=>{ diagSW.textContent = '❌ Offline cache blocked'; });
     setTimeout(()=>URL.revokeObjectURL(url), 5000);
   })();
 
   /* ======= START ======= */
-  loadLS();
-  examplesOK(); // initial
-  requestAnimationFrame(update);
-
+  loadLS(); examplesOK(); requestAnimationFrame(update);
 })();
 </script>
 
