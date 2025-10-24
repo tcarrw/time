@@ -4,13 +4,10 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="dark light"/>
-<title>Time · Illumina v6 — Time as a Living Derivative (Fix 1)</title>
-<meta name="description" content="Smolin-bridge sketch. 128 Hz base. Violet-pearl. Canvas2D + WebAudio. Fixed iOS audio start + stronger hue mapping (uses ∇E).">
+<title>Time · Illumina v6 — Time as a Living Derivative (Audio Fix · 160 Hz)</title>
+<meta name="description" content="Smolin-bridge sketch. 160 Hz base. Violet-pearl. Canvas2D + WebAudio. iOS-safe: oscillators created & started inside user gesture; robust hue mapping (uses ∇E).">
 <style>
-  :root{
-    --bg-0:#0c0912; --bg-1:#130f1e;
-    --violet-2:#c4b5fd; --pearl-2:#e2e8f0;
-  }
+  :root{ --bg-0:#0c0912; --bg-1:#130f1e; --violet-2:#c4b5fd; }
   html,body{height:100%;margin:0}
   body{
     background:
@@ -21,22 +18,30 @@
   }
   .wrap{max-width:1120px;margin:0 auto;padding:24px}
   h1{margin:8px 0 4px;font:800 28px/1.15 ui-sans-serif}
-  .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 18px 14px;backdrop-filter:blur(10px)}
+  .glass{
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 18px 14px;backdrop-filter:blur(10px)
+  }
   .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
   @media (max-width:900px){.grid{grid-template-columns:1fr}}
   h2{font:700 18px/1.25 ui-sans-serif;margin:0 0 8px}
   h3{font:700 15px/1.3;margin:14px 0 6px}
   p{margin:8px 0 6px;color:#e9e7ff}
-  .eq{font:700 15px/1.35 ui-monospace,monospace;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-    border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center}
+  .eq{
+    font:700 15px/1.35 ui-monospace,monospace;
+    background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;
+    min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center
+  }
   .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
   @media (max-width:700px){.controls{grid-template-columns:1fr}}
   label{font-size:13px;opacity:.9;display:block;margin:0 0 4px}
   input[type="range"]{width:100%}
-  button{appearance:none;border:1px solid rgba(255,255,255,.2);
+  button{
+    appearance:none;border:1px solid rgba(255,255,255,.2);
     background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
-    color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer}
+    color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer
+  }
   button:focus{outline:2px solid var(--violet-2);outline-offset:2px}
   canvas{width:100%;height:420px;display:block;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.12)}
   .mini{font:12px/1.4 ui-monospace,monospace;opacity:.85}
@@ -49,21 +54,22 @@
   <div class="grid">
     <section class="glass">
       <h2>Abstract — The Pulse of Becoming</h2>
-      <p>Time as an <b>active derivative field</b> linking energy and distance. We sketch a τ-atlas and sonify τ̈ at <b>128 Hz</b>.
+      <p>Time as an <b>active derivative field</b> linking energy and distance. We sketch a τ-atlas and sonify τ̈ at <b>160 Hz</b>.
       Violet-pearl aesthetic; Smolin realism bridge.</p>
       <h3>Derivative Model (Dimensional Skeleton)</h3>
       <div class="eq" id="eqBox"></div>
       <p class="mini">Dimensional note: E/c³ ~ kg/m → interpret τ here as an effective temporal density/curvature proxy rather than a clock.</p>
       <h3>Cultural Harmonics</h3>
-      <p>Hue encodes direction of ∇E (argument of gradient), brightness encodes curvature; τ̈ modulates 128 Hz with gentle FM/AM.</p>
+      <p>Hue encodes direction of ∇E (argument of gradient), saturation encodes |∇E|, brightness encodes ∇²E; τ̈ modulates 160 Hz with gentle FM/AM.</p>
     </section>
+
     <aside class="glass">
       <h2>Instrument Panel</h2>
-      <button id="startAudio" aria-pressed="false" aria-label="Enable sound">Enable Audio (128 Hz)</button>
+      <button id="startAudio" aria-pressed="false" aria-label="Enable sound">Enable Audio (160 Hz)</button>
       <div class="controls">
         <div>
           <label for="vol">Volume</label>
-          <input id="vol" type="range" min="0" max="1" step="0.001" value="0.18"/>
+          <input id="vol" type="range" min="0" max="1" step="0.001" value="0.25"/>
         </div>
         <div>
           <label for="tauAccel">τ̈ (law-change acceleration)</label>
@@ -74,6 +80,7 @@
       <div class="mini" id="selfcheck">self-check: audio <span>—</span> · hue <span>—</span> · fps <span>—</span></div>
     </aside>
   </div>
+
   <section class="glass" style="margin-top:18px">
     <h2>Notes to Lee Smolin</h2>
     <p class="mini">Question: under what constraints on E(x) can a τ-like density be promoted to dynamics without contradiction, and how might that relate to evolving laws?</p>
@@ -91,7 +98,7 @@
   const ctx = canvas.getContext('2d', {alpha:false});
   const check = $('#selfcheck').querySelectorAll('span');
 
-  // ——— Animated Equation (type / hold / erase)
+  // ——— Animated Equation (type/hold/erase)
   const eqFrames = [
     "τ₀ := E / c³",
     "∇τ ≈ (∇E) / c³",
@@ -107,51 +114,62 @@
     requestAnimationFrame(animEq);
   } animEq();
 
-  // ——— Audio (robust iOS start + nonzero initial FM)
-  let actx, master, osc, fmOsc, fmGain;
-  let audioOn=false;
-  function setupAudio(){
-    if(actx) return;
+  // ——— Audio: create & start oscillators INSIDE the click (best for iOS)
+  let actx=null, master=null, osc=null, fmOsc=null, fmGain=null, audioOn=false;
+  const BASE_FREQ = 160.0;
+
+  function createAudioGraph(){
     actx = new (window.AudioContext || window.webkitAudioContext)();
-    master = actx.createGain();
-    master.gain.value = 0.0; // start silent until toggled
-    osc = actx.createOscillator(); osc.type="sine"; osc.frequency.value=128.0;
+    master = actx.createGain(); master.gain.value = 0.0; // start silent
+    osc = actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE_FREQ;
+
     fmOsc = actx.createOscillator(); fmOsc.type="sine";
     fmGain = actx.createGain();
-    // give a small nonzero depth/rate so first frame is audible on iOS
-    fmGain.gain.value = 2.0;
-    fmOsc.frequency.value = 0.6;
+    // give small non-zero baseline so tone is audible immediately
+    fmOsc.frequency.value = 0.8; // Hz
+    fmGain.gain.value = 2.0;     // Hz deviation
+
     fmOsc.connect(fmGain).connect(osc.frequency);
     osc.connect(master).connect(actx.destination);
-    fmOsc.start(); osc.start();
+
+    // start inside gesture
+    fmOsc.start();
+    osc.start();
   }
-  function updateAudio(){
+
+  function updateAudioParams(){
     if(!actx) return;
-    const tacc=parseFloat(tauAccel.value);
-    const fmRate = 0.2 + tacc*3.2;
-    const fmDepth = 1.5 + tacc*8.0;
+    const tacc = parseFloat(tauAccel.value);
+    const targetVol = audioOn ? parseFloat(vol.value) : 0.0;
+    master.gain.setTargetAtTime(targetVol, actx.currentTime, 0.03);
+
+    // map τ̈ ∈ [0,1] → fmRate ∈ [0.2, 3.6] Hz ; fmDepth ∈ [2, 10] Hz
+    const fmRate = 0.2 + tacc*3.4;
+    const fmDepth = 2.0 + tacc*8.0;
     fmOsc.frequency.setTargetAtTime(fmRate, actx.currentTime, 0.05);
     fmGain.gain.setTargetAtTime(fmDepth, actx.currentTime, 0.05);
-    master.gain.setTargetAtTime(audioOn ? parseFloat(vol.value) : 0.0, actx.currentTime, 0.03);
   }
-  function toggleAudio(){
-    setupAudio();
-    if(actx.state==="suspended"){ actx.resume(); }
-    audioOn=!audioOn;
-    startBtn.setAttribute("aria-pressed", audioOn?"true":"false");
-    startBtn.textContent = audioOn? "Audio: ON (128 Hz)" : "Enable Audio (128 Hz)";
-    updateAudio();
+
+  startBtn.addEventListener('click', () => {
+    if(!actx){ createAudioGraph(); }
+    if(actx.state === 'suspended'){ actx.resume(); }
+    audioOn = !audioOn;
+    startBtn.setAttribute('aria-pressed', audioOn ? 'true' : 'false');
+    startBtn.textContent = audioOn ? 'Audio: ON (160 Hz)' : 'Enable Audio (160 Hz)';
+    updateAudioParams();
     check[0].className = audioOn? "ok":"bad";
     check[0].textContent = audioOn? "ok":"off";
-  }
-  startBtn.addEventListener('click', toggleAudio, {passive:true});
-  ['pointerdown','touchend'].forEach(ev=>{
-    window.addEventListener(ev, ()=>{ if(actx&&actx.state==='suspended') actx.resume(); }, {passive:true});
-  });
-  vol.addEventListener('input', updateAudio, {passive:true});
-  tauAccel.addEventListener('input', updateAudio, {passive:true});
+  }, {passive:true});
 
-  // ——— Canvas (use full gradient ∇E for hue; Laplacian for brightness)
+  vol.addEventListener('input', updateAudioParams, {passive:true});
+  tauAccel.addEventListener('input', updateAudioParams, {passive:true});
+
+  // also resume if page becomes visible again (iOS)
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume(); }
+  });
+
+  // ——— Canvas (hue = arg(∇E), sat = |∇E|, bright = ∇²E)
   const lumps = Array.from({length:6},()=>({
     A: 0.8 + 1.2*Math.random(),
     x: 80 + Math.random()*(canvas.width-160),
@@ -185,30 +203,21 @@
     const tacc=parseFloat(tauAccel.value);
 
     for(let y=1;y<h-1;y++){
-      // precompute energies for current row and neighbors
       let ePrev=E(0,y), eCurr=E(1,y);
       for(let x=1;x<w-1;x++){
         const eNext = E(x+1,y);
         const eUp   = E(x,y-1);
         const eDown = E(x,y+1);
 
-        // gradient (centered)
         const dEx = (eNext - ePrev)*0.5;
         const dEy = (eDown - eUp)*0.5;
-
-        // Laplacian approx (curvature)
         const lap = (E(x+1,y)+E(x-1,y)+eUp+eDown - 4*eCurr);
 
-        // hue from gradient direction (atan2) -> full color wheel
-        // saturation from gradient magnitude (clamped)
-        const ang = Math.atan2(dEy, dEx); // -π..π
-        const hue = (ang/(2*Math.PI) + 0.5) * 360; // 0..360
+        const ang = Math.atan2(dEy, dEx);
+        const hue = (ang/(2*Math.PI) + 0.5) * 360;
         const gmag = Math.min(1, Math.hypot(dEx,dEy)*6.0);
 
-        // brightness from laplacian + τ̈ drive, compressed so hue shows
         const br = Math.max(0.06, Math.min(0.9, 0.12 + 0.22*Math.tanh(lap*5.0) + 0.18*tacc));
-
-        // saturation boosted (to make hue visible on phones)
         const sat = 0.35 + 0.55*gmag;
 
         const rgb = hsl2rgb(hue/360, sat, br);
@@ -220,15 +229,13 @@
     }
     ctx.putImageData(img,0,0);
 
-    // caption + grid
     ctx.strokeStyle="rgba(255,255,255,0.05)";
     for(let gx=0;gx<w;gx+=90){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,h);ctx.stroke();}
     for(let gy=0;gy<h;gy+=90){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(w,gy);ctx.stroke();}
     ctx.fillStyle="rgba(255,255,255,0.9)";
     ctx.font="700 12px ui-monospace,monospace";
-    ctx.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, 128 Hz ⇄ τ̈ (FM/AM)", 10, h-12);
+    ctx.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, 160 Hz ⇄ τ̈ (FM/AM)", 10, h-12);
 
-    // fps
     const now=performance.now(); const dt=now-last; last=now;
     fps = 1000/dt; check[2].textContent = (fps|0)+"fps"; check[2].className = fps>18?"ok":"bad";
 
@@ -249,14 +256,7 @@
     return [(r*255)|0,(g*255)|0,(b*255)|0];
   }
 
-  // start
   render();
-
-  // self-check initial
-  check[0].textContent="off"; check[1].textContent="hue:∠∇E, sat:|∇E|";
-
-  // iOS visibility resume
-  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume(); }});
 })();
 </script>
 </body>
