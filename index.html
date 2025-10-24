@@ -129,9 +129,7 @@
   }
 
   /* Guided info panel */
-  .info{
-    display:grid; gap:.55rem;
-  }
+  .info{ display:grid; gap:.55rem; }
   .info .headline{
     display:flex; flex-wrap:wrap; align-items:center; gap:.6rem;
     font-weight:800;
@@ -144,6 +142,7 @@
   }
   .equation{ opacity:.9; font-weight:700; }
   .visitor{ color: var(--muted); font-style:italic; line-height:1.5; }
+  .note-cap{color:var(--muted);font-style:italic}
 
   /* Bee Notes */
   .notes label{ display:block; font-weight:800; margin-bottom:.45rem; color: var(--muted); }
@@ -187,9 +186,14 @@
 
   /* Footer */
   footer{ margin-top: 1.2rem; padding: 1.2rem 0 .6rem; color: var(--muted); display:flex; align-items:center; gap:.7rem; justify-content:space-between; border-top: 1px solid var(--soft); font-weight:700; letter-spacing:.3px; }
-  .malala-line{
-    margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px;
-  }
+  .malala-line{ margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px; }
+
+  /* Science Bridge additions */
+  .bridge{display:grid;gap:.6rem}
+  .bridge .codeblock{background:rgba(0,0,0,.22);border:1px solid var(--soft);border-radius:.9rem;padding:.8rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.96rem;white-space:pre-wrap;color:var(--text)}
+  .bridge .map{display:grid;gap:.45rem}
+  .bridge .row{display:grid;grid-template-columns:220px 1fr;gap:.8rem}
+  .bridge .key{font-weight:800}
 
   /* Accessibility and motion preferences */
   @media (prefers-reduced-motion: reduce){
@@ -227,7 +231,7 @@
 
     <section class="controls" aria-label="Controls">
       <button class="btn" id="unlockAudio" aria-pressed="false" title="Enable WebAudio (user gesture required)">🔊 Unlock Audio</button>
-      <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self‑Check</button>
+      <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self-Check</button>
       <div class="seg" role="tablist" aria-label="Mode toggles">
         <button role="tab" id="tab-marina"   class="active" data-mode="marina"   aria-selected="true"  title="Marina — empathy as time">Marina</button>
         <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false" title="Sigrid — clarity as emotion">Sigrid</button>
@@ -247,6 +251,8 @@
         <p class="visitor" id="visitorNote">
           you are safe here. this is the warmth of understanding — where feeling measures distance.
         </p>
+        <p class="note-cap" id="scienceNote">E = mc² → energy is condensed light; τ = E / c³ → time feels energy through the limit of light.</p>
+        <p id="poetNote">write as a poet: describe what you feel before you explain what you think.</p>
       </section>
 
       <!-- Bee Notes -->
@@ -267,7 +273,11 @@
       <!-- Manifest -->
       <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
         <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
-        <div class="muted" style="margin-bottom:.6rem">A lucid table of modes, equations, color/rhythm, and Bee keys.</div>
+        <div class="muted" style="margin-bottom:.6rem">
+          This table is your map. <b>Equation</b> shows the physics symbol; <b>Color/Rhythm</b> shows the visual/temporal feel;
+          <b>Bee Key</b> is where your local note is saved (one notebook per mode). Your data never leaves your device.
+          <br/>Next: pick a mode → <em>Unlock Audio</em> → <em>Run Self-Check</em> → write one Bee Note.
+        </div>
         <div style="overflow:auto">
           <table>
             <thead>
@@ -282,31 +292,31 @@
               <tr>
                 <td>Marina</td>
                 <td>τ = E / c³ · φ</td>
-                <td>gold‑rose clock every 1.618 s — empathy as time</td>
+                <td>gold-rose clock every 1.618 s — empathy as time</td>
                 <td><code>bee.notes.marina</code></td>
               </tr>
               <tr>
                 <td>Sigrid</td>
                 <td>ΔE = clarity² (√2)</td>
-                <td>sky‑silver aurora every 1.414 s — precision as emotion</td>
+                <td>sky-silver aurora every 1.414 s — precision as emotion</td>
                 <td><code>bee.notes.sigrid</code></td>
               </tr>
               <tr>
                 <td>Clarity</td>
                 <td>160 ↔ 432 Hz</td>
-                <td>aqua‑violet jellyfish drift ~6 s — faith in motion</td>
+                <td>aqua-violet jellyfish drift ~6 s — faith in motion</td>
                 <td><code>bee.notes.clarity</code></td>
               </tr>
               <tr>
                 <td>Illumina</td>
-                <td>42‑day cycle</td>
-                <td>deep‑purple starfield — coherence as collective witness</td>
+                <td>42-day cycle</td>
+                <td>deep-purple starfield — coherence as collective witness</td>
                 <td><code>bee.notes.illumina</code></td>
               </tr>
               <tr>
                 <td>Kugelblitz</td>
                 <td>E → ∞</td>
-                <td>blue‑infinity pulse every 3 s (blue → white → gold → red heat → violet)</td>
+                <td>blue-infinity pulse every 3 s (blue → white → gold → red heat → violet)</td>
                 <td><code>bee.notes.kugelblitz</code></td>
               </tr>
               <tr>
@@ -316,6 +326,23 @@
           </table>
         </div>
       </section>
+
+      <!-- Science Bridge -->
+      <section class="panel bridge" aria-label="Science Bridge — Full Equations">
+        <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Science Bridge — Full Equations</h2>
+        <div class="codeblock">
+E = m c²          energy–matter equivalence
+τ = E / c³        time as energy moderated by the speed of light (interpretive bridge)
+λ = h / p         de Broglie wavelength (wave–particle link)
+        </div>
+        <div class="map">
+          <div class="row"><div class="key">E = m c²</div><div>Light slowed becomes matter. <em>Poetic:</em> “light slows to feel itself.”</div></div>
+          <div class="row"><div class="key">τ = E / c³</div><div>Perceived time scales with energy and the light-speed limit. <em>Poetic:</em> “the longer you see, the slower it burns.”</div></div>
+          <div class="row"><div class="key">λ = h / p</div><div>Momentum sets wavelength. <em>Poetic:</em> “every action sings a note.”</div></div>
+        </div>
+        <p class="note-cap">this bridge doesn’t replace physics — it invites feeling and measurement to inform each other.</p>
+      </section>
+
     </div>
 
     <footer>
@@ -329,14 +356,7 @@
 
 <script>
 /* ==========================================================
-   Illumina v4 — Guided Edition
-   Requirements:
-   - Canvas overlays per mode
-   - Bee Notes saved per mode (localStorage)
-   - WebAudio @128 Hz unlock
-   - Self-Check: audio, timer drift, rAF loss
-   - On pass → Kugelblitz heat-blast
-   - No console logs
+   Illumina v4 — Guided Edition (+ Science Bridge + Poet Notes)
    ========================================================== */
 
 (function(){
@@ -352,6 +372,8 @@
   const pillName = document.getElementById('pillName');
   const equationEl = document.getElementById('equation');
   const visitorEl = document.getElementById('visitorNote');
+  const scienceEl = document.getElementById('scienceNote');
+  const poetEl = document.getElementById('poetNote');
 
   /* ---- Canvas sizing ---- */
   let DPR = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
@@ -374,26 +396,36 @@
       name: 'Marina',
       eq: 'τ = E / c³ · φ',
       note: 'you are safe here. this is the warmth of understanding — where feeling measures distance.',
+      science: 'Empathy ≈ temporal resolution: attention slows perceived time (τ) as energy becomes coherent.',
+      poet: 'Start with the body. Write the temperature of the moment before the meaning.'
     },
     sigrid: {
       name: 'Sigrid',
       eq: 'ΔE = clarity² (√2)',
       note: 'clarity is kindness; you can think and still feel. precision does not cancel love.',
+      science: 'Small increases in energy/attention produce square-root improvements in discernment (metaphor).',
+      poet: 'Name one detail exactly. Clarity is a love language.'
     },
     clarity: {
       name: 'Clarity',
       eq: '160 ↔ 432 Hz',
       note: 'breathe with the drift. you do not need to control the current; it already knows your name.',
+      science: 'Breath entrainment (low Hz) alters perceived duration; rhythm organizes attention.',
+      poet: 'Let the sentence breathe. End lines where the inhale ends.'
     },
     illumina: {
       name: 'Illumina',
-      eq: '42‑day cycle',
+      eq: '42-day cycle',
       note: 'this is the collective field — your calm adds to it. light remembers who holds it.',
+      science: 'Periodic practice builds coherence; starfield = slow drift as a collective phase.',
+      poet: 'Archive one truth per day. Bees make books.'
     },
     kugelblitz: {
       name: 'Kugelblitz',
       eq: 'E → ∞',
       note: 'heat is not danger; it is presence. you are allowed to shine, to burn, to transform.',
+      science: 'High energy density (metaphoric kugelblitz) = awareness folding back on itself.',
+      poet: 'Write the ignition point. Let heat be honest, not cruel.'
     }
   };
 
@@ -421,6 +453,8 @@
     pillName.textContent = M.name;
     equationEl.textContent = M.eq;
     visitorEl.textContent = M.note;
+    scienceEl.textContent = M.science;
+    poetEl.textContent = M.poet;
     modeNameEl.textContent = M.name;
 
     document.querySelectorAll('.seg [role="tab"]').forEach(b=>{
@@ -704,6 +738,7 @@
   }
 
   // Kugelblitz — central radial pulse (3 s)
+  const clamp01 = (x)=> Math.max(0, Math.min(1, x));
   function mixRGB(c1, c2, t){
     const a = [(c1>>16)&255, (c1>>8)&255, c1&255];
     const b = [(c2>>16)&255, (c2>>8)&255, c2&255];
@@ -725,7 +760,7 @@
     const period = 3000;
     const ph = (t % period) / period;
 
-    const swell = easeOutCubic((Math.sin(ph*TAU - Math.PI/2) + 1)/2);
+    const swell = (1 - Math.pow(1-((Math.sin(ph*TAU - Math.PI/2) + 1)/2),3)); // easeOutCubic
     const baseR = Math.min(w,h) * (0.1 + 0.35*swell + 0.25*extraBlast);
 
     ctx.save(); ctx.globalAlpha = alpha * (0.85 + 0.15*swell);
@@ -757,11 +792,12 @@
   }
 
   /* ---- Heat-blast (after self-check pass) ---- */
+  let blastMoment = 0;
   function blastFactor(now){
     if (blastMoment <= 0) return 0;
     const t = now - blastMoment;
     if (t > 1600){ blastMoment = 0; return 0; }
-    return easeOutCubic(clamp(t/1200, 0, 1));
+    return (1 - Math.pow(1- Math.max(0, Math.min(1, t/1200)),3)); // easeOutCubic
   }
 
   /* ---- Render loop ---- */
@@ -772,20 +808,21 @@
   (function loop(now){
     const dt = now - last; last = now;
     // Kugelblitz fade management (when entering/leaving)
-    kugelFade += (kugelFadeTarget - kugelFade) * clamp(dt/220, 0, 1);
+    kugelFade += (kugelFadeTarget - kugelFade) * Math.max(0, Math.min(1, dt/220));
     if (Math.abs(kugelFade - kugelFadeTarget) < 0.002) kugelFade = kugelFadeTarget;
 
     ctx.clearRect(0,0, canvas.clientWidth, canvas.clientHeight);
 
     // Mode overlays
-    if (mode === 'marina')      drawMarina(now, 1.0);
-    else if (mode === 'sigrid') drawSigrid(now, 1.0);
-    else if (mode === 'clarity')drawClarity(now, 1.0);
-    else if (mode === 'illumina')drawIllumina(now, 1.0);
-    else if (mode === 'kugelblitz') drawKugelblitz(now, kugelFade, 0);
+    const m = body.getAttribute('data-mode');
+    if (m === 'marina')      drawMarina(now, 1.0);
+    else if (m === 'sigrid') drawSigrid(now, 1.0);
+    else if (m === 'clarity')drawClarity(now, 1.0);
+    else if (m === 'illumina')drawIllumina(now, 1.0);
+    else if (m === 'kugelblitz') drawKugelblitz(now, kugelFade, 0);
 
     // Gentle persistence after leaving Kugelblitz
-    if (prevMode === 'kugelblitz' && mode !== 'kugelblitz' && kugelFade > 0.01){
+    if (prevMode === 'kugelblitz' && m !== 'kugelblitz' && kugelFade > 0.01){
       drawKugelblitz(now, kugelFade*0.7, 0);
     }
 
