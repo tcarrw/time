@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Time · Synesthetic Bridge (v4)</title>
+<title>Time · Synesthetic Bridge (v4.1)</title>
 <meta name="theme-color" content="#ffd76b"/>
 <style>
 :root{
@@ -41,7 +41,7 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
 .chips{display:flex; gap:8px; flex-wrap:wrap}
 .chip{padding:8px 10px; border-radius:12px; background:var(--glass); border:1px solid rgba(255,255,255,.1); cursor:pointer}
 .chip.active{box-shadow:var(--ring)}
-.code{background:rgba(12,10,6,.85); border:1px solid rgba(255,255,255,.12); padding:10px; border-radius:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:13px; color:#fff7d1; overflow:auto}
+.code{background:#0b0c0f; border:1px solid rgba(255,255,255,.18); padding:12px; border-radius:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:14px; color:#fffbe6; letter-spacing:.2px; line-height:1.35; overflow:auto}
 .two{display:grid; grid-template-columns:1fr 1fr; gap:12px}
 @media (max-width:860px){.two{grid-template-columns:1fr}}
 .hidden{display:none}
@@ -52,10 +52,10 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
   <div class="header">
     <div class="row"><div class="logo"></div><div class="title">Time · Synesthetic Bridge</div></div>
     <div class="modeToggle">
-      <button class="btn" id="modeArt" aria-pressed="true">Art Mode</button>
-      <button class="btn" id="modeScience" aria-pressed="false">Science Mode</button>
+      <button class="btn" id="modeArt" aria-pressed="false">Art Mode</button>
+      <button class="btn" id="modeScience" aria-pressed="true">Science Mode</button>
     </div>
-    <div class="badge">v4</div>
+    <div class="badge">v4.1</div>
   </div>
 
   <div class="grid">
@@ -114,8 +114,8 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
       <div class="code" id="snapshot" style="min-height:56px; margin-top:8px"></div>
     </div>
 
-    <!-- RIGHT: Science Panel (visible in Science mode) -->
-    <div class="card" id="sciencePanel" class="hidden">
+    <!-- RIGHT: Science Panel -->
+    <div class="card" id="sciencePanel">
       <h2>Science Panel</h2>
       <div class="two">
         <div>
@@ -128,6 +128,19 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
         </div>
       </div>
     </div>
+
+    <!-- FULL-WIDTH: Anchor Presets -->
+    <div class="card" style="grid-column:1/-1">
+      <h2>Anchor Presets</h2>
+      <div class="row">
+        <button class="btn" id="presetButterfly">Butterfly</button>
+        <button class="btn" id="presetVenus">Venus Fly Trap</button>
+        <button class="btn" id="presetADIML">Ancient Dreams in a Modern Land</button>
+        <button class="btn" id="presetFroot">Froot</button>
+      </div>
+      <div class="meta" style="margin-top:6px">Each preset sets tone + hue + a line.
+        Butterfly → 160 Hz (violet) · Venus → 96 Hz (red) · ADIML → 128 Hz (cyan) · Froot → 128 Hz (green)</div>
+    </div>
   </div>
 </div>
 
@@ -135,9 +148,9 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
 
 <script>
 (function(){
-  var LS = { tone:'off', volume:0.3, binaural:false, beat:4.0, hue:45, mode:'art', startTs:null, snapshots:[] };
-  try{ var raw=localStorage.getItem('time.v4'); if(raw){ var p=JSON.parse(raw); for(var k in p){ LS[k]=p[k]; } } }catch(_){ }
-  function save(){ try{ localStorage.setItem('time.v4', JSON.stringify(LS)); }catch(_){ } }
+  var LS = { tone:'off', volume:0.3, binaural:false, beat:4.0, hue:45, mode:'science', startTs:null, snapshots:[] };
+  try{ var raw=localStorage.getItem('time.v4.1'); if(raw){ var p=JSON.parse(raw); for(var k in p){ LS[k]=p[k]; } } }catch(_){ }
+  function save(){ try{ localStorage.setItem('time.v4.1', JSON.stringify(LS)); }catch(_){ } }
   function setVar(k,v){ document.documentElement.style.setProperty(k, String(v)); }
 
   // Mapping
@@ -154,6 +167,10 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
   var slowBtn = document.getElementById('slow'); var poemBtn=document.getElementById('poemBtn'); var immortalBtn=document.getElementById('immortal');
   var timer = document.getElementById('timer'); var snapshot = document.getElementById('snapshot');
   var modeArt = document.getElementById('modeArt'); var modeScience = document.getElementById('modeScience'); var sciencePanel=document.getElementById('sciencePanel');
+  var presetButterfly=document.getElementById('presetButterfly');
+  var presetVenus=document.getElementById('presetVenus');
+  var presetADIML=document.getElementById('presetADIML');
+  var presetFroot=document.getElementById('presetFroot');
 
   // Audio graph
   var AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -168,7 +185,7 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
     if(panL&&panR){ oscL.connect(gL); gL.connect(panL); panL.connect(gain); oscR.connect(gR); gR.connect(panR); panR.connect(gain); }
     else { oscL.connect(gain); oscR.connect(gain); }
     oscL.start(); oscR.start();
-    LS.tone=String(freq); LS.hue=hueForFreq(freq); setVar('--tint-hue', LS.hue); save(); updateState(); if(!LS.startTs){ LS.startTs=Date.now(); save(); }
+    LS.tone=String(freq); LS.hue=hueForFreq(freq); setVar('--tint-hue', LS.hue); if(!LS.startTs){ LS.startTs=Date.now(); } save(); updateState();
   }
   function stopTone(keepPhase){ if(oscL){ try{oscL.stop();}catch(_){ } try{oscL.disconnect();}catch(_){ } oscL=null; } if(oscR){ try{oscR.stop();}catch(_){ } try{oscR.disconnect();}catch(_){ } oscR=null; if(!keepPhase){ setVar('--intensity', 0.0); } }
   }
@@ -180,16 +197,15 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
   start.addEventListener('click', function(){ if(!ensureCtx())return; if(actx.state==='suspended') actx.resume(); updateState(); });
   document.querySelectorAll('[data-f]').forEach(function(b){ b.addEventListener('click', function(){ var f=b.getAttribute('data-f'); if(f==='off'){ LS.tone='off'; stopTone(); updateState(); } else { startTone(parseFloat(f)); } }); });
   vol.addEventListener('input', function(e){ setVolume(parseFloat(e.target.value||'0')); });
-
   var binBtn=document.getElementById('binaural'); binBtn.addEventListener('click', function(){ LS.binaural=!LS.binaural; binBtn.setAttribute('aria-pressed', String(LS.binaural)); save(); if(LS.tone!=='off' && oscL && oscR){ startTone(parseFloat(LS.tone)); } updateState(); });
   beat.addEventListener('input', function(e){ LS.beat=parseFloat(e.target.value||'0'); beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; save(); if(LS.binaural && LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }});
 
   // Phase + waveform animation
-  var raf=null, pct=0; function loop(){ if(!ctx2d) return; if(analyser){ analyser.getByteTimeDomainData(buffer); var sum=0; for(var i=0;i<buffer.length;i++){ var v=(buffer[i]-128)/128; sum+=v*v; } var amp = Math.min(1, Math.sqrt(sum/buffer.length)*2); setVar('--intensity', (0.2 + amp*0.6).toFixed(3)); setVar('--phase', pct.toFixed(3)); drawWave(buffer, amp); }
-    pct=(pct+0.7)%100; phaseDot.style.width=pct+'%'; raf=requestAnimationFrame(loop); }
+  var analyserRAF=null, pct=0; function loop(){ if(!ctx2d) return; if(analyser){ analyser.getByteTimeDomainData(buffer); var sum=0; for(var i=0;i<buffer.length;i++){ var v=(buffer[i]-128)/128; sum+=v*v; } var amp = Math.min(1, Math.sqrt(sum/buffer.length)*2); setVar('--intensity', (0.2 + amp*0.6).toFixed(3)); drawWave(buffer, amp); }
+    pct=(pct+0.7)%100; phaseDot.style.width=pct+'%'; analyserRAF=requestAnimationFrame(loop); }
   function drawWave(buf, amp){ var w=wave.width=wave.clientWidth, h=wave.height=wave.clientHeight; ctx2d.clearRect(0,0,w,h); ctx2d.lineWidth=2; var hue=LS.hue||45; var alpha=0.3+amp*0.5; ctx2d.strokeStyle='hsla('+hue+', 90%, 60%, '+alpha+')'; ctx2d.beginPath(); for(var i=0;i<buf.length;i++){ var x=i/buf.length*w; var y=h/2+(buf[i]-128)/128*(h/2-6); if(i===0) ctx2d.moveTo(x,y); else ctx2d.lineTo(x,y); } ctx2d.stroke(); if(LS.mode==='science'){ ctx2d.fillStyle='hsla('+hue+', 90%, 80%, 0.08)'; ctx2d.fillRect(0, h*(1-amp), w, h*amp); }
   }
-  raf=requestAnimationFrame(loop);
+  analyserRAF=requestAnimationFrame(loop);
 
   // Poem resonance
   var poems=[
@@ -197,17 +213,29 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
     'mortality teaches flavor; coherence outlives the body',
     'we don’t escape time; we sing in it until it remembers us',
     'sex is power, love is phase‑lock',
-    'cuckoo loops the root; not hungry anymore releases the gold'
+    'cuckoo loops the root; not hungry anymore releases the gold',
+    'digital fantasy is light without weight — verify the source',
+    '“oh no!” is ambition out of phase — breathe and retune',
+    '“are you satisfied?” is a measurement — choose what to measure',
+    'butterfly learns the air by trusting the fall',
+    'venus fly trap: grow teeth after you grow light',
+    'ancient dreams in a modern land — carry the fire, update the map',
+    'froot ripens at its own speed — sweetness is timing'
   ];
   function showPoem(){ poemText.textContent=poems[Math.floor(Math.random()*poems.length)]; poemEl.style.opacity='1'; setTimeout(function(){ poemEl.style.opacity='0'; }, 3600); }
+  function showLine(s){ poemText.textContent=s; poemEl.style.opacity='1'; setTimeout(function(){ poemEl.style.opacity='0'; }, 3600); }
   poemBtn.addEventListener('click', showPoem);
 
   // Slow‑time ramp
   slowBtn.addEventListener('click', function(){ var prev=LS.volume; if(!ensureCtx()) return; var t0=actx.currentTime; if(gain){ var g=Math.max(0.02, prev*0.25); gain.gain.cancelScheduledValues(t0); gain.gain.setValueAtTime(prev, t0); gain.gain.linearRampToValueAtTime(g, t0+1.5); gain.gain.setValueAtTime(g, t0+2.5); gain.gain.linearRampToValueAtTime(prev, t0+4.0);} });
 
-  // Immortal preset
-  function immortal(){ startTone(432); setVolume(0.35); LS.hue=45; setVar('--tint-hue',45); save(); showPoem(); }
+  // Presets
+  function immortal(){ startTone(432); setVolume(0.35); LS.hue=45; setVar('--tint-hue',45); save(); showLine('we don’t escape time; we sing in it until it remembers us'); }
   immortalBtn.addEventListener('click', immortal);
+  presetButterfly.addEventListener('click', function(){ startTone(160); setVolume(0.32); LS.hue=280; setVar('--tint-hue',280); save(); showLine('butterfly learns the air by trusting the fall'); });
+  presetVenus.addEventListener('click', function(){ startTone(96); setVolume(0.34); LS.hue=0; setVar('--tint-hue',0); save(); showLine('venus fly trap: grow teeth after you grow light'); });
+  presetADIML.addEventListener('click', function(){ startTone(128); setVolume(0.33); LS.hue=200; setVar('--tint-hue',200); save(); showLine('ancient dreams in a modern land — carry the fire, update the map'); });
+  presetFroot.addEventListener('click', function(){ startTone(128); setVolume(0.33); LS.hue=120; setVar('--tint-hue',120); save(); showLine('froot ripens at its own speed — sweetness is timing'); });
 
   // Auto ritual: every 60s → slow-time + poem + snapshot
   var lastCycle=Date.now(); function ritualTick(){ var now=Date.now(); if(now-lastCycle>60000){ lastCycle=now; showPoem(); slowBtn.click(); takeSnapshot(); } requestAnimationFrame(ritualTick); } ritualTick();
@@ -225,9 +253,10 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
 ')||'no snapshots yet'); }
 
   // Modes
-  function setMode(m){ LS.mode=m; save(); var art = (m==='art'); modeArt.setAttribute('aria-pressed', String(art)); modeScience.setAttribute('aria-pressed', String(!art)); sciencePanel.classList.toggle('hidden', art); }
+  function setMode(m){ LS.mode=m; save(); var art=(m==='art'); modeArt.setAttribute('aria-pressed', String(art)); modeScience.setAttribute('aria-pressed', String(!art)); sciencePanel.classList.toggle('hidden', art); }
   modeArt.addEventListener('click', function(){ setMode('art'); });
   modeScience.addEventListener('click', function(){ setMode('science'); });
+  setMode(LS.mode||'science');
 
   // Science box
   var constBox=document.getElementById('constBox'); var metricBox=document.getElementById('metricBox');
@@ -236,12 +265,12 @@ body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetic
 ' + 'E = m c² (m=1) ≈ '+(c*c).toExponential(5)+' J'; }
   function renderMetrics(){ var f=(LS.tone==='off'?0:parseFloat(LS.tone)); var delta=LS.binaural?LS.beat:0; var tau=(f? (f/(299792458*299792458*299792458)) : 0); metricBox.textContent = 'f = '+f+' Hz 
 Δ = '+delta+' Hz
-τ ~ '+tau.toExponential(3)+' (scaled units)
+τ ~ '+(tau?tau.toExponential(3):'0.000e+0')+' (scaled units)
 vol = '+LS.volume.toFixed(2); }
   function metricsLoop(){ renderMetrics(); requestAnimationFrame(metricsLoop); }
 
   // Init
-  vol.value=LS.volume; beat.value=LS.beat; beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; binBtn.setAttribute('aria-pressed', String(LS.binaural)); setVar('--tint-hue', LS.hue); updateState(); renderConst(); metricsLoop(); renderSnapshot(); if(LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }
+  vol.value=LS.volume; beat.value=LS.beat; beatLabel.textContent='Δ '+LS.beat.toFixed(1)+' Hz'; document.getElementById('binaural').setAttribute('aria-pressed', String(LS.binaural)); setVar('--tint-hue', LS.hue); updateState(); renderConst(); metricsLoop(); renderSnapshot(); if(LS.tone!=='off'){ startTone(parseFloat(LS.tone)); }
 })();
 </script>
 </body>
