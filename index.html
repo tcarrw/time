@@ -20,7 +20,7 @@ body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roma
 .title{font-size:26px; letter-spacing:.2px}
 .badge{padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid var(--glass-2); color:var(--muted)}
 .grid{display:grid; grid-template-columns:1fr 360px; gap:18px}
-@media (max-width:980px){.grid{grid-template-columns:1fr}}
+
 .paper{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative}
 .paper.deluxe-ok{box-shadow:0 0 0 2px rgba(245,212,119,.35), 0 0 80px rgba(245,212,119,.25), var(--shadow);} /* coherence halo */
 .paper h2{font-size:20px; margin:0 0 8px 0}
@@ -62,7 +62,7 @@ body.sans{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto
       <div class="brand"><div class="logo" aria-hidden="true"></div>
         <div><div class="title">τ = E / c³ · The Immortal Bridge</div>
         <div class="small">Director Mode v3 · Deluxe — PRINCESS OF POWER</div></div></div>
-      <div style="display:flex; gap:8px; align-items:center"><div class="badge">single‑file · deluxe skin<\/div><button class="btn" id="toggleDeluxe">Deluxe Skin<\/button><button class="btn" id="toggleSans">Typeface<\/button><button class="btn" id="toggleBars">Bars Mode<\/button><\/div>
+      <div style="display:flex; gap:8px; align-items:center"><div class="badge">single‑file · deluxe skin</div><button class="btn" id="toggleDeluxe">Deluxe Skin</button><button class="btn" id="toggleSans">Typeface</button><button class="btn" id="toggleBars">Bars Mode</button></div>
     </div>
 
     <div class="grid">
@@ -169,7 +169,7 @@ body.sans{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto
   function badge(text, state){ var d=document.createElement('div'); d.className='tag '+(state==='ok'?'ok':state==='warn'?'warn':'fail'); d.textContent=text; return d; }
   function addRow(name, metric, value, target){ var tr=document.createElement('tr'); function td(s){ var x=document.createElement('td'); x.textContent=s; return x; } tr.appendChild(td(name)); tr.appendChild(td(metric)); tr.appendChild(td(value)); tr.appendChild(td(target)); tb.appendChild(tr); }
 
-  async function testAudioHz(targetHz){ try{ var AudioCtx=window.AudioContext||window.webkitAudioContext; var ctx=new AudioCtx(); var osc=ctx.createOscillator(); var gain=ctx.createGain(); var analyser=ctx.createAnalyser(); analyser.fftSize=2048; gain.gain.value=0.12; osc.type='sine'; osc.frequency.setValueAtTime(targetHz, ctx.currentTime); osc.connect(gain); gain.connect(analyser); analyser.connect(ctx.destination); osc.start(); await new Promise(r=>setTimeout(r,180)); var buf=new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf); function auto(data, sr){ var SIZE=data.length, maxLag=Math.floor(SIZE/2), best=0, bestLag=-1, rms=0; for(var i=0;i<SIZE;i++){var v=data[i]; rms+=v*v;} rms=Math.sqrt(rms/SIZE); if(rms<0.01) return null; var last=0; for(var lag=1; lag<maxLag; lag++){ var sum=0; for(var j=0;j<maxLag; j++){ sum+=data[j]*data[j+lag]; } if(sum>best && sum>last){ best=sum; bestLag=lag; } last=sum; } return bestLag>0? sr/bestLag : null; } var est=auto(buf, ctx.sampleRate); osc.stop(); osc.disconnect(); gain.disconnect(); analyser.disconnect(); ctx.close(); if(!est) return {ok:false, hz_error:null, est:null}; var err=Math.abs(est-targetHz); return {ok:err<=0.5, hz_error:+err.toFixed(2), est:+est.toFixed(2)}; }catch(e){ return {ok:false, error:String(e)} } }
+  
   async function testTimerDrift(runMs){ return new Promise(function(resolve){ var start=performance.now(); setTimeout(function(){ var end=performance.now(); var drift=end-start-runMs; resolve({ok:Math.abs(drift)<30, drift_ms:+drift.toFixed(2)}); }, runMs); }); }
   async function testRenderLoop(durationMs){ return new Promise(function(resolve){ var frames=0; var start=performance.now(); function tick(){ frames++; if(performance.now()-start<durationMs){ requestAnimationFrame(tick); } else { var elapsed=performance.now()-start; var expected=elapsed/16.6667; var loss=Math.max(0, expected-frames); resolve({ok: loss<2, frames:Math.round(frames), frame_loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
   function testSchemaShape(obj){ function has(p){ return p in obj; } var ok=has('participant_id')&&has('session_id')&&has('device')&&has('block')&&has('timing')&&has('measures')&&has('version'); return {ok:ok, schema_valid:ok}; }
