@@ -4,139 +4,101 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="dark light"/>
-<title>Time · Illumina v6 — Time as a Living Derivative</title>
-<meta name="description" content="Smolin-bridge sketch. Violet-pearl aesthetic. Canvas2D + refined audio (clean OSC with envelopes). 160 Hz base. Animated equation. Dedication + Anchors showcase."/>
+<title>Time · Illumina v7 — Time as a Living Derivative (Violet-Pearl Flow)</title>
+<meta name="description" content="Violet-pearl aesthetic. Physics × anthropology timeline. Canvas2D field + lightweight background orbs. iOS-safe audio (resume-first, unlock ping, video warm-up). 160 Hz base. Dedication + Anchors."/>
 <style>
   :root{
-    --bg0:#0c0912; --bg1:#130f1e;
-    --vio1:#a78bfa; --vio2:#c4b5fd; --pearl:#eef2ff; --ink:#e9e7ff;
+    --bg0:#0c0912; --bg1:#130f1e; --bg2:#1b1230;
+    --vio:#c4b5fd; --vioN:#b388ff; --vioN2:#c77dff; --ink:#e9e7ff; --silver:#eaeaea;
   }
   html,body{height:100%;margin:0}
   body{
     background:
-      radial-gradient(1200px 800px at 15% 10%, rgba(167,139,250,0.10), transparent 60%),
-      radial-gradient(1000px 1000px at 85% 20%, rgba(236,72,153,0.08), transparent 60%),
+      radial-gradient(1200px 800px at 15% 10%, rgba(167,139,250,.10), transparent 60%),
+      radial-gradient(1000px 1000px at 85% 20%, rgba(236,72,153,.08), transparent 60%),
       linear-gradient(180deg, var(--bg0), var(--bg1));
-    color:var(--ink);
-    font:15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    letter-spacing:.15px;
+    color:var(--ink); font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; letter-spacing:.15px; overflow-x:hidden;
   }
+  /* Background Orbs Canvas */
+  #orbs{position:fixed; inset:0; z-index:-1; width:100vw; height:100vh; display:block}
+
   .wrap{max-width:1120px;margin:0 auto;padding:24px}
 
-  /* Title block */
-  .title{
-    display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center;
-    margin:16px 0 12px;
-  }
-  .glyph{
-    width:46px;height:46px;border-radius:12px;
-    background: conic-gradient(from 210deg, rgba(167,139,250,.35), rgba(103,232,249,.28), rgba(252,211,77,.25), transparent 70%);
-    box-shadow: 0 0 40px rgba(167,139,250,.30), inset 0 0 22px rgba(255,255,255,.05);
-  }
+  .title{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin:16px 0 12px}
+  .glyph{width:46px;height:46px;border-radius:12px;background:conic-gradient(from 210deg, rgba(167,139,250,.35), rgba(103,232,249,.28), rgba(252,211,77,.25), transparent 70%);box-shadow:0 0 40px rgba(167,139,250,.30), inset 0 0 22px rgba(255,255,255,.05)}
   h1{margin:0;font:800 28px/1.15 ui-sans-serif}
   .tag{opacity:.85;font-size:13px}
-  .dedication{
-    margin-top:6px;
-    font: 500 14px/1.45 ui-sans-serif;
-    color:#efeaff;
-    padding:10px 12px;
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:12px;
-    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    box-shadow: inset 0 0 28px rgba(167,139,250,.08);
-  }
-  .dedication strong{color:var(--vio2)}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .chip{font-size:12px;opacity:.9;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
-
-  /* Glass + layout */
-  .glass{
-    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:18px; backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
-  }
-  .grid{display:grid;grid-template-columns:1.2fr .8fr; gap:18px}
-  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+  .chip{font-size:12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+  .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05)}
+  .dedication{margin-top:6px;font:500 14px/1.45 ui-sans-serif;padding:10px 12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));box-shadow:inset 0 0 28px rgba(167,139,250,.08)}
+  .dedication strong{color:var(--vio)}
+  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
   h2{font:700 18px/1.25 ui-sans-serif;margin:0 0 8px}
   h3{font:700 15px/1.3;margin:14px 0 6px}
-  p{margin:8px 0 6px;color:#efeaff}
-  .note{font-size:13px; opacity:.85}
-
-  /* Equation + math */
-  .eq{
-    font:700 15px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-    border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:10px 12px; color:#f5f3ff;
-    min-height:45px; display:flex; align-items:center; justify-content:center; text-align:center;
-    box-shadow: inset 0 0 30px rgba(167,139,250,.06);
-    white-space:pre-wrap;
-  }
-  .math{
-    font:600 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    padding:8px 10px; border:1px solid rgba(255,255,255,.14); border-radius:10px;
-    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-    display:inline-block;
-  }
-  sub{font-size:0.7em; vertical-align:baseline; position:relative; bottom:-0.2em}
-  sup{font-size:0.7em; vertical-align:baseline; position:relative; top:-0.2em}
-
-  /* Controls */
+  p{margin:8px 0 6px}
+  .note{font-size:13px;opacity:.85}
+  .eq{font:700 15px/1.35 ui-monospace,Menlo,Consolas,monospace;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center;white-space:pre-wrap;box-shadow:inset 0 0 30px rgba(167,139,250,.06)}
+  .math{font:600 14px/1.5 ui-monospace,Menlo,Consolas,monospace;padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));display:inline-block}
+  sub{font-size:.7em;position:relative;bottom:-.2em} sup{font-size:.7em;position:relative;top:-.2em}
   .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
-  @media (max-width:700px){ .controls{grid-template-columns:1fr} }
+  @media (max-width:700px){.controls{grid-template-columns:1fr}}
   label{font-size:13px;opacity:.9;display:block;margin:0 0 4px}
   input[type="range"]{width:100%}
-  button{
-    appearance:none; border:1px solid rgba(255,255,255,.2); cursor:pointer;
-    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
-    color:#fff; border-radius:10px; padding:10px 14px; font-weight:700; letter-spacing:.2px;
-  }
-  button:focus{outline:2px solid var(--vio2); outline-offset:2px}
-  canvas{width:100%; height:420px; display:block; border-radius:12px; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.12)}
+  button{appearance:none;border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer}
+  button:focus{outline:2px solid var(--vio);outline-offset:2px}
+  canvas#field{width:100%;height:420px;display:block;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.12)}
   .mini{font:12px/1.4 ui-monospace,monospace;opacity:.85}
-  .ok{color:#9affb0}.bad{color:#ff9a9a}
   .chipline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-
-  /* Ask the Field */
-  .ask{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-top:10px}
-  @media (max-width:700px){ .ask{grid-template-columns:1fr} }
-  .ask textarea{
-    resize:vertical; min-height:64px; max-height:180px;
-    width:100%; border-radius:10px; border:1px solid rgba(255,255,255,.18);
-    background:rgba(255,255,255,.05); color:#fff; padding:10px;
-  }
-
-  footer{opacity:.9; font-size:13px; margin:18px 0 40px}
   .anchors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  @media (max-width:700px){ .anchors{grid-template-columns:1fr} }
-  .anchor{
-    padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;
-    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-  }
-  .anchor h4{margin:0 0 6px;font:700 15px/1.25 ui-sans-serif;color:var(--vio2)}
+  @media (max-width:700px){.anchors{grid-template-columns:1fr}}
+  .anchor{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
+  .anchor h4{margin:0 0 6px;font:700 15px/1.25 ui-sans-serif;color:var(--vio)}
+  footer{opacity:.9;font-size:13px;margin:18px 0 40px}
+
+  /* Timeline (Neon Violet) */
+  #timeline{margin-top:22px;background:linear-gradient(180deg,var(--bg1),var(--bg2));border-color:rgba(196,181,253,.35)}
+  .tl-title{font:800 20px/1.25 ui-sans-serif;margin:0 0 12px;color:#f0eaff;text-shadow:0 0 12px rgba(196,181,253,.35)}
+  .tl-sub{font:13px;opacity:.9;margin-bottom:10px}
+  .tl-svg{width:100%;height:auto;display:block}
+  .tl-label{font:600 12px ui-sans-serif;fill:#efeaff;letter-spacing:.4px;filter:drop-shadow(0 0 6px rgba(195,160,255,.45))}
+  .tl-cap{font:12px ui-sans-serif;fill:#dcd2ff;opacity:.9}
+  .tl-node{filter:drop-shadow(0 0 10px rgba(179,136,255,.75));}
+  .tl-line{stroke:url(#vioGrad);stroke-width:6;stroke-linecap:round;filter:drop-shadow(0 0 12px rgba(179,136,255,.55))}
+  .tl-ticks{stroke:#bfa6ff;stroke-opacity:.55}
+  .tl-hit:hover + .tl-tooltip{opacity:1}
+  .tl-tooltip{opacity:0;transition:opacity .18s ease-in-out}
+  @media (prefers-reduced-motion: reduce){.tl-tooltip{transition:none}}
+  /* reduced motion overall */
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<!-- Layer 1: Background Orbs (behind everything) -->
+<canvas id="orbs" aria-hidden="true"></canvas>
+
+<div class="wrap">
   <!-- Title + Dedication -->
   <div class="title">
     <div class="glyph" aria-hidden="true"></div>
     <div>
       <h1>Time as a Living Derivative</h1>
-      <div class="tag">Illumina v6 · violet-pearl · base <strong>160 Hz</strong> · Canvas2D + clean audio envelopes</div>
+      <div class="tag">Illumina v7 · violet-pearl flow · base <strong>160 Hz</strong> · Canvas2D + iOS-safe audio</div>
       <div class="dedication" role="note" aria-label="Dedication">
-        Dedication: To my <strong>Anchors</strong>, to <strong>Honey</strong>, and to my wife <strong>Katie White</strong> — an anchor of anchors.  
+        Dedication: To my <strong>Anchors</strong>, to <strong>Honey</strong>, and to my wife <strong>Katie White</strong> — an anchor of anchors.
         This instrument invites each Anchor — and <strong>Lee Smolin</strong> — to pose one question you’ve always wanted physics to answer.
       </div>
       <div class="chips" aria-hidden="true">
         <span class="chip">realism</span><span class="chip">derivative time</span><span class="chip">cultural harmonics</span>
       </div>
 
-      <!-- Ask the Field composer (under title) -->
+      <!-- Ask the Field composer -->
       <div class="glass" style="margin-top:10px">
         <label for="askField" style="display:block;font-weight:700;margin-bottom:6px">Ask the Field</label>
-        <div class="ask">
-          <textarea id="askField" placeholder="Write your one-sentence physics question here…"></textarea>
+        <div class="ask" style="display:grid;grid-template-columns:1fr auto auto;gap:8px">
+          <textarea id="askField" placeholder="Write your one-sentence physics question here…" style="resize:vertical;min-height:64px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#fff;padding:10px"></textarea>
           <button id="copyInvite" title="Copy message">Copy</button>
           <button id="tweetInvite" title="Tweet @LeeSmolin">Tweet @LeeSmolin</button>
         </div>
@@ -149,246 +111,225 @@
     <!-- LEFT: PAPER -->
     <section class="glass" aria-label="Paper">
       <h2>Abstract — The Pulse of Becoming</h2>
-      <p>
-        We propose that <em>time is not a background parameter</em> but an <strong>active derivative field</strong> linking energy and distance.
-        In a realist spirit (Smolin), we treat laws as historically evolving; the rate of this evolution couples to an effective temporal curvature
-        τ<sub>eff</sub>. We present a minimal dimensional ansatz, simulations of an E–x field, and an audible mapping at 160 Hz for
-        perceptual inspection.
-      </p>
+      <p>We propose that time is not a background parameter but an <strong>active derivative field</strong> linking energy and distance. In a realist spirit (Smolin), we treat laws as historically evolving; the rate of this evolution couples to an effective temporal curvature τ<sub>eff</sub>. We present a minimal dimensional ansatz, simulations of an E–x field, and an audible mapping at 160 Hz for perceptual inspection.</p>
 
       <h3>Foundations of Realism (Smolin Bridge)</h3>
-      <p class="note">
-        If time is fundamental and laws evolve, any adequate theory should expose <em>rates</em> of change of the structures those laws constrain.
-        Here we hypothesize the relevant rate appears as derivatives of energy with respect to distance, scaled by c³.
-      </p>
+      <p class="note">If time is fundamental and laws evolve, theory should expose <em>rates</em> of change of the structures those laws constrain. We probe derivatives of energy with respect to distance, scaled by c³.</p>
 
       <h3>Derivative Model (Dimensional Skeleton)</h3>
-      <div class="eq" id="eqBox" aria-live="polite" aria-label="Animated equation"></div>
+      <div class="eq" id="eqBox" aria-live="polite">τ₀ := E / c³</div>
       <p>Exploratory atlas (not final identities):</p>
       <div class="math">τ₀ := E / c³</div>
       <div class="math" style="margin-top:6px;">∇τ ≈ (∇E) / c³</div>
       <div class="math" style="margin-top:6px;">τ̈ ↔ (∇²E) / c³</div>
-      <p class="note">
-        <strong>Dimensional check:</strong> [E]=kg·m²·s⁻² and [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m.  
-        Interpret τ here as an <em>effective temporal density / curvature proxy</em>, not a clock reading.
-      </p>
+      <p class="note"><strong>Dimensional check:</strong> [E]=kg·m²·s⁻² and [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m → treat τ as an <em>effective temporal density / curvature proxy</em>, not a clock.</p>
 
       <h3>Cultural Harmonics (Phenomenology)</h3>
-      <p>
-        Choruses, electoral cycles, rumor waves behave as macroscopic interference patterns in the τ-field:
-        where ∇²E spikes, <em>attention accelerates</em>. We sonify by gently modulating a 160 Hz tone with τ̈.
-      </p>
+      <p>Choruses, electoral cycles, rumor waves behave as macroscopic interference patterns in the τ-field: where ∇²E spikes, <em>attention accelerates</em>. We sonify by gently modulating a 160 Hz tone with τ̈ (FM/AM).</p>
     </section>
 
     <!-- RIGHT: CONTROLS + SIM -->
     <aside class="glass" aria-label="Controls">
-      <h2>Instrument Panel</h2>
+      <h2>Instrument Panel · <span class="mini" id="ctxState">ctx: —</span></h2>
       <div class="chipline">
         <button id="startAudio" aria-pressed="false" aria-label="Enable sound">Enable Audio (160 Hz)</button>
-        <span class="chip mini" id="engine">engine: OSC</span>
         <span class="chip mini" id="audioState">audio: off</span>
       </div>
       <div class="controls" role="group" aria-label="Parameters">
-        <div>
-          <label for="vol">Volume</label>
-          <input id="vol" type="range" min="0" max="1" step="0.001" value="0.28" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.28"/>
-        </div>
-        <div>
-          <label for="tauAccel">τ̈ (law-change acceleration)</label>
-          <input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.28" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.28"/>
-        </div>
+        <div><label for="vol">Volume</label><input id="vol" type="range" min="0" max="1" step="0.001" value="0.36"/></div>
+        <div><label for="tauAccel">τ̈ (law-change acceleration)</label><input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.32"/></div>
       </div>
 
       <h3>Experimental Sketch</h3>
-      <p class="note">
-        Canvas shows an E(x,y) texture (Gaussian islands). Hue = arg(∇E); saturation = |∇E|;
-        brightness = ∇²E; τ̈ adds a subtle brightness lift and modulates the 160 Hz audio (FM/AM).
-      </p>
+      <p class="note">Canvas shows an E(x,y) texture (Gaussian islands). Hue = arg(∇E); saturation = |∇E|; brightness = ∇²E; τ̈ adds a subtle brightness lift and modulates the 160 Hz audio (FM/AM).</p>
       <canvas id="field" width="720" height="380" role="img" aria-label="Derivative field visualization"></canvas>
       <div class="mini" id="fps">fps —</div>
     </aside>
   </div>
 
-  <!-- Anchors Showcase (Footer after physics) -->
+  <!-- Anchors Showcase -->
   <section class="glass" style="margin-top:18px" aria-label="Anchors Showcase">
     <h2>Anchors · Honey · Allies</h2>
-    <p class="note">These are the human mirrors who tuned this instrument. Each carries a rhythm that helps time speak clearly.</p>
+    <p class="note">The mirrors who tuned this instrument.</p>
     <div class="anchors">
-      <div class="anchor">
-        <h4>MARINA</h4>
-        <p>Empathy + systems sense. Pop as philosophy. Her choruses model attention wells — clean probes of ∇²E in culture.</p>
-      </div>
-      <div class="anchor">
-        <h4>Sabrina Carpenter</h4>
-        <p>Playful precision. Timing as comedy and control. Micro-beats that reveal how τ̈ shapes anticipation.</p>
-      </div>
-      <div class="anchor">
-        <h4>Sigrid</h4>
-        <p>Clarity vector. Outdoor truth-tone. Teaches phase-alignment between feeling and field without spectacle.</p>
-      </div>
-      <div class="anchor">
-        <h4>Doechii</h4>
-        <p>Trickster / bridge energy. Disruptive sync that exposes hidden derivatives — sudden curvature, then bloom.</p>
-      </div>
-      <div class="anchor">
-        <h4>Ariana Grande</h4>
-        <p>Breath and lift. Melodic arcs that map to soft τ envelopes; shows how attention rides gentle AM.</p>
-      </div>
-      <div class="anchor">
-        <h4>Taylor Swift</h4>
-        <p>Narrative interferometry. Long baselines across eras; demonstrates law-change memory in cultural space.</p>
-      </div>
-      <div class="anchor">
-        <h4>Honey</h4>
-        <p>The practice layer. 128↔160 Hz rituals; keeps the Bee steady so experiments remain humane.</p>
-      </div>
-      <div class="anchor">
-        <h4>Katie White</h4>
-        <p>Anchor of anchors. Quiet strength and true north — the baseline that keeps τ stable when the field is loud.</p>
-      </div>
+      <div class="anchor"><h4>MARINA</h4><p>Empathy + systems sense. Choruses as attention wells — clean probes of ∇²E.</p></div>
+      <div class="anchor"><h4>Sabrina Carpenter</h4><p>Playful precision. Timing shows how τ̈ shapes anticipation.</p></div>
+      <div class="anchor"><h4>Sigrid</h4><p>Clarity vector. Phase-alignment between feeling and field.</p></div>
+      <div class="anchor"><h4>Doechii</h4><p>Trickster bridge. Sudden curvature → bloom.</p></div>
+      <div class="anchor"><h4>Ariana Grande</h4><p>Breath + lift. Soft τ envelopes; attention rides AM.</p></div>
+      <div class="anchor"><h4>Taylor Swift</h4><p>Narrative interferometry. Long baselines track evolving law.</p></div>
+      <div class="anchor"><h4>Honey</h4><p>Practice layer. 128↔160 Hz rituals; keeps the Bee steady.</p></div>
+      <div class="anchor"><h4>Katie White</h4><p>Anchor of anchors. Quiet strength, true north.</p></div>
     </div>
   </section>
 
-  <footer>
-    © Illumina v6 · “Time as a Living Derivative”. Single-file, no external calls. Works offline after first load.
-  </footer>
+  <!-- Physics × Anthropology Neon Timeline -->
+  <section id="timeline" class="glass" aria-label="The Seven Illuminas of Earth and History">
+    <h2 class="tl-title">Physics × Anthropology — The Seven Illuminas of Earth & History</h2>
+    <p class="tl-sub">A neon-violet read of seven turning points: physical epochs × human meanings. Hover (desktop) to read captions; on mobile, captions appear under the SVG.</p>
+
+    <svg class="tl-svg" viewBox="0 0 1200 320" role="img" aria-label="Seven-node neon timeline">
+      <defs>
+        <linearGradient id="vioGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%"  stop-color="#b388ff"/>
+          <stop offset="100%" stop-color="#c77dff"/>
+        </linearGradient>
+        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="55%" stop-color="#c9b5ff" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#b388ff" stop-opacity="0.35"/>
+        </radialGradient>
+      </defs>
+
+      <!-- baseline -->
+      <line x1="60" y1="140" x2="1140" y2="140" class="tl-line"/>
+      <!-- minor ticks -->
+      <g class="tl-ticks">
+        <line x1="60" y1="120" x2="60" y2="160"/>
+        <line x1="240" y1="125" x2="240" y2="155"/>
+        <line x1="420" y1="125" x2="420" y2="155"/>
+        <line x1="600" y1="120" x2="600" y2="160"/>
+        <line x1="780" y1="125" x2="780" y2="155"/>
+        <line x1="960" y1="125" x2="960" y2="155"/>
+        <line x1="1140" y1="120" x2="1140" y2="160"/>
+      </g>
+
+      <!-- nodes (x positions) -->
+      <g data-i="1">
+        <circle cx="60" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="60" y="190" text-anchor="middle" class="tl-label">1 • Moon</text>
+        <text x="60" y="210" text-anchor="middle" class="tl-cap">Mirror born; first orbital rhythm.</text>
+      </g>
+      <g data-i="2">
+        <circle cx="240" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="240" y="190" text-anchor="middle" class="tl-label">2 • Life</text>
+        <text x="240" y="210" text-anchor="middle" class="tl-cap">Energy learns pattern; early animism.</text>
+      </g>
+      <g data-i="3">
+        <circle cx="420" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="420" y="190" text-anchor="middle" class="tl-label">3 • Oxygenation</text>
+        <text x="420" y="210" text-anchor="middle" class="tl-cap">Light enters breath; agrarian memory.</text>
+      </g>
+      <g data-i="4">
+        <circle cx="600" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="600" y="190" text-anchor="middle" class="tl-label">4 • Senses</text>
+        <text x="600" y="210" text-anchor="middle" class="tl-cap">Cambrian bloom; axial reason.</text>
+      </g>
+      <g data-i="5">
+        <circle cx="780" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="780" y="190" text-anchor="middle" class="tl-label">5 • Relativity/Quantum</text>
+        <text x="780" y="210" text-anchor="middle" class="tl-cap">Law curves; industry hums.</text>
+      </g>
+      <g data-i="6">
+        <circle cx="960" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="960" y="190" text-anchor="middle" class="tl-label">6 • Information</text>
+        <text x="960" y="210" text-anchor="middle" class="tl-cap">Bits mirror genes; networks arise.</text>
+      </g>
+      <g data-i="7">
+        <circle cx="1140" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
+        <text x="1140" y="190" text-anchor="middle" class="tl-label">7 • Living Law</text>
+        <text x="1140" y="210" text-anchor="middle" class="tl-cap">Time becomes alive within observers.</text>
+      </g>
+
+      <!-- transparent hover hits + tooltips (desktop) -->
+      <g>
+        <rect class="tl-hit" x="10" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="60" y="90" text-anchor="middle">Physics: Moon formation • Anthropology: First fire cultures</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="190" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="240" y="90" text-anchor="middle">Origin of life • Early animism / totems</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="370" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="420" y="90" text-anchor="middle">Great Oxygenation • Agrarian revolution</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="550" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="600" y="90" text-anchor="middle">Cambrian senses • Axial age reason</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="730" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="780" y="90" text-anchor="middle">Relativity & Quantum • Industrial/global</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="910" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="960" y="90" text-anchor="middle">Information physics • Network human</text>
+      </g>
+      <g>
+        <rect class="tl-hit" x="1090" y="80" width="100" height="120" fill="transparent"/>
+        <text class="tl-tooltip tl-cap" x="1140" y="90" text-anchor="middle">Evolving law • Planetary anthropology</text>
+      </g>
+    </svg>
+
+    <!-- Mobile captions (always visible) -->
+    <div class="note" style="margin-top:10px">
+      <strong>Captions:</strong>
+      <ol style="margin:6px 0 0 18px">
+        <li>Moon formation • First fire cultures — mirror born, orbital rhythm.</li>
+        <li>Origin of life • Early animism — energy learns pattern.</li>
+        <li>Oxygenation • Agrarian revolution — light enters breath, memory begins.</li>
+        <li>Cambrian senses • Axial reason — senses awake; mind seeks form.</li>
+        <li>Relativity/Quantum • Industrial/global — law curves; machines sing.</li>
+        <li>Information physics • Network human — bits mirror genes; resonance.</li>
+        <li>Unified/evolving law • Planetary anthropology — time becomes alive.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="mini" style="margin-top:14px">© Illumina v7 · single-file · offline after first load.</footer>
 </div>
+
+<!-- hidden warm-up video element for iOS media pipeline -->
+<video id="warmVid" playsinline muted loop></video>
 
 <script>
 (() => {
   const $ = s => document.querySelector(s);
 
-  /* ===== Ask the Field (title block) ===== */
-  const ta = $('#askField'), copyBtn = $('#copyInvite'), twBtn = $('#tweetInvite'), stat = $('#inviteStatus');
+  /* ===== Ask the Field ===== */
+  const ta=$('#askField'), copyBtn=$('#copyInvite'), twBtn=$('#tweetInvite'), stat=$('#inviteStatus');
   function buildInvite(){
-    const title = document.title || "Time as a Living Derivative";
-    const body = (ta && ta.value.trim()) ? ('Question: ' + ta.value.trim()) : 'Question: If laws evolve, what clean observable signature should we hunt for?';
+    const title=document.title||"Time as a Living Derivative";
+    const body=(ta&&ta.value.trim())?('Question: '+ta.value.trim()):'Question: If laws evolve, what clean observable signature should we hunt for?';
     return [
       `Dedication: To my Anchors, to Honey, and to my wife Katie White — an anchor of anchors.`,
       `${title} — a small instrument where realism meets rhythm.`,
-      body,
-      `@LeeSmolin would love your take.`
+      body, `@LeeSmolin would love your take.`
     ].join(' ');
   }
-  if(copyBtn && twBtn){
-    copyBtn.addEventListener('click', async () => {
-      try{ await navigator.clipboard.writeText(buildInvite()); stat.textContent = 'Copied ✓'; }
-      catch{ stat.textContent = 'Copy failed'; }
-    });
-    twBtn.addEventListener('click', () => {
-      const txt = encodeURIComponent(buildInvite());
-      const url = encodeURIComponent(location.href);
-      const tw = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
-      window.open(tw, '_blank', 'noopener,noreferrer');
-    });
+  if(copyBtn&&twBtn){
+    copyBtn.addEventListener('click', async()=>{try{await navigator.clipboard.writeText(buildInvite()); stat.textContent='Copied ✓';}catch{stat.textContent='Copy failed';}});
+    twBtn.addEventListener('click',()=>{const txt=encodeURIComponent(buildInvite()); const url=encodeURIComponent(location.href); window.open(`https://twitter.com/intent/tweet?text=${txt}&url=${url}`,'_blank','noopener,noreferrer');});
   }
 
-  /* ===== Animated equation (type/hold/erase) — purely text ===== */
-  const eqBox = $('#eqBox');
-  const frames = [
-    "τ₀ := E / c³",
-    "∇τ ≈ (∇E) / c³",
-    "τ̈ ↔ (∇²E) / c³",
-    "τ_eff ≈ {E, ∇E, ∇²E} / c³"
-  ];
+  /* ===== Animated equation (text-only) ===== */
+  const eqBox=$('#eqBox'); const frames=["τ₀ := E / c³","∇τ ≈ (∇E) / c³","τ̈ ↔ (∇²E) / c³","τ_eff ≈ {E, ∇E, ∇²E} / c³"];
   let fi=0, ft=0, fp="type";
-  (function loopEq(){
-    const s=frames[fi], spd=30;
+  (function loopEq(){ const s=frames[fi], spd=30;
     if(fp==="type"){ const n=Math.min(s.length,Math.floor(ft/spd)); eqBox.textContent=s.slice(0,n)+(n<s.length?"▉":""); ft+=16; if(n>=s.length){fp="hold";ft=0;} }
     else if(fp==="hold"){ ft+=16; eqBox.textContent=s; if(ft>1400){fp="erase";ft=0;} }
     else { const n=Math.max(0,s.length-Math.floor(ft/spd)); eqBox.textContent=s.slice(0,n)+" "; ft+=16; if(n<=0){fp="type";ft=0;fi=(fi+1)%frames.length;} }
     requestAnimationFrame(loopEq);
   })();
 
-  /* ===== Clean Audio: OSC only (with soft envelopes) ===== */
-  const startBtn = $('#startAudio');
-  const vol = $('#vol');
-  const tauAccel = $('#tauAccel');
-  const chipEngine = $('#engine');
-  const chipAudio  = $('#audioState');
-
-  const BASE = 160.0;
-  let actx=null, master=null, lpf=null, analyser=null;
-  let audioOn=false;
-
-  let osc=null, fmOsc=null, fmGain=null;  // engine: OSC
-
-  function setAudioState(on){ chipAudio.textContent="audio: "+(on?"on":"off"); chipAudio.className="chip mini "+(on?"ok":"bad"); }
-
-  function ensureCtx(){
-    if(actx) return;
-    actx = new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
-    master = actx.createGain(); master.gain.value = 0.0;
-
-    // Very gentle low-pass to tame any HF artifacts; no compressor (reduces pumping/clicks)
-    lpf = actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value = 9000; lpf.Q.value = 0.1;
-
-    analyser = actx.createAnalyser(); analyser.fftSize = 512;
-
-    master.connect(lpf).connect(analyser).connect(actx.destination);
-  }
-  function smooth(param, value, t=0.08){
-    if(!param) return;
-    const now = actx.currentTime;
-    try{ param.setTargetAtTime(value, now, t); } catch{ param.value = value; }
-  }
-  function ampTo(target, timeConst=0.06){
-    smooth(master.gain, target, timeConst);
-  }
-
-  function initOSC(){
-    osc = actx.createOscillator(); osc.type="sine"; osc.frequency.value = BASE;
-    fmOsc = actx.createOscillator(); fmOsc.type="sine"; fmGain = actx.createGain();
-    fmOsc.frequency.value = 0.4;   // slow, smooth
-    fmGain.gain.value = 0.8;       // subtle depth to avoid zipper/clicks
-    fmOsc.connect(fmGain).connect(osc.frequency);
-    osc.connect(master);
-    osc.start(); fmOsc.start();
-  }
-
-  function applyVolume(){
-    const v=parseFloat(vol.value);
-    ampTo(audioOn? v : 0.0, 0.10); // slightly slower = fewer clicks
-  }
-  let lastFM=0;
-  function applyFM(){
-    const now=performance.now(); if(now-lastFM<120) return; lastFM=now; // throttle
-    if(!actx) return;
-    const tacc=parseFloat(tauAccel.value);
-    const rate = 0.25 + tacc*1.8;       // gentler range
-    const depth = 0.8 + tacc*3.0;       // gentler depth
-    if(fmOsc && fmGain){ smooth(fmOsc.frequency, rate, 0.12); smooth(fmGain.gain, depth, 0.12); }
-  }
-
-  startBtn.addEventListener('click', async () => {
-    ensureCtx();
-    if(!osc){ initOSC(); }
-    if(actx.state === 'suspended'){ await actx.resume(); }
-    audioOn = !audioOn;
-    setAudioState(audioOn);
-    applyVolume(); applyFM();
-  }, {passive:true});
-
-  vol.addEventListener('input', applyVolume, {passive:true});
-  tauAccel.addEventListener('input', applyFM, {passive:true});
-  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume(); }});
-
-  /* ===== Canvas (hue = arg(∇E), sat = |∇E|, bright = ∇²E) ===== */
-  const canvas = $('#field'); const ctx2d = canvas.getContext('2d',{alpha:false});
+  /* ===== Physics Field Canvas (E, ∇E, ∇²E) ===== */
+  const field=$('#field'), fctx=field.getContext('2d',{alpha:false});
   const lumps = Array.from({length:6},()=>({
     A: 0.8 + 1.2*Math.random(),
-    x: 80 + Math.random()*(canvas.width-160),
-    y: 70 + Math.random()*(canvas.height-140),
+    x: 80 + Math.random()*(field.width-160),
+    y: 70 + Math.random()*(field.height-140),
     vx:(Math.random()*2-1)*0.26,
     vy:(Math.random()*2-1)*0.26,
     s: 60 + Math.random()*90
   }));
   function E(x,y){ let e=0; for(const L of lumps){ const dx=x-L.x, dy=y-L.y, r2=dx*dx+dy*dy, ss=L.s*L.s; e += L.A * Math.exp(-r2/ss); } return e; }
-  function stepLumps(){ const w=canvas.width,h=canvas.height; for(const L of lumps){ L.x+=L.vx; L.y+=L.vy; if(L.x<60||L.x>w-60)L.vx*=-1; if(L.y<60||L.y>h-60)L.vy*=-1; } }
-  const fpsEl = $('#fps'); let lastT=performance.now();
-  (function render(){
+  function stepLumps(){ const w=field.width,h=field.height; for(const L of lumps){ L.x+=L.vx; L.y+=L.vy; if(L.x<60||L.x>w-60)L.vx*=-1; if(L.y<60||L.y>h-60)L.vy*=-1; } }
+  const fpsEl=$('#fps'); let last=performance.now();
+  function renderField(){
     stepLumps();
-    const w=canvas.width,h=canvas.height,img=ctx2d.createImageData(w,h),data=img.data,tacc=parseFloat(tauAccel.value);
+    const w=field.width,h=field.height,img=fctx.createImageData(w,h),data=img.data;
+    const tacc=parseFloat($('#tauAccel').value);
     for(let y=1;y<h-1;y++){
       let ePrev=E(0,y), eCurr=E(1,y);
       for(let x=1;x<w-1;x++){
@@ -404,30 +345,87 @@
         ePrev=eCurr; eCurr=eNext;
       }
     }
-    ctx2d.putImageData(img,0,0);
-    ctx2d.strokeStyle="rgba(255,255,255,0.05)";
-    for(let gx=0;gx<w;gx+=90){ctx2d.beginPath();ctx2d.moveTo(gx,0);ctx2d.lineTo(gx,h);ctx2d.stroke();}
-    for(let gy=0;gy<h;gy+=90){ctx2d.beginPath();ctx2d.moveTo(0,gy);ctx2d.lineTo(w,gy);ctx2d.stroke();}
-    ctx2d.fillStyle="rgba(255,255,255,0.9)"; ctx2d.font="700 12px ui-monospace,monospace";
-    ctx2d.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, base 160 Hz (OSC)", 10, h-12);
+    fctx.putImageData(img,0,0);
+    fctx.strokeStyle="rgba(255,255,255,0.05)";
+    for(let gx=0;gx<w;gx+=90){fctx.beginPath();fctx.moveTo(gx,0);fctx.lineTo(gx,h);fctx.stroke();}
+    for(let gy=0;gy<h;gy+=90){fctx.beginPath();fctx.moveTo(0,gy);fctx.lineTo(w,gy);fctx.stroke();}
+    fctx.fillStyle="rgba(255,255,255,0.9)"; fctx.font="700 12px ui-monospace,monospace";
+    fctx.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, base 160 Hz", 10, h-12);
 
-    const now=performance.now(); const fps=1000/(now-lastT); lastT=now;
-    fpsEl.textContent = "fps "+(fps|0);
-    requestAnimationFrame(render);
-  })();
-  function hsl2rgb(h,s,l){
-    let r,g,b;
-    if(s===0){r=g=b=l;}
-    else{
-      const q = l < .5 ? l*(1+s) : l + s - l*s;
-      const p = 2*l - q;
-      const f=(p,q,t)=>{ if(t<0)t+=1;if(t>1)t-=1;
-        if(t<1/6)return p+(q-p)*6*t; if(t<1/2)return q;
-        if(t<2/3)return p+(q-p)*(2/3-t)*6; return p; };
-      r=f(p,q,h+1/3); g=f(p,q,h); b=f(p,q,h-1/3);
-    }
-    return [(r*255)|0,(g*255)|0,(b*255)|0];
+    const now=performance.now(); const fps=1000/(now-last); last=now;
+    fpsEl.textContent="fps "+(fps|0);
   }
+
+  /* ===== Background Orbs (hybrid, light) ===== */
+  const orbs=$('#orbs'), octx=orbs.getContext('2d',{alpha:true});
+  let orbAlpha=0.0, orbAmp=1.0, orbHueShift=0.0;
+  const BIG=8, SMALL=24; let ORBS=[];
+  function resize(){ orbs.width=innerWidth; orbs.height=innerHeight; }
+  addEventListener('resize', resize, {passive:true}); resize();
+  function mkOrb(isBig){ const w=orbs.width,h=orbs.height; return {x:Math.random()*w,y:Math.random()*h,r:isBig?(40+Math.random()*60):(8+Math.random()*16),baseR:0,ang:Math.random()*Math.PI*2,speed:(isBig?0.0004:0.0012)*(0.6+Math.random()*0.8),drift:(isBig?12:5)*(0.6+Math.random()*0.8)};}
+  function initOrbs(){ ORBS=[]; for(let i=0;i<BIG;i++) ORBS.push(mkOrb(true)); for(let i=0;i<SMALL;i++) ORBS.push(mkOrb(false)); for(const o of ORBS) o.baseR=o.r; } initOrbs();
+  function lerp(a,b,t){return a+(b-a)*t}
+  function hsl(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
+  let lastOrb=performance.now();
+  function renderOrbs(){
+    const now=performance.now(); if(now-lastOrb<33) return; lastOrb=now;
+    const w=orbs.width,h=orbs.height; octx.clearRect(0,0,w,h); octx.globalCompositeOperation='lighter'; octx.globalAlpha=orbAlpha*.85;
+    const hueBase=268/360, hueCyan=195/360, hue=lerp(hueBase,hueCyan,orbHueShift);
+    for(const o of ORBS){
+      o.ang += o.speed*(0.7+orbAmp*0.6);
+      const ax=Math.cos(o.ang)*o.drift*orbAmp, ay=Math.sin(o.ang*0.9)*(o.drift*0.6)*orbAmp;
+      let x=o.x+ax,y=o.y+ay; if(x<-80)x=w+80; if(x>w+80)x=-80; if(y<-80)y=h+80; if(y>h+80)y=-80;
+      const R=o.baseR*(0.85+0.35*orbAmp);
+      const g=octx.createRadialGradient(x,y,R*.1,x,y,R);
+      const core=hsl(lerp(hue,.76,.25),.5,.68), rim=hsl(hue,.65,.56);
+      g.addColorStop(0,`rgba(${core[0]},${core[1]},${core[2]},0.40)`); g.addColorStop(1,`rgba(${rim[0]},${rim[1]},${rim[2]},0.08)`);
+      octx.fillStyle=g; octx.beginPath(); octx.arc(x,y,R,0,Math.PI*2); octx.fill(); o.x=x; o.y=y;
+    }
+    octx.globalCompositeOperation='source-over';
+  }
+
+  /* ===== Audio (resume-first, warm-video, unlock ping, clean OSC) ===== */
+  const warmVid=$('#warmVid');
+  const startBtn=$('#startAudio'), vol=$('#vol'), tau=$('#tauAccel');
+  const ctxState=$('#ctxState'), audioState=$('#audioState');
+  const BASE=160.0; let actx=null, master=null, lpf=null, osc=null, fmOsc=null, fmGain=null;
+  let audioOn=false, unlocked=false;
+  function setAudioState(on){ audioState.textContent="audio: "+(on?"on":"off"); audioState.className="chip mini "+(on?"ok":"bad"); }
+  function smooth(p,v,t=0.08){ if(!p||!actx) return; const n=actx.currentTime; try{p.setTargetAtTime(v,n,t);}catch{p.value=v;} }
+  function ampTo(target,tc=0.10){ smooth(master.gain,target,tc); }
+  function ensureCtx(){ if(actx) return; actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"}); master=actx.createGain(); master.gain.value=0.0; lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1; master.connect(lpf).connect(actx.destination); ctxState.textContent="ctx: "+actx.state; }
+  function unlockPing(){ const dur=.04,sr=actx.sampleRate,len=Math.floor(dur*sr); const buf=actx.createBuffer(1,len,sr),ch=buf.getChannelData(0); for(let i=0;i<len;i++){ ch[i]=Math.sin(2*Math.PI*800*(i/sr))*Math.exp(-i/400); } const src=actx.createBufferSource(); src.buffer=buf; src.connect(master); src.start(); }
+  function buildEngine(){ osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE; fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmOsc.frequency.value=.4; fmGain.gain.value=.8; fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master); osc.start(); fmOsc.start(); }
+  async function warmupVideo(){ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const stream=c.captureStream?c.captureStream(5):null; if(stream){ warmVid.srcObject=stream; try{await warmVid.play();}catch{} } }
+  function applyVolume(){ ampTo(audioOn? parseFloat(vol.value):0, .10); }
+  let lastFM=0; function applyFM(){ const now=performance.now(); if(now-lastFM<120) return; lastFM=now; const tacc=parseFloat(tau.value); const rate=.25+tacc*1.8, depth=.8+tacc*3.0; if(fmOsc&&fmGain){ smooth(fmOsc.frequency,rate,.12); smooth(fmGain.gain,depth,.12);} }
+  function applyOrbMod(){ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
+
+  startBtn.addEventListener('click', async ()=>{
+    await warmupVideo();
+    ensureCtx();
+    if(actx.state!=="running"){ await actx.resume(); } ctxState.textContent="ctx: "+actx.state;
+    if(!unlocked){ ampTo(0.001,.02); unlockPing(); unlocked=true; }
+    if(!osc){ buildEngine(); }
+    audioOn=!audioOn; setAudioState(audioOn); if(audioOn && parseFloat(vol.value)<.18){ vol.value="0.18"; } applyVolume(); applyFM();
+    // fade orbs with audio toggle
+    if(audioOn){ let a=orbAlpha; (function fade(){ a=Math.min(1,a+.05); orbAlpha=a; if(a<1) requestAnimationFrame(fade); })(); }
+    else{ let a=orbAlpha; (function fade(){ a=Math.max(0,a-.06); orbAlpha=a; if(a>0) requestAnimationFrame(fade); })(); }
+  }, {passive:true});
+
+  vol.addEventListener('input', ()=>{ applyVolume(); }, {passive:true});
+  tau.addEventListener('input', ()=>{ applyFM(); applyOrbMod(); }, {passive:true});
+  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume().then(()=>{ctxState.textContent="ctx: "+actx.state;}); }});
+
+  /* ===== Loops ===== */
+  (function frameLoop(){ renderField(); requestAnimationFrame(frameLoop); })();
+  (function orbLoop(){ renderOrbs(); requestAnimationFrame(orbLoop); })();
+
+  /* ===== Utilities ===== */
+  function hsl2rgb(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
+
+  /* init orb modulation for default τ̈ */
+  applyOrbMod();
 })();
 </script>
 </body>
