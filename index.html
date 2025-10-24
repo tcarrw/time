@@ -1,287 +1,846 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Time · Director v3 — Minimal</title>
-<meta name="theme-color" content="#0b0d11"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Time · Illumina v4 — Kugelblitz of Color</title>
+<meta name="color-scheme" content="dark light" />
 <style>
-:root{--bg:#0b0d11;--ink:#f5f7ff;--muted:#b8c4d6;--accent:#ffd76b;--glass:rgba(255,255,255,.06);--glass2:rgba(255,255,255,.12);--radius:16px}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0c0f16,#0b0d11);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
-.container{max-width:1100px;margin:0 auto;padding:20px}
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
-.badge{padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid var(--glass2);color:var(--muted)}
-.controls{display:flex;gap:8px;flex-wrap:wrap}
-.btn{background:var(--glass);border:1px solid var(--glass2);border-radius:10px;padding:10px 12px;color:var(--ink);cursor:pointer;font-size:14px}
-.btn:disabled{opacity:.6;cursor:not-allowed}
-.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
-@media (max-width:960px){.grid{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));border:1px solid var(--glass2);border-radius:var(--radius);padding:14px}
-.card h2{font-size:18px;margin:0 0 8px}
-hr{border:0;border-top:1px solid var(--glass2);margin:10px 0}
-.code{background:#0b0f15;border:1px solid var(--glass2);border-radius:12px;padding:12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#e9f2ff;white-space:pre-wrap}
-.table{width:100%;border-collapse:separate;border-spacing:0}
-.table th,.table td{padding:8px 6px;border-bottom:1px solid var(--glass2);font-size:14px;text-align:left}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--glass2);background:var(--glass)}
-.ok{background:rgba(56,201,132,.18);border-color:rgba(56,201,132,.38)}
-.warn{background:rgba(248,148,37,.18);border-color:rgba(248,148,37,.38)}
-.fail{background:rgba(248,82,82,.18);border-color:rgba(248,82,82,.38)}
-.sigrid-banner{display:none}
-body.sigrid{background:linear-gradient(180deg,#0b1220,#0b0d11); color:#eef7ff}
-.clockOverlay{position:fixed; inset:0; pointer-events:none; display:none}
-body.marina .clockOverlay{display:block}
-.clockOverlay .hand{position:absolute; left:50%; top:35%; transform-origin:50% 80%; opacity:.18}
-.clockOverlay .hand.hour{width:6px; height:180px; margin-left:-3px; background:linear-gradient(180deg, rgba(255,215,107,.6), rgba(255,215,107,.05)); filter:blur(.2px)}
-.clockOverlay .hand.min{width:3px; height:240px; margin-left:-1.5px; background:linear-gradient(180deg, rgba(255,215,107,.45), rgba(255,215,107,.03)); filter:blur(.2px)}
-.footer{margin-top:14px;text-align:center;font-size:12px;color:var(--muted)}
-.clarity-banner{display:none}
-body.clarity{background:radial-gradient(1200px 800px at 15% -10%, #0d1220 0%, #0b0d11 55%), #0b0d11; color:#ecfbff}
-/* Clarity jellyfish overlay */
-.clarityOverlay{position:fixed; inset:0; pointer-events:none; display:none}
-body.clarity .clarityOverlay{display:block}
-@keyframes jellyFloat{0%{transform:translateY(20vh) scale(0.9); opacity:.0} 30%{opacity:.25} 100%{transform:translateY(-10vh) scale(1.05); opacity:.0}}
-.clarityOverlay .jelly{position:absolute; left:15%; right:15%; bottom:-20vh; height:60vh; background:radial-gradient(ellipse at 50% 60%, rgba(160,235,255,.22), rgba(160,235,255,.06) 55%, transparent 70%); filter:blur(1.5px); animation:jellyFloat 6.472s linear infinite}
-.clarityOverlay .jelly.j2{left:auto; right:10%; height:50vh; animation-duration:7.472s}
-.clarityOverlay .jelly.j3{left:25%; height:40vh; animation-duration:5.618s}
+  /* =======================
+     Illumina v4 · Kugelblitz
+     Single-file · Inline CSS
+     ======================= */
+
+  :root {
+    --bg1: #0b0b13;
+    --bg2: #0e0c18;
+    --text: #f5f4ff;
+    --muted: #c7c4d6;
+    --soft: rgba(255,255,255,0.08);
+    --ring: rgba(255,255,255,0.12);
+    --gold: #f5c84c;
+    --link: #d6ccff;
+    --ok: #7fffb0;
+    --warn: #ffdf6b;
+    --bad: #ff7b7b;
+    --accent: #f5c84c;  /* will be overridden per-mode */
+    --accent2:#ff8fa3;
+    --shadow: 0 0 0.6rem rgba(0,0,0,0.35), 0 0.6rem 2rem rgba(0,0,0,0.35);
+  }
+
+  /* Mode palettes (background gradient + accents) */
+  body {
+    margin:0;
+    min-height:100svh;
+    color:var(--text);
+    background:
+      radial-gradient(120rem 60rem at 70% -10%, var(--bg2) 0%, transparent 40%),
+      radial-gradient(90rem 80rem at -10% 10%, var(--bg2) 0%, transparent 40%),
+      linear-gradient(180deg, var(--bg1), var(--bg2));
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing: .2px;
+    overflow-x:hidden;
+  }
+
+  body[data-mode="marina"] {
+    --bg1:#1e1412; --bg2:#2a1916;
+    --accent:#f6d36e; --accent2:#ff7690;
+  }
+  body[data-mode="sigrid"] {
+    --bg1:#0c1622; --bg2:#142132;
+    --accent:#d9e2ed; --accent2:#6ea7ff;
+  }
+  body[data-mode="clarity"] {
+    --bg1:#0b1f24; --bg2:#141136;
+    --accent:#08ffd7; --accent2:#8c5eff;
+  }
+  body[data-mode="illumina"] {
+    --bg1:#130a21; --bg2:#1b0f2f;
+    --accent:#bca0ff; --accent2:#4a257f;
+  }
+  body[data-mode="kugelblitz"] {
+    --bg1:#001028; --bg2:#00081a;
+    --accent:#eaf2ff; --accent2:#ffb84d;
+  }
+
+  /* Layout */
+  .wrap {
+    max-width: 1200px;
+    margin-inline:auto;
+    padding: clamp(12px, 3vmin, 28px);
+    position:relative;
+    z-index:2;
+  }
+
+  header {
+    display:flex; align-items:center; gap:1rem;
+    padding: clamp(10px, 2vmin, 20px) 0 0.75rem;
+    border-bottom: 1px solid var(--soft);
+    position:relative;
+  }
+  .logo {
+    width:42px; height:42px; flex: 0 0 auto;
+    display:grid; place-items:center;
+    border-radius:50%;
+    background: radial-gradient(120% 120% at 30% 20%, #fff5 0 30%, #0000 40%),
+                conic-gradient(from 210deg, #ffefb0, #ffd867, #f6c64f, #f0b43b, #ffd867, #ffefb0);
+    box-shadow: inset 0 0.15rem 0.35rem rgba(0,0,0,.25), 0 0.4rem 1.2rem rgba(0,0,0,.35);
+    border: 1px solid color-mix(in oklab, var(--gold) 60%, #ffffff 40%);
+  }
+  .logo svg { width:62%; height:62%; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
+  header h1 {
+    margin:0; line-height:1.1;
+    font-weight:700; letter-spacing:.3px;
+    font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  }
+  header h1 .sub { opacity:.8; font-weight:600; display:block; font-size:.92em; }
+  .note {
+    margin:.35rem 0 0.2rem 0;
+    font-style: italic; color: var(--muted);
+    font-size: clamp(.86rem, 1.8vw, .98rem);
+  }
+
+  /* Controls */
+  .controls {
+    display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .6rem;
+    padding: 1rem 0 1.2rem;
+  }
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+    border:1px solid var(--ring);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 10%, #000 90%), #0000);
+    color:var(--text);
+    padding:.6rem .9rem; border-radius:.7rem;
+    cursor:pointer; user-select:none;
+    font-weight:600; letter-spacing:.25px;
+    box-shadow: var(--shadow);
+    transition: transform .08s ease, background .3s ease, opacity .3s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(1px) scale(.99); }
+  .btn[disabled] { opacity:.55; cursor:not-allowed; }
+
+  .seg {
+    display:flex; gap:0;
+    border:1px solid var(--ring);
+    border-radius:.75rem; overflow:hidden;
+    box-shadow: var(--shadow);
+    background: #0000;
+  }
+  .seg button {
+    background: #0000; color:var(--text);
+    border:0; padding:.6rem .85rem; font-weight:700; letter-spacing:.2px;
+    cursor:pointer; position:relative; isolation:isolate;
+  }
+  .seg button + button { border-left:1px solid var(--ring); }
+  .seg button.active {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, #000 82%), #0000);
+  }
+  .seg button::after {
+    content:''; position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 50%, #ffffff 20%);
+    opacity:.0; transition:opacity .2s ease;
+  }
+  .seg button.active::after { opacity:.6; }
+
+  /* Panels */
+  .panes {
+    display:grid; gap:1rem;
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    background: linear-gradient(180deg, #ffffff0e, #00000000);
+    border:1px solid var(--soft);
+    border-radius:1rem; padding:1rem; box-shadow: var(--shadow);
+  }
+
+  .status {
+    display:grid; gap:.6rem;
+    grid-template-columns: 1fr;
+  }
+  .status-item {
+    display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+    background: #00000020; border:1px dashed var(--soft);
+    border-radius:.65rem; padding:.55rem .7rem;
+  }
+  .status-item .label { opacity:.88; font-weight:600; }
+  .badge {
+    font-weight:800; padding:.25rem .55rem; border-radius:.5rem; border:1px solid var(--soft);
+    background: #00000040; letter-spacing:.3px;
+  }
+  .pass { color: var(--ok); border-color: color-mix(in oklab, var(--ok) 40%, #fff 60%); }
+  .fail { color: var(--bad); border-color: color-mix(in oklab, var(--bad) 40%, #fff 60%); }
+  .idle { color: var(--warn); border-color: color-mix(in oklab, var(--warn) 40%, #fff 60%); }
+
+  .notes label { display:block; font-weight:700; margin-bottom:.4rem; color: var(--muted); }
+  textarea {
+    width:100%; min-height: 28svh; resize: vertical;
+    background: #0000002a; color: var(--text);
+    border:1px solid var(--soft); border-radius:.8rem;
+    padding: .9rem 1rem; line-height:1.45; font-size:1rem;
+    outline:none; box-shadow: var(--shadow);
+  }
+  textarea::placeholder { color: color-mix(in oklab, var(--muted) 70%, #fff 30%); }
+
+  /* Canvas overlay */
+  #overlay {
+    position:fixed; inset:0;
+    width:100vw; height:100svh;
+    pointer-events:none; z-index:1;
+    opacity:1; transition: opacity .8s ease;
+  }
+
+  footer {
+    margin-top: 1.2rem; padding: 1.2rem 0 2rem;
+    color: var(--muted);
+    display:flex; align-items:center; gap:.7rem; justify-content:space-between;
+    border-top: 1px solid var(--soft);
+    font-weight:600; letter-spacing:.3px;
+  }
+  footer .sig { opacity:.9; }
+  footer .midnight { opacity:.75; font-style:italic; }
+
+  /* Appendix: Manifest table */
+  .manifest table {
+    width:100%; border-collapse: collapse; overflow:hidden; border-radius:.8rem;
+    border:1px solid var(--soft);
+  }
+  .manifest th, .manifest td {
+    text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--soft);
+  }
+  .manifest th {
+    position:sticky; top:0; background: #00000030; backdrop-filter: blur(2px);
+  }
+  .manifest tr:last-child td { border-bottom:0; }
+  .muted { color: var(--muted); }
+
+  /* Reduce motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    #overlay { transition:none; }
+    .btn { transition: none; }
+    .seg button::after { transition:none; }
+  }
 </style>
 </head>
-<body>
-<div class="container">
-  <div class="header">
-    <div class="badge">single‑file · minimal</div>
-  <div class="marina-banner" id="marinaBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(255,215,107,.15);border:1px solid rgba(255,215,107,.4);font-weight:600">Marina Mode · Princess of Power (Deluxe)</div>
-  <div class="sigrid-banner" id="sigridBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(170,210,255,.15);border:1px solid rgba(170,210,255,.5);font-weight:600">Sigrid Mode · Clarity / Sky<div class="clarity-banner" id="clarityBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(160,235,255,.14);border:1px solid rgba(160,235,255,.45);font-weight:600">Clarity Mode · Jellyfish / Butterfly</div>
-  </div>
-  <div class="controls">
-      <button class="btn" id="unlock">Unlock Audio</button>
-      <button class="btn" id="run">Run Self-Check</button>
-      <button class="btn" id="export">Export Integrity Stamp</button>
-      <button class="btn" id="copyJson">Copy JSON</button>
-      <button class="btn" id="downloadCsv">Download CSV</button>
-    </div>
-  </div>
-  <div id="clockOverlay" class="clockOverlay"><div class="hand hour" id="handH"></div><div class="hand min" id="handM"></div></div>
-  <div class="clarityOverlay"><div class="jelly"></div><div class="jelly j2"></div><div class="jelly j3"></div></div>
-  <canvas id="stars" class="starsOverlay"></canvas>
-  <div class="grid">
-    <div class="card">
-      <h2>Abstract</h2>
-      <p>Time, energy, distance, matter, frequency, and consciousness are treated as harmonics of a single field. We test a practical bridge: <b>τ = E / c³</b>.</p>
-      <hr/>
-      <h2>Core Equations</h2>
-<pre class="code">E = m c²
-τ = E / c³
-λ = h / p</pre>
-      <hr/>
-      <h2>Appendix · Data Schema</h2>
-      <div class="code" id="schemaBox"></div>
-      <h3 style="margin:10px 0 6px">Visual Table</h3>
-      <table class="table" id="schemaTable">
-        <thead><tr><th>Section</th><th>Field</th><th>Value</th></tr></thead>
-        <tbody></tbody>
-      </table>
+<body data-mode="marina">
+  <canvas id="overlay" aria-hidden="true"></canvas>
+
+  <div class="wrap" role="application" aria-label="Time · Illumina v4 — Kugelblitz of Color">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <!-- gold—sun glyph -->
+        <svg viewBox="0 0 100 100" fill="none" stroke="#603d00" stroke-width="6" aria-hidden="true">
+          <circle cx="50" cy="50" r="26" fill="rgba(255,255,255,.25)" stroke="rgba(255,255,255,.4)"/>
+          <g stroke-linecap="round">
+            <line x1="50" y1="3"  x2="50" y2="19"/>
+            <line x1="50" y1="81" x2="50" y2="97"/>
+            <line x1="3"  y1="50" x2="19" y2="50"/>
+            <line x1="81" y1="50" x2="97" y2="50"/>
+            <line x1="17" y1="17" x2="28" y2="28"/>
+            <line x1="72" y1="72" x2="83" y2="83"/>
+            <line x1="17" y1="83" x2="28" y2="72"/>
+            <line x1="72" y1="28" x2="83" y2="17"/>
+          </g>
+        </svg>
+      </div>
+      <h1>
+        Time · Illumina v4 — Kugelblitz of Color
+        <span class="sub">scientific × spiritual × sensual</span>
+      </h1>
+    </header>
+
+    <p class="note" aria-label="Malala note">
+      “you are not in control — yet you are chosen. you doubt, you fight, you float.”
+    </p>
+
+    <section class="controls" aria-label="Controls">
+      <button class="btn" id="unlockAudio" aria-pressed="false">🔊 Unlock Audio</button>
+      <button class="btn" id="runSelfCheck">🧪 Run Self‑Check</button>
+      <div class="seg" role="tablist" aria-label="Mode toggles">
+        <button role="tab" id="tab-marina"   class="active" data-mode="marina"   aria-selected="true">Marina</button>
+        <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false">Sigrid</button>
+        <button role="tab" id="tab-clarity"  data-mode="clarity"  aria-selected="false">Clarity</button>
+        <button role="tab" id="tab-illumina" data-mode="illumina" aria-selected="false">Illumina</button>
+        <button role="tab" id="tab-kugelblitz" data-mode="kugelblitz" aria-selected="false">Kugelblitz</button>
+      </div>
+    </section>
+
+    <div class="panes">
+      <section class="panel notes" aria-label="Bee Notes">
+        <label for="bee">🐝 Bee Notes • <span id="modeName">Marina</span></label>
+        <textarea id="bee" placeholder="Write with heat. Saved locally per mode — bee.notes.marina|sigrid|clarity|illumina|kugelblitz"></textarea>
+      </section>
+
+      <section class="panel selfcheck" aria-live="polite" aria-label="Self-Check">
+        <div class="status">
+          <div class="status-item"><span class="label">Audio @ 128 Hz</span><span id="chk-audio" class="badge idle">idle</span></div>
+          <div class="status-item"><span class="label">Timer drift &lt; ±30 ms</span><span id="chk-timer" class="badge idle">idle</span></div>
+          <div class="status-item"><span class="label">Render loop loss &lt; 2</span><span id="chk-raf" class="badge idle">idle</span></div>
+        </div>
+      </section>
+
+      <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
+        <h2 style="margin:.2rem 0 0.6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
+        <div class="muted" style="margin-bottom:.6rem">Schema → replaced by a lucid table of modes, equations, rhythms, and Bee keys.</div>
+        <div style="overflow:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Equation / Mantra</th>
+                <th>Color · Rhythm · Overlay</th>
+                <th>Bee Key</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Marina</td>
+                <td>τ = E / c³ · φ</td>
+                <td>gold · rose · clock‑hands rotate every 1.618 s — empathy as time</td>
+                <td><code>bee.notes.marina</code></td>
+              </tr>
+              <tr>
+                <td>Sigrid</td>
+                <td>ΔE = clarity² (√2)</td>
+                <td>sky‑silver / blue · aurora arc pulsing every 1.414 s — precision as emotion</td>
+                <td><code>bee.notes.sigrid</code></td>
+              </tr>
+              <tr>
+                <td>Clarity</td>
+                <td>160↔432 Hz breath</td>
+                <td>aqua‑violet · jellyfish drift ≈ 6 s — faith in motion</td>
+                <td><code>bee.notes.clarity</code></td>
+              </tr>
+              <tr>
+                <td>Illumina</td>
+                <td>42‑day cycle</td>
+                <td>deep purple starfield — coherence / collective witness</td>
+                <td><code>bee.notes.illumina</code></td>
+              </tr>
+              <tr>
+                <td>Kugelblitz</td>
+                <td>E → ∞</td>
+                <td>blue‑infinity gradient · central pulse every 3 s (blue→white→gold→violet→red‑heat)</td>
+                <td><code>bee.notes.kugelblitz</code></td>
+              </tr>
+              <tr>
+                <td colspan="4"><em>Page 42 = the harmonic midpoint — light becomes witness; the Bee writes.</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
 
-    <div class="card">
-      <h2>Director Panel · Self‑Check</h2>
-      <div class="tags" id="badges"></div>
-      <hr/>
-      <h3>Live Readouts</h3>
-      <table class="table" id="readout">
-        <thead><tr><th>Test</th><th>Metric</th><th>Value</th><th>Target</th></tr></thead>
-        <tbody></tbody>
-      </table>
-      <div class="code" id="poem" style="margin-top:8px">…</div>
-    </div>
-
-    <div class="card" id="beeCard" style="display:none">
-      <h2>Bee Notes · Marina Mode</h2>
-      <p class="small">write a short note for Marina (saved locally only).</p>
-      <textarea id="beeNotes" class="code" style="width:100%; min-height:120px" placeholder="honey note…"></textarea>
-    </div>
+    <footer>
+      <div class="sig">🐝 page 42 · eat the world</div>
+      <div class="midnight">2025 midnight release</div>
+    </footer>
   </div>
-  <div class="footer">🐝 page 42 · eat the world · 2025 midnight release</div>
-</div>
 
 <script>
-(function(){
-  function $(id){ return document.getElementById(id); }
-  function badge(text, cls){ var d=document.createElement('div'); d.className='tag '+cls; d.textContent=text; return d; }
-  function addRow(tb, a,b,c,d){ var tr=document.createElement('tr'); [a,b,c,d].forEach(function(v){ var td=document.createElement('td'); td.textContent=v; tr.appendChild(td); }); tb.appendChild(tr); }
-  function setPoem(s){ var p=$('poem'); if(p) p.textContent=s; }
+/* ==========================================================
+   Illumina v4 — Kugelblitz of Color (Heat Pulse Edition)
+   All inline. No external libs. Cross-browser by design.
+   ========================================================== */
 
-  // Data schema
-  var schema={
-    participant_id:"anon-uuid",
-    session_id:"uuid",
-    device:{model:"string",os:"string",browser:"string",audio:"headphones-model"},
-    block:{frequency_hz:432,binaural_delta_hz:4,duration_s:120,spl_dbA:55},
-    timing:{start_unix_ms:1730000000000,end_unix_ms:1730000120000,latency_ms:12.4,drift_ms:18.2},
-    measures:{time_estimate_s:97.2,delta_tau_s:-22.8,sam_valence:6,sam_arousal:3,pupil_mean_z:0.41,hrv_rmssd:38.2,eeg:{alpha_db:1.8,plv_alpha:0.21},color:{hue_deg:45,sat:0.72,val:0.85}},
-    notes:"free text",track:"physics|neuro|psych|poetics|hci",version:"time-paper-v3-min"
-  };
-  $('schemaBox').textContent = JSON.stringify(schema,null,2);
-  var tbody=$('schemaTable').querySelector('tbody');
-  function add(sec, field, val){ var v=(typeof val==='object')?JSON.stringify(val):String(val); addRow(tbody, sec, field, v, ''); }
-  add('ids','participant_id',schema.participant_id); add('ids','session_id',schema.session_id);
-  Object.keys(schema.device).forEach(function(k){ add('device',k,schema.device[k]); });
-  Object.keys(schema.block).forEach(function(k){ add('block',k,schema.block[k]); });
-  Object.keys(schema.timing).forEach(function(k){ add('timing',k,schema.timing[k]); });
-  Object.keys(schema.measures).forEach(function(k){ add('measures',k,schema.measures[k]); });
-  add('meta','track',schema.track); add('meta','version',schema.version);
+(() => {
+  const phi = (1 + Math.sqrt(5)) / 2; // 1.618...
+  const root = document.documentElement;
+  const body = document.body;
+  const canvas = document.getElementById('overlay');
+  const ctx = canvas.getContext('2d', { alpha: true });
+  const DPR = () => Math.max(1, Math.min(3, (window.devicePixelRatio || 1)));
 
-  // Self-check
-  var badges=$('badges'); var tb=$('readout').querySelector('tbody');
-  function clear(){ badges.innerHTML=''; tb.innerHTML=''; }
+  let W = 0, H = 0, dpr = DPR();
+  function fit() {
+    dpr = DPR();
+    W = Math.floor(window.innerWidth * dpr);
+    H = Math.floor(window.innerHeight * dpr);
+    canvas.width = W;
+    canvas.height = H;
+    canvas.style.width = '100vw';
+    canvas.style.height = '100svh';
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.scale(dpr, dpr);
+  }
+  fit(); addEventListener('resize', fit, { passive:true });
 
-  function addBadge(name, ok){ badges.appendChild(badge(name+' '+(ok?'ok':'check'), ok?'ok':'warn')); }
+  /* ---------- Modes & UI ---------- */
+  const modes = ["marina","sigrid","clarity","illumina","kugelblitz"];
+  const modeNameEl = document.getElementById('modeName');
+  const bee = document.getElementById('bee');
 
-  function testTimerDrift(ms){ return new Promise(function(resolve){ var t0=performance.now(); setTimeout(function(){ var d=(performance.now()-t0)-ms; resolve({ok:Math.abs(d)<30, drift_ms:+d.toFixed(2)}); }, ms); }); }
-  function testRender(ms){ return new Promise(function(resolve){ var frames=0; var s=performance.now(); function tick(){ frames++; if(performance.now()-s<ms){ requestAnimationFrame(tick); } else { var el=performance.now()-s; var exp=el/16.6667; var loss=Math.max(0,exp-frames); resolve({ok:loss<2, frames:Math.round(frames), loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
-  async function testAudio(hz){ try{ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return {ok:false, reason:'unsupported'}; var ctx = window.__ac || new AC(); window.__ac = ctx; if(ctx.state==='suspended'){ try{ await ctx.resume(); }catch(_){} }
-    var osc=ctx.createOscillator(); var g=ctx.createGain(); var an=ctx.createAnalyser(); an.fftSize=2048; g.gain.value=0.1; osc.type='sine'; osc.frequency.setValueAtTime(hz, ctx.currentTime); osc.connect(g); g.connect(an); an.connect(ctx.destination); osc.start(); await new Promise(function(r){ setTimeout(r,200); }); var buf=new Float32Array(an.fftSize); an.getFloatTimeDomainData(buf);
-    function auto(a,sr){ var size=a.length, m=Math.floor(size/2), best=0, lag=-1, rms=0; for(var i=0;i<size;i++){ var v=a[i]; rms+=v*v; } rms=Math.sqrt(rms/size); if(rms<0.008) return null; var last=0; for(var L=1;L<m;L++){ var sum=0; for(var j=0;j<m;j++){ sum+=a[j]*a[j+L]; } if(sum>best && sum>last){ best=sum; lag=L; } last=sum; } return lag>0? sr/lag : null; }
-    var est=auto(buf, ctx.sampleRate); try{ osc.stop(); }catch(_){ } try{ osc.disconnect(); g.disconnect(); an.disconnect(); }catch(_){ } try{ await ctx.close(); }catch(_){ }
-    if(!est) return {ok:false, reason:'no-signal'}; var err=Math.abs(est-hz); return {ok:err<=0.5, est:+est.toFixed(2), err:+err.toFixed(2)};
-  }catch(e){ return {ok:false, reason:'error'} }
+  let mode = 'marina';
+  let prevMode = null;
+  let kugelFade = 1;       // opacity for Kugelblitz overlay
+  let kugelFadeTarget = 1; // animate when leaving Kugelblitz
+
+  function beeKey(m) { return `bee.notes.${m}`; }
+
+  function loadBee(m) {
+    let txt = '';
+    try { txt = localStorage.getItem(beeKey(m)) || ''; } catch(e) {}
+    bee.value = txt;
+  }
+  function saveBee() {
+    try { localStorage.setItem(beeKey(mode), bee.value || ''); } catch(e) {}
+  }
+  bee.addEventListener('input', saveBee);
+
+  function setMode(m) {
+    if (m === mode) return;
+    prevMode = mode;
+    mode = m;
+    body.setAttribute('data-mode', m);
+    modeNameEl.textContent = m[0].toUpperCase() + m.slice(1);
+
+    document.querySelectorAll('.seg [role="tab"]').forEach(b=>{
+      const on = b.dataset.mode === m;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    if (prevMode === 'kugelblitz' && mode !== 'kugelblitz') {
+      kugelFadeTarget = 0;
+    } else if (mode === 'kugelblitz') {
+      kugelFade = 0; kugelFadeTarget = 1; // fade in when entering
+    } else {
+      kugelFadeTarget = 1;
+    }
+
+    loadBee(m);
   }
 
-  // Unlock Audio (shared context)
-  (function(){ var AC=window.AudioContext||window.webkitAudioContext; var btn=document.getElementById('unlock'); if(btn && AC){ btn.addEventListener('click', async function(){ try{ if(!window.__ac) window.__ac=new AC(); if(window.__ac.state==='suspended'){ await window.__ac.resume(); } setPoem('audio unlocked'); setTimeout(function(){ setPoem('…'); }, 1000); }catch(_){ } }); } })();
-
-  $('run').addEventListener('click', async function(){ clear(); setPoem('measuring…');
-    var a=await testAudio(128); addBadge('audio@128', a.ok); addRow(tb,'Audio','Hz error (128)', a.err!=null?(a.err+' Hz'):'—','≤ 0.5 Hz');
-    var t=await testTimerDrift(1000); addBadge('timer', t.ok); addRow(tb,'Timer','Drift', t.drift_ms+' ms','< 30 ms');
-    var r=await testRender(1800); addBadge('render', r.ok); addRow(tb,'Render','Frames / Loss', r.frames+' / '+r.loss,'loss < 2');
-    var ok = (!!a.ok) && (!!t.ok) && (!!r.ok); setPoem(ok?'coherence holds — phase within tolerance; light remains aligned.':'we found a ripple; breathe once, then measure again.');
+  document.querySelectorAll('.seg [role="tab"]').forEach(b=>{
+    b.addEventListener('click', () => setMode(b.dataset.mode));
   });
 
-  $('export').addEventListener('click', async function(){ var stamp={version:'time-v3-min', ts:new Date().toISOString(), results:{}}; var a=await testAudio(128); stamp.results.audio=a; var t=await testTimerDrift(1000); stamp.results.timer=t; var r=await testRender(1000); stamp.results.render=r; var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var aTag=document.createElement('a'); aTag.href=url; aTag.download='integrity-stamp.json'; document.body.appendChild(aTag); aTag.click(); setTimeout(function(){ URL.revokeObjectURL(url); aTag.remove(); },0); });
+  // initial
+  loadBee(mode);
 
-  $('copyJson').addEventListener('click', function(){ try{ navigator.clipboard.writeText($('schemaBox').textContent); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); }catch(_){ var t=document.createElement('textarea'); t.value=$('schemaBox').textContent; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); } });
-  $('downloadCsv').addEventListener('click', function(){ var rows=[["section","field","value"]]; Array.from(tbody.querySelectorAll('tr')).forEach(function(tr){ var tds=tr.querySelectorAll('td'); rows.push([tds[0].textContent,tds[1].textContent,tds[2].textContent]); }); var csv=rows.map(function(r){ return r.map(function(x){ return '"'+String(x).replace(/"/g,'""')+'"'; }).join(','); }).join('\n'); var blob=new Blob([csv],{type:'text/csv'}); var url=URL.createObjectURL(blob); var aTag=document.createElement('a'); aTag.href=url; aTag.download='schema_table.csv'; document.body.appendChild(aTag); aTag.click(); setTimeout(function(){ URL.revokeObjectURL(url); aTag.remove(); },0); });
-})();
-// Modes toggle (Marina + Sigrid + Clarity) with Bee Notes + banners + URL auto
-(function(){
-  function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
-  var controls=document.querySelector('.controls');
-  var marinaBtn=document.getElementById('marinaBtn');
-  var sigridBtn=document.getElementById('sigridBtn');
-  var clarityBtn=document.getElementById('clarityBtn');
-  if(controls){
-    if(!marinaBtn){ marinaBtn=document.createElement('button'); marinaBtn.id='marinaBtn'; marinaBtn.className='btn'; marinaBtn.textContent='Marina Mode'; controls.appendChild(marinaBtn); }
-    if(!sigridBtn){ sigridBtn=document.createElement('button'); sigridBtn.id='sigridBtn'; sigridBtn.className='btn'; sigridBtn.textContent='Sigrid Mode'; controls.appendChild(sigridBtn); }
-    if(!clarityBtn){ clarityBtn=document.createElement('button'); clarityBtn.id='clarityBtn'; clarityBtn.className='btn'; clarityBtn.textContent='Clarity Mode'; controls.appendChild(clarityBtn); }
-  }
-  var marinaBanner=document.getElementById('marinaBanner');
-  var sigridBanner=document.getElementById('sigridBanner');
-  var clarityBanner=document.getElementById('clarityBanner');
-  var bee=document.getElementById('beeCard');
-  var notesArea=document.getElementById('beeNotes');
+  /* ---------- Audio (128 Hz unlock + test) ---------- */
+  let audioCtx = null;
+  let audioUnlocked = false;
 
-  function clearModes(){ document.body.classList.remove('marina','sigrid','clarity'); }
-  function applyTheme(mode){
-    clearModes();
-    if(mode) document.body.classList.add(mode);
-    if(marinaBanner) marinaBanner.style.display = (mode==='marina')?'block':'none';
-    if(sigridBanner) sigridBanner.style.display = (mode==='sigrid')?'block':'none';
-    if(clarityBanner) clarityBanner.style.display = (mode==='clarity')?'block':'none';
-    if(bee) bee.style.display = mode? 'block':'none';
-    var key = mode? ('bee.notes.'+mode) : null;
-    try{ if(notesArea){ notesArea.value = key? (localStorage.getItem(key)||'') : ''; } }catch(_){ }
-  }
-  function saveNotes(mode){ try{ if(notesArea && mode){ localStorage.setItem('bee.notes.'+mode, notesArea.value||''); } }catch(_){ }
-  }
-  if(notesArea){ notesArea.addEventListener('input', function(){ var mode = document.body.classList.contains('marina')?'marina':(document.body.classList.contains('sigrid')?'sigrid':(document.body.classList.contains('clarity')?'clarity':null)); saveNotes(mode); }); }
-
-  if(marinaBtn){ marinaBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('marina'); applyTheme(on?'marina':null); flash(on?'Marina Mode on':'Mode off'); }); }
-  if(sigridBtn){ sigridBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('sigrid'); applyTheme(on?'sigrid':null); flash(on?'Sigrid Mode on':'Mode off'); }); }
-  if(clarityBtn){ clarityBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('clarity'); applyTheme(on?'clarity':null); flash(on?'Clarity Mode on':'Mode off'); }); }
-
-  // style tints
-  (function(){ var s=document.createElement('style'); s.textContent='body.marina{background:radial-gradient(1200px 800px at 15% -10%,#1d0f18 0%,#0b0d11 55%),#0b0d11;color:#fff8fb;} body.sigrid{background:radial-gradient(1200px 800px at 15% -10%,#0f1b2c 0%,#0b0d11 55%),#0b0d11;color:#eef7ff;} body.clarity{background:radial-gradient(1200px 800px at 15% -10%,#0d1220 0%,#0b0d11 55%),#0b0d11;color:#ecfbff;}'; document.head.appendChild(s); })();
-
-  // auto-enable via URL
-  var href=String(location.href||'');
-  if(/[?#].*marina/i.test(href)){ applyTheme('marina'); flash('Marina Mode auto'); }
-  else if(/[?#].*sigrid/i.test(href)){ applyTheme('sigrid'); flash('Sigrid Mode auto'); }
-  else if(/[?#].*clarity/i.test(href)){ applyTheme('clarity'); flash('Clarity Mode auto'); }
-})();
-
-  // auto-enable via URL
-  if(/[?#].*marina/i.test(location.href)){ applyTheme('marina'); flash('Marina Mode auto'); }
-  else if(/[?#].*sigrid/i.test(location.href)){ applyTheme('sigrid'); flash('Sigrid Mode auto'); }
-})();
-</script>
-<script>
-// Marina clock overlay + golden-ratio pulse
-(function(){
-  var body=document.body; var H=document.getElementById('handH'); var M=document.getElementById('handM');
-  var seq=[11,1,2.3,5,6]; // hour positions
-  var i=0, timer=null;
-  function setHands(hour){
-    if(!H||!M) return;
-    var deg = hour*30; // 12h clock → 30° per hour
-    H.style.transform='rotate('+deg+'deg)';
-    M.style.transform='rotate('+(deg*2)+'deg)';
-  }
-  function start(){ if(timer) return; i=0; setHands(seq[i]); timer=setInterval(function(){ i=(i+1)%seq.length; setHands(seq[i]); }, 1618); }
-  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-  // Observe class changes to toggle
-  var obs=new MutationObserver(function(){ if(body.classList.contains('marina')) start(); else stop(); });
-  obs.observe(body,{attributes:true, attributeFilter:['class']});
-  // If active on load
-  if(body.classList.contains('marina')) start();
-})();
-</script>
-<script>
-// Sigrid aurora overlay (√2 rhythm)
-(function(){
-  var body=document.body; var arc=document.getElementById('sigArc'); var deg=0, t=null;
-  function step(){ if(!arc) return; deg=(deg+22.5)%360; arc.style.setProperty('--sig-angle', deg+'deg'); }
-  function start(){ if(t) return; step(); t=setInterval(step, 1414); }
-  function stop(){ if(t){ clearInterval(t); t=null; } }
-  var obs=new MutationObserver(function(){ if(body.classList.contains('sigrid')) start(); else stop(); });
-  obs.observe(body,{attributes:true, attributeFilter:['class']});
-  if(body.classList.contains('sigrid')) start();
-})();
-</script>
-<div id="malalaNote" style="position:fixed;bottom:10px;left:10px;font-size:12px;color:#b7e8ff;opacity:.85;font-style:italic;display:none;pointer-events:none;">you are not in control — yet you are chosen.<br/>you doubt, you fight, you float.</div>
-<script>(function(){var n=document.getElementById('malalaNote');if(!n)return;function show(){var c=document.body.className;n.style.display=/(marina|sigrid)/.test(c)?'none':'block';}var m=new MutationObserver(show);m.observe(document.body,{attributes:true,attributeFilter:['class']});show();})();</script>
-<script>
-// Illumina Mode: button, banner, stars, URL auto, per-mode notes
-(function(){
-  function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
-  var controls=document.querySelector('.controls');
-  if(controls && !document.getElementById('illuminaBtn')){ var b=document.createElement('button'); b.id='illuminaBtn'; b.className='btn'; b.textContent='Illumina Mode'; controls.appendChild(b); }
-  var illuBtn=document.getElementById('illuminaBtn');
-  var illuBan=document.getElementById('illuminaBanner');
-  var bee=document.getElementById('beeCard'); var notes=document.getElementById('beeNotes');
-  function clearModes(){ document.body.classList.remove('marina','sigrid','clarity','illumina'); }
-  function setIllumina(on){ clearModes(); if(on){ document.body.classList.add('illumina'); if(illuBan) illuBan.style.display='block'; if(bee) bee.style.display='block'; } else { if(illuBan) illuBan.style.display='none'; if(!/marina|sigrid|clarity/.test(document.body.className) && bee) bee.style.display='none'; }
-    try{ if(notes){ notes.value = on? (localStorage.getItem('bee.notes.illumina')||'') : notes.value; } }catch(_){ }
-    flash(on?'Illumina Mode on':'Mode off');
-  }
-  if(illuBtn){ illuBtn.addEventListener('click', function(){ var on=!document.body.classList.contains('illumina'); setIllumina(on); }); }
-  // auto-enable via URL
-  if(/[?#].*illumina/i.test(location.href)){ setIllumina(true); }
-  // per-mode note persistence
-  if(notes){ notes.addEventListener('input', function(){ if(document.body.classList.contains('illumina')){ try{ localStorage.setItem('bee.notes.illumina', notes.value||''); }catch(_){ } } }); }
-
-  // Stars overlay (lightweight)
-  var c=document.getElementById('stars'); if(c){ var ctx=c.getContext('2d'); function resize(){ c.width=innerWidth; c.height=innerHeight; }
-    window.addEventListener('resize', resize); resize();
-    var stars=Array.from({length:120}).map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*0.6+0.4}));
-    function draw(){ if(!document.body.classList.contains('illumina')){ requestAnimationFrame(draw); return; }
-      ctx.clearRect(0,0,c.width,c.height); for(var i=0;i<stars.length;i++){ var s=stars[i]; var r=s.z*1.2; ctx.globalAlpha=0.3*s.z; ctx.beginPath(); ctx.arc(s.x,s.y,r,0,Math.PI*2); ctx.fillStyle='#e7d7ff'; ctx.fill(); s.y-=0.05*s.z; if(s.y< -2){ s.y=c.height+2; s.x=Math.random()*c.width; }
-      }
-      requestAnimationFrame(draw);
+  const btnUnlock = document.getElementById('unlockAudio');
+  btnUnlock.addEventListener('click', async () => {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'interactive' });
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      // short, gentle blip @128 Hz to confirm unlock
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine'; osc.frequency.value = 128;
+      gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.3);
+      audioUnlocked = true;
+      btnUnlock.textContent = '✅ Audio Unlocked';
+      btnUnlock.setAttribute('aria-pressed', 'true');
+      btnUnlock.disabled = true;
+      markStatus('chk-audio', true, 'unlocked');
+    } catch (e) {
+      console.warn('Audio unlock failed', e);
+      markStatus('chk-audio', false, 'error');
     }
-    requestAnimationFrame(draw);
+  });
+
+  /* ---------- Self‑Check ---------- */
+  const markStatus = (id, pass, text) => {
+    const el = document.getElementById(id);
+    el.classList.remove('idle','pass','fail');
+    el.classList.add(pass ? 'pass' : 'fail');
+    el.textContent = pass ? `pass · ${text||''}`.trim() : `fail · ${text||''}`.trim();
+  };
+
+  const btnSelf = document.getElementById('runSelfCheck');
+  let blastMoment = 0; // >0 triggers global heat-blast
+  btnSelf.addEventListener('click', async () => {
+    // Reset visual markers
+    ['chk-audio','chk-timer','chk-raf'].forEach(id=>{
+      const el = document.getElementById(id);
+      el.classList.remove('pass','fail'); el.classList.add('idle'); el.textContent='running…';
+    });
+
+    // 1) Audio @ 128 Hz
+    let audioPass = false;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.frequency.value = 128; osc.type='sine';
+      gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.035, audioCtx.currentTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.28);
+      audioPass = true;
+    } catch (e) {
+      audioPass = false;
+    }
+    markStatus('chk-audio', audioPass, '128 Hz');
+
+    // 2) Timer drift < ±30 ms (20 intervals of 50ms)
+    const expected = 50;
+    let maxAbsDrift = 0;
+    let last = performance.now();
+    for (let i=0;i<20;i++) {
+      await new Promise(res=>setTimeout(res, expected));
+      const now = performance.now();
+      const delta = now - last;
+      const drift = delta - expected;
+      maxAbsDrift = Math.max(maxAbsDrift, Math.abs(drift));
+      last = now;
+    }
+    const timerPass = maxAbsDrift <= 30;
+    markStatus('chk-timer', timerPass, `${maxAbsDrift.toFixed(0)} ms`);
+
+    // 3) rAF loss < 2 (count long frames > 33ms across ~1s)
+    let longFrames = 0;
+    let t0 = performance.now();
+    let tPrev = t0;
+    await new Promise(res=>{
+      function sample(t){
+        const dt = t - tPrev; tPrev = t;
+        if (dt > 33) longFrames++;
+        if (t - t0 < 1000) requestAnimationFrame(sample);
+        else res();
+      }
+      requestAnimationFrame(sample);
+    });
+    const rafPass = longFrames < 2;
+    markStatus('chk-raf', rafPass, `loss ${longFrames}`);
+
+    // If all pass → trigger Kugelblitz heat‑blast
+    if (audioPass && timerPass && rafPass) {
+      blastMoment = performance.now(); // draw loop will consume
+      // also show a dramatic pulse even if not in Kugelblitz
+      // set a quick fade-in for kugelblitz layer (temporary)
+      if (mode !== 'kugelblitz') {
+        kugelFade = 0; kugelFadeTarget = 1;
+        // Automatically relax the overlay after the blast fades
+        setTimeout(()=> { kugelFadeTarget = 0.0; }, 1200);
+      }
+    }
+  });
+
+  /* ---------- Visual Systems (Canvas overlays) ---------- */
+
+  // Shared utilities
+  const clamp = (x,a,b)=> Math.max(a, Math.min(b,x));
+  const lerp = (a,b,t)=> a + (b-a)*t;
+  const easeOutCubic = t => 1 - Math.pow(1-t,3);
+  const TAU = Math.PI*2;
+
+  function rgba(r,g,b,a){ return `rgba(${r|0},${g|0},${b|0},${clamp(a,0,1)})`; }
+  function mixRGB(c1, c2, t) {
+    const a = [ (c1>>16)&255, (c1>>8)&255, c1&255 ];
+    const b = [ (c2>>16)&255, (c2>>8)&255, c2&255 ];
+    const r = lerp(a[0], b[0], t), g = lerp(a[1], b[1], t), bl = lerp(a[2], b[2], t);
+    return `rgb(${r|0},${g|0},${bl|0})`;
   }
+
+  /* --- MARINA: φ clock (1.618 s rotation) --- */
+  function drawMarina(t, alpha=1){
+    const ctx2 = ctx;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const cx = w/2, cy = h/2;
+    const r = Math.min(w,h)*0.18;
+
+    ctx2.save();
+    ctx2.globalAlpha = 0.9*alpha;
+    ctx2.translate(cx, cy);
+
+    // Dial
+    ctx2.beginPath(); ctx2.arc(0,0,r,0,TAU);
+    ctx2.strokeStyle = 'rgba(246, 211, 110, 0.55)';
+    ctx2.lineWidth = 2; ctx2.stroke();
+
+    // φ marker
+    ctx2.font = '600 28px system-ui, sans-serif';
+    ctx2.textAlign = 'center'; ctx2.textBaseline='middle';
+    ctx2.fillStyle = 'rgba(255,118,144,0.8)';
+    ctx2.fillText('φ', 0, -r*0.6);
+
+    // Hands
+    const period = 1618; // ms
+    const ang = (t % period) / period * TAU;
+    const len1 = r*0.92, len2 = len1/phi;
+
+    ctx2.rotate(ang);
+    ctx2.strokeStyle = 'rgba(246, 211, 110, 0.95)';
+    ctx2.lineWidth = 3; ctx2.beginPath(); ctx2.moveTo(0,0); ctx2.lineTo(len1,0); ctx2.stroke();
+    ctx2.rotate(TAU/phi);
+    ctx2.strokeStyle = 'rgba(255,118,144,0.85)';
+    ctx2.lineWidth = 2; ctx2.beginPath(); ctx2.moveTo(0,0); ctx2.lineTo(len2,0); ctx2.stroke();
+
+    ctx2.restore();
+  }
+
+  /* --- SIGRID: √2 aurora (1.414 s pulse) --- */
+  function drawSigrid(t, alpha=1){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const ctx2 = ctx;
+    const period = 1414;
+    const p = (t % period) / period;
+    const pulse = 0.35 + 0.65 * Math.sin(p * TAU); // 0..1
+
+    const layers = 6;
+    ctx2.save();
+    ctx2.globalAlpha = alpha * 0.9;
+    for (let i=0; i<layers; i++) {
+      const y = h*0.2 + i* (h*0.06);
+      const amp = 40 + i*12;
+      const baseAlpha = 0.08 + (i/layers)*0.12 + pulse*0.08;
+      const grad = ctx2.createLinearGradient(0,y, w,y);
+      grad.addColorStop(0, `rgba(200,220,255,${baseAlpha})`);
+      grad.addColorStop(0.5, `rgba(110,167,255,${baseAlpha*1.15})`);
+      grad.addColorStop(1, `rgba(210,220,232,${baseAlpha})`);
+      ctx2.fillStyle = grad;
+
+      // curved band
+      ctx2.beginPath();
+      ctx2.moveTo(0, y);
+      for (let x=0; x<=w; x+=24){
+        const curve = Math.sin((x/w)*TAU* (1.0 + 0.2*Math.sin(t*0.0003))) * amp * (0.7 + 0.3*Math.sin(t*0.0005 + i));
+        ctx2.lineTo(x, y + curve);
+      }
+      ctx2.lineTo(w, y+amp*1.6);
+      ctx2.lineTo(0, y+amp*1.6);
+      ctx2.closePath();
+      ctx2.fill();
+    }
+    ctx2.restore();
+  }
+
+  /* --- CLARITY: Jellyfish drift (~6 s breath) --- */
+  const jellies = [];
+  function ensureJellies(){
+    const target = 12;
+    while (jellies.length < target) {
+      jellies.push({
+        x: Math.random(), y: Math.random(),
+        r: lerp(28, 76, Math.random()),
+        phase: Math.random()*TAU,
+        hue: Math.random()
+      });
+    }
+  }
+  ensureJellies();
+
+  function drawClarity(t, alpha=1){
+    ensureJellies();
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const ctx2 = ctx;
+    const breathT = (t % 6000) / 6000; // ~6 s
+    const breath = 0.55 + 0.45*Math.sin(breathT*TAU);
+
+    ctx2.save();
+    ctx2.globalAlpha = alpha * 0.85;
+
+    jellies.forEach(j=>{
+      const driftX = Math.sin(t*0.0002 + j.phase)*0.004;
+      const driftY = -0.015; // upward drift
+      j.x = (j.x + driftX + 1) % 1;
+      j.y = (j.y + driftY + 1) % 1;
+
+      const x = j.x * w, y = j.y * h;
+      const r = j.r * (0.8 + 0.35*breath);
+
+      // bell
+      const rad = ctx2.createRadialGradient(x, y, r*0.1, x, y, r);
+      rad.addColorStop(0, 'rgba(8,255,215,0.55)');
+      rad.addColorStop(0.5, 'rgba(140,94,255,0.35)');
+      rad.addColorStop(1, 'rgba(140,94,255,0.0)');
+      ctx2.fillStyle = rad;
+      ctx2.beginPath(); ctx2.arc(x,y,r,0,TAU); ctx2.fill();
+
+      // soft tentacles
+      ctx2.lineWidth = 1.2;
+      for (let k=0;k<6;k++){
+        const ang = (k/6)*TAU + j.phase*0.2 + t*0.0004;
+        const len = r * (0.9 + 0.2*Math.sin(t*0.001 + k));
+        const x2 = x + Math.cos(ang)*len*0.6;
+        const y2 = y + Math.sin(ang)*len*1.2;
+        ctx2.strokeStyle = 'rgba(8,255,215,0.18)';
+        ctx2.beginPath(); ctx2.moveTo(x, y + r*0.2); ctx2.quadraticCurveTo(x, y2, x2, y2); ctx2.stroke();
+      }
+    });
+
+    ctx2.restore();
+  }
+
+  /* --- ILLUMINA: Deep purple starfield (42‑day cycle) --- */
+  const stars = [];
+  function initStars(){
+    stars.length = 0;
+    const count = Math.ceil((canvas.clientWidth * canvas.clientHeight) / 9000);
+    for (let i=0; i<count; i++){
+      stars.push({
+        x: Math.random(), y: Math.random(),
+        r: Math.random()*1.6 + 0.2,
+        sp: 0.6 + Math.random()*1.2,
+        tw: Math.random()*TAU
+      });
+    }
+  }
+  initStars();
+  addEventListener('resize', initStars, { passive:true });
+
+  function drawIllumina(t, alpha=1){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const ctx2 = ctx;
+
+    // 42‑day global phase
+    const days = Date.now() / 86400000;
+    const cycle = (days % 42) / 42; // 0..1
+    const hueMod = Math.sin(cycle * TAU) * 0.15 + 0.85; // 0.7..1.0
+
+    ctx2.save();
+    ctx2.globalAlpha = 0.9*alpha;
+
+    stars.forEach(s=>{
+      const x = s.x * w, y = s.y * h;
+      const twinkle = 0.5 + 0.5*Math.sin(t*0.0015*s.sp + s.tw);
+      const a = 0.25 + twinkle*0.6;
+      const r = (s.r + twinkle*0.8);
+
+      const g = ctx2.createRadialGradient(x,y,0.1, x,y,r*2.4);
+      g.addColorStop(0, `rgba(${(180*hueMod)|0}, ${(150*hueMod)|0}, 255, ${a})`);
+      g.addColorStop(1, `rgba(255, 255, 255, 0.0)`);
+      ctx2.fillStyle = g;
+      ctx2.beginPath(); ctx2.arc(x,y,r*2,0,TAU); ctx2.fill();
+    });
+
+    // a thin coherence ring
+    ctx2.globalAlpha = alpha * 0.18;
+    const cx = w/2, cy = h/2, R = Math.min(w,h)*0.28;
+    ctx2.beginPath(); ctx2.arc(cx, cy, R + Math.sin(t*0.001)*6, 0, TAU);
+    ctx2.strokeStyle = 'rgba(188,160,255,0.6)';
+    ctx2.lineWidth = 1.2; ctx2.stroke();
+
+    ctx2.restore();
+  }
+
+  /* --- KUGELBLITZ: Concentric radial pulse (3 s) --- */
+  function gradientColor(phase){
+    // Map phase 0..1 to blue→white→gold→violet→red‑heat
+    if (phase < 0.2) return {from:0x0c4cff, to:0x3da1ff};          // blue
+    if (phase < 0.4) return {from:0xffffff, to:0xf8f8ff};          // white
+    if (phase < 0.6) return {from:0xf5c84c, to:0xffd76f};          // gold
+    if (phase < 0.8) return {from:0x8c5eff, to:0xb79aff};          // violet
+    return {from:0xff3a24, to:0xff7f5c};                           // red‑heat
+  }
+
+  function drawKugelblitz(t, alpha=1, extraBlast=0){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const ctx2 = ctx;
+    const cx = w/2, cy = h/2;
+    const period = 3000;
+    const ph = (t % period) / period;
+
+    // radius grows and collapses
+    const swell = easeOutCubic((Math.sin(ph*TAU - Math.PI/2) + 1)/2); // 0..1
+    const baseR = Math.min(w,h) * (0.1 + 0.35*swell + 0.25*extraBlast);
+
+    ctx2.save();
+    ctx2.globalAlpha = alpha * (0.85 + 0.15*swell);
+
+    // multiple rings
+    for (let k=0; k<6; k++){
+      const p = ((ph + k*0.12) % 1 + 1) % 1;
+      const {from, to} = gradientColor(p);
+      const r1 = baseR + k * 40 * (1 + 0.6*swell);
+      const r2 = r1 + 90 + 35*Math.sin(t*0.003 + k);
+
+      const g = ctx2.createRadialGradient(cx, cy, r1*0.1, cx, cy, r2);
+      g.addColorStop(0, mixRGB(from, to, 0.25));
+      g.addColorStop(0.6, mixRGB(from, to, 1.0));
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx2.fillStyle = g;
+      ctx2.beginPath(); ctx2.arc(cx, cy, r2, 0, TAU); ctx2.fill();
+    }
+
+    // white-hot core
+    const coreR = baseR * (0.3 + 0.6*swell);
+    const core = ctx2.createRadialGradient(cx, cy, 0, cx, cy, coreR);
+    core.addColorStop(0, 'rgba(255,255,255,0.95)');
+    core.addColorStop(1, 'rgba(255,255,255,0.0)');
+    ctx2.fillStyle = core;
+    ctx2.beginPath(); ctx2.arc(cx, cy, coreR, 0, TAU); ctx2.fill();
+
+    ctx2.restore();
+  }
+
+  /* ---------- Global Heat‑Blast (after self‑check pass) ---------- */
+  function drawBlast(now){
+    if (blastMoment <= 0) return 0;
+    const t = (now - blastMoment);
+    if (t > 1600) { blastMoment = 0; return 0; }
+    const k = easeOutCubic(clamp(t/1200, 0, 1));
+    return k; // as an "extraBlast" factor to Kugelblitz renderer
+  }
+
+  /* ---------- Render Loop ---------- */
+  let last = performance.now();
+  (function loop(now){
+    const dt = now - last; last = now;
+
+    // manage fade of kugelblitz overlay when leaving mode
+    kugelFade += (kugelFadeTarget - kugelFade) * clamp(dt/220, 0, 1);
+    if (Math.abs(kugelFade - kugelFadeTarget) < 0.002) kugelFade = kugelFadeTarget;
+
+    ctx.clearRect(0,0, canvas.clientWidth, canvas.clientHeight);
+
+    // Mode overlays
+    if (mode === 'marina') {
+      drawMarina(now, 1.0);
+    } else if (mode === 'sigrid') {
+      drawSigrid(now, 1.0);
+    } else if (mode === 'clarity') {
+      drawClarity(now, 1.0);
+    } else if (mode === 'illumina') {
+      drawIllumina(now, 1.0);
+    } else if (mode === 'kugelblitz') {
+      drawKugelblitz(now, kugelFade, 0);
+    }
+
+    // If we just left Kugelblitz, let it gently persist then fade
+    if (prevMode === 'kugelblitz' && mode !== 'kugelblitz' && kugelFade > 0.01) {
+      drawKugelblitz(now, kugelFade*0.7, 0);
+    }
+
+    // Heat‑blast overlay if self‑check passed
+    const blastK = drawBlast(now);
+    if (blastK > 0.001) {
+      drawKugelblitz(now, 0.85, blastK*1.1);
+    }
+
+    requestAnimationFrame(loop);
+  })(performance.now());
+
+  /* ---------- Keyboard shortcuts ---------- */
+  addEventListener('keydown', (e)=>{
+    if (e.altKey || e.metaKey || e.ctrlKey) return;
+    if (['ArrowRight','ArrowLeft'].includes(e.key)) {
+      const idx = modes.indexOf(mode);
+      const next = e.key === 'ArrowRight' ? (idx+1)%modes.length : (idx-1+modes.length)%modes.length;
+      setMode(modes[next]);
+    }
+  }, {passive:true});
+
+  /* ---------- Friendly welcome in console ---------- */
+  try {
+    console.log('%cIllumina v4 · Kugelblitz','background:linear-gradient(90deg,#0c4cff,#ffffff,#f5c84c,#8c5eff,#ff3a24);color:#000;padding:6px 10px;border-radius:8px;font-weight:800;');
+    console.log('sex = power · energy = heat · light = consciousness — elegant, safe, luminous.');
+  } catch(_) {}
+
 })();
 </script>
 </body>
