@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="dark light"/>
 <title>Time · Illumina v7 — Time as a Living Derivative (Violet-Pearl Flow)</title>
-<meta name="description" content="Violet-pearl aesthetic. Physics × anthropology timeline. Canvas2D field + lightweight background orbs. iOS-safe audio (resume-first, unlock ping, video warm-up). 160 Hz base. Dedication + Anchors."/>
+<meta name="description" content="Violet-pearl aesthetic. Physics × anthropology neon timeline. Canvas2D field + lightweight background orbs. iOS-safe audio (resume-first, unlock ping, video warm-up) with VU + Test Ping. 160 Hz base. Dedication + Anchors."/>
 <style>
   :root{
     --bg0:#0c0912; --bg1:#130f1e; --bg2:#1b1230;
@@ -70,7 +70,6 @@
   .tl-hit:hover + .tl-tooltip{opacity:1}
   .tl-tooltip{opacity:0;transition:opacity .18s ease-in-out}
   @media (prefers-reduced-motion: reduce){.tl-tooltip{transition:none}}
-  /* reduced motion overall */
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -181,9 +180,7 @@
         </radialGradient>
       </defs>
 
-      <!-- baseline -->
       <line x1="60" y1="140" x2="1140" y2="140" class="tl-line"/>
-      <!-- minor ticks -->
       <g class="tl-ticks">
         <line x1="60" y1="120" x2="60" y2="160"/>
         <line x1="240" y1="125" x2="240" y2="155"/>
@@ -194,7 +191,6 @@
         <line x1="1140" y1="120" x2="1140" y2="160"/>
       </g>
 
-      <!-- nodes (x positions) -->
       <g data-i="1">
         <circle cx="60" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/>
         <text x="60" y="190" text-anchor="middle" class="tl-label">1 • Moon</text>
@@ -232,37 +228,16 @@
       </g>
 
       <!-- transparent hover hits + tooltips (desktop) -->
-      <g>
-        <rect class="tl-hit" x="10" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="60" y="90" text-anchor="middle">Physics: Moon formation • Anthropology: First fire cultures</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="190" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="240" y="90" text-anchor="middle">Origin of life • Early animism / totems</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="370" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="420" y="90" text-anchor="middle">Great Oxygenation • Agrarian revolution</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="550" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="600" y="90" text-anchor="middle">Cambrian senses • Axial age reason</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="730" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="780" y="90" text-anchor="middle">Relativity & Quantum • Industrial/global</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="910" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="960" y="90" text-anchor="middle">Information physics • Network human</text>
-      </g>
-      <g>
-        <rect class="tl-hit" x="1090" y="80" width="100" height="120" fill="transparent"/>
-        <text class="tl-tooltip tl-cap" x="1140" y="90" text-anchor="middle">Evolving law • Planetary anthropology</text>
-      </g>
+      <g><rect class="tl-hit" x="10" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="60" y="90" text-anchor="middle">Physics: Moon formation • Anthropology: First fire cultures</text></g>
+      <g><rect class="tl-hit" x="190" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="240" y="90" text-anchor="middle">Origin of life • Early animism / totems</text></g>
+      <g><rect class="tl-hit" x="370" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="420" y="90" text-anchor="middle">Great Oxygenation • Agrarian revolution</text></g>
+      <g><rect class="tl-hit" x="550" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="600" y="90" text-anchor="middle">Cambrian senses • Axial age reason</text></g>
+      <g><rect class="tl-hit" x="730" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="780" y="90" text-anchor="middle">Relativity & Quantum • Industrial/global</text></g>
+      <g><rect class="tl-hit" x="910" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="960" y="90" text-anchor="middle">Information physics • Network human</text></g>
+      <g><rect class="tl-hit" x="1090" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="1140" y="90" text-anchor="middle">Evolving law • Planetary anthropology</text></g>
     </svg>
 
-    <!-- Mobile captions (always visible) -->
+    <!-- Mobile captions -->
     <div class="note" style="margin-top:10px">
       <strong>Captions:</strong>
       <ol style="margin:6px 0 0 18px">
@@ -384,48 +359,84 @@
     octx.globalCompositeOperation='source-over';
   }
 
-  /* ===== Audio (resume-first, warm-video, unlock ping, clean OSC) ===== */
+  /* ===== AUDIO REFRESH (resume-first, warm-video, unlock ping, clean OSC) ===== */
+  // This block adds: VU dot, Test Ping, +9dB makeup gain, stronger ramps, extra resume hooks.
   const warmVid=$('#warmVid');
   const startBtn=$('#startAudio'), vol=$('#vol'), tau=$('#tauAccel');
-  const ctxState=$('#ctxState'), audioState=$('#audioState');
-  const BASE=160.0; let actx=null, master=null, lpf=null, osc=null, fmOsc=null, fmGain=null;
+  const ctxState=$('#ctxState'), audioChip=$('#audioState');
+  // Inject VU + Ping button once
+  (function injectVU(){
+    if (document.getElementById('vuDot')) return;
+    const row = startBtn.parentElement;
+    const vu = document.createElement('span');
+    vu.id = 'vuDot';
+    vu.textContent = ' VU ';
+    vu.style.cssText = 'margin-left:6px;padding:2px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font:12px ui-monospace;background:rgba(255,255,255,.06)';
+    const ping = document.createElement('button');
+    ping.id = 'pingBtn';
+    ping.textContent = 'Test Ping';
+    ping.style.cssText = 'margin-left:8px';
+    row.appendChild(vu); row.appendChild(ping);
+  })();
+  const vuDot = document.getElementById('vuDot');
+  const pingBtn = document.getElementById('pingBtn');
+
+  const BASE=160.0; let actx=null, master=null, makeUp=null, lpf=null, analyser=null, osc=null, fmOsc=null, fmGain=null;
   let audioOn=false, unlocked=false;
-  function setAudioState(on){ audioState.textContent="audio: "+(on?"on":"off"); audioState.className="chip mini "+(on?"ok":"bad"); }
-  function smooth(p,v,t=0.08){ if(!p||!actx) return; const n=actx.currentTime; try{p.setTargetAtTime(v,n,t);}catch{p.value=v;} }
-  function ampTo(target,tc=0.10){ smooth(master.gain,target,tc); }
-  function ensureCtx(){ if(actx) return; actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"}); master=actx.createGain(); master.gain.value=0.0; lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1; master.connect(lpf).connect(actx.destination); ctxState.textContent="ctx: "+actx.state; }
-  function unlockPing(){ const dur=.04,sr=actx.sampleRate,len=Math.floor(dur*sr); const buf=actx.createBuffer(1,len,sr),ch=buf.getChannelData(0); for(let i=0;i<len;i++){ ch[i]=Math.sin(2*Math.PI*800*(i/sr))*Math.exp(-i/400); } const src=actx.createBufferSource(); src.buffer=buf; src.connect(master); src.start(); }
-  function buildEngine(){ osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE; fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmOsc.frequency.value=.4; fmGain.gain.value=.8; fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master); osc.start(); fmOsc.start(); }
-  async function warmupVideo(){ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const stream=c.captureStream?c.captureStream(5):null; if(stream){ warmVid.srcObject=stream; try{await warmVid.play();}catch{} } }
-  function applyVolume(){ ampTo(audioOn? parseFloat(vol.value):0, .10); }
-  let lastFM=0; function applyFM(){ const now=performance.now(); if(now-lastFM<120) return; lastFM=now; const tacc=parseFloat(tau.value); const rate=.25+tacc*1.8, depth=.8+tacc*3.0; if(fmOsc&&fmGain){ smooth(fmOsc.frequency,rate,.12); smooth(fmGain.gain,depth,.12);} }
-  function applyOrbMod(){ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
+  function setAudioState(on){ audioChip.textContent="audio: "+(on?"on":"off"); audioChip.className="chip mini "+(on?"ok":"bad"); }
+  function ensureCtx(){ if(actx) return;
+    actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
+    master=actx.createGain(); master.gain.value=0.0;
+    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20); // +9 dB
+    lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1;
+    analyser=actx.createAnalyser(); analyser.fftSize=512;
+    master.connect(makeUp).connect(lpf).connect(analyser).connect(actx.destination);
+    ctxState.textContent="ctx: "+actx.state;
+  }
+  function warmupVideo(){ return new Promise(res=>{ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const stream=c.captureStream?c.captureStream(5):null; if(stream){ warmVid.srcObject=stream; warmVid.play().then(res).catch(res);} else res(); }); }
+  function unlockPing(){ const len=Math.floor(.04*actx.sampleRate), buf=actx.createBuffer(1,len,actx.sampleRate), ch=buf.getChannelData(0); for(let i=0;i<len;i++) ch[i]=Math.sin(2*Math.PI*800*(i/actx.sampleRate))*Math.exp(-i/400); const src=actx.createBufferSource(); src.buffer=buf; src.connect(master); src.start(); }
+  function buildEngine(){ if(osc) return; osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE; fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmOsc.frequency.value=.5; fmGain.gain.value=1.2; fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master); osc.start(); fmOsc.start(); }
+  function smooth(p,v,t=.10){ try{ p.setTargetAtTime(v, actx.currentTime, t);}catch{ p.value=v; } }
+  function applyVolume(){ if(!actx) return; const target = audioOn ? Math.max(parseFloat(vol.value), .22) : 0.0; smooth(master.gain, target, .12); }
+  let lastFM=0; function applyFM(){ if(!actx) return; const now=performance.now(); if(now-lastFM<120) return; lastFM=now; const tacc=parseFloat(tau.value); smooth(fmOsc.frequency, .3 + tacc*2.0, .12); smooth(fmGain.gain, 1.0 + tacc*3.2, .12); }
+  function updateVU(){ if(!analyser) return; const data=new Uint8Array(analyser.frequencyBinCount); analyser.getByteTimeDomainData(data); let s=0; for(const v of data){ const x=(v-128)/128; s+=x*x; } const rms=Math.sqrt(s/data.length); vuDot.style.background = rms>0.015 ? 'rgba(100,255,150,.25)' : 'rgba(255,255,255,.06)'; vuDot.style.borderColor = rms>0.015 ? 'rgba(100,255,150,.9)' : 'rgba(255,255,255,.25)'; requestAnimationFrame(updateVU); }
 
   startBtn.addEventListener('click', async ()=>{
     await warmupVideo();
     ensureCtx();
     if(actx.state!=="running"){ await actx.resume(); } ctxState.textContent="ctx: "+actx.state;
-    if(!unlocked){ ampTo(0.001,.02); unlockPing(); unlocked=true; }
-    if(!osc){ buildEngine(); }
-    audioOn=!audioOn; setAudioState(audioOn); if(audioOn && parseFloat(vol.value)<.18){ vol.value="0.18"; } applyVolume(); applyFM();
-    // fade orbs with audio toggle
+    if(!unlocked){ smooth(master.gain,0.001,.02); unlockPing(); unlocked=true; }
+    buildEngine();
+    audioOn=!audioOn; setAudioState(audioOn); applyVolume(); applyFM();
+
+    // Fade orbs with audio
     if(audioOn){ let a=orbAlpha; (function fade(){ a=Math.min(1,a+.05); orbAlpha=a; if(a<1) requestAnimationFrame(fade); })(); }
     else{ let a=orbAlpha; (function fade(){ a=Math.max(0,a-.06); orbAlpha=a; if(a>0) requestAnimationFrame(fade); })(); }
   }, {passive:true});
 
-  vol.addEventListener('input', ()=>{ applyVolume(); }, {passive:true});
-  tau.addEventListener('input', ()=>{ applyFM(); applyOrbMod(); }, {passive:true});
+  // Ping button
+  document.getElementById('pingBtn').addEventListener('click', ()=>{ if(!actx) return; unlockPing(); }, {passive:true});
+
+  // Resume hooks
+  ['touchend','pointerdown'].forEach(ev=>{ window.addEventListener(ev, ()=>{ if(actx && actx.state==='suspended') actx.resume(); }, {passive:true}); });
   document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume().then(()=>{ctxState.textContent="ctx: "+actx.state;}); }});
 
-  /* ===== Loops ===== */
+  // Link τ̈ to orbs (amp + hue)
+  tau.addEventListener('input', ()=>{ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; applyFM(); }, {passive:true});
+  vol.addEventListener('input', applyVolume, {passive:true});
+
+  // Loops
   (function frameLoop(){ renderField(); requestAnimationFrame(frameLoop); })();
   (function orbLoop(){ renderOrbs(); requestAnimationFrame(orbLoop); })();
 
-  /* ===== Utilities ===== */
+  // Utils
   function hsl2rgb(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
 
-  /* init orb modulation for default τ̈ */
-  applyOrbMod();
+  // Kick VU monitor
+  requestAnimationFrame(updateVU);
+
+  // init orb modulation for default τ̈
+  const tauInit=$('#tauAccel'); if(tauInit){ const tacc=parseFloat(tauInit.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
 })();
 </script>
 </body>
