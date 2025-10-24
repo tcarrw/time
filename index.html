@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -12,191 +11,188 @@
      Single-file • No external libraries • Dark-mode • Canvas+WebAudio
      ========================================================== */
 
-:root{
---bg1:#0b0b13;
---bg2:#0e0c18;
---text:#f5f4ff;
---muted:#c7c4d6;
---ring:rgba(255,255,255,0.14);
---soft:rgba(255,255,255,0.10);
---gold:#f5c84c;
+  :root{
+    --bg1:#0b0b13;
+    --bg2:#0e0c18;
+    --text:#f5f4ff;
+    --muted:#c7c4d6;
+    --ring:rgba(255,255,255,0.14);
+    --soft:rgba(255,255,255,0.10);
+    --gold:#f5c84c;
 
-```
-/* Accents (overridden per mode) */
---accent:#cfc6ff;         --accent-r:207; --accent-g:198; --accent-b:255;
---accent2:#8c5eff;        --accent2-r:140; --accent2-g:94; --accent2-b:255;
-```
+    /* Accents (overridden per mode) */
+    --accent:#cfc6ff;         --accent-r:207; --accent-g:198; --accent-b:255;
+    --accent2:#8c5eff;        --accent2-r:140; --accent2-g:94; --accent2-b:255;
+  }
 
-}
+  /* Per-mode palettes */
+  body[data-mode="marina"]{
+    --bg1:#1c1411; --bg2:#2a1916;
+    --accent:#f6d36e; --accent-r:246; --accent-g:211; --accent-b:110;
+    --accent2:#ff7690; --accent2-r:255; --accent2-g:118; --accent2-b:144;
+  }
+  body[data-mode="sigrid"]{
+    --bg1:#0b1520; --bg2:#102133;
+    --accent:#d9e2ed; --accent-r:217; --accent-g:226; --accent-b:237;
+    --accent2:#6ea7ff; --accent2-r:110; --accent2-g:167; --accent2-b:255;
+  }
+  body[data-mode="clarity"]{
+    --bg1:#0b1f24; --bg2:#141136;
+    --accent:#08ffd7; --accent-r:8;  --accent-g:255; --accent-b:215;
+    --accent2:#8c5eff; --accent2-r:140; --accent2-g:94; --accent2-b:255;
+  }
+  body[data-mode="illumina"]{
+    --bg1:#130a21; --bg2:#1a0f2f;
+    --accent:#bca0ff; --accent-r:188; --accent-g:160; --accent-b:255;
+    --accent2:#4a257f; --accent2-r:74; --accent2-g:37; --accent2-b:127;
+  }
+  body[data-mode="kugelblitz"]{
+    --bg1:#000a1f; --bg2:#000515;
+    --accent:#eaf2ff; --accent-r:234; --accent-g:242; --accent-b:255;
+    --accent2:#ffb84d; --accent2-r:255; --accent2-g:184; --accent2-b:77;
+  }
 
-/* Per-mode palettes */
-body[data-mode="marina"]{
---bg1:#1c1411; --bg2:#2a1916;
---accent:#f6d36e; --accent-r:246; --accent-g:211; --accent-b:110;
---accent2:#ff7690; --accent2-r:255; --accent2-g:118; --accent2-b:144;
-}
-body[data-mode="sigrid"]{
---bg1:#0b1520; --bg2:#102133;
---accent:#d9e2ed; --accent-r:217; --accent-g:226; --accent-b:237;
---accent2:#6ea7ff; --accent2-r:110; --accent2-g:167; --accent2-b:255;
-}
-body[data-mode="clarity"]{
---bg1:#0b1f24; --bg2:#141136;
---accent:#08ffd7; --accent-r:8;  --accent-g:255; --accent-b:215;
---accent2:#8c5eff; --accent2-r:140; --accent2-g:94; --accent2-b:255;
-}
-body[data-mode="illumina"]{
---bg1:#130a21; --bg2:#1a0f2f;
---accent:#bca0ff; --accent-r:188; --accent-g:160; --accent-b:255;
---accent2:#4a257f; --accent2-r:74; --accent2-g:37; --accent2-b:127;
-}
-body[data-mode="kugelblitz"]{
---bg1:#000a1f; --bg2:#000515;
---accent:#eaf2ff; --accent-r:234; --accent-g:242; --accent-b:255;
---accent2:#ffb84d; --accent2-r:255; --accent2-g:184; --accent2-b:77;
-}
+  /* Base layout */
+  *{ box-sizing:border-box }
+  html,body{ height:100% }
+  body{
+    margin:0;
+    min-height:100vh;
+    color:var(--text);
+    background:
+      radial-gradient(120rem 60rem at 70% -10%, var(--bg2) 0%, transparent 40%),
+      radial-gradient(90rem 80rem at -10% 10%, var(--bg2) 0%, transparent 40%),
+      linear-gradient(180deg, var(--bg1), var(--bg2));
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing:.2px;
+    overflow-x:hidden;
+  }
+  .wrap{
+    max-width:1200px;
+    margin-inline:auto;
+    padding:clamp(12px,3vmin,28px);
+    position:relative;
+    z-index:2;
+  }
 
-/* Base layout */
-*{ box-sizing:border-box }
-html,body{ height:100% }
-body{
-margin:0;
-min-height:100vh;
-color:var(--text);
-background:
-radial-gradient(120rem 60rem at 70% -10%, var(--bg2) 0%, transparent 40%),
-radial-gradient(90rem 80rem at -10% 10%, var(--bg2) 0%, transparent 40%),
-linear-gradient(180deg, var(--bg1), var(--bg2));
-font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-letter-spacing:.2px;
-overflow-x:hidden;
-}
-.wrap{
-max-width:1200px;
-margin-inline:auto;
-padding:clamp(12px,3vmin,28px);
-position:relative;
-z-index:2;
-}
+  /* Header */
+  header{ display:flex; align-items:center; gap:1rem; padding:clamp(10px,2vmin,20px) 0 .75rem; border-bottom:1px solid var(--soft); }
+  .logo{
+    width:44px; height:44px; flex:0 0 auto; border-radius:50%;
+    display:grid; place-items:center;
+    background:
+      radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.18) 0 30%, rgba(0,0,0,0) 40%),
+      conic-gradient(from 210deg, #ffefb0, #ffd867, #f6c64f, #f0b43b, #ffd867, #ffefb0);
+    box-shadow: inset 0 0.18rem 0.35rem rgba(0,0,0,.28), 0 0.45rem 1.2rem rgba(0,0,0,.35);
+    border:1px solid rgba(245,200,76,.6);
+  }
+  .logo svg{ width:62%; height:62%; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
+  header h1{ margin:0; line-height:1.1; font-weight:750; letter-spacing:.3px; font-size:clamp(1.06rem,2.2vw,1.48rem); }
+  header h1 .sub{ opacity:.8; font-weight:600; display:block; font-size:.92em; }
 
-/* Header */
-header{ display:flex; align-items:center; gap:1rem; padding:clamp(10px,2vmin,20px) 0 .75rem; border-bottom:1px solid var(--soft); }
-.logo{
-width:44px; height:44px; flex:0 0 auto; border-radius:50%;
-display:grid; place-items:center;
-background:
-radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.18) 0 30%, rgba(0,0,0,0) 40%),
-conic-gradient(from 210deg, #ffefb0, #ffd867, #f6c64f, #f0b43b, #ffd867, #ffefb0);
-box-shadow: inset 0 0.18rem 0.35rem rgba(0,0,0,.28), 0 0.45rem 1.2rem rgba(0,0,0,.35);
-border:1px solid rgba(245,200,76,.6);
-}
-.logo svg{ width:62%; height:62%; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
-header h1{ margin:0; line-height:1.1; font-weight:750; letter-spacing:.3px; font-size:clamp(1.06rem,2.2vw,1.48rem); }
-header h1 .sub{ opacity:.8; font-weight:600; display:block; font-size:.92em; }
+  /* Controls */
+  .controls{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .6rem; padding: 1rem 0 1.1rem; }
+  .btn{
+    -webkit-tap-highlight-color: transparent;
+    border:1px solid var(--ring);
+    background: rgba(255,255,255,0.05);
+    color:var(--text);
+    padding:.62rem .95rem; border-radius:.75rem;
+    cursor:pointer; user-select:none;
+    font-weight:700; letter-spacing:.25px;
+    box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35), 0 0 0.6rem rgba(0,0,0,.35);
+    transition: transform .08s ease, background .25s ease, opacity .25s ease, border-color .25s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); background: rgba(255,255,255,0.08); }
+  .btn:active{ transform:translateY(1px) scale(.99); }
+  .btn[disabled]{ opacity:.6; cursor:not-allowed; }
 
-/* Controls */
-.controls{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .6rem; padding: 1rem 0 1.1rem; }
-.btn{
--webkit-tap-highlight-color: transparent;
-border:1px solid var(--ring);
-background: rgba(255,255,255,0.05);
-color:var(--text);
-padding:.62rem .95rem; border-radius:.75rem;
-cursor:pointer; user-select:none;
-font-weight:700; letter-spacing:.25px;
-box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35), 0 0 0.6rem rgba(0,0,0,.35);
-transition: transform .08s ease, background .25s ease, opacity .25s ease, border-color .25s ease;
-}
-.btn:hover{ transform:translateY(-1px); background: rgba(255,255,255,0.08); }
-.btn:active{ transform:translateY(1px) scale(.99); }
-.btn[disabled]{ opacity:.6; cursor:not-allowed; }
+  .seg{ display:flex; gap:0; border:1px solid var(--ring); border-radius:.8rem; overflow:hidden; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35); }
+  .seg button{
+    border:0; padding:.62rem .9rem; font-weight:800; letter-spacing:.2px; background:transparent; color:var(--text);
+    cursor:pointer; position:relative; isolation:isolate; white-space:nowrap;
+  }
+  .seg button + button{ border-left:1px solid var(--ring); }
+  .seg button.active{
+    background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .16);
+    box-shadow: inset 0 0 0 1px rgba(var(--accent-r), var(--accent-g), var(--accent-b), .38);
+  }
 
-.seg{ display:flex; gap:0; border:1px solid var(--ring); border-radius:.8rem; overflow:hidden; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35); }
-.seg button{
-border:0; padding:.62rem .9rem; font-weight:800; letter-spacing:.2px; background:transparent; color:var(--text);
-cursor:pointer; position:relative; isolation:isolate; white-space:nowrap;
-}
-.seg button + button{ border-left:1px solid var(--ring); }
-.seg button.active{
-background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .16);
-box-shadow: inset 0 0 0 1px rgba(var(--accent-r), var(--accent-g), var(--accent-b), .38);
-}
+  /* Panels */
+  .panes{ display:grid; gap:1rem; grid-template-columns: 1fr; }
+  .panel{
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,0));
+    border:1px solid var(--soft);
+    border-radius:1rem; padding:1rem; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
+  }
 
-/* Panels */
-.panes{ display:grid; gap:1rem; grid-template-columns: 1fr; }
-.panel{
-background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,0));
-border:1px solid var(--soft);
-border-radius:1rem; padding:1rem; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
-}
+  /* Guided Panel */
+  .info{ display:grid; gap:.55rem; }
+  .info .headline{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; font-weight:800; }
+  .pill{
+    border:1px solid rgba(var(--accent-r), var(--accent-g), var(--accent-b), .4);
+    background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .12);
+    color:var(--text);
+    padding:.28rem .55rem; border-radius:.55rem; font-size:.88rem; font-weight:800;
+  }
+  .equation{ opacity:.9; font-weight:700; }
+  .visitor, .science, .poet{ color: var(--muted); line-height:1.55; }
+  .label{ font-weight:800; color:var(--text); opacity:.9; }
 
-/* Guided Panel */
-.info{ display:grid; gap:.55rem; }
-.info .headline{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; font-weight:800; }
-.pill{
-border:1px solid rgba(var(--accent-r), var(--accent-g), var(--accent-b), .4);
-background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .12);
-color:var(--text);
-padding:.28rem .55rem; border-radius:.55rem; font-size:.88rem; font-weight:800;
-}
-.equation{ opacity:.9; font-weight:700; }
-.visitor, .science, .poet{ color: var(--muted); line-height:1.55; }
-.label{ font-weight:800; color:var(--text); opacity:.9; }
+  /* Bee Notes */
+  .notes label{ display:block; font-weight:800; margin-bottom:.45rem; color: var(--muted); }
+  textarea{
+    width:100%; min-height: 28svh; resize: vertical;
+    background: rgba(0,0,0,.22); color: var(--text);
+    border:1px solid var(--soft); border-radius:.9rem;
+    padding: .95rem 1rem; line-height:1.5; font-size:1rem; outline:none;
+    box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
+  }
+  textarea::placeholder{ color: rgba(199,196,214,.75); }
 
-/* Bee Notes */
-.notes label{ display:block; font-weight:800; margin-bottom:.45rem; color: var(--muted); }
-textarea{
-width:100%; min-height: 28svh; resize: vertical;
-background: rgba(0,0,0,.22); color: var(--text);
-border:1px solid var(--soft); border-radius:.9rem;
-padding: .95rem 1rem; line-height:1.5; font-size:1rem; outline:none;
-box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
-}
-textarea::placeholder{ color: rgba(199,196,214,.75); }
+  /* Self-Check */
+  .status{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
+  .status-item{
+    display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+    background: rgba(0,0,0,.18); border:1px dashed var(--soft);
+    border-radius:.75rem; padding:.6rem .75rem;
+  }
+  .status-item .label{ opacity:.9; font-weight:700; }
+  .badge{
+    font-weight:900; padding:.28rem .58rem; border-radius:.55rem; border:1px solid rgba(255,255,255,.18);
+    background: rgba(0,0,0,.35); letter-spacing:.35px; text-transform: lowercase;
+  }
+  .pass{ color:#7fffb0; border-color: rgba(127,255,176,.45); }
+  .fail{ color:#ff7b7b; border-color: rgba(255,123,123,.45); }
+  .idle{ color:#ffdf6b; border-color: rgba(255,223,107,.45); }
 
-/* Self-Check */
-.status{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
-.status-item{
-display:flex; align-items:center; justify-content:space-between; gap:.8rem;
-background: rgba(0,0,0,.18); border:1px dashed var(--soft);
-border-radius:.75rem; padding:.6rem .75rem;
-}
-.status-item .label{ opacity:.9; font-weight:700; }
-.badge{
-font-weight:900; padding:.28rem .58rem; border-radius:.55rem; border:1px solid rgba(255,255,255,.18);
-background: rgba(0,0,0,.35); letter-spacing:.35px; text-transform: lowercase;
-}
-.pass{ color:#7fffb0; border-color: rgba(127,255,176,.45); }
-.fail{ color:#ff7b7b; border-color: rgba(255,123,123,.45); }
-.idle{ color:#ffdf6b; border-color: rgba(255,223,107,.45); }
+  /* Canvas overlay (visual modes) */
+  #overlay{
+    position:fixed; inset:0; width:100vw; height:100vh;
+    pointer-events:none; z-index:1; opacity:1; transition: opacity .8s ease;
+  }
 
-/* Canvas overlay (visual modes) */
-#overlay{
-position:fixed; inset:0; width:100vw; height:100vh;
-pointer-events:none; z-index:1; opacity:1; transition: opacity .8s ease;
-}
+  /* Manifest & Science Bridge */
+  .manifest table{ width:100%; border-collapse:collapse; border:1px solid var(--soft); border-radius:.9rem; overflow:hidden; }
+  .manifest th, .manifest td{ text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--soft); }
+  .manifest th{ background: rgba(0,0,0,.28); position:sticky; top:0; }
+  .manifest tr:last-child td{ border-bottom:0; }
+  .muted{ color:var(--muted); }
+  pre{ margin:.5rem 0; padding:.75rem; border-radius:.6rem; background: rgba(0,0,0,.25); border:1px solid var(--soft); overflow:auto; }
 
-/* Manifest & Science Bridge */
-.manifest table{ width:100%; border-collapse:collapse; border:1px solid var(--soft); border-radius:.9rem; overflow:hidden; }
-.manifest th, .manifest td{ text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--soft); }
-.manifest th{ background: rgba(0,0,0,.28); position:sticky; top:0; }
-.manifest tr:last-child td{ border-bottom:0; }
-.muted{ color:var(--muted); }
-pre{ margin:.5rem 0; padding:.75rem; border-radius:.6rem; background: rgba(0,0,0,.25); border:1px solid var(--soft); overflow:auto; }
+  /* Footer */
+  footer{ margin-top: 1.2rem; padding: 1.2rem 0 .6rem; color: var(--muted); display:flex; align-items:center; gap:.7rem; justify-content:space-between; border-top: 1px solid var(--soft); font-weight:700; letter-spacing:.3px; }
+  .malala-line{
+    margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px; display:none;
+  }
+  body[data-mode="neutral"] .malala-line{ display:block; }
 
-/* Footer */
-footer{ margin-top: 1.2rem; padding: 1.2rem 0 .6rem; color: var(--muted); display:flex; align-items:center; gap:.7rem; justify-content:space-between; border-top: 1px solid var(--soft); font-weight:700; letter-spacing:.3px; }
-.malala-line{
-margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px; display:none;
-}
-body[data-mode="neutral"] .malala-line{ display:block; }
-
-/* Accessibility and motion preferences */
-@media (prefers-reduced-motion: reduce){
-#overlay{ transition:none; }
-.btn{ transition: none; }
-} </style>
-
+  /* Accessibility and motion preferences */
+  @media (prefers-reduced-motion: reduce){
+    #overlay{ transition:none; }
+    .btn{ transition: none; }
+  }
+</style>
 </head>
 <body data-mode="neutral">
   <canvas id="overlay" aria-hidden="true"></canvas>
@@ -225,126 +221,128 @@ body[data-mode="neutral"] .malala-line{ display:block; }
       </h1>
     </header>
 
-```
-<section class="controls" aria-label="Controls">
-  <button class="btn" id="unlockAudio" aria-pressed="false" title="Enable WebAudio (user gesture required)">🔊 Unlock Audio</button>
-  <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self‑Check</button>
-  <div class="seg" role="tablist" aria-label="Mode toggles">
-    <button role="tab" id="tab-marina"   data-mode="marina"   aria-selected="false" title="Marina — empathy as time">Marina</button>
-    <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false" title="Sigrid — clarity as emotion">Sigrid</button>
-    <button role="tab" id="tab-clarity"  data-mode="clarity"  aria-selected="false" title="Clarity — faith in motion">Clarity</button>
-    <button role="tab" id="tab-illumina" data-mode="illumina" aria-selected="false" title="Illumina — coherence as witness">Illumina</button>
-    <button role="tab" id="tab-kugelblitz" data-mode="kugelblitz" aria-selected="false" title="Kugelblitz — energy as desire">Kugelblitz</button>
-  </div>
-</section>
+    <section class="controls" aria-label="Controls">
+      <button class="btn" id="unlockAudio" aria-pressed="false" title="Enable WebAudio (user gesture required)">🔊 Unlock Audio</button>
+      <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self‑Check</button>
+      <div class="seg" role="tablist" aria-label="Mode toggles">
+        <button role="tab" id="tab-marina"   data-mode="marina"   aria-selected="false" title="Marina — empathy as time">Marina</button>
+        <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false" title="Sigrid — clarity as emotion">Sigrid</button>
+        <button role="tab" id="tab-clarity"  data-mode="clarity"  aria-selected="false" title="Clarity — faith in motion">Clarity</button>
+        <button role="tab" id="tab-illumina" data-mode="illumina" aria-selected="false" title="Illumina — coherence as witness">Illumina</button>
+        <button role="tab" id="tab-kugelblitz" data-mode="kugelblitz" aria-selected="false" title="Kugelblitz — energy as desire">Kugelblitz</button>
+      </div>
+    </section>
 
-<div class="panes">
-  <!-- Guided panel -->
-  <section class="panel info" aria-live="polite" aria-label="Guided Mode Information">
-    <div class="headline">
-      <span class="pill" id="pillName">Welcome</span>
-      <span class="equation" id="equation">Time × Energy × Feeling</span>
-    </div>
-    <p class="visitor" id="visitorNote">
-      This is a gentle instrument. Begin in “neutral” and choose a mode when ready. You are safe, oriented, and free to explore.
-    </p>
-    <p class="science" id="scienceNote">
-      Physics and perception are treated as harmonics of one field. Modes shift cadence and color to help attention organize.
-    </p>
-    <p class="poet" id="poetNote">
-      Write a few lines in Bee Notes as you listen. Start with temperature, then meaning. Let the page breathe before it burns.
-    </p>
-  </section>
+    <div class="panes">
+      <!-- Guided panel -->
+      <section class="panel info" aria-live="polite" aria-label="Guided Mode Information">
+        <div class="headline">
+          <span class="pill" id="pillName">Welcome</span>
+          <span class="equation" id="equation">Time × Energy × Feeling</span>
+        </div>
+        <p class="visitor" id="visitorNote">
+          This is a gentle instrument. Begin in “neutral” and choose a mode when ready. You are safe, oriented, and free to explore.
+        </p>
+        <p class="science" id="scienceNote">
+          Physics and perception are treated as harmonics of one field. Modes shift cadence and color to help attention organize.
+        </p>
+        <p class="poet" id="poetNote">
+          Write a few lines in Bee Notes as you listen. Start with temperature, then meaning. Let the page breathe before it burns.
+        </p>
+      </section>
 
-  <!-- Bee Notes -->
-  <section class="panel notes" aria-label="Bee Notes">
-    <label for="bee">🐝 Bee Notes • <span id="modeName">—</span></label>
-    <textarea id="bee" placeholder="Select a mode above to begin writing. Notes save locally per mode." disabled></textarea>
-  </section>
+      <!-- Bee Notes -->
+      <section class="panel notes" aria-label="Bee Notes">
+        <label for="bee">🐝 Bee Notes • <span id="modeName">—</span></label>
+        <textarea id="bee" placeholder="Select a mode above to begin writing. Notes save locally per mode." disabled></textarea>
+      </section>
 
-  <!-- Self-Check -->
-  <section class="panel selfcheck" aria-label="Self-Check">
-    <div class="status">
-      <div class="status-item"><span class="label">Audio @ 128 Hz</span><span id="chk-audio" class="badge idle">idle</span></div>
-      <div class="status-item"><span class="label">Timer drift &plusmn; 30 ms</span><span id="chk-timer" class="badge idle">idle</span></div>
-      <div class="status-item"><span class="label">Render loss &lt; 2 frames</span><span id="chk-raf" class="badge idle">idle</span></div>
-    </div>
-  </section>
+      <!-- Self-Check -->
+      <section class="panel selfcheck" aria-label="Self-Check">
+        <div class="status">
+          <div class="status-item"><span class="label">Audio @ 128 Hz</span><span id="chk-audio" class="badge idle">idle</span></div>
+          <div class="status-item"><span class="label">Timer drift &plusmn; 30 ms</span><span id="chk-timer" class="badge idle">idle</span></div>
+          <div class="status-item"><span class="label">Render loss &lt; 2 frames</span><span id="chk-raf" class="badge idle">idle</span></div>
+        </div>
+      </section>
 
-  <!-- Science Bridge -->
-  <section class="panel" aria-label="Science Bridge">
-    <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Science Bridge · symbols to sensation</h2>
-    <pre><code>E = m c²          energy–matter equivalence
-```
-
+      <!-- Science Bridge -->
+      <section class="panel" aria-label="Science Bridge">
+        <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Science Bridge · symbols to sensation</h2>
+        <pre><code>E = m c²          energy–matter equivalence
 τ = E / c³        time as energy moderated by the speed of light (interpretive bridge)
-λ = h / p         de Broglie wavelength (wave–particle link)</code></pre> <ul class="muted" style="margin:.6rem 0 0.2rem; padding-left:1.1rem"> <li>E = mc² → “light slows to feel itself”</li> <li>τ = E / c³ → “the longer you see, the slower it burns”</li> <li>λ = h / p → “every action sings a note”</li> </ul> <p class="muted" style="margin:.4rem 0 0">
-Note: This does not replace physics; it invites feeling and measurement to inform each other. </p> </section>
+λ = h / p         de Broglie wavelength (wave–particle link)</code></pre>
+        <ul class="muted" style="margin:.6rem 0 0.2rem; padding-left:1.1rem">
+          <li>E = mc² → “light slows to feel itself”</li>
+          <li>τ = E / c³ → “the longer you see, the slower it burns”</li>
+          <li>λ = h / p → “every action sings a note”</li>
+        </ul>
+        <p class="muted" style="margin:.4rem 0 0">
+          Note: This does not replace physics; it invites feeling and measurement to inform each other.
+        </p>
+      </section>
 
-```
-  <!-- Manifest -->
-  <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
-    <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
-    <div class="muted" style="margin-bottom:.6rem">A lucid table of modes, equations, color/rhythm, and Bee keys.</div>
-    <div style="overflow:auto">
-      <table>
-        <thead>
-          <tr>
-            <th>Mode</th>
-            <th>Equation</th>
-            <th>Color · Rhythm · Overlay</th>
-            <th>Bee Key</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Marina</td>
-            <td>τ = E / c³ · φ</td>
-            <td>gold clock (1.618 s) — empathy as time</td>
-            <td><code>bee.notes.marina</code></td>
-          </tr>
-          <tr>
-            <td>Sigrid</td>
-            <td>√2 cadence (clarity)</td>
-            <td>sky aurora (1.414 s) — precision as emotion</td>
-            <td><code>bee.notes.sigrid</code></td>
-          </tr>
-          <tr>
-            <td>Clarity</td>
-            <td>160 ↔ 432 Hz</td>
-            <td>aqua‑violet jellyfish (~6 s) — faith in motion</td>
-            <td><code>bee.notes.clarity</code></td>
-          </tr>
-          <tr>
-            <td>Illumina</td>
-            <td>42‑day cycle</td>
-            <td>deep‑purple starfield (slow drift) — collective witness</td>
-            <td><code>bee.notes.illumina</code></td>
-          </tr>
-          <tr>
-            <td>Kugelblitz</td>
-            <td>E → ∞</td>
-            <td>blue→white→gold→red→violet (3 s) — fusion heat‑pulse</td>
-            <td><code>bee.notes.kugelblitz</code></td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- Manifest -->
+      <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
+        <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
+        <div class="muted" style="margin-bottom:.6rem">A lucid table of modes, equations, color/rhythm, and Bee keys.</div>
+        <div style="overflow:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Equation</th>
+                <th>Color · Rhythm · Overlay</th>
+                <th>Bee Key</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Marina</td>
+                <td>τ = E / c³ · φ</td>
+                <td>gold clock (1.618 s) — empathy as time</td>
+                <td><code>bee.notes.marina</code></td>
+              </tr>
+              <tr>
+                <td>Sigrid</td>
+                <td>√2 cadence (clarity)</td>
+                <td>sky aurora (1.414 s) — precision as emotion</td>
+                <td><code>bee.notes.sigrid</code></td>
+              </tr>
+              <tr>
+                <td>Clarity</td>
+                <td>160 ↔ 432 Hz</td>
+                <td>aqua‑violet jellyfish (~6 s) — faith in motion</td>
+                <td><code>bee.notes.clarity</code></td>
+              </tr>
+              <tr>
+                <td>Illumina</td>
+                <td>42‑day cycle</td>
+                <td>deep‑purple starfield (slow drift) — collective witness</td>
+                <td><code>bee.notes.illumina</code></td>
+              </tr>
+              <tr>
+                <td>Kugelblitz</td>
+                <td>E → ∞</td>
+                <td>blue→white→gold→red→violet (3 s) — fusion heat‑pulse</td>
+                <td><code>bee.notes.kugelblitz</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin:.7rem 0 0">
+          This table is your map. Equation shows the physics symbol; Color/Rhythm shows the feel; Bee Key is where your local note is saved. Your data never leaves your device. Next: pick a mode → Unlock Audio → Run Self‑Check → write one Bee Note.
+        </p>
+      </section>
     </div>
-    <p class="muted" style="margin:.7rem 0 0">
-      This table is your map. Equation shows the physics symbol; Color/Rhythm shows the feel; Bee Key is where your local note is saved. Your data never leaves your device. Next: pick a mode → Unlock Audio → Run Self‑Check → write one Bee Note.
-    </p>
-  </section>
-</div>
 
-<footer>
-  <div>🐝 page 42 · eat the world</div>
-  <div>2025 midnight release</div>
-</footer>
-<div class="malala-line" aria-label="Malala note">
-  “you are not in control — yet you are chosen. you doubt, you fight, you float.”
-</div>
-```
-
+    <footer>
+      <div>🐝 page 42 · eat the world</div>
+      <div>2025 midnight release</div>
+    </footer>
+    <div class="malala-line" aria-label="Malala note">
+      “you are not in control — yet you are chosen. you doubt, you fight, you float.”
+    </div>
   </div>
 
 <script>
@@ -389,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const unlockBtn = document.getElementById('unlockAudio');
   const selfBtn = document.getElementById('runSelfCheck');
 
-  const tabButtons = Array.from(document.querySelectorAll('.seg [role="tab"]'));
+  const tabButtons = Array.from(document.querySelectorAll('.seg [role="tab"]"));
 
   /* ---------- Canvas sizing ---------- */
   let DPR = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
@@ -899,6 +897,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 </script>
-
 </body>
 </html>
