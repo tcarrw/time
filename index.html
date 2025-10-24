@@ -29,6 +29,23 @@ hr{border:0;border-top:1px solid var(--glass2);margin:10px 0}
 .ok{background:rgba(56,201,132,.18);border-color:rgba(56,201,132,.38)}
 .warn{background:rgba(248,148,37,.18);border-color:rgba(248,148,37,.38)}
 .fail{background:rgba(248,82,82,.18);border-color:rgba(248,82,82,.38)}
+.sigrid-banner{display:none}
+body.sigrid{background:linear-gradient(180deg,#0b1220,#0b0d11); color:#eef7ff}
+.clockOverlay{position:fixed; inset:0; pointer-events:none; display:none}
+body.marina .clockOverlay{display:block}
+.clockOverlay .hand{position:absolute; left:50%; top:35%; transform-origin:50% 80%; opacity:.18}
+.clockOverlay .hand.hour{width:6px; height:180px; margin-left:-3px; background:linear-gradient(180deg, rgba(255,215,107,.6), rgba(255,215,107,.05)); filter:blur(.2px)}
+.clockOverlay .hand.min{width:3px; height:240px; margin-left:-1.5px; background:linear-gradient(180deg, rgba(255,215,107,.45), rgba(255,215,107,.03)); filter:blur(.2px)}
+.footer{margin-top:14px;text-align:center;font-size:12px;color:var(--muted)}
+.clarity-banner{display:none}
+body.clarity{background:radial-gradient(1200px 800px at 15% -10%, #0d1220 0%, #0b0d11 55%), #0b0d11; color:#ecfbff}
+/* Clarity jellyfish overlay */
+.clarityOverlay{position:fixed; inset:0; pointer-events:none; display:none}
+body.clarity .clarityOverlay{display:block}
+@keyframes jellyFloat{0%{transform:translateY(20vh) scale(0.9); opacity:.0} 30%{opacity:.25} 100%{transform:translateY(-10vh) scale(1.05); opacity:.0}}
+.clarityOverlay .jelly{position:absolute; left:15%; right:15%; bottom:-20vh; height:60vh; background:radial-gradient(ellipse at 50% 60%, rgba(160,235,255,.22), rgba(160,235,255,.06) 55%, transparent 70%); filter:blur(1.5px); animation:jellyFloat 6.472s linear infinite}
+.clarityOverlay .jelly.j2{left:auto; right:10%; height:50vh; animation-duration:7.472s}
+.clarityOverlay .jelly.j3{left:25%; height:40vh; animation-duration:5.618s}
 </style>
 </head>
 <body>
@@ -36,55 +53,30 @@ hr{border:0;border-top:1px solid var(--glass2);margin:10px 0}
   <div class="header">
     <div class="badge">single‑file · minimal</div>
   <div class="marina-banner" id="marinaBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(255,215,107,.15);border:1px solid rgba(255,215,107,.4);font-weight:600">Marina Mode · Princess of Power (Deluxe)</div>
+  <div class="sigrid-banner" id="sigridBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(170,210,255,.15);border:1px solid rgba(170,210,255,.5);font-weight:600">Sigrid Mode · Clarity / Sky<div class="clarity-banner" id="clarityBanner" style="display:none;margin-top:6px;padding:6px 10px;border-radius:10px;background:rgba(160,235,255,.14);border:1px solid rgba(160,235,255,.45);font-weight:600">Clarity Mode · Jellyfish / Butterfly</div>
+  </div>
   <div class="controls">
-      <button class="btn" id="run">Run Self‑Check</button>
+      <button class="btn" id="unlock">Unlock Audio</button>
+      <button class="btn" id="run">Run Self-Check</button>
       <button class="btn" id="export">Export Integrity Stamp</button>
       <button class="btn" id="copyJson">Copy JSON</button>
       <button class="btn" id="downloadCsv">Download CSV</button>
     </div>
   </div>
-
+  <div id="clockOverlay" class="clockOverlay"><div class="hand hour" id="handH"></div><div class="hand min" id="handM"></div></div>
+  <div class="clarityOverlay"><div class="jelly"></div><div class="jelly j2"></div><div class="jelly j3"></div></div>
+  <canvas id="stars" class="starsOverlay"></canvas>
   <div class="grid">
     <div class="card">
       <h2>Abstract</h2>
       <p>Time, energy, distance, matter, frequency, and consciousness are treated as harmonics of a single field. We test a practical bridge: <b>τ = E / c³</b>.</p>
       <hr/>
       <h2>Core Equations</h2>
-      <div class="code">E = m c²\nτ = E / c³\nλ = h / p</div>
+<pre class="code">E = m c²
+τ = E / c³
+λ = h / p</pre>
       <hr/>
-      <h2>Dimensions · Units</h2>
-      <table class="table" style="margin-bottom:10px">
-        <thead><tr><th>Quantity</th><th>Symbol</th><th>SI Unit</th><th>Dimension</th></tr></thead>
-        <tbody>
-          <tr><td>speed of light</td><td>c</td><td>m·s⁻¹</td><td>L T⁻¹</td></tr>
-          <tr><td>Planck constant</td><td>h</td><td>J·s</td><td>M L² T⁻¹</td></tr>
-          <tr><td>energy</td><td>E</td><td>J</td><td>M L² T⁻²</td></tr>
-          <tr><td>mass</td><td>m</td><td>kg</td><td>M</td></tr>
-          <tr><td>wavelength</td><td>λ</td><td>m</td><td>L</td></tr>
-          <tr><td>bridge term</td><td>τ = E / c³</td><td>kg·s·m⁻¹</td><td>M L⁻¹ T</td></tr>
-        </tbody>
-      </table>
-      <div class="code" style="margin-bottom:12px">Dimensional checks:
-E = m c² → [M][L T⁻¹]² = M L² T⁻²
-τ = E / c³ → [M L² T⁻²] / [L³ T⁻³] = M L⁻¹ T</div>
-
-      <h2>Dimensions · Units</h2>
-      <table class="table" style="margin-bottom:10px">
-        <thead><tr><th>Quantity</th><th>Symbol</th><th>SI Unit</th><th>Dimension</th></tr></thead>
-        <tbody>
-          <tr><td>speed of light</td><td>c</td><td>m·s⁻¹</td><td>L T⁻¹</td></tr>
-          <tr><td>Planck constant</td><td>h</td><td>J·s</td><td>M L² T⁻¹</td></tr>
-          <tr><td>energy</td><td>E</td><td>J</td><td>M L² T⁻²</td></tr>
-          <tr><td>mass</td><td>m</td><td>kg</td><td>M</td></tr>
-          <tr><td>wavelength</td><td>λ</td><td>m</td><td>L</td></tr>
-          <tr><td>bridge term</td><td>τ = E / c³</td><td>kg·s·m⁻¹</td><td>M L⁻¹ T</td></tr>
-        </tbody>
-      </table>
-      <div class="code" style="margin-bottom:12px">Dimensional checks:
-E = m c² → [M][L T⁻¹]² = M L² T⁻²
-τ = E / c³ → [M L² T⁻²] / [L³ T⁻³] = M L⁻¹ T</div>
-      
-      $1</h2>
+      <h2>Appendix · Data Schema</h2>
       <div class="code" id="schemaBox"></div>
       <h3 style="margin:10px 0 6px">Visual Table</h3>
       <table class="table" id="schemaTable">
@@ -104,7 +96,14 @@ E = m c² → [M][L T⁻¹]² = M L² T⁻²
       </table>
       <div class="code" id="poem" style="margin-top:8px">…</div>
     </div>
+
+    <div class="card" id="beeCard" style="display:none">
+      <h2>Bee Notes · Marina Mode</h2>
+      <p class="small">write a short note for Marina (saved locally only).</p>
+      <textarea id="beeNotes" class="code" style="width:100%; min-height:120px" placeholder="honey note…"></textarea>
+    </div>
   </div>
+  <div class="footer">🐝 page 42 · eat the world · 2025 midnight release</div>
 </div>
 
 <script>
@@ -142,13 +141,16 @@ E = m c² → [M][L T⁻¹]² = M L² T⁻²
 
   function testTimerDrift(ms){ return new Promise(function(resolve){ var t0=performance.now(); setTimeout(function(){ var d=(performance.now()-t0)-ms; resolve({ok:Math.abs(d)<30, drift_ms:+d.toFixed(2)}); }, ms); }); }
   function testRender(ms){ return new Promise(function(resolve){ var frames=0; var s=performance.now(); function tick(){ frames++; if(performance.now()-s<ms){ requestAnimationFrame(tick); } else { var el=performance.now()-s; var exp=el/16.6667; var loss=Math.max(0,exp-frames); resolve({ok:loss<2, frames:Math.round(frames), loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
-  async function testAudio(hz){ try{ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return {ok:false, reason:'unsupported'}; var ctx=new AC(); if(ctx.state==='suspended'){ try{ await ctx.resume(); }catch(_){} }
+  async function testAudio(hz){ try{ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return {ok:false, reason:'unsupported'}; var ctx = window.__ac || new AC(); window.__ac = ctx; if(ctx.state==='suspended'){ try{ await ctx.resume(); }catch(_){} }
     var osc=ctx.createOscillator(); var g=ctx.createGain(); var an=ctx.createAnalyser(); an.fftSize=2048; g.gain.value=0.1; osc.type='sine'; osc.frequency.setValueAtTime(hz, ctx.currentTime); osc.connect(g); g.connect(an); an.connect(ctx.destination); osc.start(); await new Promise(function(r){ setTimeout(r,200); }); var buf=new Float32Array(an.fftSize); an.getFloatTimeDomainData(buf);
     function auto(a,sr){ var size=a.length, m=Math.floor(size/2), best=0, lag=-1, rms=0; for(var i=0;i<size;i++){ var v=a[i]; rms+=v*v; } rms=Math.sqrt(rms/size); if(rms<0.008) return null; var last=0; for(var L=1;L<m;L++){ var sum=0; for(var j=0;j<m;j++){ sum+=a[j]*a[j+L]; } if(sum>best && sum>last){ best=sum; lag=L; } last=sum; } return lag>0? sr/lag : null; }
     var est=auto(buf, ctx.sampleRate); try{ osc.stop(); }catch(_){ } try{ osc.disconnect(); g.disconnect(); an.disconnect(); }catch(_){ } try{ await ctx.close(); }catch(_){ }
     if(!est) return {ok:false, reason:'no-signal'}; var err=Math.abs(est-hz); return {ok:err<=0.5, est:+est.toFixed(2), err:+err.toFixed(2)};
   }catch(e){ return {ok:false, reason:'error'} }
   }
+
+  // Unlock Audio (shared context)
+  (function(){ var AC=window.AudioContext||window.webkitAudioContext; var btn=document.getElementById('unlock'); if(btn && AC){ btn.addEventListener('click', async function(){ try{ if(!window.__ac) window.__ac=new AC(); if(window.__ac.state==='suspended'){ await window.__ac.resume(); } setPoem('audio unlocked'); setTimeout(function(){ setPoem('…'); }, 1000); }catch(_){ } }); } })();
 
   $('run').addEventListener('click', async function(){ clear(); setPoem('measuring…');
     var a=await testAudio(128); addBadge('audio@128', a.ok); addRow(tb,'Audio','Hz error (128)', a.err!=null?(a.err+' Hz'):'—','≤ 0.5 Hz');
@@ -162,19 +164,125 @@ E = m c² → [M][L T⁻¹]² = M L² T⁻²
   $('copyJson').addEventListener('click', function(){ try{ navigator.clipboard.writeText($('schemaBox').textContent); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); }catch(_){ var t=document.createElement('textarea'); t.value=$('schemaBox').textContent; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); setPoem('JSON copied'); setTimeout(function(){ setPoem('…'); },1200); } });
   $('downloadCsv').addEventListener('click', function(){ var rows=[["section","field","value"]]; Array.from(tbody.querySelectorAll('tr')).forEach(function(tr){ var tds=tr.querySelectorAll('td'); rows.push([tds[0].textContent,tds[1].textContent,tds[2].textContent]); }); var csv=rows.map(function(r){ return r.map(function(x){ return '"'+String(x).replace(/"/g,'""')+'"'; }).join(','); }).join('\n'); var blob=new Blob([csv],{type:'text/csv'}); var url=URL.createObjectURL(blob); var aTag=document.createElement('a'); aTag.href=url; aTag.download='schema_table.csv'; document.body.appendChild(aTag); aTag.click(); setTimeout(function(){ URL.revokeObjectURL(url); aTag.remove(); },0); });
 })();
-// Marina Mode toggle
-  (function(){
-    function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
-    var banner=document.getElementById('marinaBanner');
-    var header=document.querySelector('.controls');
-    if(header){ var btn=document.createElement('button'); btn.textContent='Marina Mode'; btn.className='btn'; header.appendChild(btn);
-      btn.addEventListener('click',function(){ document.body.classList.toggle('marina'); var on=document.body.classList.contains('marina'); if(banner) banner.style.display=on?'block':'none'; flash(on?'Marina Mode on':'Marina Mode off'); });
+// Modes toggle (Marina + Sigrid + Clarity) with Bee Notes + banners + URL auto
+(function(){
+  function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
+  var controls=document.querySelector('.controls');
+  var marinaBtn=document.getElementById('marinaBtn');
+  var sigridBtn=document.getElementById('sigridBtn');
+  var clarityBtn=document.getElementById('clarityBtn');
+  if(controls){
+    if(!marinaBtn){ marinaBtn=document.createElement('button'); marinaBtn.id='marinaBtn'; marinaBtn.className='btn'; marinaBtn.textContent='Marina Mode'; controls.appendChild(marinaBtn); }
+    if(!sigridBtn){ sigridBtn=document.createElement('button'); sigridBtn.id='sigridBtn'; sigridBtn.className='btn'; sigridBtn.textContent='Sigrid Mode'; controls.appendChild(sigridBtn); }
+    if(!clarityBtn){ clarityBtn=document.createElement('button'); clarityBtn.id='clarityBtn'; clarityBtn.className='btn'; clarityBtn.textContent='Clarity Mode'; controls.appendChild(clarityBtn); }
+  }
+  var marinaBanner=document.getElementById('marinaBanner');
+  var sigridBanner=document.getElementById('sigridBanner');
+  var clarityBanner=document.getElementById('clarityBanner');
+  var bee=document.getElementById('beeCard');
+  var notesArea=document.getElementById('beeNotes');
+
+  function clearModes(){ document.body.classList.remove('marina','sigrid','clarity'); }
+  function applyTheme(mode){
+    clearModes();
+    if(mode) document.body.classList.add(mode);
+    if(marinaBanner) marinaBanner.style.display = (mode==='marina')?'block':'none';
+    if(sigridBanner) sigridBanner.style.display = (mode==='sigrid')?'block':'none';
+    if(clarityBanner) clarityBanner.style.display = (mode==='clarity')?'block':'none';
+    if(bee) bee.style.display = mode? 'block':'none';
+    var key = mode? ('bee.notes.'+mode) : null;
+    try{ if(notesArea){ notesArea.value = key? (localStorage.getItem(key)||'') : ''; } }catch(_){ }
+  }
+  function saveNotes(mode){ try{ if(notesArea && mode){ localStorage.setItem('bee.notes.'+mode, notesArea.value||''); } }catch(_){ }
+  }
+  if(notesArea){ notesArea.addEventListener('input', function(){ var mode = document.body.classList.contains('marina')?'marina':(document.body.classList.contains('sigrid')?'sigrid':(document.body.classList.contains('clarity')?'clarity':null)); saveNotes(mode); }); }
+
+  if(marinaBtn){ marinaBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('marina'); applyTheme(on?'marina':null); flash(on?'Marina Mode on':'Mode off'); }); }
+  if(sigridBtn){ sigridBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('sigrid'); applyTheme(on?'sigrid':null); flash(on?'Sigrid Mode on':'Mode off'); }); }
+  if(clarityBtn){ clarityBtn.addEventListener('click', function(){ var on = !document.body.classList.contains('clarity'); applyTheme(on?'clarity':null); flash(on?'Clarity Mode on':'Mode off'); }); }
+
+  // style tints
+  (function(){ var s=document.createElement('style'); s.textContent='body.marina{background:radial-gradient(1200px 800px at 15% -10%,#1d0f18 0%,#0b0d11 55%),#0b0d11;color:#fff8fb;} body.sigrid{background:radial-gradient(1200px 800px at 15% -10%,#0f1b2c 0%,#0b0d11 55%),#0b0d11;color:#eef7ff;} body.clarity{background:radial-gradient(1200px 800px at 15% -10%,#0d1220 0%,#0b0d11 55%),#0b0d11;color:#ecfbff;}'; document.head.appendChild(s); })();
+
+  // auto-enable via URL
+  var href=String(location.href||'');
+  if(/[?#].*marina/i.test(href)){ applyTheme('marina'); flash('Marina Mode auto'); }
+  else if(/[?#].*sigrid/i.test(href)){ applyTheme('sigrid'); flash('Sigrid Mode auto'); }
+  else if(/[?#].*clarity/i.test(href)){ applyTheme('clarity'); flash('Clarity Mode auto'); }
+})();
+
+  // auto-enable via URL
+  if(/[?#].*marina/i.test(location.href)){ applyTheme('marina'); flash('Marina Mode auto'); }
+  else if(/[?#].*sigrid/i.test(location.href)){ applyTheme('sigrid'); flash('Sigrid Mode auto'); }
+})();
+</script>
+<script>
+// Marina clock overlay + golden-ratio pulse
+(function(){
+  var body=document.body; var H=document.getElementById('handH'); var M=document.getElementById('handM');
+  var seq=[11,1,2.3,5,6]; // hour positions
+  var i=0, timer=null;
+  function setHands(hour){
+    if(!H||!M) return;
+    var deg = hour*30; // 12h clock → 30° per hour
+    H.style.transform='rotate('+deg+'deg)';
+    M.style.transform='rotate('+(deg*2)+'deg)';
+  }
+  function start(){ if(timer) return; i=0; setHands(seq[i]); timer=setInterval(function(){ i=(i+1)%seq.length; setHands(seq[i]); }, 1618); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  // Observe class changes to toggle
+  var obs=new MutationObserver(function(){ if(body.classList.contains('marina')) start(); else stop(); });
+  obs.observe(body,{attributes:true, attributeFilter:['class']});
+  // If active on load
+  if(body.classList.contains('marina')) start();
+})();
+</script>
+<script>
+// Sigrid aurora overlay (√2 rhythm)
+(function(){
+  var body=document.body; var arc=document.getElementById('sigArc'); var deg=0, t=null;
+  function step(){ if(!arc) return; deg=(deg+22.5)%360; arc.style.setProperty('--sig-angle', deg+'deg'); }
+  function start(){ if(t) return; step(); t=setInterval(step, 1414); }
+  function stop(){ if(t){ clearInterval(t); t=null; } }
+  var obs=new MutationObserver(function(){ if(body.classList.contains('sigrid')) start(); else stop(); });
+  obs.observe(body,{attributes:true, attributeFilter:['class']});
+  if(body.classList.contains('sigrid')) start();
+})();
+</script>
+<div id="malalaNote" style="position:fixed;bottom:10px;left:10px;font-size:12px;color:#b7e8ff;opacity:.85;font-style:italic;display:none;pointer-events:none;">you are not in control — yet you are chosen.<br/>you doubt, you fight, you float.</div>
+<script>(function(){var n=document.getElementById('malalaNote');if(!n)return;function show(){var c=document.body.className;n.style.display=/(marina|sigrid)/.test(c)?'none':'block';}var m=new MutationObserver(show);m.observe(document.body,{attributes:true,attributeFilter:['class']});show();})();</script>
+<script>
+// Illumina Mode: button, banner, stars, URL auto, per-mode notes
+(function(){
+  function flash(msg){ var p=document.getElementById('poem'); if(p){ p.textContent=msg; setTimeout(()=>p.textContent='…',1200); } }
+  var controls=document.querySelector('.controls');
+  if(controls && !document.getElementById('illuminaBtn')){ var b=document.createElement('button'); b.id='illuminaBtn'; b.className='btn'; b.textContent='Illumina Mode'; controls.appendChild(b); }
+  var illuBtn=document.getElementById('illuminaBtn');
+  var illuBan=document.getElementById('illuminaBanner');
+  var bee=document.getElementById('beeCard'); var notes=document.getElementById('beeNotes');
+  function clearModes(){ document.body.classList.remove('marina','sigrid','clarity','illumina'); }
+  function setIllumina(on){ clearModes(); if(on){ document.body.classList.add('illumina'); if(illuBan) illuBan.style.display='block'; if(bee) bee.style.display='block'; } else { if(illuBan) illuBan.style.display='none'; if(!/marina|sigrid|clarity/.test(document.body.className) && bee) bee.style.display='none'; }
+    try{ if(notes){ notes.value = on? (localStorage.getItem('bee.notes.illumina')||'') : notes.value; } }catch(_){ }
+    flash(on?'Illumina Mode on':'Mode off');
+  }
+  if(illuBtn){ illuBtn.addEventListener('click', function(){ var on=!document.body.classList.contains('illumina'); setIllumina(on); }); }
+  // auto-enable via URL
+  if(/[?#].*illumina/i.test(location.href)){ setIllumina(true); }
+  // per-mode note persistence
+  if(notes){ notes.addEventListener('input', function(){ if(document.body.classList.contains('illumina')){ try{ localStorage.setItem('bee.notes.illumina', notes.value||''); }catch(_){ } } }); }
+
+  // Stars overlay (lightweight)
+  var c=document.getElementById('stars'); if(c){ var ctx=c.getContext('2d'); function resize(){ c.width=innerWidth; c.height=innerHeight; }
+    window.addEventListener('resize', resize); resize();
+    var stars=Array.from({length:120}).map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*0.6+0.4}));
+    function draw(){ if(!document.body.classList.contains('illumina')){ requestAnimationFrame(draw); return; }
+      ctx.clearRect(0,0,c.width,c.height); for(var i=0;i<stars.length;i++){ var s=stars[i]; var r=s.z*1.2; ctx.globalAlpha=0.3*s.z; ctx.beginPath(); ctx.arc(s.x,s.y,r,0,Math.PI*2); ctx.fillStyle='#e7d7ff'; ctx.fill(); s.y-=0.05*s.z; if(s.y< -2){ s.y=c.height+2; s.x=Math.random()*c.width; }
+      }
+      requestAnimationFrame(draw);
     }
-    // style injection
-    var s=document.createElement('style'); s.textContent='body.marina{background:radial-gradient(1200px 800px at 15% -10%,#1d0f18 0%,#0a0c10 55%),#0a0c10;color:#fff8fb;}'; document.head.appendChild(s);
-    // auto-enable via URL param
-    if(/[?#].*marina/i.test(window.location.href)){ document.body.classList.add('marina'); if(banner) banner.style.display='block'; flash('Marina Mode auto'); }
-  })();
+    requestAnimationFrame(draw);
+  }
+})();
 </script>
 </body>
 </html>
