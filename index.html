@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -7,202 +8,197 @@
 <title>Time · Illumina v4 — Kugelblitz of Color</title>
 <style>
   /* ==========================================================
-     Time · Illumina v4 — Kugelblitz of Color (Guided Edition)
-     Single-file · Responsive · No external libraries
-     Dark-mode aesthetic · Canvas 2D + WebAudio only
+     Time · Illumina v4 — Kugelblitz of Color (Guided + Reliable)
+     Single-file • No external libraries • Dark-mode • Canvas+WebAudio
      ========================================================== */
 
-  :root{
-    --bg1:#0b0b13;
-    --bg2:#0e0c18;
-    --text:#f5f4ff;
-    --muted:#c7c4d6;
-    --ring:rgba(255,255,255,0.13);
-    --soft:rgba(255,255,255,0.09);
-    --gold:#f5c84c;
+:root{
+--bg1:#0b0b13;
+--bg2:#0e0c18;
+--text:#f5f4ff;
+--muted:#c7c4d6;
+--ring:rgba(255,255,255,0.14);
+--soft:rgba(255,255,255,0.10);
+--gold:#f5c84c;
 
-    /* Accent defaults (overridden per mode) */
-    --accent:#e4daff;
-    --accent-rgb:228,218,255;
-    --accent2:#8c5eff;
-    --accent2-rgb:140,94,255;
-  }
+```
+/* Accents (overridden per mode) */
+--accent:#cfc6ff;         --accent-r:207; --accent-g:198; --accent-b:255;
+--accent2:#8c5eff;        --accent2-r:140; --accent2-g:94; --accent2-b:255;
+```
 
-  /* Per-mode palettes (background & accents) */
-  body[data-mode="marina"]{
-    --bg1:#1c1411; --bg2:#2a1916;
-    --accent:#f6d36e; --accent-rgb:246,211,110;
-    --accent2:#ff7690; --accent2-rgb:255,118,144;
-  }
-  body[data-mode="sigrid"]{
-    --bg1:#0b1520; --bg2:#122235;
-    --accent:#d9e2ed; --accent-rgb:217,226,237;
-    --accent2:#6ea7ff; --accent2-rgb:110,167,255;
-  }
-  body[data-mode="clarity"]{
-    --bg1:#0b1f24; --bg2:#131136;
-    --accent:#08ffd7; --accent-rgb:8,255,215;
-    --accent2:#8c5eff; --accent2-rgb:140,94,255;
-  }
-  body[data-mode="illumina"]{
-    --bg1:#130a21; --bg2:#190f2f;
-    --accent:#bca0ff; --accent-rgb:188,160,255;
-    --accent2:#4a257f; --accent2-rgb:74,37,127;
-  }
-  body[data-mode="kugelblitz"]{
-    --bg1:#000a1f; --bg2:#000515;
-    --accent:#eaf2ff; --accent-rgb:234,242,255;
-    --accent2:#ffb84d; --accent2-rgb:255,184,77;
-  }
+}
 
-  /* Global layout */
-  *{ box-sizing:border-box }
-  body{
-    margin:0;
-    min-height:100vh;
-    color:var(--text);
-    background:
-      radial-gradient(120rem 60rem at 70% -10%, var(--bg2) 0%, transparent 40%),
-      radial-gradient(90rem 80rem at -10% 10%, var(--bg2) 0%, transparent 40%),
-      linear-gradient(180deg, var(--bg1), var(--bg2));
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    letter-spacing:.2px;
-    overflow-x:hidden;
-  }
-  .wrap{
-    max-width:1200px;
-    margin-inline:auto;
-    padding:clamp(12px,3vmin,28px);
-    position:relative;
-    z-index:2;
-  }
+/* Per-mode palettes */
+body[data-mode="marina"]{
+--bg1:#1c1411; --bg2:#2a1916;
+--accent:#f6d36e; --accent-r:246; --accent-g:211; --accent-b:110;
+--accent2:#ff7690; --accent2-r:255; --accent2-g:118; --accent2-b:144;
+}
+body[data-mode="sigrid"]{
+--bg1:#0b1520; --bg2:#102133;
+--accent:#d9e2ed; --accent-r:217; --accent-g:226; --accent-b:237;
+--accent2:#6ea7ff; --accent2-r:110; --accent2-g:167; --accent2-b:255;
+}
+body[data-mode="clarity"]{
+--bg1:#0b1f24; --bg2:#141136;
+--accent:#08ffd7; --accent-r:8;  --accent-g:255; --accent-b:215;
+--accent2:#8c5eff; --accent2-r:140; --accent2-g:94; --accent2-b:255;
+}
+body[data-mode="illumina"]{
+--bg1:#130a21; --bg2:#1a0f2f;
+--accent:#bca0ff; --accent-r:188; --accent-g:160; --accent-b:255;
+--accent2:#4a257f; --accent2-r:74; --accent2-g:37; --accent2-b:127;
+}
+body[data-mode="kugelblitz"]{
+--bg1:#000a1f; --bg2:#000515;
+--accent:#eaf2ff; --accent-r:234; --accent-g:242; --accent-b:255;
+--accent2:#ffb84d; --accent2-r:255; --accent2-g:184; --accent2-b:77;
+}
 
-  /* Header */
-  header{ display:flex; align-items:center; gap:1rem; padding:clamp(10px,2vmin,20px) 0 .75rem; border-bottom:1px solid var(--soft); }
-  .logo{
-    width:44px; height:44px; flex:0 0 auto; border-radius:50%;
-    display:grid; place-items:center;
-    background:
-      radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.18) 0 30%, rgba(0,0,0,0) 40%),
-      conic-gradient(from 210deg, #ffefb0, #ffd867, #f6c64f, #f0b43b, #ffd867, #ffefb0);
-    box-shadow: inset 0 0.18rem 0.35rem rgba(0,0,0,.28), 0 0.45rem 1.2rem rgba(0,0,0,.35);
-    border:1px solid rgba(245,200,76,.6);
-  }
-  .logo svg{ width:62%; height:62%; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
-  header h1{ margin:0; line-height:1.1; font-weight:750; letter-spacing:.3px; font-size:clamp(1.06rem,2.2vw,1.48rem); }
-  header h1 .sub{ opacity:.8; font-weight:600; display:block; font-size:.92em; }
+/* Base layout */
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+margin:0;
+min-height:100vh;
+color:var(--text);
+background:
+radial-gradient(120rem 60rem at 70% -10%, var(--bg2) 0%, transparent 40%),
+radial-gradient(90rem 80rem at -10% 10%, var(--bg2) 0%, transparent 40%),
+linear-gradient(180deg, var(--bg1), var(--bg2));
+font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+letter-spacing:.2px;
+overflow-x:hidden;
+}
+.wrap{
+max-width:1200px;
+margin-inline:auto;
+padding:clamp(12px,3vmin,28px);
+position:relative;
+z-index:2;
+}
 
-  /* Controls */
-  .controls{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .6rem; padding: 1rem 0 1.1rem; }
-  .btn{
-    -webkit-tap-highlight-color: transparent;
-    border:1px solid var(--ring);
-    background: rgba(255,255,255,0.04);
-    color:var(--text);
-    padding:.62rem .95rem; border-radius:.75rem;
-    cursor:pointer; user-select:none;
-    font-weight:700; letter-spacing:.25px;
-    box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35), 0 0 0.6rem rgba(0,0,0,.35);
-    transition: transform .08s ease, background .25s ease, opacity .25s ease, border-color .25s ease;
-  }
-  .btn:hover{ transform:translateY(-1px); background: rgba(255,255,255,0.06); }
-  .btn:active{ transform:translateY(1px) scale(.99); }
-  .btn[disabled]{ opacity:.6; cursor:not-allowed; }
+/* Header */
+header{ display:flex; align-items:center; gap:1rem; padding:clamp(10px,2vmin,20px) 0 .75rem; border-bottom:1px solid var(--soft); }
+.logo{
+width:44px; height:44px; flex:0 0 auto; border-radius:50%;
+display:grid; place-items:center;
+background:
+radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.18) 0 30%, rgba(0,0,0,0) 40%),
+conic-gradient(from 210deg, #ffefb0, #ffd867, #f6c64f, #f0b43b, #ffd867, #ffefb0);
+box-shadow: inset 0 0.18rem 0.35rem rgba(0,0,0,.28), 0 0.45rem 1.2rem rgba(0,0,0,.35);
+border:1px solid rgba(245,200,76,.6);
+}
+.logo svg{ width:62%; height:62%; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
+header h1{ margin:0; line-height:1.1; font-weight:750; letter-spacing:.3px; font-size:clamp(1.06rem,2.2vw,1.48rem); }
+header h1 .sub{ opacity:.8; font-weight:600; display:block; font-size:.92em; }
 
-  .seg{ display:flex; gap:0; border:1px solid var(--ring); border-radius:.8rem; overflow:hidden; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35); }
-  .seg button{
-    border:0; padding:.62rem .9rem; font-weight:800; letter-spacing:.2px; background:transparent; color:var(--text);
-    cursor:pointer; position:relative; isolation:isolate; white-space:nowrap;
-  }
-  .seg button + button{ border-left:1px solid var(--ring); }
-  .seg button.active{
-    background: rgba(var(--accent-rgb), .14);
-    box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), .38);
-  }
+/* Controls */
+.controls{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .6rem; padding: 1rem 0 1.1rem; }
+.btn{
+-webkit-tap-highlight-color: transparent;
+border:1px solid var(--ring);
+background: rgba(255,255,255,0.05);
+color:var(--text);
+padding:.62rem .95rem; border-radius:.75rem;
+cursor:pointer; user-select:none;
+font-weight:700; letter-spacing:.25px;
+box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35), 0 0 0.6rem rgba(0,0,0,.35);
+transition: transform .08s ease, background .25s ease, opacity .25s ease, border-color .25s ease;
+}
+.btn:hover{ transform:translateY(-1px); background: rgba(255,255,255,0.08); }
+.btn:active{ transform:translateY(1px) scale(.99); }
+.btn[disabled]{ opacity:.6; cursor:not-allowed; }
 
-  /* Panels */
-  .panes{ display:grid; gap:1rem; grid-template-columns: 1fr; }
-  .panel{
-    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,0));
-    border:1px solid var(--soft);
-    border-radius:1rem; padding:1rem; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
-  }
+.seg{ display:flex; gap:0; border:1px solid var(--ring); border-radius:.8rem; overflow:hidden; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35); }
+.seg button{
+border:0; padding:.62rem .9rem; font-weight:800; letter-spacing:.2px; background:transparent; color:var(--text);
+cursor:pointer; position:relative; isolation:isolate; white-space:nowrap;
+}
+.seg button + button{ border-left:1px solid var(--ring); }
+.seg button.active{
+background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .16);
+box-shadow: inset 0 0 0 1px rgba(var(--accent-r), var(--accent-g), var(--accent-b), .38);
+}
 
-  /* Guided info panel */
-  .info{ display:grid; gap:.55rem; }
-  .info .headline{
-    display:flex; flex-wrap:wrap; align-items:center; gap:.6rem;
-    font-weight:800;
-  }
-  .pill{
-    border:1px solid rgba(var(--accent-rgb), .4);
-    background: rgba(var(--accent-rgb), .12);
-    color:var(--text);
-    padding:.28rem .55rem; border-radius:.55rem; font-size:.88rem; font-weight:800;
-  }
-  .equation{ opacity:.9; font-weight:700; }
-  .visitor{ color: var(--muted); font-style:italic; line-height:1.5; }
-  .note-cap{color:var(--muted);font-style:italic}
+/* Panels */
+.panes{ display:grid; gap:1rem; grid-template-columns: 1fr; }
+.panel{
+background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,0));
+border:1px solid var(--soft);
+border-radius:1rem; padding:1rem; box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
+}
 
-  /* Bee Notes */
-  .notes label{ display:block; font-weight:800; margin-bottom:.45rem; color: var(--muted); }
-  textarea{
-    width:100%; min-height: 28svh; resize: vertical;
-    background: rgba(0,0,0,.22); color: var(--text);
-    border:1px solid var(--soft); border-radius:.9rem;
-    padding: .95rem 1rem; line-height:1.5; font-size:1rem; outline:none;
-    box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
-  }
-  textarea::placeholder{ color: rgba(199,196,214,.75); }
+/* Guided Panel */
+.info{ display:grid; gap:.55rem; }
+.info .headline{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; font-weight:800; }
+.pill{
+border:1px solid rgba(var(--accent-r), var(--accent-g), var(--accent-b), .4);
+background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), .12);
+color:var(--text);
+padding:.28rem .55rem; border-radius:.55rem; font-size:.88rem; font-weight:800;
+}
+.equation{ opacity:.9; font-weight:700; }
+.visitor, .science, .poet{ color: var(--muted); line-height:1.55; }
+.label{ font-weight:800; color:var(--text); opacity:.9; }
 
-  /* Self-Check */
-  .status{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
-  .status-item{
-    display:flex; align-items:center; justify-content:space-between; gap:.8rem;
-    background: rgba(0,0,0,.18); border:1px dashed var(--soft);
-    border-radius:.75rem; padding:.6rem .75rem;
-  }
-  .status-item .label{ opacity:.9; font-weight:700; }
-  .badge{
-    font-weight:900; padding:.28rem .58rem; border-radius:.55rem; border:1px solid rgba(255,255,255,.18);
-    background: rgba(0,0,0,.35); letter-spacing:.35px; text-transform: lowercase;
-  }
-  .pass{ color:#7fffb0; border-color: rgba(127,255,176,.45); }
-  .fail{ color:#ff7b7b; border-color: rgba(255,123,123,.45); }
-  .idle{ color:#ffdf6b; border-color: rgba(255,223,107,.45); }
+/* Bee Notes */
+.notes label{ display:block; font-weight:800; margin-bottom:.45rem; color: var(--muted); }
+textarea{
+width:100%; min-height: 28svh; resize: vertical;
+background: rgba(0,0,0,.22); color: var(--text);
+border:1px solid var(--soft); border-radius:.9rem;
+padding: .95rem 1rem; line-height:1.5; font-size:1rem; outline:none;
+box-shadow: 0 0.6rem 2rem rgba(0,0,0,.35);
+}
+textarea::placeholder{ color: rgba(199,196,214,.75); }
 
-  /* Canvas overlay (visual modes) */
-  #overlay{
-    position:fixed; inset:0; width:100vw; height:100svh;
-    pointer-events:none; z-index:1; opacity:1; transition: opacity .8s ease;
-  }
+/* Self-Check */
+.status{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
+.status-item{
+display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+background: rgba(0,0,0,.18); border:1px dashed var(--soft);
+border-radius:.75rem; padding:.6rem .75rem;
+}
+.status-item .label{ opacity:.9; font-weight:700; }
+.badge{
+font-weight:900; padding:.28rem .58rem; border-radius:.55rem; border:1px solid rgba(255,255,255,.18);
+background: rgba(0,0,0,.35); letter-spacing:.35px; text-transform: lowercase;
+}
+.pass{ color:#7fffb0; border-color: rgba(127,255,176,.45); }
+.fail{ color:#ff7b7b; border-color: rgba(255,123,123,.45); }
+.idle{ color:#ffdf6b; border-color: rgba(255,223,107,.45); }
 
-  /* Manifest table */
-  .manifest table{ width:100%; border-collapse:collapse; border:1px solid var(--soft); border-radius:.9rem; overflow:hidden; }
-  .manifest th, .manifest td{ text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--soft); }
-  .manifest th{ background: rgba(0,0,0,.28); position:sticky; top:0; }
-  .manifest tr:last-child td{ border-bottom:0; }
-  .muted{ color:var(--muted); }
+/* Canvas overlay (visual modes) */
+#overlay{
+position:fixed; inset:0; width:100vw; height:100vh;
+pointer-events:none; z-index:1; opacity:1; transition: opacity .8s ease;
+}
 
-  /* Footer */
-  footer{ margin-top: 1.2rem; padding: 1.2rem 0 .6rem; color: var(--muted); display:flex; align-items:center; gap:.7rem; justify-content:space-between; border-top: 1px solid var(--soft); font-weight:700; letter-spacing:.3px; }
-  .malala-line{ margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px; }
+/* Manifest & Science Bridge */
+.manifest table{ width:100%; border-collapse:collapse; border:1px solid var(--soft); border-radius:.9rem; overflow:hidden; }
+.manifest th, .manifest td{ text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--soft); }
+.manifest th{ background: rgba(0,0,0,.28); position:sticky; top:0; }
+.manifest tr:last-child td{ border-bottom:0; }
+.muted{ color:var(--muted); }
+pre{ margin:.5rem 0; padding:.75rem; border-radius:.6rem; background: rgba(0,0,0,.25); border:1px solid var(--soft); overflow:auto; }
 
-  /* Science Bridge additions */
-  .bridge{display:grid;gap:.6rem}
-  .bridge .codeblock{background:rgba(0,0,0,.22);border:1px solid var(--soft);border-radius:.9rem;padding:.8rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.96rem;white-space:pre-wrap;color:var(--text)}
-  .bridge .map{display:grid;gap:.45rem}
-  .bridge .row{display:grid;grid-template-columns:220px 1fr;gap:.8rem}
-  .bridge .key{font-weight:800}
+/* Footer */
+footer{ margin-top: 1.2rem; padding: 1.2rem 0 .6rem; color: var(--muted); display:flex; align-items:center; gap:.7rem; justify-content:space-between; border-top: 1px solid var(--soft); font-weight:700; letter-spacing:.3px; }
+.malala-line{
+margin-top:.35rem; color:#88f2ff; opacity:.7; font-style:italic; letter-spacing:.2px; display:none;
+}
+body[data-mode="neutral"] .malala-line{ display:block; }
 
-  /* Accessibility and motion preferences */
-  @media (prefers-reduced-motion: reduce){
-    #overlay{ transition:none; }
-    .btn{ transition: none; }
-  }
-</style>
+/* Accessibility and motion preferences */
+@media (prefers-reduced-motion: reduce){
+#overlay{ transition:none; }
+.btn{ transition: none; }
+} </style>
+
 </head>
-<body data-mode="marina">
+<body data-mode="neutral">
   <canvas id="overlay" aria-hidden="true"></canvas>
 
   <div class="wrap" role="application" aria-label="Time · Illumina v4 — Kugelblitz of Color">
@@ -229,144 +225,159 @@
       </h1>
     </header>
 
-    <section class="controls" aria-label="Controls">
-      <button class="btn" id="unlockAudio" aria-pressed="false" title="Enable WebAudio (user gesture required)">🔊 Unlock Audio</button>
-      <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self-Check</button>
-      <div class="seg" role="tablist" aria-label="Mode toggles">
-        <button role="tab" id="tab-marina"   class="active" data-mode="marina"   aria-selected="true"  title="Marina — empathy as time">Marina</button>
-        <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false" title="Sigrid — clarity as emotion">Sigrid</button>
-        <button role="tab" id="tab-clarity"  data-mode="clarity"  aria-selected="false" title="Clarity — faith in motion">Clarity</button>
-        <button role="tab" id="tab-illumina" data-mode="illumina" aria-selected="false" title="Illumina — coherence as witness">Illumina</button>
-        <button role="tab" id="tab-kugelblitz" data-mode="kugelblitz" aria-selected="false" title="Kugelblitz — energy as desire">Kugelblitz</button>
-      </div>
-    </section>
+```
+<section class="controls" aria-label="Controls">
+  <button class="btn" id="unlockAudio" aria-pressed="false" title="Enable WebAudio (user gesture required)">🔊 Unlock Audio</button>
+  <button class="btn" id="runSelfCheck" title="Run oscillator, timer, and render checks">🧪 Run Self‑Check</button>
+  <div class="seg" role="tablist" aria-label="Mode toggles">
+    <button role="tab" id="tab-marina"   data-mode="marina"   aria-selected="false" title="Marina — empathy as time">Marina</button>
+    <button role="tab" id="tab-sigrid"   data-mode="sigrid"   aria-selected="false" title="Sigrid — clarity as emotion">Sigrid</button>
+    <button role="tab" id="tab-clarity"  data-mode="clarity"  aria-selected="false" title="Clarity — faith in motion">Clarity</button>
+    <button role="tab" id="tab-illumina" data-mode="illumina" aria-selected="false" title="Illumina — coherence as witness">Illumina</button>
+    <button role="tab" id="tab-kugelblitz" data-mode="kugelblitz" aria-selected="false" title="Kugelblitz — energy as desire">Kugelblitz</button>
+  </div>
+</section>
 
-    <div class="panes">
-      <!-- Guided panel -->
-      <section class="panel info" aria-live="polite" aria-label="Guided Mode Information">
-        <div class="headline">
-          <span class="pill" id="pillName">Marina</span>
-          <span class="equation" id="equation">τ = E / c³ · φ</span>
-        </div>
-        <p class="visitor" id="visitorNote">
-          you are safe here. this is the warmth of understanding — where feeling measures distance.
-        </p>
-        <p class="note-cap" id="scienceNote">E = mc² → energy is condensed light; τ = E / c³ → time feels energy through the limit of light.</p>
-        <p id="poetNote">write as a poet: describe what you feel before you explain what you think.</p>
-      </section>
+<div class="panes">
+  <!-- Guided panel -->
+  <section class="panel info" aria-live="polite" aria-label="Guided Mode Information">
+    <div class="headline">
+      <span class="pill" id="pillName">Welcome</span>
+      <span class="equation" id="equation">Time × Energy × Feeling</span>
+    </div>
+    <p class="visitor" id="visitorNote">
+      This is a gentle instrument. Begin in “neutral” and choose a mode when ready. You are safe, oriented, and free to explore.
+    </p>
+    <p class="science" id="scienceNote">
+      Physics and perception are treated as harmonics of one field. Modes shift cadence and color to help attention organize.
+    </p>
+    <p class="poet" id="poetNote">
+      Write a few lines in Bee Notes as you listen. Start with temperature, then meaning. Let the page breathe before it burns.
+    </p>
+  </section>
 
-      <!-- Bee Notes -->
-      <section class="panel notes" aria-label="Bee Notes">
-        <label for="bee">🐝 Bee Notes • <span id="modeName">Marina</span></label>
-        <textarea id="bee" placeholder="Write with heat. Saved locally per mode — bee.notes.marina|sigrid|clarity|illumina|kugelblitz"></textarea>
-      </section>
+  <!-- Bee Notes -->
+  <section class="panel notes" aria-label="Bee Notes">
+    <label for="bee">🐝 Bee Notes • <span id="modeName">—</span></label>
+    <textarea id="bee" placeholder="Select a mode above to begin writing. Notes save locally per mode." disabled></textarea>
+  </section>
 
-      <!-- Self-Check -->
-      <section class="panel selfcheck" aria-label="Self-Check">
-        <div class="status">
-          <div class="status-item"><span class="label">Audio @ 128 Hz</span><span id="chk-audio" class="badge idle">idle</span></div>
-          <div class="status-item"><span class="label">Timer drift &plusmn; 30 ms</span><span id="chk-timer" class="badge idle">idle</span></div>
-          <div class="status-item"><span class="label">Render loss &lt; 2 frames</span><span id="chk-raf" class="badge idle">idle</span></div>
-        </div>
-      </section>
+  <!-- Self-Check -->
+  <section class="panel selfcheck" aria-label="Self-Check">
+    <div class="status">
+      <div class="status-item"><span class="label">Audio @ 128 Hz</span><span id="chk-audio" class="badge idle">idle</span></div>
+      <div class="status-item"><span class="label">Timer drift &plusmn; 30 ms</span><span id="chk-timer" class="badge idle">idle</span></div>
+      <div class="status-item"><span class="label">Render loss &lt; 2 frames</span><span id="chk-raf" class="badge idle">idle</span></div>
+    </div>
+  </section>
 
-      <!-- Manifest -->
-      <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
-        <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
-        <div class="muted" style="margin-bottom:.6rem">
-          This table is your map. <b>Equation</b> shows the physics symbol; <b>Color/Rhythm</b> shows the visual/temporal feel;
-          <b>Bee Key</b> is where your local note is saved (one notebook per mode). Your data never leaves your device.
-          <br/>Next: pick a mode → <em>Unlock Audio</em> → <em>Run Self-Check</em> → write one Bee Note.
-        </div>
-        <div style="overflow:auto">
-          <table>
-            <thead>
-              <tr>
-                <th>Mode</th>
-                <th>Equation</th>
-                <th>Color · Rhythm · Overlay</th>
-                <th>Bee Key</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Marina</td>
-                <td>τ = E / c³ · φ</td>
-                <td>gold-rose clock every 1.618 s — empathy as time</td>
-                <td><code>bee.notes.marina</code></td>
-              </tr>
-              <tr>
-                <td>Sigrid</td>
-                <td>ΔE = clarity² (√2)</td>
-                <td>sky-silver aurora every 1.414 s — precision as emotion</td>
-                <td><code>bee.notes.sigrid</code></td>
-              </tr>
-              <tr>
-                <td>Clarity</td>
-                <td>160 ↔ 432 Hz</td>
-                <td>aqua-violet jellyfish drift ~6 s — faith in motion</td>
-                <td><code>bee.notes.clarity</code></td>
-              </tr>
-              <tr>
-                <td>Illumina</td>
-                <td>42-day cycle</td>
-                <td>deep-purple starfield — coherence as collective witness</td>
-                <td><code>bee.notes.illumina</code></td>
-              </tr>
-              <tr>
-                <td>Kugelblitz</td>
-                <td>E → ∞</td>
-                <td>blue-infinity pulse every 3 s (blue → white → gold → red heat → violet)</td>
-                <td><code>bee.notes.kugelblitz</code></td>
-              </tr>
-              <tr>
-                <td colspan="4"><em>Page 42 = the harmonic midpoint — light becomes witness; the Bee writes.</em></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+  <!-- Science Bridge -->
+  <section class="panel" aria-label="Science Bridge">
+    <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Science Bridge · symbols to sensation</h2>
+    <pre><code>E = m c²          energy–matter equivalence
+```
 
-      <!-- Science Bridge -->
-      <section class="panel bridge" aria-label="Science Bridge — Full Equations">
-        <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Science Bridge — Full Equations</h2>
-        <div class="codeblock">
-E = m c²          energy–matter equivalence
 τ = E / c³        time as energy moderated by the speed of light (interpretive bridge)
-λ = h / p         de Broglie wavelength (wave–particle link)
-        </div>
-        <div class="map">
-          <div class="row"><div class="key">E = m c²</div><div>Light slowed becomes matter. <em>Poetic:</em> “light slows to feel itself.”</div></div>
-          <div class="row"><div class="key">τ = E / c³</div><div>Perceived time scales with energy and the light-speed limit. <em>Poetic:</em> “the longer you see, the slower it burns.”</div></div>
-          <div class="row"><div class="key">λ = h / p</div><div>Momentum sets wavelength. <em>Poetic:</em> “every action sings a note.”</div></div>
-        </div>
-        <p class="note-cap">this bridge doesn’t replace physics — it invites feeling and measurement to inform each other.</p>
-      </section>
+λ = h / p         de Broglie wavelength (wave–particle link)</code></pre> <ul class="muted" style="margin:.6rem 0 0.2rem; padding-left:1.1rem"> <li>E = mc² → “light slows to feel itself”</li> <li>τ = E / c³ → “the longer you see, the slower it burns”</li> <li>λ = h / p → “every action sings a note”</li> </ul> <p class="muted" style="margin:.4rem 0 0">
+Note: This does not replace physics; it invites feeling and measurement to inform each other. </p> </section>
 
+```
+  <!-- Manifest -->
+  <section class="panel manifest" aria-label="Appendix · Illumina Manifest">
+    <h2 style="margin:.2rem 0 .6rem;font-size:1.05rem">Appendix · Illumina Manifest</h2>
+    <div class="muted" style="margin-bottom:.6rem">A lucid table of modes, equations, color/rhythm, and Bee keys.</div>
+    <div style="overflow:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Equation</th>
+            <th>Color · Rhythm · Overlay</th>
+            <th>Bee Key</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marina</td>
+            <td>τ = E / c³ · φ</td>
+            <td>gold clock (1.618 s) — empathy as time</td>
+            <td><code>bee.notes.marina</code></td>
+          </tr>
+          <tr>
+            <td>Sigrid</td>
+            <td>√2 cadence (clarity)</td>
+            <td>sky aurora (1.414 s) — precision as emotion</td>
+            <td><code>bee.notes.sigrid</code></td>
+          </tr>
+          <tr>
+            <td>Clarity</td>
+            <td>160 ↔ 432 Hz</td>
+            <td>aqua‑violet jellyfish (~6 s) — faith in motion</td>
+            <td><code>bee.notes.clarity</code></td>
+          </tr>
+          <tr>
+            <td>Illumina</td>
+            <td>42‑day cycle</td>
+            <td>deep‑purple starfield (slow drift) — collective witness</td>
+            <td><code>bee.notes.illumina</code></td>
+          </tr>
+          <tr>
+            <td>Kugelblitz</td>
+            <td>E → ∞</td>
+            <td>blue→white→gold→red→violet (3 s) — fusion heat‑pulse</td>
+            <td><code>bee.notes.kugelblitz</code></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <p class="muted" style="margin:.7rem 0 0">
+      This table is your map. Equation shows the physics symbol; Color/Rhythm shows the feel; Bee Key is where your local note is saved. Your data never leaves your device. Next: pick a mode → Unlock Audio → Run Self‑Check → write one Bee Note.
+    </p>
+  </section>
+</div>
 
-    <footer>
-      <div>🐝 page 42 · eat the world</div>
-      <div>2025 midnight release</div>
-    </footer>
-    <div class="malala-line" aria-label="Malala note">
-      “you are not in control — yet you are chosen. you doubt, you fight, you float.”
-    </div>
+<footer>
+  <div>🐝 page 42 · eat the world</div>
+  <div>2025 midnight release</div>
+</footer>
+<div class="malala-line" aria-label="Malala note">
+  “you are not in control — yet you are chosen. you doubt, you fight, you float.”
+</div>
+```
+
   </div>
 
 <script>
-/* ==========================================================
-   Illumina v4 — Guided Edition (+ Science Bridge + Poet Notes)
-   ========================================================== */
+document.addEventListener('DOMContentLoaded', function(){
+  /* ==========================================================
+     Illumina v4 — Guided + Reliable
+     - Canvas overlays per mode
+     - Bee Notes per mode (localStorage)
+     - WebAudio @128 Hz unlock
+     - Self-Check: audio, timer drift, rAF loss
+     - On full pass → Kugelblitz heat-blast
+     - No console logs; no network calls
+     ========================================================== */
 
-(function(){
-  /* ---- Math & DOM ---- */
+  /* ---------- Utilities ---------- */
   const TAU = Math.PI*2;
   const PHI = (1 + Math.sqrt(5)) / 2; // 1.618...
+  const clamp = (x,a,b)=> Math.max(a, Math.min(b,x));
+  const lerp = (a,b,t)=> a + (b-a)*t;
+  const easeOutCubic = t => 1 - Math.pow(1-t,3);
 
+  function mixRGB(c1, c2, t){
+    const a = [(c1>>16)&255, (c1>>8)&255, c1&255];
+    const b = [(c2>>16)&255, (c2>>8)&255, c2&255];
+    const r = lerp(a[0],b[0],t), g = lerp(a[1],b[1],t), bl = lerp(a[2],b[2],t);
+    return `rgb(${r|0},${g|0},${bl|0})`;
+  }
+
+  /* ---------- DOM ---------- */
   const body = document.body;
   const canvas = document.getElementById('overlay');
-  const ctx = canvas.getContext('2d', { alpha:true });
+  const ctx = canvas && canvas.getContext ? canvas.getContext('2d', { alpha:true }) : null;
+
   const bee = document.getElementById('bee');
   const modeNameEl = document.getElementById('modeName');
   const pillName = document.getElementById('pillName');
@@ -375,95 +386,131 @@ E = m c²          energy–matter equivalence
   const scienceEl = document.getElementById('scienceNote');
   const poetEl = document.getElementById('poetNote');
 
-  /* ---- Canvas sizing ---- */
+  const unlockBtn = document.getElementById('unlockAudio');
+  const selfBtn = document.getElementById('runSelfCheck');
+
+  const tabButtons = Array.from(document.querySelectorAll('.seg [role="tab"]'));
+
+  /* ---------- Canvas sizing ---------- */
   let DPR = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
   function fit(){
+    if (!canvas || !ctx) return;
     DPR = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
-    const w = Math.floor(window.innerWidth * DPR);
-    const h = Math.floor(window.innerHeight * DPR);
+    const w = Math.floor((window.innerWidth || document.documentElement.clientWidth) * DPR);
+    const h = Math.floor((window.innerHeight || document.documentElement.clientHeight) * DPR);
     canvas.width = w; canvas.height = h;
     canvas.style.width = '100vw';
-    canvas.style.height = '100svh';
+    canvas.style.height = '100vh';
     ctx.setTransform(1,0,0,1,0,0);
     ctx.scale(DPR, DPR);
   }
   fit();
-  addEventListener('resize', fit, { passive:true });
+  window.addEventListener('resize', fit, { passive:true });
 
-  /* ---- Mode content (guided) ---- */
+  /* ---------- Modes & Guided content ---------- */
   const MODES = {
     marina: {
       name: 'Marina',
       eq: 'τ = E / c³ · φ',
-      note: 'you are safe here. this is the warmth of understanding — where feeling measures distance.',
-      science: 'Empathy ≈ temporal resolution: attention slows perceived time (τ) as energy becomes coherent.',
-      poet: 'Start with the body. Write the temperature of the moment before the meaning.'
+      visitor: 'you are safe here… feeling measures distance.',
+      science: 'Empathy ≈ temporal resolution; attention slows perceived time (τ) as energy becomes coherent.',
+      poet: 'Start with the body. Write the temperature before the meaning.',
+      overlay: 'marina'
     },
     sigrid: {
       name: 'Sigrid',
       eq: 'ΔE = clarity² (√2)',
-      note: 'clarity is kindness; you can think and still feel. precision does not cancel love.',
-      science: 'Small increases in energy/attention produce square-root improvements in discernment (metaphor).',
-      poet: 'Name one detail exactly. Clarity is a love language.'
+      visitor: 'clarity is kindness; you can think and still feel.',
+      science: 'A square‑root cadence as a metaphor for discernment gains.',
+      poet: 'Name one detail exactly. Clarity is a love language.',
+      overlay: 'sigrid'
     },
     clarity: {
       name: 'Clarity',
       eq: '160 ↔ 432 Hz',
-      note: 'breathe with the drift. you do not need to control the current; it already knows your name.',
-      science: 'Breath entrainment (low Hz) alters perceived duration; rhythm organizes attention.',
-      poet: 'Let the sentence breathe. End lines where the inhale ends.'
+      visitor: 'breathe with the drift; you don’t need to control the current.',
+      science: 'Breath entrainment shifts perceived duration; rhythm organizes attention.',
+      poet: 'Let the sentence breathe. End lines where the inhale ends.',
+      overlay: 'clarity'
     },
     illumina: {
       name: 'Illumina',
-      eq: '42-day cycle',
-      note: 'this is the collective field — your calm adds to it. light remembers who holds it.',
-      science: 'Periodic practice builds coherence; starfield = slow drift as a collective phase.',
-      poet: 'Archive one truth per day. Bees make books.'
+      eq: '42‑day cycle',
+      visitor: 'this is the collective field; your calm adds to it.',
+      science: 'Periodic practice builds coherence; slow star drift as shared phase.',
+      poet: 'Archive one truth per day. Bees make books.',
+      overlay: 'illumina'
     },
     kugelblitz: {
       name: 'Kugelblitz',
       eq: 'E → ∞',
-      note: 'heat is not danger; it is presence. you are allowed to shine, to burn, to transform.',
-      science: 'High energy density (metaphoric kugelblitz) = awareness folding back on itself.',
-      poet: 'Write the ignition point. Let heat be honest, not cruel.'
+      visitor: 'heat is not danger; it is presence. you are allowed to shine.',
+      science: 'Metaphoric high energy density: awareness folding back on itself.',
+      poet: 'Write the ignition point — let heat be honest, not cruel.',
+      overlay: 'kugelblitz'
     }
   };
 
-  const order = ['marina','sigrid','clarity','illumina','kugelblitz'];
-  let mode = 'marina';
+  const ORDER = ['marina','sigrid','clarity','illumina','kugelblitz'];
+
+  let mode = 'neutral';
   let prevMode = null;
 
-  /* ---- Bee Notes storage ---- */
   function beeKey(m){ return `bee.notes.${m}`; }
+
   function loadBee(m){
+    if (!bee) return;
+    if (m === 'neutral'){
+      bee.value = '';
+      bee.disabled = true;
+      bee.placeholder = 'Select a mode above to begin writing. Notes save locally per mode.';
+      modeNameEl && (modeNameEl.textContent = '—');
+      return;
+    }
     let v = '';
     try{ v = localStorage.getItem(beeKey(m)) || ''; }catch(e){}
+    bee.disabled = false;
+    bee.placeholder = `Write with heat. Saved locally as ${beeKey(m)}`;
     bee.value = v;
+    modeNameEl && (modeNameEl.textContent = MODES[m].name);
   }
+
   function saveBee(){
+    if (!bee || mode === 'neutral') return;
     try{ localStorage.setItem(beeKey(mode), bee.value || ''); }catch(e){}
   }
-  bee.addEventListener('input', saveBee);
+  bee && bee.addEventListener('input', saveBee);
 
   function setMode(m){
-    if (m === mode) return;
-    prevMode = mode; mode = m;
-    body.setAttribute('data-mode', m);
-    const M = MODES[m];
-    pillName.textContent = M.name;
-    equationEl.textContent = M.eq;
-    visitorEl.textContent = M.note;
-    scienceEl.textContent = M.science;
-    poetEl.textContent = M.poet;
-    modeNameEl.textContent = M.name;
+    if (!m || m === mode) return;
+    prevMode = mode;
+    mode = m;
+    body && body.setAttribute('data-mode', m);
 
-    document.querySelectorAll('.seg [role="tab"]').forEach(b=>{
-      const on = b.dataset.mode === m;
+    // Tabs visual state
+    tabButtons.forEach(b=>{
+      const on = b.getAttribute('data-mode') === m;
       b.classList.toggle('active', on);
       b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
 
-    // Handle Kugelblitz overlay fade intent
+    // Guided panel
+    if (m !== 'neutral'){
+      const M = MODES[m];
+      pillName && (pillName.textContent = M.name);
+      equationEl && (equationEl.textContent = M.eq);
+      visitorEl && (visitorEl.textContent = M.visitor);
+      scienceEl && (scienceEl.textContent = M.science);
+      poetEl && (poetEl.textContent = M.poet);
+    } else {
+      pillName && (pillName.textContent = 'Welcome');
+      equationEl && (equationEl.textContent = 'Time × Energy × Feeling');
+      visitorEl && (visitorEl.textContent = 'This is a gentle instrument. Begin in “neutral” and choose a mode when ready. You are safe, oriented, and free to explore.');
+      scienceEl && (scienceEl.textContent = 'Physics and perception are treated as harmonics of one field. Modes shift cadence and color to help attention organize.');
+      poetEl && (poetEl.textContent = 'Write a few lines in Bee Notes as you listen. Start with temperature, then meaning. Let the page breathe before it burns.');
+    }
+
+    // Kugelblitz overlay fade intent
     if (prevMode === 'kugelblitz' && mode !== 'kugelblitz') { kugelFadeTarget = 0; }
     else if (mode === 'kugelblitz') { kugelFade = 0; kugelFadeTarget = 1; }
     else { kugelFadeTarget = 1; }
@@ -471,21 +518,31 @@ E = m c²          energy–matter equivalence
     loadBee(m);
   }
 
-  document.querySelectorAll('.seg [role="tab"]').forEach(b=>{
-    b.addEventListener('click', ()=> setMode(b.dataset.mode));
+  // Attach tab handlers (null-guarded)
+  tabButtons.forEach(btn=>{
+    btn && btn.addEventListener('click', ()=> setMode(btn.getAttribute('data-mode')));
   });
 
-  // Initial state
-  loadBee(mode);
+  // Start neutral
+  setMode('neutral');
 
-  /* ---- Audio (unlock + test at 128 Hz) ---- */
-  const btnUnlock = document.getElementById('unlockAudio');
+  /* ---------- Audio (unlock + 128 Hz) ---------- */
   let audioCtx = null;
-  btnUnlock.addEventListener('click', async () => {
+  function markStatus(id, pass, msg){
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('idle','pass','fail');
+    el.classList.add(pass ? 'pass' : 'fail');
+    el.textContent = (pass ? 'pass' : 'fail') + (msg ? ` · ${msg}` : '');
+  }
+
+  unlockBtn && unlockBtn.addEventListener('click', async ()=>{
     try{
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint:'interactive' });
-      if (audioCtx.state === 'suspended') await audioCtx.resume();
-      // Confirmation blip
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) throw new Error('NoAudio');
+      if (!audioCtx) audioCtx = new AC({ latencyHint:'interactive' });
+      if (audioCtx.state === 'suspended' && audioCtx.resume) await audioCtx.resume();
+
       const osc = audioCtx.createOscillator();
       const g = audioCtx.createGain();
       osc.type = 'sine'; osc.frequency.value = 128;
@@ -494,38 +551,33 @@ E = m c²          energy–matter equivalence
       g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.28);
       osc.connect(g).connect(audioCtx.destination);
       osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-      btnUnlock.textContent = '✅ Audio Unlocked';
-      btnUnlock.setAttribute('aria-pressed','true');
-      btnUnlock.disabled = true;
+
+      unlockBtn.textContent = '✅ Audio Unlocked';
+      unlockBtn.setAttribute('aria-pressed','true');
+      unlockBtn.disabled = true;
       markStatus('chk-audio', true, 'unlocked');
     }catch(e){
-      markStatus('chk-audio', false, 'error');
+      markStatus('chk-audio', false, 'unsupported');
     }
   });
 
-  /* ---- Self-Check ---- */
-  const btnSelf = document.getElementById('runSelfCheck');
-  const markStatus = (id, pass, msg) => {
-    const el = document.getElementById(id);
-    el.classList.remove('idle','pass','fail');
-    el.classList.add(pass ? 'pass' : 'fail');
-    el.textContent = (pass ? 'pass' : 'fail') + (msg ? ` · ${msg}` : '');
-  };
-
-  let blastMoment = 0; // >0 when self-check passes (triggers heat-blast)
-
-  btnSelf.addEventListener('click', async () => {
-    // reset display
+  /* ---------- Self-Check ---------- */
+  let blastMoment = 0; // >0 triggers heat-blast
+  selfBtn && selfBtn.addEventListener('click', async ()=>{
+    // set to running…
     ['chk-audio','chk-timer','chk-raf'].forEach(id=>{
       const el = document.getElementById(id);
+      if (!el) return;
       el.classList.remove('pass','fail'); el.classList.add('idle'); el.textContent = 'running…';
     });
 
     // 1) Audio @128 Hz
     let audioPass = false;
     try{
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) throw new Error('NoAudio');
+      if (!audioCtx) audioCtx = new AC();
+      if (audioCtx.state === 'suspended' && audioCtx.resume) await audioCtx.resume();
       const osc = audioCtx.createOscillator();
       const g = audioCtx.createGain();
       osc.frequency.value = 128; osc.type = 'sine';
@@ -569,17 +621,16 @@ E = m c²          energy–matter equivalence
 
     if (audioPass && timerPass && rafPass){
       blastMoment = performance.now();
-      // If not in Kugelblitz, briefly fade it in for the blast
       if (mode !== 'kugelblitz'){ kugelFade = 0; kugelFadeTarget = 1; setTimeout(()=>{ kugelFadeTarget = 0; }, 1200); }
     }
   });
 
-  /* ---- Visual Systems (Canvas 2D) ---- */
-  const clamp = (x,a,b)=> Math.max(a, Math.min(b,x));
-  const lerp = (a,b,t)=> a + (b-a)*t;
-  const easeOutCubic = t => 1 - Math.pow(1-t,3);
+  /* ---------- Visual Systems (Canvas 2D) ---------- */
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function drawMarina(t, alpha=1){
+  // MARINA: φ clock (1.618 s rotation)
+  function drawMarina(t, alpha){
+    if (!ctx || !canvas) return;
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const cx = w/2, cy = h/2;
     const r = Math.min(w,h)*0.18;
@@ -599,7 +650,7 @@ E = m c²          energy–matter equivalence
     ctx.fillStyle = 'rgba(255,118,144,0.8)';
     ctx.fillText('φ', 0, -r*0.6);
 
-    // Hands — 1.618 s
+    // Hands
     const period = 1618;
     const ang = (t % period) / period * TAU;
     const len1 = r*0.92, len2 = len1/PHI;
@@ -614,7 +665,9 @@ E = m c²          energy–matter equivalence
     ctx.restore();
   }
 
-  function drawSigrid(t, alpha=1){
+  // SIGRID: √2 aurora (1.414 s pulse)
+  function drawSigrid(t, alpha){
+    if (!ctx || !canvas) return;
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const period = 1414;
     const p = (t % period) / period;
@@ -622,7 +675,7 @@ E = m c²          energy–matter equivalence
 
     ctx.save();
     ctx.globalAlpha = alpha * 0.9;
-    const layers = 6;
+    const layers = reduced ? 3 : 6;
     for (let i=0;i<layers;i++){
       const y = h*0.22 + i*(h*0.06);
       const amp = 38 + i*12;
@@ -635,7 +688,8 @@ E = m c²          energy–matter equivalence
 
       ctx.beginPath();
       ctx.moveTo(0,y);
-      for (let x=0; x<=w; x+=24){
+      const step = reduced ? 40 : 24;
+      for (let x=0; x<=w; x+=step){
         const curve = Math.sin((x/w)*TAU*(1 + 0.2*Math.sin(t*0.0003))) * amp * (0.7 + 0.3*Math.sin(t*0.0005 + i));
         ctx.lineTo(x, y + curve);
       }
@@ -647,17 +701,18 @@ E = m c²          energy–matter equivalence
     ctx.restore();
   }
 
-  // Clarity — jellyfish drift (~6s breath)
+  // CLARITY: jellyfish (~6 s)
   const jellies = [];
   function ensureJellies(){
-    const want = 12;
+    const want = reduced ? 6 : 12;
     while (jellies.length < want){
       jellies.push({ x:Math.random(), y:Math.random(), r: lerp(28,76,Math.random()), phase: Math.random()*TAU });
     }
   }
   ensureJellies();
 
-  function drawClarity(t, alpha=1){
+  function drawClarity(t, alpha){
+    if (!ctx || !canvas) return;
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const breath = 0.55 + 0.45 * Math.sin(((t%6000)/6000)*TAU);
 
@@ -680,33 +735,38 @@ E = m c²          energy–matter equivalence
       ctx.fillStyle = bell;
       ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.fill();
 
-      ctx.lineWidth = 1.2;
-      for (let k=0;k<6;k++){
-        const ang = (k/6)*TAU + j.phase*0.2 + t*0.0004;
-        const len = r * (0.9 + 0.2*Math.sin(t*0.001 + k));
-        const x2 = x + Math.cos(ang)*len*0.6;
-        const y2 = y + Math.sin(ang)*len*1.2;
-        ctx.strokeStyle = 'rgba(8,255,215,0.18)';
-        ctx.beginPath(); ctx.moveTo(x, y + r*0.2); ctx.quadraticCurveTo(x, y2, x2, y2); ctx.stroke();
+      if (!reduced){
+        ctx.lineWidth = 1.2;
+        for (let k=0;k<6;k++){
+          const ang = (k/6)*TAU + j.phase*0.2 + t*0.0004;
+          const len = r * (0.9 + 0.2*Math.sin(t*0.001 + k));
+          const x2 = x + Math.cos(ang)*len*0.6;
+          const y2 = y + Math.sin(ang)*len*1.2;
+          ctx.strokeStyle = 'rgba(8,255,215,0.18)';
+          ctx.beginPath(); ctx.moveTo(x, y + r*0.2); ctx.quadraticCurveTo(x, y2, x2, y2); ctx.stroke();
+        }
       }
     });
 
     ctx.restore();
   }
 
-  // Illumina — starfield (42-day color sway)
+  // ILLUMINA: starfield (42-day color sway)
   const stars = [];
   function initStars(){
+    if (!canvas) return;
     stars.length = 0;
-    const count = Math.ceil((canvas.clientWidth * canvas.clientHeight) / 9000);
+    const density = reduced ? 14000 : 9000;
+    const count = Math.ceil((canvas.clientWidth * canvas.clientHeight) / density);
     for (let i=0;i<count;i++){
       stars.push({ x:Math.random(), y:Math.random(), r: Math.random()*1.6+0.2, sp: 0.6+Math.random()*1.2, tw: Math.random()*TAU });
     }
   }
   initStars();
-  addEventListener('resize', initStars, { passive:true });
+  window.addEventListener('resize', initStars, { passive:true });
 
-  function drawIllumina(t, alpha=1){
+  function drawIllumina(t, alpha){
+    if (!ctx || !canvas) return;
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const days = Date.now() / 86400000;
     const cyc = (days % 42) / 42; // 0..1
@@ -714,7 +774,8 @@ E = m c²          energy–matter equivalence
 
     ctx.save(); ctx.globalAlpha = 0.9*alpha;
 
-    stars.forEach(s=>{
+    for (let i=0;i<stars.length;i++){
+      const s = stars[i];
       const x = s.x*w, y = s.y*h;
       const tw = 0.5 + 0.5*Math.sin(t*0.0015*s.sp + s.tw);
       const a = 0.25 + tw*0.6;
@@ -725,7 +786,7 @@ E = m c²          energy–matter equivalence
       g.addColorStop(1, `rgba(255,255,255,0)`);
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(x,y,r*2,0,TAU); ctx.fill();
-    });
+    }
 
     // coherence ring
     ctx.globalAlpha = alpha * 0.18;
@@ -737,35 +798,29 @@ E = m c²          energy–matter equivalence
     ctx.restore();
   }
 
-  // Kugelblitz — central radial pulse (3 s)
-  const clamp01 = (x)=> Math.max(0, Math.min(1, x));
-  function mixRGB(c1, c2, t){
-    const a = [(c1>>16)&255, (c1>>8)&255, c1&255];
-    const b = [(c2>>16)&255, (c2>>8)&255, c2&255];
-    const r = lerp(a[0],b[0],t), g = lerp(a[1],b[1],t), bl = lerp(a[2],b[2],t);
-    return `rgb(${r|0},${g|0},${bl|0})`;
-  }
-  // Order per spec: blue → white → gold → red heat → violet
+  // KUGELBLITZ — central pulse (3 s): blue → white → gold → red heat → violet
   function gradientColor(phase){
     if (phase < 0.2) return {from:0x0c4cff, to:0x3da1ff};          // blue
     if (phase < 0.4) return {from:0xffffff, to:0xf8f8ff};          // white
     if (phase < 0.6) return {from:0xf5c84c, to:0xffd76f};          // gold
     if (phase < 0.8) return {from:0xff3a24, to:0xff7f5c};          // red heat
-    return {from:0x8c5eff, to:0xb79aff};                           // violet (final)
+    return {from:0x8c5eff, to:0xb79aff};                           // violet
   }
 
-  function drawKugelblitz(t, alpha=1, extraBlast=0){
+  function drawKugelblitz(t, alpha, extraBlast){
+    if (!ctx || !canvas) return;
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const cx = w/2, cy = h/2;
     const period = 3000;
     const ph = (t % period) / period;
 
-    const swell = (1 - Math.pow(1-((Math.sin(ph*TAU - Math.PI/2) + 1)/2),3)); // easeOutCubic
-    const baseR = Math.min(w,h) * (0.1 + 0.35*swell + 0.25*extraBlast);
+    const swell = easeOutCubic((Math.sin(ph*TAU - Math.PI/2) + 1)/2);
+    const baseR = Math.min(w,h) * (0.1 + 0.35*swell + 0.25*(extraBlast||0));
 
     ctx.save(); ctx.globalAlpha = alpha * (0.85 + 0.15*swell);
 
-    for (let k=0;k<6;k++){
+    const rings = reduced ? 4 : 6;
+    for (let k=0;k<rings;k++){
       const p = ((ph + k*0.12) % 1 + 1) % 1;
       const {from,to} = gradientColor(p);
       const r1 = baseR + k * 40 * (1 + 0.6*swell);
@@ -791,38 +846,35 @@ E = m c²          energy–matter equivalence
     ctx.restore();
   }
 
-  /* ---- Heat-blast (after self-check pass) ---- */
-  let blastMoment = 0;
+  /* ---------- Heat-blast (after self-check pass) ---------- */
   function blastFactor(now){
     if (blastMoment <= 0) return 0;
     const t = now - blastMoment;
     if (t > 1600){ blastMoment = 0; return 0; }
-    return (1 - Math.pow(1- Math.max(0, Math.min(1, t/1200)),3)); // easeOutCubic
+    return easeOutCubic(clamp(t/1200, 0, 1));
   }
 
-  /* ---- Render loop ---- */
-  let kugelFade = 1;        // visible intensity
-  let kugelFadeTarget = 1;  // animate towards
+  /* ---------- Render loop ---------- */
+  let kugelFade = 1, kugelFadeTarget = 1;
   let last = performance.now();
 
-  (function loop(now){
+  function frame(now){
+    if (!ctx || !canvas) { requestAnimationFrame(frame); return; }
+
     const dt = now - last; last = now;
-    // Kugelblitz fade management (when entering/leaving)
-    kugelFade += (kugelFadeTarget - kugelFade) * Math.max(0, Math.min(1, dt/220));
+    kugelFade += (kugelFadeTarget - kugelFade) * clamp(dt/220, 0, 1);
     if (Math.abs(kugelFade - kugelFadeTarget) < 0.002) kugelFade = kugelFadeTarget;
 
     ctx.clearRect(0,0, canvas.clientWidth, canvas.clientHeight);
 
-    // Mode overlays
-    const m = body.getAttribute('data-mode');
-    if (m === 'marina')      drawMarina(now, 1.0);
-    else if (m === 'sigrid') drawSigrid(now, 1.0);
-    else if (m === 'clarity')drawClarity(now, 1.0);
-    else if (m === 'illumina')drawIllumina(now, 1.0);
-    else if (m === 'kugelblitz') drawKugelblitz(now, kugelFade, 0);
+    if (mode === 'marina')      drawMarina(now, 1.0);
+    else if (mode === 'sigrid') drawSigrid(now, 1.0);
+    else if (mode === 'clarity')drawClarity(now, 1.0);
+    else if (mode === 'illumina')drawIllumina(now, 1.0);
+    else if (mode === 'kugelblitz') drawKugelblitz(now, kugelFade, 0);
 
     // Gentle persistence after leaving Kugelblitz
-    if (prevMode === 'kugelblitz' && m !== 'kugelblitz' && kugelFade > 0.01){
+    if (prevMode === 'kugelblitz' && mode !== 'kugelblitz' && kugelFade > 0.01){
       drawKugelblitz(now, kugelFade*0.7, 0);
     }
 
@@ -830,26 +882,23 @@ E = m c²          energy–matter equivalence
     const K = blastFactor(now);
     if (K > 0.001) drawKugelblitz(now, 0.85, K*1.1);
 
-    requestAnimationFrame(loop);
-  })(performance.now());
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 
-  /* ---- Keyboard navigation ---- */
-  addEventListener('keydown', e=>{
+  /* ---------- Keyboard navigation ---------- */
+  window.addEventListener('keydown', e=>{
     if (e.altKey || e.metaKey || e.ctrlKey) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
-      const i = order.indexOf(mode);
-      const n = e.key === 'ArrowRight' ? (i+1)%order.length : (i-1+order.length)%order.length;
-      setMode(order[n]);
+      let i = ORDER.indexOf(mode);
+      if (i < 0) i = 0; // from neutral to first mode
+      const n = e.key === 'ArrowRight' ? (i+1)%ORDER.length : (i-1+ORDER.length)%ORDER.length;
+      setMode(ORDER[n]);
     }
   }, { passive:true });
 
-  // Attach tabs
-  order.forEach(id => {
-    const btn = document.getElementById('tab-' + id);
-    if (btn) btn.addEventListener('click', ()=> setMode(id));
-  });
-
-})();
+});
 </script>
+
 </body>
 </html>
