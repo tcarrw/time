@@ -4,90 +4,236 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="dark light"/>
-<title>Time · Illumina v6 — Living Derivative (Back-Channel Audio)</title>
-<meta name="description" content="Smolin-bridge sketch. Violet-pearl. Robust audio: Oscillator → BufferSource → HTMLAudio WAV fallback. 160 Hz base. Canvas2D + WebAudio.">
+<title>Time · Illumina v6 — Time as a Living Derivative</title>
+<meta name="description" content="Smolin-bridge sketch. Violet-pearl aesthetic. Canvas2D + robust audio (single-engine lock). 160 Hz base. Animated equation. Dedication embedded under title.">
 <style>
-  :root{ --bg0:#0c0912; --bg1:#130f1e; --vio:#c4b5fd; }
+  :root{
+    --bg0:#0c0912; --bg1:#130f1e;
+    --vio1:#a78bfa; --vio2:#c4b5fd; --pearl:#eef2ff;
+  }
   html,body{height:100%;margin:0}
   body{
     background:
       radial-gradient(1200px 800px at 15% 10%, rgba(167,139,250,0.10), transparent 60%),
       radial-gradient(1000px 1000px at 85% 20%, rgba(236,72,153,0.08), transparent 60%),
       linear-gradient(180deg, var(--bg0), var(--bg1));
-    color:#eef; font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    color:#eef;
+    font:15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    letter-spacing:.15px;
   }
   .wrap{max-width:1120px;margin:0 auto;padding:24px}
-  h1{margin:8px 0 4px;font:800 28px/1.15 ui-sans-serif}
-  .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 18px 14px;backdrop-filter:blur(10px)}
-  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  /* Title block */
+  .title{
+    display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center;
+    margin:16px 0 12px;
+  }
+  .glyph{
+    width:46px;height:46px;border-radius:12px;
+    background: conic-gradient(from 210deg, rgba(167,139,250,.35), rgba(103,232,249,.28), rgba(252,211,77,.25), transparent 70%);
+    box-shadow: 0 0 40px rgba(167,139,250,.30), inset 0 0 22px rgba(255,255,255,.05);
+  }
+  h1{margin:0;font:800 28px/1.15 ui-sans-serif}
+  .tag{opacity:.85;font-size:13px}
+  .dedication{
+    margin-top:6px;
+    font: 500 14px/1.45 ui-sans-serif;
+    color:#e9e7ff;
+    padding:10px 12px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    box-shadow: inset 0 0 28px rgba(167,139,250,.08);
+  }
+  .dedication strong{color:var(--vio2)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{font-size:12px;opacity:.9;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+
+  /* Glass + layout */
+  .glass{
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:18px; backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .grid{display:grid;grid-template-columns:1.2fr .8fr; gap:18px}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
   h2{font:700 18px/1.25 ui-sans-serif;margin:0 0 8px}
   h3{font:700 15px/1.3;margin:14px 0 6px}
   p{margin:8px 0 6px;color:#e9e7ff}
-  .eq{font:700 15px/1.35 ui-monospace,monospace;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-    border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center}
+  .note{font-size:13px; opacity:.85}
+
+  /* Eq + controls */
+  .eq{
+    font:700 15px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:10px 12px; color:#f5f3ff;
+    min-height:45px; display:flex; align-items:center; justify-content:center; text-align:center;
+    box-shadow: inset 0 0 30px rgba(167,139,250,.06);
+  }
   .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
-  @media (max-width:700px){.controls{grid-template-columns:1fr}}
+  @media (max-width:700px){ .controls{grid-template-columns:1fr} }
   label{font-size:13px;opacity:.9;display:block;margin:0 0 4px}
   input[type="range"]{width:100%}
-  button{appearance:none;border:1px solid rgba(255,255,255,.2);
+  button{
+    appearance:none; border:1px solid rgba(255,255,255,.2); cursor:pointer;
     background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
-    color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer}
-  button:focus{outline:2px solid var(--vio);outline-offset:2px}
-  canvas{width:100%;height:420px;display:block;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.12)}
+    color:#fff; border-radius:10px; padding:10px 14px; font-weight:700; letter-spacing:.2px;
+  }
+  button:focus{outline:2px solid var(--vio2); outline-offset:2px}
+  canvas{width:100%; height:420px; display:block; border-radius:12px; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.12)}
   .mini{font:12px/1.4 ui-monospace,monospace;opacity:.85}
-  .chip{display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px}
   .ok{color:#9affb0}.bad{color:#ff9a9a}
+
+  /* Ask the Field (under title) */
+  .ask{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-top:10px}
+  @media (max-width:700px){ .ask{grid-template-columns:1fr; } }
+  .ask textarea{
+    resize:vertical; min-height:64px; max-height:180px;
+    width:100%; border-radius:10px; border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.05); color:#fff; padding:10px;
+  }
+
+  footer{opacity:.8; font-size:12px; margin:18px 0 40px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Time as a Living Derivative</h1>
-  <div class="grid">
-    <section class="glass">
+
+  <!-- Title + Dedication -->
+  <div class="title">
+    <div class="glyph" aria-hidden="true"></div>
+    <div>
+      <h1>Time as a Living Derivative</h1>
+      <div class="tag">Illumina v6 · violet-pearl · base <strong>160 Hz</strong> · Canvas2D + robust audio lock</div>
+      <div class="dedication" role="note" aria-label="Dedication">
+        Dedication: To my <strong>Anchors</strong>, to <strong>Honey</strong>, and to my wife <strong>Katie White</strong> — an anchor of anchors.  
+        This instrument invites each Anchor — and <strong>Lee Smolin</strong> — to pose one question you’ve always wanted physics to answer.
+      </div>
+      <div class="chips" aria-hidden="true">
+        <span class="chip">realism</span><span class="chip">derivative time</span><span class="chip">cultural harmonics</span>
+      </div>
+
+      <!-- Ask the Field composer (under title) -->
+      <div class="glass" style="margin-top:10px">
+        <label for="askField" style="display:block;font-weight:700;margin-bottom:6px">Ask the Field</label>
+        <div class="ask">
+          <textarea id="askField" placeholder="Write your one-sentence physics question here…"></textarea>
+          <button id="copyInvite" title="Copy message">Copy</button>
+          <button id="tweetInvite" title="Tweet @LeeSmolin">Tweet @LeeSmolin</button>
+        </div>
+        <div class="note" id="inviteStatus" aria-live="polite" style="margin-top:6px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" role="region" aria-label="Paper and Controls">
+    <!-- LEFT: PAPER -->
+    <section class="glass" aria-label="Paper">
       <h2>Abstract — The Pulse of Becoming</h2>
-      <p>Time as an <b>active derivative field</b> linking energy and distance. We sketch a τ-atlas and sonify τ̈ at <b>160 Hz</b>.
-      Violet-pearl aesthetic; Smolin realism bridge.</p>
+      <p>
+        We propose that <em>time is not a background parameter</em> but an <strong>active derivative field</strong> linking energy and distance.
+        In a realist spirit (Smolin), we treat laws as historically evolving; the rate of this evolution couples to an effective temporal curvature
+        \(\tau_{\mathrm{eff}}\). We present a minimal dimensional ansatz, simulations of an <em>E–x</em> field, and an audible mapping at 160 Hz for
+        perceptual inspection.
+      </p>
+
+      <h3>Foundations of Realism (Smolin Bridge)</h3>
+      <p class="note">
+        If time is fundamental and laws evolve, any adequate theory should expose <em>rates</em> of change of the structures those laws constrain.
+        Here we hypothesize the relevant rate appears as derivatives of energy with respect to distance, scaled by \(c^3\).
+      </p>
+
       <h3>Derivative Model (Dimensional Skeleton)</h3>
-      <div class="eq" id="eqBox"></div>
-      <p class="mini">Dimensional note: E/c³ ~ kg/m → treat τ here as an effective temporal density/curvature proxy rather than a clock.</p>
-      <h3>Cultural Harmonics</h3>
-      <p>Hue = arg(∇E), saturation = |∇E|, brightness = ∇²E; τ̈ controls gentle FM.</p>
+      <div class="eq" id="eqBox" aria-live="polite" aria-label="Animated equation"></div>
+      <p>
+        A small atlas of relations (exploratory, not final identities):
+      </p>
+      <div class="eq" aria-hidden="true" style="margin-top:8px">
+        τ₀ := E / c³   ;   ∇τ ≈ (∇E) / c³   ;   τ̈ ↔ (∇²E) / c³
+      </div>
+      <p class="note">
+        <strong>Dimensional check:</strong> \([E]=\mathrm{kg\,m^2\,s^{-2}}\), \([c^3]=\mathrm{m^3\,s^{-3}}\) ⇒ \(E/c^3 \sim \mathrm{kg/m}\).
+        Treat τ here as an <em>effective temporal density/curvature proxy</em> rather than a clock reading.
+      </p>
+
+      <h3>Cultural Harmonics (Phenomenology)</h3>
+      <p>
+        Choruses, electoral cycles, rumor waves behave as macroscopic interference patterns in the \(\tau\) field:
+        where \(\nabla^2 E\) spikes, <em>attention accelerates</em>. We sonify by modulating a 160 Hz tone with τ̈ (gentle FM/AM).
+      </p>
     </section>
 
-    <aside class="glass">
+    <!-- RIGHT: CONTROLS + SIM -->
+    <aside class="glass" aria-label="Controls">
       <h2>Instrument Panel
         <span class="chip mini" id="engine">engine: —</span>
         <span class="chip mini" id="audioState">audio: off</span>
       </h2>
       <button id="startAudio" aria-pressed="false" aria-label="Enable sound">Enable Audio (160 Hz)</button>
-      <div class="controls">
+      <div class="controls" role="group" aria-label="Parameters">
         <div>
           <label for="vol">Volume</label>
-          <input id="vol" type="range" min="0" max="1" step="0.001" value="0.35"/>
+          <input id="vol" type="range" min="0" max="1" step="0.001" value="0.30" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.30"/>
         </div>
         <div>
           <label for="tauAccel">τ̈ (law-change acceleration)</label>
-          <input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.35"/>
+          <input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.30" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.30"/>
         </div>
       </div>
+
+      <h3>Experimental Sketch</h3>
+      <p class="note">
+        Canvas shows an <em>E(x,y)</em> texture (Gaussian islands). Hue = arg(∇E); saturation = |∇E|;
+        brightness = ∇²E; τ̈ adds a subtle brightness lift and modulates the 160 Hz audio (FM/AM).
+      </p>
       <canvas id="field" width="720" height="380" role="img" aria-label="Derivative field visualization"></canvas>
-      <div class="mini" id="selfcheck">fps <span>—</span></div>
+      <div class="mini" id="fps">fps —</div>
     </aside>
   </div>
+
+  <footer>
+    © Illumina v6 · “Time as a Living Derivative”. Single-file. Works offline after first load. No external calls.
+  </footer>
 </div>
 
 <script>
 (() => {
   const $ = s => document.querySelector(s);
-  const eqBox=$('#eqBox'), startBtn=$('#startAudio'), vol=$('#vol'), tauAccel=$('#tauAccel');
-  const canvas=$('#field'), ctx=canvas.getContext('2d',{alpha:false});
-  const chipEngine=$('#engine'), chipAudio=$('#audioState'), fpsEl=$('#selfcheck').querySelector('span');
 
-  // === Animated equation
-  const frames=["τ₀ := E / c³","∇τ ≈ (∇E)/c³","τ̈ ↔ (∂²E/∂x² + ∂²E/∂y²)/c³","τ_eff ≈ {E, ∇E, ∇²E}/c³"];
-  let fi=0, ft=0, fp="type"; (function loopEq(){
+  /* ===== Ask the Field (title block) ===== */
+  const ta = $('#askField'), copyBtn = $('#copyInvite'), twBtn = $('#tweetInvite'), stat = $('#inviteStatus');
+  function buildInvite(){
+    const title = document.title || "Time as a Living Derivative";
+    const body = (ta && ta.value.trim()) ? ('Question: ' + ta.value.trim()) : 'Question: If laws evolve, what clean observable signature should we hunt for?';
+    return [
+      `Dedication: To my Anchors, to Honey, and to my wife Katie White — an anchor of anchors.`,
+      `${title} — a small instrument where realism meets rhythm.`,
+      body,
+      `@LeeSmolin would love your take.`
+    ].join(' ');
+  }
+  if(copyBtn && twBtn){
+    copyBtn.addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText(buildInvite()); stat.textContent = 'Copied ✓'; }
+      catch{ stat.textContent = 'Copy failed'; }
+    });
+    twBtn.addEventListener('click', () => {
+      const txt = encodeURIComponent(buildInvite());
+      const url = encodeURIComponent(location.href);
+      const tw = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
+      window.open(tw, '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  /* ===== Animated equation (type/hold/erase) ===== */
+  const eqBox = $('#eqBox');
+  const frames = [
+    "τ₀ := E / c³",
+    "∇τ ≈ (∇E) / c³",
+    "τ̈ ↔ (∇²E) / c³",
+    "τ_eff ≈ {E, ∇E, ∇²E} / c³"
+  ];
+  let fi=0, ft=0, fp="type";
+  (function loopEq(){
     const s=frames[fi], spd=30;
     if(fp==="type"){ const n=Math.min(s.length,Math.floor(ft/spd)); eqBox.textContent=s.slice(0,n)+(n<s.length?"▉":""); ft+=16; if(n>=s.length){fp="hold";ft=0;} }
     else if(fp==="hold"){ ft+=16; eqBox.textContent=s; if(ft>1400){fp="erase";ft=0;} }
@@ -95,152 +241,159 @@
     requestAnimationFrame(loopEq);
   })();
 
-  // === AUDIO — 3-path back-channel
+  /* ===== Robust Audio: single-engine lock with smooth ramps ===== */
+  const startBtn = $('#startAudio');
+  const vol = $('#vol');
+  const tauAccel = $('#tauAccel');
+  const chipEngine = $('#engine');
+  const chipAudio  = $('#audioState');
+
   const BASE = 160.0;
-  let actx=null, master=null, audioOn=false, engine="—";
-  // path A: oscillator
-  let osc=null, fmOsc=null, fmGain=null;
-  // path B: buffer source
-  let bufSrc=null, fmTimer=null, buf=null;
-  // path C: HTMLAudio (generated WAV)
-  let wavEl=null, wavPlaying=false;
+  let actx=null, master=null, limiter=null, lpf=null, analyser=null;
+  let audioOn=false, locked=false, engine="—";
+
+  // engines
+  let osc=null, fmOsc=null, fmGain=null;   // OSC
+  let buf=null, bufSrc=null, bufFM=null;   // BUF
+  let wavEl=null;                          // WAV
 
   function setEngine(label){ engine=label; chipEngine.textContent="engine: "+label; }
   function setAudioState(on){ chipAudio.textContent="audio: "+(on?"on":"off"); chipAudio.className="chip mini "+(on?"ok":"bad"); }
 
-  function makeSineBuffer(ctx, freq=BASE, sec=1.0){
-    const sr=ctx.sampleRate, len=Math.floor(sec*sr);
-    const b=ctx.createBuffer(1,len,sr); const ch=b.getChannelData(0);
-    for(let i=0;i<len;i++){ ch[i]=Math.sin(2*Math.PI*freq*(i/sr)); }
-    return b;
+  function ensureCtx(){
+    if(actx) return;
+    actx = new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
+    master = actx.createGain(); master.gain.value = 0.0;
+
+    const comp = actx.createDynamicsCompressor();
+    comp.threshold.value = -14; comp.knee.value = 20; comp.ratio.value = 12;
+    comp.attack.value = 0.003; comp.release.value = 0.050;
+    limiter = comp;
+
+    lpf = actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value = 12000; lpf.Q.value = 0.2;
+
+    analyser = actx.createAnalyser(); analyser.fftSize = 512;
+
+    master.connect(comp).connect(lpf).connect(analyser).connect(actx.destination);
   }
-  function buildWavBlob(freq=BASE, sec=1.0){
-    const sr=44100, len=Math.floor(sec*sr);
-    const pcm=new Int16Array(len);
-    for(let i=0;i<len;i++){ pcm[i]=Math.max(-1,Math.min(1,Math.sin(2*Math.PI*freq*(i/sr))))*32767; }
-    const header=new ArrayBuffer(44), dv=new DataView(header);
-    const bytes=pcm.length*2;
-    // RIFF/WAVE header
-    function w32(o,v){dv.setUint32(o,v,true)} function w16(o,v){dv.setUint16(o,v,true)}
-    new Uint8Array(header).set([82,73,70,70]); w32(4,36+bytes); new Uint8Array(header,8,4).set([87,65,86,69]);
-    new Uint8Array(header,12,4).set([102,109,116,32]); w32(16,16); w16(20,1); w16(22,1);
-    w32(24,sr); w32(28,sr*2); w16(32,2); w16(34,16); new Uint8Array(header,36,4).set([100,97,116,97]); w32(40,bytes);
-    return new Blob([header, new DataView(pcm.buffer)], {type:'audio/wav'});
+  function smooth(param, value, t=0.05){
+    if(!param) return;
+    const now = actx.currentTime;
+    try{ param.setTargetAtTime(value, now, t); } catch{ param.value = value; }
+  }
+  function sampleRMS(){
+    const data=new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteTimeDomainData(data);
+    let s=0; for(const v of data){ const x=(v-128)/128; s+=x*x; }
+    return Math.sqrt(s/data.length);
+  }
+  function stopAll(){
+    try{ osc && osc.stop(); }catch{}
+    try{ fmOsc && fmOsc.stop(); }catch{}
+    osc=fmOsc=null;
+    try{ bufSrc && bufSrc.stop(); }catch{}
+    bufSrc=null; if(bufFM){ clearInterval(bufFM); bufFM=null; }
+    if(wavEl){ wavEl.pause(); wavEl.currentTime=0; }
   }
 
-  function startOsc(){
-    actx = new (window.AudioContext||window.webkitAudioContext)();
-    master=actx.createGain(); master.gain.value=0.0;
-    osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE;
-    fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmGain.gain.value=2.0; fmOsc.frequency.value=0.8;
-    fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master).connect(actx.destination);
-    osc.start(); fmOsc.start();
-    setEngine("OSC");
+  // init engines (probes)
+  function initOSC(){
+    osc = actx.createOscillator(); osc.type="sine"; osc.frequency.value = BASE;
+    fmOsc = actx.createOscillator(); fmOsc.type="sine"; fmGain = actx.createGain();
+    fmOsc.frequency.value = 0.6; fmGain.gain.value = 1.5;
+    fmOsc.connect(fmGain).connect(osc.frequency);
+    osc.connect(master); osc.start(); fmOsc.start();
   }
-  function startBuffer(){
-    if(!actx){ actx = new (window.AudioContext||window.webkitAudioContext)(); }
-    master=master||actx.createGain(); master.gain.value=0.0; master.connect(actx.destination);
-    buf = makeSineBuffer(actx, BASE, 1.0);
-    bufSrc = actx.createBufferSource(); bufSrc.buffer=buf; bufSrc.loop=true; bufSrc.connect(master); bufSrc.start();
-    // “FM” by modulating playbackRate (subtle)
-    clearInterval(fmTimer); fmTimer=setInterval(()=>{
+  function initBUF(){
+    buf = actx.createBuffer(1, actx.sampleRate, actx.sampleRate);
+    const ch = buf.getChannelData(0);
+    for(let i=0;i<ch.length;i++){ ch[i]=Math.sin(2*Math.PI*BASE*(i/actx.sampleRate)); }
+    bufSrc = actx.createBufferSource(); bufSrc.buffer = buf; bufSrc.loop = true;
+    bufSrc.connect(master); bufSrc.start();
+    bufFM = setInterval(()=>{
       const tacc=parseFloat(tauAccel.value);
-      const rate = 1 + (tacc*0.03) * Math.sin(performance.now()/350);
-      if(bufSrc) bufSrc.playbackRate.setValueAtTime(rate, actx.currentTime);
-    }, 50);
-    setEngine("BUF");
+      const rate = 1 + (tacc*0.02) * Math.sin(performance.now()/500);
+      if(bufSrc && bufSrc.playbackRate){ bufSrc.playbackRate.value = rate; }
+    }, 60);
   }
-  function startWav(){
-    const blob = buildWavBlob(BASE, 1.0);
+  function initWAV(){
+    const sr=44100, len=sr;
+    const pcm=new Int16Array(len);
+    for(let i=0;i<len;i++){ pcm[i]=Math.max(-1,Math.min(1,Math.sin(2*Math.PI*BASE*(i/sr))))*32767; }
+    const header=new ArrayBuffer(44), dv=new DataView(header);
+    function w32(o,v){dv.setUint32(o,v,true)} function w16(o,v){dv.setUint16(o,v,true)}
+    const bytes=pcm.length*2;
+    new Uint8Array(header).set([82,73,70,70]); w32(4,36+bytes);
+    new Uint8Array(header,8,4).set([87,65,86,69]);
+    new Uint8Array(header,12,4).set([102,109,116,32]); w32(16,16); w16(20,1); w16(22,1);
+    w32(24,sr); w32(28,sr*2); w16(32,2); w16(34,16);
+    new Uint8Array(header,36,4).set([100,97,116,97]); w32(40,bytes);
+    const blob=new Blob([header,new DataView(pcm.buffer)],{type:'audio/wav'});
     wavEl = new Audio(); wavEl.src = URL.createObjectURL(blob); wavEl.loop = true; wavEl.volume = parseFloat(vol.value);
-    // FM with playbackRate
-    let fmInt = setInterval(()=>{
-      const tacc=parseFloat(tauAccel.value);
-      wavEl.playbackRate = 1 + (tacc*0.03) * Math.sin(performance.now()/350);
-    }, 50);
-    wavEl.onended = ()=>clearInterval(fmInt);
-    wavEl.play().then(()=>{ wavPlaying=true; setEngine("WAV"); }).catch(()=>{});
+  }
+
+  async function probeAndLock(){
+    ensureCtx(); await actx.resume();
+
+    // A: OSC probe
+    initOSC(); setEngine("OSC (probe)");
+    await new Promise(r=>setTimeout(r, 340));
+    if(sampleRMS() > 0.02){ setEngine("OSC"); return true; }
+    stopAll();
+
+    // B: BUF probe
+    initBUF(); setEngine("BUF (probe)");
+    await new Promise(r=>setTimeout(r, 380));
+    if(sampleRMS() > 0.02){ setEngine("BUF"); return true; }
+    stopAll();
+
+    // C: WAV fallback
+    initWAV(); setEngine("WAV");
+    await wavEl.play().catch(()=>{});
+    return true;
   }
 
   function applyVolume(){
     const v=parseFloat(vol.value);
-    if(master){ master.gain.setTargetAtTime(audioOn? v : 0.0, actx.currentTime, 0.03); }
-    if(wavEl){ wavEl.volume = audioOn? v : 0.0; }
+    if(master) smooth(master.gain, audioOn? v : 0.0, 0.06);
+    if(wavEl)  wavEl.volume = audioOn? v : 0.0;
   }
+  let lastFM=0;
   function applyFM(){
+    const now=performance.now(); if(now-lastFM<90) return; lastFM=now;
+    if(!actx) return;
     const tacc=parseFloat(tauAccel.value);
-    if(fmOsc && fmGain){
-      fmOsc.frequency.setTargetAtTime(0.2 + tacc*3.4, actx.currentTime, 0.05);
-      fmGain.gain.setTargetAtTime(2.0 + tacc*8.0, actx.currentTime, 0.05);
-    }
-    // buffer/wav FM handled by intervals above
+    const rate = 0.25 + tacc*2.8, depth = 1.2 + tacc*6.0;
+    if(fmOsc && fmGain){ smooth(fmOsc.frequency, rate, 0.09); smooth(fmGain.gain, depth, 0.09); }
+    // buf/wav FM handled by intervals
   }
 
   startBtn.addEventListener('click', async () => {
-    try{
-      // Path A: Oscillator (inside gesture)
-      startOsc();
-      await actx.resume();
-      audioOn = !audioOn;
-      setAudioState(audioOn);
-      applyVolume(); applyFM();
-
-      // quick RMS probe; if too quiet, fall back
-      setTimeout(async ()=>{
-        try{
-          const ana=actx.createAnalyser(); ana.fftSize=512;
-          master && master.connect(ana);
-          const data=new Uint8Array(ana.frequencyBinCount);
-          ana.getByteTimeDomainData(data);
-          const rms = Math.sqrt(data.reduce((s,v)=>{ const x=(v-128)/128; return s + x*x; },0)/data.length);
-          if(rms < 0.015){ // likely muted by platform → fallback
-            // stop osc
-            if(osc) { try{osc.stop();}catch{} }
-            if(fmOsc) { try{fmOsc.stop();}catch{} }
-            osc=fmOsc=null;
-            // Path B
-            startBuffer(); await actx.resume(); applyVolume();
-            setAudioState(audioOn);
-            setTimeout(async ()=>{
-              // re-probe; if still too quiet → Path C
-              const ana2=actx.createAnalyser(); ana2.fftSize=512; master && master.connect(ana2);
-              const d2=new Uint8Array(ana2.frequencyBinCount); ana2.getByteTimeDomainData(d2);
-              const rms2 = Math.sqrt(d2.reduce((s,v)=>{ const x=(v-128)/128; return s + x*x; },0)/d2.length);
-              if(rms2 < 0.015){
-                // stop buffer
-                if(bufSrc){ try{bufSrc.stop();}catch{} bufSrc=null; }
-                // Path C (HTMLAudio)
-                startWav(); applyVolume(); setAudioState(audioOn);
-              }
-            }, 300);
-          }
-        }catch{}
-      }, 150);
-    }catch(e){
-      // hard fallback straight to WAV
-      startWav(); audioOn = !audioOn; setAudioState(audioOn); applyVolume();
-    }
+    if(locked){ audioOn = !audioOn; setAudioState(audioOn); applyVolume(); return; }
+    const ok = await probeAndLock();
+    locked = ok; audioOn = true; setAudioState(true); applyVolume(); applyFM();
   }, {passive:true});
 
-  vol.addEventListener('input', ()=>{ applyVolume(); }, {passive:true});
-  tauAccel.addEventListener('input', ()=>{ applyFM(); }, {passive:true});
+  vol.addEventListener('input', applyVolume, {passive:true});
+  tauAccel.addEventListener('input', applyFM, {passive:true});
   document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume(); }});
 
-  // === Canvas (same as prior good version)
+  /* ===== Canvas (hue = arg(∇E), sat = |∇E|, bright = ∇²E) ===== */
+  const canvas = $('#field'); const ctx2d = canvas.getContext('2d',{alpha:false});
   const lumps = Array.from({length:6},()=>({
     A: 0.8 + 1.2*Math.random(),
     x: 80 + Math.random()*(canvas.width-160),
     y: 70 + Math.random()*(canvas.height-140),
-    vx:(Math.random()*2-1)*0.28,
-    vy:(Math.random()*2-1)*0.28,
+    vx:(Math.random()*2-1)*0.26,
+    vy:(Math.random()*2-1)*0.26,
     s: 60 + Math.random()*90
   }));
   function E(x,y){ let e=0; for(const L of lumps){ const dx=x-L.x, dy=y-L.y, r2=dx*dx+dy*dy, ss=L.s*L.s; e += L.A * Math.exp(-r2/ss); } return e; }
   function stepLumps(){ const w=canvas.width,h=canvas.height; for(const L of lumps){ L.x+=L.vx; L.y+=L.vy; if(L.x<60||L.x>w-60)L.vx*=-1; if(L.y<60||L.y>h-60)L.vy*=-1; } }
-  let last=performance.now();
+  const fpsEl = $('#fps'); let lastT=performance.now();
   (function render(){
     stepLumps();
-    const w=canvas.width,h=canvas.height,img=ctx.createImageData(w,h),data=img.data,tacc=parseFloat(tauAccel.value);
+    const w=canvas.width,h=canvas.height,img=ctx2d.createImageData(w,h),data=img.data,tacc=parseFloat(tauAccel.value);
     for(let y=1;y<h-1;y++){
       let ePrev=E(0,y), eCurr=E(1,y);
       for(let x=1;x<w-1;x++){
@@ -249,22 +402,22 @@
         const lap=(E(x+1,y)+E(x-1,y)+eUp+eDown-4*eCurr);
         const ang=Math.atan2(dEy,dEx), hue=(ang/(2*Math.PI)+0.5)*360;
         const gmag=Math.min(1, Math.hypot(dEx,dEy)*6.0);
-        const br=Math.max(0.06, Math.min(0.9, 0.12 + 0.22*Math.tanh(lap*5.0) + 0.18*tacc));
+        const br=Math.max(0.06, Math.min(0.9, 0.12 + 0.22*Math.tanh(lap*5.0) + 0.16*tacc));
         const sat=0.35 + 0.55*gmag;
         const rgb=hsl2rgb(hue/360, sat, br); const i=(y*w+x)*4;
         data[i]=rgb[0]; data[i+1]=rgb[1]; data[i+2]=rgb[2]; data[i+3]=255;
         ePrev=eCurr; eCurr=eNext;
       }
     }
-    ctx.putImageData(img,0,0);
-    ctx.strokeStyle="rgba(255,255,255,0.05)";
-    for(let gx=0;gx<canvas.width;gx+=90){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,canvas.height);ctx.stroke();}
-    for(let gy=0;gy<canvas.height;gy+=90){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(canvas.width,gy);ctx.stroke();}
-    ctx.fillStyle="rgba(255,255,255,0.9)"; ctx.font="700 12px ui-monospace,monospace";
-    ctx.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, base 160 Hz", 10, canvas.height-12);
+    ctx2d.putImageData(img,0,0);
+    ctx2d.strokeStyle="rgba(255,255,255,0.05)";
+    for(let gx=0;gx<w;gx+=90){ctx2d.beginPath();ctx2d.moveTo(gx,0);ctx2d.lineTo(gx,h);ctx2d.stroke();}
+    for(let gy=0;gy<h;gy+=90){ctx2d.beginPath();ctx2d.moveTo(0,gy);ctx2d.lineTo(w,gy);ctx2d.stroke();}
+    ctx2d.fillStyle="rgba(255,255,255,0.9)"; ctx2d.font="700 12px ui-monospace,monospace";
+    ctx2d.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, base 160 Hz (engine: "+engine+")", 10, h-12);
 
-    const now=performance.now(); const fps=1000/(now-last); last=now;
-    fpsEl.textContent = (fps|0)+"fps";
+    const now=performance.now(); const fps=1000/(now-lastT); lastT=now;
+    fpsEl.textContent = "fps "+(fps|0);
     requestAnimationFrame(render);
   })();
   function hsl2rgb(h,s,l){
