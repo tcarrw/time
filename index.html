@@ -3,110 +3,109 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>τ = E / c³ · The Immortal Bridge — Director Mode (v3)</title>
-<meta name="theme-color" content="#0b0d11"/>
+<title>τ = E / c³ · The Immortal Bridge — Director Mode (v3 · Deluxe)</title>
+<meta name="theme-color" content="#f5d477"/>
 <style>
 :root{
-  --bg:#0b0d11; --ink:#f8fbff; --muted:#b9c4d6; --accent:#ffd76b; --edge:#e9f0ff;
-  --glass:rgba(255,255,255,.06); --glass-strong:rgba(255,255,255,.1);
-  --ring:0 0 0 3px rgba(255,215,107,.35);
-  --radius:18px; --shadow:0 14px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  --bg:#0a0c10; --ink:#fff9eb; --muted:#d6cfa8; --gold:#f5d477; --gold-d:#cfae49; --glass:rgba(255,255,255,.06); --glass-2:rgba(255,255,255,.1);
+  --ring:0 0 0 4px rgba(245,212,119,.35); --radius:20px; --shadow:0 18px 48px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roman", serif; background: radial-gradient(1000px 700px at 20% -10%, #1a1f2b 0%, #0b0d11 55%), #0b0d11; color:var(--ink)}
-.container{max-width:1120px; margin:0 auto; padding:24px}
+body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roman", serif; background: radial-gradient(1200px 800px at 15% -10%, #20190a 0%, #0a0c10 55%), #0a0c10; color:var(--ink)}
+.container{max-width:1140px; margin:0 auto; padding:24px}
 .header{display:flex; gap:16px; align-items:flex-end; justify-content:space-between; margin-bottom:22px}
-.h-left{display:flex; align-items:center; gap:14px}
-.logo{width:48px;height:48px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff2a0, #ffd76b 40%, #e9b64b 70%, #0b0d11 100%); box-shadow:0 0 46px rgba(255,215,107,.35)}
-.title{font-size:24px; letter-spacing:.2px}
-.sub{font-size:12px; color:var(--muted)}
+.brand{display:flex; align-items:center; gap:14px}
+.logo{width:52px;height:52px;border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff8c2, var(--gold) 45%, var(--gold-d) 72%, #0a0c10 100%); box-shadow:0 0 60px rgba(245,212,119,.45)}
+.title{font-size:26px; letter-spacing:.2px}
+.badge{padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid var(--glass-2); color:var(--muted)}
 .grid{display:grid; grid-template-columns:1fr 360px; gap:18px}
 @media (max-width:980px){.grid{grid-template-columns:1fr}}
-.paper{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:var(--shadow); padding:18px}
-.paper h2{font-size:18px; margin:0 0 8px 0}
-.paper h3{font-size:15px; margin:12px 0 6px}
+.paper{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative}
+.paper.deluxe-ok{box-shadow:0 0 0 2px rgba(245,212,119,.35), 0 0 80px rgba(245,212,119,.25), var(--shadow);} /* coherence halo */
+.paper h2{font-size:20px; margin:0 0 8px 0}
+.paper h3{font-size:16px; margin:12px 0 6px}
 .hr{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); margin:12px 0}
-.code{background:#0c1118; border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:13px; color:#e7f0ff}
+pre.code, .code{background:#0b0f15; border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:13.5px; color:#f3f8ff; white-space:pre-wrap}
 .kv{display:grid; grid-template-columns:160px 1fr; gap:6px; align-items:start}
-
 .panel{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px; position:sticky; top:16px}
 .panel h3{margin:0 0 8px 0}
-.btn{background:var(--glass-strong); border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:10px 12px; color:var(--ink); font-size:14px; cursor:pointer}
-.btn[aria-pressed="true"], .btn.primary{box-shadow:var(--ring)}
+.btn{background:rgba(245,212,119,.14); border:1px solid rgba(245,212,119,.35); border-radius:12px; padding:10px 12px; color:var(--ink); font-size:14px; cursor:pointer}
+.btn:hover{box-shadow:var(--ring)}
+.btn.secondary{background:var(--glass); border-color:var(--glass-2)}
 .badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
 .tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06)}
 .ok{background:rgba(56,201,132,.18); border-color:rgba(56,201,132,.38)}
 .warn{background:rgba(248,148,37,.18); border-color:rgba(248,148,37,.38)}
 .fail{background:rgba(248,82,82,.18); border-color:rgba(248,82,82,.38)}
 .small{font-size:12px; color:var(--muted)}
-.table{width:100%; border-collapse:separate; border-spacing:0; overflow:auto}
+.table{width:100%; border-collapse:separate; border-spacing:0}
 .table th,.table td{border-bottom:1px solid rgba(255,255,255,.12); padding:8px 6px; text-align:left; font-size:13px}
-.footer{margin-top:16px; text-align:center; font-size:12px; color:var(--muted)}
-.note{font-style:italic; color:#dfe7ff}
+.watermark{position:absolute; right:16px; bottom:16px; font-weight:700; letter-spacing:.18em; font-size:12px; color:rgba(245,212,119,.7)}
+@media print{
+  .panel,.btn,.badges{display:none!important}
+  body{background:#fff;color:#000}
+  .paper{border:0; box-shadow:none}
+  .watermark{position:fixed; right:20px; bottom:20px; color:#bfa24a}
+}
+.paper.deluxe-ok{box-shadow:0 0 0 2px rgba(245,212,119,.35), 0 0 80px rgba(245,212,119,.25), var(--shadow);}
+body.deluxe{--ink:#fff9eb; --muted:#d6cfa8; --accent:#f5d477; --edge:#fff7d1;}
 </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <div class="h-left"><div class="logo" aria-hidden="true"></div><div><div class="title">τ = E / c³ · The Immortal Bridge</div><div class="sub">Time · Director Mode v3 — “Eat the World / Page 42”</div></div></div>
-      <div class="sub">Version: v3-director · Single-file · No external libs</div>
+      <div class="brand"><div class="logo" aria-hidden="true"></div>
+        <div><div class="title">τ = E / c³ · The Immortal Bridge</div>
+        <div class="small">Director Mode v3 · Deluxe — PRINCESS OF POWER</div></div></div>
+      <div class="badge">single‑file · deluxe skin</div>
+      <button class="btn" id="toggleDeluxe" style="margin-left:12px">Deluxe Skin</button>
     </div>
 
     <div class="grid">
       <div class="paper" id="paper">
+        <div class="watermark">PRINCESS OF POWER · DELUXE</div>
         <h2>Abstract</h2>
-        <p>Time is not what passes — it is what <em>synchronizes</em>. We explore a bridge where time, energy, distance, matter, frequency, and consciousness (t = e = d = m = f = c) are harmonic expressions of one constant: <b>c</b>, the witness of light. We present τ = E / c³ as a relational lens linking energy to temporal experience, and we pair lab-grade methods with poetic marginalia to keep science human.</p>
+        <p>Time is not what passes — it is what <em>synchronizes</em>. We explore a bridge where time, energy, distance, matter, frequency, and consciousness (t = e = d = m = f = c) are harmonic expressions of one constant: <b>c</b>, the witness of light. We present τ = E / c³ as a relational lens linking energy to temporal experience, pairing lab-grade methods with poetic marginalia.</p>
         <div class="hr"></div>
 
         <h2>Core Equations</h2>
-        <div class="code">E = m c²\nτ = E / c³\nλ = h / p</div>
-        <p class="note">“light slows to feel itself.” · “the longer you see, the slower it burns.”</p>
+        <pre class="code">E = m c²
+τ = E / c³
+λ = h / p</pre>
+        <p class="small">“light slows to feel itself.” · “the longer you see, the slower it burns.”</p>
         <div class="hr"></div>
 
         <h2>Methods · Exact Measurement Procedures</h2>
-        <h3>1) Psychophysics — Perceived-Time Shift (Δτ)</h3>
+        <h3>Psychophysics — Perceived-Time Shift (Δτ)</h3>
         <div class="kv"><div><b>Frequencies</b></div><div>96, 128, 160, 432 Hz; Δf (binaural): 0/2/4 Hz</div></div>
         <div class="kv"><div><b>Durations</b></div><div>30, 60, 120 s (counterbalanced)</div></div>
         <div class="kv"><div><b>Endpoint</b></div><div>Δτ = estimate − clock (bias-corrected)</div></div>
         <div class="hr"></div>
 
-        <h3>2) EEG Entrainment & Coherence</h3>
-        <div class="kv"><div><b>Metrics</b></div><div>PSD, alpha Δ, PLV/PLI; ASSR where applicable</div></div>
-        <div class="hr"></div>
-
-        <h3>3) Autonomic (Pupil & HRV)</h3>
-        <div class="kv"><div><b>Metrics</b></div><div>Pupil mean (z), HRV RMSSD change</div></div>
-        <div class="hr"></div>
-
-        <h3>4) HCI Fidelity</h3>
-        <div class="kv"><div><b>Targets</b></div><div>Start jitter &lt; 15 ms SD; rAF drift &lt; 30 ms / 3 min</div></div>
-        <div class="hr"></div>
-
-        <h2>Expert Tracks</h2>
-        <ul>
-          <li><b>Physics</b> — dimensional analysis of τ, simulations, counterexamples</li>
-          <li><b>Neuro</b> — EEG/MEG entrainment, prereg templates</li>
-          <li><b>Psychometrics</b> — temporal bisection / reproduction paradigms</li>
-          <li><b>Poetics</b> — annotated lines with timestamps</li>
-          <li><b>HCI/Audio</b> — latency audits, device checklists</li>
-        </ul>
-        <div class="hr"></div>
-
         <h2>Appendix · Data Schema</h2>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 8px">
+          <button class="btn" id="copyJson">Copy JSON</button>
+          <button class="btn secondary" id="downloadCsv">Download CSV</button>
+        </div>
         <div class="code" id="schemaBox"></div>
+        <h3 style="margin-top:10px">Visual Table</h3>
+        <table class="table" id="schemaTable">
+          <thead><tr><th>Section</th><th>Field</th><th>Value</th></tr></thead>
+          <tbody></tbody>
+        </table>
         <div class="hr"></div>
 
         <h2>Page 42 · Eat the World</h2>
-        <p class="note">to eat the world is to metabolize light; each test a prayer for coherence; each error a breath that reminds us we're alive.</p>
+        <p class="small">to eat the world is to metabolize light; each test a prayer for coherence; each error a breath that reminds us we're alive.</p>
       </div>
 
       <aside class="panel" id="director">
         <h3>Director Panel · Self‑Check</h3>
-        <div class="small">Run local diagnostics (no network): audio · color · timer · render · schema.</div>
+        <div class="small">Local diagnostics: audio · timer · render · schema.</div>
         <div style="margin:10px 0; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn primary" id="runAll">Run Self‑Check</button>
-          <button class="btn" id="exportStamp">Export Integrity Stamp</button>
+          <button class="btn" id="runAll">Run Self‑Check</button>
+          <button class="btn secondary" id="exportStamp">Export Integrity Stamp</button>
         </div>
         <div class="badges" id="statusBadges"></div>
         <div class="hr"></div>
@@ -119,13 +118,11 @@ body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roma
         <div class="small" id="poemLine">…</div>
       </aside>
     </div>
-
-    <div class="footer">Illumina · Time — Director Mode v3 · single‑file</div>
   </div>
 
 <script>
 (function(){
-  // ----- Data Schema (shown in paper) -----
+  // ----- Schema -----
   var schema = {
     participant_id: "anon-uuid",
     session_id: "uuid",
@@ -137,128 +134,63 @@ body{margin:0; font-family: ui-serif, Charter, Georgia, Cambria, "Times New Roma
       pupil_mean_z: 0.41, hrv_rmssd: 38.2, eeg: {alpha_db: 1.8, plv_alpha: 0.21},
       color: {hue_deg: 45, sat: 0.72, val: 0.85}
     },
-    notes: "free text", track: "physics|neuro|psych|poetics|hci", version: "time-paper-v3"
+    notes: "free text", track: "physics|neuro|psych|poetics|hci", version: "time-paper-v3-deluxe"
   };
-  try{ document.getElementById('schemaBox').textContent = JSON.stringify(schema, null, 2); }catch(_){}
+  var schemaBox=document.getElementById('schemaBox'); schemaBox.textContent = JSON.stringify(schema, null, 2);
+  var tbody=document.querySelector('#schemaTable tbody');
+  function addRow(sec, field, val){ var tr=document.createElement('tr'); var td1=document.createElement('td'); td1.textContent=sec; var td2=document.createElement('td'); td2.textContent=field; var td3=document.createElement('td'); td3.textContent=(typeof val==='object'?JSON.stringify(val):String(val)); tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tbody.appendChild(tr); }
+  addRow('ids','participant_id',schema.participant_id); addRow('ids','session_id',schema.session_id);
+  Object.keys(schema.device).forEach(function(k){ addRow('device',k,schema.device[k]); });
+  Object.keys(schema.block).forEach(function(k){ addRow('block',k,schema.block[k]); });
+  Object.keys(schema.timing).forEach(function(k){ addRow('timing',k,schema.timing[k]); });
+  Object.keys(schema.measures).forEach(function(k){ addRow('measures',k,schema.measures[k]); });
+  addRow('meta','track',schema.track); addRow('meta','version',schema.version);
 
-  // ----- Utilities -----
-  function badge(text, state){ var d=document.createElement('div'); d.className='tag '+(state==='ok'?'ok':state==='warn'?'warn':'fail'); d.textContent=text; return d; }
-  function addRow(name, metric, value, target){ var tr=document.createElement('tr'); function td(s){ var x=document.createElement('td'); x.textContent=s; return x; } tr.appendChild(td(name)); tr.appendChild(td(metric)); tr.appendChild(td(value)); tr.appendChild(td(target)); tb.appendChild(tr); }
-  function setPoem(s){ var p=document.getElementById('poemLine'); p.textContent=s; }
-
-  var tb = document.querySelector('#readout tbody');
-  var badges = document.getElementById('statusBadges');
-
-  // ----- Self‑Check Tests -----
-  async function testAudioHz(targetHz){
-    // Use WebAudio + Analyser autocorrelation to estimate actual frequency
-    try{
-      var AudioCtx = window.AudioContext || window.webkitAudioContext; var ctx = new AudioCtx();
-      var osc = ctx.createOscillator(); var gain = ctx.createGain(); var analyser = ctx.createAnalyser(); analyser.fftSize = 2048;
-      gain.gain.value = 0.15; osc.type='sine'; osc.frequency.setValueAtTime(targetHz, ctx.currentTime);
-      osc.connect(gain); gain.connect(analyser); analyser.connect(ctx.destination);
-      osc.start();
-      await new Promise(r=>setTimeout(r, 180));
-      var buf = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf);
-      // Autocorrelation
-      function autoCorrelate(data, sampleRate){
-        var SIZE=data.length; var maxLag=Math.floor(SIZE/2); var bestOffset=-1; var best=0; var rms=0;
-        for(var i=0;i<SIZE;i++){ var v=data[i]; rms+=v*v; } rms=Math.sqrt(rms/SIZE); if(rms<0.01) return null;
-        var last=0; for(var lag=1; lag<maxLag; lag++){
-          var sum=0; for(var i=0; i<maxLag; i++){ sum+=data[i]*data[i+lag]; }
-          if(sum>best && sum>last){ best=sum; bestOffset=lag; } last=sum;
-        }
-        if(bestOffset>0){ return sampleRate/bestOffset; }
-        return null;
-      }
-      var est = autoCorrelate(buf, ctx.sampleRate);
-      osc.stop(); osc.disconnect(); gain.disconnect(); analyser.disconnect(); ctx.close();
-      if(!est){ return {ok:false, hz_error: null, est:null}; }
-      var err = Math.abs(est - targetHz);
-      return {ok: err<=0.5, hz_error: +err.toFixed(2), est:+est.toFixed(2)};
-    }catch(e){ return {ok:false, error:String(e)} }
-  }
-
-  async function testColorDrift(readMs){
-    // Track CSS hue stability over interval
-    try{
-      var root = document.documentElement; var startHue = getComputedStyle(root).getPropertyValue('--tint-hue').trim();
-      await new Promise(r=>setTimeout(r, readMs));
-      var endHue = getComputedStyle(root).getPropertyValue('--tint-hue').trim();
-      var drift = Math.abs(parseFloat(endHue||'0') - parseFloat(startHue||'0'));
-      return {ok: drift < 5, hue_drift: +drift.toFixed(2)};
-    }catch(e){ return {ok:false, error:String(e)} }
-  }
-
-  async function testTimerDrift(runMs){
-    // Compare setTimeout cadence to performance.now()
-    return new Promise(function(resolve){
-      var start = performance.now(); setTimeout(function(){
-        var end = performance.now(); var drift = end - start - runMs; resolve({ok: Math.abs(drift) < 30, drift_ms:+drift.toFixed(2)});
-      }, runMs);
-    });
-  }
-
-  async function testRenderLoop(durationMs){
-    return new Promise(function(resolve){
-      var frames=0; var start=performance.now();
-      function tick(){ frames++; if(performance.now()-start < durationMs){ requestAnimationFrame(tick); } else {
-        var elapsed=performance.now()-start; var expected=elapsed/16.6667; var loss = Math.max(0, expected-frames);
-        resolve({ok: loss < 2, frames: Math.round(frames), frame_loss: +loss.toFixed(1)});
-      } }
-      requestAnimationFrame(tick);
-    });
-  }
-
-  function testSchemaShape(obj){
-    function has(p){ return p in obj; }
-    var ok = has('participant_id') && has('session_id') && has('device') && has('block') && has('timing') && has('measures') && has('version');
-    return {ok:ok, schema_valid:ok};
-  }
-
-  // ----- Runner -----
-  async function runAll(){
-    badges.innerHTML=''; tb.innerHTML=''; setPoem('measuring gently…');
-    // 1) Audio @ 128 Hz
-    var a128 = await testAudioHz(128);
-    badges.appendChild(badge('audio@128 '+(a128.ok?'ok':'check'), a128.ok?'ok':'warn'));
-    addRow('Audio', 'Hz error (128)', (a128.hz_error!=null?a128.hz_error+' Hz':'—'), '≤ 0.5 Hz');
-
-    // 2) Timer drift 1000 ms
-    var td = await testTimerDrift(1000);
-    badges.appendChild(badge('timer '+(td.ok?'ok':'check'), td.ok?'ok':'warn'));
-    addRow('Timer', 'Drift', (td.drift_ms+' ms'), '< 30 ms');
-
-    // 3) Render loop 3000 ms
-    var rl = await testRenderLoop(3000);
-    badges.appendChild(badge('render '+(rl.ok?'ok':'check'), rl.ok?'ok':'warn'));
-    addRow('Render', 'Frames / Loss', rl.frames+' / '+rl.frame_loss, 'loss < 2');
-
-    // 4) Color drift 2000 ms
-    var cd = await testColorDrift(2000);
-    badges.appendChild(badge('color '+(cd.ok?'ok':'check'), cd.ok?'ok':'warn'));
-    addRow('Color', 'Hue drift', (cd.hue_drift+'°'), '< 5°/2s');
-
-    // 5) Schema validation
-    var sc = testSchemaShape(schema);
-    badges.appendChild(badge('schema '+(sc.ok?'ok':'fail'), sc.ok?'ok':'fail'));
-    addRow('Data', 'Schema', sc.schema_valid?'valid':'invalid', 'must match v3');
-
-    setPoem(a128.ok && td.ok && rl.ok && cd.ok && sc.ok
-      ? 'coherence holds — phase within tolerance; light remains aligned.'
-      : 'we found a ripple; breathe once, then measure again.');
-  }
-
-  document.getElementById('runAll').addEventListener('click', function(){ runAll(); });
-
-  document.getElementById('exportStamp').addEventListener('click', function(){
-    var stamp = { time_version:'v3-director', timestamp:new Date().toISOString(),
-      audio:{status:'unknown'}, color:{status:'unknown'}, timer:{status:'unknown'}, render:{status:'unknown'}, data:{schema_valid:false} };
-    // Try a quick pass (non-blocking)
-    Promise.race([testAudioHz(128), new Promise(r=>setTimeout(()=>r(null),400))]).then(function(res){ if(res){ stamp.audio={hz_error:res.hz_error, est:res.est}; }
-      return testTimerDrift(1000); }).then(function(td){ stamp.timer=td; return testRenderLoop(1000); }).then(function(rl){ stamp.render=rl; stamp.data=testSchemaShape(schema); var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='integrity-stamp.json'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0); });
+  // ----- Copy / CSV Tools -----
+  document.getElementById('copyJson').addEventListener('click', function(){
+    try{ navigator.clipboard.writeText(schemaBox.textContent).then(function(){ flash('JSON copied'); }); }catch(_){ fallbackCopy(schemaBox.textContent); }
+  });
+  function fallbackCopy(text){ var t=document.createElement('textarea'); t.value=text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); flash('JSON copied'); }
+  document.getElementById('downloadCsv').addEventListener('click', function(){
+    var rows=[["section","field","value"]];
+    Array.from(tbody.querySelectorAll('tr')).forEach(function(tr){ var cells=tr.querySelectorAll('td'); rows.push([cells[0].textContent,cells[1].textContent,cells[2].textContent]); });
+    var csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+    var blob=new Blob([csv],{type:'text/csv'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='schema_table.csv'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0);
   });
 
+  function flash(msg){ var p=document.getElementById('poemLine'); p.textContent=msg; setTimeout(function(){ p.textContent='…'; }, 1800); }
+
+  // ----- Self‑Check -----
+  var tb = document.querySelector('#readout tbody'); var badges = document.getElementById('statusBadges'); var paperEl=document.getElementById('paper');
+  function badge(text, state){ var d=document.createElement('div'); d.className='tag '+(state==='ok'?'ok':state==='warn'?'warn':'fail'); d.textContent=text; return d; }
+  function addRow(name, metric, value, target){ var tr=document.createElement('tr'); function td(s){ var x=document.createElement('td'); x.textContent=s; return x; } tr.appendChild(td(name)); tr.appendChild(td(metric)); tr.appendChild(td(value)); tr.appendChild(td(target)); tb.appendChild(tr); }
+
+  async function testAudioHz(targetHz){ try{ var AudioCtx=window.AudioContext||window.webkitAudioContext; var ctx=new AudioCtx(); var osc=ctx.createOscillator(); var gain=ctx.createGain(); var analyser=ctx.createAnalyser(); analyser.fftSize=2048; gain.gain.value=0.12; osc.type='sine'; osc.frequency.setValueAtTime(targetHz, ctx.currentTime); osc.connect(gain); gain.connect(analyser); analyser.connect(ctx.destination); osc.start(); await new Promise(r=>setTimeout(r,180)); var buf=new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf); function auto(data, sr){ var SIZE=data.length, maxLag=Math.floor(SIZE/2), best=0, bestLag=-1, rms=0; for(var i=0;i<SIZE;i++){var v=data[i]; rms+=v*v;} rms=Math.sqrt(rms/SIZE); if(rms<0.01) return null; var last=0; for(var lag=1; lag<maxLag; lag++){ var sum=0; for(var j=0;j<maxLag; j++){ sum+=data[j]*data[j+lag]; } if(sum>best && sum>last){ best=sum; bestLag=lag; } last=sum; } return bestLag>0? sr/bestLag : null; } var est=auto(buf, ctx.sampleRate); osc.stop(); osc.disconnect(); gain.disconnect(); analyser.disconnect(); ctx.close(); if(!est) return {ok:false, hz_error:null, est:null}; var err=Math.abs(est-targetHz); return {ok:err<=0.5, hz_error:+err.toFixed(2), est:+est.toFixed(2)}; }catch(e){ return {ok:false, error:String(e)} } }
+  async function testTimerDrift(runMs){ return new Promise(function(resolve){ var start=performance.now(); setTimeout(function(){ var end=performance.now(); var drift=end-start-runMs; resolve({ok:Math.abs(drift)<30, drift_ms:+drift.toFixed(2)}); }, runMs); }); }
+  async function testRenderLoop(durationMs){ return new Promise(function(resolve){ var frames=0; var start=performance.now(); function tick(){ frames++; if(performance.now()-start<durationMs){ requestAnimationFrame(tick); } else { var elapsed=performance.now()-start; var expected=elapsed/16.6667; var loss=Math.max(0, expected-frames); resolve({ok: loss<2, frames:Math.round(frames), frame_loss:+loss.toFixed(1)}); } } requestAnimationFrame(tick); }); }
+  function testSchemaShape(obj){ function has(p){ return p in obj; } var ok=has('participant_id')&&has('session_id')&&has('device')&&has('block')&&has('timing')&&has('measures')&&has('version'); return {ok:ok, schema_valid:ok}; }
+
+  // Deluxe success cue
+  function successTone(){ try{ var AudioCtx=window.AudioContext||window.webkitAudioContext; var ctx=new AudioCtx(); var g=ctx.createGain(); g.gain.value=0.05; g.connect(ctx.destination); var o1=ctx.createOscillator(); var o2=ctx.createOscillator(); o1.type='sine'; o2.type='sine'; o1.frequency.setValueAtTime(128, ctx.currentTime); o2.frequency.setValueAtTime(432, ctx.currentTime); o1.connect(g); o2.connect(g); o1.start(); o2.start(); g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.linearRampToValueAtTime(0, ctx.currentTime+1.2); setTimeout(()=>{ try{o1.stop();o2.stop();ctx.close();}catch(_){ } }, 1300); }catch(_){ } }
+
+  // Deluxe toggle
+  try{ var toggle=document.getElementById('toggleDeluxe'); if(toggle){ toggle.addEventListener('click', function(){ document.body.classList.toggle('deluxe'); var msg=document.body.classList.contains('deluxe')?'Deluxe skin on':'Deluxe skin off'; document.getElementById('poemLine').textContent=msg; setTimeout(()=>{ document.getElementById('poemLine').textContent='…'; }, 1200); }); } }catch(_){ }catch(_){ } }, 1300); }catch(_){ }
+  }
+
+  async function runAll(){ badges.innerHTML=''; tb.innerHTML=''; paperEl.classList.remove('deluxe-ok'); setPoem('measuring gently…');
+    var a128=await testAudioHz(128); badges.appendChild(badge('audio@128 '+(a128.ok?'ok':'check'), a128.ok?'ok':'warn')); addRow('Audio','Hz error (128)', (a128.hz_error!=null?a128.hz_error+' Hz':'—'),'≤ 0.5 Hz');
+    var td=await testTimerDrift(1000); badges.appendChild(badge('timer '+(td.ok?'ok':'check'), td.ok?'ok':'warn')); addRow('Timer','Drift', td.drift_ms+' ms','< 30 ms');
+    var rl=await testRenderLoop(2000); badges.appendChild(badge('render '+(rl.ok?'ok':'check'), rl.ok?'ok':'warn')); addRow('Render','Frames / Loss', rl.frames+' / '+rl.frame_loss,'loss < 2');
+    var sc=testSchemaShape(schema); badges.appendChild(badge('schema '+(sc.ok?'ok':'fail'), sc.ok?'ok':'fail')); addRow('Data','Schema', sc.schema_valid?'valid':'invalid','must match v3');
+    var allOk = (!!a128.ok) && (!!td.ok) && (!!rl.ok) && (!!sc.ok);
+    setPoem(allOk? 'coherence holds — phase within tolerance; light remains aligned.':'we found a ripple; breathe once, then measure again.');
+    if(allOk){ paperEl.classList.add('deluxe-ok'); successTone(); }
+  }
+
+  function setPoem(s){ document.getElementById('poemLine').textContent=s; }
+  document.getElementById('runAll').addEventListener('click', runAll);
+
+  document.getElementById('exportStamp').addEventListener('click', function(){ var stamp={ time_version:'v3-deluxe', timestamp:new Date().toISOString(), device:{ua:navigator.userAgent}, results:{} }; Promise.race([testAudioHz(128), new Promise(r=>setTimeout(()=>r(null),400))]).then(function(res){ if(res){ stamp.results.audio=res; } return testTimerDrift(1000); }).then(function(td){ stamp.results.timer=td; return testRenderLoop(1000); }).then(function(rl){ stamp.results.render=rl; stamp.results.schema=testSchemaShape(schema); var blob=new Blob([JSON.stringify(stamp,null,2)],{type:'application/json'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='integrity-stamp-deluxe.json'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },0); }); });
 })();
 </script>
 </body>
