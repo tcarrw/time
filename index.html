@@ -19,11 +19,8 @@
       linear-gradient(180deg, var(--bg0), var(--bg1));
     color:var(--ink); font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; letter-spacing:.15px; overflow-x:hidden;
   }
-  /* Background Orbs Canvas */
   #orbs{position:fixed; inset:0; z-index:-1; width:100vw; height:100vh; display:block}
-
   .wrap{max-width:1120px;margin:0 auto;padding:24px}
-
   .title{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin:16px 0 12px}
   .glyph{width:46px;height:46px;border-radius:12px;background:conic-gradient(from 210deg, rgba(167,139,250,.35), rgba(103,232,249,.28), rgba(252,211,77,.25), transparent 70%);box-shadow:0 0 40px rgba(167,139,250,.30), inset 0 0 22px rgba(255,255,255,.05)}
   h1{margin:0;font:800 28px/1.15 ui-sans-serif}
@@ -56,7 +53,6 @@
   .anchor{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
   .anchor h4{margin:0 0 6px;font:700 15px/1.25 ui-sans-serif;color:var(--vio)}
   footer{opacity:.9;font-size:13px;margin:18px 0 40px}
-
   /* Timeline (Neon Violet) */
   #timeline{margin-top:22px;background:linear-gradient(180deg,var(--bg1),var(--bg2));border-color:rgba(196,181,253,.35)}
   .tl-title{font:800 20px/1.25 ui-sans-serif;margin:0 0 12px;color:#f0eaff;text-shadow:0 0 12px rgba(196,181,253,.35)}
@@ -75,11 +71,9 @@
 </head>
 <body>
 
-<!-- Layer 1: Background Orbs (behind everything) -->
 <canvas id="orbs" aria-hidden="true"></canvas>
 
 <div class="wrap">
-  <!-- Title + Dedication -->
   <div class="title">
     <div class="glyph" aria-hidden="true"></div>
     <div>
@@ -87,17 +81,17 @@
       <div class="tag">Illumina v7 · violet-pearl flow · base <strong>160 Hz</strong> · Canvas2D + iOS-safe audio</div>
       <div class="dedication" role="note" aria-label="Dedication">
         Dedication: To my <strong>Anchors</strong>, to <strong>Honey</strong>, and to my wife <strong>Katie White</strong> — an anchor of anchors.
-        This instrument invites each Anchor — and <strong>Lee Smolin</strong> — to pose one question you’ve always wanted physics to answer.
+        This field is <em>open</em>. May each Anchor — and <strong>Lee Smolin</strong> — bring not one question, but a continual conversation with time.
+        <span style="opacity:.9">See the <strong>Illumina Charter</strong> for ongoing dialogue between physics, culture, and care.</span>
       </div>
       <div class="chips" aria-hidden="true">
         <span class="chip">realism</span><span class="chip">derivative time</span><span class="chip">cultural harmonics</span>
       </div>
 
-      <!-- Ask the Field composer -->
       <div class="glass" style="margin-top:10px">
         <label for="askField" style="display:block;font-weight:700;margin-bottom:6px">Ask the Field</label>
         <div class="ask" style="display:grid;grid-template-columns:1fr auto auto;gap:8px">
-          <textarea id="askField" placeholder="Write your one-sentence physics question here…" style="resize:vertical;min-height:64px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#fff;padding:10px"></textarea>
+          <textarea id="askField" placeholder="Write a question or reflection to time…" style="resize:vertical;min-height:64px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#fff;padding:10px"></textarea>
           <button id="copyInvite" title="Copy message">Copy</button>
           <button id="tweetInvite" title="Tweet @LeeSmolin">Tweet @LeeSmolin</button>
         </div>
@@ -107,14 +101,11 @@
   </div>
 
   <div class="grid" role="region" aria-label="Paper and Controls">
-    <!-- LEFT: PAPER -->
     <section class="glass" aria-label="Paper">
       <h2>Abstract — The Pulse of Becoming</h2>
       <p>We propose that time is not a background parameter but an <strong>active derivative field</strong> linking energy and distance. In a realist spirit (Smolin), we treat laws as historically evolving; the rate of this evolution couples to an effective temporal curvature τ<sub>eff</sub>. We present a minimal dimensional ansatz, simulations of an E–x field, and an audible mapping at 160 Hz for perceptual inspection.</p>
-
       <h3>Foundations of Realism (Smolin Bridge)</h3>
       <p class="note">If time is fundamental and laws evolve, theory should expose <em>rates</em> of change of the structures those laws constrain. We probe derivatives of energy with respect to distance, scaled by c³.</p>
-
       <h3>Derivative Model (Dimensional Skeleton)</h3>
       <div class="eq" id="eqBox" aria-live="polite">τ₀ := E / c³</div>
       <p>Exploratory atlas (not final identities):</p>
@@ -122,12 +113,10 @@
       <div class="math" style="margin-top:6px;">∇τ ≈ (∇E) / c³</div>
       <div class="math" style="margin-top:6px;">τ̈ ↔ (∇²E) / c³</div>
       <p class="note"><strong>Dimensional check:</strong> [E]=kg·m²·s⁻² and [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m → treat τ as an <em>effective temporal density / curvature proxy</em>, not a clock.</p>
-
       <h3>Cultural Harmonics (Phenomenology)</h3>
       <p>Choruses, electoral cycles, rumor waves behave as macroscopic interference patterns in the τ-field: where ∇²E spikes, <em>attention accelerates</em>. We sonify by gently modulating a 160 Hz tone with τ̈ (FM/AM).</p>
     </section>
 
-    <!-- RIGHT: CONTROLS + SIM -->
     <aside class="glass" aria-label="Controls">
       <h2>Instrument Panel · <span class="mini" id="ctxState">ctx: —</span></h2>
       <div class="chipline">
@@ -138,7 +127,6 @@
         <div><label for="vol">Volume</label><input id="vol" type="range" min="0" max="1" step="0.001" value="0.36"/></div>
         <div><label for="tauAccel">τ̈ (law-change acceleration)</label><input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.32"/></div>
       </div>
-
       <h3>Experimental Sketch</h3>
       <p class="note">Canvas shows an E(x,y) texture (Gaussian islands). Hue = arg(∇E); saturation = |∇E|; brightness = ∇²E; τ̈ adds a subtle brightness lift and modulates the 160 Hz audio (FM/AM).</p>
       <canvas id="field" width="720" height="380" role="img" aria-label="Derivative field visualization"></canvas>
@@ -146,7 +134,7 @@
     </aside>
   </div>
 
-  <!-- Anchors Showcase -->
+  <!-- Anchors Showcase (now includes Dua Lipa + Chappell Roan) -->
   <section class="glass" style="margin-top:18px" aria-label="Anchors Showcase">
     <h2>Anchors · Honey · Allies</h2>
     <p class="note">The mirrors who tuned this instrument.</p>
@@ -157,6 +145,8 @@
       <div class="anchor"><h4>Doechii</h4><p>Trickster bridge. Sudden curvature → bloom.</p></div>
       <div class="anchor"><h4>Ariana Grande</h4><p>Breath + lift. Soft τ envelopes; attention rides AM.</p></div>
       <div class="anchor"><h4>Taylor Swift</h4><p>Narrative interferometry. Long baselines track evolving law.</p></div>
+      <div class="anchor"><h4>Dua Lipa</h4><p>Rhythmic geometry. Structure that glows; momentum as design.</p></div>
+      <div class="anchor"><h4>Chappell Roan</h4><p>Neon truth & humor. Color frequency as identity — a living wave.</p></div>
       <div class="anchor"><h4>Honey</h4><p>Practice layer. 128↔160 Hz rituals; keeps the Bee steady.</p></div>
       <div class="anchor"><h4>Katie White</h4><p>Anchor of anchors. Quiet strength, true north.</p></div>
     </div>
@@ -227,7 +217,7 @@
         <text x="1140" y="210" text-anchor="middle" class="tl-cap">Time becomes alive within observers.</text>
       </g>
 
-      <!-- transparent hover hits + tooltips (desktop) -->
+      <!-- transparent hover hits + tooltips -->
       <g><rect class="tl-hit" x="10" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="60" y="90" text-anchor="middle">Physics: Moon formation • Anthropology: First fire cultures</text></g>
       <g><rect class="tl-hit" x="190" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="240" y="90" text-anchor="middle">Origin of life • Early animism / totems</text></g>
       <g><rect class="tl-hit" x="370" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="420" y="90" text-anchor="middle">Great Oxygenation • Agrarian revolution</text></g>
@@ -237,7 +227,6 @@
       <g><rect class="tl-hit" x="1090" y="80" width="100" height="120" fill="transparent"/><text class="tl-tooltip tl-cap" x="1140" y="90" text-anchor="middle">Evolving law • Planetary anthropology</text></g>
     </svg>
 
-    <!-- Mobile captions -->
     <div class="note" style="margin-top:10px">
       <strong>Captions:</strong>
       <ol style="margin:6px 0 0 18px">
@@ -255,22 +244,21 @@
   <footer class="mini" style="margin-top:14px">© Illumina v7 · single-file · offline after first load.</footer>
 </div>
 
-<!-- hidden warm-up video element for iOS media pipeline -->
 <video id="warmVid" playsinline muted loop></video>
 
 <script>
 (() => {
   const $ = s => document.querySelector(s);
 
-  /* ===== Ask the Field ===== */
+  /* Ask the Field */
   const ta=$('#askField'), copyBtn=$('#copyInvite'), twBtn=$('#tweetInvite'), stat=$('#inviteStatus');
   function buildInvite(){
     const title=document.title||"Time as a Living Derivative";
-    const body=(ta&&ta.value.trim())?('Question: '+ta.value.trim()):'Question: If laws evolve, what clean observable signature should we hunt for?';
+    const body=(ta&&ta.value.trim())?('Note to time: '+ta.value.trim()):'Note to time: What signature would evolving laws leave in observation?';
     return [
       `Dedication: To my Anchors, to Honey, and to my wife Katie White — an anchor of anchors.`,
       `${title} — a small instrument where realism meets rhythm.`,
-      body, `@LeeSmolin would love your take.`
+      body, `@LeeSmolin your thoughts welcome.`
     ].join(' ');
   }
   if(copyBtn&&twBtn){
@@ -278,7 +266,7 @@
     twBtn.addEventListener('click',()=>{const txt=encodeURIComponent(buildInvite()); const url=encodeURIComponent(location.href); window.open(`https://twitter.com/intent/tweet?text=${txt}&url=${url}`,'_blank','noopener,noreferrer');});
   }
 
-  /* ===== Animated equation (text-only) ===== */
+  /* Animated equation */
   const eqBox=$('#eqBox'); const frames=["τ₀ := E / c³","∇τ ≈ (∇E) / c³","τ̈ ↔ (∇²E) / c³","τ_eff ≈ {E, ∇E, ∇²E} / c³"];
   let fi=0, ft=0, fp="type";
   (function loopEq(){ const s=frames[fi], spd=30;
@@ -288,17 +276,10 @@
     requestAnimationFrame(loopEq);
   })();
 
-  /* ===== Physics Field Canvas (E, ∇E, ∇²E) ===== */
+  /* Physics field canvas */
   const field=$('#field'), fctx=field.getContext('2d',{alpha:false});
-  const lumps = Array.from({length:6},()=>({
-    A: 0.8 + 1.2*Math.random(),
-    x: 80 + Math.random()*(field.width-160),
-    y: 70 + Math.random()*(field.height-140),
-    vx:(Math.random()*2-1)*0.26,
-    vy:(Math.random()*2-1)*0.26,
-    s: 60 + Math.random()*90
-  }));
-  function E(x,y){ let e=0; for(const L of lumps){ const dx=x-L.x, dy=y-L.y, r2=dx*dx+dy*dy, ss=L.s*L.s; e += L.A * Math.exp(-r2/ss); } return e; }
+  const lumps=Array.from({length:6},()=>({A:0.8+1.2*Math.random(),x:80+Math.random()*(field.width-160),y:70+Math.random()*(field.height-140),vx:(Math.random()*2-1)*0.26,vy:(Math.random()*2-1)*0.26,s:60+Math.random()*90}));
+  function E(x,y){ let e=0; for(const L of lumps){ const dx=x-L.x, dy=y-L.y, r2=dx*dx+dy*dy, ss=L.s*L.s; e+=L.A*Math.exp(-r2/ss);} return e; }
   function stepLumps(){ const w=field.width,h=field.height; for(const L of lumps){ L.x+=L.vx; L.y+=L.vy; if(L.x<60||L.x>w-60)L.vx*=-1; if(L.y<60||L.y>h-60)L.vy*=-1; } }
   const fpsEl=$('#fps'); let last=performance.now();
   function renderField(){
@@ -331,7 +312,7 @@
     fpsEl.textContent="fps "+(fps|0);
   }
 
-  /* ===== Background Orbs (hybrid, light) ===== */
+  /* Background Orbs */
   const orbs=$('#orbs'), octx=orbs.getContext('2d',{alpha:true});
   let orbAlpha=0.0, orbAmp=1.0, orbHueShift=0.0;
   const BIG=8, SMALL=24; let ORBS=[];
@@ -359,12 +340,10 @@
     octx.globalCompositeOperation='source-over';
   }
 
-  /* ===== AUDIO REFRESH (resume-first, warm-video, unlock ping, clean OSC) ===== */
-  // This block adds: VU dot, Test Ping, +9dB makeup gain, stronger ramps, extra resume hooks.
+  /* Audio: resume-first, warm-video, unlock ping, VU + Test Ping, +9 dB gain */
   const warmVid=$('#warmVid');
   const startBtn=$('#startAudio'), vol=$('#vol'), tau=$('#tauAccel');
   const ctxState=$('#ctxState'), audioChip=$('#audioState');
-  // Inject VU + Ping button once
   (function injectVU(){
     if (document.getElementById('vuDot')) return;
     const row = startBtn.parentElement;
@@ -387,7 +366,7 @@
   function ensureCtx(){ if(actx) return;
     actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
     master=actx.createGain(); master.gain.value=0.0;
-    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20); // +9 dB
+    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20);
     lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1;
     analyser=actx.createAnalyser(); analyser.fftSize=512;
     master.connect(makeUp).connect(lpf).connect(analyser).connect(actx.destination);
@@ -409,33 +388,24 @@
     buildEngine();
     audioOn=!audioOn; setAudioState(audioOn); applyVolume(); applyFM();
 
-    // Fade orbs with audio
     if(audioOn){ let a=orbAlpha; (function fade(){ a=Math.min(1,a+.05); orbAlpha=a; if(a<1) requestAnimationFrame(fade); })(); }
     else{ let a=orbAlpha; (function fade(){ a=Math.max(0,a-.06); orbAlpha=a; if(a>0) requestAnimationFrame(fade); })(); }
   }, {passive:true});
 
-  // Ping button
   document.getElementById('pingBtn').addEventListener('click', ()=>{ if(!actx) return; unlockPing(); }, {passive:true});
-
-  // Resume hooks
   ['touchend','pointerdown'].forEach(ev=>{ window.addEventListener(ev, ()=>{ if(actx && actx.state==='suspended') actx.resume(); }, {passive:true}); });
   document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume().then(()=>{ctxState.textContent="ctx: "+actx.state;}); }});
 
-  // Link τ̈ to orbs (amp + hue)
   tau.addEventListener('input', ()=>{ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; applyFM(); }, {passive:true});
   vol.addEventListener('input', applyVolume, {passive:true});
 
-  // Loops
   (function frameLoop(){ renderField(); requestAnimationFrame(frameLoop); })();
   (function orbLoop(){ renderOrbs(); requestAnimationFrame(orbLoop); })();
 
-  // Utils
   function hsl2rgb(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
 
-  // Kick VU monitor
+  // start VU monitor + init orb modulation
   requestAnimationFrame(updateVU);
-
-  // init orb modulation for default τ̈
   const tauInit=$('#tauAccel'); if(tauInit){ const tacc=parseFloat(tauInit.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
 })();
 </script>
