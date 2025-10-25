@@ -20,7 +20,8 @@
     color:var(--ink); font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
     letter-spacing:.15px; overflow-x:hidden;
   }
-  /* background orbs + equations overlay */
+
+  /* Background layers */
   #orbs{position:fixed; inset:0; z-index:-2; width:100vw; height:100vh; display:block}
   #eqoverlay{position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.10}
 
@@ -36,29 +37,64 @@
   .dedication strong{color:var(--vio)}
   .grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
   @media (max-width:1000px){.grid{grid-template-columns:1fr}}
+
   h2{font:800 20px/1.25 ui-sans-serif;margin:0 0 10px}
   h3{font:700 16px/1.3;margin:14px 0 6px}
   p{margin:8px 0 6px}
   .note{font-size:13px;opacity:.88}
+
   .eqline{font:700 15px/1.35 ui-monospace,Menlo,Consolas,monospace;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;white-space:pre-wrap}
-  .block{font:600 14px/1.6 ui-monospace,Menlo,Consolas,monospace;padding:10px 12px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
+
+  /* Roomier math blocks (NEW) */
+  .block.math{
+    font:600 16px/1.95 ui-monospace,Menlo,Consolas,monospace;
+    padding:14px 14px;
+    border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.14);
+    white-space:pre;           /* keep your manual alignment */
+    overflow-x:auto;
+    letter-spacing:.2px;
+    font-variant-numeric:tabular-nums;
+  }
+  .eq-heading{margin:10px 0 6px;font:700 14px/1.25 ui-sans-serif;opacity:.9}
+
   .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
   @media (max-width:700px){.controls{grid-template-columns:1fr}}
   label{font-size:13px;opacity:.9;display:block;margin:0 0 4px}
   input[type="range"]{width:100%}
   button{appearance:none;border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer}
   button:focus{outline:2px solid var(--vio);outline-offset:2px}
+
   canvas#field{width:100%;height:430px;display:block;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.12)}
   .mini{font:12px/1.4 ui-monospace,monospace;opacity:.85}
   .chipline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
-  /* Anchors grid */
+  /* Legend (NEW) */
+  .legend{
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    margin:8px 0 6px;
+    font:12px/1.3 ui-monospace,Menlo,Consolas,monospace;
+    opacity:.9;
+  }
+  .legend .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 8px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.18);
+    background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  }
+  .swatch{width:16px;height:10px;border-radius:3px}
+  .swatch.hue{background:conic-gradient(from 0deg, red, yellow, lime, cyan, blue, magenta, red)}
+  .swatch.sat{background:linear-gradient(90deg, #777 0%, #fff 50%, #9f8bff 100%)}
+  .swatch.bright{background:linear-gradient(90deg, #111, #6e5be8, #fff)}
+
+  /* Anchors */
   .anchors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   @media (max-width:700px){.anchors{grid-template-columns:1fr}}
   .anchor{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
   .anchor h4{margin:0 0 6px;font:700 15px/1.25 ui-sans-serif;color:var(--vio)}
 
-  /* Timeline (Neon Violet) */
+  /* Timeline */
   #timeline{margin-top:22px;background:linear-gradient(180deg,var(--bg1),var(--bg2));border-color:rgba(196,181,253,.35)}
   .tl-title{font:800 20px/1.25 ui-sans-serif;margin:0 0 12px;color:#f0eaff;text-shadow:0 0 12px rgba(196,181,253,.35)}
   .tl-sub{font:13px;opacity:.9;margin-bottom:10px}
@@ -77,28 +113,21 @@
 </head>
 <body>
 
-<!-- Layer: Background -->
+<!-- Background layers -->
 <canvas id="orbs" aria-hidden="true"></canvas>
 <svg id="eqoverlay" viewBox="0 0 1200 800" preserveAspectRatio="none">
-  <defs>
-    <linearGradient id="gridV" x1="0" x2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#b388ff"/></linearGradient>
-  </defs>
-  <!-- faint grid curves + equations as watermark -->
+  <defs><linearGradient id="gridV" x1="0" x2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#b388ff"/></linearGradient></defs>
   <g fill="none" stroke="url(#gridV)" stroke-width="0.6" opacity="0.25">
-    <path d="M0,200 Q400,120 800,200 T1600,200"/>
-    <path d="M0,500 Q400,580 800,500 T1600,500"/>
-    <path d="M200,0 Q280,400 200,800"/>
-    <path d="M1000,0 Q920,400 1000,800"/>
+    <path d="M0,200 Q400,120 800,200 T1600,200"/><path d="M0,500 Q400,580 800,500 T1600,500"/>
+    <path d="M200,0 Q280,400 200,800"/><path d="M1000,0 Q920,400 1000,800"/>
   </g>
   <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="26" fill="#dbcfff" opacity="0.22">
-    <text x="60" y="120">τ₀ = E / c³</text>
-    <text x="840" y="120">∇τ ≈ (∇E) / c³</text>
-    <text x="80" y="760">τ̈ ↔ (∇²E) / c³</text>
+    <text x="60" y="120">τ₀ = E / c³</text><text x="840" y="120">∇τ ≈ (∇E) / c³</text><text x="80" y="760">τ̈ ↔ (∇²E) / c³</text>
   </g>
 </svg>
 
 <div class="wrap">
-  <!-- Title + Dedication -->
+  <!-- Title -->
   <div class="title">
     <div class="glyph" aria-hidden="true"></div>
     <div>
@@ -115,43 +144,46 @@
     </div>
   </div>
 
-  <!-- Main layout -->
+  <!-- Main -->
   <div class="grid" role="region" aria-label="Paper and Controls">
-    <!-- LEFT: PHYSICS PAPER -->
+    <!-- LEFT: PHYSICS -->
     <section class="glass" aria-label="Physics Paper">
       <h2>Abstract — The Pulse of Becoming</h2>
       <p>We present a minimal geometry in which “time” arises as a derivative density of energy distribution. Treating time as fundamental (realist stance), we posit that lawful structure may itself evolve; the rate of evolution couples to curvature in the temporal density. We supply a dimensional skeleton, a canvas simulation of an <em>E(x,y)</em> field, and a 160 Hz perceptual sonification of temporal curvature.</p>
 
       <h2>Unified Temporal–Energetic Geometry (UTEG)</h2>
       <div class="eqline">Constants:  c = 299 792 458 m·s⁻¹,  h = 6.62607015×10⁻³⁴ J·s</div>
+
       <h3>Hypothesis</h3>
-      <div class="block">
-τ := E / c³            ← effective temporal density (units ~ kg/m)  
-∇τ := (∇E) / c³       ← spatial gradient of temporal density  
-τ̈  ↔ (∇²E) / c³      ← curvature/acceleration of temporal density
-      </div>
+      <pre class="block math" aria-label="Hypothesis equations">
+τ   :=  E / c³
+∇τ  :=  ( ∇E ) / c³
+τ̈   ⇄  ( ∇²E ) / c³
+</pre>
+
       <h3>Dimensional Analysis</h3>
-      <p class="note">[E]=kg·m²·s⁻²; [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m. This is not a clock reading but a density-like quantity whose gradients curve histories. Interpreting τ̈ as perceptual “tightening/loosening” motivates the 160 Hz sonification.</p>
+      <p class="note">[E]=kg·m²·s⁻²; [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m. This is a density-like quantity, not a clock. Gradients and curvature of τ bend histories. Interpreting τ̈ as perceptual “tightening/loosening” motivates the 160 Hz sonification.</p>
 
       <h3>Derivation Notes (Sketch)</h3>
-      <div class="block">
-Given an energy texture E(x), define τ(x)=E(x)/c³.  
-Local coherence (phase) depends on ∂τ/∂x; instabilities scale with ∇²E.  
-If “laws evolve”, write L̇ ∝ f(τ, ∇τ, τ̈). We assume f ≈ α·τ̈ with α>0.  
+      <pre class="block math" aria-label="Derivation notes">
+Given an energy texture E(x), define τ(x)=E(x)/c³.
+Local coherence (phase) depends on ∂τ/∂x; instabilities scale with ∇²E.
+If “laws evolve”, write L̇ ∝ f(τ, ∇τ, τ̈). Take f ≈ α·τ̈ (α>0).
 Observable: frequency drift ∝ τ̈; attention wells at ∇²E peaks.
-      </div>
+</pre>
 
       <h2>Discussion — Cultural Harmonics</h2>
-      <p>Choruses, electoral cycles, rumor waves act as macroscopic interference patterns in τ. Peaks in ∇²E align with compressed rhythm (accelerated perception). The field below illustrates hue≈arg(∇E), saturation≈|∇E|, brightness≈∇²E, with τ̈ mapped to a gentle FM/AM of a 160 Hz tone.</p>
+      <p>Choruses, electoral cycles, rumor waves act as macroscopic interference patterns in τ. Peaks in ∇²E align with compressed rhythm (accelerated perception). The instrument below renders hue≈arg(∇E), saturation≈|∇E|, brightness≈∇²E; the τ̈ slider brightens curvature and modulates a 160 Hz tone.</p>
 
       <h2>Appendix — Core Equations of the Time Field</h2>
-      <div class="block">
-τ = E / c³  
-∇τ = (∇E) / c³  
-τ̈ = (∇²E) / c³  
-Δτ/Δx = (ΔE/Δx)/c³  
-E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
-      </div>
+      <pre class="block math" aria-label="Appendix equations">
+τ       =   E / c³
+∇τ      =   ( ∇E ) / c³
+τ̈      =   ( ∇²E ) / c³
+Δτ/Δx   =   ( ΔE / Δx ) / c³
+E       =   hν  =  mc²
+t   ~   m / c
+</pre>
     </section>
 
     <!-- RIGHT: INSTRUMENTS -->
@@ -165,14 +197,24 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
         <div><label for="vol">Volume</label><input id="vol" type="range" min="0" max="1" step="0.001" value="0.36"/></div>
         <div><label for="tauAccel">τ̈ (law-change acceleration)</label><input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.32"/></div>
       </div>
-      <div class="mini" id="vuHelp" style="margin-top:4px">VU: <span id="vuDot" style="padding:2px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.06)">—</span>
-        <button id="pingBtn" style="margin-left:8px">Test Ping</button>
-      </div>
 
       <h3>Experimental Sketch</h3>
-      <p class="note">Canvas renders E(x,y); hue = arg(∇E), sat = |∇E|, bright = ∇²E; τ̈ lifts brightness & modulates the 160 Hz tone (FM/AM).</p>
+      <p class="note">Legend: hue = gradient direction (arg∇E), saturation = gradient magnitude (|∇E|), brightness = curvature (∇²E); τ̈ also modulates the 160 Hz tone (FM/AM).</p>
+
+      <!-- Legend (NEW) -->
+      <div class="legend" role="note" aria-label="Visualization legend">
+        <span class="chip"><span class="swatch hue"    aria-hidden="true"></span> hue = arg(∇E)</span>
+        <span class="chip"><span class="swatch sat"    aria-hidden="true"></span> sat = |∇E|</span>
+        <span class="chip"><span class="swatch bright" aria-hidden="true"></span> bright = ∇²E</span>
+        <span class="chip">160 Hz ⇄ τ̈ (FM/AM)</span>
+      </div>
+
       <canvas id="field" width="760" height="430" role="img" aria-label="Derivative field visualization"></canvas>
       <div class="mini" id="fps">fps —</div>
+
+      <div class="mini" style="margin-top:6px">VU: <span id="vuDot" style="padding:2px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.06)">—</span>
+        <button id="pingBtn" style="margin-left:8px">Test Ping</button>
+      </div>
     </aside>
   </div>
 
@@ -194,7 +236,7 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
     </div>
   </section>
 
-  <!-- Neon timeline -->
+  <!-- Timeline -->
   <section id="timeline" class="glass" aria-label="The Seven Illuminas of Earth and History">
     <h2 class="tl-title">Physics × Anthropology — The Seven Illuminas of Earth & History</h2>
     <p class="tl-sub">Neon-violet read of seven turning points: physical epochs × human meanings. Hover (desktop) to read captions; on mobile, captions appear below.</p>
@@ -218,6 +260,7 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
       <g><circle cx="960" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="960" y="190" text-anchor="middle" class="tl-label">6 • Information</text><text x="960" y="210" text-anchor="middle" class="tl-cap">Bits mirror genes; networks arise.</text></g>
       <g><circle cx="1140" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="1140" y="190" text-anchor="middle" class="tl-label">7 • Living Law</text><text x="1140" y="210" text-anchor="middle" class="tl-cap">Time becomes alive within observers.</text></g>
     </svg>
+
     <div class="note" style="margin-top:10px">
       <strong>Captions:</strong>
       <ol style="margin:6px 0 0 18px">
@@ -242,7 +285,7 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
 (() => {
   const $ = s => document.querySelector(s);
 
-  /* ===== Canvas: Physics Field (E, ∇E, ∇²E) ===== */
+  /* ===== Physics Field (E, ∇E, ∇²E) ===== */
   const field=$('#field'), fctx=field.getContext('2d',{alpha:false});
   const lumps = Array.from({length:6},()=>({
     A: 0.8 + 1.2*Math.random(),
@@ -285,7 +328,7 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
     fpsEl.textContent="fps "+(fps|0);
   }
 
-  /* ===== Background Orbs (hybrid, light) ===== */
+  /* ===== Background Orbs ===== */
   const orbs=$('#orbs'), octx=orbs.getContext('2d',{alpha:true});
   let orbAlpha=0.0, orbAmp=1.0, orbHueShift=0.0;
   const BIG=8, SMALL=24; let ORBS=[];
@@ -313,7 +356,7 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
     octx.globalCompositeOperation='source-over';
   }
 
-  /* ===== Audio: resume-first, warm-video, unlock ping, VU + Test Ping, +9 dB gain ===== */
+  /* ===== Audio: iOS-safe + VU + Ping ===== */
   const warmVid=$('#warmVid');
   const startBtn=$('#startAudio'), vol=$('#vol'), tau=$('#tauAccel');
   const ctxState=$('#ctxState'), audioChip=$('#audioState'), vuDot=$('#vuDot'), pingBtn=$('#pingBtn');
@@ -325,14 +368,14 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
   function ensureCtx(){ if(actx) return;
     actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
     master=actx.createGain(); master.gain.value=0.0;
-    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20); // +9 dB
+    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20); /* +9 dB */
     lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1;
     analyser=actx.createAnalyser(); analyser.fftSize=512;
     master.connect(makeUp).connect(lpf).connect(analyser).connect(actx.destination);
     ctxState.textContent="ctx: "+actx.state;
   }
-  function warmupVideo(){ return new Promise(res=>{ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const stream=c.captureStream?c.captureStream(5):null; if(stream){ warmVid.srcObject=stream; warmVid.play().then(res).catch(res);} else res(); }); }
-  function unlockPing(){ const len=Math.floor(.04*actx.sampleRate), buf=actx.createBuffer(1,len,actx.sampleRate), ch=buf.getChannelData(0); for(let i=0;i<len;i++) ch[i]=Math.sin(2*Math.PI*800*(i/actx.sampleRate))*Math.exp(-i/400); const src=actx.createBufferSource(); src.buffer=buf; src.connect(master); src.start(); }
+  function warmupVideo(){ return new Promise(res=>{ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const s=c.captureStream?c.captureStream(5):null; if(s){ warmVid.srcObject=s; warmVid.play().then(res).catch(res);} else res(); }); }
+  function unlockPing(){ const len=Math.floor(.04*actx.sampleRate), b=actx.createBuffer(1,len,actx.sampleRate), ch=b.getChannelData(0); for(let i=0;i<len;i++) ch[i]=Math.sin(2*Math.PI*800*(i/actx.sampleRate))*Math.exp(-i/400); const src=actx.createBufferSource(); src.buffer=b; src.connect(master); src.start(); }
   function buildEngine(){ if(osc) return; osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE; fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmOsc.frequency.value=.5; fmGain.gain.value=1.2; fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master); osc.start(); fmOsc.start(); }
   function smooth(p,v,t=.10){ try{ p.setTargetAtTime(v, actx.currentTime, t);}catch{ p.value=v; } }
   function applyVolume(){ if(!actx) return; const target = audioOn ? Math.max(parseFloat(vol.value), .22) : 0.0; smooth(master.gain, target, .12); }
@@ -347,32 +390,25 @@ E = hν = mc²,   t ~ m/c   (heuristic links; context in discussion)
     buildEngine();
     audioOn=!audioOn; setAudioState(audioOn); applyVolume(); applyFM();
 
-    // orbs fade follow audio
     if(audioOn){ let a=orbAlpha; (function fade(){ a=Math.min(1,a+.05); orbAlpha=a; if(a<1) requestAnimationFrame(fade); })(); }
     else{ let a=orbAlpha; (function fade(){ a=Math.max(0,a-.06); orbAlpha=a; if(a>0) requestAnimationFrame(fade); })(); }
   }, {passive:true});
 
   pingBtn.addEventListener('click', ()=>{ if(!actx) return; unlockPing(); }, {passive:true});
 
-  // resume hooks
   ['touchend','pointerdown'].forEach(ev=>{ window.addEventListener(ev, ()=>{ if(actx && actx.state==='suspended') actx.resume(); }, {passive:true}); });
   document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume().then(()=>{ctxState.textContent="ctx: "+actx.state;}); }});
 
-  // τ̈ ↔ orb modulation
+  /* τ̈ ↔ orb modulation + loops */
   tau.addEventListener('input', ()=>{ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; applyFM(); }, {passive:true});
   vol.addEventListener('input', applyVolume, {passive:true});
-
-  /* ===== Loops ===== */
   (function frameLoop(){ renderField(); requestAnimationFrame(frameLoop); })();
   (function orbLoop(){ renderOrbs(); requestAnimationFrame(orbLoop); })();
 
-  /* ===== Utils ===== */
   function hsl2rgb(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
 
-  // VU monitor
+  // Kick VU monitor & init orb modulation
   requestAnimationFrame(updateVU);
-
-  // Initialize orb modulation from default τ̈
   const tauInit=$('#tauAccel'); if(tauInit){ const tacc=parseFloat(tauInit.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
 })();
 </script>
