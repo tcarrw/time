@@ -1,6 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Are You Satisfied – Reflection Portal</title>
+
+<!-- Shared color system -->
+<link rel="stylesheet" href="https://assets.plnt.earth/colors-daynight.css">
+
+<style>
+body{
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  margin:2rem auto;
+  max-width:700px;
+  line-height:1.6;
+}
+h1,h2{font-weight:600;}
+section{margin-top:2rem;}
+button{
+  background:var(--accent);
+  color:var(--bg);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:6px;
+  cursor:pointer;
+}
+#lyrics p{margin:0.5rem 0;}
+.no{color:var(--accent);font-style:italic;}
+textarea{
+  width:100%;
+  min-height:200px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:1rem;
+  border-radius:6px;
+  resize:vertical;
+}
+#prompts ol{padding-left:1.2rem;}
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+<h1>Are You Satisfied? / Er du fornøyd?</h1>
+<p>
+This page is a reflection and language-learning exercise based on Marina’s song
+<b>“Are You Satisfied?”</b> (YouTube embed below).  
+Listen, read the bilingual lyrics one section at a time, and write what the music reminds you of in your own life.  
+Your notes stay private on this device only.
+</p>
+
+<!-- YouTube embed -->
+<div style="text-align:center">
+<iframe width="560" height="315"
+src="https://www.youtube-nocookie.com/embed/VHi1kGbWo9Q"
+title="Are You Satisfied – Marina" frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<section id="lyrics">
+  <h2>Lyrics / Tekst</h2>
+
+  <div class="verse">
+    <p>Are you satisfied with an average life?<br><span class="no">Er du fornøyd med et gjennomsnittlig liv?</span></p>
+    <p>Do I need to lie to make my way in life?<br><span class="no">Må jeg lyve for å klare meg i livet?</span></p>
+  </div>
+
+  <div class="verse hidden">
+    <p>High achiever, don't you see?<br><span class="no">Høyt presterende, ser du ikke?</span></p>
+    <p>Baby, nothing comes for free.<br><span class="no">Ingenting kommer gratis.</span></p>
+    <p>They say I'm a control freak,<br><span class="no">De sier jeg er en kontrollfreak,</span></p>
+    <p>Driven by a greed to succeed,<br><span class="no">Drevet av grådighet etter å lykkes,</span></p>
+    <p>Nobody can stop me.<br><span class="no">Ingen kan stoppe meg.</span></p>
+  </div>
+
+  <div class="verse hidden">
+    <p>'Cause it's my problem if I wanna pack up and run away.<br><span class="no">For det er mitt problem hvis jeg vil pakke og stikke av.</span></p>
+    <p>It's my business if I feel the need to smoke and drink and sway.<br><span class="no">Det er min sak hvis jeg føler for å røyke, drikke og svaie.</span></p>
+  </div>
+
+  <div class="verse hidden">
+    <p>Are you satisfied with an easy ride?<br><span class="no">Er du fornøyd med en enkel tur?</span></p>
+    <p>Once you cross the line, will you be satisfied?<br><span class="no">Når du krysser linjen, vil du være fornøyd?</span></p>
+  </div>
+
+  <button id="next">Next Verse ▸</button>
+</section>
+
+<section id="prompts">
+  <h2>Reflection / Refleksjon</h2>
+  <ol>
+    <li>What did I feel in my body while listening?</li>
+    <li>What memory or image from my own life came up?</li>
+    <li>What did that moment teach me about myself?</li>
+    <li>What part of the lyric felt true for me right now?</li>
+    <li>What do I want to carry forward from this feeling?</li>
+    <li>How can I return to calm when I’m done writing?</li>
+  </ol>
+</section>
+
+<section id="journal">
+  <h2>My Reflection / Min refleksjon</h2>
+  <textarea id="notes" placeholder="Write here..."></textarea>
+</section>
+
+<script>
+/* --- Local save --- */
+const box = document.getElementById('notes');
+const key = 'timeNotes';
+box.value = localStorage.getItem(key) || '';
+box.addEventListener('input',()=>localStorage.setItem(key,box.value));
+
+/* --- Step-through lyrics --- */
+const verses = document.querySelectorAll('.verse');
+let current = 0;
+const nextBtn = document.getElementById('next');
+nextBtn.addEventListener('click',()=>{
+  current++;
+  if(current < verses.length){
+    verses[current].classList.remove('hidden');
+    verses[current].scrollIntoView({behavior:'smooth',block:'start'});
+    if(current===verses.length-1){nextBtn.disabled=true; nextBtn.textContent='End';}
+  }
+});
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="dark light"/>
