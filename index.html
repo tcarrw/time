@@ -3,102 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>time.plnt.earth · Kugelblitz of Color</title>
-
-<!-- Illumina 1 : Time / v5 Kugelblitz of Color -->
-<!-- Equation : τ = E / c³ -->
-<!-- Awaiting Motion : 128 Hz Dormant -->
-
+<title>time.plnt.earth · Equilibrium</title>
 <link rel="stylesheet" href="https://assets.plnt.earth/colors-daynight.css">
-
 <style>
-:root {
-  --black:#000;
-  --vio:#201933;
-  --rose:#e1a4b3;
-  --gold:#f5c542;
-  --parchment:#f9f6ee;
-  --text:#111;
+:root{
+  --black:#000;--vio:#201933;--rose:#e1a4b3;--gold:#f5c542;--text:#fff;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;width:100%;overflow:hidden;background:var(--black);
   color:var(--text);font-family:"Poppins","Segoe Script",sans-serif;}
-canvas{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--black);}
+canvas{position:absolute;inset:0;background:var(--black);}
 #equation{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  color:#fff;font-size:2rem;letter-spacing:0.05em;opacity:0;
-  transition:opacity 2s ease;
+  color:#fff;font-size:2rem;letter-spacing:.05em;opacity:0;transition:opacity 2s;
+}
+#subs{
+  position:absolute;top:60%;left:50%;transform:translateX(-50%);
+  color:#f5c542;font-size:1rem;opacity:0;transition:opacity 2s 1s;
 }
 #links{
   position:fixed;bottom:1.2rem;width:100%;text-align:center;
-  font-size:1rem;color:var(--text);opacity:0;transition:opacity 2s ease 2s;
+  font-size:1rem;color:#fff;opacity:0;transition:opacity 2s 2s;
 }
-#links a{color:var(--text);text-decoration:none;margin:0 .5rem;}
-#star{position:fixed;bottom:1rem;right:1rem;font-size:1.3rem;color:#ddd;
-  opacity:.4;transition:opacity 1s ease,color 1s ease;pointer-events:none}
-@media(max-width:600px){
-  #equation{font-size:1.4rem;}
-  #star{font-size:1rem;bottom:.7rem;right:.7rem;}
+#links a{color:#fff;text-decoration:none;margin:0 .5rem;}
+#glyph{
+  position:fixed;bottom:1rem;right:1rem;font-size:1.3rem;color:#888;opacity:.5;
+  transition:opacity 1s,color 1s;
 }
+body.active #glyph{color:#f5c542;opacity:.9;}
 </style>
 </head>
 <body>
-
 <canvas id="field"></canvas>
 <div id="equation">τ = E / c³</div>
+<div id="subs">∂τ/∂x = (∂E/∂x)/c³ · Resonance Dormant</div>
 <div id="links">
   <a href="https://mirrorhoney.plnt.earth">← mirrorhoney</a> ·
   <a href="https://four.plnt.earth">four</a> ·
   <a href="https://school.plnt.earth">school →</a>
 </div>
-<div id="star">✦</div>
-<audio id="hum" loop muted volume="0.2"></audio>
+<div id="glyph">🌀</div>
 
 <script>
-const c=document.getElementById("field"),x=c.getContext("2d");
-let w,h,ignited=false,colors=[],baseColors=["#201933","#642b73","#e1a4b3","#f5c542"];
-function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;}
-resize();window.addEventListener("resize",resize);
-
-function drawField(){
-  const g=x.createLinearGradient(0,0,w,h);
-  colors.forEach((col,i)=>g.addColorStop(i/(colors.length-1),col));
-  x.fillStyle=g;x.fillRect(0,0,w,h);
+const c=document.getElementById('field'),x=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight;}
+resize();addEventListener('resize',resize);
+const cols=["#201933","#642b73","#e1a4b3","#f5c542"];
+function draw(){
+  const g=x.createLinearGradient(0,0,c.width,c.height);
+  cols.forEach((col,i)=>g.addColorStop(i/(cols.length-1),col));
+  x.fillStyle=g;x.fillRect(0,0,c.width,c.height);
 }
-function ignite(){
-  if(ignited) return;
-  ignited=true;
-  document.body.style.background="#fff";
-  setTimeout(()=>{
-    colors=[...baseColors];
-    drawField();
-    document.getElementById("equation").style.opacity=1;
-    document.getElementById("links").style.opacity=1;
-  },250);
-}
-c.addEventListener("click",ignite);
-
-// ✦ glyph self-check
-const star=document.getElementById("star");
-const keys=["illuminaCycle","plntKeys","moonPhase","domainVisited"];
-function checkKeys(){
-  let found=false;
-  for(const k of keys){if(localStorage.getItem(k)){found=true;break;}}
-  if(found){star.style.opacity=".8";star.style.color="#f5e6c0";}
-}
-checkKeys();
-window.addEventListener("storage",()=>{
-  let found=false;
-  for(const k of keys){if(localStorage.getItem(k)){found=true;break;}}
-  if(found){
-    // remap color blend subtly
-    baseColors.reverse();
-    colors=[...baseColors];
-    drawField();
-    star.animate([{opacity:.3,color:"#fff"},{opacity:1,color:"#f5e6c0"},
-      {opacity:.3,color:"#ddd"}],{duration:2000});
-  }
-});
+draw();
+c.onclick=()=>{
+  document.body.classList.add('active');
+  document.getElementById('equation').style.opacity=1;
+  document.getElementById('subs').style.opacity=1;
+  document.getElementById('links').style.opacity=1;
+};
 </script>
 </body>
 </html>
