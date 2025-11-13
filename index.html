@@ -3,54 +3,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>time.plnt.earth</title>
+<title>time.plnt.earth — Illumina Time Instrument</title>
+
 <style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 html,body{
-  margin:0;padding:0;
-  height:100%;width:100%;
-  background:#0b0b0b;
-  color:#e0e0e0;
-  font-family:"Courier New",monospace;
+  height:100%;
+  width:100%;
+  background:#0a0a0f;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  color:#f8f8ff;
+  overflow-x:hidden;
+}
+
+/* BASE LAYOUT */
+#app{
+  position:relative;
+  min-height:100vh;
+  width:100%;
+  padding:20px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  gap:20px;
 }
-.circle{
-  width:220px;height:220px;
-  border-radius:50%;
-  border:2px solid #888;
-  box-shadow:0 0 40px rgba(255,255,255,0.1);
-  display:flex;align-items:center;justify-content:center;
-  animation:turn 240s linear infinite;
+
+/* TITLE */
+#title{
+  font-size:1.8rem;
+  letter-spacing:0.03em;
+  text-align:center;
+  margin-top:10px;
+  color:#e8e4ff;
+  text-shadow:0 0 12px rgba(168,140,255,0.35);
 }
-@keyframes turn{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
+
+/* TIME MODE GRID */
+#modeGrid{
+  width:100%;
+  max-width:700px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:20px;
 }
-h1{
-  margin-top:2rem;
+
+@media (max-width:480px){
+  #modeGrid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+}
+
+/* MODE BUTTON (base state) */
+.modeBtn{
+  padding:16px;
+  border-radius:16px;
+  background:rgba(40,40,50,0.4);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(200,190,255,0.18);
+  color:#f8f8ff;
   font-size:1rem;
-  letter-spacing:0.15em;
-  color:#aaa;
-  text-transform:uppercase;
+  letter-spacing:0.02em;
+  text-align:center;
+  transition:background 0.25s ease, transform 0.2s ease;
 }
-footer{
+.modeBtn:active{
+  transform:scale(0.96);
+}
+
+/* EXPANDED ILLUMINA CARD */
+.modeCard{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  max-width:660px;
+  width:92%;
+  background:rgba(15,15,25,0.65);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:22px 22px 0 0;
+  padding:24px;
+  padding-bottom:90px;
+  color:#f8f8ff;
+  line-height:1.55;
+  font-size:1rem;
+  transform:translateY(110%);
+  opacity:0;
+  transition:transform 0.35s ease, opacity 0.35s ease;
+}
+.modeCard.active{
+  transform:translateY(0%);
+  opacity:1;
+}
+
+/* CARD TITLE */
+.modeCard h2{
+  font-size:1.4rem;
+  margin-bottom:10px;
+  color:#fff;
+  text-shadow:0 0 10px rgba(255,255,255,0.2);
+}
+
+/* CLOSE BUTTON */
+#closeCard{
+  position:fixed;
+  bottom:24px;
+  left:0;
+  right:0;
+  margin:auto;
+  width:70%;
+  max-width:320px;
+  padding:14px;
+  text-align:center;
+  border-radius:12px;
+  background:rgba(255,255,255,0.15);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.2);
+  font-size:1rem;
+  letter-spacing:0.02em;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s ease;
+}
+#closeCard.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* BACKGROUND GRADIENT SNAP CONTAINER */
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  background:#0a0a0f;
+  transition:none; /* snap, no fade */
+}
+
+/* TIME MODE COLORS (base hues) */
+:root{
+  --clock:#7a7a85;
+  --felt:#ff9eb5;
+  --cycle:#a27cff;
+  --story:#c39bff;
+  --frequency:#ffffff;
+  --motion:#ff3ea7;
+  --pulse:#ffeab4;
+  --reflection:#9acbff;
+  --color:#ffd17a;
+  --breath:#8ffff0;
+  --seed:#ffdd66;
+  --dream:#001133;
+
+  /* violet-pearl base */
+  --base:#8470ff;
+}
+
+/* GRADIENT BUILDER */
+.gradientSnap{
+  background:linear-gradient(135deg, var(--base), var(--tgt));
+}
+
+/* VISUALIZER CONTAINER */
+#visualizer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:180px;
+  margin:auto;
+  max-width:720px;
+  pointer-events:none;
+  opacity:0.75;
+}
+
+/* SPECTRAL LINE */
+#specLine{
+  width:100%;
+  height:2px;
+  background:rgba(255,255,255,0.5);
+  margin-top:70px;
+  box-shadow:0 0 12px rgba(255,255,255,0.4);
+}
+
+/* MIRROR RIPPLE CANVAS */
+#ripple{
   position:absolute;
-  bottom:3%;
-  font-size:0.75rem;
-  opacity:0.5;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  opacity:0.25;
 }
+
 </style>
+
 </head>
 <body>
-<div class="circle">
-  <span style="color:#ffd8d8;">Taylor</span>
+<div id="bg"></div>
+
+<div id="app">
+
+  <div id="title">Illumina • Time Instrument</div>
+
+  <div id="modeGrid">
+
+    <div class="modeBtn" data-mode="clock">Clock Time</div>
+    <div class="modeBtn" data-mode="felt">Felt Time</div>
+
+    <div class="modeBtn" data-mode="cycle">Cycle Time</div>
+    <div class="modeBtn" data-mode="story">Story Time</div>
+
+    <div class="modeBtn" data-mode="frequency">Frequency Time</div>
+    <div class="modeBtn" data-mode="motion">Motion Time</div>
+
+    <div class="modeBtn" data-mode="pulse">Pulse Time</div>
+    <div class="modeBtn" data-mode="reflection">Reflection Time</div>
+
+    <div class="modeBtn" data-mode="color">Color Time</div>
+    <div class="modeBtn" data-mode="breath">Breath Time</div>
+
+    <div class="modeBtn" data-mode="seed">Seed Time</div>
+    <div class="modeBtn" data-mode="dream">Dream Time</div>
+
+  </div>
+
 </div>
-<h1>time · plnt · earth</h1>
-<footer>
-  Dagny · Sigrid · Marina · Sabrina · Dua · Ariana · Monique
-</footer>
+
+<!-- MODE CARDS (hidden until activated) -->
+
+<div id="clock-card"  class="modeCard"><h2>Clock Time</h2>External, measurable, world-time. Hours, minutes, calendars. Useful but not central.</div>
+
+<div id="felt-card"   class="modeCard"><h2>Felt Time</h2>Emotional duration. Moments that stretch or compress based on resonance.</div>
+
+<div id="cycle-card"  class="modeCard"><h2>Cycle Time</h2>The 42-day Illumina rhythm. Begin → Build → Shift → Pulse.</div>
+
+<div id="story-card"  class="modeCard"><h2>Story Time</h2>Narrative arcs: beginnings, turns, resolutions. The architecture of meaning.</div>
+
+<div id="frequency-card" class="modeCard"><h2>Frequency Time</h2>Time expressed as oscillation. Tones, wavelengths, resonance fields.</div>
+
+<div id="motion-card" class="modeCard"><h2>Motion Time</h2>Velocity-based time. Acceleration, inertia, escape, flow.</div>
+
+<div id="pulse-card" class="modeCard"><h2>Pulse Time</h2>Emotional ignition. Activation moments where creation snaps alive.</div>
+
+<div id="reflection-card" class="modeCard"><h2>Reflection Time</h2>Nonlinear time. Past events lighting up inside the present.</div>
+
+<div id="color-card" class="modeCard"><h2>Color Time</h2>Time expressed as wavelength. Every color holds a temporal signature.</div>
+
+<div id="breath-card" class="modeCard"><h2>Breath Time</h2>Inhale → exhale → hold. The cycle’s organic rhythm.</div>
+
+<div id="seed-card" class="modeCard"><h2>Seed Time</h2>The moment before action. Intention emerging ahead of movement.</div>
+
+<div id="dream-card" class="modeCard"><h2>Dream Time</h2>Subconscious integration. The imagination’s own timeline.</div>
+
+<!-- CLOSE BUTTON -->
+<div id="closeCard">Close</div>
+
+<!-- VISUALIZER -->
+<div id="visualizer">
+  <div id="specLine"></div>
+  <canvas id="ripple"></canvas>
+</div>
+
+
+<script>
+
+/* -------------------------------
+   TIME MODE STATE + DOM HOOKS
+-------------------------------- */
+
+const bg = document.getElementById("bg");
+const modeButtons = document.querySelectorAll(".modeBtn");
+const closeCardBtn = document.getElementById("closeCard");
+
+let activeCard = null;     // currently open time mode card
+let activeMode = null;     // currently selected mode
+let rippleCtx = null;      // used in Part 4
+let rippleCanvas = null;   // used in Part 4
+let freqTarget = 0;        // used in Part 4 (frequency time)
+let rippleActive = false;  // used in Part 4
+
+/* -------------------------------
+   COLOR MAP (MATCHES YOUR SPEC)
+-------------------------------- */
+
+const modeColors = {
+  clock:      "var(--clock)",
+  felt:       "var(--felt)",
+  cycle:      "var(--cycle)",
+  story:      "var(--story)",
+  frequency:  "var(--frequency)",
+  motion:     "var(--motion)",
+  pulse:      "var(--pulse)",
+  reflection: "var(--reflection)",
+  color:      "var(--color)",
+  breath:     "var(--breath)",
+  seed:       "var(--seed)",
+  dream:      "var(--dream)"
+};
+
+/* -------------------------------
+   OPEN MODE CARD
+-------------------------------- */
+
+function openModeCard(modeName){
+  
+  // close previous card if open
+  if(activeCard){
+    activeCard.classList.remove("active");
+  }
+
+  // show new card
+  const card = document.getElementById(`${modeName}-card`);
+  if(card){
+    card.classList.add("active");
+    activeCard = card;
+  }
+
+  // activate close button
+  closeCardBtn.classList.add("active");
+
+  // gradient snap
+  bg.className = ""; // reset classes
+  const color = modeColors[modeName];
+  bg.style.setProperty("--tgt", color);
+  bg.classList.add("gradientSnap");
+
+  // track state
+  activeMode = modeName;
+
+  // send frequency to Part 4 audio engine & ripple
+  setFrequencyForMode(modeName);
+}
+
+/* -------------------------------
+   CLOSE MODE CARD
+-------------------------------- */
+
+function closeCard(){
+  if(activeCard){
+    activeCard.classList.remove("active");
+    activeCard = null;
+  }
+  closeCardBtn.classList.remove("active");
+
+  // reset background
+  activeMode = null;
+  bg.className = "";
+  bg.style.background = "#0a0a0f";
+
+  // reset audio + ripple (Part 4)
+  stopAllAudio();
+  stopRipple();
+}
+
+/* -------------------------------
+   MODE BUTTON EVENTS
+-------------------------------- */
+
+modeButtons.forEach(btn => {
+  btn.addEventListener("click", ()=>{
+    const modeName = btn.dataset.mode;
+    openModeCard(modeName);
+  });
+});
+
+/* CLOSE BUTTON */
+closeCardBtn.addEventListener("click", closeCard);
+
+/* -------------------------------
+   FREQUENCY MAPPING FOR PART 4
+-------------------------------- */
+
+function setFrequencyForMode(mode){
+  switch(mode){
+    case "clock":      freqTarget = 0; break;
+    case "felt":       freqTarget = 128; break;
+    case "cycle":      freqTarget = 432; break;
+    case "story":      freqTarget = 216; break;
+    case "frequency":  freqTarget = 440; break;
+    case "motion":     freqTarget = 160; break;
+    case "pulse":      freqTarget = 528; break;
+    case "reflection": freqTarget = 96; break;
+    case "color":      freqTarget = 280; break;
+    case "breath":     freqTarget = 64; break;
+    case "seed":       freqTarget = 111; break;
+    case "dream":      freqTarget = 24; break;
+    default:           freqTarget = 0;
+  }
+
+  // Part 4 will implement this behavior
+  startTone(freqTarget);
+  startRipple(freqTarget);
+}
+
+/* -------------------------------
+   PLACEHOLDERS (replaced in Part 4)
+-------------------------------- */
+
+function startTone(){ /* replaced in Part 4 */ }
+function stopAllAudio(){ /* replaced in Part 4 */ }
+function startRipple(){ /* replaced in Part 4 */ }
+function stopRipple(){ /* replaced in Part 4 */ }
+
+</script>
+<script>
+
+/* ============================================================
+   ILLUMINA TIME INSTRUMENT — AUDIO ENGINE + RIPPLE VISUALIZER
+   ------------------------------------------------------------
+   Soft filtered tones, smooth fades, AirPlay-safe, 
+   frequency-linked ripple + spectral flutter.
+   (All hooks wired from Part 3)
+============================================================ */
+
+/* -------------------------------
+   AUDIO CONTEXT
+-------------------------------- */
+
+let AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+let osc = null;
+let gainNode = null;
+
+function ensureAudio(){
+  if(!audioCtx){
+    audioCtx = new AudioCtx();
+  }
+}
+
+/* -------------------------------
+   START TONE (soft filtered wave)
+-------------------------------- */
+
+function startTone(freq){
+
+  ensureAudio();
+
+  stopAllAudio(); // reset first
+
+  if(freq <= 0) return; // modes like "clock" silent
+
+  osc = audioCtx.createOscillator();
+  gainNode = audioCtx.createGain();
+
+  // Soft filtered tone = sine + gentle low-pass
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.value = 1200;
+
+  osc.type = "sine";
+  osc.frequency.value = freq;
+
+  gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.25);
+
+  osc.connect(filter);
+  filter.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  osc.start();
+}
+
+/* -------------------------------
+   STOP ALL AUDIO (smooth fade out)
+-------------------------------- */
+
+function stopAllAudio(){
+  if(gainNode){
+    try{
+      gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
+    }catch(e){}
+  }
+  if(osc){
+    try{
+      osc.stop(audioCtx.currentTime + 0.3);
+    }catch(e){}
+  }
+  osc = null;
+  gainNode = null;
+}
+
+/* ============================================================
+   RIPPLE VISUALIZER (Mirror Ripple + Spectral Line Flutter)
+============================================================ */
+
+rippleCanvas = document.getElementById("ripple");
+rippleCtx = rippleCanvas.getContext("2d");
+
+let rippleWidth = 0;
+let rippleHeight = 0;
+let rippleTime = 0;
+let rippleRunning = false;
+
+function resizeRipple(){
+  rippleCanvas.width = rippleCanvas.clientWidth;
+  rippleCanvas.height = rippleCanvas.clientHeight;
+  rippleWidth = rippleCanvas.width;
+  rippleHeight = rippleCanvas.height;
+}
+
+window.addEventListener("resize", resizeRipple);
+resizeRipple();
+
+/* -------------------------------
+   START RIPPLE
+-------------------------------- */
+
+function startRipple(freq){
+  rippleActive = true;
+  rippleTime = 0;
+  freqTarget = freq;
+  if(!rippleRunning){
+    rippleRunning = true;
+    animateRipple();
+  }
+}
+
+/* -------------------------------
+   STOP RIPPLE
+-------------------------------- */
+
+function stopRipple(){
+  rippleActive = false;
+}
+
+/* -------------------------------
+   RIPPLE ANIMATION LOOP
+-------------------------------- */
+
+function animateRipple(){
+  if(!rippleRunning) return;
+
+  requestAnimationFrame(animateRipple);
+
+  rippleTime += 0.016;
+
+  rippleCtx.clearRect(0,0,rippleWidth,rippleHeight);
+
+  if(!rippleActive) return;
+
+  // Frequency-driven ripple spacing
+  const base = freqTarget > 0 ? freqTarget : 1;
+  const waves = 5;
+  const maxRadius = rippleWidth * 0.6;
+
+  rippleCtx.strokeStyle = "rgba(255,255,255,0.20)";
+  rippleCtx.lineWidth = 1.2;
+
+  for(let i=0; i<waves; i++){
+    let t = rippleTime + i * 0.4;
+    let radius = (Math.sin(t * (base/120)) * 0.5 + 0.5) * maxRadius;
+    rippleCtx.beginPath();
+    rippleCtx.arc(
+      rippleWidth/2,
+      rippleHeight/2,
+      radius,
+      0,
+      Math.PI*2
+    );
+    rippleCtx.stroke();
+  }
+
+  // Spectral line flutter (based on freq)
+  const spec = document.getElementById("specLine");
+  let amp = Math.sin(rippleTime * (base/50)) * 6;
+  spec.style.transform = `translateY(${amp}px)`;
+}
+
+</script>
+
 </body>
 </html>
