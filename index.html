@@ -365,15 +365,16 @@ function closeCard(){
   }
   closeCardBtn.classList.remove("active");
 
-  // reset background
+  // reset background correctly (remove inline override)
   activeMode = null;
   bg.className = "";
-  bg.style.background = "#0a0a0f";
+  bg.style.background = "";   // <-- FIXED here
 
-  // reset audio + ripple (Part 4)
+  // reset audio + ripple
   stopAllAudio();
   stopRipple();
 }
+
 
 /* -------------------------------
    MODE BUTTON EVENTS
