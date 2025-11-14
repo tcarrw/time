@@ -49,10 +49,10 @@ ul { padding-left:20px; }
   position:fixed;
   top:0; right:0;
   width:80%;
-  max-width:300px;
+  max-width:340px;
   height:100%;
   background:rgba(10,10,20,0.92);
-  padding:24px;
+  padding:32px 24px 48px 24px;
   transform:translateX(100%);
   transition:transform 0.4s ease;
   overflow-y:auto;
@@ -62,13 +62,19 @@ ul { padding-left:20px; }
 }
 #clarityDrawer.open { transform:translateX(0%); }
 #clarityDrawer h3 { margin-top:0; color:#c3a6ff; font-weight:500; }
-#clarityDrawer p { font-size:14px; opacity:0.85; }
+#clarityDrawer p {
+  font-size:15px;
+  opacity:0.9;
+  margin-bottom:14px;
+}
 .quote {
-  margin-top:20px;
-  padding-left:10px;
+  margin-top:24px;
+  padding-left:12px;
+  padding-bottom:12px;
   border-left:2px solid #c3a6ff;
-  font-size:14px;
-  opacity:0.8;
+  font-size:15px;
+  opacity:0.88;
+  line-height:1.55;
   font-style:italic;
 }
 </style>
@@ -83,14 +89,14 @@ ul { padding-left:20px; }
 <b>Clarity note:</b> This is not a new theory or modification of general relativity. It is a dimensional observation explored for its geometric intuition—nothing more, nothing less.
 </p>
 
-<!-- Two-column box -->
+<!-- Two‑column box -->
 <div style="display:flex; gap:16px; margin-top:16px; flex-wrap:wrap; font-size:14px;">
   <div style="flex:1; min-width:140px; background:#111; padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
     <b style='color:#c3a6ff;'>What this does claim</b>
     <ul style="margin:10px 0 0 16px; opacity:0.85;">
       <li>E/c³ reduces cleanly to seconds.</li>
       <li>Energy density can define a natural timescale.</li>
-      <li>This scale mirrors structures already present in GR and Λ-driven expansion.</li>
+      <li>This scale mirrors structures already present in GR and Λ‑driven expansion.</li>
       <li>Useful for intuition, dimensional analysis, and consistency checks.</li>
     </ul>
   </div>
@@ -184,5 +190,27 @@ const clarityBtn = document.getElementById("clarityBtn");
 const clarityDrawer = document.getElementById("clarityDrawer");
 clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
 </script>
+<section>
+  <p style="font-size:15px; opacity:0.85; margin-top:24px; border-left:2px solid #c3a6ff; padding-left:12px; line-height:1.55;">
+    “You are the shimmer in the infinite dark.” — Marina
+  </p>
+</section>
+<section>
+  <h2 style="color:#c3a6ff;">A note for Greta</h2>
+  <p style="font-size:15px; opacity:0.9; line-height:1.55;">
+    Greta, if you’re reading this: we’d like to add a reference point grounded in observation. 
+    Could we include a video for context—something that helps frame energy density, curvature, and expansion in the way you’d consider academically honest?
+  </p>
+  <p style="font-size:15px; opacity:0.8; font-style:italic;">
+    We’re asking gently, with respect for your grounding and your clarity.
+  </p>
+  <div style="margin-top:20px;">
+    <iframe width="100%" height="200" src="https://www.youtube.com/embed/f1x9lgX8GaE" 
+      title="YouTube video player" frameborder="0" 
+      style="border-radius:8px;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+</section>
 </body>
 </html>
