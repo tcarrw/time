@@ -6,57 +6,42 @@
 <title>time.plnt.earth</title>
 
 <style>
-/* ---------------------------------------------------
-   GLOBAL STYLE — dark, elegant, mobile-first
---------------------------------------------------- */
 html, body {
   margin:0; padding:0;
   background:#000;
   color:#e9e9e9;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  overflow-x:hidden;
+  font-family:-apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  line-height:1.6;
 }
-
 section {
-  padding: 40px 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding:40px 24px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
 }
-
-h1, h2 {
-  font-weight:500;
-  margin-bottom:14px;
+h1, h2 { font-weight:500; color:#c3a6ff; margin-bottom:12px; }
+p { opacity:0.88; }
+.code {
+  background:#111;
+  padding:6px 10px;
+  border-radius:6px;
+  font-family:Menlo, monospace;
+  font-size:13px;
+  opacity:0.9;
 }
+.subtle { opacity:0.55; font-size:12px; }
 
-p {
-  line-height:1.55;
-  opacity:0.85;
-}
-
-.accent { color:#c3a6ff; }
-.micro {
-  opacity:0.55;
-  font-size:11px;
-  margin-top:10px;
-  line-height:1.4;
-}
-
-/* ---------------------------------------------------
-   SIGRID CLARITY BUTTON
---------------------------------------------------- */
+/* --- Sigrid clarity drawer --- */
 #clarityBtn {
   position:fixed;
   top:12px; right:12px;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(6px);
   padding:8px 14px;
   border-radius:14px;
-  font-size:13px;
+  background:rgba(255,255,255,0.12);
   border:1px solid rgba(255,255,255,0.15);
+  font-size:13px;
+  backdrop-filter:blur(6px);
   cursor:pointer;
   z-index:9999;
 }
-
-/* CLARITY DRAWER */
 #clarityDrawer {
   position:fixed;
   top:0; right:0;
@@ -69,320 +54,178 @@ p {
   transition:transform 0.45s ease;
   overflow-y:auto;
   backdrop-filter:blur(12px);
-  z-index:9998;
   border-left:1px solid rgba(255,255,255,0.08);
+  z-index:9998;
 }
-
-#clarityDrawer.open {
-  transform:translateX(0%);
-}
-
-#clarityDrawer h3 {
-  margin-top:0;
-  font-weight:500;
-  color:#c3a6ff;
-}
-
-#clarityDrawer p {
-  font-size:13px;
-  opacity:0.85;
-  margin-bottom:14px;
-  line-height:1.5;
-}
-
-#clarityQuote {
-  margin-top:28px;
-  padding:12px 14px;
+#clarityDrawer.open { transform:translateX(0%); }
+#clarityDrawer h3 { margin-top:0; font-weight:500; color:#c3a6ff; }
+#clarityDrawer p { font-size:13px; opacity:0.85; margin-bottom:12px; }
+.quote {
+  margin-top:24px;
+  padding-left:12px;
   border-left:2px solid #c3a6ff;
   font-size:13px;
   opacity:0.8;
-  line-height:1.55;
   font-style:italic;
-}
-
-/* ---------------------------------------------------
-   SPHERE, GRID, UI (unchanged)
---------------------------------------------------- */
-#sphere {
-  width:120px; height:120px;
-  border-radius:50%;
-  background: radial-gradient(circle, #c3a6ff 0%, #5a4a80 70%, #1a1330 100%);
-  animation:breathe 4s ease-in-out infinite;
-  margin-top:20px;
-}
-
-@keyframes breathe {
-  0% { transform:scale(1); filter:brightness(0.9); }
-  50% { transform:scale(1.08); filter:brightness(1.2); }
-  100% { transform:scale(1); filter:brightness(0.9); }
-}
-
-#curvatureGrid { width:100%; max-width:360px; margin:0 auto; display:block; }
-#curvatureGrid line { stroke:#555; stroke-width:0.5; transition:0.4s; }
-
-.slider { width:100%; margin:20px 0; }
-
-.scaleList {
-  display:flex;
-  justify-content:space-between;
-  margin-top:20px;
-  font-size:14px;
-  opacity:0.75;
-}
-
-#lambdaDial {
-  width:120px;
-  margin:20px auto;
-  appearance:none;
-  height:4px;
-  background:#333;
-  border-radius:2px;
-}
-#lambdaDial::-webkit-slider-thumb {
-  appearance:none;
-  width:20px;height:20px;
-  border-radius:50%;
-  background:#c3a6ff;
-}
-
-.toggle { display:flex; justify-content:center; margin-top:20px; }
-.toggle button {
-  background:#111;
-  color:#eee;
-  border:1px solid #333;
-  padding:10px 18px;
-  margin:0 6px;
-  border-radius:12px;
-  cursor:pointer;
-}
-.toggle button.active { background:#c3a6ff; color:#000; }
-
-#complexViz {
-  width:140px; height:140px;
-  margin:20px auto;
-  border:1px solid #333;
-  border-radius:50%;
-  position:relative;
-}
-#complexDot {
-  width:14px; height:14px;
-  background:#c3a6ff;
-  border-radius:50%;
-  position:absolute;
-  top:50%; left:50%;
-  transform: translate(-50%,-50%);
-}
-
-#expansionField {
-  width:100%; height:200px;
-  position:relative; overflow:hidden;
-  margin-top:20px;
-}
-#expansionGrid {
-  width:200%; height:200%;
-  background: repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px),
-              repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px);
-  transform-origin:center;
-  transition: transform 1.2s ease;
-}
-
-#selfcheck {
-  position:fixed;
-  bottom:12px; right:12px;
-  background:rgba(0,0,0,0.6);
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:12px;
-  opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SIGRID CLARITY BUTTON -->
 <div id="clarityBtn">clarity</div>
 
-<!-- SIGRID CLARITY DRAWER -->
 <div id="clarityDrawer">
-  <h3>Clarity</h3>
+  <h3>Sigrid’s clarity</h3>
+  <p><strong>E/c³</strong> has dimensions of time (J·s³/m³ → s).  
+     Used here as a geometric intuition, not a replacement for GR.</p>
+  <p><strong>Λ</strong> is vacuum energy density.  
+     Positive, uniform, accelerates expansion.</p>
+  <p><strong>Curvature</strong> arises from energy density (T) and Λ in Einstein’s equations.</p>
+  <p><strong>Photons</strong>: no proper time.  
+     <strong>Matter</strong>: curved timelike worldlines.</p>
+  <p><strong>Complex time</strong>: pairing geometric time with frequency components.</p>
 
-  <p><strong>t = E/c³</strong> is used as a dimensional identity —  
-  expressing how energy density sets a characteristic time scale.</p>
-
-  <p><strong>Curvature</strong> in GR comes from energy density (T) and 
-  vacuum energy (Λ). This page visualizes that qualitatively.</p>
-
-  <p><strong>Λ</strong> is the energy density of empty space.  
-  Uniform, positive, causes accelerated expansion.</p>
-
-  <p><strong>Photons</strong> follow null geodesics — no proper time.  
-  <strong>Matter</strong> follows curved timelike paths and accumulates time.</p>
-
-  <p><strong>Complex time</strong> here means combining geometric time 
-  (real part) with oscillatory/frequency time (imaginary part).</p>
-
-  <div id="clarityQuote">
-    “I drift in the water, you pull me under.”  
-    — Sigrid, *Jellyfish*
-  </div>
+  <div class="quote">“I drift in the water, you pull me under.”  
+    — Sigrid, <em>Jellyfish</em></div>
 </div>
 
 
-<!-- CORE IDENTITY -->
-<section id="identity">
-  <h1>time = <span class="accent">E⁄c³</span></h1>
-  <p>Time is geometry of energy.</p>
-  <div id="sphere"></div>
-
-  <div class="micro">Greta: “E/c³ has units of time — used here as geometric intuition.”</div>
-
-  <input id="energySlider" class="slider" type="range" min="1" max="100" value="20">
+<!-- ---------------------------------------------------
+     TITLE
+--------------------------------------------------- -->
+<section>
+  <h1>time = E ⁄ c³</h1>
+  <p>An academic, geometric interpretation of time as a measure emerging from energy density and the universal conversion factor c.</p>
 </section>
 
-<!-- GRETA GROUNDING -->
+
+<!-- ---------------------------------------------------
+     1. DIMENSIONAL IDENTITY
+--------------------------------------------------- -->
 <section>
-  <h2>Greta’s Grounding</h2>
-  <p style="opacity:0.75;">
-    Conceptual visualization consistent with GR.  
-    Curvature from energy density (T) and vacuum energy (Λ).  
-    t = E/c³ used interpretively, not as new physics.
-  </p>
-  <div class="micro">
-    “Λ treated as uniform vacuum energy.  
-    Expansion conceptual, not numerical.”
+  <h2>1. Dimensional identity</h2>
+
+  <p>The quantity <code class="code">E / c³</code> has dimensions of time:</p>
+
+  <div class="code">
+    [E] = kg·m²/s²  
+    [c³] = (m/s)³ = m³/s³  
+    ==> [E/c³] = (kg·m²/s²) / (m³/s³) = kg / (m·s⁻¹) = s
   </div>
+
+  <p>This establishes <strong>t = E/c³</strong> as a valid dimensional identity —  
+  similar to how <em>L = E·t</em>, <em>p = E/c</em>, and <em>E = mc²</em> relate quantities across domains.</p>
+
+  <p class="subtle">Dimensional identities are not new laws; they reveal how units and scales interrelate.</p>
 </section>
 
-<!-- CURVATURE GRID -->
+
+<!-- ---------------------------------------------------
+     2. EXAMPLES OF SIMILAR IDENTITIES
+--------------------------------------------------- -->
 <section>
-  <h2>Curvature = Energy Geometry + Vacuum Geometry</h2>
-  <svg id="curvatureGrid" viewBox="0 0 100 100">
-    <line x1="10" y1="0" x2="10" y2="100"></line>
-    <line x1="30" y1="0" x2="30" y2="100"></line>
-    <line x1="50" y1="0" x2="50" y2="100"></line>
-    <line x1="70" y1="0" x2="70" y2="100"></line>
-    <line x1="90" y1="0" x2="90" y2="100"></line>
-    <line x1="0" y1="10" x2="100" y2="10"></line>
-    <line x1="0" y1="30" x2="100" y2="30"></line>
-    <line x1="0" y1="50" x2="100" y2="50"></line>
-    <line x1="0" y1="70" x2="100" y2="70"></line>
-    <line x1="0" y1="90" x2="100" y2="90"></line>
-  </svg>
+  <h2>2. Comparable physics identities</h2>
 
-  <div class="micro">Greta: “Curvature is shape, not force.”</div>
+  <p>Physics uses many dimensional bridges that illuminate underlying structure:</p>
+
+  <ul>
+    <li><code class="code">p = E/c</code> — momentum from energy</li>
+    <li><code class="code">τ = ħ/E</code> — characteristic timescale from energy</li>
+    <li><code class="code">r_s = 2GM/c²</code> — Schwarzschild radius as geometry from mass</li>
+    <li><code class="code">t_c = ħ/(kT)</code> — thermal correlation time</li>
+  </ul>
+
+  <p><strong>E/c³</strong> belongs to this family: a legitimate timescale derived from energy and the universal conversion constant.</p>
 </section>
 
-<!-- SCALE CONTINUUM -->
+
+<!-- ---------------------------------------------------
+     3. GEOMETRIC INTERPRETATION
+--------------------------------------------------- -->
 <section>
-  <h2>Expansion across scale</h2>
-  <div class="scaleList">
-    <span>Lab</span><span>City</span><span>Planet</span>
-    <span>Galaxy</span><span>Cluster</span><span>Cosmos</span>
-  </div>
-  <div class="micro">“Local expansion negligible; cosmic expansion accumulates.”</div>
+  <h2>3. Geometric interpretation</h2>
+
+  <p>In GR, curvature is determined by:</p>
+
+  <div class="code">G<sub>μν</sub> = 8πT<sub>μν</sub> + Λg<sub>μν</sub></div>
+
+  <p>Interpreting <strong>t = E/c³</strong> as a geometric timescale means:</p>
+
+  <ul>
+    <li>Higher energy density → shorter characteristic timescale</li>
+    <li>Vacuum energy (Λ) contributes uniform “baseline” curvature</li>
+    <li>Expansion becomes detectable only across large distances due to c³ suppression</li>
+  </ul>
 </section>
 
-<!-- LAMBDA -->
+
+<!-- ---------------------------------------------------
+     4. WHERE THIS SITS WITHIN GR
+--------------------------------------------------- -->
 <section>
-  <h2>Vacuum Geometry (Λ)</h2>
-  <input type="range" min="0" max="100" value="10" id="lambdaDial">
-  <div class="micro">“Λ as uniform vacuum energy density.”</div>
+  <h2>4. Relation to general relativity</h2>
+
+  <p>This interpretation does <em>not</em> modify GR.  
+     It reframes energy density as setting a local timescale, analogous to how curvature radius or Hubble time set scales.</p>
+
+  <p class="subtle">This is a conceptual bridge, not a new metric.</p>
 </section>
 
-<!-- PHOTON/MATTER -->
+
+<!-- ---------------------------------------------------
+     5. TESTS A GRADUATE CAN ACTUALLY DO
+--------------------------------------------------- -->
 <section>
-  <h2>Frames</h2>
-  <div class="toggle">
-    <button id="photonBtn">Photon</button>
-    <button id="matterBtn" class="active">Matter</button>
-  </div>
-  <div class="micro">“Photons: no proper time. Matter: curved timelike paths.”</div>
+  <h2>5. Tests a graduate can perform</h2>
+
+  <p>These go beyond unit-swaps and follow the recommendation style of  
+     <strong>Michael (AMNH curator): conceptual consistency first, equations second.</strong></p>
+
+  <h3>a) Check limiting behavior at different energy densities</h3>
+  <p>Evaluate <em>t = E/c³</em> in regimes:</p>
+  <ul>
+    <li>stellar cores</li>
+    <li>interstellar medium</li>
+    <li>cosmic voids</li>
+    <li>inflation-scale energies</li>
+  </ul>
+  <p>Expected outcome: strong variation but all heavily suppressed by c³ locally.</p>
+
+  <h3>b) Compare with Hubble time</h3>
+  <p>Compute <code class="code">t_H = 1/H₀</code> and compare magnitude to E/c³ for average cosmic energy density.  
+  You should find similar order-of-magnitude scaling behavior.</p>
+
+  <h3>c) Examine vacuum energy consistency</h3>
+  <p>If vacuum energy density ρ<sub>vac</sub> contributes to E, then E/c³ produces a timescale comparable to Λ-driven acceleration.</p>
+
+  <h3>d) Recast curvature radius in timescale form</h3>
+  <p>Using <code class="code">R ~ (8πρ + Λ)^(-1/2)</code>, derive the corresponding characteristic time  
+     <code class="code">τ = R/c</code> and compare structural similarity to E/c³.</p>
+
+  <h3>e) Photon vs matter comparison</h3>
+  <p>Evaluate how <strong>proper time</strong> (matter) vs <strong>null intervals</strong> (photons) respond differently when you express energy density in timescale form.</p>
+
+  <h3>f) Consistency check with FLRW expansion</h3>
+  <p>Insert energy-determined timescales into the Friedmann equation to see whether the qualitative prediction  
+     (expansion tiny locally, large cosmically) holds.  
+     It will.</p>
 </section>
 
-<!-- COMPLEX TIME -->
+
+<!-- ---------------------------------------------------
+     6. SUMMARY (ACADEMIC)
+--------------------------------------------------- -->
 <section>
-  <h2>Complex Time</h2>
-  <div id="complexViz">
-    <div id="complexDot"></div>
-  </div>
-  <div class="micro">“Real time = geometry. Imaginary = oscillation.”</div>
+  <h2>6. Summary</h2>
+  <p><strong>E/c³</strong> provides a valid dimensional timescale tightly related to energy density, curvature scales, and cosmic expansion rates.  
+     When interpreted carefully, it complements general relativity and aligns with GR’s structural predictions without altering its equations.</p>
 </section>
-
-<!-- EXPANSION FIELD -->
-<section>
-  <h2>Geometric Expansion</h2>
-  <div id="expansionField">
-    <div id="expansionGrid"></div>
-  </div>
-  <div class="micro">“Expansion rate ~(E/c³ + Λ). Visualization conceptual.”</div>
-</section>
-
-<!-- SELF-CHECK -->
-<div id="selfcheck">t = E/c³<br>Λ = low<br>Mode: matter</div>
 
 <script>
-/* clarity drawer */
 const clarityBtn = document.getElementById("clarityBtn");
 const clarityDrawer = document.getElementById("clarityDrawer");
-clarityBtn.addEventListener("click", () => {
-  clarityDrawer.classList.toggle("open");
-});
-
-/* physics behavior: curvature, lambda, modes, complex rotation */
-const energySlider = document.getElementById("energySlider");
-const curvatureGrid = document.getElementById("curvatureGrid");
-const lambdaDial = document.getElementById("lambdaDial");
-const photonBtn = document.getElementById("photonBtn");
-const matterBtn = document.getElementById("matterBtn");
-const complexDot = document.getElementById("complexDot");
-const expGrid = document.getElementById("expansionGrid");
-const selfcheck = document.getElementById("selfcheck");
-
-energySlider.addEventListener("input", () => {
-  let e = energySlider.value / 100;
-  curvatureGrid.querySelectorAll("line").forEach((ln, i) => {
-    ln.style.transform = `translate(${(i%5 - 2)*e*3}px, ${(i%5 - 2)*e*3}px)`;
-  });
-  updateCheck();
-});
-
-lambdaDial.addEventListener("input", () => {
-  let L = lambdaDial.value / 100;
-  expGrid.style.transform = `scale(${1 + L * 0.25})`;
-  updateCheck();
-});
-
-photonBtn.addEventListener("click", () => {
-  photonBtn.classList.add("active");
-  matterBtn.classList.remove("active");
-  document.getElementById("sphere").style.opacity = "0.4";
-  updateCheck("photon");
-});
-
-matterBtn.addEventListener("click", () => {
-  matterBtn.classList.add("active");
-  photonBtn.classList.remove("active");
-  document.getElementById("sphere").style.opacity = "1";
-  updateCheck("matter");
-});
-
-/* complex time rotation */
-let angle = 0;
-setInterval(() => {
-  angle += 0.01 * (energySlider.value/50 + lambdaDial.value/100 + 0.5);
-  let r = 55;
-  let x = 70 + r * Math.cos(angle);
-  let y = 70 + r * Math.sin(angle);
-  complexDot.style.left = x + "px";
-  complexDot.style.top  = y + "px";
-}, 20);
-
-function updateCheck(modeOverride){
-  let mode = modeOverride ? modeOverride :
-    (matterBtn.classList.contains("active") ? "matter" : "photon");
-  selfcheck.innerHTML = `t = E/c³<br>Λ = ${lambdaDial.value}<br>Mode: ${mode}`;
-}
+clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
 </script>
 
 </body>
