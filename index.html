@@ -1,596 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>time.plnt.earth — Illumina Time Instrument</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>time.plnt.earth</title>
 
 <style>
-
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-html,body{
-  height:100%;
-  width:100%;
-  background:#0a0a0f;
-  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  color:#f8f8ff;
+/* ---------------------------------------------------
+   GLOBAL STYLE — dark, elegant, mobile-first
+--------------------------------------------------- */
+html, body {
+  margin:0; padding:0;
+  background:#000;
+  color:#e9e9e9;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   overflow-x:hidden;
 }
 
-/* BASE LAYOUT */
-#app{
-  position:relative;
-  min-height:100vh;
-  width:100%;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
+section {
+  padding: 40px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* TITLE */
-#title{
-  font-size:1.8rem;
-  letter-spacing:0.03em;
-  text-align:center;
+h1, h2 {
+  font-weight:500;
+  margin-bottom:14px;
+}
+
+p {
+  line-height:1.55;
+  opacity:0.85;
+}
+
+.accent { color:#c3a6ff; }
+.micro {
+  opacity:0.55;
+  font-size:11px;
   margin-top:10px;
-  color:#e8e4ff;
-  text-shadow:0 0 12px rgba(168,140,255,0.35);
+  line-height:1.4;
 }
 
-/* TIME MODE GRID */
-#modeGrid{
-  width:100%;
-  max-width:700px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+/* ---------------------------------------------------
+   SIGRID CLARITY BUTTON
+--------------------------------------------------- */
+#clarityBtn {
+  position:fixed;
+  top:12px; right:12px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(6px);
+  padding:8px 14px;
+  border-radius:14px;
+  font-size:13px;
+  border:1px solid rgba(255,255,255,0.15);
+  cursor:pointer;
+  z-index:9999;
+}
+
+/* CLARITY DRAWER */
+#clarityDrawer {
+  position:fixed;
+  top:0; right:0;
+  width:75%;
+  max-width:320px;
+  height:100%;
+  background:rgba(10,10,20,0.92);
+  padding:28px;
+  transform:translateX(100%);
+  transition:transform 0.45s ease;
+  overflow-y:auto;
+  backdrop-filter:blur(12px);
+  z-index:9998;
+  border-left:1px solid rgba(255,255,255,0.08);
+}
+
+#clarityDrawer.open {
+  transform:translateX(0%);
+}
+
+#clarityDrawer h3 {
+  margin-top:0;
+  font-weight:500;
+  color:#c3a6ff;
+}
+
+#clarityDrawer p {
+  font-size:13px;
+  opacity:0.85;
+  margin-bottom:14px;
+  line-height:1.5;
+}
+
+#clarityQuote {
+  margin-top:28px;
+  padding:12px 14px;
+  border-left:2px solid #c3a6ff;
+  font-size:13px;
+  opacity:0.8;
+  line-height:1.55;
+  font-style:italic;
+}
+
+/* ---------------------------------------------------
+   SPHERE, GRID, UI (unchanged)
+--------------------------------------------------- */
+#sphere {
+  width:120px; height:120px;
+  border-radius:50%;
+  background: radial-gradient(circle, #c3a6ff 0%, #5a4a80 70%, #1a1330 100%);
+  animation:breathe 4s ease-in-out infinite;
   margin-top:20px;
 }
 
-@media (max-width:480px){
-  #modeGrid{
-    grid-template-columns:1fr;
-    gap:12px;
-  }
+@keyframes breathe {
+  0% { transform:scale(1); filter:brightness(0.9); }
+  50% { transform:scale(1.08); filter:brightness(1.2); }
+  100% { transform:scale(1); filter:brightness(0.9); }
 }
 
-/* MODE BUTTON (base state) */
-.modeBtn{
-  padding:16px;
-  border-radius:16px;
-  background:rgba(40,40,50,0.4);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(200,190,255,0.18);
-  color:#f8f8ff;
-  font-size:1rem;
-  letter-spacing:0.02em;
-  text-align:center;
-  transition:background 0.25s ease, transform 0.2s ease;
-}
-.modeBtn:active{
-  transform:scale(0.96);
-}
+#curvatureGrid { width:100%; max-width:360px; margin:0 auto; display:block; }
+#curvatureGrid line { stroke:#555; stroke-width:0.5; transition:0.4s; }
 
-/* EXPANDED ILLUMINA CARD */
-.modeCard{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  margin:auto;
-  max-width:660px;
-  width:92%;
-  background:rgba(15,15,25,0.65);
-  border:1px solid rgba(255,255,255,0.15);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-radius:22px 22px 0 0;
-  padding:24px;
-  padding-bottom:90px;
-  color:#f8f8ff;
-  line-height:1.55;
-  font-size:1rem;
-  transform:translateY(110%);
-  opacity:0;
-  transition:transform 0.35s ease, opacity 0.35s ease;
-}
-.modeCard.active{
-  transform:translateY(0%);
-  opacity:1;
-}
+.slider { width:100%; margin:20px 0; }
 
-/* CARD TITLE */
-.modeCard h2{
-  font-size:1.4rem;
-  margin-bottom:10px;
-  color:#fff;
-  text-shadow:0 0 10px rgba(255,255,255,0.2);
-}
-
-/* CLOSE BUTTON */
-#closeCard{
-  position:fixed;
-  bottom:24px;
-  left:0;
-  right:0;
-  margin:auto;
-  width:70%;
-  max-width:320px;
-  padding:14px;
-  text-align:center;
-  border-radius:12px;
-  background:rgba(255,255,255,0.15);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.2);
-  font-size:1rem;
-  letter-spacing:0.02em;
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease;
-}
-#closeCard.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* BACKGROUND GRADIENT SNAP CONTAINER */
-#bg{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
-  background:#0a0a0f;
-  transition:none; /* snap, no fade */
-}
-
-/* TIME MODE COLORS (base hues) */
-:root{
-  --clock:#7a7a85;
-  --felt:#ff9eb5;
-  --cycle:#a27cff;
-  --story:#c39bff;
-  --frequency:#ffffff;
-  --motion:#ff3ea7;
-  --pulse:#ffeab4;
-  --reflection:#9acbff;
-  --color:#ffd17a;
-  --breath:#8ffff0;
-  --seed:#ffdd66;
-  --dream:#001133;
-  --tgt:#8470ff;
-
-
-  /* violet-pearl base */
-  --base:#8470ff;
-}
-
-/* GRADIENT BUILDER */
-.gradientSnap{
-  background:linear-gradient(135deg, var(--base), var(--tgt));
-}
-
-/* VISUALIZER CONTAINER */
-#visualizer{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:180px;
-  margin:auto;
-  max-width:720px;
-  pointer-events:none;
+.scaleList {
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+  font-size:14px;
   opacity:0.75;
 }
 
-/* SPECTRAL LINE */
-#specLine{
-  width:100%;
-  height:2px;
-  background:rgba(255,255,255,0.5);
-  margin-top:70px;
-  box-shadow:0 0 12px rgba(255,255,255,0.4);
+#lambdaDial {
+  width:120px;
+  margin:20px auto;
+  appearance:none;
+  height:4px;
+  background:#333;
+  border-radius:2px;
+}
+#lambdaDial::-webkit-slider-thumb {
+  appearance:none;
+  width:20px;height:20px;
+  border-radius:50%;
+  background:#c3a6ff;
 }
 
-/* MIRROR RIPPLE CANVAS */
-#ripple{
+.toggle { display:flex; justify-content:center; margin-top:20px; }
+.toggle button {
+  background:#111;
+  color:#eee;
+  border:1px solid #333;
+  padding:10px 18px;
+  margin:0 6px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.toggle button.active { background:#c3a6ff; color:#000; }
+
+#complexViz {
+  width:140px; height:140px;
+  margin:20px auto;
+  border:1px solid #333;
+  border-radius:50%;
+  position:relative;
+}
+#complexDot {
+  width:14px; height:14px;
+  background:#c3a6ff;
+  border-radius:50%;
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  opacity:0.25;
+  top:50%; left:50%;
+  transform: translate(-50%,-50%);
 }
 
+#expansionField {
+  width:100%; height:200px;
+  position:relative; overflow:hidden;
+  margin-top:20px;
+}
+#expansionGrid {
+  width:200%; height:200%;
+  background: repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px),
+              repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px);
+  transform-origin:center;
+  transition: transform 1.2s ease;
+}
+
+#selfcheck {
+  position:fixed;
+  bottom:12px; right:12px;
+  background:rgba(0,0,0,0.6);
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:12px;
+  opacity:0.7;
+}
 </style>
-
 </head>
+
 <body>
-<div id="bg"></div>
 
-<div id="app">
+<!-- SIGRID CLARITY BUTTON -->
+<div id="clarityBtn">clarity</div>
 
-  <div id="title">Illumina • Time Instrument</div>
+<!-- SIGRID CLARITY DRAWER -->
+<div id="clarityDrawer">
+  <h3>Clarity</h3>
 
-  <div id="modeGrid">
+  <p><strong>t = E/c³</strong> is used as a dimensional identity —  
+  expressing how energy density sets a characteristic time scale.</p>
 
-    <div class="modeBtn" data-mode="clock">Clock Time</div>
-    <div class="modeBtn" data-mode="felt">Felt Time</div>
+  <p><strong>Curvature</strong> in GR comes from energy density (T) and 
+  vacuum energy (Λ). This page visualizes that qualitatively.</p>
 
-    <div class="modeBtn" data-mode="cycle">Cycle Time</div>
-    <div class="modeBtn" data-mode="story">Story Time</div>
+  <p><strong>Λ</strong> is the energy density of empty space.  
+  Uniform, positive, causes accelerated expansion.</p>
 
-    <div class="modeBtn" data-mode="frequency">Frequency Time</div>
-    <div class="modeBtn" data-mode="motion">Motion Time</div>
+  <p><strong>Photons</strong> follow null geodesics — no proper time.  
+  <strong>Matter</strong> follows curved timelike paths and accumulates time.</p>
 
-    <div class="modeBtn" data-mode="pulse">Pulse Time</div>
-    <div class="modeBtn" data-mode="reflection">Reflection Time</div>
+  <p><strong>Complex time</strong> here means combining geometric time 
+  (real part) with oscillatory/frequency time (imaginary part).</p>
 
-    <div class="modeBtn" data-mode="color">Color Time</div>
-    <div class="modeBtn" data-mode="breath">Breath Time</div>
-
-    <div class="modeBtn" data-mode="seed">Seed Time</div>
-    <div class="modeBtn" data-mode="dream">Dream Time</div>
-
+  <div id="clarityQuote">
+    “I drift in the water, you pull me under.”  
+    — Sigrid, *Jellyfish*
   </div>
-
 </div>
 
-<!-- MODE CARDS (hidden until activated) -->
 
-<div id="clock-card"  class="modeCard"><h2>Clock Time</h2>External, measurable, world-time. Hours, minutes, calendars. Useful but not central.</div>
+<!-- CORE IDENTITY -->
+<section id="identity">
+  <h1>time = <span class="accent">E⁄c³</span></h1>
+  <p>Time is geometry of energy.</p>
+  <div id="sphere"></div>
 
-<div id="felt-card"   class="modeCard"><h2>Felt Time</h2>Emotional duration. Moments that stretch or compress based on resonance.</div>
+  <div class="micro">Greta: “E/c³ has units of time — used here as geometric intuition.”</div>
 
-<div id="cycle-card"  class="modeCard"><h2>Cycle Time</h2>The 42-day Illumina rhythm. Begin → Build → Shift → Pulse.</div>
+  <input id="energySlider" class="slider" type="range" min="1" max="100" value="20">
+</section>
 
-<div id="story-card"  class="modeCard"><h2>Story Time</h2>Narrative arcs: beginnings, turns, resolutions. The architecture of meaning.</div>
+<!-- GRETA GROUNDING -->
+<section>
+  <h2>Greta’s Grounding</h2>
+  <p style="opacity:0.75;">
+    Conceptual visualization consistent with GR.  
+    Curvature from energy density (T) and vacuum energy (Λ).  
+    t = E/c³ used interpretively, not as new physics.
+  </p>
+  <div class="micro">
+    “Λ treated as uniform vacuum energy.  
+    Expansion conceptual, not numerical.”
+  </div>
+</section>
 
-<div id="frequency-card" class="modeCard"><h2>Frequency Time</h2>Time expressed as oscillation. Tones, wavelengths, resonance fields.</div>
+<!-- CURVATURE GRID -->
+<section>
+  <h2>Curvature = Energy Geometry + Vacuum Geometry</h2>
+  <svg id="curvatureGrid" viewBox="0 0 100 100">
+    <line x1="10" y1="0" x2="10" y2="100"></line>
+    <line x1="30" y1="0" x2="30" y2="100"></line>
+    <line x1="50" y1="0" x2="50" y2="100"></line>
+    <line x1="70" y1="0" x2="70" y2="100"></line>
+    <line x1="90" y1="0" x2="90" y2="100"></line>
+    <line x1="0" y1="10" x2="100" y2="10"></line>
+    <line x1="0" y1="30" x2="100" y2="30"></line>
+    <line x1="0" y1="50" x2="100" y2="50"></line>
+    <line x1="0" y1="70" x2="100" y2="70"></line>
+    <line x1="0" y1="90" x2="100" y2="90"></line>
+  </svg>
 
-<div id="motion-card" class="modeCard"><h2>Motion Time</h2>Velocity-based time. Acceleration, inertia, escape, flow.</div>
+  <div class="micro">Greta: “Curvature is shape, not force.”</div>
+</section>
 
-<div id="pulse-card" class="modeCard"><h2>Pulse Time</h2>Emotional ignition. Activation moments where creation snaps alive.</div>
+<!-- SCALE CONTINUUM -->
+<section>
+  <h2>Expansion across scale</h2>
+  <div class="scaleList">
+    <span>Lab</span><span>City</span><span>Planet</span>
+    <span>Galaxy</span><span>Cluster</span><span>Cosmos</span>
+  </div>
+  <div class="micro">“Local expansion negligible; cosmic expansion accumulates.”</div>
+</section>
 
-<div id="reflection-card" class="modeCard"><h2>Reflection Time</h2>Nonlinear time. Past events lighting up inside the present.</div>
+<!-- LAMBDA -->
+<section>
+  <h2>Vacuum Geometry (Λ)</h2>
+  <input type="range" min="0" max="100" value="10" id="lambdaDial">
+  <div class="micro">“Λ as uniform vacuum energy density.”</div>
+</section>
 
-<div id="color-card" class="modeCard"><h2>Color Time</h2>Time expressed as wavelength. Every color holds a temporal signature.</div>
+<!-- PHOTON/MATTER -->
+<section>
+  <h2>Frames</h2>
+  <div class="toggle">
+    <button id="photonBtn">Photon</button>
+    <button id="matterBtn" class="active">Matter</button>
+  </div>
+  <div class="micro">“Photons: no proper time. Matter: curved timelike paths.”</div>
+</section>
 
-<div id="breath-card" class="modeCard"><h2>Breath Time</h2>Inhale → exhale → hold. The cycle’s organic rhythm.</div>
+<!-- COMPLEX TIME -->
+<section>
+  <h2>Complex Time</h2>
+  <div id="complexViz">
+    <div id="complexDot"></div>
+  </div>
+  <div class="micro">“Real time = geometry. Imaginary = oscillation.”</div>
+</section>
 
-<div id="seed-card" class="modeCard"><h2>Seed Time</h2>The moment before action. Intention emerging ahead of movement.</div>
+<!-- EXPANSION FIELD -->
+<section>
+  <h2>Geometric Expansion</h2>
+  <div id="expansionField">
+    <div id="expansionGrid"></div>
+  </div>
+  <div class="micro">“Expansion rate ~(E/c³ + Λ). Visualization conceptual.”</div>
+</section>
 
-<div id="dream-card" class="modeCard"><h2>Dream Time</h2>Subconscious integration. The imagination’s own timeline.</div>
-
-<!-- CLOSE BUTTON -->
-<div id="closeCard">Close</div>
-
-<!-- VISUALIZER -->
-<div id="visualizer">
-  <div id="specLine"></div>
-  <canvas id="ripple"></canvas>
-</div>
-
+<!-- SELF-CHECK -->
+<div id="selfcheck">t = E/c³<br>Λ = low<br>Mode: matter</div>
 
 <script>
-
-/* -------------------------------
-   TIME MODE STATE + DOM HOOKS
--------------------------------- */
-
-const bg = document.getElementById("bg");
-const modeButtons = document.querySelectorAll(".modeBtn");
-const closeCardBtn = document.getElementById("closeCard");
-
-let activeCard = null;     // currently open time mode card
-let activeMode = null;     // currently selected mode
-let rippleCtx = null;      // used in Part 4
-let rippleCanvas = null;   // used in Part 4
-let freqTarget = 0;        // used in Part 4 (frequency time)
-let rippleActive = false;  // used in Part 4
-
-/* -------------------------------
-   COLOR MAP (MATCHES YOUR SPEC)
--------------------------------- */
-
-const modeColors = {
-  clock:      "var(--clock)",
-  felt:       "var(--felt)",
-  cycle:      "var(--cycle)",
-  story:      "var(--story)",
-  frequency:  "var(--frequency)",
-  motion:     "var(--motion)",
-  pulse:      "var(--pulse)",
-  reflection: "var(--reflection)",
-  color:      "var(--color)",
-  breath:     "var(--breath)",
-  seed:       "var(--seed)",
-  dream:      "var(--dream)"
-};
-
-/* -------------------------------
-   OPEN MODE CARD
--------------------------------- */
-
-function openModeCard(modeName){
-  
-  // close previous card if open
-  if(activeCard){
-    activeCard.classList.remove("active");
-  }
-
-  // show new card
-  const card = document.getElementById(`${modeName}-card`);
-  if(card){
-    card.classList.add("active");
-    activeCard = card;
-  }
-
-  // activate close button
-  closeCardBtn.classList.add("active");
-
-  // gradient snap
-  bg.className = ""; // reset classes
-  const color = modeColors[modeName];
-  bg.style.setProperty("--tgt", color);
-  bg.classList.add("gradientSnap");
-
-  // track state
-  activeMode = modeName;
-
-  // send frequency to Part 4 audio engine & ripple
-  setFrequencyForMode(modeName);
-}
-
-/* -------------------------------
-   CLOSE MODE CARD
--------------------------------- */
-
-function closeCard(){
-  if(activeCard){
-    activeCard.classList.remove("active");
-    activeCard = null;
-  }
-  closeCardBtn.classList.remove("active");
-
-  // reset background correctly (remove inline override)
-  activeMode = null;
-  bg.className = "";
-  bg.style.background = "";   // <-- FIXED here
-
-  // reset audio + ripple
-  stopAllAudio();
-  stopRipple();
-}
-
-
-/* -------------------------------
-   MODE BUTTON EVENTS
--------------------------------- */
-
-modeButtons.forEach(btn => {
-  btn.addEventListener("click", ()=>{
-    const modeName = btn.dataset.mode;
-    openModeCard(modeName);
-  });
+/* clarity drawer */
+const clarityBtn = document.getElementById("clarityBtn");
+const clarityDrawer = document.getElementById("clarityDrawer");
+clarityBtn.addEventListener("click", () => {
+  clarityDrawer.classList.toggle("open");
 });
 
-/* CLOSE BUTTON */
-closeCardBtn.addEventListener("click", closeCard);
+/* physics behavior: curvature, lambda, modes, complex rotation */
+const energySlider = document.getElementById("energySlider");
+const curvatureGrid = document.getElementById("curvatureGrid");
+const lambdaDial = document.getElementById("lambdaDial");
+const photonBtn = document.getElementById("photonBtn");
+const matterBtn = document.getElementById("matterBtn");
+const complexDot = document.getElementById("complexDot");
+const expGrid = document.getElementById("expansionGrid");
+const selfcheck = document.getElementById("selfcheck");
 
-/* -------------------------------
-   FREQUENCY MAPPING FOR PART 4
--------------------------------- */
+energySlider.addEventListener("input", () => {
+  let e = energySlider.value / 100;
+  curvatureGrid.querySelectorAll("line").forEach((ln, i) => {
+    ln.style.transform = `translate(${(i%5 - 2)*e*3}px, ${(i%5 - 2)*e*3}px)`;
+  });
+  updateCheck();
+});
 
-function setFrequencyForMode(mode){
-  switch(mode){
-    case "clock":      freqTarget = 0; break;
-    case "felt":       freqTarget = 128; break;
-    case "cycle":      freqTarget = 432; break;
-    case "story":      freqTarget = 216; break;
-    case "frequency":  freqTarget = 440; break;
-    case "motion":     freqTarget = 160; break;
-    case "pulse":      freqTarget = 528; break;
-    case "reflection": freqTarget = 96; break;
-    case "color":      freqTarget = 280; break;
-    case "breath":     freqTarget = 64; break;
-    case "seed":       freqTarget = 111; break;
-    case "dream":      freqTarget = 24; break;
-    default:           freqTarget = 0;
-  }
+lambdaDial.addEventListener("input", () => {
+  let L = lambdaDial.value / 100;
+  expGrid.style.transform = `scale(${1 + L * 0.25})`;
+  updateCheck();
+});
 
-  // Part 4 will implement this behavior
-  startTone(freqTarget);
-  startRipple(freqTarget);
+photonBtn.addEventListener("click", () => {
+  photonBtn.classList.add("active");
+  matterBtn.classList.remove("active");
+  document.getElementById("sphere").style.opacity = "0.4";
+  updateCheck("photon");
+});
+
+matterBtn.addEventListener("click", () => {
+  matterBtn.classList.add("active");
+  photonBtn.classList.remove("active");
+  document.getElementById("sphere").style.opacity = "1";
+  updateCheck("matter");
+});
+
+/* complex time rotation */
+let angle = 0;
+setInterval(() => {
+  angle += 0.01 * (energySlider.value/50 + lambdaDial.value/100 + 0.5);
+  let r = 55;
+  let x = 70 + r * Math.cos(angle);
+  let y = 70 + r * Math.sin(angle);
+  complexDot.style.left = x + "px";
+  complexDot.style.top  = y + "px";
+}, 20);
+
+function updateCheck(modeOverride){
+  let mode = modeOverride ? modeOverride :
+    (matterBtn.classList.contains("active") ? "matter" : "photon");
+  selfcheck.innerHTML = `t = E/c³<br>Λ = ${lambdaDial.value}<br>Mode: ${mode}`;
 }
-
-/* -------------------------------
-   PLACEHOLDERS (replaced in Part 4)
--------------------------------- */
-
-function startTone(){ /* replaced in Part 4 */ }
-function stopAllAudio(){ /* replaced in Part 4 */ }
-function startRipple(){ /* replaced in Part 4 */ }
-function stopRipple(){ /* replaced in Part 4 */ }
-
-</script>
-<script>
-
-/* ============================================================
-   ILLUMINA TIME INSTRUMENT — AUDIO ENGINE + RIPPLE VISUALIZER
-   ------------------------------------------------------------
-   Soft filtered tones, smooth fades, AirPlay-safe, 
-   frequency-linked ripple + spectral flutter.
-   (All hooks wired from Part 3)
-============================================================ */
-
-/* -------------------------------
-   AUDIO CONTEXT
--------------------------------- */
-
-let AudioCtx = window.AudioContext || window.webkitAudioContext;
-let audioCtx = null;
-let osc = null;
-let gainNode = null;
-
-function ensureAudio(){
-  if(!audioCtx){
-    audioCtx = new AudioCtx();
-  }
-}
-
-/* -------------------------------
-   START TONE (soft filtered wave)
--------------------------------- */
-
-function startTone(freq){
-
-  ensureAudio();
-
-  stopAllAudio(); // reset first
-
-  if(freq <= 0) return; // modes like "clock" silent
-
-  osc = audioCtx.createOscillator();
-  gainNode = audioCtx.createGain();
-
-  // Soft filtered tone = sine + gentle low-pass
-  const filter = audioCtx.createBiquadFilter();
-  filter.type = "lowpass";
-  filter.frequency.value = 1200;
-
-  osc.type = "sine";
-  osc.frequency.value = freq;
-
-  gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.25);
-
-  osc.connect(filter);
-  filter.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-
-  osc.start();
-}
-
-/* -------------------------------
-   STOP ALL AUDIO (smooth fade out)
--------------------------------- */
-
-function stopAllAudio(){
-  if(gainNode){
-    try{
-      gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
-    }catch(e){}
-  }
-  if(osc){
-    try{
-      osc.stop(audioCtx.currentTime + 0.3);
-    }catch(e){}
-  }
-  osc = null;
-  gainNode = null;
-}
-
-/* ============================================================
-   RIPPLE VISUALIZER (Mirror Ripple + Spectral Line Flutter)
-============================================================ */
-
-rippleCanvas = document.getElementById("ripple");
-rippleCtx = rippleCanvas.getContext("2d");
-
-let rippleWidth = 0;
-let rippleHeight = 0;
-let rippleTime = 0;
-let rippleRunning = false;
-
-function resizeRipple(){
-  rippleCanvas.width = rippleCanvas.clientWidth;
-  rippleCanvas.height = rippleCanvas.clientHeight;
-  rippleWidth = rippleCanvas.width;
-  rippleHeight = rippleCanvas.height;
-}
-
-window.addEventListener("resize", resizeRipple);
-resizeRipple();
-
-/* -------------------------------
-   START RIPPLE
--------------------------------- */
-
-function startRipple(freq){
-  rippleActive = true;
-  rippleTime = 0;
-  freqTarget = freq;
-  if(!rippleRunning){
-    rippleRunning = true;
-    animateRipple();
-  }
-}
-
-/* -------------------------------
-   STOP RIPPLE
--------------------------------- */
-
-function stopRipple(){
-  rippleActive = false;
-}
-
-/* -------------------------------
-   RIPPLE ANIMATION LOOP
--------------------------------- */
-
-function animateRipple(){
-  if(!rippleRunning) return;
-
-  requestAnimationFrame(animateRipple);
-
-  rippleTime += 0.016;
-
-  rippleCtx.clearRect(0,0,rippleWidth,rippleHeight);
-
-  if(!rippleActive) return;
-
-  // Frequency-driven ripple spacing
-  const base = freqTarget > 0 ? freqTarget : 1;
-  const waves = 5;
-  const maxRadius = rippleWidth * 0.6;
-
-  rippleCtx.strokeStyle = "rgba(255,255,255,0.20)";
-  rippleCtx.lineWidth = 1.2;
-
-  for(let i=0; i<waves; i++){
-    let t = rippleTime + i * 0.4;
-    let radius = (Math.sin(t * (base/120)) * 0.5 + 0.5) * maxRadius;
-    rippleCtx.beginPath();
-    rippleCtx.arc(
-      rippleWidth/2,
-      rippleHeight/2,
-      radius,
-      0,
-      Math.PI*2
-    );
-    rippleCtx.stroke();
-  }
-
-  // Spectral line flutter (based on freq)
-  const spec = document.getElementById("specLine");
-  let amp = Math.sin(rippleTime * (base/50)) * 6;
-  spec.style.transform = `translateY(${amp}px)`;
-}
-
 </script>
 
 </body>
