@@ -186,6 +186,12 @@ A small idea — but sometimes small ideas have surprising reach.</p>
 </section>
 
 <script>
+// Centralized captions for easier updates
+const captions = {
+  science: "A short exploration of gravity in higher-dimensional models, focusing on geometric behavior, leakage, and why gravity’s weakness might signal deeper structure.",
+  marina: "Marina’s thematic lens: coherence, identity, and the geometry of self in a modern world.",
+  sigrid: "Sigrid’s clarity: drift, subtle forces, and the quiet structure beneath feeling."
+};
 const clarityBtn = document.getElementById("clarityBtn");
 const clarityDrawer = document.getElementById("clarityDrawer");
 clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
@@ -245,7 +251,7 @@ clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
   <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
 
     <!-- Science Video Thumbnail -->
-    <div style="display:flex; gap:12px; cursor:pointer;" onclick="document.getElementById('mainPlayer').src='https://www.youtube.com/embed/z91oGI5aP0A'">
+    <div style="display:flex; gap:12px; cursor:pointer;" onclick="setActiveVideo('science')">
       <img src="https://img.youtube.com/vi/z91oGI5aP0A/hqdefault.jpg" style="width:120px; border-radius:6px;" />
       <div>
         <b style="color:#c3a6ff;">Does Gravity Require Extra Dimensions?</b>
@@ -254,7 +260,7 @@ clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
     </div>
 
     <!-- Marina Thumbnail -->
-    <div style="display:flex; gap:12px; cursor:pointer;" onclick="document.getElementById('mainPlayer').src='https://www.youtube.com/embed/_V17JN76uxc'">
+    <div style="display:flex; gap:12px; cursor:pointer;" onclick="setActiveVideo('marina')">
       <img src="https://img.youtube.com/vi/_V17JN76uxc/hqdefault.jpg" style="width:120px; border-radius:6px;" />
       <div>
         <b style="color:#c3a6ff;">Marina — Ancient Dreams In A Modern Land</b>
@@ -263,7 +269,7 @@ clarityBtn.onclick = () => clarityDrawer.classList.toggle("open");
     </div>
 
     <!-- Sigrid Thumbnail -->
-    <div style="display:flex; gap:12px; cursor:pointer;" onclick="document.getElementById('mainPlayer').src='https://www.youtube.com/embed/NRS3hALp_A8'">
+    <div style="display:flex; gap:12px; cursor:pointer;" onclick="setActiveVideo('sigrid')">
       <img src="https://img.youtube.com/vi/NRS3hALp_A8/hqdefault.jpg" style="width:120px; border-radius:6px;" />
       <div>
         <b style="color:#c3a6ff;">Sigrid — Jellyfish</b>
