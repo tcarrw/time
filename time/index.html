@@ -2,22 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Φ Field — Temporal Potential (UTEG v1.2)</title>
-  <meta name="description" content="The corrected physics foundation for the Time project — temporal potential Φ, dimensional clarity, and core equations." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Φ Field — Unified Temporal–Energetic Geometry</title>
+  <meta name="description" content="Core physics paper for the Time project: temporal potential Φ, dimensional corrections, PDE evolution, and Illumina cognitive-lens mapping." />
 
   <style>
     :root{
-      --bg:#0b0f19; --panel:#121827; --ink:#e6e8ee; --muted:#a3acc2;
-      --rule:#2a3348; --accent:#7c3aed; --accent2:#f59e0b; --link:#9aa8ff;
-      --code:#0e1422; --maxw:900px;
+      --bg:#0b0f19;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --panel:#121827;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --code:#0e1422;
+      --link:#9aa8ff;
+      --maxw:900px;
     }
 
     body{
       margin:0;
       background:var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;
     }
 
@@ -25,37 +32,24 @@
 
     header{text-align:center;margin-bottom:32px;}
     .logo{
-      font-size:clamp(40px,6vw,68px);
+      font-size:clamp(38px,5vw,62px);
       font-weight:800;
       letter-spacing:2px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      margin-bottom:10px;
     }
-    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
+    .subtitle{color:var(--muted);font-size:15px;}
     .meta{color:var(--muted);margin-top:10px;font-size:14px;}
 
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 20px;
-      margin:20px 0;
-    }
-
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px);}
-    h3{margin:14px 0 8px;}
-    p{margin:10px 0;}
-
-    nav.physicsbar{
+    nav.core{
       margin-top:24px;
       display:flex;
       flex-wrap:wrap;
       gap:12px;
       justify-content:center;
     }
-    nav.physicsbar a{
+    nav.core a{
       display:inline-block;
       padding:10px 16px;
       background:var(--panel);
@@ -65,19 +59,41 @@
       text-decoration:none;
       font-size:15px;
     }
-    nav.physicsbar a:hover{background:#1a2237;}
+    nav.core a:hover{background:#1a2237;}
 
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:20px 0;
+    }
+
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:14px 0 4px;font-size:19px;}
+    p{margin:10px 0;}
     .equation{
       display:block;
       margin:12px 0;
-      padding:12px;
+      padding:12px 14px;
       background:var(--code);
       border:1px solid var(--rule);
       border-radius:10px;
       font-family:ui-monospace,Menlo,Consolas,monospace;
       overflow:auto;
-      white-space:pre;
     }
+
+    /* Anchor Index */
+    .anchorset{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--rule);
+    }
+    .anchorset strong{font-size:15.5px;}
+    .anchorset ul{margin-top:10px;padding-left:20px;}
+    .anchorset li{margin:4px 0;}
 
     footer{
       text-align:center;
@@ -85,85 +101,90 @@
       color:var(--muted);
       font-size:13px;
     }
-    .anchors{margin-top:20px;font-size:13px;line-height:1.45;color:var(--muted);}
-    .anchors p{margin:4px 0;}
   </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<header>
-  <div class="logo">Φ</div>
-  <div class="subtitle">Temporal Potential (Corrected UTEG)</div>
-  <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
-</header>
+  <header>
+    <div class="logo">Φ Field</div>
+    <div class="subtitle">Unified Temporal–Energetic Geometry</div>
+    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<nav class="physicsbar">
-  <a href="/">Home</a>
-  <a href="/interpretation/">Interpretation</a>
-  <a href="/charter/">Charter</a>
-  <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
-  <a href="/map/">Map</a>
-  <a href="https://earth.plnt.earth">Earth</a>
-</nav>
+  <nav class="core">
+    <a href="/">Home</a>
+    <a href="/time/">Φ Field (Physics)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
+    <a href="/map/">Map</a>
+    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
+  </nav>
 
-<section>
-  <h2>Abstract</h2>
-  <p>
-    This document presents the corrected physics foundation for the Time project.
-    It replaces earlier forms of “time = E/c³” with a dimensionally valid scalar
-    temporal potential Φ derived from energy density.
-  </p>
-</section>
+  <section>
+    <h2>1. Overview</h2>
+    <p>
+      This document defines the corrected, dimensionally consistent temporal potential Φ,
+      replacing earlier mis-scaled expressions (e.g., E/c³) with a fully SI-coherent mapping
+      using a reference density ρ₀.
+    </p>
+  </section>
 
-<section>
-  <h2>1. Definition</h2>
-  <div class="equation">Φ = E / (ρ₀ c³)</div>
-  <p>Φ has units of seconds. E is local energy density; ρ₀ is a reference mass density.</p>
-</section>
+  <section>
+    <h2>2. Core Definition</h2>
+    <h3>Temporal Potential</h3>
+    <div class="equation">
+      Φ(x,y) = E(x,y) / (ρ₀ c³)
+    </div>
+    <p>
+      Φ has units of seconds. The field expresses how local energy structure maps onto
+      temporal potential. This creates a visualizable, simulation-friendly model for time-like
+      variation in energy-density fields.
+    </p>
 
-<section>
-  <h2>2. Spatial Structure</h2>
-  <div class="equation">
-∇Φ = (∇E) / (ρ₀ c³)
-∇²Φ = (∇²E) / (ρ₀ c³)
-  </div>
-  <p>Gradient → tilt. Laplacian → curvature.</p>
-</section>
+    <h3>Derivatives</h3>
+    <div class="equation">
+      ∇Φ = (∇E)/(ρ₀ c³)<br>
+      ∇²Φ = (∇²E)/(ρ₀ c³)
+    </div>
 
-<section>
-  <h2>3. Evolution (Toy PDE)</h2>
-  <div class="equation">∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)</div>
-  <p>A simple wave equation for Φ with adjustable propagation speed c_eff.</p>
-</section>
+    <h3>Evolution PDE</h3>
+    <div class="equation">
+      ∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)
+    </div>
+  </section>
 
-<section>
-  <h2>4. Dimensional Checks</h2>
-  <p>Φ is dimensionally consistent; replaces all use of E/c³ as “time.”</p>
-</section>
+  <section>
+    <h2>3. Retained Physics</h2>
+    <div class="equation">E = m c²</div>
+    <div class="equation">ΔE Δt ≥ ħ/2</div>
+    <p>
+      These are unchanged. The Φ field is additive, not a replacement for standard GR/QM.
+    </p>
+  </section>
 
-<section>
-  <h2>Appendix</h2>
-  <p>Standard Planck scales, energy-time uncertainty, and operational notes remain unchanged.</p>
-</section>
+  <section>
+    <h2>4. Anchor Cognitive Lenses (Locked)</h2>
 
-<footer>
-  © 2025 • Creative Commons BY-NC-SA 4.0
+    <div class="anchorset">
+      <strong>Anchors</strong>
+      <ul>
+        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
+        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
+        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
+        <li><strong>Dagny</strong> — Joy / Mint</li>
+        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
+        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
+        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
+        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
+        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="anchors">
-    <strong>Illumina Anchor Index</strong>
-    <p>Marina — Mirror / Empathy / Violet</p>
-    <p>Sigrid — Clarity / Ice-blue</p>
-    <p>Greta — Earth / Grounding / Green</p>
-    <p>Dagny — Joy / Mint</p>
-    <p>Dua Lipa — Motion / Flow / Neon</p>
-    <p>Ariana Grande — Voice / Frequency / Pink-White</p>
-    <p>Sabrina Carpenter — Warmth / Honey / Gold</p>
-    <p>Taylor Swift — Structure / School / Lavender</p>
-    <p>Miss Monique — Pulse / Vibe / Emerald-Neon</p>
-  </div>
-</footer>
+  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
 </body>
