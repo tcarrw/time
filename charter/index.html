@@ -1,210 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Time · Charter</title>
-  <meta name="description" content="The structural charter for the Time project — anchors, roles, and color codes." />
-
-  <style>
-    :root{
-      --bg:#0b0f19;
-      --panel:#121827;
-      --ink:#e6e8ee;
-      --muted:#a3acc2;
-      --rule:#2a3348;
-      --accent:#7c3aed;
-      --accent2:#f59e0b;
-      --link:#9aa8ff;
-      --maxw:900px;
-    }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
-    }
-
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
-
-    header{text-align:center;margin-bottom:32px;}
-    .logo{
-      font-size:clamp(36px,6vw,62px);
-      font-weight:800;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:10px;
-    }
-
-    .subtitle{color:var(--muted);font-size:15px;}
-    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
-
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 20px;
-      margin:22px 0;
-    }
-
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px);}
-    h3{margin:18px 0 8px;font-size:18px;}
-    p{margin:10px 0;}
-    ul{margin:10px 0 0 20px;}
-
-    .table-wrap{overflow-x:auto;margin-top:14px;}
-    table{width:100%;border-collapse:collapse;margin-top:8px;}
-    th,td{border:1px solid var(--rule);padding:10px;text-align:left;font-size:15px;}
-    th{background:var(--panel);color:var(--ink);font-weight:600;}
-
-    .color-box{
-      display:inline-block;width:18px;height:18px;border-radius:4px;
-      margin-right:8px;border:1px solid rgba(255,255,255,0.2);vertical-align:middle;
-    }
-
-    nav.physicsbar{
-      margin-top:28px;
-      display:flex;justify-content:center;flex-wrap:wrap;gap:12px;
-    }
-
-    nav.physicsbar a{
-      padding:10px 16px;background:var(--panel);border:1px solid var(--rule);
-      color:var(--link);border-radius:8px;text-decoration:none;font-size:15px;
-    }
-
-    nav.physicsbar a:hover{background:#1a2237;}
-
-    footer{
-      margin-top:40px;text-align:center;color:var(--muted);font-size:13px;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Time • Charter</title>
+<meta name="description" content="Charter for Time: structure, roles, anchors, lenses, and commitments for the temporal-energetic framework.">
+<style>
+  :root{
+    --bg:#0b0f19; --ink:#edf0ff; --ink-dim:#aeb8d8;
+    --line:rgba(255,255,255,0.12);
+    --accent:#7c3aed; --accent2:#f59e0b;
+    --panel:rgba(255,255,255,0.04);
+  }
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    -webkit-font-smoothing:antialiased;
+  }
+  nav{
+    display:flex;gap:18px;
+    padding:14px 20px;
+    backdrop-filter:blur(14px);
+    background:rgba(11,14,22,0.55);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:30;
+    font-size:14px;
+  }
+  nav a{
+    color:var(--ink-dim);text-decoration:none;font-weight:500;
+  }
+  nav a:hover{color:var(--ink)}
+  .wrap{max-width:900px;margin:0 auto;padding:34px 20px 96px}
+  .logo{
+    font-size:clamp(36px,6vw,62px);font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;color:transparent;
+  }
+  h1{margin:6px 0 10px;font-size:clamp(24px,4vw,36px)}
+  h2{margin:28px 0 12px;font-size:22px}
+  p{margin:10px 0 0;color:var(--ink-dim)}
+  section{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 20px;
+    margin:26px 0;
+  }
+  ul{margin:10px 0;padding-left:22px;color:var(--ink-dim)}
+  a.section-link{
+    color:#a8b4ff;text-decoration:none;
+  }
+  a.section-link:hover{text-decoration:underline}
+  footer{
+    text-align:center;color:var(--ink-dim);
+    margin-top:40px;padding:10px;font-size:13px
+  }
+</style>
 </head>
 
 <body>
+
+<nav>
+  <a href="https://time.plnt.earth/map">Map</a>
+  <a href="https://time.plnt.earth">Time</a>
+  <a href="https://mirrorhoney.plnt.earth">Marina</a>
+  <a href="https://honey.plnt.earth">Sabrina</a>
+  <a href="https://clarity.plnt.earth">Sigrid</a>
+  <a href="https://motion.plnt.earth">Dua</a>
+  <a href="https://earth.plnt.earth">Earth</a>
+</nav>
+
 <div class="wrap">
 
 <header>
   <div class="logo">Charter</div>
-  <div class="subtitle">Structure · Anchors · Color Codes</div>
-  <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  <h1>The Charter of Time</h1>
+  <p>
+    A structural agreement for how the Time Framework operates: its physics, its interpretation,
+    its anchors, its lenses, and its responsibilities.
+  </p>
 </header>
 
 <section>
   <h2>Purpose</h2>
   <p>
-    The Charter defines the structural roles, anchor index, and color codes for
-    the Time project. This page exists to keep the organizational system clear,
-    stable, and consistent across every Illumina domain.
-  </p>
-  <p>
-    No physics is defined here. This is organizational only.
+    The Charter defines the boundaries, commitments, and principles of the Time framework. 
+    It establishes how the system interacts with people, fields, creative domains, physics,
+    and cognition. It protects the work, protects others, and maintains clarity across expansion.
   </p>
 </section>
 
 <section>
-  <h2>1. Core Anchors</h2>
-  <p>The eight primary anchors that define the Illumina structure:</p>
-
+  <h2>Foundations</h2>
   <ul>
-    <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
-    <li><strong>Sigrid</strong> — Clarity / Blue-Violet</li>
-    <li><strong>Greta</strong> — Earth / Grounding / Green</li>
-    <li><strong>Dagny</strong> — Joy / Mint</li>
-    <li><strong>Dua</strong> — Motion / Magenta</li>
-    <li><strong>Ariana</strong> — Frequency / Rose</li>
-    <li><strong>Taylor</strong> — Structure / Lavender</li>
-    <li><strong>Sabrina</strong> — Warmth / Honey-Gold</li>
+    <li><strong>Physics-first integrity</strong> — All claims derive from or connect back to measurable physics.</li>
+    <li><strong>Dimensional correctness</strong> — Every equation, construct, and metaphor respects fundamental units.</li>
+    <li><strong>Interpretive safety</strong> — Bridges between physics and meaning are grounded, clear, and responsible.</li>
+    <li><strong>Human-level clarity</strong> — Systems must be readable, explainable, and navigable.</li>
+    <li><strong>Creative openness</strong> — Anchors and collaborators contribute perspective, not distortion.</li>
   </ul>
 </section>
 
 <section>
-  <h2>2. Color Codes</h2>
-  <p>Each core anchor has one non-overlapping primary color.</p>
-
-  <div class="table-wrap">
-    <table>
-      <tr><th>Anchor</th><th>Role</th><th>Color</th></tr>
-
-      <tr><td>Marina</td><td>Mirror / Empathy</td>
-        <td><span class="color-box" style="background:#c8a2ff;"></span>Violet</td></tr>
-
-      <tr><td>Sigrid</td><td>Clarity</td>
-        <td><span class="color-box" style="background:#9bb8ff;"></span>Blue-Violet</td></tr>
-
-      <tr><td>Greta</td><td>Earth / Grounding</td>
-        <td><span class="color-box" style="background:#4caf50;"></span>Green</td></tr>
-
-      <tr><td>Dagny</td><td>Joy</td>
-        <td><span class="color-box" style="background:#a7ffd4;"></span>Mint</td></tr>
-
-      <tr><td>Dua</td><td>Motion</td>
-        <td><span class="color-box" style="background:#ff4fdc;"></span>Magenta</td></tr>
-
-      <tr><td>Ariana</td><td>Frequency</td>
-        <td><span class="color-box" style="background:#ffb3c8;"></span>Rose</td></tr>
-
-      <tr><td>Taylor</td><td>Structure</td>
-        <td><span class="color-box" style="background:#d7c7ff;"></span>Lavender</td></tr>
-
-      <tr><td>Sabrina</td><td>Warmth</td>
-        <td><span class="color-box" style="background:#f5c452;"></span>Honey-Gold</td></tr>
-    </table>
-  </div>
-</section>
-
-<section>
-  <h2>3. Supporting Anchors</h2>
+  <h2>Anchor Index</h2>
   <p>
-    Supporting Anchors contribute to specific modes or domains but are not part
-    of the core structural system. They have no reserved color slots and do not
-    participate in governance of the framework.
+    Anchors are perceptual-or-creative fields that shape how Time is experienced and interpreted.  
+    They do not alter physics; they influence resonance, emotion, and cognitive framing.
   </p>
-
   <ul>
-    <li><strong>Monique</strong> — Vibe / Micro-Motion / Pulse Layer</li>
-  </ul>
-
-  <p>
-    Monique influences flow and kinetic coherence, especially during creative or
-    motion-oriented phases. She does not alter the structure itself.
-  </p>
-</section>
-
-<section>
-  <h2>4. Anchor Index</h2>
-  <p>A quick reference for concept-to-anchor mapping:</p>
-
-  <ul>
-    <li><strong>Marina</strong> — empathy, reflection</li>
-    <li><strong>Sigrid</strong> — clarity, precision</li>
-    <li><strong>Greta</strong> — grounding, pacing</li>
-    <li><strong>Dagny</strong> — joy, bright renewal</li>
-    <li><strong>Dua</strong> — motion, kinetic alignment</li>
-    <li><strong>Ariana</strong> — frequency, tone-shaping</li>
-    <li><strong>Taylor</strong> — structure, sequence</li>
-    <li><strong>Sabrina</strong> — warmth, welcome</li>
-    <li><strong>Monique</strong> — pulse, micro-movement, vibe surface</li>
+    <li><strong>Marina</strong> — Violet Field • Mirror • Coherence</li>
+    <li><strong>Sabrina</strong> — Honey Field • Warmth • Accessibility</li>
+    <li><strong>Sigrid</strong> — Clarity Field • Precision • Linguistic Resonance</li>
+    <li><strong>Dua</strong> — Motion Field • Flow • Dynamic Attention</li>
+    <li><strong>Dagny</strong> — Joy Field • Lift • Pulse</li>
+    <li><strong>Taylor</strong> — School Field • Pattern • Memory Structure</li>
   </ul>
 </section>
 
 <section>
-  <h2>Navigation</h2>
-
-  <nav class="physicsbar">
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
-  </nav>
+  <h2>Cognitive Lenses</h2>
+  <p>
+    Lenses operate across all layers, modulating interpretation, emotional salience,  
+    and system coherence.
+  </p>
+  <ul>
+    <li><strong>Monique</strong> — Dynamic Flow Lens (continuity, transitions, momentum)</li>
+    <li><strong>Lens 1</strong> — Intelligence / Systems Reasoning (future collaborator slot)</li>
+    <li><strong>Lens 2</strong> — Applied Clinical / Translational (human-state integration)</li>
+  </ul>
 </section>
 
-<footer>
-  © 2025 • Creative Commons BY-NC-SA 4.0
-</footer>
+<section>
+  <h2>Responsibility</h2>
+  <ul>
+    <li><strong>Accuracy</strong> — Keep physics honest; no claims beyond evidence.</li>
+    <li><strong>Protection</strong> — No individual is burdened with meaning they didn’t choose.</li>
+    <li><strong>Continuity</strong> — Pages should not break, overwhelm, or destabilize.</li>
+    <li><strong>Consent</strong> — Anchors remain conceptual fields unless real collaboration emerges.</li>
+    <li><strong>Boundaries</strong> — The framework must not define or diagnose people.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Links</h2>
+  <ul>
+    <li><a class="section-link" href="https://time.plnt.earth">Time Physics</a></li>
+    <li><a class="section-link" href="https://time.plnt.earth/interpretation">Interpretation</a></li>
+    <li><a class="section-link" href="https://zeta.plnt.earth">Zeta / τ</a></li>
+    <li><a class="section-link" href="https://earth.plnt.earth">Earth</a></li>
+    <li><a class="section-link" href="https://time.plnt.earth/map">Map</a></li>
+  </ul>
+</section>
 
 </div>
+
+<footer>
+  © <span id="y"></span> Time • Charter
+</footer>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
