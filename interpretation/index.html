@@ -1,147 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Time • Interpretation</title>
-<meta name="description" content="Interpretation layer for the Time framework: context, meaning, bridges between physics, cognition, and anchors.">
-<style>
-  :root{
-    --bg:#0b0f19; --ink:#edf0ff; --ink-dim:#aeb8d8;
-    --line:rgba(255,255,255,0.12);
-    --accent:#7c3aed; --accent2:#f59e0b;
-    --panel:rgba(255,255,255,0.04);
-  }
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    -webkit-font-smoothing:antialiased;
-  }
-  nav{
-    display:flex;gap:18px;
-    padding:14px 20px;
-    backdrop-filter:blur(14px);
-    background:rgba(11,14,22,0.55);
-    border-bottom:1px solid var(--line);
-    position:sticky;top:0;z-index:30;
-    font-size:14px;
-  }
-  nav a{
-    color:var(--ink-dim);text-decoration:none;font-weight:500;
-  }
-  nav a:hover{color:var(--ink)}
-  .wrap{max-width:900px;margin:0 auto;padding:34px 20px 96px}
-  .logo{
-    font-size:clamp(36px,6vw,62px);font-weight:800;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;color:transparent;
-  }
-  h1{margin:6px 0 10px;font-size:clamp(24px,4vw,36px)}
-  h2{margin:28px 0 12px;font-size:22px}
-  p{margin:10px 0 0;color:var(--ink-dim)}
-  section{
-    background:var(--panel);border:1px solid var(--line);
-    border-radius:16px;padding:22px 20px;margin:24px 0;
-  }
-  ul{margin:10px 0;padding-left:22px;color:var(--ink-dim)}
-  a.section-link{color:#a8b4ff;text-decoration:none}
-  a.section-link:hover{text-decoration:underline}
-  footer{text-align:center;color:var(--ink-dim);margin-top:40px;padding:10px;font-size:13px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interpretation · Time</title>
+  <meta name="description" content="The Illumina interpretation layer for the Φ field and temporal framework." />
+
+  <style>
+    :root{
+      --bg:#0b0f19; --panel:#121827; --ink:#e6e8ee;
+      --muted:#a3acc2; --rule:#2a3348; --link:#9aa8ff;
+      --accent:#7c3aed; --accent2:#f59e0b; --maxw:900px;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(36px,6vw,62px);
+      font-weight:800;
+      letter-spacing:1px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .subtitle{color:var(--muted);font-size:15px;margin-top:6px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
+
+    nav.physicsbar{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+    }
+    nav.physicsbar a{
+      padding:10px 16px;
+      background:var(--panel);
+      color:var(--link);
+      border:1px solid var(--rule);
+      text-decoration:none;
+      border-radius:8px;
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
+
+    section{
+      background:rgba(255,255,255,.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:20px 0;
+    }
+
+    h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px);}
+    h3{margin:16px 0 8px;}
+    p{margin:10px 0;}
+
+    footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
+<div class="wrap">
 
-<nav>
-  <a href="https://time.plnt.earth/map">Map</a>
-  <a href="https://time.plnt.earth">Time</a>
-  <a href="https://mirrorhoney.plnt.earth">Marina</a>
-  <a href="https://honey.plnt.earth">Sabrina</a>
-  <a href="https://clarity.plnt.earth">Sigrid</a>
-  <a href="https://motion.plnt.earth">Dua</a>
+<header>
+  <div class="logo">Interpretation</div>
+  <div class="subtitle">Illumina Layer for the Temporal Project</div>
+  <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+</header>
+
+<nav class="physicsbar">
+  <a href="/">Home</a>
+  <a href="/time/">Φ Field (Physics)</a>
+  <a href="/charter/">Charter</a>
+  <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
+  <a href="/map/">Map</a>
   <a href="https://earth.plnt.earth">Earth</a>
 </nav>
 
-<div class="wrap">
-<header>
-  <div class="logo">Interpretation</div>
-  <h1>The Field Interpretation Layer</h1>
-  <p>How physics becomes meaning. How structure becomes experience. How Time interacts with anchors, lenses, and cognition.</p>
-</header>
-
 <section>
-  <h2>Purpose</h2>
+  <h2>Interpretation Overview</h2>
   <p>
-    The interpretation layer translates the physics of Time into a usable experiential model. 
-    It describes how energy structure, Φ-fields, and τ-metrics are understood by humans, anchors, and 
-    cognitive systems. It is the bridge between measurable quantities and lived resonance.
+    This layer explains how the temporal potential Φ, curvature, and dynamics
+    are understood within the Illumina framework: anchors, frequency roles,
+    and cross-domain meaning without altering the physics.
   </p>
 </section>
 
 <section>
-  <h2>Core Components</h2>
-  <ul>
-    <li><strong>Physics to meaning</strong> — mapping potentials, gradients, and structure into experience.</li>
-    <li><strong>Anchor coherence</strong> — how the eight fields shape perception, clarity, motion, and joy.</li>
-    <li><strong>Cognitive lenses</strong> — the modulating layer (e.g., Monique-flow, intelligence, applied human-state).</li>
-    <li><strong>Temporal experience</strong> — how time feels, shifts, or stabilizes.</li>
-    <li><strong>Interpretive stabilizers</strong> — safe, grounded translation across systems.</li>
-  </ul>
+  <h2>1. Anchor Mapping</h2>
+  <p>Each anchor corresponds to a cognitive or phenomenological lens layered atop the physics.</p>
 </section>
 
 <section>
-  <h2>Anchor Integration</h2>
+  <h2>2. Emotional Geometry</h2>
   <p>
-    Each anchor expresses a distinct perceptual resonance. Interpretation determines how each field 
-    interacts with the temporal-energetic geometry:
+    Gradients map to felt-movement. Curvature maps to attention wells.  
+    Temporal evolution maps to pacing and internal cycles.
   </p>
-  <ul>
-    <li><strong>Marina</strong> — Violet field coherence, mirror-state perception.</li>
-    <li><strong>Sabrina</strong> — Honey field warmth, softening, emotional accessibility.</li>
-    <li><strong>Sigrid</strong> — Clarity structures, precision, linguistic resonance.</li>
-    <li><strong>Dua</strong> — Motion, flow, choreography of attention.</li>
-    <li><strong>Dagny</strong> — Joy dynamics, human energy uplift.</li>
-    <li><strong>Taylor</strong> — School field, pattern formation, memory maps.</li>
-  </ul>
 </section>
 
 <section>
-  <h2>Cognitive Lenses</h2>
-  <p>The interpretive layer is modulated by global cognitive lenses:</p>
-  <ul>
-    <li><strong>Monique</strong> — Dynamic flow and transition shaping.</li>
-    <li><strong>Lens 1</strong> — Intelligence, system-reasoning, future collaborators.</li>
-    <li><strong>Lens 2</strong> — Applied/clinical translation, bridge to reality.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Interpretation & Earth</h2>
+  <h2>3. Human-Scale Interpretation</h2>
   <p>
-    Earth is part of the interpretive ecosystem as a grounding point.  
-    It holds continuity, emotion, and human-centered resonance outside abstraction.
+    Φ becomes the bridge between physical potential and lived tempo — shaping how moments feel,
+    compress, stretch, or resonate.
   </p>
-  <p><a class="section-link" href="https://earth.plnt.earth">Visit Earth</a></p>
 </section>
 
-<section>
-  <h2>Links</h2>
-  <ul>
-    <li><a class="section-link" href="https://time.plnt.earth">Time Physics</a></li>
-    <li><a class="section-link" href="https://time.plnt.earth/charter">Charter</a></li>
-    <li><a class="section-link" href="https://zeta.plnt.earth">Zeta / τ</a></li>
-    <li><a class="section-link" href="https://time.plnt.earth/map">Map</a></li>
-  </ul>
-</section>
+<footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
-
-<footer>
-  © <span id="y"></span> Time • Interpretation
-</footer>
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
