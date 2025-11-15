@@ -1,225 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Time · Φ Field</title>
-<meta name="description" content="Unified temporal–energetic geometry: the Φ field, dimensional corrections, PDE evolution, and physics navigation."/>
-<meta name="color-scheme" content="light dark"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Φ Field · Temporal Potential</title>
+  <meta name="description" content="A corrected, dimensionally consistent formulation of temporal potential Φ derived from local energy density." />
 
-<style>
-:root{
-  --bg:#0b0f19;--panel:#121827;--ink:#eceef8;--muted:#9ea8bf;
-  --accent:#7c3aed;--accent2:#f59e0b;--rule:#212838;--card:#141a29;
-}
-@media(prefers-color-scheme:light){
-  :root{--bg:#ffffff;--ink:#11121a;--muted:#555;
-        --panel:#f3f4fa;--card:#ffffff;--rule:#ddd;}
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.6 -apple-system,ui-sans-serif,system-ui;
-}
-.wrap{max-width:920px;margin:0 auto;padding:48px 20px 120px}
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --code:#0e1422;
+      --maxw:900px;
+    }
 
-header{text-align:center;margin-bottom:40px}
-.logo{
-  font-size:clamp(42px,7vw,72px);font-weight:800;letter-spacing:1px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.subtitle{color:var(--muted);margin-top:8px}
-.meta{color:var(--muted);font-size:14px;margin-top:6px}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
 
-/* Nav */
-nav{
-  background:var(--panel);border:1px solid var(--rule);
-  border-radius:14px;padding:18px 22px;margin:32px auto;
-  max-width:700px;
-}
-nav ul{margin:0;padding-left:20px}
-nav a{color:var(--accent2);text-decoration:none;font-weight:500}
-nav a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-/* Sections */
-section{
-  background:var(--card);border:1px solid var(--rule);
-  border-radius:18px;padding:26px 24px;margin:24px 0;
-}
-h2{margin:0 0 10px;font-size:clamp(22px,3.2vw,30px)}
-h3{margin:18px 0 10px;font-size:20px}
-p{margin:10px 0}
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(36px,6vw,62px);
+      font-weight:800;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
+    }
 
-.equation{
-  display:block;background:var(--panel);border:1px solid var(--rule);
-  border-radius:10px;padding:12px 14px;margin:14px 0;
-  font-family:ui-monospace,Menlo,Consolas,monospace;
-  overflow:auto;white-space:nowrap;
-}
-.muted{color:var(--muted);font-size:14px}
+    .subtitle{color:var(--muted);font-size:15px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
 
-footer{text-align:center;color:var(--muted);margin-top:40px;font-size:13px}
-</style>
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:22px 0;
+    }
+
+    h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:18px 0 8px;font-size:18px;}
+    p{margin:10px 0;}
+
+    .equation{
+      display:block;
+      background:var(--code);
+      border:1px solid var(--rule);
+      border-radius:10px;
+      padding:12px 14px;
+      margin:12px 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      overflow-x:auto;
+      white-space:pre;
+    }
+
+    nav.physicsbar{
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    nav.physicsbar a{
+      padding:10px 16px;
+      background:var(--panel);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      color:var(--link);
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
+
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
 <div class="wrap">
 
 <header>
-  <div class="logo">Time</div>
-  <div class="subtitle">Unified Temporal–Energetic Geometry (Φ Field)</div>
-  <div class="meta">Version 2.0 • Updated <span id="date"></span></div>
-
-  <nav>
-    <ul>
-      <li><a href="/charter/">Charter →</a></li>
-      <li><a href="/interpretation/">Interpretation →</a></li>
-      <li><a href="https://zeta.plnt.earth">Zeta / τ Framework →</a></li>
-      <li><a href="https://42.plnt.earth">42 →</a></li>
-      <li><a href="https://brain.plnt.earth">Weightless Brain →</a></li>
-      <li><a href="https://manifolddynamics.plnt.earth">Manifold Dynamics →</a></li>
-      <li><a href="https://infinity.plnt.earth">Infinity →</a></li>
-      <li><a href="https://bigbang.plnt.earth">Big Bang →</a></li>
-      <li><a href="https://heatdeath.plnt.earth">Heat Death →</a></li>
-    </ul>
-  </nav>
+  <div class="logo">Φ Field</div>
+  <div class="subtitle">Temporal Potential · Corrected Physics</div>
+  <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
 </header>
 
-
-<!-- ABSTRACT -->
 <section>
-<h2>Abstract</h2>
-<p>
-This document presents a corrected, dimensionally consistent formulation of the
-temporal potential field Φ — a phenomenological construct relating local energy
-density to local temporal depth. Earlier interpretations (e.g., interpreting
-E/c³ directly as “time”) are replaced with a fully dimensionally corrected
-field definition Φ = E / (ρ₀ · c³). This establishes Φ with units of seconds,
-alongside a wave-like PDE for evolution and standard physical limits.
-</p>
+  <h2>Abstract</h2>
+  <p>
+    This page presents a dimensionally consistent formulation of the temporal 
+    potential field Φ, derived from local energy density and scaled by a chosen 
+    reference density to ensure Φ has units of time. The goal is clarity and 
+    internal consistency — not a replacement for relativity or quantum mechanics.
+  </p>
 </section>
 
-
-<!-- INTRODUCTION -->
 <section>
-<h2>1. Introduction</h2>
-<p>
-Φ is a scalar field derived from energy density, intended for visualization and
-conceptual modeling of temporal structure. Φ does not replace coordinate time t,
-nor does it modify relativity; it is a derived potential that maps energy
-distribution into a time-scaled field for simulation and analysis.
-</p>
+  <h2>1. Definition of Φ (Corrected)</h2>
+  <p>Φ is defined as:</p>
+
+  <div class="equation">
+Φ(x,y) := E(x,y) / (ρ₀ · c³)
+  </div>
+
+  <p>
+    where <strong>E</strong> is a local energy density and <strong>ρ₀</strong> is a reference 
+    mass density chosen to ensure Φ carries units of seconds.
+  </p>
 </section>
 
-
-<!-- POSTULATES -->
 <section>
-<h2>2. Postulates</h2>
-<ul>
-  <li>A scalar temporal potential Φ(x,t) exists with units of seconds.</li>
-  <li>Spatial curvature of Φ (∇²Φ) drives its temporal evolution.</li>
-  <li>The model reduces to standard physics in appropriate limits.</li>
-</ul>
+  <h2>2. Spatial Derivatives</h2>
+
+  <div class="equation">
+∇Φ = (∇E) / (ρ₀ · c³)
+∇²Φ = (∇²E) / (ρ₀ · c³)
+  </div>
+
+  <p>
+    These quantities map directly to the “tilt” and curvature of Φ, and can be 
+    simulated visually in 2D or 3D environments.
+  </p>
 </section>
 
-
-<!-- CORE EQUATIONS -->
 <section>
-<h2>3. Core Equations (Corrected)</h2>
+  <h2>3. Evolution Equation (Toy Model)</h2>
 
-<h3>3.1 Definition</h3>
-<div class="equation">
-Φ(x,y) = E(x,y) / (ρ₀ · c³)
-</div>
-<p class="muted">
-E must be defined with clear units (J·m⁻² or J·m⁻³). ρ₀ is a reference density
-selected so Φ has SI units of seconds.
-</p>
+  <div class="equation">
+∂²Φ/∂t² = c_eff² · ∇²Φ + S(x,t)
+  </div>
 
-<h3>3.2 Spatial Derivatives</h3>
-<div class="equation">
-∇Φ = (∇E) / (ρ₀ c³)  
-∇²Φ = (∇²E) / (ρ₀ c³)
-</div>
-
-<h3>3.3 Evolution Equation</h3>
-<div class="equation">
-∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)
-</div>
-
-<h3>3.4 Standard Physics Constraints</h3>
-<div class="equation">E = m c²</div>
-<div class="equation">ΔE · Δt ≥ ħ/2</div>
+  <p>
+    A wave-like PDE used strictly for simulation and intuition building;
+    <strong>c_eff</strong> is adjustable and <strong>S(x,t)</strong> introduces external energy input.
+  </p>
 </section>
 
-
-<!-- LAGRANGIAN -->
 <section>
-<h2>4. Action / Lagrangian Sketch</h2>
-<div class="equation">
-S = ∫ d⁴x √(-g) [ (R/16πG) + L_matter + ½ (∂Φ)² - V(Φ) + L_int ]
-</div>
-<p class="muted">
-This is schematic; Φ is treated as a phenomenological scalar field.
-</p>
+  <h2>4. τ (Tau) — Correct Definition</h2>
+  <p><strong>τ is not E/c³.</strong> That quantity has the wrong dimensions.</p>
+
+  <p>The correct τ used in standard physics contexts is:</p>
+
+  <div class="equation">
+τ = ħ / (m c²)
+  </div>
+
+  <p>
+    This represents a characteristic timescale associated with a particle of
+    mass <strong>m</strong>, derived from the Compton frequency.
+  </p>
 </section>
 
-
-<!-- QUANTUM -->
 <section>
-<h2>5. Quantum Remarks</h2>
-<p>
-Quantum effects enter through ΔEΔt ≥ ħ/2 and through how Φ affects effective
-timescales in simulations. No new quantum rules are introduced.
-</p>
+  <h2>5. Dimensional Checks</h2>
+
+  <ul>
+    <li>[E] = kg·m²·s⁻²</li>
+    <li>[c³] = m³·s⁻³</li>
+    <li>[ρ₀] = kg·m⁻³ (if E is J·m⁻³)</li>
+    <li>[Φ] = seconds ·✓</li>
+  </ul>
+
+  <div class="equation">
+[E / (ρ₀ c³)] = s
+  </div>
 </section>
 
-
-<!-- TESTS -->
 <section>
-<h2>6. Tests & Implementation Notes</h2>
-<ul>
-  <li>Verify dimensional consistency of Φ in code.</li>
-  <li>Test stability of the PDE for different c_eff.</li>
-  <li>Optionally visualize gradients & curvature of Φ.</li>
-</ul>
+  <h2>6. Links</h2>
+  <p>These pages form the Core Four:</p>
+
+  <nav class="physicsbar">
+    <a href="/">Home</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
+  </nav>
 </section>
-
-
-<!-- APPENDIX -->
-<section>
-<h2>Appendix — Units & Clarifications</h2>
-
-<h3>A.1 Why E/c³ Is Not Time</h3>
-<div class="equation">
-[E/c³] = kg·s·m⁻¹ (not seconds)
-</div>
-
-<h3>A.2 Correct Scaling</h3>
-<div class="equation">
-Φ = E / (ρ₀ c³)
-</div>
-
-<h3>A.3 Planck Scales</h3>
-<div class="equation">t_P = √(ħG / c⁵)</div>
-<div class="equation">ℓ_P = √(ħG / c³)</div>
-</section>
-
 
 <footer>
-© <span id="year"></span> Time · Φ Field
+  © 2025 • Creative Commons BY-NC-SA 4.0
 </footer>
 
 </div>
-
-<script>
-const d=new Date();
-document.getElementById("year").textContent=d.getFullYear();
-document.getElementById("date").textContent=d.toLocaleString(
- 'en-US',{month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"}
-);
-</script>
-
 </body>
 </html>
