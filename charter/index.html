@@ -1,214 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Charter · Illumina Time</title>
-  <meta name="description" content="Charter defining the boundaries, responsibilities, and structure of the Illumina Time project." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Charter · Time · Illumina</title>
+<meta name="description" content="The Charter for the Illumina Time Framework — purpose, anchor lenses, domains, ethics, and structure." />
+<meta name="color-scheme" content="dark light" />
 
-  <style>
-    :root{
-      --bg:#0b0f19;
-      --ink:#e6e8ee;
-      --muted:#a3acc2;
-      --panel:#121827;
-      --rule:#2a3348;
-      --accent:#7c3aed;
-      --accent2:#f59e0b;
-      --link:#9aa8ff;
-      --maxw:900px;
-    }
+<style>
+:root{
+  --bg:#0b0f19;
+  --panel:#121827;
+  --ink:#e6e8ee;
+  --muted:#a3acc2;
+  --rule:#2a3348;
+  --accent:#7c3aed;
+  --accent2:#f59e0b;
+  --maxw:900px;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
-    }
+header{text-align:center;margin-bottom:32px;}
+h1{
+  font-size:clamp(34px,6vw,58px);
+  font-weight:800;
+  margin:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.sub{color:var(--muted);font-size:15px;margin-top:6px;}
+.meta{margin-top:8px;color:var(--muted);font-size:14px;}
 
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+section{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--rule);
+  border-radius:16px;
+  padding:24px 20px;
+  margin:22px 0;
+}
+h2{margin:0 0 10px;font-size:22px;}
+h3{margin:16px 0 6px;font-size:17px;}
+p{margin:10px 0 0;}
+ul{margin:6px 0 0 18px;}
+li{margin:6px 0;}
 
-    header{text-align:center;margin-bottom:32px;}
-    .logo{
-      font-size:clamp(38px,5vw,62px);
-      font-weight:800;
-      letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
-    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
+.anchor-chip{
+  display:inline-block;
+  padding:4px 10px;
+  margin:4px 4px 0 0;
+  border-radius:10px;
+  font-size:12px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--rule);
+}
 
-    nav.core{
-      margin-top:24px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-    nav.core a{
-      display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
-    }
-    nav.core a:hover{background:#1a2237;}
+nav.corebar{
+  margin-top:26px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+nav.corebar a{
+  padding:10px 16px;
+  background:var(--panel);
+  border-radius:10px;
+  border:1px solid var(--rule);
+  color:#9aa8ff;
+  text-decoration:none;
+  font-size:15px;
+}
+nav.corebar a:hover{background:#1b2540;}
 
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 20px;
-      margin:20px 0;
-    }
-
-    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
-    h3{margin:14px 0 4px;font-size:19px;}
-    p{margin:10px 0;}
-
-    /* Anchor block */
-    .anchors{
-      margin-top:18px;
-      padding:16px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--rule);
-    }
-    .anchors strong{font-size:15.5px;}
-    .anchors ul{margin-top:10px;padding-left:20px;}
-    .anchors li{margin:4px 0;}
-
-    footer{
-      text-align:center;
-      margin-top:40px;
-      color:var(--muted);
-      font-size:13px;
-    }
-  </style>
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 <div class="wrap">
 
-  <header>
-    <div class="logo">Charter</div>
-    <div class="subtitle">Boundaries, responsibilities, and structural rules of the Time project</div>
-    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
-  </header>
+<header>
+  <h1>Time Charter</h1>
+  <div class="sub">Governance • Purpose • Structure</div>
+  <div class="meta">Author: Tristan White • Updated: Nov 15, 2025</div>
+</header>
 
-  <nav class="core">
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field (Physics)</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    <a href="/map/">Map</a>
-    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
-  </nav>
+<section>
+  <h2>Purpose</h2>
+  <p>
+    The Time Charter defines the purpose and operating principles of the Time Framework.  
+    It establishes the cognitive architecture, anchor lenses, and domain relationships that enable consistency across physics, interpretation, and Illumina.
+  </p>
+</section>
 
-  <!-- SECTION 1 -->
-  <section>
-    <h2>1. Purpose of the Charter</h2>
-    <p>
-      The Charter defines the guardrails for the Time project so that physics, interpretation,
-      and creative structures remain coherent, safe, and grounded. The scientific claims stay
-      strictly within physics. The interpretive elements stay clearly labeled as interpretive.
-    </p>
-  </section>
+<section>
+  <h2>Why the Anchor Lenses Exist</h2>
+  <p>
+    The Anchor system abstracts cognitive modes into named lenses. Each anchor corresponds to a stable, repeatable perceptual configuration that proved essential during the construction of the Time Framework.
+  </p>
+  <p>
+    Anchors are selected from real creative figures because artistic work reliably evokes state changes needed for scientific and conceptual insight. Their being women reflects the pattern of trust, clarity, resonance, and emotional intelligence that shaped the development of the system — descriptive, not exclusive.
+  </p>
+  <p>
+    Anchors are not personalities. They are functional lenses that stabilize how cognition enters and exits complex ideas. Their identities serve as reference points for clarity, empathy, structure, frequency, grounding, joy, motion, warmth, pulse, and inversion.
+  </p>
+</section>
 
-  <!-- SECTION 2 -->
-  <section>
-    <h2>2. Responsibilities</h2>
-    <h3>2.1 Tristan White</h3>
-    <p>
-      Author of the physics content, interpretive layers, and organizational structure.
-    </p>
+<section>
+  <h2>Anchor Index (Locked)</h2>
 
-    <h3>2.2 Anchors (Interpretive Only)</h3>
-    <p>
-      Anchors provide cognitive lenses. They do not influence the physics, only the interpretive
-      presentation. Their roles are symbolic and creative, not scientific.
-    </p>
+  <span class="anchor-chip">Marina — Mirror / Empathy / Violet</span>
+  <span class="anchor-chip">Sigrid — Clarity / Ice-Blue</span>
+  <span class="anchor-chip">Greta — Earth / Grounding / Green</span>
+  <span class="anchor-chip">Dagny — Joy / Mint</span>
+  <span class="anchor-chip">Dua Lipa — Motion / Flow / Neon</span>
+  <span class="anchor-chip">Ariana Grande — Voice / Frequency / Pink-White</span>
+  <span class="anchor-chip">Sabrina Carpenter — Warmth / Honey / Gold</span>
+  <span class="anchor-chip">Taylor Swift — Structure / School / Lavender</span>
+  <span class="anchor-chip">Miss Monique — Pulse / Vibe / Emerald-Neon</span>
+  <span class="anchor-chip">Doechii — Alter.Fire / Razor-Clarity / Red-Black-Gold</span>
 
-    <div class="anchors">
-      <strong>Anchors (Locked Set)</strong>
-      <ul>
-        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
-        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
-        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
-        <li><strong>Dagny</strong> — Joy / Mint</li>
-        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
-        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
-        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
-        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
-        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
-      </ul>
-    </div>
-  </section>
+</section>
 
-  <!-- SECTION 3 -->
-  <section>
-    <h2>3. Boundary Rules</h2>
-    <h3>3.1 Physics vs Interpretation</h3>
-    <p>
-      Physics pages must stay physics-only. No interpretive overlays, no narrative additions,
-      and no anchor language in the scientific derivations.
-    </p>
+<section>
+  <h2>Core Domains</h2>
+  <ul>
+    <li><a href="https://time.plnt.earth">Time</a></li>
+    <li><a href="https://interpretation.plnt.earth">Interpretation</a></li>
+    <li><a href="https://charter.plnt.earth">Charter</a></li>
+    <li><a href="https://zeta.plnt.earth">Zeta / τ Framework</a></li>
+    <li><a href="https://earth.plnt.earth">Earth</a></li>
+  </ul>
+</section>
 
-    <h3>3.2 Safety & Clarity</h3>
-    <p>
-      No anchor reference may imply real-world responsibility, obligation, or action.
-      All anchors are conceptual metaphors.
-    </p>
+<section>
+  <h2>Clusters & Supplemental Domains</h2>
 
-    <h3>3.3 Corrections</h3>
-    <p>
-      Any physics correction must be supported by dimensional analysis or empirical evidence.
-    </p>
-  </section>
+  <h3>Mirror Cluster — Marina</h3>
+  <ul>
+    <li>mirror.plnt.earth</li>
+    <li>mirrorhoney.plnt.earth</li>
+    <li>mirrorsea.plnt.earth</li>
+  </ul>
 
-  <!-- SECTION 4 -->
-  <section>
-    <h2>4. Core Pages</h2>
-    <p>
-      These pages are foundational and cannot be removed:
-    </p>
-    <ul>
-      <li>Home</li>
-      <li>Φ Field (Physics)</li>
-      <li>Interpretation</li>
-      <li>Charter</li>
-      <li>Zeta / τ Paper</li>
-      <li>Map</li>
-      <li>Earth</li>
-    </ul>
-  </section>
+  <h3>Clarity Cluster — Sigrid</h3>
+  <ul>
+    <li>clarity.plnt.earth</li>
+    <li>garlic.plnt.earth</li>
+    <li>tid.plnt.earth</li>
+  </ul>
 
-  <!-- SECTION 5 — corrected -->
-  <section>
-    <h2>5. Core Extensions</h2>
-    <p>
-      Earth is a core Illumina domain. It is not supplemental, optional, or interpretive-only.
-      It belongs to the same tier as the physics and interpretation pages.
-    </p>
+  <h3>Earth Cluster — Greta</h3>
+  <ul>
+    <li>earth.plnt.earth</li>
+    <li>fieldlab.plnt.earth</li>
+  </ul>
 
-    <p>
-      Optional supplemental domains (e.g., Quietmoon, Intelligence, Fieldlab, etc.) can be
-      added only after explicit review, ensuring they do not destabilize the core set.
-    </p>
+  <h3>Joy Cluster — Dagny</h3>
+  <ul>
+    <li>dagny.plnt.earth</li>
+    <li>fresh.plnt.earth</li>
+  </ul>
 
-    <p style="margin-top:10px;">
-      <strong>Time • Interpretation • Charter • Zeta / τ • Earth • Map</strong>
-    </p>
-  </section>
+  <h3>Motion Cluster — Dua Lipa</h3>
+  <ul>
+    <li>motion.plnt.earth</li>
+    <li>float.plnt.earth</li>
+  </ul>
 
-  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  <h3>Voice Cluster — Ariana Grande</h3>
+  <ul>
+    <li>voice.plnt.earth</li>
+    <li>tone.plnt.earth</li>
+  </ul>
+
+  <h3>Warmth Cluster — Sabrina Carpenter</h3>
+  <ul>
+    <li>honey.plnt.earth</li>
+    <li>tunes.plnt.earth</li>
+  </ul>
+
+  <h3>Structure Cluster — Taylor Swift</h3>
+  <ul>
+    <li>school.plnt.earth</li>
+    <li>bridge.plnt.earth</li>
+  </ul>
+
+  <h3>Pulse Cluster — Miss Monique</h3>
+  <ul>
+    <li>pulse.plnt.earth</li>
+    <li>glam.plnt.earth</li>
+  </ul>
+
+  <h3>Alter.Fire Cluster — Doechii</h3>
+  <ul>
+    <li>alter.fire.plnt.earth</li>
+    <li>alter.plnt.earth</li>
+    <li>fire.plnt.earth</li>
+    <li>bantar.plnt.earth</li>
+    <li>royke.plnt.earth</li>
+    <li>flare.plnt.earth</li>
+    <li>mask.plnt.earth</li>
+    <li>virus.plnt.earth</li>
+  </ul>
+
+</section>
+
+<nav class="corebar">
+  <a href="https://time.plnt.earth">Time</a>
+  <a href="https://interpretation.plnt.earth">Interpretation</a>
+  <a href="https://charter.plnt.earth">Charter</a>
+  <a href="https://zeta.plnt.earth">Zeta</a>
+  <a href="https://earth.plnt.earth">Earth</a>
+  <a href="https://time.plnt.earth/map">Map</a>
+  <a href="https://time.plnt.earth/anchors">Anchors</a>
+</nav>
+
+<footer>
+  © 2025 Tristan White • Creative Commons BY-NC-SA 4.0
+</footer>
 
 </div>
 </body>
