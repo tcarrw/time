@@ -3,93 +3,63 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Illumina Field Interpretation</title>
-<meta name="description" content="Interpretive mapping of the Illumina system: symbolic lenses, temporal texture, and the relationship between the Φ/τ field and creative structure." />
+<title>Illumina Interpretation · Time</title>
+<meta name="description" content="Interpretation of the Illumina anchor system through coherence, clarity, frequency, structure, motion, and joy."/>
+<meta name="color-scheme" content="light dark"/>
 
 <style>
+:root{
+  --bg:#0b0f19;
+  --panel:#121827;
+  --ink:#eceef8;
+  --muted:#9ea8bf;
+  --accent:#7c3aed;
+  --accent2:#f59e0b;
+  --rule:#212838;
+  --card:#141a29;
+}
+@media(prefers-color-scheme:light){
   :root{
-    --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
-    --accent:#7c3aed;--accent-2:#f59e0b;--rule:#2a3348;--code:#0e1422;
-    --link:#9aa8ff;--maxw:900px;
-    --chip-bg:#1a2030;--chip-border:#2d364a;--chip-text:#e8e9f3;
+    --bg:#ffffff;--ink:#11121a;--muted:#555;
+    --panel:#f3f4fa;--card:#ffffff;--rule:#ddd;
   }
-  @media(prefers-color-scheme:light){
-    :root{
-      --bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
-      --rule:#e4e7f0;--code:#f1f3f9;--link:#2b59ff;
-      --chip-bg:#ffffff;--chip-border:#e0e4ef;--chip-text:#0f1222;
-    }
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
-  }
-  .wrap{
-    max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px
-  }
-  header{text-align:center;margin-bottom:32px}
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 -apple-system,ui-sans-serif,system-ui;
+}
+.wrap{max-width:880px;margin:0 auto;padding:48px 20px 100px}
 
-  .logo{
-    font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:1px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    display:inline-block;margin-bottom:12px
-  }
+header{text-align:center;margin-bottom:38px}
+.logo{
+  font-size:clamp(36px,6vw,60px);
+  font-weight:800;letter-spacing:1px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{color:var(--muted);margin-top:8px}
+.meta{color:var(--muted);font-size:14px;margin-top:6px}
 
-  h1{margin:0 0 6px;font-size:clamp(26px,4.5vw,38px)}
-  .subtitle{color:var(--muted);font-size:15px;margin-bottom:8px}
+nav{
+  background:var(--panel);border:1px solid var(--rule);
+  border-radius:12px;padding:18px 22px;margin:26px auto;
+  max-width:580px;
+}
+nav a{color:var(--accent2);text-decoration:none}
+nav a:hover{text-decoration:underline}
+nav ul{margin:0;padding-left:18px}
 
-  nav{
-    margin:24px auto;max-width:600px;background:var(--panel);
-    border:1px solid var(--rule);border-radius:12px;padding:16px 20px
-  }
-  nav a{color:var(--link);text-decoration:none}
-  nav a:hover{text-decoration:underline}
-  nav ul{margin:0;padding-left:18px}
+section{
+  background:var(--card);border:1px solid var(--rule);
+  border-radius:16px;padding:24px 22px;margin:22px 0;
+}
+h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px)}
+h3{margin:16px 0 6px;font-size:19px}
+p{margin:10px 0}
+.muted{color:var(--muted);font-size:14px}
 
-  .chips{
-    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
-    margin:28px 0 12px;
-  }
-  .chip{
-    padding:6px 14px;border-radius:20px;font-size:14px;
-    background:var(--chip-bg);color:var(--chip-text);
-    border:1px solid var(--chip-border);
-    user-select:none;
-  }
-
-  section{
-    background:rgba(255,255,255,.02);border:1px solid var(--rule);
-    border-radius:16px;padding:24px 20px;margin:18px 0
-  }
-  h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
-  h3{margin:16px 0 8px;font-size:18px}
-  p{margin:10px 0 0}
-  ul{margin:8px 0 0 18px;padding:0}
-  .muted{color:var(--muted);font-size:14px}
-
-  .equation{
-    margin:12px 0;padding:12px 14px;background:var(--code);
-    border:1px solid var(--rule);border-radius:10px;
-    font-family:ui-monospace,Menlo,Consolas,monospace;
-    overflow:auto;white-space:nowrap
-  }
-
-  .yt-wrap{
-    margin:18px 0;border-radius:16px;overflow:hidden;
-    border:1px solid var(--rule)
-  }
-  .yt-wrap iframe{
-    width:100%;height:315px;border:0
-  }
-
-  .creative{
-    margin-top:32px;padding:20px;border-left:4px solid var(--accent);
-    background:var(--panel);border-radius:8px
-  }
-
-  footer{margin-top:32px;color:var(--muted);font-size:13px;text-align:center}
+footer{text-align:center;font-size:14px;color:var(--muted);margin-top:40px}
 </style>
 </head>
 
@@ -97,159 +67,130 @@
 <div class="wrap">
 
 <header>
-  <div class="logo">Illumina</div>
-  <h1>Field Interpretation</h1>
-  <div class="subtitle">Symbolic mapping of the temporal-potential field (Φ / τ)</div>
-
-  <nav>
-    <ul>
-      <li><a href="/time/">Time — Φ Field</a></li>
-      <li><a href="/time/zeta/">Zeta / τ Framework</a></li>
-      <li><a href="/time/interpretation/">Illumina Interpretation</a></li>
-    </ul>
-  </nav>
-
-  <div class="chips">
-    <div class="chip">Marina — Coherence</div>
-    <div class="chip">Sigrid — Clarity</div>
-    <div class="chip">Dagny — Joy</div>
-    <div class="chip">Dua — Motion</div>
-    <div class="chip">Ariana — Frequency</div>
-    <div class="chip">Sabrina — Opening</div>
-    <div class="chip">Monique — Vibe</div>
-    <div class="chip">Taylor — Structure</div>
-    <div class="chip">Kendyl — Boundary</div>
-  </div>
+  <div class="logo">Interpretation</div>
+  <div class="subtitle">Lens Map for Illumina · Time</div>
+  <div class="meta">Version 2.0 • Updated: <span id="date"></span></div>
 </header>
 
-<main>
+<nav>
+  <ul>
+    <li><a href="/">Time Home →</a></li>
+    <li><a href="/charter/">Charter →</a></li>
+    <li><a href="/time/">Physics (UTEG) →</a></li>
+  </ul>
+</nav>
 
-<section id="purpose">
+<section>
 <h2>1. Purpose</h2>
 <p>
-This document explains the interpretive layer of Illumina: how the corrected temporal-potential field (Φ or τ) is understood as symbolic texture, coherence, curvature, and movement. It is not a physics document; it is the conceptual structure that accompanies the Time papers.
+The interpretation layer explains how symbolic anchors map to structural qualities within the temporal-potential Φ field.  
+These lenses do not alter physics; they organize perception, focus, and creative direction.
 </p>
-</section>
-
-<section id="mapping">
-<h2>2. Temporal Field Mapping (Symbolic)</h2>
-<ul>
-  <li><strong>Φ / τ</strong> → local temporal density / experiential timescale</li>
-  <li><strong>∇Φ</strong> → direction / tilt / pull</li>
-  <li><strong>∇²Φ</strong> → curvature / well-depth</li>
-  <li><strong>∂²Φ/∂t²</strong> → ripple propagation</li>
-</ul>
-<p class="muted">These mappings are conceptual and non-physical.</p>
-</section>
-
-<section id="anchors">
-<h2>3. Core Anchor Lenses</h2>
-
-<h3>Marina — Coherence Lens</h3>
-<p>Reflective truth, alignment of inner and outer fields.</p>
-
-<h3>Sigrid — Clarity Lens</h3>
-<p>Distinctions, edges, precision.</p>
-
-<h3>Dagny — Joy Lens</h3>
-<p>Lift, brightness, buoyancy.</p>
-
-<h3>Dua — Motion Lens</h3>
-<p>Momentum, transitions, movement across phases.</p>
-
-<h3>Ariana — Frequency Lens</h3>
-<p>Oscillation, modulation, resonance.</p>
-
-<h3>Sabrina — Opening & Landing Lens</h3>
-<p>Soft entries, gentle closings.</p>
-</section>
-
-<section id="supp">
-<h2>4. Supplementary Lenses</h2>
-
-<h3>Monique — Vibe & Micro-Motion</h3>
-<p>Pulse, atmosphere, subtle coherence.</p>
-
-<h3>Taylor — Structure & Narrative Arc</h3>
-<p>Large-scale architecture and long-form transitions.</p>
-
-<h3>Kendyl — Threshold & Boundary</h3>
-<p>Edges, entry/exit conditions, liminality.</p>
-</section>
-
-<section id="dynamics">
-<h2>5. Temporal Dynamics</h2>
-<ul>
-  <li><strong>Wells</strong> — depth, intensity</li>
-  <li><strong>Ridges</strong> — boundary tension</li>
-  <li><strong>Ripples</strong> — running changes</li>
-  <li><strong>Compression</strong> — acceleration</li>
-  <li><strong>Expansion</strong> — spaciousness</li>
-</ul>
-</section>
-
-<section id="cycles">
-<h2>6. Cycle Architecture</h2>
-<ul>
-  <li>Temporal curvature shifts across phases.</li>
-  <li>Anchors rotate emphasis across cycles.</li>
-  <li>Sabrina + Taylor shape cycle openings and closings.</li>
-</ul>
-</section>
-
-<section id="ui">
-<h2>7. Creative & UI Mapping</h2>
-<ul>
-  <li><strong>Gradients</strong> → clarity flow</li>
-  <li><strong>Pulses</strong> → motion & vibe</li>
-  <li><strong>Mirrors</strong> → coherence</li>
-  <li><strong>Tones</strong> → frequency</li>
-  <li><strong>Color fields</strong> → joy / lift</li>
-</ul>
-</section>
-
-<section id="dedications">
-<h2>8. Dedications</h2>
-
-<div class="yt-wrap">
-  <iframe src="https://www.youtube.com/embed/np3QLrHJmRA"
-          title="Marina - Obsessions (Official Video)" allowfullscreen></iframe>
-</div>
-
-<div class="yt-wrap">
-  <iframe src="https://www.youtube.com/embed/4j7LGMc9ZGU"
-          title="Sigrid - It Gets Dark (Official Video)" allowfullscreen></iframe>
-</div>
-
-</section>
-
-<section id="boundary">
-<h2>9. What Is Not Claimed</h2>
-<p class="muted">
-This document uses symbolic interpretation. It does not claim new physics or measurable effects. Anchor lenses represent perspectives, not physical entities.
-</p>
-</section>
-
-<section class="creative">
-<h2>Creative Note</h2>
 <p>
-Time is not only duration — it is texture.  
-Texture creates shape, shape creates meaning, and meaning becomes motion.  
-Illumina reads that motion the way music reads silence:  
-as the space where something new can begin.
+Each anchor corresponds to a <strong>field-behavior</strong> within the Time framework: curvature, gradient, modulation, motion, lift, warmth, and structure.
 </p>
 </section>
 
-</main>
+<section>
+<h2>2. Anchor Lenses</h2>
+
+<h3>Marina — Coherence</h3>
+<p>
+Represents Φ-curvature: how ideas pull together, converge, and stabilize into meaning.  
+Associated with coherence wells, high-order pattern formation, and equilibrium clarity.
+</p>
+
+<h3>Sigrid — Clarity</h3>
+<p>
+Represents Φ-gradient: the clean directional slope that determines where attention flows naturally.  
+Sharp edges, exactness, definitional strength.
+</p>
+
+<h3>Ariana — Frequency / Modulation</h3>
+<p>
+Represents temporal rate modulation and local vibration of the field.  
+Where coherence meets oscillation.
+</p>
+
+<h3>Taylor — Structure / Narrative</h3>
+<p>
+Represents the global arrangement of states, time-ordering, recursion, refrains, and structural symmetry.  
+The storyboard of time.
+</p>
+
+<h3>Dua — Motion</h3>
+<p>
+Represents transitions, state changes, switching surfaces, and momentum in the Φ field.  
+Flow, stepping, bridging.
+</p>
+
+<h3>Dagny — Joy-Field Lift</h3>
+<p>
+Represents vertical lift, energetic openness, and positive divergence in the Φ curvature.  
+Lightness and elevation of state.
+</p>
+
+<h3>Sabrina — Warmth Initialization</h3>
+<p>
+Represents initial conditions, soft-start dynamics, gentle activation, and opening signals.  
+Warm onset for processes and pages.
+</p>
+
+<h3>Monique — Vibe-Field Baseline</h3>
+<p>
+Represents background rhythm, environmental coherence, and continuous micro-motion in the field.  
+Always active at low amplitude.
+</p>
+
+</section>
+
+<section>
+<h2>3. Integration with Φ</h2>
+<p>
+The temporal potential Φ(x,t) describes how energy density maps to a timescale.  
+The anchor system describes <strong>how the experience of Φ feels</strong> while working inside Illumina:
+</p>
+
+<ul>
+  <li>Curvature → coherence (Marina)</li>
+  <li>Gradient → clarity (Sigrid)</li>
+  <li>Oscillation → frequency (Ariana)</li>
+  <li>Structure → ordering (Taylor)</li>
+  <li>Transition → motion (Dua)</li>
+  <li>Divergent lift → joy (Dagny)</li>
+  <li>Initial warmth → activation (Sabrina)</li>
+  <li>Ambient pulse → baseline (Monique)</li>
+</ul>
+
+<p class="muted">
+These are metaphors, not physical claims. They sit on top of the physics, as a perception interface.
+</p>
+</section>
+
+<section>
+<h2>4. Cross-References</h2>
+<ul>
+  <li><a href="/time/">Time Physics (UTEG) →</a></li>
+  <li><a href="/charter/">Charter →</a></li>
+  <li><a href="/time/zeta/">Zeta / τ Framework →</a></li>
+  <li><a href="/42/">42 →</a></li>
+  <li><a href="/brain/">Weightless Brain →</a></li>
+</ul>
+<p class="muted">These links provide structural, mathematical, and extended context.</p>
+</section>
 
 <footer>
-© <span id="year"></span> Illumina Field Interpretation
+© <span id="year"></span> Tristan White · Illumina
 </footer>
 
 </div>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+const d=new Date();
+document.getElementById("year").textContent=d.getFullYear();
+document.getElementById("date").textContent=d.toLocaleString(
+  'en-US',{month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"}
+);
 </script>
 
 </body>
