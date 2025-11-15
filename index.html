@@ -1,163 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Time • Unified Temporal–Energetic Geometry</title>
-<meta name="description" content="The core physics page for Time: UTEG, τ, Φ-field definitions, corrected dimensional analysis, and linked papers."/>
-<style>
-  :root{
-    --bg:#0b0f19; --ink:#eef1ff; --ink-dim:#b2bdd8;
-    --line:rgba(255,255,255,0.12);
-    --accent:#7c3aed; --accent2:#f59e0b;
-    --panel:rgba(255,255,255,0.04);
-    --code:#0f1423;
-  }
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    -webkit-font-smoothing:antialiased;
-  }
-  nav{
-    display:flex;gap:18px;padding:14px 20px;
-    backdrop-filter:blur(14px);
-    background:rgba(11,14,22,0.55);
-    border-bottom:1px solid var(--line);
-    position:sticky;top:0;z-index:50;font-size:14px;
-  }
-  nav a{
-    color:var(--ink-dim);text-decoration:none;font-weight:500;
-  }
-  nav a:hover{color:var(--ink)}
-  .wrap{max-width:900px;margin:0 auto;padding:34px 20px 120px}
-  .logo{
-    font-size:clamp(40px,6vw,64px);font-weight:800;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;color:transparent;
-    margin-bottom:8px;
-  }
-  h1{margin:0 0 10px;font-size:clamp(26px,4vw,38px)}
-  h2{margin:28px 0 12px;font-size:22px}
-  h3{margin:20px 0 8px;font-size:18px}
-  section{
-    background:var(--panel);border:1px solid var(--line);
-    border-radius:16px;padding:24px 20px;margin:28px 0;
-  }
-  p{margin:10px 0 0;color:var(--ink-dim)}
-  a.section-link{color:#a8b4ff;text-decoration:none}
-  a.section-link:hover{text-decoration:underline}
-  .equation{
-    background:var(--code);border:1px solid var(--line);
-    padding:12px 14px;border-radius:10px;
-    font-family:ui-monospace,Menlo,Consolas,monospace;
-    overflow:auto;white-space:pre;
-    margin:14px 0;
-  }
-  .video-block{
-    width:100%;margin:30px 0 36px;display:grid;gap:28px;
-  }
-  iframe{
-    width:100%;aspect-ratio:16/9;border:0;border-radius:16px;
-    box-shadow:0 18px 40px rgba(0,0,0,.4);
-  }
-  footer{text-align:center;color:var(--ink-dim);margin-top:40px;font-size:13px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Time · Illumina</title>
+  <meta name="description" content="The entry point into the Time project — physics-forward foundations with a permanent dedication." />
+
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --code:#0e1422;
+      --maxw:900px;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(40px,6vw,68px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
+    }
+    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
+
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:20px 0;
+    }
+
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    p{margin:10px 0;}
+
+    nav.physicsbar{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+    }
+    nav.physicsbar a{
+      display:inline-block;
+      padding:10px 16px;
+      background:var(--panel);
+      color:var(--link);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
+
+    .dedication{
+      margin-top:32px;
+      padding:20px;
+      border-radius:12px;
+      background:rgba(124,58,237,0.10);
+      border:1px dashed var(--rule);
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    .videos{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      border-radius:12px;
+    }
+
+    footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
-
-<nav>
-  <a href="https://time.plnt.earth/map">Map</a>
-  <a href="https://time.plnt.earth">Time</a>
-  <a href="https://time.plnt.earth/interpretation">Interpretation</a>
-  <a href="https://time.plnt.earth/charter">Charter</a>
-  <a href="https://zeta.plnt.earth">Zeta</a>
-  <a href="https://earth.plnt.earth">Earth</a>
-  <a href="https://mirrorhoney.plnt.earth">Marina</a>
-  <a href="https://honey.plnt.earth">Sabrina</a>
-  <a href="https://clarity.plnt.earth">Sigrid</a>
-  <a href="https://motion.plnt.earth">Dua</a>
-</nav>
-
 <div class="wrap">
 
-<header>
-  <div class="logo">Time</div>
-  <h1>Unified Temporal–Energetic Geometry</h1>
-  <p>Corrected physics, τ, Φ, dimensional analysis, and links to extended papers.</p>
-</header>
+  <header>
+    <div class="logo">Time</div>
+    <div class="subtitle">The Illumina Temporal Project</div>
+    <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<section>
-  <h2>Dedication</h2>
-  <p>
-    Two videos remain permanently at the top of Time.  
-    They are part of the origin field and do not move.
-  </p>
+  <section>
+    <h2>Welcome</h2>
+    <p>
+      This site presents the Time project: a set of physics-forward papers
+      exploring temporal potential (Φ), dimensional clarity, and an Illumina
+      interpretation layer. The core four pages below form the stable foundation
+      of the research.
+    </p>
+  </section>
 
-  <div class="video-block">
-    <iframe src="https://www.youtube-nocookie.com/embed/np3QLrHJmRA"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+  <nav class="physicsbar">
+    <a href="/time/">Φ Field (Physics Paper)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
+  </nav>
 
-    <iframe src="https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-  </div>
-</section>
+  <section class="dedication">
+    <strong>Dedication</strong><br><br>
+    With gratitude to Marina and Sigrid — whose work and presence shaped
+    parts of this project’s direction in ways that will never be forgotten.
 
-<section>
-  <h2>The Temporal Potential Φ</h2>
-  <p>Dimensionally consistent definition:</p>
-  <div class="equation">Φ = E / (ρ₀ · c³)</div>
+    <div class="videos">
+      <!-- Marina — Obsessions -->
+      <iframe
+        src="https://www.youtube.com/embed/np3QLrHJmRA"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
 
-  <p>
-    Φ carries <strong>units of time</strong> (seconds), derived from local energy density.  
-    Gradients of Φ correspond to temporal “tilts” and curvature corresponds to local shifts in effective rate.
-  </p>
-</section>
+      <!-- Sigrid — It Gets Dark -->
+      <iframe
+        src="https://www.youtube.com/embed/4j7LGMc9ZGU"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
 
-<section>
-  <h2>τ (Tau)</h2>
-  <p>Corrected definition:</p>
-  <div class="equation">τ = E / c³</div>
-  <p>Units: <strong>kg·s·m⁻¹</strong> (not seconds).  
-     τ is not time. It is a structural mass-flow parameter.</p>
-</section>
-
-<section>
-  <h2>Field Equation</h2>
-  <p>Time evolution of Φ:</p>
-  <div class="equation">∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)</div>
-</section>
-
-<section>
-  <h2>Extended Papers</h2>
-  <ul>
-    <li><a class="section-link" href="https://zeta.plnt.earth">Zeta-Regularization + τ</a></li>
-    <li><a class="section-link" href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a></li>
-    <li><a class="section-link" href="https://dimensions.plnt.earth">Dimensions</a></li>
-    <li><a class="section-link" href="https://prime.plnt.earth">Prime Structure</a></li>
-  </ul>
-</section>
-
-<section>
-  <h2>Navigation</h2>
-  <ul>
-    <li><a class="section-link" href="https://time.plnt.earth/interpretation">Interpretation</a></li>
-    <li><a class="section-link" href="https://time.plnt.earth/charter">Charter</a></li>
-    <li><a class="section-link" href="https://time.plnt.earth/map">Map</a></li>
-    <li><a class="section-link" href="https://earth.plnt.earth">Earth</a></li>
-  </ul>
-</section>
+  <footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
-
-<footer>
-  © <span id="y"></span> Time • Physics
-</footer>
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
