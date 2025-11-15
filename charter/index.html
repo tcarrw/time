@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Charter · Time</title>
-  <meta name="description" content="The governing principles, roles, and boundaries of the Time project." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charter · Illumina Time</title>
+  <meta name="description" content="Charter defining the boundaries, responsibilities, and structure of the Illumina Time project." />
 
   <style>
     :root{
-      --bg:#0b0f19; --panel:#121827; --ink:#e6e8ee;
-      --muted:#a3acc2; --rule:#2a3348;
-      --accent:#7c3aed; --accent2:#f59e0b;
-      --link:#9aa8ff; --maxw:900px;
+      --bg:#0b0f19;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --panel:#121827;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --maxw:900px;
     }
 
     body{
       margin:0;
       background:var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;
     }
 
@@ -26,45 +31,58 @@
 
     header{text-align:center;margin-bottom:32px;}
     .logo{
-      font-size:clamp(36px,6vw,62px);
+      font-size:clamp(38px,5vw,62px);
       font-weight:800;
+      letter-spacing:2px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
-    .subtitle{color:var(--muted);font-size:15px;margin-top:6px;}
+    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
     .meta{color:var(--muted);margin-top:10px;font-size:14px;}
 
-    nav.timebar{
+    nav.core{
       margin-top:24px;
       display:flex;
       flex-wrap:wrap;
-      justify-content:center;
       gap:12px;
+      justify-content:center;
     }
-    nav.timebar a{
+    nav.core a{
+      display:inline-block;
       padding:10px 16px;
       background:var(--panel);
+      color:var(--link);
       border:1px solid var(--rule);
       border-radius:8px;
       text-decoration:none;
-      color:var(--link);
       font-size:15px;
     }
-    nav.timebar a:hover{background:#1a2237;}
+    nav.core a:hover{background:#1a2237;}
 
     section{
-      background:rgba(255,255,255,.02);
+      background:rgba(255,255,255,0.02);
       border:1px solid var(--rule);
       border-radius:16px;
       padding:24px 20px;
       margin:20px 0;
     }
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px);}
-    h3{margin:16px 0 6px;}
+
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:14px 0 4px;font-size:19px;}
     p{margin:10px 0;}
 
-    .anchors p{margin:4px 0;}
+    /* Anchor block */
+    .anchors{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--rule);
+    }
+    .anchors strong{font-size:15.5px;}
+    .anchors ul{margin-top:10px;padding-left:20px;}
+    .anchors li{margin:4px 0;}
 
     footer{
       text-align:center;
@@ -78,97 +96,119 @@
 <body>
 <div class="wrap">
 
-<header>
-  <div class="logo">Charter</div>
-  <div class="subtitle">Foundations, Responsibilities, and Boundaries</div>
-  <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
-</header>
+  <header>
+    <div class="logo">Charter</div>
+    <div class="subtitle">Boundaries, responsibilities, and structural rules of the Time project</div>
+    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<nav class="timebar">
-  <a href="/">Home</a>
-  <a href="/time/">Φ Field (Physics)</a>
-  <a href="/interpretation/">Interpretation</a>
-  <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
-  <a href="/map/">Map</a>
-  <a href="https://earth.plnt.earth">Earth</a>
-</nav>
+  <nav class="core">
+    <a href="/">Home</a>
+    <a href="/time/">Φ Field (Physics)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
+    <a href="/map/">Map</a>
+    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
+  </nav>
 
-<section>
-  <h2>Purpose</h2>
-  <p>
-    This Charter defines how the Time project is maintained:
-    what may be changed, what must remain stable, and which layers interact.
-  </p>
-</section>
+  <!-- SECTION 1 -->
+  <section>
+    <h2>1. Purpose of the Charter</h2>
+    <p>
+      The Charter defines the guardrails for the Time project so that physics, interpretation,
+      and creative structures remain coherent, safe, and grounded. The scientific claims stay
+      strictly within physics. The interpretive elements stay clearly labeled as interpretive.
+    </p>
+  </section>
 
-<section>
-  <h2>1. Core Commitments</h2>
-  <p>
-    • Physics remains empirical, falsifiable, and independent of interpretation.<br>
-    • Interpretation is optional and non-binding.<br>
-    • Dedications remain permanent on the homepage.<br>
-    • Updates are versioned, timestamped, and intentional.<br>
-  </p>
-</section>
+  <!-- SECTION 2 -->
+  <section>
+    <h2>2. Responsibilities</h2>
+    <h3>2.1 Tristan White</h3>
+    <p>
+      Author of the physics content, interpretive layers, and organizational structure.
+    </p>
 
-<section>
-  <h2>2. Stability Rules</h2>
-  <p>
-    • No anchor roles may drift or be reassigned.<br>
-    • No new anchors without explicit future revision.<br>
-    • The core domains remain stable and non-negotiable:<br><br>
-    <strong>Time • Interpretation • Charter • Zeta / τ • Earth</strong><br><br>
-    • All supplementary or experimental domains must remain non-intrusive to physics.
-  </p>
-</section>
+    <h3>2.2 Anchors (Interpretive Only)</h3>
+    <p>
+      Anchors provide cognitive lenses. They do not influence the physics, only the interpretive
+      presentation. Their roles are symbolic and creative, not scientific.
+    </p>
 
-<section class="anchors">
-  <h2>3. Anchor Roles & Responsibilities</h2>
+    <div class="anchors">
+      <strong>Anchors (Locked Set)</strong>
+      <ul>
+        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
+        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
+        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
+        <li><strong>Dagny</strong> — Joy / Mint</li>
+        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
+        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
+        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
+        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
+        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
+      </ul>
+    </div>
+  </section>
 
-  <p><strong>Marina</strong> — Mirror / Empathy / Violet</p>
-  <p><strong>Sigrid</strong> — Clarity / Ice-blue</p>
-  <p><strong>Greta</strong> — Earth / Grounding / Green</p>
-  <p><strong>Dagny</strong> — Joy / Mint</p>
-  <p><strong>Dua Lipa</strong> — Motion / Flow / Neon</p>
-  <p><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</p>
-  <p><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</p>
-  <p><strong>Taylor Swift</strong> — Structure / School / Lavender</p>
-  <p><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</p>
+  <!-- SECTION 3 -->
+  <section>
+    <h2>3. Boundary Rules</h2>
+    <h3>3.1 Physics vs Interpretation</h3>
+    <p>
+      Physics pages must stay physics-only. No interpretive overlays, no narrative additions,
+      and no anchor language in the scientific derivations.
+    </p>
 
-  <p style="margin-top:12px;color:var(--muted);font-size:14px;">
-    These roles are locked and will not change.  
-    They are interpretive, non-physical, and used solely for lens selection.
-  </p>
-</section>
+    <h3>3.2 Safety & Clarity</h3>
+    <p>
+      No anchor reference may imply real-world responsibility, obligation, or action.
+      All anchors are conceptual metaphors.
+    </p>
 
-<section>
-  <h2>4. Boundaries</h2>
-  <p>
-    • No private individuals are assigned roles.<br>
-    • No parasocial narrative is endorsed.<br>
-    • Only public work, public discourse, and physics matter.<br>
-    • All interpretation must remain respectful and non-invasive.<br>
-  </p>
-</section>
+    <h3>3.3 Corrections</h3>
+    <p>
+      Any physics correction must be supported by dimensional analysis or empirical evidence.
+    </p>
+  </section>
 
-<section>
-  <h2>5. Core Extensions</h2>
-  <p>
-    Earth is a core Illumina domain—never supplemental.  
-    It carries ecology, grounding, and continuity.  
-    It must be included in all Time navigation structures.
-  </p>
+  <!-- SECTION 4 -->
+  <section>
+    <h2>4. Core Pages</h2>
+    <p>
+      These pages are foundational and cannot be removed:
+    </p>
+    <ul>
+      <li>Home</li>
+      <li>Φ Field (Physics)</li>
+      <li>Interpretation</li>
+      <li>Charter</li>
+      <li>Zeta / τ Paper</li>
+      <li>Map</li>
+      <li>Earth</li>
+    </ul>
+  </section>
 
-  <p>
-    Supplemental domains (Quietmoon, Intelligence, Fieldlab, etc.)  
-    may be added only through deliberate review, ensuring they do not  
-    disturb the stability of the five core domains listed above.
-  </p>
-</section>
+  <!-- SECTION 5 — corrected -->
+  <section>
+    <h2>5. Core Extensions</h2>
+    <p>
+      Earth is a core Illumina domain. It is not supplemental, optional, or interpretive-only.
+      It belongs to the same tier as the physics and interpretation pages.
+    </p>
 
-<footer>
-  © 2025 • Creative Commons BY-NC-SA 4.0
-</footer>
+    <p>
+      Optional supplemental domains (e.g., Quietmoon, Intelligence, Fieldlab, etc.) can be
+      added only after explicit review, ensuring they do not destabilize the core set.
+    </p>
+
+    <p style="margin-top:10px;">
+      <strong>Time • Interpretation • Charter • Zeta / τ • Earth • Map</strong>
+    </p>
+  </section>
+
+  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
 </body>
