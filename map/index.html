@@ -1,218 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Time · Master Index</title>
-  <meta name="description" content="Master index of all physics, mathematics, information theory, and applied research pages within the Time project." />
-
-  <style>
-    :root{
-      --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
-      --accent:#7c3aed;--accent2:#f59e0b;--rule:#2a3348;--code:#0e1422;
-      --maxw:940px;
-    }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
-        --rule:#e4e7f0;--code:#eef1f8;
-      }
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;background:var(--bg);color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
-    }
-    .wrap{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:48px 24px 96px;
-    }
-    header{text-align:center;margin-bottom:40px}
-    .logo{
-      font-size:clamp(40px,7vw,70px);
-      font-weight:800;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:12px;
-    }
-    h1{margin:0;font-size:clamp(26px,4.5vw,38px)}
-    .subtitle{color:var(--muted);margin-top:6px;font-size:15px}
-    .meta{color:var(--muted);margin-top:6px;font-size:14px}
-
-    section{
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 22px;
-      margin:22px 0;
-    }
-    h2{margin-top:0;font-size:24px}
-    h3{margin:18px 0 8px;font-size:19px}
-    p{margin:8px 0}
-    ul{margin:8px 0 0;padding-left:20px}
-    li{margin:4px 0}
-    a{color:#9aa8ff;text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .category{font-weight:600;font-size:18px;margin-top:18px}
-    .tree{
-      background:var(--code);
-      padding:16px;
-      border-radius:12px;
-      font-family:ui-monospace,Menlo,Consolas,monospace;
-      white-space:pre;
-      overflow:auto;
-      margin-top:12px;
-      font-size:14px;
-    }
-
-    footer{
-      margin-top:40px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Time · Map</title>
+<meta name="description" content="A structural map of the Time Framework, including physics, interpretation layers, cognitive lenses, anchors, and supplementary domains."/>
+<style>
+  :root{
+    --bg:#0b0f19; --panel:#111625; --ink:#e8eaf2; --muted:#9aa3b8;
+    --rule:#232b3d; --accent:#7c3aed; --accent2:#f59e0b; --code:#0f1423;
+    --card:rgba(255,255,255,0.02);
+  }
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 ui-sans-serif,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:48px 20px 96px}
+  header{text-align:center;margin-bottom:32px}
+  .logo{
+    font-size:clamp(34px,6vw,60px);font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  h1{margin:6px 0 10px;font-size:clamp(24px,4vw,36px)}
+  .muted{color:var(--muted)}
+  section{
+    background:var(--card);border:1px solid var(--rule);
+    border-radius:14px;padding:20px 18px;margin:20px 0;
+  }
+  h2{margin:0 0 12px;font-size:22px}
+  h3{margin:16px 0 6px;font-size:17px}
+  a{color:#9aa8ff;text-decoration:none}
+  a:hover{text-decoration:underline}
+  ul{margin:6px 0;padding-left:22px}
+  footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">Time</div>
-      <h1>Master Index</h1>
-      <div class="subtitle">A complete map of the physics, mathematics, information theory, and applied domains within the Time framework.</div>
-      <div class="meta">Author: Tristan White • Version: v1.0 • Updated: Fri Nov 15, 2025 — 11:47 AM EST</div>
-    </header>
+<div class="wrap">
 
-    <main>
+<header>
+  <div class="logo">Time</div>
+  <h1>System Map</h1>
+  <p class="muted">Physics → Interpretation → Cognition → Anchors → Supplementary Domains</p>
+</header>
 
-      <!-- INTRO -->
-      <section>
-        <h2>Introduction</h2>
-        <p>This Master Index organizes every physics-aligned domain within the Time project. It unifies the core theoretical papers, their mathematical foundations, and the applied research layers that extend from them. This structure is designed for clarity, academic review, and future laboratory collaboration.</p>
+<!-- PHYSICS LAYER -->
+<section>
+  <h2>Physics Layer</h2>
+  <ul>
+    <li><a href="https://time.plnt.earth">Core Physics (UTEG)</a></li>
+    <li><a href="https://zeta.plnt.earth">Zeta-Regularization & τ</a></li>
+    <li><a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a></li>
+    <li><a href="https://dimensions.plnt.earth">Dimensions</a></li>
+    <li><a href="https://infinity.plnt.earth">Infinity</a></li>
+    <li><a href="https://prime.plnt.earth">Prime Structure</a></li>
+  </ul>
+</section>
 
-        <p style="margin-top:14px;font-size:14px;color:var(--muted);">
-          <strong>Note:</strong> All pages listed below are linked for navigational completeness. Some links may temporarily return a 404 until their content is published.
-        </p>
-      </section>
+<!-- INTERPRETATION LAYER -->
+<section>
+  <h2>Interpretation Layer</h2>
+  <ul>
+    <li><a href="https://time.plnt.earth/interpretation">Field Interpretation</a></li>
+    <li><a href="https://time.plnt.earth/charter">Charter</a></li>
+    <li><a href="https://quietmoon.plnt.earth">Quietmoon (Applied Bridge)</a></li>
+    <li><a href="https://intelligence.plnt.earth">Intelligence</a></li>
+  </ul>
+</section>
 
-      <!-- CORE FOUR -->
-      <section>
-        <h2>1. Core Papers</h2>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/time">Time / Φ Field</a></strong> — Main physics paper; defines Φ, PDE structure, dimensional consistency.</li>
-          <li><strong><a href="https://time.plnt.earth/interpretation">Interpretation</a></strong> — Conceptual reading of the framework; clarifies meaning and boundaries.</li>
-          <li><strong><a href="https://time.plnt.earth/charter">Charter</a></strong> — Structure and governance of the research ecosystem.</li>
-          <li><strong><a href="https://time.plnt.earth/zeta">Zeta</a></strong> — Zeta-regularization applied to temporal and energetic structures.</li>
-        </ul>
-      </section>
+<!-- COGNITIVE LENSES -->
+<section>
+  <h2>Cognitive Lenses</h2>
 
-      <!-- HIGH VALUE SUPPLEMENTARY -->
-      <section>
-        <h2>2. High-Value Supplementary Pages</h2>
+  <h3>Fixed Lenses</h3>
+  <ul>
+    <li><strong>Monique</strong> — Motion & Dynamic Flow Lens</li>
+  </ul>
 
-        <div class="category">Geometry & Structure</div>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/atlas">Atlas</a></strong> — Coordinate charts and multi-patch geometries.</li>
-          <li><strong><a href="https://time.plnt.earth/manifolddynamics">ManifoldDynamics</a></strong> — Motion and flow on curved spaces.</li>
-          <li><strong><a href="https://time.plnt.earth/dimensions">Dimensions</a></strong> — Dimensional analysis, scaling, and units.</li>
-          <li><strong><a href="https://time.plnt.earth/infinity">Infinity</a></strong> — Divergence classes and analytic continuation.</li>
-          <li><strong><a href="https://time.plnt.earth/prime">Prime</a></strong> — Number theory structures underlying spectra.</li>
-        </ul>
+  <h3>Open Lenses</h3>
+  <ul>
+    <li><strong>Lens 1</strong> — Intelligence, Consciousness, or Systems Reasoning</li>
+    <li><strong>Lens 2</strong> — Applied Clinical, Translational, or Human-State Integration</li>
+  </ul>
 
-        <div class="category">Cosmology</div>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/bigbang">BigBang</a></strong> — Early-universe conditions and symmetry breaking.</li>
-          <li><strong><a href="https://time.plnt.earth/heatdeath">HeatDeath</a></strong> — Long-term thermodynamic equilibrium.</li>
-          <li><strong><a href="https://time.plnt.earth/origin">Origin</a></strong> — Initial conditions and lawful emergence.</li>
-        </ul>
+  <p class="muted">These lenses modulate interpretation across all layers and may map to collaborators later.</p>
+</section>
 
-        <div class="category">Information & Cognition</div>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/intelligence">Intelligence</a></strong> — Information flow, entropy, prediction, compression.</li>
-          <li><strong><a href="https://time.plnt.earth/brain">Brain</a></strong> — Principles of cognition and neural energetics.</li>
-        </ul>
+<!-- ANCHOR LAYER -->
+<section>
+  <h2>Anchor Layer</h2>
+  <p class="muted">Each anchor is a domain of emotional, creative, or perceptual resonance connected to Time.</p>
+  <ul>
+    <li><a href="https://mirrorhoney.plnt.earth">Marina • Violet Field</a></li>
+    <li><a href="https://honey.plnt.earth">Sabrina • Honey Field</a></li>
+    <li><a href="https://clarity.plnt.earth">Sigrid • Clarity Field</a></li>
+    <li><a href="https://motion.plnt.earth">Dua • Motion Field</a></li>
+    <li><a href="https://dagny.plnt.earth">Dagny • Joy Field</a></li>
+    <li><a href="https://school.plnt.earth">Taylor • School Field</a></li>
+    <li><a href="https://garlic.plnt.earth">Sigrid/Marina Notes • Garlic Field</a></li>
+    <li><a href="https://four.plnt.earth">Center/Bridge Field</a></li>
+  </ul>
+</section>
 
-        <div class="category">Applied Physics</div>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/earth">Earth</a></strong> — Energy balance and planetary stability.</li>
-          <li><strong><a href="https://time.plnt.earth/quietmoon">QuietMoon</a></strong> — Clinical translation layer; safe scientific applications.</li>
-          <li><strong><a href="https://time.plnt.earth/fieldlab">FieldLab</a></strong> — Experimental and computational sandbox.</li>
-          <li><strong><a href="https://time.plnt.earth/tone">Tone</a></strong> — Frequency physics, spectra, and harmonics.</li>
-          <li><strong><a href="https://time.plnt.earth/unified">Unified</a></strong> — Integrated framework uniting Φ, τ, and analytic continuation.</li>
-          <li><strong><a href="https://time.plnt.earth/42">42</a></strong> — Temporal and numerical structure.</li>
-        </ul>
-      </section>
+<!-- SUPPLEMENTARY -->
+<section>
+  <h2>Supplementary Pages</h2>
+  <ul>
+    <li><a href="https://earth.plnt.earth">Earth • Dedicated Field</a></li>
+    <li><a href="https://origin.plnt.earth">Origin</a></li>
+    <li><a href="https://jar.plnt.earth">Jar</a></li>
+    <li><a href="https://tone.plnt.earth">Tone</a></li>
+    <li><a href="https://travel.plnt.earth">Travel</a></li>
+    <li><a href="https://voice.plnt.earth">Voice</a></li>
+    <li><a href="https://read.plnt.earth">Read</a></li>
+  </ul>
 
-      <!-- OPTIONAL SET -->
-      <section>
-        <h2>3. Optional Physics Pages</h2>
-        <ul>
-          <li><strong><a href="https://time.plnt.earth/aether">Aether</a></strong> — Conceptual mediums and field propagation history.</li>
-          <li><strong><a href="https://time.plnt.earth/drift">Drift</a></strong> — Energy flow and gradient-driven motion.</li>
-          <li><strong><a href="https://time.plnt.earth/sea">Sea</a></strong> — Continuous systems and oscillatory fields.</li>
-          <li><strong><a href="https://time.plnt.earth/motion">Motion</a></strong> — Kinematics and frame transformations.</li>
-          <li><strong><a href="https://time.plnt.earth/tid">Tid</a></strong> — Time derivatives and tidal interactions.</li>
-          <li><strong><a href="https://time.plnt.earth/comet">Comet</a></strong> — Orbital dynamics metaphors.</li>
-          <li><strong><a href="https://time.plnt.earth/flare">Flare</a></strong> — Energy release events.</li>
-        </ul>
-      </section>
+  <p class="muted" style="margin-top:10px">
+    Some pages may not yet exist or may return 404. These will be built or restored over time.
+  </p>
+</section>
 
-      <!-- TREE VIEW -->
-      <section>
-        <h2>4. Site Map</h2>
-        <div class="tree">
-Time
-├── Core Papers
-│   ├── Time / Φ Field
-│   ├── Interpretation
-│   ├── Charter
-│   └── Zeta
-│
-├── Supplementary Physics
-│   ├── Geometry & Structure
-│   │   ├── Atlas
-│   │   ├── ManifoldDynamics
-│   │   ├── Dimensions
-│   │   ├── Infinity
-│   │   └── Prime
-│   │
-│   ├── Cosmology
-│   │   ├── BigBang
-│   │   ├── HeatDeath
-│   │   └── Origin
-│   │
-│   ├── Information & Cognition
-│   │   ├── Intelligence
-│   │   └── Brain
-│   │
-│   └── Applied Physics
-│       ├── Earth
-│       ├── QuietMoon
-│       ├── FieldLab
-│       ├── Tone
-│       ├── Unified
-│       └── 42
-│
-└── Optional Pages
-    ├── Aether
-    ├── Drift
-    ├── Sea
-    ├── Motion
-    ├── Tid
-    ├── Comet
-    └── Flare
-        </div>
-      </section>
+</div>
 
-    </main>
+<footer>© <span id="y"></span> • Time Map</footer>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 
-    <footer>
-      © 2025 Tristan White • Time Project — Master Index
-    </footer>
-  </div>
 </body>
 </html>
