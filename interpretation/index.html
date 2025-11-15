@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Illumina Interpretation · Time</title>
-<meta name="description" content="Interpretation of Illumina’s anchor lenses within the temporal potential field Φ."/>
-<meta name="color-scheme" content="light dark"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Time · Interpretation</title>
+  <meta name="description" content="The Illumina interpretation of the Time project — translating the physics framework into a clear conceptual structure." />
 
-<style>
-:root{
-  --bg:#0b0f19;--panel:#121827;--ink:#eceef8;--muted:#9ea8bf;
-  --accent:#7c3aed;--accent2:#f59e0b;--rule:#212838;--card:#141a29;
-}
-@media(prefers-color-scheme:light){
-  :root{
-    --bg:#ffffff;--ink:#11121a;--muted:#555;
-    --panel:#f3f4fa;--card:#ffffff;--rule:#ddd;
-  }
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.6 -apple-system,ui-sans-serif,system-ui;
-}
-.wrap{max-width:880px;margin:0 auto;padding:48px 20px 96px}
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --maxw:900px;
+    }
 
-header{text-align:center;margin-bottom:38px}
-.logo{
-  font-size:clamp(36px,6vw,60px);font-weight:800;letter-spacing:1px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.subtitle{color:var(--muted);margin-top:8px}
-.meta{color:var(--muted);font-size:14px;margin-top:6px}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
 
-nav{
-  background:var(--panel);border:1px solid var(--rule);
-  border-radius:12px;padding:18px 22px;margin:26px auto;
-  max-width:580px;
-}
-nav a{color:var(--accent2);text-decoration:none}
-nav a:hover{text-decoration:underline}
-nav ul{margin:0;padding-left:18px}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-section{
-  background:var(--card);border:1px solid var(--rule);
-  border-radius:16px;padding:24px 22px;margin:22px 0;
-}
-h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px)}
-h3{margin:16px 0 6px;font-size:19px}
-p{margin:10px 0}
-.muted{color:var(--muted);font-size:14px}
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(36px,6vw,62px);
+      font-weight:800;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
+    }
 
-footer{text-align:center;font-size:14px;color:var(--muted);margin-top:40px}
-</style>
+    .subtitle{color:var(--muted);font-size:15px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
+
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:22px 0;
+    }
+
+    h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:18px 0 8px;font-size:18px;}
+    p{margin:10px 0;}
+
+    nav.physicsbar{
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    nav.physicsbar a{
+      padding:10px 16px;
+      background:var(--panel);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      color:var(--link);
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
+
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
@@ -61,105 +86,84 @@ footer{text-align:center;font-size:14px;color:var(--muted);margin-top:40px}
 
 <header>
   <div class="logo">Interpretation</div>
-  <div class="subtitle">Lens Map for Illumina · Time</div>
-  <div class="meta">Version 2.2 • Updated: <span id="date"></span></div>
+  <div class="subtitle">Conceptual Layer for the Time Project</div>
+  <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
 </header>
 
-<nav>
+<section>
+  <h2>Purpose</h2>
+  <p>
+    The interpretation layer provides a structured way to understand the Time
+    project without altering the underlying physics. It explains how the temporal
+    potential Φ, dimensional clarity, and the Illumina framework relate conceptually,
+    without claiming additional physical laws.
+  </p>
+  <p>
+    This page is intentionally non-technical: it translates the ideas into a
+    comprehensible structure for visitors, collaborators, and future work.
+  </p>
+</section>
+
+<section>
+  <h2>1. Separation of Layers</h2>
+
+  <h3>Physics Layer</h3>
+  <p>
+    Defined by the Φ field, dimensional analysis, τ, and reproducible
+    mathematics. This layer is fixed, conservative, and independent of
+    interpretation.
+  </p>
+
+  <h3>Interpretation Layer</h3>
+  <p>
+    Connects the physics work to Illumina themes: structure, attention patterns,
+    creative motion, and how people interact with temporal ideas. This layer
+    describes meaning — not physical behavior.
+  </p>
+</section>
+
+<section>
+  <h2>2. Illumina Interpretation</h2>
+  <p>
+    Illumina can treat Φ as representing <em>how</em> energy structure shapes perceived
+    sequences, pacing, or clarity. This appears in the form of gradients, wells,
+    or transitions — metaphors that align with the math, without claiming new laws
+    of nature.
+  </p>
+  <p>
+    This page establishes the boundaries and avoids mixing symbolic content into
+    physics pages.
+  </p>
+</section>
+
+<section>
+  <h2>3. Relationship to the Core Four</h2>
+  <p>
+    Interpretation supports:
+  </p>
   <ul>
-    <li><a href="/time/">Time Home →</a></li>
-    <li><a href="/charter/">Charter →</a></li>
-    <li><a href="/interpretation/">Interpretation →</a></li>
-    <li><a href="https://zeta.plnt.earth">Zeta / τ Framework →</a></li>
+    <li><strong>Φ Field</strong> — mathematical foundation</li>
+    <li><strong>Charter</strong> — structure, roles, color index</li>
+    <li><strong>Zeta/τ Paper</strong> — mathematical extensions</li>
+    <li><strong>Homepage</strong> — public entry and dedication</li>
   </ul>
-</nav>
-
-<section>
-<h2>1. Purpose</h2>
-<p>
-The interpretation layer defines the symbolic lenses used throughout Illumina.  
-These lenses describe qualitative behaviors mapped onto the temporal potential field Φ.
-They are metaphorical perspectives, not physical forces.
-</p>
 </section>
 
 <section>
-<h2>2. Anchor Lenses</h2>
+  <h2>Navigation</h2>
 
-<h3>Marina — Coherence</h3>
-<p>Curvature, convergence, stability. How ideas settle into meaning.</p>
-
-<h3>Sigrid — Clarity</h3>
-<p>Gradient precision. Clean directional flow of attention.</p>
-
-<h3>Ariana — Frequency / Modulation</h3>
-<p>Rate modulation, oscillation, local temporal resonance.</p>
-
-<h3>Taylor — Structure</h3>
-<p>Ordering, narrative arcs, sequence integrity.</p>
-
-<h3>Dua — Motion</h3>
-<p>Transitions, state changes, momentum, bridging.</p>
-
-<h3>Dagny — Joy-Lift</h3>
-<p>Lightness, upward divergence, buoyancy.</p>
-
-<h3>Sabrina — Warm Onset / Landing</h3>
-<p>Soft initialization; gentle opening and closing of processes.</p>
-
-<h3>Monique — Vibe-Field Baseline</h3>
-<p>Ambient rhythm, baseline coherence, continuous micro-motion.</p>
-
-<h3>Kendyl — Boundary</h3>
-<p>Thresholds, liminality, entrance/exit architecture.</p>
-
-</section>
-
-<section>
-<h2>3. Integration with Φ</h2>
-<p>
-Φ describes temporal depth and variation.
-Lenses describe how that temporal texture is perceived and shaped creatively.
-</p>
-
-<ul>
-  <li>Curvature → coherence</li>
-  <li>Gradient → clarity</li>
-  <li>Oscillation → frequency</li>
-  <li>Structure → narrative</li>
-  <li>Transition → motion</li>
-  <li>Divergence → joy</li>
-  <li>Warm onset → initiation</li>
-  <li>Ambient pulse → vibe-field</li>
-</ul>
-
-<p class="muted">This is a symbolic interface, not additional physics.</p>
-</section>
-
-<section>
-<h2>4. Cross-References</h2>
-<ul>
-  <li><a href="/time/">Time · Φ Field</a></li>
-  <li><a href="/charter/">Illumina Charter</a></li>
-  <li><a href="https://zeta.plnt.earth">Zeta / τ Framework</a></li>
-  <li><a href="https://42.plnt.earth">42</a></li>
-  <li><a href="https://brain.plnt.earth">Weightless Brain</a></li>
-</ul>
+  <nav class="physicsbar">
+    <a href="/">Home</a>
+    <a href="/time/">Φ Field</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
+  </nav>
 </section>
 
 <footer>
-© <span id="year"></span> Illumina Interpretation
+  © 2025 • Creative Commons BY-NC-SA 4.0
 </footer>
 
 </div>
-
-<script>
-const d=new Date();
-document.getElementById("year").textContent=d.getFullYear();
-document.getElementById("date").textContent=d.toLocaleString(
-  'en-US',{month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"}
-);
-</script>
-
 </body>
 </html>
