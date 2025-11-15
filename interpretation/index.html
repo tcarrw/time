@@ -2,22 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Interpretation · Time</title>
-  <meta name="description" content="The Illumina interpretation layer for the Φ field and temporal framework." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interpretation · Illumina</title>
+  <meta name="description" content="Interpretation layer connecting physics (Φ, τ, zeta) to the Illumina cognitive-lens structure." />
 
   <style>
     :root{
-      --bg:#0b0f19; --panel:#121827; --ink:#e6e8ee;
-      --muted:#a3acc2; --rule:#2a3348; --link:#9aa8ff;
-      --accent:#7c3aed; --accent2:#f59e0b; --maxw:900px;
+      --bg:#0b0f19;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --panel:#121827;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --code:#0e1422;
+      --maxw:900px;
     }
 
     body{
       margin:0;
       background:var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;
     }
 
@@ -25,48 +32,58 @@
 
     header{text-align:center;margin-bottom:32px;}
     .logo{
-      font-size:clamp(36px,6vw,62px);
+      font-size:clamp(38px,5vw,62px);
       font-weight:800;
-      letter-spacing:1px;
+      letter-spacing:2px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
-
-    .subtitle{color:var(--muted);font-size:15px;margin-top:6px;}
+    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
     .meta{color:var(--muted);margin-top:10px;font-size:14px;}
 
-    nav.physicsbar{
+    nav.core{
       margin-top:24px;
       display:flex;
       flex-wrap:wrap;
-      justify-content:center;
       gap:12px;
+      justify-content:center;
     }
-    nav.physicsbar a{
+    nav.core a{
+      display:inline-block;
       padding:10px 16px;
       background:var(--panel);
       color:var(--link);
       border:1px solid var(--rule);
-      text-decoration:none;
       border-radius:8px;
+      text-decoration:none;
       font-size:15px;
     }
-    nav.physicsbar a:hover{background:#1a2237;}
+    nav.core a:hover{background:#1a2237;}
 
     section{
-      background:rgba(255,255,255,.02);
+      background:rgba(255,255,255,0.02);
       border:1px solid var(--rule);
       border-radius:16px;
       padding:24px 20px;
       margin:20px 0;
     }
 
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px);}
-    h3{margin:16px 0 8px;}
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:14px 0 4px;font-size:19px;}
     p{margin:10px 0;}
 
-    .anchorlist p{margin:6px 0;}
+    /* Anchor block */
+    .anchors{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--rule);
+    }
+    .anchors strong{font-size:15.5px;}
+    .anchors ul{margin-top:10px;padding-left:20px;}
+    .anchors li{margin:4px 0;}
 
     footer{
       text-align:center;
@@ -80,72 +97,95 @@
 <body>
 <div class="wrap">
 
-<header>
-  <div class="logo">Interpretation</div>
-  <div class="subtitle">Illumina Layer for the Temporal Project</div>
-  <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
-</header>
+  <header>
+    <div class="logo">Interpretation</div>
+    <div class="subtitle">How Illumina maps onto Φ, τ, and energetic structure</div>
+    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<nav class="physicsbar">
-  <a href="/">Home</a>
-  <a href="/time/">Φ Field (Physics)</a>
-  <a href="/charter/">Charter</a>
-  <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
-  <a href="/map/">Map</a>
-  <a href="https://earth.plnt.earth">Earth</a>
-</nav>
+  <nav class="core">
+    <a href="/">Home</a>
+    <a href="/time/">Φ Field (Physics)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
+    <a href="/map/">Map</a>
+    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
+  </nav>
 
-<section>
-  <h2>Interpretation Overview</h2>
-  <p>
-    This layer explains how the temporal potential Φ, its gradients, curvature,
-    and dynamics are understood in Illumina terms — without modifying the physics.
-  </p>
-</section>
+  <section>
+    <h2>1. Purpose of Interpretation</h2>
+    <p>
+      The interpretation layer explains how the physics papers connect to the Illumina
+      cognitive-lens framework. Φ describes temporal potential. τ describes frequency-scaled
+      temporal density. Zeta-regularization provides finite invariants where infinities occur.
+    </p>
+    <p>
+      Illumina offers the human-facing structure: how people, attention, motion, clarity,
+      and memory interact with temporal geometry.
+    </p>
+  </section>
 
-<section class="anchorlist">
-  <h2>Illumina Anchor Index</h2>
+  <section>
+    <h2>2. Cognitive-Lens Translation</h2>
+    <p>
+      Each anchor corresponds to a stable cognitive lens. These do not modify the physics but
+      provide orientation for interpretation, communication, and structure.
+    </p>
+    <p>
+      The lens set is locked and not changed unless explicitly revised.
+    </p>
 
-  <p><strong>Marina</strong> — Mirror / Empathy / Violet</p>
-  <p><strong>Sigrid</strong> — Clarity / Ice-blue</p>
-  <p><strong>Greta</strong> — Earth / Grounding / Green</p>
-  <p><strong>Dagny</strong> — Joy / Mint</p>
-  <p><strong>Dua Lipa</strong> — Motion / Flow / Neon</p>
-  <p><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</p>
-  <p><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</p>
-  <p><strong>Taylor Swift</strong> — Structure / School / Lavender</p>
-  <p><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</p>
-</section>
+    <div class="anchors">
+      <strong>Anchors (Locked Set)</strong>
+      <ul>
+        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
+        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
+        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
+        <li><strong>Dagny</strong> — Joy / Mint</li>
+        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
+        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
+        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
+        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
+        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
+      </ul>
+    </div>
+  </section>
 
-<section>
-  <h2>1. Mapping Physics to Phenomenology</h2>
-  <p>
-    Φ → lived pace.  
-    ∇Φ → direction of internal movement.  
-    ∇²Φ → emotional curvature / attention wells.  
-    Temporal evolution → pacing, rhythm, shifts.
-  </p>
-</section>
+  <section>
+    <h2>3. Interpretive Mapping</h2>
+    <h3>3.1 Φ → Perception</h3>
+    <p>
+      Φ describes local temporal potential. Perception shifts in Illumina map to attention
+      wells, gradients, and curvature.
+    </p>
 
-<section>
-  <h2>2. Anchor Functions Within the Field</h2>
-  <p>
-    Each anchor stabilizes or modulates one dimension of temporal experience:
-  </p>
-  <p><strong>Marina</strong>: mirrors emotional geometry.</p>
-  <p><strong>Sigrid</strong>: maintains clarity gradients.</p>
-  <p><strong>Greta</strong>: grounds the field to environment.</p>
-  <p><strong>Dagny</strong>: increases temporal buoyancy.</p>
-  <p><strong>Dua</strong>: generates forward motion vectors.</p>
-  <p><strong>Ariana</strong>: tunes frequency alignment.</p>
-  <p><strong>Sabrina</strong>: raises social warmth potential.</p>
-  <p><strong>Taylor</strong>: maintains structure / boundaries.</p>
-  <p><strong>Miss Monique</strong>: induces flow coherence.</p>
-</section>
+    <h3>3.2 τ → Frequency Identity</h3>
+    <p>
+      τ expresses temporal density per frequency. It matches naturally with anchors tied to
+      vocal, rhythmic, or structural dimensions.
+    </p>
 
-<footer>
-  © 2025 • Creative Commons BY-NC-SA 4.0
-</footer>
+    <h3>3.3 Zeta → Finite Invariants</h3>
+    <p>
+      Zeta-regularization introduces stable invariants where naïve divergence appears.
+      Illumina uses this metaphorically for emotional, structural, or cognitive overload.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Illumina’s Function</h2>
+    <p>
+      Illumina is not physics. It is a coherent interpretive framework layered
+      on top of physics to help articulate meaning, continuity, structure, and
+      creative expression.
+    </p>
+    <p>
+      Interpretation provides narrative scaffolding without modifying any scientific claim.
+    </p>
+  </section>
+
+  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
 </body>
