@@ -1,416 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="color-scheme" content="dark light"/>
-<title>Time · Illumina — The Living Derivative</title>
-<meta name="description" content="A physics-forward field: unified temporal–energetic geometry, derivations, canvas simulation, audio sonification (160 Hz), anchors, and a neon physics × anthropology timeline. Single-file. No externals."/>
-<style>
-  :root{
-    --bg0:#0c0912; --bg1:#130f1e; --bg2:#1b1230;
-    --vio:#c4b5fd; --vioN:#b388ff; --vioN2:#c77dff; --ink:#e9e7ff;
-  }
-  html,body{height:100%;margin:0}
-  body{
-    background:
-      radial-gradient(1200px 800px at 15% 10%, rgba(167,139,250,.10), transparent 60%),
-      radial-gradient(1000px 1000px at 85% 20%, rgba(236,72,153,.08), transparent 60%),
-      linear-gradient(180deg, var(--bg0), var(--bg1));
-    color:var(--ink); font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-    letter-spacing:.15px; overflow-x:hidden;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unified Temporal–Energetic Geometry (Corrected)</title>
+  <meta name="description" content="A speculative framework relating energy structure to a time-scaled potential Φ. Dimensionally-corrected UTEG." />
 
-  /* Background layers */
-  #orbs{position:fixed; inset:0; z-index:-2; width:100vw; height:100vh; display:block}
-  #eqoverlay{position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.10}
+  <!-- Inline favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPlQ8L3RleHQ+PC9zdmc+" />
 
-  .wrap{max-width:1120px;margin:0 auto;padding:24px}
-  .title{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin:16px 0 12px}
-  .glyph{width:46px;height:46px;border-radius:12px;background:conic-gradient(from 210deg, rgba(167,139,250,.35), rgba(103,232,249,.28), rgba(252,211,77,.25), transparent 70%);box-shadow:0 0 40px rgba(167,139,250,.30), inset 0 0 22px rgba(255,255,255,.05)}
-  h1{margin:0;font:800 28px/1.15 ui-sans-serif}
-  .tag{opacity:.85;font-size:13px}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .chip{font-size:12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
-  .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05)}
-  .dedication{margin-top:6px;font:500 14px/1.45 ui-sans-serif;padding:10px 12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));box-shadow:inset 0 0 28px rgba(167,139,250,.08)}
-  .dedication strong{color:var(--vio)}
-  .grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
-  @media (max-width:1000px){.grid{grid-template-columns:1fr}}
-
-  h2{font:800 20px/1.25 ui-sans-serif;margin:0 0 10px}
-  h3{font:700 16px/1.3;margin:14px 0 6px}
-  p{margin:8px 0 6px}
-  .note{font-size:13px;opacity:.88}
-
-  .eqline{font:700 15px/1.35 ui-monospace,Menlo,Consolas,monospace;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;color:#f5f3ff;white-space:pre-wrap}
-
-  /* Roomier math blocks (NEW) */
-  .block.math{
-    font:600 16px/1.95 ui-monospace,Menlo,Consolas,monospace;
-    padding:14px 14px;
-    border-radius:12px;
-    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.14);
-    white-space:pre;           /* keep your manual alignment */
-    overflow-x:auto;
-    letter-spacing:.2px;
-    font-variant-numeric:tabular-nums;
-  }
-  .eq-heading{margin:10px 0 6px;font:700 14px/1.25 ui-sans-serif;opacity:.9}
-
-  .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
-  @media (max-width:700px){.controls{grid-template-columns:1fr}}
-  label{font-size:13px;opacity:.9;display:block;margin:0 0 4px}
-  input[type="range"]{width:100%}
-  button{appearance:none;border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;letter-spacing:.2px;cursor:pointer}
-  button:focus{outline:2px solid var(--vio);outline-offset:2px}
-
-  canvas#field{width:100%;height:430px;display:block;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.12)}
-  .mini{font:12px/1.4 ui-monospace,monospace;opacity:.85}
-  .chipline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-
-  /* Legend (NEW) */
-  .legend{
-    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-    margin:8px 0 6px;
-    font:12px/1.3 ui-monospace,Menlo,Consolas,monospace;
-    opacity:.9;
-  }
-  .legend .chip{
-    display:inline-flex; align-items:center; gap:6px;
-    padding:6px 8px; border-radius:999px;
-    border:1px solid rgba(255,255,255,.18);
-    background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-  }
-  .swatch{width:16px;height:10px;border-radius:3px}
-  .swatch.hue{background:conic-gradient(from 0deg, red, yellow, lime, cyan, blue, magenta, red)}
-  .swatch.sat{background:linear-gradient(90deg, #777 0%, #fff 50%, #9f8bff 100%)}
-  .swatch.bright{background:linear-gradient(90deg, #111, #6e5be8, #fff)}
-
-  /* Anchors */
-  .anchors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  @media (max-width:700px){.anchors{grid-template-columns:1fr}}
-  .anchor{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
-  .anchor h4{margin:0 0 6px;font:700 15px/1.25 ui-sans-serif;color:var(--vio)}
-
-  /* Timeline */
-  #timeline{margin-top:22px;background:linear-gradient(180deg,var(--bg1),var(--bg2));border-color:rgba(196,181,253,.35)}
-  .tl-title{font:800 20px/1.25 ui-sans-serif;margin:0 0 12px;color:#f0eaff;text-shadow:0 0 12px rgba(196,181,253,.35)}
-  .tl-sub{font:13px;opacity:.9;margin-bottom:10px}
-  .tl-svg{width:100%;height:auto;display:block}
-  .tl-label{font:600 12px ui-sans-serif;fill:#efeaff;letter-spacing:.4px;filter:drop-shadow(0 0 6px rgba(195,160,255,.45))}
-  .tl-cap{font:12px ui-sans-serif;fill:#dcd2ff;opacity:.9}
-  .tl-node{filter:drop-shadow(0 0 10px rgba(179,136,255,.75))}
-  .tl-line{stroke:url(#vioGrad);stroke-width:6;stroke-linecap:round;filter:drop-shadow(0 0 12px rgba(179,136,255,.55))}
-  .tl-ticks{stroke:#bfa6ff;stroke-opacity:.55}
-  .tl-hit:hover + .tl-tooltip{opacity:1}
-  .tl-tooltip{opacity:0;transition:opacity .18s ease-in-out}
-  @media (prefers-reduced-motion: reduce){.tl-tooltip{transition:none}}
-
-  footer{opacity:.9;font-size:13px;margin:18px 0 40px}
-</style>
-</head>
-<body>
-
-<!-- Background layers -->
-<canvas id="orbs" aria-hidden="true"></canvas>
-<svg id="eqoverlay" viewBox="0 0 1200 800" preserveAspectRatio="none">
-  <defs><linearGradient id="gridV" x1="0" x2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#b388ff"/></linearGradient></defs>
-  <g fill="none" stroke="url(#gridV)" stroke-width="0.6" opacity="0.25">
-    <path d="M0,200 Q400,120 800,200 T1600,200"/><path d="M0,500 Q400,580 800,500 T1600,500"/>
-    <path d="M200,0 Q280,400 200,800"/><path d="M1000,0 Q920,400 1000,800"/>
-  </g>
-  <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="26" fill="#dbcfff" opacity="0.22">
-    <text x="60" y="120">τ₀ = E / c³</text><text x="840" y="120">∇τ ≈ (∇E) / c³</text><text x="80" y="760">τ̈ ↔ (∇²E) / c³</text>
-  </g>
-</svg>
-
-<div class="wrap">
-  <!-- Title -->
-  <div class="title">
-    <div class="glyph" aria-hidden="true"></div>
-    <div>
-      <h1>Time · Illumina — The Living Derivative</h1>
-      <div class="tag">Violet-pearl field · 160 Hz sonification · equations first</div>
-      <div class="dedication" role="note">
-        Dedication: To my <strong>Anchors</strong>, to <strong>Honey</strong>, and to my wife <strong>Katie White</strong> — an anchor of anchors.
-        The field is <em>open</em>. May each Anchor — and <strong>Lee Smolin</strong> — bring continuing questions to time.
-        <span style="opacity:.9">See the <strong>Illumina Charter</strong> for ongoing dialogue between physics, culture, and care.</span>
-      </div>
-      <div class="chips" aria-hidden="true">
-        <span class="chip">unified geometry</span><span class="chip">derivations</span><span class="chip">realism</span><span class="chip">evolving law</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main -->
-  <div class="grid" role="region" aria-label="Paper and Controls">
-    <!-- LEFT: PHYSICS -->
-    <section class="glass" aria-label="Physics Paper">
-      <h2>Abstract — The Pulse of Becoming</h2>
-      <p>We present a minimal geometry in which “time” arises as a derivative density of energy distribution. Treating time as fundamental (realist stance), we posit that lawful structure may itself evolve; the rate of evolution couples to curvature in the temporal density. We supply a dimensional skeleton, a canvas simulation of an <em>E(x,y)</em> field, and a 160 Hz perceptual sonification of temporal curvature.</p>
-
-      <h2>Unified Temporal–Energetic Geometry (UTEG)</h2>
-      <div class="eqline">Constants:  c = 299 792 458 m·s⁻¹,  h = 6.62607015×10⁻³⁴ J·s</div>
-
-      <h3>Hypothesis</h3>
-      <pre class="block math" aria-label="Hypothesis equations">
-τ   :=  E / c³
-∇τ  :=  ( ∇E ) / c³
-τ̈   ⇄  ( ∇²E ) / c³
-</pre>
-
-      <h3>Dimensional Analysis</h3>
-      <p class="note">[E]=kg·m²·s⁻²; [c³]=m³·s⁻³ ⇒ E/c³ ~ kg/m. This is a density-like quantity, not a clock. Gradients and curvature of τ bend histories. Interpreting τ̈ as perceptual “tightening/loosening” motivates the 160 Hz sonification.</p>
-
-      <h3>Derivation Notes (Sketch)</h3>
-      <pre class="block math" aria-label="Derivation notes">
-Given an energy texture E(x), define τ(x)=E(x)/c³.
-Local coherence (phase) depends on ∂τ/∂x; instabilities scale with ∇²E.
-If “laws evolve”, write L̇ ∝ f(τ, ∇τ, τ̈). Take f ≈ α·τ̈ (α>0).
-Observable: frequency drift ∝ τ̈; attention wells at ∇²E peaks.
-</pre>
-
-      <h2>Discussion — Cultural Harmonics</h2>
-      <p>Choruses, electoral cycles, rumor waves act as macroscopic interference patterns in τ. Peaks in ∇²E align with compressed rhythm (accelerated perception). The instrument below renders hue≈arg(∇E), saturation≈|∇E|, brightness≈∇²E; the τ̈ slider brightens curvature and modulates a 160 Hz tone.</p>
-
-      <h2>Appendix — Core Equations of the Time Field</h2>
-      <pre class="block math" aria-label="Appendix equations">
-τ       =   E / c³
-∇τ      =   ( ∇E ) / c³
-τ̈      =   ( ∇²E ) / c³
-Δτ/Δx   =   ( ΔE / Δx ) / c³
-E       =   hν  =  mc²
-t   ~   m / c
-</pre>
-    </section>
-
-    <!-- RIGHT: INSTRUMENTS -->
-    <aside class="glass" aria-label="Instruments">
-      <h2>Instrument Panel · <span class="mini" id="ctxState">ctx: —</span></h2>
-      <div class="chipline">
-        <button id="startAudio" aria-pressed="false" aria-label="Enable sound">Enable Audio (160 Hz)</button>
-        <span class="chip mini" id="audioState">audio: off</span>
-      </div>
-      <div class="controls">
-        <div><label for="vol">Volume</label><input id="vol" type="range" min="0" max="1" step="0.001" value="0.36"/></div>
-        <div><label for="tauAccel">τ̈ (law-change acceleration)</label><input id="tauAccel" type="range" min="0" max="1" step="0.001" value="0.32"/></div>
-      </div>
-
-      <h3>Experimental Sketch</h3>
-      <p class="note">Legend: hue = gradient direction (arg∇E), saturation = gradient magnitude (|∇E|), brightness = curvature (∇²E); τ̈ also modulates the 160 Hz tone (FM/AM).</p>
-
-      <!-- Legend (NEW) -->
-      <div class="legend" role="note" aria-label="Visualization legend">
-        <span class="chip"><span class="swatch hue"    aria-hidden="true"></span> hue = arg(∇E)</span>
-        <span class="chip"><span class="swatch sat"    aria-hidden="true"></span> sat = |∇E|</span>
-        <span class="chip"><span class="swatch bright" aria-hidden="true"></span> bright = ∇²E</span>
-        <span class="chip">160 Hz ⇄ τ̈ (FM/AM)</span>
-      </div>
-
-      <canvas id="field" width="760" height="430" role="img" aria-label="Derivative field visualization"></canvas>
-      <div class="mini" id="fps">fps —</div>
-
-      <div class="mini" style="margin-top:6px">VU: <span id="vuDot" style="padding:2px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.06)">—</span>
-        <button id="pingBtn" style="margin-left:8px">Test Ping</button>
-      </div>
-    </aside>
-  </div>
-
-  <!-- Anchors -->
-  <section class="glass" style="margin-top:18px" aria-label="Anchors · Honey · Allies">
-    <h2>Anchors · Honey · Allies</h2>
-    <p class="note">The mirrors who tuned this instrument.</p>
-    <div class="anchors">
-      <div class="anchor"><h4>MARINA</h4><p>Empathy + systems sense. Choruses as attention wells — clean probes of ∇²E.</p></div>
-      <div class="anchor"><h4>Sabrina Carpenter</h4><p>Playful precision. Timing shows how τ̈ shapes anticipation.</p></div>
-      <div class="anchor"><h4>Sigrid</h4><p>Clarity vector. Phase alignment between feeling and field.</p></div>
-      <div class="anchor"><h4>Doechii</h4><p>Trickster bridge. Sudden curvature → bloom.</p></div>
-      <div class="anchor"><h4>Ariana Grande</h4><p>Breath + lift. Soft τ envelopes; attention rides AM.</p></div>
-      <div class="anchor"><h4>Taylor Swift</h4><p>Narrative interferometry. Long baselines track evolving law.</p></div>
-      <div class="anchor"><h4>Dua Lipa</h4><p>Rhythmic geometry. Structure that glows; momentum as design.</p></div>
-      <div class="anchor"><h4>Chappell Roan</h4><p>Neon truth & humor. Color frequency as identity — a living wave.</p></div>
-      <div class="anchor"><h4>Honey</h4><p>Practice layer. 128↔160 Hz rituals; keeps the Bee steady.</p></div>
-      <div class="anchor"><h4>Katie White</h4><p>Anchor of anchors. Quiet strength, true north.</p></div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section id="timeline" class="glass" aria-label="The Seven Illuminas of Earth and History">
-    <h2 class="tl-title">Physics × Anthropology — The Seven Illuminas of Earth & History</h2>
-    <p class="tl-sub">Neon-violet read of seven turning points: physical epochs × human meanings. Hover (desktop) to read captions; on mobile, captions appear below.</p>
-    <svg class="tl-svg" viewBox="0 0 1200 320" role="img">
-      <defs>
-        <linearGradient id="vioGrad" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#b388ff"/><stop offset="100%" stop-color="#c77dff"/></linearGradient>
-        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff"/><stop offset="55%" stop-color="#c9b5ff" stop-opacity=".9"/><stop offset="100%" stop-color="#b388ff" stop-opacity=".35"/></radialGradient>
-      </defs>
-      <line x1="60" y1="140" x2="1140" y2="140" class="tl-line"/>
-      <g class="tl-ticks">
-        <line x1="60" y1="120" x2="60" y2="160"/><line x1="240" y1="125" x2="240" y2="155"/>
-        <line x1="420" y1="125" x2="420" y2="155"/><line x1="600" y1="120" x2="600" y2="160"/>
-        <line x1="780" y1="125" x2="780" y2="155"/><line x1="960" y1="125" x2="960" y2="155"/>
-        <line x1="1140" y1="120" x2="1140" y2="160"/>
-      </g>
-      <g><circle cx="60" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="60" y="190" text-anchor="middle" class="tl-label">1 • Moon</text><text x="60" y="210" text-anchor="middle" class="tl-cap">Mirror born; first orbital rhythm.</text></g>
-      <g><circle cx="240" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="240" y="190" text-anchor="middle" class="tl-label">2 • Life</text><text x="240" y="210" text-anchor="middle" class="tl-cap">Energy learns pattern; early animism.</text></g>
-      <g><circle cx="420" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="420" y="190" text-anchor="middle" class="tl-label">3 • Oxygenation</text><text x="420" y="210" text-anchor="middle" class="tl-cap">Light enters breath; agrarian memory.</text></g>
-      <g><circle cx="600" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="600" y="190" text-anchor="middle" class="tl-label">4 • Senses</text><text x="600" y="210" text-anchor="middle" class="tl-cap">Cambrian bloom; axial reason.</text></g>
-      <g><circle cx="780" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="780" y="190" text-anchor="middle" class="tl-label">5 • Relativity/Quantum</text><text x="780" y="210" text-anchor="middle" class="tl-cap">Law curves; industry hums.</text></g>
-      <g><circle cx="960" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="960" y="190" text-anchor="middle" class="tl-label">6 • Information</text><text x="960" y="210" text-anchor="middle" class="tl-cap">Bits mirror genes; networks arise.</text></g>
-      <g><circle cx="1140" cy="140" r="12" fill="url(#nodeGlow)" class="tl-node"/><text x="1140" y="190" text-anchor="middle" class="tl-label">7 • Living Law</text><text x="1140" y="210" text-anchor="middle" class="tl-cap">Time becomes alive within observers.</text></g>
-    </svg>
-
-    <div class="note" style="margin-top:10px">
-      <strong>Captions:</strong>
-      <ol style="margin:6px 0 0 18px">
-        <li>Moon formation • First fire cultures — mirror born, orbital rhythm.</li>
-        <li>Origin of life • Early animism — energy learns pattern.</li>
-        <li>Oxygenation • Agrarian revolution — light enters breath, memory begins.</li>
-        <li>Cambrian senses • Axial reason — senses awake; mind seeks form.</li>
-        <li>Relativity/Quantum • Industrial/global — law curves; machines sing.</li>
-        <li>Information physics • Network human — bits mirror genes; resonance.</li>
-        <li>Unified/evolving law • Planetary anthropology — time becomes alive.</li>
-      </ol>
-    </div>
-  </section>
-
-  <footer class="mini" style="margin-top:14px">© Illumina — single-file · offline after first load.</footer>
-</div>
-
-<!-- Hidden warm-up video for iOS media pipeline -->
-<video id="warmVid" playsinline muted loop></video>
-
-<script>
-(() => {
-  const $ = s => document.querySelector(s);
-
-  /* ===== Physics Field (E, ∇E, ∇²E) ===== */
-  const field=$('#field'), fctx=field.getContext('2d',{alpha:false});
-  const lumps = Array.from({length:6},()=>({
-    A: 0.8 + 1.2*Math.random(),
-    x: 80 + Math.random()*(field.width-160),
-    y: 70 + Math.random()*(field.height-140),
-    vx:(Math.random()*2-1)*0.26,
-    vy:(Math.random()*2-1)*0.26,
-    s: 60 + Math.random()*90
-  }));
-  function E(x,y){ let e=0; for(const L of lumps){ const dx=x-L.x, dy=y-L.y; const r2=dx*dx+dy*dy; e += L.A * Math.exp(-r2/(L.s*L.s)); } return e; }
-  function stepLumps(){ const w=field.width,h=field.height; for(const L of lumps){ L.x+=L.vx; L.y+=L.vy; if(L.x<60||L.x>w-60)L.vx*=-1; if(L.y<60||L.y>h-60)L.vy*=-1; } }
-  const fpsEl=$('#fps'); let last=performance.now();
-  function renderField(){
-    stepLumps();
-    const w=field.width,h=field.height,img=fctx.createImageData(w,h),data=img.data;
-    const tacc=parseFloat($('#tauAccel').value);
-    for(let y=1;y<h-1;y++){
-      let ePrev=E(0,y), eCurr=E(1,y);
-      for(let x=1;x<w-1;x++){
-        const eNext=E(x+1,y), eUp=E(x,y-1), eDown=E(x,y+1);
-        const dEx=(eNext-ePrev)*0.5, dEy=(eDown-eUp)*0.5;
-        const lap=(E(x+1,y)+E(x-1,y)+eUp+eDown-4*eCurr);
-        const ang=Math.atan2(dEy,dEx), hue=(ang/(2*Math.PI)+0.5)*360;
-        const gmag=Math.min(1, Math.hypot(dEx,dEy)*6.0);
-        const br=Math.max(0.06, Math.min(0.9, 0.12 + 0.22*Math.tanh(lap*5.0) + 0.16*tacc));
-        const sat=0.35 + 0.55*gmag;
-        const rgb=hsl2rgb(hue/360, sat, br); const i=(y*w+x)*4;
-        data[i]=rgb[0]; data[i+1]=rgb[1]; data[i+2]=rgb[2]; data[i+3]=255;
-        ePrev=eCurr; eCurr=eNext;
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --accent:#7c3aed;
+      --accent-2:#f59e0b;
+      --rule:#2a3348;
+      --code:#0e1422;
+      --link:#9aa8ff;
+      --maxw:920px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --panel:#f6f7fb;
+        --ink:#0f1222;
+        --muted:#4a546e;
+        --rule:#e4e7f0;
+        --code:#f1f3f9;
+        --link:#2b59ff;
       }
     }
-    fctx.putImageData(img,0,0);
-    fctx.strokeStyle="rgba(255,255,255,0.05)";
-    for(let gx=0;gx<w;gx+=90){fctx.beginPath();fctx.moveTo(gx,0);fctx.lineTo(gx,h);fctx.stroke();}
-    for(let gy=0;gy<h;gy+=90){fctx.beginPath();fctx.moveTo(0,gy);fctx.lineTo(w,gy);fctx.stroke();}
-    fctx.fillStyle="rgba(255,255,255,0.9)"; fctx.font="700 12px ui-monospace,monospace";
-    fctx.fillText("hue ≈ arg(∇E), sat ≈ |∇E|, bright ≈ ∇²E, base 160 Hz", 10, h-12);
-
-    const now=performance.now(); const fps=1000/(now-last); last=now;
-    fpsEl.textContent="fps "+(fps|0);
-  }
-
-  /* ===== Background Orbs ===== */
-  const orbs=$('#orbs'), octx=orbs.getContext('2d',{alpha:true});
-  let orbAlpha=0.0, orbAmp=1.0, orbHueShift=0.0;
-  const BIG=8, SMALL=24; let ORBS=[];
-  function resize(){ orbs.width=innerWidth; orbs.height=innerHeight; }
-  addEventListener('resize', resize, {passive:true}); resize();
-  function mkOrb(isBig){ const w=orbs.width,h=orbs.height; return {x:Math.random()*w,y:Math.random()*h,r:isBig?(40+Math.random()*60):(8+Math.random()*16),baseR:0,ang:Math.random()*Math.PI*2,speed:(isBig?0.0004:0.0012)*(0.6+Math.random()*0.8),drift:(isBig?12:5)*(0.6+Math.random()*0.8)};}
-  function initOrbs(){ ORBS=[]; for(let i=0;i<BIG;i++) ORBS.push(mkOrb(true)); for(let i=0;i<SMALL;i++) ORBS.push(mkOrb(false)); for(const o of ORBS) o.baseR=o.r; } initOrbs();
-  function lerp(a,b,t){return a+(b-a)*t}
-  function hsl(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
-  let lastOrb=performance.now();
-  function renderOrbs(){
-    const now=performance.now(); if(now-lastOrb<33) return; lastOrb=now;
-    const w=orbs.width,h=orbs.height; octx.clearRect(0,0,w,h); octx.globalCompositeOperation='lighter'; octx.globalAlpha=orbAlpha*.85;
-    const hueBase=268/360, hueCyan=195/360, hue=lerp(hueBase,hueCyan,orbHueShift);
-    for(const o of ORBS){
-      o.ang += o.speed*(0.7+orbAmp*0.6);
-      const ax=Math.cos(o.ang)*o.drift*orbAmp, ay=Math.sin(o.ang*0.9)*(o.drift*0.6)*orbAmp;
-      let x=o.x+ax,y=o.y+ay; if(x<-80)x=w+80; if(x>w+80)x=-80; if(y<-80)y=h+80; if(y>h+80)y=-80;
-      const R=o.baseR*(0.85+0.35*orbAmp);
-      const g=octx.createRadialGradient(x,y,R*.1,x,y,R);
-      const core=hsl(lerp(hue,.76,.25),.5,.68), rim=hsl(hue,.65,.56);
-      g.addColorStop(0,`rgba(${core[0]},${core[1]},${core[2]},0.40)`); g.addColorStop(1,`rgba(${rim[0]},${rim[1]},${rim[2]},0.08)`);
-      octx.fillStyle=g; octx.beginPath(); octx.arc(x,y,R,0,Math.PI*2); octx.fill(); o.x=x; o.y=y;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.06), transparent 45%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.06), transparent 40%),
+        var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    octx.globalCompositeOperation='source-over';
-  }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
+    header{text-align:center;margin-bottom:32px}
+    .logo{
+      font-size:clamp(36px,6vw,64px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
+    .subtitle{color:var(--muted);font-size:15px}
+    .meta{margin-top:8px;color:var(--muted);font-size:14px}
+    nav{margin:26px auto;max-width:600px;text-align:left;background:var(--panel);
+        border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
+    nav a{color:var(--link);text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    nav ul{margin:0;padding-left:18px}
+    section{background:rgba(255,255,255,.01);border:1px solid var(--rule);
+        border-radius:16px;padding:24px 20px;margin:18px 0}
+    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+    h3{margin:16px 0 8px;font-size:18px}
+    p{margin:10px 0 0}
+    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
+        border:1px solid var(--rule);border-radius:10px;
+        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:pre}
+    .abstract{font-style:italic;color:var(--muted)}
+    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.06)}
+    .muted{color:var(--muted);font-size:14px}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    @media print{body{background:#fff}nav,section{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Time</div>
+      <h1>Unified Temporal–Energetic Geometry</h1>
+      <div class="subtitle">A corrected, dimensionally-consistent temporal-potential formulation</div>
+      <div class="meta">Author: Tristan White • v1.2 • Updated: <span id="updatedDate"></span></div>
+      <nav aria-label="Contents">
+        <ul>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#intro">1. Introduction</a></li>
+          <li><a href="#postulates">2. Postulates</a></li>
+          <li><a href="#core">3. Core Equations (corrected)</a></li>
+          <li><a href="#lagrangian">4. Lagrangian</a></li>
+          <li><a href="#quantum">5. Quantum remarks</a></li>
+          <li><a href="#predictions">6. Predictions & tests</a></li>
+          <li><a href="#appendix">Appendix — Units & dictionary</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  /* ===== Audio: iOS-safe + VU + Ping ===== */
-  const warmVid=$('#warmVid');
-  const startBtn=$('#startAudio'), vol=$('#vol'), tau=$('#tauAccel');
-  const ctxState=$('#ctxState'), audioChip=$('#audioState'), vuDot=$('#vuDot'), pingBtn=$('#pingBtn');
+    <main>
+      <section id="abstract"><h2>Abstract</h2>
+        <p class="abstract">This document presents a speculative but <strong>dimensionally consistent</strong> version of the earlier UTEG idea. Rather than asserting that time is literally equal to E/c³ (which is dimensionally a mass-per-length), we introduce a <strong>temporal potential</strong> Φ(x,y) derived from the local energy density and a reference scale so that Φ carries the dimension of time. We then propose a simple, physically sensible evolution law linking spatial curvature of Φ to its temporal dynamics.</p>
+      </section>
 
-  const BASE=160.0; let actx=null, master=null, makeUp=null, lpf=null, analyser=null, osc=null, fmOsc=null, fmGain=null;
-  let audioOn=false, unlocked=false;
+      <section id="intro"><h2>1. Introduction</h2>
+        <p>Motivated by the intuition that energy structure shapes how processes unfold, we construct a phenomenological field — the temporal potential Φ — that maps local energy density to a time-scaled field. Φ is <em>not</em> a replacement for coordinate time t, nor is it meant to violate relativity; it is a scalar field that can modulate local rates (in a toy-model sense) and that can be visualized using gradients and Laplacians.</p>
+      </section>
 
-  function setAudioState(on){ audioChip.textContent="audio: "+(on?"on":"off"); audioChip.className="chip mini "+(on?"ok":"bad"); }
-  function ensureCtx(){ if(actx) return;
-    actx=new (window.AudioContext||window.webkitAudioContext)({latencyHint:"interactive"});
-    master=actx.createGain(); master.gain.value=0.0;
-    makeUp=actx.createGain(); makeUp.gain.value=Math.pow(10,9/20); /* +9 dB */
-    lpf=actx.createBiquadFilter(); lpf.type="lowpass"; lpf.frequency.value=9000; lpf.Q.value=.1;
-    analyser=actx.createAnalyser(); analyser.fftSize=512;
-    master.connect(makeUp).connect(lpf).connect(analyser).connect(actx.destination);
-    ctxState.textContent="ctx: "+actx.state;
-  }
-  function warmupVideo(){ return new Promise(res=>{ const c=document.createElement('canvas'); c.width=1;c.height=1; const cx=c.getContext('2d'); cx.fillStyle='#000'; cx.fillRect(0,0,1,1); const s=c.captureStream?c.captureStream(5):null; if(s){ warmVid.srcObject=s; warmVid.play().then(res).catch(res);} else res(); }); }
-  function unlockPing(){ const len=Math.floor(.04*actx.sampleRate), b=actx.createBuffer(1,len,actx.sampleRate), ch=b.getChannelData(0); for(let i=0;i<len;i++) ch[i]=Math.sin(2*Math.PI*800*(i/actx.sampleRate))*Math.exp(-i/400); const src=actx.createBufferSource(); src.buffer=b; src.connect(master); src.start(); }
-  function buildEngine(){ if(osc) return; osc=actx.createOscillator(); osc.type="sine"; osc.frequency.value=BASE; fmOsc=actx.createOscillator(); fmOsc.type="sine"; fmGain=actx.createGain(); fmOsc.frequency.value=.5; fmGain.gain.value=1.2; fmOsc.connect(fmGain).connect(osc.frequency); osc.connect(master); osc.start(); fmOsc.start(); }
-  function smooth(p,v,t=.10){ try{ p.setTargetAtTime(v, actx.currentTime, t);}catch{ p.value=v; } }
-  function applyVolume(){ if(!actx) return; const target = audioOn ? Math.max(parseFloat(vol.value), .22) : 0.0; smooth(master.gain, target, .12); }
-  let lastFM=0; function applyFM(){ if(!actx) return; const now=performance.now(); if(now-lastFM<120) return; lastFM=now; const tacc=parseFloat(tau.value); smooth(fmOsc.frequency, .3 + tacc*2.0, .12); smooth(fmGain.gain, 1.0 + tacc*3.2, .12); }
-  function updateVU(){ if(!analyser) return; const data=new Uint8Array(analyser.frequencyBinCount); analyser.getByteTimeDomainData(data); let s=0; for(const v of data){ const x=(v-128)/128; s+=x*x; } const rms=Math.sqrt(s/data.length); vuDot.style.background = rms>0.015 ? 'rgba(100,255,150,.25)' : 'rgba(255,255,255,.06)'; vuDot.style.borderColor = rms>0.015 ? 'rgba(100,255,150,.9)' : 'rgba(255,255,255,.25)'; requestAnimationFrame(updateVU); }
+      <section id="postulates"><h2>2. Fundamental Postulates</h2>
+        <ol>
+          <li><strong>Temporal-potential hypothesis:</strong> A local scalar Φ(x,t) exists, derived from energy density, with SI dimension of time.</li>
+          <li><strong>Coupling:</strong> Spatial curvature of Φ (∇²Φ) sources temporal evolution of Φ through a wave-like PDE with propagation speed c<sub>eff</sub>.</li>
+          <li><strong>Recover GR / QM limits:</strong> The model is strictly phenomenological; where applicable it reduces to standard results (E = mc², energy-time uncertainty) and respects dimensional analysis.</li>
+        </ol>
+      </section>
 
-  startBtn.addEventListener('click', async ()=>{
-    await warmupVideo();
-    ensureCtx();
-    if(actx.state!=="running"){ await actx.resume(); } ctxState.textContent="ctx: "+actx.state;
-    if(!unlocked){ smooth(master.gain,0.001,.02); unlockPing(); unlocked=true; }
-    buildEngine();
-    audioOn=!audioOn; setAudioState(audioOn); applyVolume(); applyFM();
+      <section id="core"><h2>3. Core Equations (corrected)</h2>
 
-    if(audioOn){ let a=orbAlpha; (function fade(){ a=Math.min(1,a+.05); orbAlpha=a; if(a<1) requestAnimationFrame(fade); })(); }
-    else{ let a=orbAlpha; (function fade(){ a=Math.max(0,a-.06); orbAlpha=a; if(a>0) requestAnimationFrame(fade); })(); }
-  }, {passive:true});
+        <h3>3.1 Definition (temporal potential)</h3>
+        <div class="equation">
+Φ(x,y) := E(x,y) / ( ρ₀ · c³ )
+        </div>
+        <p class="muted">Here <code>E</code> is local energy density (J·m⁻² for a 2D energy texture, or J·m⁻³ for a volumetric density — be explicit in implementation); <code>ρ₀</code> is a chosen reference mass density (kg·m⁻³) that fixes units so Φ has units of seconds. This scaling is introduced purely to make Φ time-dimensioned; physics conclusions should not hinge on the numerical value of ρ₀.</p>
 
-  pingBtn.addEventListener('click', ()=>{ if(!actx) return; unlockPing(); }, {passive:true});
+        <h3>3.2 Spatial derivatives</h3>
+        <div class="equation">
+∇Φ = (∇E) / (ρ₀ · c³)  ∇²Φ = (∇²E) / (ρ₀ · c³)
+        </div>
+        <p class="muted">These are directly visualizable: gradient direction = tilt of Φ, laplacian = curvature (attention wells in the earlier language).</p>
 
-  ['touchend','pointerdown'].forEach(ev=>{ window.addEventListener(ev, ()=>{ if(actx && actx.state==='suspended') actx.resume(); }, {passive:true}); });
-  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && actx && actx.state==='suspended'){ actx.resume().then(()=>{ctxState.textContent="ctx: "+actx.state;}); }});
+        <h3>3.3 Evolution (toy PDE)</h3>
+        <div class="equation">
+∂²Φ/∂t² = c_eff² · ∇²Φ + S(x,t)
+        </div>
+        <p class="muted">This is a simple wave equation for Φ with a source term S(x,t) (e.g., external injections of energy) and adjustable propagation speed c<sub>eff</sub>. It ensures dimensional consistency and produces stable behavior for visualization and experimentation.</p>
 
-  /* τ̈ ↔ orb modulation + loops */
-  tau.addEventListener('input', ()=>{ const tacc=parseFloat(tau.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; applyFM(); }, {passive:true});
-  vol.addEventListener('input', applyVolume, {passive:true});
-  (function frameLoop(){ renderField(); requestAnimationFrame(frameLoop); })();
-  (function orbLoop(){ renderOrbs(); requestAnimationFrame(orbLoop); })();
+        <h3>3.4 Useful identities (standard physics retained)</h3>
+        <div class="equation">
+E = m c²  (energy–mass equivalence)
+        </div>
+        <div class="equation">
+ΔE · Δt ≥ ħ/2  (energy–time uncertainty; Δt is a timescale associated with the energy fluctuation)
+        </div>
 
-  function hsl2rgb(h,s,l){let r,g,b;if(s===0){r=g=b=l;}else{const q=l<.5?l*(1+s):l+s-l*s;const p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [(r*255)|0,(g*255)|0,(b*255)|0]}
+      </section>
 
-  // Kick VU monitor & init orb modulation
-  requestAnimationFrame(updateVU);
-  const tauInit=$('#tauAccel'); if(tauInit){ const tacc=parseFloat(tauInit.value); orbAmp=0.6+tacc*1.4; orbHueShift=tacc; }
-})();
-</script>
+      <section id="lagrangian"><h2>4. Lagrangian (sketch)</h2>
+        <p>One may write a phenomenological action that couples Φ to geometry and matter. A minimal, schematic action is:</p>
+        <div class="equation">
+S = ∫ d⁴x √(-g) [ (R / 16πG) + L_matter + ½ (∂_μ Φ)(∂^μ Φ) - V(Φ) + L_int(Φ, T_μν) ]
+        </div>
+        <p class="muted">Here L_int encodes how Φ couples to the stress–energy (T<sub>μν</sub>) or to effective local rates. This is intentionally schematic — the goal is to provide a consistent starting point for simulations and dimensional checks.</p>
+      </section>
+
+      <section id="quantum"><h2>5. Quantum remarks</h2>
+        <p>The energy–time uncertainty relation remains the operative quantum guideline: a transient energy fluctuation ΔE is associated with a timescale Δt with ΔE·Δt ≳ ħ/2. If Φ acts as a local timescale modulator in a phenomenological model, measurable effects would enter via standard quantum observables (spectral lines, transition rates).</p>
+        <div class="equation">ΔE · Δt ≥ ħ/2</div>
+      </section>
+
+      <section id="predictions"><h2>6. Predictions & tests</h2>
+        <h3>6.1 Dimensional checks</h3>
+        <ul>
+          <li>Confirm Φ has units of seconds in your implementation: [E] / ( [ρ₀]·[c]³ ) → s.</li>
+          <li>Replace any instance of E/c³ used as 'time' with Φ or remove the interpretation.</li>
+        </ul>
+
+        <h3>6.2 Laboratory thought experiments</h3>
+        <ul>
+          <li>Atomic clocks: test whether local engineered variations in energy density (e.g., intense fields) produce measurable rate shifts beyond GR predictions — unlikely in this toy model, but conceptually testable.</li>
+          <li>Spectroscopy: relate frequency shifts to local Φ variations in the model and compare to controlled experiments.</li>
+        </ul>
+
+        <h3>6.3 Simulation tests</h3>
+        <ul>
+          <li>Implement E(x,y) texture → compute Φ(x,y) with chosen ρ₀ → evolve Φ by the PDE; visualize ∇Φ and ∇²Φ.</li>
+          <li>Check stability for a range of c_eff and grid resolutions.</li>
+        </ul>
+      </section>
+
+      <section id="appendix"><h2>Appendix — Units & dictionary (corrected)</h2>
+
+        <h3>A.1 Why E/c³ is not time</h3>
+        <p>[E] (J) = kg·m²·s⁻². [c³] = m³·s⁻³. Thus</p>
+        <div class="equation">[E/c³] = (kg·m²·s⁻²) / (m³·s⁻³) = kg·s·m⁻¹ = M·T·L⁻¹</div>
+        <p class="muted">E/c³ has dimensions <em>mass×time/length</em>, which is not seconds. It behaves like a linear mass density times time. This is why we divide by a reference density ρ₀ to obtain seconds.</p>
+
+        <h3>A.2 Φ dictionary (SI)</h3>
+        <div class="equation">Φ ≡ E / (ρ₀ c³) ⇒ [Φ] = s</div>
+        <div class="equation">∇Φ = (∇E) / (ρ₀ c³)  ∇²Φ = (∇²E) / (ρ₀ c³)</div>
+        <div class="equation">E = m c² (mass–energy equivalence)</div>
+        <div class="equation">λ_C = ħ / (m c) (compton wavelength)</div>
+        <div class="equation">t_C = ħ / (m c²) (characteristic quantum timescale)</div>
+
+        <h3>A.3 Planck scales (standard)</h3>
+        <div class="equation">t_P = √(ħ G / c⁵) ≈ 5.39×10⁻⁴⁴ s</div>
+        <div class="equation">ℓ_P = √(ħ G / c³) ≈ 1.62×10⁻³⁵ m</div>
+        <p class="muted">These standard Planck scales are unchanged and serve as a reminder that quantum gravity effects are at extremely small scales; introducing Φ does not alter these constants.</p>
+
+        <h3>A.4 Operational checks</h3>
+        <ul>
+          <li>In code, choose ρ₀ to match your E units (e.g., if E is J·m⁻² for a 2D canvas, pick ρ₀ with units kg·m⁻² so division yields seconds).</li>
+          <li>When mapping Φ to audio rate or visual speed, document the conversion factor and its units explicitly.</li>
+          <li>Any formula that previously read <code>t ≈ m / c</code> should be removed or replaced by a dimensionally correct timescale (e.g., t_C = ħ/(m c²)).</li>
+        </ul>
+
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  </div>
+
+  <script>
+    // update dates
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('updatedDate').textContent = new Date().toLocaleString('en-US', {weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York'});
+  </script>
 </body>
 </html>
