@@ -1,133 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Time · Map</title>
-<meta name="description" content="A structural map of the Time Framework, including physics, interpretation layers, cognitive lenses, anchors, and supplementary domains."/>
-<style>
-  :root{
-    --bg:#0b0f19; --panel:#111625; --ink:#e8eaf2; --muted:#9aa3b8;
-    --rule:#232b3d; --accent:#7c3aed; --accent2:#f59e0b; --code:#0f1423;
-    --card:rgba(255,255,255,0.02);
-  }
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-  }
-  .wrap{max-width:900px;margin:0 auto;padding:48px 20px 96px}
-  header{text-align:center;margin-bottom:32px}
-  .logo{
-    font-size:clamp(34px,6vw,60px);font-weight:800;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  h1{margin:6px 0 10px;font-size:clamp(24px,4vw,36px)}
-  .muted{color:var(--muted)}
-  section{
-    background:var(--card);border:1px solid var(--rule);
-    border-radius:14px;padding:20px 18px;margin:20px 0;
-  }
-  h2{margin:0 0 12px;font-size:22px}
-  h3{margin:16px 0 6px;font-size:17px}
-  a{color:#9aa8ff;text-decoration:none}
-  a:hover{text-decoration:underline}
-  ul{margin:6px 0;padding-left:22px}
-  footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Map · Illumina Time</title>
+  <meta name="description" content="Structural map of the Time project: core pages, interpretation layers, cognitive lenses, and optional supplemental domains." />
+
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --panel:#121827;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --maxw:900px;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(38px,5vw,62px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
+
+    nav.core{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+    }
+    nav.core a{
+      display:inline-block;
+      padding:10px 16px;
+      background:var(--panel);
+      color:var(--link);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      font-size:15px;
+    }
+    nav.core a:hover{background:#1a2237;}
+
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:20px 0;
+    }
+
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    h3{margin:14px 0 4px;font-size:19px;}
+    p{margin:10px 0;}
+
+    /* Anchor block */
+    .anchors{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--rule);
+    }
+    .anchors strong{font-size:15.5px;}
+    .anchors ul{margin-top:10px;padding-left:20px;}
+    .anchors li{margin:4px 0;}
+
+    /* Link lists */
+    ul.linkset{margin-top:10px;padding-left:20px;}
+    ul.linkset li{margin:6px 0;}
+
+    footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<header>
-  <div class="logo">Time</div>
-  <h1>System Map</h1>
-  <p class="muted">Physics → Interpretation → Cognition → Anchors → Supplementary Domains</p>
-</header>
+  <header>
+    <div class="logo">Map</div>
+    <div class="subtitle">Structural overview of the Time Project</div>
+    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<!-- PHYSICS LAYER -->
-<section>
-  <h2>Physics Layer</h2>
-  <ul>
-    <li><a href="https://time.plnt.earth">Core Physics (UTEG)</a></li>
-    <li><a href="https://zeta.plnt.earth">Zeta-Regularization & τ</a></li>
-    <li><a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a></li>
-    <li><a href="https://dimensions.plnt.earth">Dimensions</a></li>
-    <li><a href="https://infinity.plnt.earth">Infinity</a></li>
-    <li><a href="https://prime.plnt.earth">Prime Structure</a></li>
-  </ul>
-</section>
+  <nav class="core">
+    <a href="/">Home</a>
+    <a href="/time/">Φ Field (Physics)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
+    <a href="/map/">Map</a>
+    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
+  </nav>
 
-<!-- INTERPRETATION LAYER -->
-<section>
-  <h2>Interpretation Layer</h2>
-  <ul>
-    <li><a href="https://time.plnt.earth/interpretation">Field Interpretation</a></li>
-    <li><a href="https://time.plnt.earth/charter">Charter</a></li>
-    <li><a href="https://quietmoon.plnt.earth">Quietmoon (Applied Bridge)</a></li>
-    <li><a href="https://intelligence.plnt.earth">Intelligence</a></li>
-  </ul>
-</section>
+  <!-- CORE SET -->
+  <section>
+    <h2>1. Core Pages</h2>
+    <p>The foundation of Time. These pages are stable and should not be removed:</p>
 
-<!-- COGNITIVE LENSES -->
-<section>
-  <h2>Cognitive Lenses</h2>
+    <ul class="linkset">
+      <li><a href="/">Home</a></li>
+      <li><a href="/time/">Φ Field (Physics)</a></li>
+      <li><a href="/interpretation/">Interpretation</a></li>
+      <li><a href="/charter/">Charter</a></li>
+      <li><a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a></li>
+      <li><a href="/map/">Map</a></li>
+      <li><a href="https://earth.plnt.earth" target="_blank">Earth</a></li>
+    </ul>
 
-  <h3>Fixed Lenses</h3>
-  <ul>
-    <li><strong>Monique</strong> — Motion & Dynamic Flow Lens</li>
-  </ul>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px;">
+      Note: Some links may return 404 temporarily if the paired subdomain has not been deployed yet.
+    </p>
+  </section>
 
-  <h3>Open Lenses</h3>
-  <ul>
-    <li><strong>Lens 1</strong> — Intelligence, Consciousness, or Systems Reasoning</li>
-    <li><strong>Lens 2</strong> — Applied Clinical, Translational, or Human-State Integration</li>
-  </ul>
+  <!-- COGNITIVE LENSES -->
+  <section>
+    <h2>2. Cognitive Lenses (Anchors)</h2>
+    <p>
+      These lenses inform interpretation only. They do not affect physics and do not change unless
+      explicitly revised. This set is locked.
+    </p>
 
-  <p class="muted">These lenses modulate interpretation across all layers and may map to collaborators later.</p>
-</section>
+    <div class="anchors">
+      <strong>Anchors (Locked Set)</strong>
+      <ul>
+        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
+        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
+        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
+        <li><strong>Dagny</strong> — Joy / Mint</li>
+        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
+        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
+        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
+        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
+        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
+      </ul>
+    </div>
+  </section>
 
-<!-- ANCHOR LAYER -->
-<section>
-  <h2>Anchor Layer</h2>
-  <p class="muted">Each anchor is a domain of emotional, creative, or perceptual resonance connected to Time.</p>
-  <ul>
-    <li><a href="https://mirrorhoney.plnt.earth">Marina • Violet Field</a></li>
-    <li><a href="https://honey.plnt.earth">Sabrina • Honey Field</a></li>
-    <li><a href="https://clarity.plnt.earth">Sigrid • Clarity Field</a></li>
-    <li><a href="https://motion.plnt.earth">Dua • Motion Field</a></li>
-    <li><a href="https://dagny.plnt.earth">Dagny • Joy Field</a></li>
-    <li><a href="https://school.plnt.earth">Taylor • School Field</a></li>
-    <li><a href="https://garlic.plnt.earth">Sigrid/Marina Notes • Garlic Field</a></li>
-    <li><a href="https://four.plnt.earth">Center/Bridge Field</a></li>
-  </ul>
-</section>
+  <!-- INTERPRETATION-LAYER LINKS -->
+  <section>
+    <h2>3. Interpretation Layer</h2>
+    <p>Links related to meaning, narrative, creative structure, and symbolic mapping:</p>
 
-<!-- SUPPLEMENTARY -->
-<section>
-  <h2>Supplementary Pages</h2>
-  <ul>
-    <li><a href="https://earth.plnt.earth">Earth • Dedicated Field</a></li>
-    <li><a href="https://origin.plnt.earth">Origin</a></li>
-    <li><a href="https://jar.plnt.earth">Jar</a></li>
-    <li><a href="https://tone.plnt.earth">Tone</a></li>
-    <li><a href="https://travel.plnt.earth">Travel</a></li>
-    <li><a href="https://voice.plnt.earth">Voice</a></li>
-    <li><a href="https://read.plnt.earth">Read</a></li>
-  </ul>
+    <ul class="linkset">
+      <li><a href="/interpretation/">Interpretation</a></li>
+      <li><a href="/charter/">Charter</a></li>
+      <li><a href="/map/">Map</a></li>
+    </ul>
+  </section>
 
-  <p class="muted" style="margin-top:10px">
-    Some pages may not yet exist or may return 404. These will be built or restored over time.
-  </p>
-</section>
+  <!-- SUPPLEMENTAL DOMAINS -->
+  <section>
+    <h2>4. Supplemental Domains (Optional)</h2>
+    <p>
+      These are not core but may be added gradually. Each must be reviewed for clarity,
+      safety, and relevance.
+    </p>
+
+    <ul class="linkset">
+      <li><a href="https://quietmoon.plnt.earth" target="_blank">Quietmoon</a></li>
+      <li><a href="https://intelligence.plnt.earth" target="_blank">Intelligence</a></li>
+      <li><a href="https://fieldlab.plnt.earth" target="_blank">Fieldlab</a></li>
+    </ul>
+
+    <p style="font-size:13px;color:var(--muted);margin-top:10px;">
+      Note: These may return 404 until deployed.
+    </p>
+  </section>
+
+  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
-
-<footer>© <span id="y"></span> • Time Map</footer>
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
