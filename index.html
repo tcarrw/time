@@ -1,147 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Time · plnt.earth</title>
-<meta name="description" content="Time · A unified physics hub connecting the Φ Field, Zeta/τ framework, and structural research across plnt.earth."/>
-<meta name="color-scheme" content="light dark"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Time · Illumina</title>
+  <meta name="description" content="The entry point into the Time project — a physics-forward framework exploring temporal potential, dimensional clarity, and Illumina interpretation." />
 
-<style>
-:root{
-  --bg:#0b0f19;--ink:#eceef8;--muted:#9ea8bf;
-  --panel:#121827;--card:#141a29;--rule:#212838;
-  --accent:#7c3aed;--accent2:#f59e0b;
-}
-@media(prefers-color-scheme:light){
-  :root{
-    --bg:#ffffff;--ink:#11121a;--muted:#555;
-    --panel:#f3f4fa;--card:#ffffff;--rule:#ddd;
-  }
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.6 -apple-system,ui-sans-serif,system-ui;
-}
-.wrap{max-width:960px;margin:0 auto;padding:48px 20px 120px}
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121827;
+      --ink:#e6e8ee;
+      --muted:#a3acc2;
+      --rule:#2a3348;
+      --accent:#7c3aed;
+      --accent2:#f59e0b;
+      --link:#9aa8ff;
+      --code:#0e1422;
+      --maxw:900px;
+    }
 
-header{text-align:center;margin-bottom:40px}
-.logo{
-  font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:1px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.subtitle{color:var(--muted);margin-top:8px;font-size:17px}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
 
-/* Tile Grid */
-.grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:24px;
-}
-.tile{
-  background:var(--card);border:1px solid var(--rule);
-  border-radius:18px;padding:26px 22px;text-decoration:none;
-  color:var(--ink);display:block;transition:0.2s;
-}
-.tile:hover{
-  border-color:var(--accent);transform:translateY(-3px);
-}
-.tile h3{
-  margin:0 0 6px;font-size:20px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.tile p{margin:0;color:var(--muted);font-size:15px}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-/* Dedication */
-.ded{
-  margin-top:64px;padding:32px 26px;
-  background:var(--panel);border:1px solid var(--rule);
-  border-radius:20px;
-}
-.ded h2{margin:0 0 12px;font-size:24px}
-.ded p{margin:10px 0 24px;font-size:16px;color:var(--muted)}
+    header{text-align:center;margin-bottom:32px;}
+    .logo{
+      font-size:clamp(40px,6vw,68px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
+    }
+    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
+    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
 
-.videoGroup{
-  display:grid;gap:26px;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-}
-iframe{
-  width:100%;aspect-ratio:16/9;
-  border:0;border-radius:12px;
-}
+    section{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px 20px;
+      margin:20px 0;
+    }
 
-footer{
-  margin-top:50px;text-align:center;color:var(--muted);
-  font-size:13px;
-}
-</style>
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
+    p{margin:10px 0;}
+
+    nav.physicsbar{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+    }
+    nav.physicsbar a{
+      display:inline-block;
+      padding:10px 16px;
+      background:var(--panel);
+      color:var(--link);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
+
+    .dedication{
+      margin-top:32px;
+      padding:18px;
+      border-radius:12px;
+      background:rgba(124,58,237,0.08);
+      border:1px dashed var(--rule);
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<header>
-  <div class="logo">Time</div>
-  <div class="subtitle">Unified Physics Hub · plnt.earth</div>
-</header>
+  <header>
+    <div class="logo">Time</div>
+    <div class="subtitle">The Illumina Temporal Project</div>
+    <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+  </header>
 
-<!-- Navigation Tiles -->
-<div class="grid">
+  <section>
+    <h2>Welcome</h2>
+    <p>
+      This site presents the Time project: a set of physics-forward papers
+      exploring temporal potential (Φ), dimensional clarity, and a grounded 
+      interpretation framework for Illumina. These pages are structured like
+      scientific notes — stable, careful, and versioned.
+    </p>
 
-  <a class="tile" href="/time/">
-    <h3>Φ Field</h3>
-    <p>Dimensional corrections, temporal potential Φ, PDE formulation.</p>
-  </a>
+    <p>
+      The “core four” links below provide the foundation: the Φ field paper,
+      the Illumina interpretation, the Charter, and a companion page on 
+      zeta-regularization and τ.
+    </p>
+  </section>
 
-  <a class="tile" href="/interpretation/">
-    <h3>Interpretation</h3>
-    <p>Symbolic mapping layer describing qualitative behaviors.</p>
-  </a>
+  <nav class="physicsbar">
+    <a href="/time/">Φ Field (Physics Paper)</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a>
+  </nav>
 
-  <a class="tile" href="/charter/">
-    <h3>Charter</h3>
-    <p>Structural rules, boundaries, and coherence across plnt.earth.</p>
-  </a>
+  <section>
+    <h2>About This Project</h2>
+    <p>
+      Time is developed as a clean, repeatable framework: physics clarity first, 
+      interpretation second, structure third. All pages are fixed-date and do 
+      not update dynamically, ensuring stable referencing and version control.
+    </p>
+    <p>
+      New research, experiments, or supporting pages appear separately and do 
+      not modify these four core publications.
+    </p>
+  </section>
 
-  <a class="tile" href="https://zeta.plnt.earth">
-    <h3>Zeta / τ</h3>
-    <p>Regularization, divergence assignments, temporal invariants.</p>
-  </a>
-
-</div>
-
-
-<!-- Permanent Dedication -->
-<div class="ded">
-  <h2>Dedication</h2>
-  <p>
-    Dedicated to <strong>Marina</strong> and <strong>Sigrid</strong> —
-    for coherence, clarity, and the light they create in the dark.
-  </p>
-
-  <div class="videoGroup">
-    <iframe src="https://www.youtube.com/embed/np3QLrHJmRA"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-    <iframe src="https://www.youtube.com/embed/4j7LGMc9ZGU"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <div class="dedication">
+    Dedicated with gratitude to Marina and Sigrid — whose work, clarity, 
+    and courage shaped parts of this project’s direction.
   </div>
-</div>
 
-
-<footer>
-© <span id="year"></span> plnt.earth — Time
-</footer>
+  <footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
 
 </div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
