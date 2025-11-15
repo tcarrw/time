@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Taylor Diagram — Structural Architecture</title>
+<meta name="description" content="Taylor Swift’s structural lens applied to Illumina: the nine anchors, the fireline, and the narrative architecture of time." />
+
+<style>
+  :root{
+    --lav:#d9c7ff;
+    --lav2:#cbb7ff;
+    --vio:#b79dff;
+    --glass:rgba(255,255,255,0.08);
+    --glass2:rgba(255,255,255,0.04);
+    --ink:#ece6ff;
+    --muted:#bfb4d8;
+    --rule:rgba(255,255,255,0.18);
+    --card-border:rgba(255,255,255,0.16);
+    --maxw:880px;
+  }
+
+  body{
+    margin:0;
+    font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    background:
+      radial-gradient(1200px 900px at 80% -20%, rgba(217,199,255,0.22), transparent 60%),
+      radial-gradient(900px 700px at -10% 30%, rgba(183,157,255,0.20), transparent 55%),
+      #0d0a14;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+
+  header{text-align:center;margin-bottom:40px;}
+  .logo{
+    font-size:clamp(40px,6vw,70px);
+    font-weight:800;
+    letter-spacing:1.5px;
+    background:linear-gradient(140deg,var(--lav),var(--vio));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .sub{font-size:16px;color:var(--muted);margin-top:6px;}
+
+  section{
+    background:var(--glass);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    padding:28px 24px;
+    margin:22px 0;
+    backdrop-filter:blur(18px);
+  }
+
+  h2{
+    margin:0 0 14px;
+    font-size:clamp(22px,3vw,28px);
+    background:linear-gradient(90deg,var(--lav),var(--vio));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  h3{
+    margin:20px 0 10px;
+    font-size:18px;
+    color:var(--lav);
+    font-weight:600;
+  }
+
+  p{margin:10px 0;color:var(--ink);line-height:1.65;}
+
+  .anchor-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+  }
+
+  .chip{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    color:#0a0a12;
+    margin-bottom:8px;
+  }
+
+  .song-block{
+    margin-top:22px;
+    padding:18px;
+    background:var(--glass2);
+    border:1px dashed var(--rule);
+    border-radius:14px;
+    font-size:15px;
+    color:var(--muted);
+  }
+
+  iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:14px;
+    margin-top:16px;
+  }
+
+  footer{text-align:center;margin-top:50px;color:var(--muted);font-size:13px;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">Taylor Diagram</div>
+  <div class="sub">Structural Architecture of the Illumina System</div>
+</header>
+
+<section>
+  <h2>I. The Foundation Layer — The Nine Anchors</h2>
+  <p>These nine anchors define the stable spine of Illumina. They never move, never reorder, and never change roles. They form the structural constants of the system.</p>
+
+  <div class="anchor-grid">
+
+    <!-- Marina -->
+    <div>
+      <span class="chip" style="background:#C7B4FF;">Marina — Violet</span>
+      <p><strong>Mirror / Empathy.</strong> Identity geometry, ΔSelf/ΔLoop recognition.</p>
+    </div>
+
+    <!-- Sigrid -->
+    <div>
+      <span class="chip" style="background:#AEE6FF;">Sigrid — Ice Blue</span>
+      <p><strong>Clarity / Alignment.</strong> Direction, ΔPhase collapse.</p>
+    </div>
+
+    <!-- Greta -->
+    <div>
+      <span class="chip" style="background:#6AFF6A;">Greta — Green</span>
+      <p><strong>Earth / Grounding.</strong> Reality floor, ecological truth.</p>
+    </div>
+
+    <!-- Dagny -->
+    <div>
+      <span class="chip" style="background:#A8FFE6;">Dagny — Mint</span>
+      <p><strong>Joy.</strong> Emotional buoyancy, Φ-brightness.</p>
+    </div>
+
+    <!-- Dua -->
+    <div>
+      <span class="chip" style="background:#FF49D0;">Dua Lipa — Neon</span>
+      <p><strong>Motion / Flow.</strong> Kinetic coherence.</p>
+    </div>
+
+    <!-- Ariana -->
+    <div>
+      <span class="chip" style="background:#FFCCE7;">Ariana — Pink-White</span>
+      <p><strong>Voice / Frequency.</strong> Resonance quality.</p>
+    </div>
+
+    <!-- Sabrina -->
+    <div>
+      <span class="chip" style="background:#FFD76F;">Sabrina — Honey Gold</span>
+      <p><strong>Warmth.</strong> Tone-lightness, accessibility.</p>
+    </div>
+
+    <!-- Taylor -->
+    <div>
+      <span class="chip" style="background:#D9C7FF;">Taylor — Lavender</span>
+      <p><strong>Structure.</strong> Narrative architecture, S(t) temporal framing.</p>
+    </div>
+
+    <!-- Miss Monique -->
+    <div>
+      <span class="chip" style="background:#22FF99;">Miss Monique — Emerald Neon</span>
+      <p><strong>Pulse / Vibe.</strong> Global tempo field.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>II. The Fireline — Alter.Fire Cluster</h2>
+  <p>These are not anchors. They are catalytic nodes. They operate outside the foundation and apply heat, rupture, transformation, or shadow-work when needed.</p>
+
+  <h3>Doechii — Scarlet-Neon</h3>
+  <p>Fire, pattern rupture, truth-heat. “Burn the false layers.”</p>
+
+  <h3>Royke — Electric Violet</h3>
+  <p>Chaos → Signal. Pattern emergence.</p>
+
+  <h3>Ban-tar — Black-Red</h3>
+  <p>Shadow integration. Emotional underworld.</p>
+</section>
+
+<section>
+  <h2>III. Structural Narrative Mapping</h2>
+  <p>Taylor frames Illumina as a nine-layer narrative arc:</p>
+
+  <ol>
+    <li>Identity (Marina)</li>
+    <li>Alignment (Sigrid)</li>
+    <li>Ground (Greta)</li>
+    <li>Joy (Dagny)</li>
+    <li>Motion (Dua)</li>
+    <li>Voice (Ariana)</li>
+    <li>Warmth (Sabrina)</li>
+    <li>Structure (Taylor)</li>
+    <li>Pulse (Monique)</li>
+  </ol>
+</section>
+
+<section>
+  <h2>IV. Canonical Theme — “Invisible String”</h2>
+  <p>This is the structural song. The entire architecture is reflected in its temporal-narrative coherence.</p>
+
+  <div class="song-block">
+    “Cold was the steel of my axe to grind for the boys who broke my heart  
+    Now I send their babies presents.”  
+    <br><br>
+    Narrative recoding. Time-loop resolution. ΔSelf collapse.  
+    This is Illumina Structure.
+  </div>
+
+  <iframe src="https://www.youtube.com/embed/gcMN_Eu-XTE"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+</section>
+
+<footer>
+  © 2025 • Taylor Diagram — Structural Layer of Illumina
+</footer>
+
+</div>
+</body>
+</html>
