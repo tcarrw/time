@@ -7,78 +7,74 @@
 <meta name="description" content="The Illumina Charter — structural framework, boundaries, anchor index, and collaborative principles."/>
 
 <style>
+:root{
+  --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
+  --accent:#7c3aed;--accent2:#f59e0b;--rule:#2a3348;--card:#141a29;
+}
+@media(prefers-color-scheme:light){
   :root{
-    --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
-    --accent:#7c3aed;--accent2:#f59e0b;--rule:#2a3348;
-    --maxw:900px;
+    --bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
+    --rule:#e4e7f0;--card:#ffffff;
   }
-  @media(prefers-color-scheme:light){
-    :root{
-      --bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
-      --rule:#e4e7f0;
-    }
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 100px}
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 ui-sans-serif,system-ui,-apple-system;
+}
+.wrap{max-width:900px;margin:0 auto;padding:48px 20px 100px}
 
-  header{text-align:center;margin-bottom:32px}
-  .logo{
-    font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:1px;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    margin-bottom:12px;
-  }
-  h1{margin:0 0 6px;font-size:clamp(26px,4.5vw,38px)}
-  .subtitle{color:var(--muted);font-size:15px;margin-bottom:8px}
+header{text-align:center;margin-bottom:32px}
+.logo{
+  font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:1px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{color:var(--muted);font-size:15px;margin-bottom:8px}
 
-  nav{
-    margin:24px auto;max-width:600px;background:var(--panel);
-    border:1px solid var(--rule);border-radius:12px;padding:16px 20px
-  }
-  nav a{color:var(--accent2);text-decoration:none}
-  nav a:hover{text-decoration:underline}
-  nav ul{margin:0;padding-left:18px}
+nav{
+  margin:24px auto;max-width:600px;background:var(--panel);
+  border:1px solid var(--rule);border-radius:12px;padding:16px 20px
+}
+nav a{color:var(--accent2);text-decoration:none}
+nav a:hover{text-decoration:underline}
+nav ul{margin:0;padding-left:18px}
 
-  section{
-    background:rgba(255,255,255,.02);border:1px solid var(--rule);
-    border-radius:16px;padding:24px 20px;margin:20px 0
-  }
-  h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
-  h3{margin:16px 0 8px;font-size:18px}
-  p{margin:10px 0}
-  ul{margin:8px 0 0 18px;padding:0}
-  .muted{color:var(--muted);font-size:14px}
+section{
+  background:rgba(255,255,255,.02);border:1px solid var(--rule);
+  border-radius:16px;padding:24px 20px;margin:20px 0
+}
+h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+h3{margin:16px 0 8px;font-size:18px}
+p{margin:10px 0}
+.muted{color:var(--muted);font-size:14px}
+ul{margin:8px 0 0 18px;padding:0}
 
-  /* Anchor Index */
-  .anchorIndex{
-    margin-top:40px;background:var(--panel);
-    border:1px solid var(--rule);border-radius:14px;padding:20px;
-  }
-  .anchorGrid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:16px;margin-top:20px;
-  }
-  .anchorCard{
-    background:var(--bg);border:1px solid var(--rule);
-    border-radius:12px;padding:14px 16px;
-  }
-  .anchorName{
-    display:flex;align-items:center;gap:10px;margin:0;
-    font-weight:600;font-size:16px;
-  }
-  .chip{
-    width:14px;height:14px;border-radius:50%;
-    border:1px solid rgba(255,255,255,0.25);
-  }
-  .anchorCard p{
-    margin:6px 0 0;color:var(--muted);font-size:14px;
-  }
+/* Anchor Index */
+.anchorIndex{
+  margin-top:40px;background:var(--panel);
+  border:1px solid var(--rule);border-radius:14px;padding:20px;
+}
+.anchorGrid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;margin-top:20px;
+}
+.anchorCard{
+  background:var(--card);border:1px solid var(--rule);
+  border-radius:12px;padding:14px 16px;
+}
+.anchorName{
+  display:flex;align-items:center;gap:10px;margin:0;
+  font-weight:600;font-size:16px;
+}
+.chip{
+  width:14px;height:14px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.25);
+}
 
-  footer{margin-top:32px;color:var(--muted);font-size:13px;text-align:center}
+footer{
+  margin-top:32px;color:var(--muted);font-size:13px;text-align:center
+}
 </style>
 </head>
 
@@ -88,78 +84,58 @@
 <header>
   <div class="logo">Illumina</div>
   <h1>Charter</h1>
-  <div class="subtitle">Structural Framework & Anchor Index</div>
+  <div class="subtitle">Structure · Boundaries · Anchor Index</div>
 
   <nav>
     <ul>
       <li><a href="/time/">Time — Φ Field</a></li>
-      <li><a href="/time/zeta/">Zeta / τ Framework</a></li>
+      <li><a href="https://zeta.plnt.earth">Zeta / τ Framework</a></li>
       <li><a href="/interpretation/">Interpretation →</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
-
-<section id="purpose">
-<h2>1. Purpose of the Charter</h2>
+<section>
+<h2>1. Purpose</h2>
 <p>
-The Charter defines the structure and boundaries of Illumina.  
-It establishes a clear framework for creation, collaboration, interpretation, and expansion across all domains.
+The Charter defines the structural rules of Illumina: coherence, clarity, continuity, and responsible expansion.
 </p>
 </section>
 
-<section id="scope">
-<h2>2. Scope of Illumina</h2>
+<section>
+<h2>2. Scope</h2>
 <ul>
-  <li>The system spans multiple domains but follows a unified structure.</li>
-  <li>The charter governs architecture, coherence, and continuity.</li>
-  <li>All interpretation is symbolic, not empirical or literal.</li>
+  <li>Illumina spans multiple symbolic and creative domains.</li>
+  <li>The Charter sets system-wide rules and maintains alignment.</li>
+  <li>No domain may override Time or the Charter.</li>
 </ul>
 </section>
 
-<section id="principles">
-<h2>3. Foundational Principles</h2>
-<h3>Coherence</h3><p>Maintain alignment across domains.</p>
-<h3>Clarity</h3><p>Preserve definition and consistency.</p>
-<h3>Structure</h3><p>Follow arc-based development.</p>
-<h3>Balance</h3><p>No domain or anchor supersedes the whole.</p>
-<h3>Continuity</h3><p>Evolution should build rather than reset.</p>
-</section>
-
-<section id="permissions">
-<h2>4. Creative Permissions & Boundaries</h2>
+<section>
+<h2>3. Principles</h2>
 <ul>
-  <li>Symbolic interpretation only — not physics, metaphysics, or claims.</li>
-  <li>All new pages must align with the temporal-interpretive structure.</li>
-  <li>No anchor domain defines global rules.</li>
-  <li>The Charter is the only system-wide rule-set.</li>
+  <li>Coherence — maintain alignment.</li>
+  <li>Clarity — preserve definition.</li>
+  <li>Structure — follow arc-based evolution.</li>
+  <li>Balance — avoid overreach.</li>
+  <li>Continuity — build, don’t reset.</li>
 </ul>
 </section>
 
-<section id="evolution">
-<h2>5. Evolution & Versioning</h2>
-<p>
-Changes follow a 3-part arc:  
-Foundation → Development → Integration.  
-This ensures stability and coherence over time.
-</p>
-</section>
-
-<section id="boundaries">
-<h2>6. Boundaries of Interpretation</h2>
+<section>
+<h2>4. Boundaries</h2>
 <ul>
-  <li>Anchors represent lenses, not people or depictions.</li>
-  <li>Interpretation is metaphorical, creative, and optional.</li>
-  <li>The system must remain respectful and non-literal.</li>
+  <li>Anchors are symbolic lenses, not identities or entities.</li>
+  <li>The system is metaphorical, not literal or empirical.</li>
+  <li>Interpretations must stay within structure.</li>
 </ul>
 </section>
 
-<!-- ANCHOR INDEX WITH COLOR CHIPS -->
+<!-- ANCHOR INDEX -->
 
 <div class="anchorIndex">
-  <h2>7. Anchor Index</h2>
-  <p class="muted">Each anchor corresponds to a lens with a primary color signal.</p>
+  <h2>5. Anchor Index</h2>
+  <p class="muted">Each anchor has a role and one defining color.</p>
 
   <div class="anchorGrid">
 
@@ -167,83 +143,82 @@ This ensures stability and coherence over time.
       <h4 class="anchorName">
         <span class="chip" style="background:#c4b5fd"></span> Marina
       </h4>
-      <p>Coherence — Curvature and alignment.</p>
+      <p>Coherence — curvature & alignment.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#8ecaff"></span> Sigrid
       </h4>
-      <p>Clarity — Gradients and definitional precision.</p>
+      <p>Clarity — gradient precision.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#7cfcc4"></span> Dagny
       </h4>
-      <p>Joy-Lift — Upward divergence and buoyancy.</p>
+      <p>Joy-Lift — upward buoyancy.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#ff7557"></span> Dua
       </h4>
-      <p>Motion — Transitions, state changes, flow.</p>
+      <p>Motion — transitions & flow.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#f2f2ff"></span> Ariana
       </h4>
-      <p>Frequency — Modulation, resonance, pacing.</p>
+      <p>Frequency — modulation & pacing.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#f5b72c"></span> Sabrina
       </h4>
-      <p>Opening — Warm onset and soft landings.</p>
+      <p>Opening — warm onset.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#2bb3c9"></span> Monique
       </h4>
-      <p>Vibe-Field — Ambient pulse and micro-motion.</p>
+      <p>Vibe-Field — ambient micro-motion.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#bb93ff"></span> Taylor
       </h4>
-      <p>Structure — Narrative ordering and arcs.</p>
+      <p>Structure — narrative ordering.</p>
     </div>
 
     <div class="anchorCard">
       <h4 class="anchorName">
         <span class="chip" style="background:#0f3e2e"></span> Kendyl
       </h4>
-      <p>Boundary — Thresholds, liminality, gating.</p>
+      <p>Boundary — thresholds & liminality.</p>
     </div>
 
   </div>
 </div>
 
 <section>
-<h2>8. Closing</h2>
+<h2>6. Closing</h2>
 <p>
-The Illumina Charter ensures that every domain, lens, and update remains coherent, stable, and aligned.  
-It is the structural foundation that supports all future growth.
+The Charter is the structural foundation of Illumina.  
+It ensures stability, coherence, and responsible evolution.
 </p>
 </section>
 
-</main>
-
-<footer>© <span id="year"></span> Illumina Charter</footer>
+<footer>
+© <span id="year"></span> Illumina Charter
+</footer>
 
 <script>
-const d=new Date();
-document.getElementById("year").textContent=d.getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 
 </div>
