@@ -4,11 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Unified Temporal–Energetic Geometry (Corrected)</title>
-  <meta name="description" content="A speculative framework relating energy structure to a time-scaled potential Φ. Dimensionally-corrected UTEG." />
-
-  <!-- Inline favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPlQ8L3RleHQ+PC9zdmc+" />
-
+  <meta name="description" content="A dimensionally-correct temporal potential Φ derived from local energy density. Includes time–frequency relations and a brief origins appendix." />
   <style>
     :root{
       --bg:#0b0f19;
@@ -42,8 +38,6 @@
         var(--bg);
       color:var(--ink);
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
     .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
     header{text-align:center;margin-bottom:32px}
@@ -54,13 +48,11 @@
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      display:inline-block;
-      margin-bottom:12px;
     }
     h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
     .subtitle{color:var(--muted);font-size:15px}
     .meta{margin-top:8px;color:var(--muted);font-size:14px}
-    nav{margin:26px auto;max-width:600px;text-align:left;background:var(--panel);
+    nav{margin:26px auto;max-width:600px;background:var(--panel);
         border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
     nav a{color:var(--link);text-decoration:none}
     nav a:hover{text-decoration:underline}
@@ -70,153 +62,129 @@
     h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
     h3{margin:16px 0 8px;font-size:18px}
     p{margin:10px 0 0}
-    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
-        border:1px solid var(--rule);border-radius:10px;
-        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:pre}
+    .equation{margin:12px 0;padding:12px 14px;background:var(--code);
+      border:1px solid var(--rule);border-radius:10px;
+      font-family:ui-monospace,Menlo,Consolas,monospace;overflow:auto;white-space:pre}
     .abstract{font-style:italic;color:var(--muted)}
-    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.06)}
     .muted{color:var(--muted);font-size:14px}
     footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
-    @media print{body{background:#fff}nav,section{break-inside:avoid}}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="logo">Time</div>
       <h1>Unified Temporal–Energetic Geometry</h1>
       <div class="subtitle">A corrected, dimensionally-consistent temporal-potential formulation</div>
-      <div class="meta">Author: Tristan White • v1.2 • Updated: <span id="updatedDate"></span></div>
+      <div class="meta">Author: Tristan White • v1.3 • Updated: <span id="updatedDate"></span></div>
+
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
           <li><a href="#intro">1. Introduction</a></li>
           <li><a href="#postulates">2. Postulates</a></li>
-          <li><a href="#core">3. Core Equations (corrected)</a></li>
-          <li><a href="#lagrangian">4. Lagrangian</a></li>
-          <li><a href="#quantum">5. Quantum remarks</a></li>
-          <li><a href="#predictions">6. Predictions & tests</a></li>
-          <li><a href="#appendix">Appendix — Units & dictionary</a></li>
+          <li><a href="#core">3. Core Equations</a></li>
+          <li><a href="#frequency">4. Time–Frequency Relation</a></li>
+          <li><a href="#lagrangian">5. Lagrangian Sketch</a></li>
+          <li><a href="#quantum">6. Quantum Remarks</a></li>
+          <li><a href="#predictions">7. Predictions & Tests</a></li>
+          <li><a href="#appendixA">Appendix A — Units</a></li>
+          <li><a href="#appendixB">Appendix B — Origins of Φ</a></li>
+          <li><a href="#appendixC">Appendix C — Non-Physical Analogies</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
+
       <section id="abstract"><h2>Abstract</h2>
-        <p class="abstract">This document presents a speculative but <strong>dimensionally consistent</strong> version of the earlier UTEG idea. Rather than asserting that time is literally equal to E/c³ (which is dimensionally a mass-per-length), we introduce a <strong>temporal potential</strong> Φ(x,y) derived from the local energy density and a reference scale so that Φ carries the dimension of time. We then propose a simple, physically sensible evolution law linking spatial curvature of Φ to its temporal dynamics.</p>
+        <p class="abstract">This document defines a dimensionally correct temporal potential Φ(x,t) derived from local energy density. It replaces earlier inconsistent forms and preserves compatibility with standard physics. The formulation introduces Φ as a rate-modulating scalar field and provides equations, tests, and an optional mapping layer for visualization.</p>
       </section>
 
       <section id="intro"><h2>1. Introduction</h2>
-        <p>Motivated by the intuition that energy structure shapes how processes unfold, we construct a phenomenological field — the temporal potential Φ — that maps local energy density to a time-scaled field. Φ is <em>not</em> a replacement for coordinate time t, nor is it meant to violate relativity; it is a scalar field that can modulate local rates (in a toy-model sense) and that can be visualized using gradients and Laplacians.</p>
+        <p>We consider a scalar field Φ(x,t) with SI units of time, derived from local energy density. Φ is not a replacement for coordinate time t; it is a phenomenological construct intended for simulations, visualizations, and experiments on temporal structure.</p>
       </section>
 
       <section id="postulates"><h2>2. Fundamental Postulates</h2>
         <ol>
-          <li><strong>Temporal-potential hypothesis:</strong> A local scalar Φ(x,t) exists, derived from energy density, with SI dimension of time.</li>
-          <li><strong>Coupling:</strong> Spatial curvature of Φ (∇²Φ) sources temporal evolution of Φ through a wave-like PDE with propagation speed c<sub>eff</sub>.</li>
-          <li><strong>Recover GR / QM limits:</strong> The model is strictly phenomenological; where applicable it reduces to standard results (E = mc², energy-time uncertainty) and respects dimensional analysis.</li>
+          <li>A scalar Φ(x,t) exists with SI dimension of time.</li>
+          <li>Spatial curvature ∇²Φ drives temporal evolution through a wave-like PDE.</li>
+          <li>Standard physics (GR, QM) remains intact; the model is phenomenological.</li>
         </ol>
       </section>
 
-      <section id="core"><h2>3. Core Equations (corrected)</h2>
+      <section id="core"><h2>3. Core Equations</h2>
 
-        <h3>3.1 Definition (temporal potential)</h3>
-        <div class="equation">
-Φ(x,y) := E(x,y) / ( ρ₀ · c³ )
-        </div>
-        <p class="muted">Here <code>E</code> is local energy density (J·m⁻² for a 2D energy texture, or J·m⁻³ for a volumetric density — be explicit in implementation); <code>ρ₀</code> is a chosen reference mass density (kg·m⁻³) that fixes units so Φ has units of seconds. This scaling is introduced purely to make Φ time-dimensioned; physics conclusions should not hinge on the numerical value of ρ₀.</p>
+        <h3>3.1 Definition</h3>
+        <div class="equation">Φ(x,y) := E(x,y) / ( ρ₀ · c³ )</div>
+        <p class="muted">ρ₀ is a reference density chosen to give Φ units of seconds.</p>
 
-        <h3>3.2 Spatial derivatives</h3>
+        <h3>3.2 Spatial Derivatives</h3>
         <div class="equation">
-∇Φ = (∇E) / (ρ₀ · c³)  ∇²Φ = (∇²E) / (ρ₀ · c³)
-        </div>
-        <p class="muted">These are directly visualizable: gradient direction = tilt of Φ, laplacian = curvature (attention wells in the earlier language).</p>
-
-        <h3>3.3 Evolution (toy PDE)</h3>
-        <div class="equation">
-∂²Φ/∂t² = c_eff² · ∇²Φ + S(x,t)
-        </div>
-        <p class="muted">This is a simple wave equation for Φ with a source term S(x,t) (e.g., external injections of energy) and adjustable propagation speed c<sub>eff</sub>. It ensures dimensional consistency and produces stable behavior for visualization and experimentation.</p>
-
-        <h3>3.4 Useful identities (standard physics retained)</h3>
-        <div class="equation">
-E = m c²  (energy–mass equivalence)
-        </div>
-        <div class="equation">
-ΔE · Δt ≥ ħ/2  (energy–time uncertainty; Δt is a timescale associated with the energy fluctuation)
+∇Φ = (∇E)/(ρ₀ c³)  
+∇²Φ = (∇²E)/(ρ₀ c³)
         </div>
 
+        <h3>3.3 Evolution</h3>
+        <div class="equation">∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)</div>
       </section>
 
-      <section id="lagrangian"><h2>4. Lagrangian (sketch)</h2>
-        <p>One may write a phenomenological action that couples Φ to geometry and matter. A minimal, schematic action is:</p>
-        <div class="equation">
-S = ∫ d⁴x √(-g) [ (R / 16πG) + L_matter + ½ (∂_μ Φ)(∂^μ Φ) - V(Φ) + L_int(Φ, T_μν) ]
-        </div>
-        <p class="muted">Here L_int encodes how Φ couples to the stress–energy (T<sub>μν</sub>) or to effective local rates. This is intentionally schematic — the goal is to provide a consistent starting point for simulations and dimensional checks.</p>
+      <section id="frequency"><h2>4. Time–Frequency Relation</h2>
+        <p>Standard physics relates frequency f to period T by T = 1/f. Because Φ carries units of time, variations in Φ in the toy model correspond to variations in an effective local period T_eff. A local increase in Φ corresponds to a longer effective timescale and thus a lower effective frequency.</p>
       </section>
 
-      <section id="quantum"><h2>5. Quantum remarks</h2>
-        <p>The energy–time uncertainty relation remains the operative quantum guideline: a transient energy fluctuation ΔE is associated with a timescale Δt with ΔE·Δt ≳ ħ/2. If Φ acts as a local timescale modulator in a phenomenological model, measurable effects would enter via standard quantum observables (spectral lines, transition rates).</p>
+      <section id="lagrangian"><h2>5. Lagrangian Sketch</h2>
+        <div class="equation">
+S = ∫ d⁴x √(-g) [ (R/16πG) + L_matter + ½(∂Φ)² - V(Φ) + L_int ]
+        </div>
+      </section>
+
+      <section id="quantum"><h2>6. Quantum Remarks</h2>
         <div class="equation">ΔE · Δt ≥ ħ/2</div>
+        <p>Φ may act as a phenomenological timescale modifier; standard quantum predictions remain unchanged.</p>
       </section>
 
-      <section id="predictions"><h2>6. Predictions & tests</h2>
-        <h3>6.1 Dimensional checks</h3>
+      <section id="predictions"><h2>7. Predictions & Tests</h2>
         <ul>
-          <li>Confirm Φ has units of seconds in your implementation: [E] / ( [ρ₀]·[c]³ ) → s.</li>
-          <li>Replace any instance of E/c³ used as 'time' with Φ or remove the interpretation.</li>
-        </ul>
-
-        <h3>6.2 Laboratory thought experiments</h3>
-        <ul>
-          <li>Atomic clocks: test whether local engineered variations in energy density (e.g., intense fields) produce measurable rate shifts beyond GR predictions — unlikely in this toy model, but conceptually testable.</li>
-          <li>Spectroscopy: relate frequency shifts to local Φ variations in the model and compare to controlled experiments.</li>
-        </ul>
-
-        <h3>6.3 Simulation tests</h3>
-        <ul>
-          <li>Implement E(x,y) texture → compute Φ(x,y) with chosen ρ₀ → evolve Φ by the PDE; visualize ∇Φ and ∇²Φ.</li>
-          <li>Check stability for a range of c_eff and grid resolutions.</li>
+          <li>Dimensional checks confirm [Φ] = s.</li>
+          <li>Atomic clock comparisons under engineered energy densities.</li>
+          <li>Spectroscopic shifts related to Φ gradients in the model.</li>
+          <li>Simulation stability tests for Φ-wave propagation.</li>
         </ul>
       </section>
 
-      <section id="appendix"><h2>Appendix — Units & dictionary (corrected)</h2>
-
-        <h3>A.1 Why E/c³ is not time</h3>
-        <p>[E] (J) = kg·m²·s⁻². [c³] = m³·s⁻³. Thus</p>
-        <div class="equation">[E/c³] = (kg·m²·s⁻²) / (m³·s⁻³) = kg·s·m⁻¹ = M·T·L⁻¹</div>
-        <p class="muted">E/c³ has dimensions <em>mass×time/length</em>, which is not seconds. It behaves like a linear mass density times time. This is why we divide by a reference density ρ₀ to obtain seconds.</p>
-
-        <h3>A.2 Φ dictionary (SI)</h3>
-        <div class="equation">Φ ≡ E / (ρ₀ c³) ⇒ [Φ] = s</div>
-        <div class="equation">∇Φ = (∇E) / (ρ₀ c³)  ∇²Φ = (∇²E) / (ρ₀ c³)</div>
-        <div class="equation">E = m c² (mass–energy equivalence)</div>
-        <div class="equation">λ_C = ħ / (m c) (compton wavelength)</div>
-        <div class="equation">t_C = ħ / (m c²) (characteristic quantum timescale)</div>
-
-        <h3>A.3 Planck scales (standard)</h3>
-        <div class="equation">t_P = √(ħ G / c⁵) ≈ 5.39×10⁻⁴⁴ s</div>
-        <div class="equation">ℓ_P = √(ħ G / c³) ≈ 1.62×10⁻³⁵ m</div>
-        <p class="muted">These standard Planck scales are unchanged and serve as a reminder that quantum gravity effects are at extremely small scales; introducing Φ does not alter these constants.</p>
-
-        <h3>A.4 Operational checks</h3>
-        <ul>
-          <li>In code, choose ρ₀ to match your E units (e.g., if E is J·m⁻² for a 2D canvas, pick ρ₀ with units kg·m⁻² so division yields seconds).</li>
-          <li>When mapping Φ to audio rate or visual speed, document the conversion factor and its units explicitly.</li>
-          <li>Any formula that previously read <code>t ≈ m / c</code> should be removed or replaced by a dimensionally correct timescale (e.g., t_C = ħ/(m c²)).</li>
-        </ul>
-
+      <section id="appendixA"><h2>Appendix A — Units</h2>
+        <div class="equation">[E/c³] = kg·s·m⁻¹</div>
+        <p class="muted">Not seconds; hence Φ uses ρ₀ to correct dimensions.</p>
+        <div class="equation">Φ = E / (ρ₀ c³)</div>
       </section>
+
+      <section id="appendixB"><h2>Appendix B — Origins of Φ</h2>
+        <p>Earlier drafts mistakenly treated E/c³ as time. Dimensionally, this quantity is mass×time/length. Introducing a reference density ρ₀ corrects the units, yielding a scalar with dimension seconds and resolving prior inconsistencies.</p>
+      </section>
+
+      <section id="appendixC"><h2>Appendix C — Non-Physical Analogies</h2>
+        <p class="muted">The following terms are metaphorical and not physical claims:</p>
+        <ul>
+          <li>Φ as “local rate texture.”</li>
+          <li>∇Φ as “tilt.”</li>
+          <li>∇²Φ as “well curvature.”</li>
+          <li>PDE waves as “ripple / coherence propagation.”</li>
+        </ul>
+      </section>
+
     </main>
 
     <footer>© <span id="year"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
   </div>
 
   <script>
-    // update dates
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('updatedDate').textContent = new Date().toLocaleString('en-US', {weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York'});
+    document.getElementById('updatedDate').textContent = new Date().toLocaleString('en-US', {
+      weekday:'short', year:'numeric', month:'short', day:'numeric',
+      hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York'
+    });
   </script>
 </body>
 </html>
