@@ -3,65 +3,101 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Time — Unified Temporal–Energetic Geometry</title>
-<meta name="description" content="A physics-forward presentation of the temporal-potential field Φ, corrected dimensional analysis, and the foundations of Unified Temporal–Energetic Geometry." />
+<title>Time · Illumina</title>
+<meta name="description" content="Illumina Time: full UTEG physics (Φ field, τ interpretation, PDE, units), interpretation, and structural links."/>
+<meta name="color-scheme" content="light dark"/>
 
 <style>
+:root{
+  --bg:#0b0f19;
+  --panel:#121827;
+  --ink:#eceef8;
+  --muted:#a4aec5;
+  --accent:#7c3aed;
+  --accent2:#f59e0b;
+  --rule:#232b3b;
+  --card:#141a29;
+  --code:#0e1422;
+}
+@media(prefers-color-scheme:light){
   :root{
-    --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
-    --accent:#7c3aed;--accent-2:#f59e0b;--rule:#2a3348;--code:#0e1422;
-    --link:#9aa8ff;--maxw:900px;
+    --bg:#ffffff;--ink:#11121a;--muted:#4e5569;
+    --panel:#f3f4fa;--card:#ffffff;--rule:#ddd;--code:#f1f3f9;
   }
-  @media(prefers-color-scheme:light){
-    :root{
-      --bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
-      --rule:#e4e7f0;--code:#f1f3f9;--link:#2b59ff;
-    }
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial
-  }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
-  header{text-align:center;margin-bottom:32px}
-  .logo{
-    font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:1px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    display:inline-block;margin-bottom:14px
-  }
-  h1{margin:0 0 6px;font-size:clamp(24px,4.5vw,36px);}
-  .subtitle{color:var(--muted);font-size:15px;margin-bottom:8px}
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 -apple-system,ui-sans-serif,system-ui;
+}
+.wrap{max-width:940px;margin:0 auto;padding:48px 20px 96px}
 
-  nav{
-    margin:24px auto;max-width:600px;background:var(--panel);
-    border:1px solid var(--rule);border-radius:12px;padding:16px 20px
-  }
-  nav a{color:var(--link);text-decoration:none}
-  nav a:hover{text-decoration:underline}
-  nav ul{margin:0;padding-left:18px}
+header{text-align:center;margin-bottom:40px}
+.logo{
+  font-size:clamp(38px,6vw,64px);
+  font-weight:800;letter-spacing:2px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{color:var(--muted);margin-top:6px}
+.meta{font-size:14px;color:var(--muted);margin-top:8px}
 
-  section{
-    background:rgba(255,255,255,.02);border:1px solid var(--rule);
-    border-radius:16px;padding:24px 20px;margin:18px 0
-  }
-  h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
-  h3{margin:16px 0 8px;font-size:18px}
-  p{margin:10px 0 0}
-  ul{margin:8px 0 0 18px;padding:0}
-  .muted{color:var(--muted);font-size:14px}
+nav{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-radius:12px;
+  padding:18px 22px;
+  margin:24px auto;
+  max-width:620px;
+}
+nav ul{margin:0;padding-left:18px}
+nav a{color:var(--accent2);text-decoration:none}
+nav a:hover{text-decoration:underline}
 
-  .equation{
-    margin:12px 0;padding:12px 14px;background:var(--code);
-    border:1px solid var(--rule);border-radius:10px;
-    font-family:ui-monospace,Menlo,Consolas,monospace;
-    overflow:auto;white-space:nowrap
-  }
+section{
+  background:var(--card);border:1px solid var(--rule);
+  border-radius:16px;padding:24px 22px;margin:22px 0;
+}
+h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px)}
+h3{margin:16px 0 8px;font-size:19px}
+p{margin:10px 0}
+.equation{
+  background:var(--code);border:1px solid var(--rule);
+  padding:12px 14px;border-radius:10px;
+  font-family:ui-monospace,Menlo,Consolas,Courier New,monospace;
+  overflow:auto;white-space:pre;
+  margin:12px 0;
+}
+.muted{color:var(--muted);font-size:14px}
 
-  footer{
-    margin-top:32px;color:var(--muted);font-size:13px;text-align:center
-  }
+.videoWrap{
+  margin:18px 0;border-radius:14px;overflow:hidden;
+  box-shadow:0 0 22px rgba(0,0,0,.45);
+}
+iframe{width:100%;height:315px;border:0}
+
+.physicsIndex{
+  margin-top:48px;background:var(--panel);
+  border:1px solid var(--rule);border-radius:16px;
+  padding:24px 22px;
+}
+.physicsGrid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:18px;
+}
+.physicsCard{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:14px;padding:14px 16px;
+}
+.physicsCard a{
+  color:var(--accent2);text-decoration:none;font-weight:600;
+}
+.physicsCard p{
+  margin:8px 0 0;color:var(--muted);font-size:14px;
+}
+
+footer{color:var(--muted);text-align:center;margin-top:40px;font-size:14px}
 </style>
 </head>
 
@@ -70,111 +106,277 @@
 
 <header>
   <div class="logo">Time</div>
-  <h1>Unified Temporal–Energetic Geometry</h1>
-  <div class="subtitle">Corrected dimensional framework for the temporal-potential field Φ</div>
-
-  <nav>
-    <ul>
-      <li><a href="/time/">Time — Φ Field</a></li>
-      <li><a href="/time/zeta/">Zeta / τ Framework</a></li>
-      <li><a href="/time/interpretation/">Illumina Field Interpretation</a></li>
-    </ul>
-  </nav>
+  <div class="subtitle">Illumina · Temporal Potential Field (Φ)</div>
+  <div class="meta">
+    Version 8.0 • Updated: <span id="date"></span>
+  </div>
 </header>
 
-<main>
+<nav>
+  <ul>
+    <li><a href="#illumina">Illumina Interpretation</a></li>
+    <li><a href="#physics">UTEG Physics</a></li>
+    <li><a href="interpretation/index.html">Interpretation →</a></li>
+    <li><a href="charter/index.html">Charter →</a></li>
+    <li><a href="#dedications">Dedications</a></li>
+    <li><a href="#index">Physics Index</a></li>
+  </ul>
+</nav>
 
-<section id="abstract">
-<h2>Abstract</h2>
+
+<!-- ░░░ I L L U M I N A ░░░ -->
+
+<section id="illumina">
+<h2>Illumina Field Interpretation</h2>
 <p>
-This document presents a corrected, dimensionally consistent foundation for the temporal-potential field Φ(x,t), derived from local energy density and scaled to carry units of time. The goal is to provide a stable phenomenological framework that is compatible with established physics while enabling computational visualization of temporal texture, curvature, and propagation.
+Time is modeled as a <strong>temporal potential field</strong>, capturing how processes internally speed, slow, sharpen, widen, or contract.  
+This interpretation links the physics below to the symbolic Illumina anchors.
 </p>
+
+<h3>Anchor Signatures</h3>
+<p>
+Marina → coherence curvature  
+Sigrid → clarity gradient  
+Taylor → narrative structure  
+Dua → motion and transitions  
+Dagny → joy-field lift  
+Ariana → modulation/frequency  
+Sabrina → warmth initialization  
+Monique → baseline vibe-field
+</p>
+
+<p class="muted">Full symbolic interpretation → <a href="interpretation/index.html">Interpretation Page</a></p>
 </section>
 
-<section id="phi">
-<h2>1. Defining the Temporal–Potential Field Φ</h2>
 
-<h3>1.1 Core Definition</h3>
+<!-- ░░░ U T E G   P H Y S I C S   (F U L L) ░░░ -->
+
+<section id="physics">
+<h2>Unified Temporal–Energetic Geometry (UTEG v1.2)</h2>
+
+<p>
+UTEG provides a dimensionally-correct, physically-consistent description of time as a potential field Φ(x,t).  
+It preserves known physics while allowing structured visualization and simulation of temporal texture.
+</p>
+
+
+<h3>1. Definition of the Temporal Potential Φ</h3>
 <div class="equation">
-Φ(x,t) = E(x,t) / (ρ₀ · c³)
+Φ(x,t) := E(x,t) / ( ρ₀ · c³ )
 </div>
 
-<p>Where:</p>
+<p>
+Where:
+</p>
 <ul>
-  <li><strong>E(x,t)</strong> = local energy density</li>
-  <li><strong>ρ₀</strong> = reference mass density (unit-fixing)</li>
-  <li><strong>c</strong> = speed of light</li>
+  <li>E = local energy density (J/m² or J/m³)</li>
+  <li>ρ₀ = reference density (kg/m³)</li>
+  <li>c = speed of light</li>
 </ul>
 
-<p class="muted">Φ carries units of seconds by construction. This avoids earlier dimensional inconsistencies (e.g., interpreting E/c³ directly as time).</p>
+<p class="muted">
+This scaling ensures Φ carries <strong>units of time</strong>:  
+[E] / ([ρ₀][c³]) → s  
+without violating dimensional consistency.
+</p>
 
-<h3>1.2 Spatial Structure</h3>
+
+<h3>2. Spatial Derivatives</h3>
 <div class="equation">
 ∇Φ = (∇E)/(ρ₀ c³)  
 ∇²Φ = (∇²E)/(ρ₀ c³)
 </div>
 
-<p>Gradients indicate directional tilt; Laplacians indicate curvature or “time-density wells.”</p>
+<p>
+The gradient describes “directional tilt” in the temporal field;  
+the Laplacian describes “curvature wells” — areas of concentrated temporal focus.
+</p>
 
-<h3>1.3 Evolution Equation (Toy Model)</h3>
+
+<h3>3. Temporal Evolution (Wave-like PDE)</h3>
 <div class="equation">
 ∂²Φ/∂t² = c_eff² · ∇²Φ + S(x,t)
 </div>
 
-<p>A wave equation with source term <em>S</em>, allowing simulations of temporal-texture propagation.</p>
-</section>
-
-<section id="lagrangian">
-<h2>2. Lagrangian Sketch</h2>
-<p>A minimal action coupling Φ to spacetime geometry:</p>
-<div class="equation">
-S = ∫ d⁴x √(-g) [ (R/16πG) + L_matter + ½(∂Φ)² - V(Φ) + L_int(Φ, T_μν) ]
-</div>
-<p class="muted">This is schematic and not intended as a quantum-gravity proposal. It ensures dimensional clarity for theoretical extensions.</p>
-</section>
-
-<section id="quantum">
-<h2>3. Quantum Considerations</h2>
-
-<div class="equation">ΔE · Δt ≥ ħ/2</div>
+<p>
+Here:
+</p>
+<ul>
+  <li>c_eff = effective propagation speed</li>
+  <li>S(x,t) = source term (external injections of energy)</li>
+</ul>
 
 <p>
-Energy–time uncertainty remains unchanged. Φ acts only as a phenomenological timescale modulator in simulations; it does not alter quantum mechanics.
+This PDE ensures stable evolution, allows simulation, and does not conflict with relativity (Φ is not coordinate time).
 </p>
-</section>
 
-<section id="checks">
-<h2>4. Dimensional & Operational Checks</h2>
-<ul>
-  <li>Φ has units of seconds in all coordinate systems.</li>
-  <li>Any earlier forms using <em>E/c³</em> must be replaced with Φ.</li>
-  <li>Select ρ₀ to match E’s units (J·m⁻² or J·m⁻³).</li>
-  <li>Document conversion factors when mapping Φ to visualization parameters.</li>
-</ul>
-</section>
 
-<section id="companion">
-<h2>5. Companion Documents</h2>
-<ul>
-  <li><a href="/time/zeta/">Zeta / τ Framework</a> — divergent-series regularization and τ-scaled interpretation.</li>
-  <li><a href="/time/interpretation/">Illumina Field Interpretation</a> — symbolic mapping of Φ/τ to creative temporal texture.</li>
-  <li>(Future) Cycle Architecture — daily/weekly curvature shifts.</li>
-</ul>
+<h3>4. τ as a Characteristic Timescale</h3>
+<p>
+We replace the old (incorrect) “τ = E/c³” with a <strong>characteristic state timescale</strong>:
+</p>
+
+<div class="equation">
+τ := characteristic time associated with a configuration or fluctuation
+</div>
+
+<p>
+τ connects to standard physics through:
+</p>
+
+<div class="equation">
+ΔE · Δt ≥ ħ/2
+</div>
+
 <p class="muted">
-These documents are interpretive companions. The physics presented above remains independent and self-contained.
+τ is the “effective temporal width” of a state, not a mass or energy itself.
+</p>
+
+
+<h3>5. Postulates</h3>
+<ul>
+  <li>Φ exists as a derived temporal potential with time dimension.</li>
+  <li>Spatial curvature of Φ influences temporal unfolding.</li>
+  <li>UTEG reduces to standard physics where required.</li>
+  <li>No empirical claims beyond standard GR/QM.</li>
+</ul>
+
+
+<h3>6. Tests (Michael, AMNH — incorporated)</h3>
+<ul>
+  <li><strong>Atomic Clock Drift:</strong> engineered energy-density differences.</li>
+  <li><strong>Spectral Line Shifts:</strong> comparing Φ-modulated transitions.</li>
+  <li><strong>Controlled PDE Simulations:</strong> numerical stability tests.</li>
+</ul>
+
+<p class="muted">
+These are conceptual; UTEG does not assert new measurable physics.
+</p>
+
+
+<h3>7. Units & Dimensional Appendix</h3>
+
+<p>Energy density:</p>
+<div class="equation">
+[E] = kg·m⁻¹·s⁻²  (for surface density)  
+or  
+[E] = kg·m⁻¹·s⁻² (volumetric)
+</div>
+
+<p>Speed of light:</p>
+<div class="equation">
+[c³] = m³·s⁻³
+</div>
+
+<p>Thus:</p>
+<div class="equation">
+[E/c³] = kg·s·m⁻¹ = not time  
+Φ = E/(ρ₀c³) → seconds
+</div>
+
+<p class="muted">
+This correction is the central fix of UTEG v1.2.
 </p>
 </section>
 
-</main>
+
+<!-- ░░░ D E D I C A T I O N S ░░░ -->
+
+<section id="dedications">
+<h2>Dedications</h2>
+
+<h3>Marina — “Obsessions”</h3>
+<div class="videoWrap"><iframe src="https://www.youtube.com/embed/np3QLrHJmRA" allowfullscreen></iframe></div>
+
+<h3>Sigrid — “It Gets Dark”</h3>
+<div class="videoWrap"><iframe src="https://www.youtube.com/embed/4j7LGMc9ZGU" allowfullscreen></iframe></div>
+</section>
+
+
+<!-- ░░░ P H Y S I C S   I N D E X ░░░ -->
+
+<div class="physicsIndex" id="index">
+<h2>Physics Papers Index</h2>
+<p class="muted">Links to all other physics documents across Illumina.</p>
+
+<div class="physicsGrid">
+
+  <div class="physicsCard">
+    <a href="/time/zeta/">Zeta / τ-Regularization</a>
+    <p>Divergence handling, τ invariants.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://42.plnt.earth">42</a>
+    <p>The 42-page temporal analysis.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://brain.plnt.earth">Weightless Brain</a>
+    <p>Gravity-free cognition model.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://unified.plnt.earth">Unified Geometry</a>
+    <p>Earlier UTEG versions.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://fieldlab.plnt.earth">Field Lab</a>
+    <p>Simulations and canvases.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://dimensions.plnt.earth">Dimensions</a>
+    <p>Spatial–temporal mapping.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a>
+    <p>Geometric evolution.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://infinity.plnt.earth">Infinity</a>
+    <p>Boundary-free state models.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://atlas.plnt.earth">Atlas</a>
+    <p>Temporal navigation.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="https://origin.plnt.earth">Origin</a>
+    <p>Initial conditions structure.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="/time/interpretation/">Interpretation</a>
+    <p>Illumina lens system.</p>
+  </div>
+
+  <div class="physicsCard">
+    <a href="/time/charter/">Charter</a>
+    <p>System-wide structure.</p>
+  </div>
+
+</div>
+</div>
+
 
 <footer>
-© <span id="year"></span> Time · Unified Temporal–Energetic Geometry
+© <span id="year"></span> Tristan White • Illumina
 </footer>
 
 </div>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+const d=new Date();
+document.getElementById("year").textContent=d.getFullYear();
+document.getElementById("date").textContent=d.toLocaleString(
+  'en-US',{month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"}
+);
 </script>
 
 </body>
