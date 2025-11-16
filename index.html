@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Time · Illumina</title>
-  <meta name="description" content="The entry point into the Time project — physics-forward foundations with a permanent dedication." />
+  <meta name="description" content="The entry point into the Time project — physics foundations with a permanent dedication." />
 
   <style>
     :root{
@@ -24,16 +24,17 @@
       background:var(--bg);
       color:var(--ink);
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      -webkit-font-smoothing:antialiased;
     }
     .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
     header{text-align:center;margin-bottom:32px;}
     .logo{
       font-size:clamp(40px,6vw,68px);
       font-weight:800;
-      letter-spacing:2px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
     }
     .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
     .meta{color:var(--muted);margin-top:10px;font-size:14px;}
@@ -44,11 +45,22 @@
       padding:24px 20px;
       margin:20px 0;
     }
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px);}
-    h3{margin:14px 0 4px;font-size:18px;color:var(--link);}
+    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
     p{margin:10px 0;}
-    ul{margin:8px 0 0 20px;color:var(--muted);}
-    nav.physicsbar a{color:var(--link);}
+    nav.physicsbar{
+      margin-top:24px;
+      display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
+    }
+    nav.physicsbar a{
+      padding:10px 16px;
+      background:var(--panel);
+      color:var(--link);
+      border:1px solid var(--rule);
+      border-radius:8px;
+      text-decoration:none;
+      font-size:15px;
+    }
+    nav.physicsbar a:hover{background:#1a2237;}
     .dedication{
       margin-top:32px;
       padding:20px;
@@ -58,8 +70,18 @@
       font-size:15px;
       color:var(--muted);
     }
-    .videos{margin-top:18px;display:flex;flex-direction:column;gap:18px;}
-    iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;}
+    .videos{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      border-radius:12px;
+    }
     footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px;}
   </style>
 </head>
@@ -70,35 +92,28 @@
   <header>
     <div class="logo">Time</div>
     <div class="subtitle">The Illumina Temporal Project</div>
-    <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST • Tristan White</div>
+    <div class="meta">Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
   </header>
 
   <section>
     <h2>Welcome</h2>
     <p>
-      This site presents the Time project: physics-forward research grounded in temporal potential (Φ),
-      dimensional clarity, and Illumina interpretation.
+      This site presents the Time project: a set of physics-forward papers
+      exploring temporal potential (Φ), dimensional clarity, and an Illumina
+      interpretation layer. The core pages below define the stable foundation
+      of the research.
     </p>
   </section>
 
-  <!-- INSERTED NAV BLOCK -->
-  <section class="nav-layer">
-    <h2>Navigation</h2>
+  <nav class="physicsbar">
+    <a href="/time/">Φ Field</a>
+    <a href="/interpretation/">Interpretation</a>
+    <a href="/charter/">Charter</a>
+    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
 
-    <h3>Core</h3>
-    <ul>
-      <li><a href="/time/">Φ Field (Physics Paper)</a></li>
-      <li><a href="/interpretation/">Interpretation</a></li>
-      <li><a href="/charter/">Charter</a></li>
-      <li><a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a></li>
-    </ul>
-
-    <h3>Anchor Interpretation</h3>
-    <ul>
-      <li><a href="/obsessions/">Marina — Obsessions (Mirror Model)</a></li>
-      <li><a href="/taylor/">Taylor — Structural Diagram</a></li>
-    </ul>
-  </section>
+    <!-- EARTH LINK RESTORED HERE -->
+    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
+  </nav>
 
   <section class="dedication">
     <strong>Dedication</strong><br><br>
