@@ -3,298 +3,237 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Map · Time · Illumina</title>
+  <title>Time · Map — Illumina System Overview</title>
+  <meta name="description" content="The full structural map of the Illumina Time System: core physics, interpretation layers, anchor lenses, and connected domains." />
 
   <style>
     :root{
       --bg:#0b0f19;
-      --panel:#121827;
       --ink:#e6e8ee;
       --muted:#a3acc2;
-      --rule:#2a3348;
-      --link:#9aa8ff;
-      --maxw:930px;
+      --rule:#273043;
+      --panel:#131a27;
+
+      /* Anchor chip colors */
+      --violet:#c4b5ff;
+      --ice:#9ed6ff;
+      --green:#90e49f;
+      --mint:#b7ffe8;
+      --neon:#c5f06f;
+      --pinkwhite:#ffd6ef;
+      --honey:#ffda7f;
+      --lavender:#d9b7ff;
+      --emerald:#66ffcc;
+      --alterfire:#ff726a;
+
+      --maxw:900px;
     }
 
     body{
       margin:0;
       background:var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI";
       -webkit-font-smoothing:antialiased;
     }
 
-    .wrap{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:48px 20px 80px;
-    }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-    nav{
-      margin-bottom:32px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-
-    nav a{
-      display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
-    }
-    nav a:hover{background:#1a2237;}
-
+    header{text-align:center;margin-bottom:32px;}
     h1{
-      text-align:center;
-      font-size:clamp(32px,5vw,46px);
-      margin-bottom:12px;
+      font-size:clamp(40px,6vw,68px);
+      margin:0;
+      background:linear-gradient(135deg,#7c3aed,#f59e0b);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
       font-weight:800;
     }
+    .sub{color:var(--muted);margin-top:8px;}
 
-    h2{
-      font-size:22px;
-      margin-top:42px;
-      margin-bottom:14px;
-    }
-
-    p{
-      margin:10px 0;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .group{
-      margin-top:18px;
+    section{
+      margin:34px 0;
+      padding:24px 20px;
       background:rgba(255,255,255,0.02);
       border:1px solid var(--rule);
-      border-radius:14px;
-      padding:18px 18px 14px;
+      border-radius:16px;
     }
+    h2{margin:0 0 16px;font-size:clamp(22px,3vw,27px);}
+    h3{margin:28px 0 10px;font-size:20px;color:var(--ink);}
+    .note{color:var(--muted);font-size:14px;margin-top:8px;}
 
-    .links{
-      margin-top:14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+    ul{margin:0;padding-left:20px;}
+    li{margin:6px 0;}
 
-    .links a{
-      padding:8px 12px;
-      background:var(--panel);
-      border:1px solid var(--rule);
+    a{color:#9aa8ff;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    /* Anchor chips */
+
+    .chip-block{
+      margin-top:6px;
+      font-size:13px;
+      color:#000;
+      padding:4px 8px;
       border-radius:8px;
-      color:var(--link);
-      text-decoration:none;
-      font-size:14px;
+      display:inline-block;
+      font-weight:600;
     }
 
-    .links a:hover{
-      background:#1a2237;
-    }
+    .marina{background:var(--violet);}
+    .sigrid{background:var(--ice);}
+    .greta{background:var(--green);}
+    .dagny{background:var(--mint);}
+    .dua{background:var(--neon);}
+    .ariana{background:var(--pinkwhite);}
+    .sabrina{background:var(--honey);}
+    .taylor{background:var(--lavender);}
+    .monique{background:var(--emerald);}
+    .doechii{background:var(--alterfire);}
 
-    footer{
-      text-align:center;
-      color:var(--muted);
-      margin-top:50px;
-      font-size:13px;
-    }
-
-    .warn{
-      margin-top:20px;
-      background:rgba(255,255,0,0.05);
-      border:1px dashed #7a6;
-      padding:10px 14px;
+    .anchor-card{
+      background:var(--panel);
+      padding:14px 16px;
       border-radius:12px;
-      color:#d9e0b0;
-      font-size:13px;
+      border:1px solid var(--rule);
+      margin:12px 0;
     }
+    .anchor-card strong{font-size:16px;font-weight:700;}
   </style>
 </head>
 
 <body>
 <div class="wrap">
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
-    <a href="/anchors/">Anchors</a>
-  </nav>
+  <header>
+    <h1>Illumina · Time Map</h1>
+    <div class="sub">A full structural overview of the Time System — physics, interpretation, anchors, and domains.</div>
+  </header>
 
-  <h1>Illumina Map</h1>
-  <p>This map shows all major Illumina and Time-related domains.  
-     Some pages are active; others may be empty or in progress.  
-     404s are possible. This index exists so visitors can see the ecosystem
-     without guessing which domains exist.</p>
+  <!-- CORE PHYSICS -->
+  <section>
+    <h2>1. Core Physics Layer</h2>
 
-  <!-- CORE -->
-  <h2>Core Four</h2>
-  <div class="group">
-    <p>The stable backbone of the Time project.</p>
-    <div class="links">
-      <a href="/time/">Φ Field</a>
-      <a href="/interpretation/">Interpretation</a>
-      <a href="/charter/">Charter</a>
-      <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    </div>
-  </div>
+    <h3>Main Papers</h3>
+    <ul>
+      <li><a href="/time/">Φ Field (Physics)</a></li>
+      <li><a href="/interpretation/">Interpretation Layer</a></li>
+      <li><a href="/charter/">Charter</a></li>
+      <li><a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a></li>
+    </ul>
+
+    <h3>Directly Connected</h3>
+    <ul>
+      <li><a href="https://earth.plnt.earth">earth.plnt.earth</a></li>
+      <li><a href="https://quietmoon.plnt.earth">quietmoon</a></li>
+      <li><a href="https://intelligence.plnt.earth">intelligence</a></li>
+    </ul>
+  </section>
 
   <!-- ANCHOR INDEX -->
-  <h2>Anchor Index</h2>
-  <div class="group">
-    <p>The full Illumina cognitive lens system.</p>
-    <div class="links">
-      <a href="/anchors/">Anchors</a>
+  <section>
+    <h2>2. Anchor Lens Layer</h2>
+
+    <div class="anchor-card">
+      <strong>Marina</strong>
+      <div class="chip-block marina">Mirror · Violet</div>
     </div>
-  </div>
 
-  <!-- EARTH -->
-  <h2>Earth Layer</h2>
-  <div class="group">
-    <p>Earth-facing lens, currently Dagny-forward with a grounded loop.</p>
-    <div class="links">
-      <a href="https://earth.plnt.earth" target="_blank">earth.plnt.earth</a>
-      <a href="https://harbor.plnt.earth" target="_blank">harbor.plnt.earth</a>
-      <a href="https://lighthouse.plnt.earth" target="_blank">lighthouse.plnt.earth</a>
-      <a href="https://sky.plnt.earth" target="_blank">sky.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Sigrid</strong>
+      <div class="chip-block sigrid">Clarity · Ice-blue</div>
     </div>
-  </div>
 
-  <!-- MIRROR / MARINA -->
-  <h2>Mirror Cluster (Marina)</h2>
-  <div class="group">
-    <p>Mirror, empathy, violet geometry.</p>
-    <div class="links">
-      <a href="https://mirror.plnt.earth" target="_blank">mirror.plnt.earth</a>
-      <a href="https://mirrorhoney.plnt.earth" target="_blank">mirrorhoney.plnt.earth</a>
-      <a href="https://mirrorsea.plnt.earth" target="_blank">mirrorsea.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Greta Thunberg</strong>
+      <div class="chip-block greta">Earth · Green</div>
     </div>
-  </div>
 
-  <!-- CLARITY / SIGRID -->
-  <h2>Clarity Cluster (Sigrid)</h2>
-  <div class="group">
-    <p>Ice-blue, precision, clean reflectivity.</p>
-    <div class="links">
-      <a href="https://clarity.plnt.earth" target="_blank">clarity.plnt.earth</a>
-      <a href="https://tid.plnt.earth" target="_blank">tid.plnt.earth</a>
-      <a href="https://garlic.plnt.earth" target="_blank">garlic.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Dagny</strong>
+      <div class="chip-block dagny">Joy · Mint</div>
     </div>
-  </div>
 
-  <!-- STRUCTURE / TAYLOR -->
-  <h2>Structure Cluster (Taylor Swift)</h2>
-  <div class="group">
-    <p>School, lavender, diagrams, architecture.</p>
-    <div class="links">
-      <a href="https://school.plnt.earth" target="_blank">school.plnt.earth</a>
-      <a href="https://bridge.plnt.earth" target="_blank">bridge.plnt.earth</a>
-      <a href="https://charter.plnt.earth" target="_blank">charter.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Dua Lipa</strong>
+      <div class="chip-block dua">Motion · Neon</div>
     </div>
-  </div>
 
-  <!-- MOTION / DUA -->
-  <h2>Motion Cluster (Dua Lipa)</h2>
-  <div class="group">
-    <p>Flow, kinetic color, dance-vector physics.</p>
-    <div class="links">
-      <a href="https://motion.plnt.earth" target="_blank">motion.plnt.earth</a>
-      <a href="https://float.plnt.earth" target="_blank">float.plnt.earth</a>
-      <a href="https://flare.plnt.earth" target="_blank">flare.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Ariana Grande</strong>
+      <div class="chip-block ariana">Voice · Pink-White</div>
     </div>
-  </div>
 
-  <!-- WARMTH / SABRINA -->
-  <h2>Warmth Cluster (Sabrina)</h2>
-  <div class="group">
-    <p>Honey, gold, soft-edge heat gradients.</p>
-    <div class="links">
-      <a href="https://honey.plnt.earth" target="_blank">honey.plnt.earth</a>
-      <a href="https://tunes.plnt.earth" target="_blank">tunes.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Sabrina Carpenter</strong>
+      <div class="chip-block sabrina">Warmth · Honey Gold</div>
     </div>
-  </div>
 
-  <!-- JOY / DAGNY -->
-  <h2>Joy Cluster (Dagny)</h2>
-  <div class="group">
-    <p>Mint, levity, soft pulse, Earth uplift.</p>
-    <div class="links">
-      <a href="https://earth.plnt.earth" target="_blank">earth.plnt.earth</a>
-      <a href="https://fresh.plnt.earth" target="_blank">fresh.plnt.earth</a>
-      <a href="https://green.plnt.earth" target="_blank">green.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Taylor Swift</strong>
+      <div class="chip-block taylor">Structure · Lavender</div>
     </div>
-  </div>
 
-  <!-- VOICE / ARIANA -->
-  <h2>Voice Cluster (Ariana Grande)</h2>
-  <div class="group">
-    <p>Frequency, pink-white resonance.</p>
-    <div class="links">
-      <a href="https://voice.plnt.earth" target="_blank">voice.plnt.earth</a>
-      <a href="https://tone.plnt.earth" target="_blank">tone.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Miss Monique</strong>
+      <div class="chip-block monique">Pulse · Emerald-Neon</div>
     </div>
-  </div>
 
-  <!-- EMERALD / MONIQUE -->
-  <h2>Pulse Cluster (Miss Monique)</h2>
-  <div class="group">
-    <p>Emerald-neon, vibe-sync, kinetic stability.</p>
-    <div class="links">
-      <a href="https://pulse.plnt.earth" target="_blank">pulse.plnt.earth</a>
-      <a href="https://beat.plnt.earth" target="_blank">beat.plnt.earth</a>
+    <div class="anchor-card">
+      <strong>Doechii</strong>
+      <div class="chip-block doechii">Alter.Fire · Red-Gold</div>
     </div>
-  </div>
+  </section>
 
-  <!-- ALTER.FIRE / DOECHII -->
-  <h2>Alter.Fire Cluster (Doechii)</h2>
-  <div class="group">
-    <p>Fire, red-gold, alternate readings, thresholds.</p>
-    <div class="links">
-      <a href="https://alter.fire.plnt.earth" target="_blank">alter.fire.plnt.earth</a>
-      <a href="https://bantar.plnt.earth" target="_blank">bantar.plnt.earth</a>
-      <a href="https://banach.plnt.earth" target="_blank">banach.plnt.earth</a>
-      <a href="https://mask.plnt.earth" target="_blank">mask.plnt.earth</a>
-      <a href="https://virus.plnt.earth" target="_blank">virus.plnt.earth</a>
-    </div>
-  </div>
+  <!-- DOMAIN MAP -->
+  <section>
+    <h2>3. Domain Map</h2>
 
-  <!-- QUIETMOON -->
-  <h2>QuietMoon Cluster</h2>
-  <div class="group">
-    <p>Calm bridge between high-concept physics and practical application.</p>
-    <div class="links">
-      <a href="https://quietmoon.plnt.earth" target="_blank">quietmoon.plnt.earth</a>
-      <a href="https://luna.plnt.earth" target="_blank">luna.plnt.earth</a>
-    </div>
-  </div>
+    <h3>Core Connected Domains</h3>
+    <ul>
+      <li><a href="https://earth.plnt.earth">earth.plnt.earth</a> <span class="chip-block greta">Earth · Green</span></li>
+      <li><a href="https://quietmoon.plnt.earth">quietmoon</a> <span class="chip-block marina">Mirror · Violet</span></li>
+      <li><a href="https://intelligence.plnt.earth">intelligence</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
+    </ul>
 
-  <!-- INTELLIGENCE -->
-  <h2>Intelligence Cluster</h2>
-  <div class="group">
-    <p>High-confidence and medium-confidence layers for conceptual testing.</p>
-    <div class="links">
-      <a href="https://intelligence.plnt.earth" target="_blank">intelligence.plnt.earth</a>
-      <a href="https://atlas.plnt.earth" target="_blank">atlas.plnt.earth</a>
-      <a href="https://manifolddynamics.plnt.earth" target="_blank">manifolddynamics.plnt.earth</a>
-    </div>
-  </div>
+    <h3>Motion + Vibe</h3>
+    <ul>
+      <li><a href="https://motion.plnt.earth">motion</a> <span class="chip-block dua">Motion · Neon</span></li>
+      <li><a href="https://mirrorhoney.plnt.earth">mirrorhoney</a> <span class="chip-block monique">Pulse · Emerald</span></li>
+    </ul>
 
-  <!-- WARNING -->
-  <div class="warn">
-    This ecosystem is large. Many pages may be empty, in progress, or placeholders.
-    404s do not indicate mistakes — only areas not yet built.
-  </div>
+    <h3>Warmth + Honey</h3>
+    <ul>
+      <li><a href="https://honey.plnt.earth">honey</a> <span class="chip-block sabrina">Warmth · Honey</span></li>
+      <li><a href="https://froot.plnt.earth">froot</a> <span class="chip-block marina">Mirror · Violet</span></li>
+    </ul>
 
-  <footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
+    <h3>Clarity Cluster</h3>
+    <ul>
+      <li><a href="https://garlic.plnt.earth">garlic</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
+      <li><a href="https://tid.plnt.earth">tid</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
+    </ul>
+
+    <h3>Alter.Fire Domain</h3>
+    <ul>
+      <li><a href="https://alter.fire.plnt.earth">alter.fire</a> <span class="chip-block doechii">Alter.Fire</span></li>
+      <li><a href="https://bantar.plnt.earth">bantar</a></li>
+    </ul>
+
+    <h3>Central</h3>
+    <ul>
+      <li><a href="https://center.plnt.earth">center</a></li>
+      <li><a href="https://four.plnt.earth">four</a> <span class="chip-block taylor">Structure · Lavender</span></li>
+      <li><a href="https://school.plnt.earth">school</a> <span class="chip-block taylor">Structure · Lavender</span></li>
+    </ul>
+  </section>
+
+  <!-- 404 NOTE -->
+  <section>
+    <h2>4. Availability Note</h2>
+    <p>Many domains exist but may not have pages yet.  
+    Some links may lead to a blank page or a 404 until their structure is created.</p>
+    <p class="note">This is expected and part of the build path.</p>
+  </section>
 
 </div>
 </body>
