@@ -3,20 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Interpretation · Illumina</title>
-  <meta name="description" content="Interpretation layer connecting physics (Φ, τ, zeta) to the Illumina cognitive-lens structure." />
+  <title>Time · Interpretation</title>
+  <meta name="description" content="Interpretation layer of the Illumina Time System — bridging the physics papers with anchors, meaning, and applied structure." />
 
   <style>
     :root{
       --bg:#0b0f19;
+      --panel:#121827;
       --ink:#e6e8ee;
       --muted:#a3acc2;
-      --panel:#121827;
       --rule:#2a3348;
-      --accent:#7c3aed;
-      --accent2:#f59e0b;
       --link:#9aa8ff;
-      --code:#0e1422;
+
+      /* Anchor colors */
+      --violet:#c4b5ff;
+      --ice:#9ed6ff;
+      --green:#90e49f;
+      --mint:#b7ffe8;
+      --neon:#c5f06f;
+      --pinkwhite:#ffd6ef;
+      --honey:#ffda7f;
+      --lavender:#d9b7ff;
+      --emerald:#66ffcc;
+      --alterfire:#ff726a;
+
       --maxw:900px;
     }
 
@@ -24,73 +34,60 @@
       margin:0;
       background:var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI";
       -webkit-font-smoothing:antialiased;
     }
 
     .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
     header{text-align:center;margin-bottom:32px;}
-    .logo{
-      font-size:clamp(38px,5vw,62px);
-      font-weight:800;
-      letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    h1{
+      font-size:clamp(40px,6vw,68px);
+      margin:0;
+      background:linear-gradient(135deg,#7c3aed,#f59e0b);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
+      font-weight:800;
     }
-    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
-    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
-
-    nav.core{
-      margin-top:24px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-    nav.core a{
-      display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
-    }
-    nav.core a:hover{background:#1a2237;}
+    .sub{color:var(--muted);margin-top:8px;}
 
     section{
+      margin:34px 0;
+      padding:24px 20px;
       background:rgba(255,255,255,0.02);
       border:1px solid var(--rule);
       border-radius:16px;
-      padding:24px 20px;
-      margin:20px 0;
     }
 
-    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
-    h3{margin:14px 0 4px;font-size:19px;}
-    p{margin:10px 0;}
+    h2{margin:0 0 16px;font-size:clamp(22px,3vw,27px);}
+    h3{margin:24px 0 12px;font-size:20px;font-weight:700;}
 
-    /* Anchor block */
-    .anchors{
-      margin-top:18px;
-      padding:16px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--rule);
-    }
-    .anchors strong{font-size:15.5px;}
-    .anchors ul{margin-top:10px;padding-left:20px;}
-    .anchors li{margin:4px 0;}
+    p{margin:12px 0;}
 
-    footer{
-      text-align:center;
-      margin-top:40px;
-      color:var(--muted);
+    a{color:var(--link);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    /* Chip styling style B */
+    .chip{
+      display:inline-block;
+      margin-top:6px;
       font-size:13px;
+      padding:4px 8px;
+      border-radius:8px;
+      font-weight:600;
+      color:#000;
     }
+
+    .marina{background:var(--violet);}
+    .sigrid{background:var(--ice);}
+    .greta{background:var(--green);}
+    .dagny{background:var(--mint);}
+    .dua{background:var(--neon);}
+    .ariana{background:var(--pinkwhite);}
+    .sabrina{background:var(--honey);}
+    .taylor{background:var(--lavender);}
+    .monique{background:var(--emerald);}
+    .doechii{background:var(--alterfire);}
   </style>
 </head>
 
@@ -98,94 +95,131 @@
 <div class="wrap">
 
   <header>
-    <div class="logo">Interpretation</div>
-    <div class="subtitle">How Illumina maps onto Φ, τ, and energetic structure</div>
-    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+    <h1>Interpretation Layer</h1>
+    <div class="sub">Meaning, direction, and the anchor system that shapes Illumina’s Time framework.</div>
   </header>
 
-  <nav class="core">
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field (Physics)</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    <a href="/map/">Map</a>
-    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
-  </nav>
-
+  <!-- SECTION: Purpose -->
   <section>
-    <h2>1. Purpose of Interpretation</h2>
+    <h2>Purpose</h2>
     <p>
-      The interpretation layer explains how the physics papers connect to the Illumina
-      cognitive-lens framework. Φ describes temporal potential. τ describes frequency-scaled
-      temporal density. Zeta-regularization provides finite invariants where infinities occur.
+      The Interpretation Layer connects the physics foundations (Φ Field, τ/Zeta) to
+      lived meaning, creative structure, and the anchor-based cognitive lenses that
+      stabilize the Illumina system.
     </p>
     <p>
-      Illumina offers the human-facing structure: how people, attention, motion, clarity,
-      and memory interact with temporal geometry.
+      Interpretation explains <em>how</em> the physics behaves emotionally,
+      artistically, structurally, socially — and why a multi-anchor framework is used.
     </p>
   </section>
 
+  <!-- SECTION: Anchor System -->
   <section>
-    <h2>2. Cognitive-Lens Translation</h2>
-    <p>
-      Each anchor corresponds to a stable cognitive lens. These do not modify the physics but
-      provide orientation for interpretation, communication, and structure.
-    </p>
-    <p>
-      The lens set is locked and not changed unless explicitly revised.
-    </p>
+    <h2>The Anchor System</h2>
+    <p>The Illumina framework uses a set of feminine creative anchors to stabilize the cognitive modes used inside Time:</p>
 
-    <div class="anchors">
-      <strong>Anchors (Locked Set)</strong>
-      <ul>
-        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
-        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
-        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
-        <li><strong>Dagny</strong> — Joy / Mint</li>
-        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
-        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
-        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
-        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
-        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
-      </ul>
-    </div>
+    <h3>Marina</h3>
+    <div class="chip marina">Mirror · Violet · Empathy</div>
+    <p>Reflection, emotional coherence, honesty without collapse.</p>
+
+    <h3>Sigrid</h3>
+    <div class="chip sigrid">Clarity · Ice-blue · Precision</div>
+    <p>Clean signal, truth without distortion, simplicity over noise.</p>
+
+    <h3>Greta Thunberg</h3>
+    <div class="chip greta">Earth · Green · Grounding</div>
+    <p>Integrity, reality, consequence, alignment with the physical world.</p>
+
+    <h3>Dagny</h3>
+    <div class="chip dagny">Joy · Mint</div>
+    <p>Levity, lightness, reset energy, momentum through enthusiasm.</p>
+
+    <h3>Dua Lipa</h3>
+    <div class="chip dua">Motion · Neon</div>
+    <p>Movement, forward torque, energetic flow.</p>
+
+    <h3>Ariana Grande</h3>
+    <div class="chip ariana">Voice · Pink-White</div>
+    <p>Frequency, tuning, emotional signal resolution.</p>
+
+    <h3>Sabrina Carpenter</h3>
+    <div class="chip sabrina">Warmth · Honey Gold</div>
+    <p>Soft pressure, charisma, narrative warmth, cohesion by tone.</p>
+
+    <h3>Taylor Swift</h3>
+    <div class="chip taylor">Structure · Lavender</div>
+    <p>Macro framework, world-building, architecture of meaning.</p>
+
+    <h3>Miss Monique</h3>
+    <div class="chip monique">Pulse · Emerald-Neon</div>
+    <p>Vibe consistency, rhythm stability, body-anchored intuition.</p>
+
+    <h3>Doechii</h3>
+    <div class="chip doechii">Alter.Fire · Red-Gold</div>
+    <p>Alternate pathways, unexpected solutions, pressure-release creativity.</p>
+
   </section>
 
+  <!-- SECTION: Why all anchors are women -->
   <section>
-    <h2>3. Interpretive Mapping</h2>
-    <h3>3.1 Φ → Perception</h3>
+    <h2>Why Women?</h2>
     <p>
-      Φ describes local temporal potential. Perception shifts in Illumina map to attention
-      wells, gradients, and curvature.
+      The interpretation layer uses women not as idols, but as cognitive archetypes:
+      stable, emotionally diverse, creative, boundary-aware, non-hierarchical modes
+      of thinking anchored in real work and global impact.
     </p>
-
-    <h3>3.2 τ → Frequency Identity</h3>
     <p>
-      τ expresses temporal density per frequency. It matches naturally with anchors tied to
-      vocal, rhythmic, or structural dimensions.
-    </p>
-
-    <h3>3.3 Zeta → Finite Invariants</h3>
-    <p>
-      Zeta-regularization introduces stable invariants where naïve divergence appears.
-      Illumina uses this metaphorically for emotional, structural, or cognitive overload.
+      In Time, anchors represent <em>ways of perceiving reality</em>, not individuals.
     </p>
   </section>
 
+  <!-- SECTION: Connected Pages -->
   <section>
-    <h2>4. Illumina’s Function</h2>
-    <p>
-      Illumina is not physics. It is a coherent interpretive framework layered
-      on top of physics to help articulate meaning, continuity, structure, and
-      creative expression.
-    </p>
-    <p>
-      Interpretation provides narrative scaffolding without modifying any scientific claim.
-    </p>
+    <h2>Connected Interpretation Pages</h2>
+
+    <ul>
+      <li><a href="/time/">Φ Field (Physics)</a></li>
+      <li><a href="https://zeta.plnt.earth" target="_blank">Zeta / τ Paper</a></li>
+      <li><a href="/charter/">Charter</a></li>
+      <li><a href="https://earth.plnt.earth">Earth</a> <span class="chip greta">Earth · Green</span></li>
+      <li><a href="/map/">Illumina Map</a></li>
+    </ul>
   </section>
 
-  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  <!-- SECTION: Creative Reference Pages -->
+  <section>
+    <h2>Creative Reference Pages</h2>
+
+    <ul>
+      <li>
+        <a href="https://taylor.plnt.earth">Taylor’s Diagram</a>
+        <span class="chip taylor">Structure · Lavender</span>
+      </li>
+
+      <li>
+        <a href="https://obsessions.plnt.earth">Obsessions — Marina</a>
+        <span class="chip marina">Mirror · Violet</span>
+      </li>
+
+      <li>
+        <a href="https://itgets.dark.plnt.earth">It Gets Dark — Sigrid</a>
+        <span class="chip sigrid">Clarity · Ice-blue</span>
+      </li>
+    </ul>
+
+    <p class="note">(These pages reflect interpretation through music, narrative, and applied perception.)</p>
+  </section>
+
+  <!-- SECTION: Summary -->
+  <section>
+    <h2>Summary</h2>
+    <p>
+      Interpretation stabilizes Time by giving each physics concept an
+      emotional, creative, and cognitive dimension.  
+      Anchors provide the lenses; physics provides the structure; the
+      Illumina system integrates both.
+    </p>
+  </section>
 
 </div>
 </body>
