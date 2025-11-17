@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Illumina Elevator · time.plnt.earth</title>
+<meta name="color-scheme" content="dark">
+
+<style>
+/* COLOR SYSTEM */
+:root {
+  --lav:#C4B5FD;        /* Lavender Haze */
+  --bg0:#0c0912;
+  --bg1:#130f1e;
+  --bg2:#1b1230;
+  --ink:#e9e7ff;
+  --pulseA:rgba(196,181,253,0.35);
+  --pulseB:rgba(196,181,253,0.08);
+}
+
+/* BASE */
+body{
+  margin:0;
+  background:var(--bg0);
+  color:var(--ink);
+  font-family:system-ui,sans-serif;
+  display:flex;
+  justify-content:center;
+  padding:40px 0;
+}
+.wrap{
+  width:360px;
+  background:var(--bg1);
+  padding:26px;
+  border-radius:22px;
+  border:2px solid #2c2140;
+  position:relative;
+  overflow:hidden;
+}
+
+/* HEADER */
+h1{
+  text-align:center;
+  margin:0 0 26px;
+  font-size:22px;
+  color:var(--lav);
+  letter-spacing:0.5px;
+}
+
+/* FLOORS */
+.floor{
+  display:flex;
+  align-items:center;
+  padding:10px 12px;
+  background:var(--bg2);
+  border-radius:14px;
+  margin-bottom:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.floor:hover{ background:#26193c; }
+
+.btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#000;
+  font-weight:600;
+  margin-right:14px;
+  font-size:16px;
+  border:2px solid #0003;
+}
+
+/* FLOOR COLORS */
+.c1{background:#4ac0b4;}
+.c2{background:#e6c04d;}
+.c3{background:#a572cf;}
+.c4{background:#c64747;}
+.c5{background:#66c7e8;}
+.c6{background:#999999;}
+.c7{background:#e48ec9;}
+.c8{background:#6e88a8;}
+.c9{background:#f6f0d8;}
+.c10{background:#e7a840;}
+.c11{background:#9d1a2b;}
+.c12{background:#e3e6ed;}
+.c13{
+  background:var(--lav);
+  position:relative;
+  overflow:hidden;
+}
+
+/* PULSE ANIMATION FOR FLOOR 13 */
+@keyframes softpulse{
+  0%   { box-shadow:0 0 0 0 var(--pulseA); }
+  50%  { box-shadow:0 0 18px 10px var(--pulseB); }
+  100% { box-shadow:0 0 0 0 var(--pulseA); }
+}
+.pulse{
+  animation:softpulse 3.2s ease-in-out infinite;
+}
+
+/* PLAYER */
+.player{
+  margin-top:32px;
+  background:var(--bg2);
+  border-radius:18px;
+  padding:14px;
+}
+.player iframe{
+  width:100%;
+  height:200px;
+  border:0;
+  border-radius:12px;
+}
+.label{
+  margin-top:10px;
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink);
+}
+</style>
+</head>
+
+
+<body>
+<div class="wrap">
+
+  <h1>Illumina Elevator</h1>
+
+  <!-- FLOORS -->
+  <div class="floor" onclick="play(1)"><div class="btn c1">1</div>Miss Monique — Concorde</div>
+  <div class="floor" onclick="play(2)"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
+  <div class="floor" onclick="play(3)"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
+  <div class="floor" onclick="play(4)"><div class="btn c4">4</div>Doechii — Crazy</div>
+  <div class="floor" onclick="play(5)"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
+  <div class="floor" onclick="play(6)"><div class="btn c6">6</div>Rosalía — SAOKO</div>
+  <div class="floor" onclick="play(7)"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
+  <div class="floor" onclick="play(8)"><div class="btn c8">8</div>AURORA — Runaway</div>
+  <div class="floor" onclick="play(9)"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
+  <div class="floor" onclick="play(10)"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
+  <div class="floor" onclick="play(11)"><div class="btn c11">11</div>Dagny — Love You Like That</div>
+  <div class="floor" onclick="play(12)"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
+  <div class="floor" onclick="play(13)"><div id="f13" class="btn c13">13</div>Taylor Swift — Bejeweled</div>
+
+  <!-- PLAYER -->
+  <div class="player">
+    <iframe id="yt" src="" allowfullscreen></iframe>
+    <div id="label" class="label">Choose a floor.</div>
+  </div>
+
+</div>
+
+
+<script>
+/* SONG TABLE */
+const songs = {
+  1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4"},
+  2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA"},
+  3:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90"},
+  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY"},
+  5:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU"},
+  6:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg"},
+  7:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI"},
+  8:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8"},
+  9:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4"},
+ 10:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU"},
+ 11:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ"},
+ 12:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc"},
+ 13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs"}
+};
+
+/* PLAY FUNCTION */
+function play(n){
+  const yt=document.getElementById("yt");
+  const label=document.getElementById("label");
+  yt.src=songs[n].link;
+  label.textContent=songs[n].name;
+
+  /* Remove previous pulse */
+  document.getElementById("f13").classList.remove("pulse");
+
+  /* If floor 13 → add soft pulse */
+  if(n===13){
+    document.getElementById("f13").classList.add("pulse");
+  }
+}
+</script>
+
+</body>
+</html>
