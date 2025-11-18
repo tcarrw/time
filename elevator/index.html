@@ -7,47 +7,46 @@
 <meta name="color-scheme" content="dark">
 
 <style>
-/* -------------------------------------------
-   CORE COLOR SYSTEM
--------------------------------------------- */
+/* -------------------------------------------------------
+   CORE COLOR + GLASS SYSTEM
+-------------------------------------------------------- */
 :root{
   --lav:#C4B5FD;
   --ink:#e9e7ff;
   --bg0:#0c0912;
-  --bg1:rgba(255,255,255,0.08);
-  --bg2:rgba(255,255,255,0.06);
 
-  /* Glow Films */
-  --film:rgba(255,255,255,0.12);
+  /* glass plates */
+  --g1:rgba(255,255,255,0.08);
+  --g2:rgba(255,255,255,0.06);
 
-  /* Pulse */
+  /* pulse */
   --pulseA:rgba(196,181,253,0.35);
   --pulseB:rgba(196,181,253,0.08);
 
+  /* glow films */
+  --film:rgba(255,255,255,0.14);
+
   /* Anchor Glow Colors */
-  --gl-moni:   rgba(74,192,180,0.28);
-  --gl-dua:    rgba(230,192,77,0.28);
-  --gl-marina: rgba(165,114,207,0.28);
-  --gl-doech:  rgba(198,71,71,0.28);
-  --gl-sigrid: rgba(102,199,232,0.28);
-  --gl-rosa:   rgba(153,153,153,0.28);
+  --gl-moni:rgba(74,192,180,0.28);
+  --gl-dua:rgba(230,192,77,0.28);
+  --gl-marina:rgba(165,114,207,0.28);
+  --gl-doech:rgba(198,71,71,0.28);
+  --gl-sigrid:rgba(102,199,232,0.28);
+  --gl-rosa:rgba(153,153,153,0.28);
   --gl-sabrina:rgba(228,142,201,0.28);
-  --gl-aurora: rgba(110,136,168,0.28);
-  --gl-tove:   rgba(246,240,216,0.28);
-  --gl-ariana: rgba(231,168,64,0.28);
-  --gl-dagny:  rgba(157,26,43,0.32);
-  --gl-kim:    rgba(227,230,237,0.24);
-  --gl-taylor: rgba(196,181,253,0.35);
+  --gl-aurora:rgba(110,136,168,0.28);
+  --gl-tove:rgba(246,240,216,0.28);
+  --gl-ariana:rgba(231,168,64,0.28);
+  --gl-dagny:rgba(157,26,43,0.32);
+  --gl-kim:rgba(227,230,237,0.24);
+  --gl-taylor:rgba(196,181,253,0.35);
 }
 
-/* -------------------------------------------
-   GLOBAL
--------------------------------------------- */
 body{
   margin:0;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background:var(--bg0);
   color:var(--ink);
-  font-family:system-ui,sans-serif;
   overflow-x:hidden;
 }
 
@@ -55,130 +54,159 @@ body{
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  gap:36px;
-  padding:40px 24px;
+  gap:48px;
+  padding:40px 32px;
 }
 
-/* -------------------------------------------
+/* -------------------------------------------------------
    GLASS PANELS
--------------------------------------------- */
+-------------------------------------------------------- */
 .glass{
-  background:var(--bg1);
+  background:var(--g1);
   border:1px solid rgba(255,255,255,0.15);
   backdrop-filter:blur(22px) saturate(180%);
   -webkit-backdrop-filter:blur(22px) saturate(180%);
   box-shadow:
-    0 0 22px rgba(196,181,253,0.15),
-    inset 0 0 0 1px rgba(255,255,255,0.1);
+    0 0 22px rgba(196,181,253,0.14),
+    inset 0 0 0 1px rgba(255,255,255,0.10);
   border-radius:26px;
 }
 
-/* Elevator container */
+/* -------------------------------------------------------
+   ELEVATOR PANEL
+-------------------------------------------------------- */
 .elevator-panel{
   width:360px;
-  padding:26px;
+  padding:28px;
   position:relative;
-  overflow:hidden;
 }
 
-/* -------------------------------------------
-   REFLECTION LAYER (C)
--------------------------------------------- */
 .elevator-panel::before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(600px 900px at 50% -20%, rgba(255,255,255,0.12), transparent 70%),
-    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 70%);
+    radial-gradient(800px 1000px at 50% -25%, rgba(255,255,255,0.08), transparent 75%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), transparent 75%);
   pointer-events:none;
   z-index:-1;
 }
 
-/* -------------------------------------------
-   LAVENDER ACTIVE BEAM (D)
--------------------------------------------- */
+/* Lavender Lightstrip (D) */
 #activeBeam{
   position:absolute;
   width:4px;
-  background:var(--lav);
-  border-radius:2px;
-  left:-12px;
+  left:-14px;
   height:54px;
   top:0;
+  border-radius:2px;
+  background:var(--lav);
   opacity:0;
-  transition:top 0.45s cubic-bezier(.3,.7,.1,1), opacity 0.35s;
+  transition:
+    top 0.45s cubic-bezier(.3,.7,.1,1),
+    opacity 0.35s;
   box-shadow:0 0 12px var(--lav);
 }
 
-/* -------------------------------------------
+/* -------------------------------------------------------
    HEADER
--------------------------------------------- */
+-------------------------------------------------------- */
 h1{
   text-align:center;
-  margin:0 0 24px;
-  font-size:22px;
+  margin:0 0 16px;
+  font-size:24px;
   color:var(--lav);
-  letter-spacing:0.5px;
+  font-weight:700;
+  letter-spacing:0.6px;
 }
 
-/* -------------------------------------------
-   FLOOR GRID (2 columns) + centered 13th
--------------------------------------------- */
+/* -------------------------------------------------------
+   CORE TIME NAV (C)
+-------------------------------------------------------- */
+.core-nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.core-nav a{
+  padding:6px 14px;
+  font-size:13px;
+  font-weight:600;
+  border-radius:14px;
+  color:var(--ink);
+  text-decoration:none;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.22);
+  transition:background 0.25s, opacity 0.25s;
+}
+.core-nav a:hover{
+  background:rgba(255,255,255,0.2);
+  opacity:1;
+}
+
+/* -------------------------------------------------------
+   FLOOR STRUCTURE
+-------------------------------------------------------- */
 .center13{
   display:flex;
   justify-content:center;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 .center13 .floor{
-  width:70%;
+  width:72%;
 }
 
 .floor-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px 18px;
+  gap:16px 20px;
 }
 
-/* -------------------------------------------
-   FLOOR BUTTONS (Glass style)
--------------------------------------------- */
+/* Floor (glass plate) */
 .floor{
   display:flex;
   align-items:center;
   padding:12px 14px;
-  background:var(--bg2);
+  background:var(--g2);
   border-radius:18px;
   cursor:pointer;
   border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter:blur(12px) saturate(140%);
-  -webkit-backdrop-filter:blur(12px) saturate(140%);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  position:relative;
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,0.08),
     0 2px 10px rgba(0,0,0,0.25);
-  position:relative;
-  overflow:hidden;
   transition:background 0.2s;
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:0.15px;
 }
 
 .floor:hover{
   background:rgba(255,255,255,0.12);
 }
 
+/* Hover glow */
 .floor::before{
   content:"";
   position:absolute;
   inset:0;
   border-radius:18px;
   opacity:0;
-  transition:opacity 0.25s ease;
+  transition:opacity 0.25s;
   z-index:-1;
 }
-
 .floor:hover::before{ opacity:0.28; }
 .floor.glow-active::before{ opacity:0.45; }
 
-/* Floor Buttons */
+/* -------------------------------------------------------
+   BUTTONS
+-------------------------------------------------------- */
 .btn{
   width:42px;
   height:42px;
@@ -188,18 +216,18 @@ h1{
   justify-content:center;
   font-weight:600;
   font-size:16px;
-  color:#000;
-  position:relative;
   margin-right:14px;
-  background:rgba(255,255,255,0.32);
-  backdrop-filter:blur(16px) saturate(180%);
-  border:1px solid rgba(255,255,255,0.25);
+  border:1px solid rgba(255,255,255,0.22);
+  color:#000;
+  backdrop-filter:blur(12px) saturate(180%);
+  -webkit-backdrop-filter:blur(12px) saturate(180%);
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,0.22),
     0 2px 6px rgba(0,0,0,0.35);
+  font-family:inherit !important;
 }
 
-/* Keep your color dots */
+/* Color dots preserved */
 .c1{background:#4ac0b4;}
 .c2{background:#e6c04d;}
 .c3{background:#a572cf;}
@@ -212,23 +240,27 @@ h1{
 .c10{background:#e7a840;}
 .c11{background:#9d1a2b;}
 .c12{background:#e3e6ed;}
-.c13{background:var(--lav); color:#1a0f3e; font-weight:700;}
+.c13{
+  background:var(--lav);
+  color:#1a0f3e;
+  font-weight:700;
+}
 
-/* Pulse for 13 */
+/* Pulse animation for 13 */
+@keyframes softpulse{
+  0%{box-shadow:0 0 0 0 var(--pulseA);}
+  50%{box-shadow:0 0 18px 10px var(--pulseB);}
+  100%{box-shadow:0 0 0 0 var(--pulseA);}
+}
 .pulse{
   animation:softpulse 3.2s ease-in-out infinite;
 }
-@keyframes softpulse{
-  0%   { box-shadow:0 0 0 0 var(--pulseA); }
-  50%  { box-shadow:0 0 18px 10px var(--pulseB); }
-  100% { box-shadow:0 0 0 0 var(--pulseA); }
-}
 
-/* -------------------------------------------
-   VIDEO PLAYER (sticky + glass)
--------------------------------------------- */
+/* -------------------------------------------------------
+   VIDEO PANEL (Bigger + Floating)
+-------------------------------------------------------- */
 .player-panel{
-  width:360px;
+  width:clamp(380px, 48vw, 640px);
   position:sticky;
   top:50%;
   transform:translateY(-50%);
@@ -238,19 +270,19 @@ h1{
   background:rgba(255,255,255,0.10);
   border-radius:24px;
   padding:20px;
-  border:1px solid rgba(255,255,255,0.18);
   backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.22);
   box-shadow:
-    0 0 18px rgba(196,181,253,0.12),
+    0 0 22px rgba(196,181,253,0.12),
     inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
 .player iframe{
   width:100%;
   aspect-ratio:16/9;
+  height:auto;
   border-radius:20px;
-  border:1px solid rgba(255,255,255,0.4);
+  border:1px solid rgba(255,255,255,0.35);
 }
 
 .label{
@@ -259,26 +291,38 @@ h1{
   color:var(--ink);
 }
 
-/* -------------------------------------------
-   GLASS RIPPLE ANIMATION (B)
--------------------------------------------- */
+/* -------------------------------------------------------
+   RIPPLE EFFECT
+-------------------------------------------------------- */
 @keyframes ripple{
-  0%   { opacity:0.4; transform:scale(1); }
-  100% { opacity:0;   transform:scale(2.6); }
+  0%   {opacity:0.4; transform:translate(-50%,-50%) scale(1);}
+  100% {opacity:0;   transform:translate(-50%,-50%) scale(2.6);}
 }
 
 .rippleEffect{
   position:absolute;
   top:50%;
   left:50%;
-  width:20px;
-  height:20px;
+  width:22px;
+  height:22px;
   border-radius:50%;
   background:var(--lav);
   opacity:0.4;
   transform:translate(-50%,-50%) scale(1);
   animation:ripple 0.8s ease-out forwards;
   pointer-events:none;
+}
+
+/* -------------------------------------------------------
+   COLLAPSE ANIMATION ON SCROLL
+-------------------------------------------------------- */
+.elevator-panel{
+  transition:transform 0.35s ease, opacity 0.35s ease;
+}
+
+body.scrolled .elevator-panel{
+  transform:scale(0.94) translateY(-10px);
+  opacity:0.94;
 }
 
 </style>
@@ -288,17 +332,27 @@ h1{
 <body>
 <div class="layout">
 
-  <!-- LEFT: GLASS ELEVATOR PANEL -->
+  <!-- LEFT: GLASS ELEVATOR -->
   <div class="elevator-panel glass">
     <div id="activeBeam"></div>
+
     <h1>Illumina Elevator</h1>
 
-    <!-- 13th floor centered -->
+    <!-- Core Time Nav -->
+    <div class="core-nav">
+      <a href="https://time.plnt.earth">Φ Field</a>
+      <a href="https://time.plnt.earth/map">Anchor Map</a>
+      <a href="https://time.plnt.earth/interpretation">Interpretation</a>
+      <a href="https://time.plnt.earth/charter">Charter</a>
+      <a href="https://time.plnt.earth/index">Time Index</a>
+    </div>
+
+    <!-- 13 at top -->
     <div class="center13">
       <div class="floor"><div class="btn c13" id="f13">13</div>Taylor Swift — Bejeweled</div>
     </div>
 
-    <!-- 2-COLUMN FLOOR GRID -->
+    <!-- 2-column floors -->
     <div class="floor-grid">
 
       <div class="floor"><div class="btn c11">11</div>Dagny — Love You Like That</div>
@@ -332,11 +386,16 @@ h1{
 
 </div>
 
-
 <script>
-/* -------------------------------------------
+/* Scroll collapse */
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 20) document.body.classList.add("scrolled");
+  else document.body.classList.remove("scrolled");
+});
+
+/* -------------------------------------------------------
    SONG TABLE
--------------------------------------------- */
+-------------------------------------------------------- */
 const songs = {
   1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4"},
   2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA"},
@@ -353,9 +412,9 @@ const songs = {
  13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs"}
 };
 
-/* -------------------------------------------
+/* -------------------------------------------------------
    ANCHOR PAGES
--------------------------------------------- */
+-------------------------------------------------------- */
 const anchorPages = {
   1:"https://concorde.plnt.earth",
   2:"https://houdini.plnt.earth",
@@ -372,9 +431,9 @@ const anchorPages = {
  13:"https://bejeweled.plnt.earth"
 };
 
-/* -------------------------------------------
+/* -------------------------------------------------------
    PHYSICS MAP
--------------------------------------------- */
+-------------------------------------------------------- */
 const physicsLens = {
   1:{lens:"pulse",      color:"mint",     equation:"wave"},
   2:{lens:"motion",     color:"gold",     equation:"force"},
@@ -391,19 +450,6 @@ const physicsLens = {
  13:{lens:"structure",  color:"lavender", equation:"frame"}
 };
 
-/* -------------------------------------------
-   Ripple Effect (B)
--------------------------------------------- */
-function rippleAt(el){
-  const r = document.createElement("div");
-  r.className="rippleEffect";
-  el.appendChild(r);
-  setTimeout(()=>r.remove(),900);
-}
-
-/* -------------------------------------------
-   Set physics lens → time.plnt.earth
--------------------------------------------- */
 function setTimePhysics(n){
   const p = physicsLens[n];
   localStorage.setItem("timeLens", p.lens);
@@ -412,84 +458,94 @@ function setTimePhysics(n){
   localStorage.setItem("timeAnchor", n);
 }
 
-/* -------------------------------------------
-   Play Song
--------------------------------------------- */
+/* -------------------------------------------------------
+   Core Functions
+-------------------------------------------------------- */
 function play(n){
   document.getElementById("yt").src = songs[n].link;
   document.getElementById("label").textContent = songs[n].name;
 
-  const f13 = document.getElementById("f13");
+  const f13=document.getElementById("f13");
   f13.classList.remove("pulse");
   if(n===13) f13.classList.add("pulse");
 }
 
-/* -------------------------------------------
-   Floor Tap (double-tap detection)
--------------------------------------------- */
-let lastTap = 0;
+function rippleAt(el){
+  const r=document.createElement("div");
+  r.className="rippleEffect";
+  el.appendChild(r);
+  setTimeout(()=>r.remove(),900);
+}
 
-function handleFloorTap(n, floorEl){
-  const now = Date.now();
+function moveBeam(el){
+  const beam=document.getElementById("activeBeam");
+  const parent=el.closest(".elevator-panel").getBoundingClientRect();
+  const rect=el.getBoundingClientRect();
+  beam.style.top = (rect.top - parent.top) + "px";
+  beam.style.opacity="1";
+}
 
-  /* ripple */
-  rippleAt(floorEl);
+let lastTap=0;
 
-  /* move lavender beam */
-  moveBeam(floorEl);
+function getFloorNumber(el){
+  return parseInt(el.querySelector(".btn").textContent,10);
+}
 
-  if(now-lastTap < 350){
+function handleFloorTap(el){
+  const n=getFloorNumber(el);
+  rippleAt(el);
+  moveBeam(el);
+
+  const now=Date.now();
+  if(now-lastTap<350){
     setTimePhysics(n);
-    window.location.href = anchorPages[n];
+    window.location.href=anchorPages[n];
     return;
   }
 
   play(n);
   setTimePhysics(n);
-  lastTap = now;
+  lastTap=now;
 }
 
-/* -------------------------------------------
-   Lavender Beam (D)
--------------------------------------------- */
-function moveBeam(el){
-  const beam = document.getElementById("activeBeam");
-  const rect = el.getBoundingClientRect();
-  const parentRect = el.closest(".elevator-panel").getBoundingClientRect();
-  const offset = rect.top - parentRect.top;
-  beam.style.top = offset + "px";
-  beam.style.opacity = "1";
-}
-
-/* -------------------------------------------
-   Bind Floors
--------------------------------------------- */
-const floors = document.querySelectorAll(".floor");
-floors.forEach((f, i)=>{
-  const number = getFloorNumber(f);
-  f.onclick = ()=>handleFloorTap(number, f);
+/* Bind floor events */
+document.querySelectorAll(".floor").forEach(f=>{
+  f.onclick=()=>handleFloorTap(f);
 });
 
-/* Helper: Extract floor number */
-function getFloorNumber(floorEl){
-  const btn = floorEl.querySelector(".btn");
-  return parseInt(btn.textContent.trim(),10);
-}
-
-/* -------------------------------------------
-   Glow Active (restore state)
--------------------------------------------- */
+/* Restore active glow */
 (function(){
-  const active = localStorage.getItem("timeAnchor");
+  const active=localStorage.getItem("timeAnchor");
   if(!active) return;
-  floors.forEach(f=>{
-    const number = getFloorNumber(f);
-    if(number == active){
+  document.querySelectorAll(".floor").forEach(f=>{
+    if(getFloorNumber(f)==active){
       f.classList.add("glow-active");
       moveBeam(f);
     }
   });
 })();
+
+/* -------------------------------------------------------
+   KEYBOARD NAVIGATION
+   ↑ / ↓ = cycle floors
+   Enter = activate
+-------------------------------------------------------- */
+let floorList=[...document.querySelectorAll(".floor")];
+let idx=0;
+
+document.addEventListener("keydown", e=>{
+  if(e.key==="ArrowDown"){
+    idx=(idx+1)%floorList.length;
+    moveBeam(floorList[idx]);
+  }
+  if(e.key==="ArrowUp"){
+    idx=(idx-1+floorList.length)%floorList.length;
+    moveBeam(floorList[idx]);
+  }
+  if(e.key==="Enter"){
+    handleFloorTap(floorList[idx]);
+  }
+});
 </script>
 
 </body>
