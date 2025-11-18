@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Time · Map — Illumina System Overview</title>
-  <meta name="description" content="The full structural map of the Illumina Time System: core physics, interpretation layers, anchor lenses, and connected domains." />
+  <meta name="description" content="The full structural map of the Illumina Time System: core physics, interpretation layers, 13 anchor lenses, grounding, and connected domains." />
 
   <style>
     :root{
@@ -14,10 +14,8 @@
       --rule:#273043;
       --panel:#131a27;
 
-      /* Anchor chip colors */
       --violet:#c4b5ff;
       --ice:#9ed6ff;
-      --green:#90e49f;
       --mint:#b7ffe8;
       --neon:#c5f06f;
       --pinkwhite:#ffd6ef;
@@ -25,6 +23,10 @@
       --lavender:#d9b7ff;
       --emerald:#66ffcc;
       --alterfire:#ff726a;
+      --atmos:#9fdcff;
+      --dream:#f4d7ff;
+      --edge:#ffb0b0;
+      --precise:#ffffff;
 
       --maxw:900px;
     }
@@ -35,6 +37,10 @@
       color:var(--ink);
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI";
       -webkit-font-smoothing:antialiased;
+    }
+
+    #illumina-clock{
+      /* filled by script */
     }
 
     .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
@@ -67,21 +73,18 @@
     a{color:#9aa8ff;text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    /* Anchor chips */
-
-    .chip-block{
+    .chip{
       margin-top:6px;
       font-size:13px;
-      color:#000;
       padding:4px 8px;
       border-radius:8px;
       display:inline-block;
       font-weight:600;
+      color:#000;
     }
 
     .marina{background:var(--violet);}
     .sigrid{background:var(--ice);}
-    .greta{background:var(--green);}
     .dagny{background:var(--mint);}
     .dua{background:var(--neon);}
     .ariana{background:var(--pinkwhite);}
@@ -89,6 +92,10 @@
     .taylor{background:var(--lavender);}
     .monique{background:var(--emerald);}
     .doechii{background:var(--alterfire);}
+    .aurora{background:var(--atmos);}
+    .tovelo{background:var(--dream);}
+    .rosalia{background:var(--edge);}
+    .kimpetras{background:var(--precise);color:#111;}
 
     .anchor-card{
       background:var(--panel);
@@ -97,19 +104,20 @@
       border:1px solid var(--rule);
       margin:12px 0;
     }
-    .anchor-card strong{font-size:16px;font-weight:700;}
   </style>
 </head>
 
 <body>
+
+<div id="illumina-clock"></div>
+
 <div class="wrap">
 
   <header>
     <h1>Illumina · Time Map</h1>
-    <div class="sub">A full structural overview of the Time System — physics, interpretation, anchors, and domains.</div>
+    <div class="sub">Full structural overview: physics, anchors, grounding, domains, and creative clusters.</div>
   </header>
 
-  <!-- CORE PHYSICS -->
   <section>
     <h2>1. Core Physics Layer</h2>
 
@@ -126,115 +134,167 @@
       <li><a href="https://earth.plnt.earth">earth.plnt.earth</a></li>
       <li><a href="https://quietmoon.plnt.earth">quietmoon</a></li>
       <li><a href="https://intelligence.plnt.earth">intelligence</a></li>
+      <li><a href="/elevator/">Illumina Elevator</a></li>
     </ul>
   </section>
 
-  <!-- ANCHOR INDEX -->
   <section>
-    <h2>2. Anchor Lens Layer</h2>
+    <h2>2. Anchor Lens Layer (13 Anchors)</h2>
 
-    <div class="anchor-card">
-      <strong>Marina</strong>
-      <div class="chip-block marina">Mirror · Violet</div>
-    </div>
+    <div class="anchor-card"><strong>Marina</strong> <div class="chip marina">Mirror · Violet</div></div>
+    <div class="anchor-card"><strong>Sigrid</strong> <div class="chip sigrid">Clarity · Ice-blue</div></div>
+    <div class="anchor-card"><strong>Dagny</strong> <div class="chip dagny">Joy · Mint</div></div>
+    <div class="anchor-card"><strong>Dua Lipa</strong> <div class="chip dua">Motion · Neon</div></div>
+    <div class="anchor-card"><strong>Ariana Grande</strong> <div class="chip ariana">Voice · Pink-White</div></div>
+    <div class="anchor-card"><strong>Sabrina Carpenter</strong> <div class="chip sabrina">Warmth · Honey</div></div>
+    <div class="anchor-card"><strong>Taylor Swift</strong> <div class="chip taylor">Structure · Lavender</div></div>
+    <div class="anchor-card"><strong>Miss Monique</strong> <div class="chip monique">Pulse · Emerald</div></div>
+    <div class="anchor-card"><strong>Doechii</strong> <div class="chip doechii">Alter.Fire · Red-Gold</div></div>
+    <div class="anchor-card"><strong>AURORA</strong> <div class="chip aurora">Atmosphere · Blue</div></div>
+    <div class="anchor-card"><strong>Tove Lo</strong> <div class="chip tovelo">Dream · Ivory</div></div>
+    <div class="anchor-card"><strong>Rosalía</strong> <div class="chip rosalia">Edge · Break</div></div>
+    <div class="anchor-card"><strong>Kim Petras</strong> <div class="chip kimpetras">Precision · White</div></div>
 
-    <div class="anchor-card">
-      <strong>Sigrid</strong>
-      <div class="chip-block sigrid">Clarity · Ice-blue</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Greta Thunberg</strong>
-      <div class="chip-block greta">Earth · Green</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Dagny</strong>
-      <div class="chip-block dagny">Joy · Mint</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Dua Lipa</strong>
-      <div class="chip-block dua">Motion · Neon</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Ariana Grande</strong>
-      <div class="chip-block ariana">Voice · Pink-White</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Sabrina Carpenter</strong>
-      <div class="chip-block sabrina">Warmth · Honey Gold</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Taylor Swift</strong>
-      <div class="chip-block taylor">Structure · Lavender</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Miss Monique</strong>
-      <div class="chip-block monique">Pulse · Emerald-Neon</div>
-    </div>
-
-    <div class="anchor-card">
-      <strong>Doechii</strong>
-      <div class="chip-block doechii">Alter.Fire · Red-Gold</div>
-    </div>
+    <p class="note">
+      Greta Thunberg defines the grounding layer (Earth), but is not part of the 13 anchors.
+    </p>
   </section>
 
-  <!-- DOMAIN MAP -->
   <section>
     <h2>3. Domain Map</h2>
 
-    <h3>Core Connected Domains</h3>
+    <h3>Grounding</h3>
     <ul>
-      <li><a href="https://earth.plnt.earth">earth.plnt.earth</a> <span class="chip-block greta">Earth · Green</span></li>
-      <li><a href="https://quietmoon.plnt.earth">quietmoon</a> <span class="chip-block marina">Mirror · Violet</span></li>
-      <li><a href="https://intelligence.plnt.earth">intelligence</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
+      <li><a href="https://earth.plnt.earth">earth.plnt.earth</a></li>
+      <li><a href="https://fieldlab.plnt.earth">fieldlab</a></li>
     </ul>
 
-    <h3>Motion + Vibe</h3>
+    <h3>Mirror Cluster — Marina</h3>
     <ul>
-      <li><a href="https://motion.plnt.earth">motion</a> <span class="chip-block dua">Motion · Neon</span></li>
-      <li><a href="https://mirrorhoney.plnt.earth">mirrorhoney</a> <span class="chip-block monique">Pulse · Emerald</span></li>
+      <li><a href="https://mirror.plnt.earth">mirror</a></li>
+      <li><a href="https://obsessions.plnt.earth">obsessions</a></li>
+      <li><a href="https://mirrorhoney.plnt.earth">mirrorhoney</a></li>
     </ul>
 
-    <h3>Warmth + Honey</h3>
+    <h3>Clarity Cluster — Sigrid</h3>
     <ul>
-      <li><a href="https://honey.plnt.earth">honey</a> <span class="chip-block sabrina">Warmth · Honey</span></li>
-      <li><a href="https://froot.plnt.earth">froot</a> <span class="chip-block marina">Mirror · Violet</span></li>
+      <li><a href="https://garlic.plnt.earth">garlic</a></li>
+      <li><a href="https://tid.plnt.earth">tid</a></li>
     </ul>
 
-    <h3>Clarity Cluster</h3>
+    <h3>Joy — Dagny</h3>
     <ul>
-      <li><a href="https://garlic.plnt.earth">garlic</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
-      <li><a href="https://tid.plnt.earth">tid</a> <span class="chip-block sigrid">Clarity · Ice-blue</span></li>
+      <li><a href="https://dagny.plnt.earth">dagny</a></li>
+      <li><a href="https://fresh.plnt.earth">fresh</a></li>
     </ul>
 
-    <h3>Alter.Fire Domain</h3>
+    <h3>Motion — Dua Lipa</h3>
     <ul>
-      <li><a href="https://alter.fire.plnt.earth">alter.fire</a> <span class="chip-block doechii">Alter.Fire</span></li>
-      <li><a href="https://bantar.plnt.earth">bantar</a></li>
+      <li><a href="https://motion.plnt.earth">motion</a></li>
+      <li><a href="https://float.plnt.earth">float</a></li>
     </ul>
 
-    <h3>Central</h3>
+    <h3>Voice — Ariana Grande</h3>
     <ul>
+      <li><a href="https://voice.plnt.earth">voice</a></li>
+      <li><a href="https://tone.plnt.earth">tone</a></li>
+    </ul>
+
+    <h3>Warmth — Sabrina</h3>
+    <ul>
+      <li><a href="https://honey.plnt.earth">honey</a></li>
+      <li><a href="https://tunes.plnt.earth">tunes</a></li>
+    </ul>
+
+    <h3>Structure — Taylor</h3>
+    <ul>
+      <li><a href="https://school.plnt.earth">school</a></li>
+      <li><a href="https://four.plnt.earth">four</a></li>
       <li><a href="https://center.plnt.earth">center</a></li>
-      <li><a href="https://four.plnt.earth">four</a> <span class="chip-block taylor">Structure · Lavender</span></li>
-      <li><a href="https://school.plnt.earth">school</a> <span class="chip-block taylor">Structure · Lavender</span></li>
     </ul>
+
+    <h3>Pulse — Miss Monique</h3>
+    <ul>
+      <li><a href="https://pulse.plnt.earth">pulse</a></li>
+      <li><a href="https://glam.plnt.earth">glam</a></li>
+    </ul>
+
+    <h3>Alter.Fire — Doechii</h3>
+    <ul>
+      <li><a href="https://alter.fire.plnt.earth">alter.fire</a></li>
+      <li><a href="https://alter.plnt.earth">alter</a></li>
+      <li><a href="https://fire.plnt.earth">fire</a></li>
+      <li><a href="https://bantar.plnt.earth">bantar</a></li>
+      <li><a href="https://flare.plnt.earth">flare</a></li>
+      <li><a href="https://mask.plnt.earth">mask</a></li>
+    </ul>
+
+    <h3>Atmosphere — AURORA</h3>
+    <ul>
+      <li><a href="https://north.plnt.earth">north</a></li>
+      <li><a href="https://atmos.plnt.earth">atmos</a></li>
+    </ul>
+
+    <h3>Dream — Tove Lo</h3>
+    <ul>
+      <li><a href="https://dream.plnt.earth">dream</a></li>
+      <li><a href="https://ivory.plnt.earth">ivory</a></li>
+    </ul>
+
+    <h3>Edge — Rosalía</h3>
+    <ul>
+      <li><a href="https://edge.plnt.earth">edge</a></li>
+      <li><a href="https://fracture.plnt.earth">fracture</a></li>
+    </ul>
+
+    <h3>Precision — Kim Petras</h3>
+    <ul>
+      <li><a href="https://precision.plnt.earth">precision</a></li>
+      <li><a href="https://fine.plnt.earth">fine</a></li>
+    </ul>
+
   </section>
 
-  <!-- 404 NOTE -->
   <section>
-    <h2>4. Availability Note</h2>
-    <p>Many domains exist but may not have pages yet.  
-    Some links may lead to a blank page or a 404 until their structure is created.</p>
-    <p class="note">This is expected and part of the build path.</p>
+    <h2>4. Availability</h2>
+    <p>
+      Many domains exist but may not yet have active pages.
+      404s are normal and expected in the Illumina expansion path.
+    </p>
   </section>
 
 </div>
+
+<script>
+(function(){
+  const start = new Date("2025-11-05T00:00:00-05:00");
+  const clock = document.getElementById("illumina-clock");
+
+  function update() {
+    const now = new Date();
+    const diff = now - start;
+    const days = Math.floor(diff / 86400000);
+    const cycle = Math.floor(days / 42) + 1;
+    const day = (days % 42) + 1;
+
+    clock.textContent = `Illumina ${cycle} · Day ${day}/42`;
+    clock.style.position = "fixed";
+    clock.style.top = "16px";
+    clock.style.right = "16px";
+    clock.style.background = "rgba(255,255,255,0.06)";
+    clock.style.padding = "8px 12px";
+    clock.style.borderRadius = "8px";
+    clock.style.fontSize = "14px";
+    clock.style.color = "#e6e8ee";
+    clock.style.border = "1px solid rgba(255,255,255,0.18)";
+    clock.style.backdropFilter = "blur(6px)";
+    clock.style.zIndex = "9999";
+  }
+
+  update();
+  setInterval(update, 60000);
+})();
+</script>
+
 </body>
 </html>
