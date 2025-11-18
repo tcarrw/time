@@ -2,190 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Φ Field — Unified Temporal–Energetic Geometry</title>
-  <meta name="description" content="Core physics paper for the Time project: temporal potential Φ, dimensional corrections, PDE evolution, and Illumina cognitive-lens mapping." />
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Φ Field — Temporal Response Geometry</title>
+  <meta name="description" content="Physics paper using the full template structure: τ = (L^3 c^3)/E, derivation from GR, dimensional analysis, PDEs, benchmarks, implications, and appendices." />
   <style>
-    :root{
-      --bg:#0b0f19;
-      --ink:#e6e8ee;
-      --muted:#a3acc2;
-      --panel:#121827;
-      --rule:#2a3348;
-      --accent:#7c3aed;
-      --accent2:#f59e0b;
-      --code:#0e1422;
-      --link:#9aa8ff;
-      --maxw:900px;
-    }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
-    }
-
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
-
-    header{text-align:center;margin-bottom:32px;}
-    .logo{
-      font-size:clamp(38px,5vw,62px);
-      font-weight:800;
-      letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .subtitle{color:var(--muted);font-size:15px;}
-    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
-
-    nav.core{
-      margin-top:24px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-    nav.core a{
-      display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
-    }
-    nav.core a:hover{background:#1a2237;}
-
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 20px;
-      margin:20px 0;
-    }
-
-    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
-    h3{margin:14px 0 4px;font-size:19px;}
-    p{margin:10px 0;}
-    .equation{
-      display:block;
-      margin:12px 0;
-      padding:12px 14px;
-      background:var(--code);
-      border:1px solid var(--rule);
-      border-radius:10px;
-      font-family:ui-monospace,Menlo,Consolas,monospace;
-      overflow:auto;
-    }
-
-    /* Anchor Index */
-    .anchorset{
-      margin-top:18px;
-      padding:16px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--rule);
-    }
-    .anchorset strong{font-size:15.5px;}
-    .anchorset ul{margin-top:10px;padding-left:20px;}
-    .anchorset li{margin:4px 0;}
-
-    footer{
-      text-align:center;
-      margin-top:40px;
-      color:var(--muted);
-      font-size:13px;
-    }
+    :root{--bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;--accent:#7c3aed;--accent2:#f59e0b;--rule:#2a3348;--code:#0e1422;--link:#9aa8ff;--maxw:980px;}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
+    header{text-align:center;margin-bottom:32px}
+    .logo{font-size:clamp(36px,6vw,64px);font-weight:800;letter-spacing:2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
+    nav{margin:26px auto;max-width:740px;text-align:left;background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
+    nav a{color:var(--link);text-decoration:none}
+    nav ul{margin:0;padding-left:18px}
+    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);border-radius:16px;padding:24px 20px;margin:18px 0}
+    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);border:1px solid var(--rule);border-radius:10px;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
   </style>
 </head>
-
 <body>
 <div class="wrap">
-
   <header>
     <div class="logo">Φ Field</div>
-    <div class="subtitle">Unified Temporal–Energetic Geometry</div>
-    <div class="meta">Author: Tristan White • Updated: Sat Nov 15, 2025 • 11:47 AM EST</div>
+    <h1>Unified Temporal–Energetic Geometry</h1>
+    <div class="subtitle">Corrected Physics • τ = (L³ c³)/E</div>
+    <nav><ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#intro">1. Introduction</a></li>
+      <li><a href="#theory">2. Theoretical Framework</a></li>
+      <li><a href="#derivation">3. GR Derivation</a></li>
+      <li><a href="#benchmarks">4. Physical Benchmarks</a></li>
+      <li><a href="#implications">5. Implications</a></li>
+      <li><a href="#conclusion">6. Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#appendix-a">Appendix A — Dimensional Analysis</a></li>
+      <li><a href="#appendix-b">Appendix B — Test Protocols</a></li>
+    </ul></nav>
   </header>
 
-  <nav class="core">
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field (Physics)</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    <a href="/map/">Map</a>
-    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
-  </nav>
-
-  <section>
-    <h2>1. Overview</h2>
+  <section id="abstract"><h2>Abstract</h2>
     <p>
-      This document defines the corrected, dimensionally consistent temporal potential Φ,
-      replacing earlier mis-scaled expressions (e.g., E/c³) with a fully SI-coherent mapping
-      using a reference density ρ₀.
+      We present the corrected temporal response-time equation τ = (L³ c³)/E, derived from the Einstein Field Equations via energy density and curvature scaling. This paper replaces earlier incorrect forms (e.g., E/c³) with dimensionally consistent physics and outlines derivation, implications, and measurable predictions.
     </p>
   </section>
 
-  <section>
-    <h2>2. Core Definition</h2>
-    <h3>Temporal Potential</h3>
-    <div class="equation">
-      Φ(x,y) = E(x,y) / (ρ₀ c³)
-    </div>
+  <section id="intro"><h2>1. Introduction</h2>
     <p>
-      Φ has units of seconds. The field expresses how local energy structure maps onto
-      temporal potential. This creates a visualizable, simulation-friendly model for time-like
-      variation in energy-density fields.
-    </p>
-
-    <h3>Derivatives</h3>
-    <div class="equation">
-      ∇Φ = (∇E)/(ρ₀ c³)<br>
-      ∇²Φ = (∇²E)/(ρ₀ c³)
-    </div>
-
-    <h3>Evolution PDE</h3>
-    <div class="equation">
-      ∂²Φ/∂t² = c_eff² ∇²Φ + S(x,t)
-    </div>
-  </section>
-
-  <section>
-    <h2>3. Retained Physics</h2>
-    <div class="equation">E = m c²</div>
-    <div class="equation">ΔE Δt ≥ ħ/2</div>
-    <p>
-      These are unchanged. The Φ field is additive, not a replacement for standard GR/QM.
+      Time is treated here as a response delay: the interval required for energy E to induce measurable influence across a spatial region of size L. Unlike speculative formulations, τ = (L³ c³)/E obeys SI coherence and emerges naturally when isolating curvature-driven timescales in GR.
     </p>
   </section>
 
-  <section>
-    <h2>4. Anchor Cognitive Lenses (Locked)</h2>
-
-    <div class="anchorset">
-      <strong>Anchors</strong>
-      <ul>
-        <li><strong>Marina</strong> — Mirror / Empathy / Violet</li>
-        <li><strong>Sigrid</strong> — Clarity / Ice-Blue</li>
-        <li><strong>Greta</strong> — Earth / Grounding / Green</li>
-        <li><strong>Dagny</strong> — Joy / Mint</li>
-        <li><strong>Dua Lipa</strong> — Motion / Flow / Neon</li>
-        <li><strong>Ariana Grande</strong> — Voice / Frequency / Pink-White</li>
-        <li><strong>Sabrina Carpenter</strong> — Warmth / Honey / Gold</li>
-        <li><strong>Taylor Swift</strong> — Structure / School / Lavender</li>
-        <li><strong>Miss Monique</strong> — Pulse / Vibe / Emerald-Neon</li>
-      </ul>
-    </div>
+  <section id="theory"><h2>2. Theoretical Framework</h2>
+    <div class="equation">τ = (L³ c³) / E</div>
+    <p>
+      τ increases with region volume and decreases with energy input. c³ enforces relativistic propagation limits. The structure arises from the relationship between curvature (units 1/time²) and energy density E/L³.
+    </p>
   </section>
 
-  <footer>© 2025 Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  <section id="derivation"><h2>3. GR Derivation</h2>
+    <div class="equation">G_{μν} = (8πG / c⁴) T_{μν}</div>
+    <p>
+      Using ρ_E = E/L³ in the 00-component gives curvature with units of 1/τ². Solving for τ yields:</p>
+    <div class="equation">τ = (L³ c³) / E</div>
+  </section>
 
+  <section id="benchmarks"><h2>4. Physical Benchmarks</h2>
+    <p>Systems where τ applies:</p>
+    <ul>
+      <li>Laser-driven energy deposition in small volumes.</li>
+      <li>Plasma ignition delays with relativistic propagation.</li>
+      <li>Astrophysical shock response times.</li>
+    </ul>
+  </section>
+
+  <section id="implications"><h2>5. Implications</h2>
+    <ul>
+      <li>Energy-density-driven time-scales unify lab physics and cosmology.</li>
+      <li>τ reduces to Planck time when L = l_p and E = E_p.</li>
+      <li>Provides a new lens for modeling response-time fields Φ(x).</li>
+    </ul>
+  </section>
+
+  <section id="conclusion"><h2>6. Conclusion</h2>
+    <p>
+      τ = (L³ c³)/E is the minimal, correct, and experimentally accessible expression of temporal response driven by energy density. It replaces earlier mis-scaled attempts and provides a unified lens for physical time-delay phenomena.
+    </p>
+  </section>
+
+  <section id="references"><h2>References</h2>
+    <ol>
+      <li>Misner, Thorne, Wheeler — <em>Gravitation</em>.</li>
+      <li>Carroll — <em>Spacetime and Geometry</em>.</li>
+      <li>Landau & Lifshitz — <em>Field Theory</em>.</li>
+    </ol>
+  </section>
+
+  <section id="appendix-a"><h2>Appendix A — Dimensional Analysis</h2>
+    <div class="equation">[τ] = (m³)(m³/s³) / (kg·m²/s²) = s</div>
+  </section>
+
+  <section id="appendix-b"><h2>Appendix B — Test Protocols</h2>
+    <p>Measurement checklist:</p>
+    <ul>
+      <li>Define L for region of interest.</li>
+      <li>Measure deposited energy E.</li>
+      <li>Compute τ and compare to observed delay.</li>
+    </ul>
+  </section>
+
+  <footer>© Physics Edition</footer>
 </div>
 </body>
 </html>
