@@ -16,6 +16,21 @@
   --ink:#e9e7ff;
   --pulseA:rgba(196,181,253,0.35);
   --pulseB:rgba(196,181,253,0.08);
+
+  /* Anchor Glow Colors */
+  --gl-moni:   rgba(74,192,180,0.28);
+  --gl-dua:    rgba(230,192,77,0.28);
+  --gl-marina: rgba(165,114,207,0.28);
+  --gl-doech:  rgba(198,71,71,0.28);
+  --gl-sigrid: rgba(102,199,232,0.28);
+  --gl-rosa:   rgba(153,153,153,0.28);
+  --gl-sabrina:rgba(228,142,201,0.28);
+  --gl-aurora: rgba(110,136,168,0.28);
+  --gl-tove:   rgba(246,240,216,0.28);
+  --gl-ariana: rgba(231,168,64,0.28);
+  --gl-dagny:  rgba(157,26,43,0.32);
+  --gl-kim:    rgba(227,230,237,0.24);
+  --gl-taylor: rgba(196,181,253,0.35);
 }
 
 /* BASE */
@@ -57,8 +72,42 @@ h1{
   margin-bottom:12px;
   cursor:pointer;
   transition:0.2s;
+  position:relative;
+  overflow:hidden;
 }
 .floor:hover{ background:#26193c; }
+
+/* Soft Glow Layer */
+.floor::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  opacity:0;
+  transition:opacity 0.25s ease;
+  z-index:-1;
+}
+.floor:hover::before{
+  opacity:0.32;
+}
+.floor.glow-active::before{
+  opacity:0.45;
+}
+
+/* Glow Color Mapping */
+.floor:nth-child(2)::before { background:var(--gl-moni); }
+.floor:nth-child(3)::before { background:var(--gl-dua); }
+.floor:nth-child(4)::before { background:var(--gl-marina); }
+.floor:nth-child(5)::before { background:var(--gl-doech); }
+.floor:nth-child(6)::before { background:var(--gl-sigrid); }
+.floor:nth-child(7)::before { background:var(--gl-rosa); }
+.floor:nth-child(8)::before { background:var(--gl-sabrina); }
+.floor:nth-child(9)::before { background:var(--gl-aurora); }
+.floor:nth-child(10)::before { background:var(--gl-tove); }
+.floor:nth-child(11)::before { background:var(--gl-ariana); }
+.floor:nth-child(12)::before { background:var(--gl-dagny); }
+.floor:nth-child(13)::before { background:var(--gl-kim); }
+.floor:nth-child(14)::before { background:var(--gl-taylor); }
 
 .btn{
   width:42px;
@@ -132,19 +181,19 @@ h1{
   <h1>Illumina Elevator</h1>
 
   <!-- FLOORS -->
-  <div class="floor" onclick="play(1)"><div class="btn c1">1</div>Miss Monique — Concorde</div>
-  <div class="floor" onclick="play(2)"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
-  <div class="floor" onclick="play(3)"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
-  <div class="floor" onclick="play(4)"><div class="btn c4">4</div>Doechii — Crazy</div>
-  <div class="floor" onclick="play(5)"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
-  <div class="floor" onclick="play(6)"><div class="btn c6">6</div>Rosalía — SAOKO</div>
-  <div class="floor" onclick="play(7)"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
-  <div class="floor" onclick="play(8)"><div class="btn c8">8</div>AURORA — Runaway</div>
-  <div class="floor" onclick="play(9)"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
-  <div class="floor" onclick="play(10)"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
-  <div class="floor" onclick="play(11)"><div class="btn c11">11</div>Dagny — Love You Like That</div>
-  <div class="floor" onclick="play(12)"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
-  <div class="floor" onclick="play(13)"><div id="f13" class="btn c13">13</div>Taylor Swift — Bejeweled</div>
+  <div class="floor"><div class="btn c1">1</div>Miss Monique — Concorde</div>
+  <div class="floor"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
+  <div class="floor"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
+  <div class="floor"><div class="btn c4">4</div>Doechii — Crazy</div>
+  <div class="floor"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
+  <div class="floor"><div class="btn c6">6</div>Rosalía — SAOKO</div>
+  <div class="floor"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
+  <div class="floor"><div class="btn c8">8</div>AURORA — Runaway</div>
+  <div class="floor"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
+  <div class="floor"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
+  <div class="floor"><div class="btn c11">11</div>Dagny — Love You Like That</div>
+  <div class="floor"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
+  <div class="floor"><div id="f13" class="btn c13">13</div>Taylor Swift — Bejeweled</div>
 
   <!-- PLAYER -->
   <div class="player">
@@ -173,21 +222,92 @@ const songs = {
  13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs"}
 };
 
-/* PLAY FUNCTION */
-function play(n){
-  const yt=document.getElementById("yt");
-  const label=document.getElementById("label");
-  yt.src=songs[n].link;
-  label.textContent=songs[n].name;
+/* ANCHOR PAGE LINKS */
+const anchorPages = {
+  1:"https://concorde.plnt.earth",
+  2:"https://houdini.plnt.earth",
+  3:"https://obsessions.plnt.earth",
+  4:"https://crazy.plnt.earth",
+  5:"https://itgets.dark.plnt.earth",
+  6:"https://saoko.plnt.earth",
+  7:"https://feather.plnt.earth",
+  8:"https://runaway.plnt.earth",
+  9:"https://noonediesfromlove.plnt.earth",
+ 10:"https://notears.plnt.earth",
+ 11:"https://earth.plnt.earth",
+ 12:"https://coconuts.plnt.earth",
+ 13:"https://bejeweled.plnt.earth"
+};
 
-  /* Remove previous pulse */
-  document.getElementById("f13").classList.remove("pulse");
+/* PHYSICS MAP */
+const physicsLens = {
+  1:{lens:"pulse",      color:"mint",    equation:"wave"},
+  2:{lens:"motion",     color:"gold",    equation:"force"},
+  3:{lens:"mirror",     color:"violet",  equation:"curvature"},
+  4:{lens:"alterfire",  color:"red",     equation:"nonlinear"},
+  5:{lens:"clarity",    color:"cyan",    equation:"boundary"},
+  6:{lens:"edge",       color:"gray",    equation:"jump"},
+  7:{lens:"warmth",     color:"pink",    equation:"stability"},
+  8:{lens:"atmosphere", color:"blue",    equation:"diffusion"},
+  9:{lens:"dream",      color:"ivory",   equation:"imaginary"},
+ 10:{lens:"voice",      color:"amber",   equation:"resonance"},
+ 11:{lens:"joy",        color:"crimson", equation:"injection"},
+ 12:{lens:"precision",  color:"white",   equation:"harmonic"},
+ 13:{lens:"structure",  color:"lavender",equation:"frame"}
+};
 
-  /* If floor 13 → add soft pulse */
-  if(n===13){
-    document.getElementById("f13").classList.add("pulse");
-  }
+/* Write lens → time.plnt.earth state */
+function setTimePhysics(n){
+  const p = physicsLens[n];
+  if(!p) return;
+  localStorage.setItem("timeLens", p.lens);
+  localStorage.setItem("timeColor", p.color);
+  localStorage.setItem("timeEquation", p.equation);
+  localStorage.setItem("timeAnchor", n);
 }
+
+/* PLAYER */
+function play(n){
+  document.getElementById("yt").src = songs[n].link;
+  document.getElementById("label").textContent = songs[n].name;
+
+  document.getElementById("f13").classList.remove("pulse");
+  if(n===13) document.getElementById("f13").classList.add("pulse");
+}
+
+/* DOUBLE-TAP NAVIGATION */
+let lastTap = 0;
+
+function handleFloorTap(n){
+  const now = Date.now();
+
+  if(now - lastTap < 350){
+    setTimePhysics(n);
+    window.location.href = anchorPages[n];
+    return;
+  }
+
+  play(n);
+  setTimePhysics(n);
+  lastTap = now;
+}
+
+/* Bind floors */
+document.querySelectorAll('.floor').forEach((floor, i)=>{
+  const number = i+1;
+  floor.onclick = () => handleFloorTap(number);
+});
+
+/* Glow active */
+(function(){
+  const active = localStorage.getItem("timeAnchor");
+  if(!active) return;
+  const floors = document.querySelectorAll('.floor');
+  const index = parseInt(active, 10);
+  if(floors[index-1]){
+    floors[index-1].classList.add('glow-active');
+  }
+})();
 </script>
 
 </body>
