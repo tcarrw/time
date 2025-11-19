@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Illumina Elevator · time.plnt.earth</title>
+<meta name="color-scheme" content="dark">
+
+<style>
+/* -------------------------------------------------------
+   CORE COLOR + GLASS SYSTEM
+-------------------------------------------------------- */
+:root{
+  --lav:#C4B5FD;
+  --ink:#e9e7ff;
+  --bg0:#0c0912;
+
+  --g1:rgba(255,255,255,0.08);
+  --g2:rgba(255,255,255,0.06);
+
+  --pulseA:rgba(196,181,253,0.35);
+  --pulseB:rgba(196,181,253,0.08);
+
+  --film:rgba(255,255,255,0.14);
+}
+
+/* Layout: video left, elevator right */
+body{
+  margin:0;
+  background:var(--bg0);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  display:flex;
+  overflow-x:hidden;
+}
+
+/* LEFT: VIDEO + DETAILS */
+.left-panel{
+  width:70vw;
+  padding:26px;
+  box-sizing:border-box;
+}
+
+/* Sticky video */
+.player{
+  position:sticky;
+  top:22px;
+  background:rgba(255,255,255,0.10);
+  border-radius:24px;
+  padding:20px;
+  backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 0 22px rgba(196,181,253,0.12),
+             inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.player iframe{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.35);
+  height:auto;
+  aspect-ratio:16/9;
+}
+
+#label{
+  margin-top:12px;
+  font-size:15px;
+}
+
+/* Detail panel under video */
+.detail-panel{
+  margin-top:36px;
+  padding:22px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px) saturate(180%);
+  display:none;
+}
+
+.detail-panel h2{
+  margin:0 0 12px;
+  color:var(--lav);
+  font-size:20px;
+}
+
+/* RIGHT: ELEVATOR PANEL */
+.elevator-panel{
+  width:30vw;
+  padding:28px;
+  background:var(--g1);
+  border-left:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.10);
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+}
+
+h1{
+  text-align:center;
+  margin:0 0 16px;
+  font-size:24px;
+  color:var(--lav);
+  font-weight:700;
+}
+
+/* Core nav */
+.core-nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.core-nav a{
+  padding:6px 14px;
+  font-size:13px;
+  font-weight:600;
+  border-radius:14px;
+  text-decoration:none;
+  color:var(--ink);
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.22);
+}
+
+/* Floors */
+.floor{
+  display:flex;
+  align-items:center;
+  padding:12px 14px;
+  background:var(--g2);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.12);
+  margin-bottom:12px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:14px;
+  border:1px solid rgba(255,255,255,0.22);
+  font-weight:700;
+}
+
+/* Color dots */
+.c1{background:#4ac0b4;}
+.c2{background:#e6c04d;}
+.c3{background:#a572cf;}
+.c4{background:#c64747;}
+.c5{background:#66c7e8;}
+.c6{background:#999999;}
+.c7{background:#e48ec9;}
+.c8{background:#6e88a8;}
+.c9{background:#f6f0d8;}
+.c10{background:#e7a840;}
+.c11{background:#9d1a2b;}
+.c12{background:#e3e6ed;}
+.c13{
+  background:var(--lav);
+  color:#1a0f3e;
+}
+
+/* Consent modal */
+#consentModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  backdrop-filter:blur(8px);
+}
+
+#consentBox{
+  width:86%;
+  max-width:420px;
+  padding:26px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.25);
+  backdrop-filter:blur(20px);
+  text-align:center;
+}
+
+#consentButton{
+  margin-top:22px;
+  padding:10px 24px;
+  background:var(--lav);
+  border-radius:14px;
+  font-weight:600;
+  border:0;
+  color:#1a0f3e;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LEFT SIDE -->
+<div class="left-panel">
+
+  <div class="player">
+    <iframe id="yt" src="" allowfullscreen></iframe>
+    <div id="label">Choose a floor.</div>
+  </div>
+
+  <div id="details" class="detail-panel"></div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="elevator-panel">
+  <h1>Illumina Elevator</h1>
+
+  <div class="core-nav">
+    <a href="https://time.plnt.earth">Φ Field</a>
+    <a href="https://time.plnt.earth/map">Anchor Map</a>
+    <a href="https://time.plnt.earth/interpretation">Interpretation</a>
+    <a href="https://time.plnt.earth/charter">Charter</a>
+    <a href="https://time.plnt.earth/index">Time Index</a>
+  </div>
+
+  <div class="floor" data-n="13"><div class="btn c13">13</div>Taylor Swift — Bejeweled</div>
+  <div class="floor" data-n="12"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
+  <div class="floor" data-n="11"><div class="btn c11">11</div>Dagny — Love You Like That</div>
+  <div class="floor" data-n="10"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
+  <div class="floor" data-n="9"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
+  <div class="floor" data-n="8"><div class="btn c8">8</div>AURORA — Runaway</div>
+  <div class="floor" data-n="7"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
+  <div class="floor" data-n="6"><div class="btn c6">6</div>Rosalía — SAOKO</div>
+  <div class="floor" data-n="5"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
+  <div class="floor" data-n="4"><div class="btn c4">4</div>Doechii — Crazy</div>
+  <div class="floor" data-n="3"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
+  <div class="floor" data-n="2"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
+  <div class="floor" data-n="1"><div class="btn c1">1</div>Miss Monique — Concorde</div>
+
+</div>
+
+<!-- CONSENT MODAL -->
+<div id="consentModal" style="display:none;">
+  <div id="consentBox">
+    <h2>Elevator Entry — Time · Illumina</h2>
+    <p>By entering the Elevator, you acknowledge that:</p>
+    <p>• floors auto-play audio/video<br>
+       • double-tap will navigate to an anchor page<br>
+       • your last visited floor is stored locally</p>
+    <button id="consentButton">Enter Elevator</button>
+  </div>
+</div>
+
+<script>
+/* SONGS */
+const songs={
+  1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4"},
+  2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA"},
+  3:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90"},
+  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY"},
+  5:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU"},
+  6:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg"},
+  7:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI"},
+  8:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8"},
+  9:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4"},
+ 10:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU"},
+ 11:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ"},
+ 12:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc"},
+ 13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs"}
+};
+
+/* ANCHOR PAGES */
+const anchorPages={
+  1:"https://concorde.plnt.earth",
+  2:"https://houdini.plnt.earth",
+  3:"https://obsessions.plnt.earth",
+  4:"https://crazy.plnt.earth",
+  5:"https://itgets.dark.plnt.earth",
+  6:"https://saoko.plnt.earth",
+  7:"https://feather.plnt.earth",
+  8:"https://runaway.plnt.earth",
+  9:"https://noonediesfromlove.plnt.earth",
+ 10:"https://notears.plnt.earth",
+ 11:"https://earth.plnt.earth",
+ 12:"https://coconuts.plnt.earth",
+ 13:"https://bejeweled.plnt.earth"
+};
+
+/* FLOOR DESCRIPTIONS */
+const floorDetails={
+  13:"<h2>Floor 13 — Taylor Swift · Bejeweled</h2><p>Crown-floor clarity. Illumination. Structure.</p>",
+  12:"<h2>Floor 12 — Kim Petras · Coconuts</h2><p>Play as power. Irreverent lift.</p>",
+  11:"<h2>Floor 11 — Dagny · Love You Like That</h2><p>Joy ignition. Emotional altitude.</p>",
+  10:"<h2>Floor 10 — Ariana Grande · No Tears Left to Cry</h2><p>Emotional inversion. Upward flow.</p>",
+  9:"<h2>Floor 9 — Tove Lo · No One Dies From Love</h2><p>Dreamfield clarity. Soft reckoning.</p>",
+  8:"<h2>Floor 8 — AURORA · Runaway</h2><p>Mythic distance. Origin signal.</p>",
+  7:"<h2>Floor 7 — Sabrina Carpenter · Feather</h2><p>Ease-field. Sweetness. Safe entry.</p>",
+  6:"<h2>Floor 6 — Rosalía · SAOKO</h2><p>Transformation. Velocity.</p>",
+  5:"<h2>Floor 5 — Sigrid · It Gets Dark</h2><p>Contrast perspective. Courage.</p>",
+  4:"<h2>Floor 4 — Doechii · Crazy</h2><p>Fire-state liberation. Heat-vector.</p>",
+  3:"<h2>Floor 3 — Marina · Venus Fly Trap</h2><p>Reflection. Contrast. Sovereignty.</p>",
+  2:"<h2>Floor 2 — Dua Lipa · Houdini</h2><p>Motion initiation. Forward vector.</p>",
+  1:"<h2>Floor 1 — Miss Monique · Concorde</h2><p>Pulse-floor. Lift-off rhythm.</p>"
+};
+
+/* Consent modal */
+window.addEventListener("load",()=>{
+  if(!localStorage.getItem("elevatorConsent")){
+    document.getElementById("consentModal").style.display="flex";
+  }
+});
+
+document.getElementById("consentButton").onclick=()=>{
+  localStorage.setItem("elevatorConsent","yes");
+  document.getElementById("consentModal").style.display="none";
+};
+
+/* Play video */
+function play(n){
+  document.getElementById("yt").src=songs[n].link;
+  document.getElementById("label").textContent=songs[n].name;
+}
+
+/* Show floor details */
+function showDetails(n){
+  const d=document.getElementById("details");
+  d.innerHTML=floorDetails[n];
+  d.style.display="block";
+}
+
+/* Double tap detection */
+let lastTap=0;
+
+function handleFloor(n){
+  const now=Date.now();
+
+  if(now-lastTap<350){
+    window.location.href=anchorPages[n];
+    return;
+  }
+
+  play(n);
+  showDetails(n);
+  lastTap=now;
+}
+
+/* Bind floors */
+document.querySelectorAll(".floor").forEach(f=>{
+  const n=parseInt(f.dataset.n);
+  f.addEventListener("click",()=>handleFloor(n));
+});
+</script>
+
+<!-- DISCLOSURE -->
+<div style="width:100%;padding:32px;font-size:13px;color:#aaa;line-height:1.5;">
+  This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
+  No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
+  clear intent, clear context, clean boundaries.
+</div>
+
+</body>
+</html>
