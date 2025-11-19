@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anchors · Illumina</title>
-
   <style>
     :root{
       --bg:#0b0f19;
@@ -13,9 +12,9 @@
       --muted:#a3acc2;
       --rule:#2a3348;
       --link:#9aa8ff;
+      --accent:#7c3aed;
       --maxw:900px;
     }
-
     body{
       margin:0;
       background:var(--bg);
@@ -23,13 +22,11 @@
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;
     }
-
     .wrap{
       max-width:var(--maxw);
       margin:0 auto;
       padding:48px 20px 80px;
     }
-
     nav{
       margin-bottom:32px;
       display:flex;
@@ -37,7 +34,6 @@
       gap:12px;
       justify-content:center;
     }
-
     nav a{
       display:inline-block;
       padding:10px 16px;
@@ -49,14 +45,12 @@
       font-size:15px;
     }
     nav a:hover{background:#1a2237;}
-
     h1{
       font-size:clamp(32px,5vw,46px);
       margin:0 0 18px;
       text-align:center;
       font-weight:800;
     }
-
     p{
       margin-top:12px;
       color:var(--ink);
@@ -67,33 +61,62 @@
       font-size:15px;
       line-height:1.55;
     }
-
     .grid{
       margin-top:38px;
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
       gap:18px;
     }
-
     .card{
       background:var(--panel);
       padding:16px;
       border-radius:12px;
       border:1px solid var(--rule);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
     }
-
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+      border-radius:10px;
+      font-size:11px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.15);
+      flex-shrink:0;
+    }
     .name{
       font-weight:700;
       font-size:17px;
-      margin-bottom:6px;
       color:var(--ink);
     }
-
     .lens{
       font-size:14px;
       color:var(--muted);
     }
-
+    
+    /* Color chips matching elevator */
+    .c1{background:#4ac0b4;}
+    .c2{background:#e6c04d;}
+    .c3{background:#a572cf;}
+    .c4{background:#c64747;}
+    .c5{background:#66c7e8;}
+    .c6{background:#999999;}
+    .c7{background:#e48ec9;}
+    .c8{background:#6e88a8;}
+    .c9{background:#f6f0d8;color:#1a0f3e;}
+    .c10{background:#e7a840;color:#1a0f3e;}
+    .c11{background:#9d1a2b;}
+    .c12{background:#e3e6ed;color:#1a0f3e;}
+    .c13{background:#C4B5FD;color:#1a0f3e;}
+    
     footer{
       text-align:center;
       color:var(--muted);
@@ -102,10 +125,8 @@
     }
   </style>
 </head>
-
 <body>
 <div class="wrap">
-
   <nav>
     <a href="/">Home</a>
     <a href="/time/">Φ Field</a>
@@ -115,9 +136,7 @@
     <a href="/elevator/">Elevator</a>
     <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
   </nav>
-
   <h1>Anchor Index</h1>
-
   <p>
     The thirteen Illumina anchors represent core cognitive lenses —
     clarity, empathy, structure, motion, joy, frequency, atmosphere,
@@ -125,78 +144,105 @@
     These lenses stabilize and enhance the creative–scientific motion
     of the Time project.
   </p>
-
   <div class="grid">
-
     <div class="card">
-      <div class="name">Marina</div>
-      <div class="lens">Mirror · Empathy · Violet</div>
+      <div class="card-header">
+        <span class="chip c6">6</span>
+        <div class="name">Ariana Grande</div>
+      </div>
+      <div class="lens">Voice · Frequency · Shimmer</div>
     </div>
-
     <div class="card">
-      <div class="name">Sigrid</div>
-      <div class="lens">Clarity · Ice-Blue</div>
+      <div class="card-header">
+        <span class="chip c12">12</span>
+        <div class="name">AURORA</div>
+      </div>
+      <div class="lens">Atmosphere · Pearl</div>
     </div>
-
     <div class="card">
-      <div class="name">Dagny</div>
-      <div class="lens">Joy · Mint</div>
+      <div class="card-header">
+        <span class="chip c7">7</span>
+        <div class="name">Dagny</div>
+      </div>
+      <div class="lens">Joy · Rose</div>
     </div>
-
     <div class="card">
-      <div class="name">Dua Lipa</div>
-      <div class="lens">Motion · Flow</div>
+      <div class="card-header">
+        <span class="chip c4">4</span>
+        <div class="name">Doechii</div>
+      </div>
+      <div class="lens">Alter.Fire · Edge · Crimson</div>
     </div>
-
     <div class="card">
-      <div class="name">Ariana Grande</div>
-      <div class="lens">Voice · Frequency</div>
+      <div class="card-header">
+        <span class="chip c3">3</span>
+        <div class="name">Dua Lipa</div>
+      </div>
+      <div class="lens">Motion · Flow · Violet</div>
     </div>
-
     <div class="card">
-      <div class="name">Sabrina Carpenter</div>
-      <div class="lens">Warmth · Honey</div>
+      <div class="card-header">
+        <span class="chip c8">8</span>
+        <div class="name">Kim Petras</div>
+      </div>
+      <div class="lens">Precision · Slate</div>
     </div>
-
     <div class="card">
-      <div class="name">Taylor Swift</div>
+      <div class="card-header">
+        <span class="chip c5">5</span>
+        <div class="name">Marina</div>
+      </div>
+      <div class="lens">Mirror · Empathy · Blue</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="chip c1">1</span>
+        <div class="name">Miss Monique</div>
+      </div>
+      <div class="lens">Pulse · Vibe · Teal</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="chip c9">9</span>
+        <div class="name">Rosalía</div>
+      </div>
+      <div class="lens">Edge · Break · Sauvignon Blanc</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="chip c10">10</span>
+        <div class="name">Sabrina Carpenter</div>
+      </div>
+      <div class="lens">Warmth · Honey Gold</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="chip c2">2</span>
+        <div class="name">Sigrid</div>
+      </div>
+      <div class="lens">Clarity · Gold</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="chip c13">13</span>
+        <div class="name">Taylor Swift</div>
+      </div>
       <div class="lens">Structure · Lavender</div>
     </div>
-
     <div class="card">
-      <div class="name">Miss Monique</div>
-      <div class="lens">Pulse · Vibe</div>
+      <div class="card-header">
+        <span class="chip c11">11</span>
+        <div class="name">Tove Lo</div>
+      </div>
+      <div class="lens">Dream · Burgundy</div>
     </div>
-
-    <div class="card">
-      <div class="name">Doechii</div>
-      <div class="lens">Alter · Fire</div>
-    </div>
-
-    <div class="card">
-      <div class="name">AURORA</div>
-      <div class="lens">Atmosphere · North-Blue</div>
-    </div>
-
-    <div class="card">
-      <div class="name">Tove Lo</div>
-      <div class="lens">Dream · Ivory</div>
-    </div>
-
-    <div class="card">
-      <div class="name">Rosalía</div>
-      <div class="lens">Edge · Motion-Break</div>
-    </div>
-
-    <div class="card">
-      <div class="name">Kim Petras</div>
-      <div class="lens">Precision · White</div>
-    </div>
-
   </div>
-
-  <footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
-
+  <footer>
+    <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.6;">
+      <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+    </div>
+    © 2025 • Creative Commons BY-NC-SA 4.0
+  </footer>
 </div>
 </body>
 </html>
