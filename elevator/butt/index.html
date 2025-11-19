@@ -36,7 +36,7 @@ body{
 
 /* LEFT: VIDEO + DETAILS */
 .left-panel{
-  width:70vw;
+  width:70%;
   padding:26px;
   box-sizing:border-box;
 }
@@ -86,7 +86,7 @@ body{
 
 /* RIGHT: ELEVATOR PANEL */
 .elevator-panel{
-  width:30vw;
+  width:30%;
   padding:28px;
   background:var(--g1);
   border-left:1px solid rgba(255,255,255,0.15);
@@ -254,6 +254,11 @@ h1{
     <p>• floors auto-play audio/video<br>
        • double-tap will navigate to an anchor page<br>
        • your last visited floor is stored locally</p>
+    <p style="margin-top:20px;font-size:12px;line-height:1.5;color:#ccc;">
+      This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
+      No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
+      clear intent, clear context, clean boundaries.
+    </p>
     <button id="consentButton">Enter Elevator</button>
   </div>
 </div>
@@ -357,13 +362,6 @@ document.querySelectorAll(".floor").forEach(f=>{
   f.addEventListener("click",()=>handleFloor(n));
 });
 </script>
-
-<!-- DISCLOSURE -->
-<div style="width:100%;padding:32px;font-size:13px;color:#aaa;line-height:1.5;">
-  This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
-  No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
-  clear intent, clear context, clean boundaries.
-</div>
 
 </body>
 </html>
