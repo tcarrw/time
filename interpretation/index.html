@@ -14,22 +14,7 @@
       --muted:#a3acc2;
       --rule:#2a3348;
       --link:#9aa8ff;
-
-      /* Anchor colors */
-      --violet:#c4b5ff;
-      --ice:#9ed6ff;
-      --mint:#b7ffe8;
-      --neon:#c5f06f;
-      --pinkwhite:#ffd6ef;
-      --honey:#ffda7f;
-      --lavender:#d9b7ff;
-      --emerald:#66ffcc;
-      --alterfire:#ff726a;
-      --northblue:#7fb6ff;
-      --dreamivory:#f5f0db;
-      --edgegray:#bfbfbf;
-      --precisionwhite:#ffffff;
-
+      --accent:#7c3aed;
       --maxw:900px;
     }
 
@@ -69,30 +54,39 @@
     a{color:var(--link);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    /* Chip styling */
+    /* Color chips matching elevator */
     .chip{
-      display:inline-block;
-      margin-top:6px;
-      font-size:13px;
-      padding:4px 8px;
-      border-radius:8px;
-      font-weight:600;
-      color:#000;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 12px;
+      margin:4px 4px 4px 0;
+      border-radius:10px;
+      font-size:12px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.15);
     }
 
-    .marina{background:var(--violet);}
-    .sigrid{background:var(--ice);}
-    .dagny{background:var(--mint);}
-    .dua{background:var(--neon);}
-    .ariana{background:var(--pinkwhite);}
-    .sabrina{background:var(--honey);}
-    .taylor{background:var(--lavender);}
-    .monique{background:var(--emerald);}
-    .doechii{background:var(--alterfire);}
-    .aurora{background:var(--northblue);}
-    .tove{background:var(--dreamivory);}
-    .rosalia{background:var(--edgegray);}
-    .kim{background:var(--precisionwhite);}
+    .c1{background:#4ac0b4;}
+    .c2{background:#e6c04d;}
+    .c3{background:#a572cf;}
+    .c4{background:#c64747;}
+    .c5{background:#66c7e8;}
+    .c6{background:#999999;}
+    .c7{background:#e48ec9;}
+    .c8{background:#6e88a8;}
+    .c9{background:#f6f0d8;color:#1a0f3e;}
+    .c10{background:#e7a840;color:#1a0f3e;}
+    .c11{background:#9d1a2b;}
+    .c12{background:#e3e6ed;color:#1a0f3e;}
+    .c13{background:#C4B5FD;color:#1a0f3e;}
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:40px;
+    }
   </style>
 </head>
 
@@ -101,7 +95,7 @@
 
   <header>
     <h1>Interpretation Layer</h1>
-    <div class="sub">Meaning, direction, and the anchor system that shapes Illumina’s Time framework.</div>
+    <div class="sub">Meaning, direction, and the anchor system that shapes Illumina's Time framework.</div>
   </header>
 
   <!-- SECTION: Purpose -->
@@ -129,55 +123,55 @@
 
     <!-- 13 Anchors -->
     <h3>Marina</h3>
-    <div class="chip marina">Mirror · Violet · Empathy</div>
+    <span class="chip c5">Mirror · Empathy · Blue</span>
     <p>Reflection, internal truth, recursion without collapse.</p>
 
     <h3>Sigrid</h3>
-    <div class="chip sigrid">Clarity · Ice-blue</div>
+    <span class="chip c2">Clarity · Gold</span>
     <p>Clean signal, truth, low-noise thinking.</p>
 
     <h3>Dagny</h3>
-    <div class="chip dagny">Joy · Mint</div>
+    <span class="chip c7">Joy · Rose</span>
     <p>Levity, reset energy, emotional lift.</p>
 
     <h3>Dua Lipa</h3>
-    <div class="chip dua">Motion · Flow</div>
+    <span class="chip c3">Motion · Flow · Violet</span>
     <p>Forward movement, torque, kinetic reasoning.</p>
 
     <h3>Ariana Grande</h3>
-    <div class="chip ariana">Voice · Frequency</div>
+    <span class="chip c6">Voice · Frequency · Shimmer</span>
     <p>Signal tuning, emotional resonance, high-resolution intuition.</p>
 
     <h3>Sabrina Carpenter</h3>
-    <div class="chip sabrina">Warmth · Honey</div>
+    <span class="chip c10">Warmth · Honey Gold</span>
     <p>Narrative glow, tonal cohesion, charm-pressure.</p>
 
     <h3>Taylor Swift</h3>
-    <div class="chip taylor">Structure · Lavender</div>
+    <span class="chip c13">Structure · Lavender</span>
     <p>Frameworks, maps, conceptual architecture.</p>
 
     <h3>Miss Monique</h3>
-    <div class="chip monique">Pulse · Vibe</div>
+    <span class="chip c1">Pulse · Vibe · Teal</span>
     <p>Rhythmic stability, body intelligence, timing.</p>
 
     <h3>Doechii</h3>
-    <div class="chip doechii">Alter.Fire · Red-Gold</div>
+    <span class="chip c4">Alter.Fire · Edge · Crimson</span>
     <p>Edge-turns, unexpected solutions, nonlinear creativity.</p>
 
     <h3>AURORA</h3>
-    <div class="chip aurora">Atmosphere · North-blue</div>
+    <span class="chip c12">Atmosphere · Pearl</span>
     <p>Emotional field shaping, spaciousness, ethereal coherence.</p>
 
     <h3>Tove Lo</h3>
-    <div class="chip tove">Dream · Ivory</div>
+    <span class="chip c11">Dream · Burgundy</span>
     <p>Imaginary time, dream logic, soft surreal bridging.</p>
 
     <h3>Rosalía</h3>
-    <div class="chip rosalia">Edge · Break</div>
+    <span class="chip c9">Edge · Break · Sauvignon Blanc</span>
     <p>Boundary fractures, contrast, controlled shock.</p>
 
     <h3>Kim Petras</h3>
-    <div class="chip kim">Precision · White</div>
+    <span class="chip c8">Precision · Slate</span>
     <p>Micro-structure, fine-grain clarity, clean form.</p>
 
   </section>
@@ -213,15 +207,15 @@
     <ul>
       <li>
         <a href="https://obsessions.plnt.earth">Obsessions — Marina</a>
-        <span class="chip marina">Mirror</span>
+        <span class="chip c5">Mirror</span>
       </li>
       <li>
         <a href="https://itgets.dark.plnt.earth">It Gets Dark — Sigrid</a>
-        <span class="chip sigrid">Clarity</span>
+        <span class="chip c2">Clarity</span>
       </li>
       <li>
         <a href="https://bejeweled.plnt.earth">Bejeweled — Taylor Swift</a>
-        <span class="chip taylor">Structure</span>
+        <span class="chip c13">Structure</span>
       </li>
     </ul>
     <p class="note">(These pages reflect applied interpretation through music and structure.)</p>
@@ -236,6 +230,13 @@
       Together they form a stable, creative, scientific field.
     </p>
   </section>
+
+  <footer>
+    <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.6;">
+      <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+    </div>
+    © 2025 • Creative Commons BY-NC-SA 4.0
+  </footer>
 
 </div>
 </body>
