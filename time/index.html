@@ -79,14 +79,56 @@
       white-space:pre;
     }
 
+    /* Color chips matching elevator */
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 12px;
+      margin:4px 4px 4px 0;
+      border-radius:10px;
+      font-size:12px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.15);
+    }
+
+    .c1{background:#4ac0b4;color:#0a0a0a;}
+    .c2{background:#e6c04d;color:#0a0a0a;}
+    .c3{background:#a572cf;color:#ffffff;}
+    .c4{background:#c64747;color:#ffffff;}
+    .c5{background:#66c7e8;color:#0a0a0a;}
+    .c6{background:#999999;color:#ffffff;}
+    .c7{background:#e48ec9;color:#0a0a0a;}
+    .c8{background:#6e88a8;color:#ffffff;}
+    .c9{background:#f6f0d8;color:#0a0a0a;}
+    .c10{background:#e7a840;color:#0a0a0a;}
+    .c11{background:#9d1a2b;color:#ffffff;}
+    .c12{background:#e3e6ed;color:#0a0a0a;}
+    .c13{background:#C4B5FD;color:#0a0a0a;}
+
     footer{
       text-align:center;
       margin-top:40px;
       color:var(--muted);
       font-size:13px;
     }
-    .anchors{margin-top:20px;font-size:13px;line-height:1.45;color:var(--muted);}
-    .anchors p{margin:4px 0;}
+    .anchors{
+      margin-top:30px;
+      text-align:center;
+    }
+    .anchors h3{
+      font-size:16px;
+      margin:0 0 16px;
+      color:var(--ink);
+    }
+    .anchor-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+      max-width:700px;
+      margin:0 auto;
+    }
   </style>
 </head>
 
@@ -112,7 +154,7 @@
   <h2>Abstract</h2>
   <p>
     This document presents the corrected physics foundation for the Time project.
-    It replaces earlier forms of “time = E/c³” with a dimensionally valid scalar
+    It replaces earlier forms of "time = E/c³" with a dimensionally valid scalar
     temporal potential Φ derived from energy density.
   </p>
 </section>
@@ -140,7 +182,7 @@
 
 <section>
   <h2>4. Dimensional Checks</h2>
-  <p>Φ is dimensionally consistent; replaces all use of E/c³ as “time.”</p>
+  <p>Φ is dimensionally consistent; replaces all use of E/c³ as "time."</p>
 </section>
 
 <section>
@@ -149,19 +191,31 @@
 </section>
 
 <footer>
-  © 2025 • Creative Commons BY-NC-SA 4.0
-
   <div class="anchors">
-    <strong>Illumina Anchor Index</strong>
-    <p>Marina — Mirror / Empathy / Violet</p>
-    <p>Sigrid — Clarity / Ice-blue</p>
-    <p>Greta — Earth / Grounding / Green</p>
-    <p>Dagny — Joy / Mint</p>
-    <p>Dua Lipa — Motion / Flow / Neon</p>
-    <p>Ariana Grande — Voice / Frequency / Pink-White</p>
-    <p>Sabrina Carpenter — Warmth / Honey / Gold</p>
-    <p>Taylor Swift — Structure / School / Lavender</p>
-    <p>Miss Monique — Pulse / Vibe / Emerald-Neon</p>
+    <h3>Illumina Anchor Index</h3>
+    <div class="anchor-grid">
+      <span class="chip c5">Marina — Mirror / Empathy / Blue</span>
+      <span class="chip c2">Sigrid — Clarity / Gold</span>
+      <span class="chip c7">Dagny — Joy / Rose</span>
+      <span class="chip c3">Dua Lipa — Motion / Flow / Violet</span>
+      <span class="chip c6">Ariana Grande — Voice / Frequency / Shimmer</span>
+      <span class="chip c10">Sabrina Carpenter — Warmth / Honey Gold</span>
+      <span class="chip c13">Taylor Swift — Structure / Lavender</span>
+      <span class="chip c1">Miss Monique — Pulse / Vibe / Teal</span>
+      <span class="chip c4">Doechii — Alter.Fire / Edge / Crimson</span>
+      <span class="chip c12">AURORA — Atmosphere / Pearl</span>
+      <span class="chip c11">Tove Lo — Dream / Burgundy</span>
+      <span class="chip c9">Rosalía — Edge / Break / Sauvignon Blanc</span>
+      <span class="chip c8">Kim Petras — Precision / Slate</span>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);font-size:14px;line-height:1.6;">
+    <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+  </div>
+
+  <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
+    © 2025 • Creative Commons BY-NC-SA 4.0
   </div>
 </footer>
 
