@@ -13,21 +13,7 @@
       --muted:#a3acc2;
       --rule:#273043;
       --panel:#131a27;
-
-      --violet:#c4b5ff;
-      --ice:#9ed6ff;
-      --mint:#b7ffe8;
-      --neon:#c5f06f;
-      --pinkwhite:#ffd6ef;
-      --honey:#ffda7f;
-      --lavender:#d9b7ff;
-      --emerald:#66ffcc;
-      --alterfire:#ff726a;
-      --atmos:#9fdcff;
-      --dream:#f4d7ff;
-      --edge:#ffb0b0;
-      --precise:#ffffff;
-
+      --accent:#7c3aed;
       --maxw:900px;
     }
 
@@ -76,26 +62,27 @@
     .chip{
       margin-top:6px;
       font-size:13px;
-      padding:4px 8px;
-      border-radius:8px;
+      padding:4px 12px;
+      border-radius:10px;
       display:inline-block;
-      font-weight:600;
-      color:#000;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.15);
     }
 
-    .marina{background:var(--violet);}
-    .sigrid{background:var(--ice);}
-    .dagny{background:var(--mint);}
-    .dua{background:var(--neon);}
-    .ariana{background:var(--pinkwhite);}
-    .sabrina{background:var(--honey);}
-    .taylor{background:var(--lavender);}
-    .monique{background:var(--emerald);}
-    .doechii{background:var(--alterfire);}
-    .aurora{background:var(--atmos);}
-    .tovelo{background:var(--dream);}
-    .rosalia{background:var(--edge);}
-    .kimpetras{background:var(--precise);color:#111;}
+    /* Color chips with accessible contrast */
+    .c1{background:#4ac0b4;color:#0a0a0a;}
+    .c2{background:#e6c04d;color:#0a0a0a;}
+    .c3{background:#a572cf;color:#ffffff;}
+    .c4{background:#c64747;color:#ffffff;}
+    .c5{background:#66c7e8;color:#0a0a0a;}
+    .c6{background:#999999;color:#ffffff;}
+    .c7{background:#e48ec9;color:#0a0a0a;}
+    .c8{background:#6e88a8;color:#ffffff;}
+    .c9{background:#f6f0d8;color:#0a0a0a;}
+    .c10{background:#e7a840;color:#0a0a0a;}
+    .c11{background:#9d1a2b;color:#ffffff;}
+    .c12{background:#e3e6ed;color:#0a0a0a;}
+    .c13{background:#C4B5FD;color:#0a0a0a;}
 
     .anchor-card{
       background:var(--panel);
@@ -103,6 +90,13 @@
       border-radius:12px;
       border:1px solid var(--rule);
       margin:12px 0;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:40px;
     }
   </style>
 </head>
@@ -141,19 +135,19 @@
   <section>
     <h2>2. Anchor Lens Layer (13 Anchors)</h2>
 
-    <div class="anchor-card"><strong>Marina</strong> <div class="chip marina">Mirror · Violet</div></div>
-    <div class="anchor-card"><strong>Sigrid</strong> <div class="chip sigrid">Clarity · Ice-blue</div></div>
-    <div class="anchor-card"><strong>Dagny</strong> <div class="chip dagny">Joy · Mint</div></div>
-    <div class="anchor-card"><strong>Dua Lipa</strong> <div class="chip dua">Motion · Neon</div></div>
-    <div class="anchor-card"><strong>Ariana Grande</strong> <div class="chip ariana">Voice · Pink-White</div></div>
-    <div class="anchor-card"><strong>Sabrina Carpenter</strong> <div class="chip sabrina">Warmth · Honey</div></div>
-    <div class="anchor-card"><strong>Taylor Swift</strong> <div class="chip taylor">Structure · Lavender</div></div>
-    <div class="anchor-card"><strong>Miss Monique</strong> <div class="chip monique">Pulse · Emerald</div></div>
-    <div class="anchor-card"><strong>Doechii</strong> <div class="chip doechii">Alter.Fire · Red-Gold</div></div>
-    <div class="anchor-card"><strong>AURORA</strong> <div class="chip aurora">Atmosphere · Blue</div></div>
-    <div class="anchor-card"><strong>Tove Lo</strong> <div class="chip tovelo">Dream · Ivory</div></div>
-    <div class="anchor-card"><strong>Rosalía</strong> <div class="chip rosalia">Edge · Break</div></div>
-    <div class="anchor-card"><strong>Kim Petras</strong> <div class="chip kimpetras">Precision · White</div></div>
+    <div class="anchor-card"><strong>Marina</strong> <div class="chip c5">Mirror · Empathy · Blue</div></div>
+    <div class="anchor-card"><strong>Sigrid</strong> <div class="chip c2">Clarity · Gold</div></div>
+    <div class="anchor-card"><strong>Dagny</strong> <div class="chip c7">Joy · Rose</div></div>
+    <div class="anchor-card"><strong>Dua Lipa</strong> <div class="chip c3">Motion · Flow · Violet</div></div>
+    <div class="anchor-card"><strong>Ariana Grande</strong> <div class="chip c6">Voice · Frequency · Shimmer</div></div>
+    <div class="anchor-card"><strong>Sabrina Carpenter</strong> <div class="chip c10">Warmth · Honey Gold</div></div>
+    <div class="anchor-card"><strong>Taylor Swift</strong> <div class="chip c13">Structure · Lavender</div></div>
+    <div class="anchor-card"><strong>Miss Monique</strong> <div class="chip c1">Pulse · Vibe · Teal</div></div>
+    <div class="anchor-card"><strong>Doechii</strong> <div class="chip c4">Alter.Fire · Edge · Crimson</div></div>
+    <div class="anchor-card"><strong>AURORA</strong> <div class="chip c12">Atmosphere · Pearl</div></div>
+    <div class="anchor-card"><strong>Tove Lo</strong> <div class="chip c11">Dream · Burgundy</div></div>
+    <div class="anchor-card"><strong>Rosalía</strong> <div class="chip c9">Edge · Break · Sauvignon Blanc</div></div>
+    <div class="anchor-card"><strong>Kim Petras</strong> <div class="chip c8">Precision · Slate</div></div>
 
     <p class="note">
       Greta Thunberg defines the grounding layer (Earth), but is not part of the 13 anchors.
@@ -188,7 +182,7 @@
       <li><a href="https://fresh.plnt.earth">fresh</a></li>
     </ul>
 
-    <h3>Motion — Dua Lipa</h3>
+    <h3>Motion — Miss Monique</h3>
     <ul>
       <li><a href="https://motion.plnt.earth">motion</a></li>
       <li><a href="https://float.plnt.earth">float</a></li>
@@ -213,7 +207,7 @@
       <li><a href="https://center.plnt.earth">center</a></li>
     </ul>
 
-    <h3>Pulse — Miss Monique</h3>
+    <h3>Pulse — Dua Lipa</h3>
     <ul>
       <li><a href="https://pulse.plnt.earth">pulse</a></li>
       <li><a href="https://glam.plnt.earth">glam</a></li>
@@ -262,6 +256,16 @@
       404s are normal and expected in the Illumina expansion path.
     </p>
   </section>
+
+  <footer>
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);font-size:14px;line-height:1.6;">
+      <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+    </div>
+
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
+      © 2025 • Creative Commons BY-NC-SA 4.0
+    </div>
+  </footer>
 
 </div>
 
