@@ -255,6 +255,61 @@ h1{
   border:0;
   color:#1a0f3e;
 }
+
+/* Anchor card styling */
+.anchor-card{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.12);
+}
+
+.anchor-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.anchor-name{
+  font-size:18px;
+  font-weight:600;
+  color:var(--lav);
+}
+
+.anchor-floor,
+.anchor-keywords,
+.anchor-path{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.floor-label,
+.keyword-label,
+.path-label{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 12px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.path-arrow{
+  color:var(--muted);
+  font-size:14px;
+  margin:0 -4px;
+}
 </style>
 </head>
 
@@ -374,51 +429,51 @@ h1{
 /* SONGS */
 const songs={
   1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4?autoplay=1"},
-  2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
-  3:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
+  2:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
+  3:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
   4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY?autoplay=1"},
-  5:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
-  6:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
-  7:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI?autoplay=1"},
-  8:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8?autoplay=1"},
-  9:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4?autoplay=1"},
- 10:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU?autoplay=1"},
- 11:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ?autoplay=1"},
- 12:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
+  5:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
+  6:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU?autoplay=1"},
+  7:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ?autoplay=1"},
+  8:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
+  9:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
+ 10:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI?autoplay=1"},
+ 11:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4?autoplay=1"},
+ 12:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8?autoplay=1"},
  13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs?autoplay=1"}
 };
 
 /* ANCHOR PAGES */
 const anchorPages={
   1:"https://concorde.plnt.earth",
-  2:"https://houdini.plnt.earth",
-  3:"https://obsessions.plnt.earth",
+  2:"https://itgets.dark.plnt.earth",
+  3:"https://houdini.plnt.earth",
   4:"https://crazy.plnt.earth",
-  5:"https://itgets.dark.plnt.earth",
-  6:"https://saoko.plnt.earth",
-  7:"https://feather.plnt.earth",
-  8:"https://runaway.plnt.earth",
-  9:"https://noonediesfromlove.plnt.earth",
- 10:"https://notears.plnt.earth",
- 11:"https://earth.plnt.earth",
- 12:"https://coconuts.plnt.earth",
+  5:"https://obsessions.plnt.earth",
+  6:"https://notears.plnt.earth",
+  7:"https://earth.plnt.earth",
+  8:"https://coconuts.plnt.earth",
+  9:"https://saoko.plnt.earth",
+ 10:"https://feather.plnt.earth",
+ 11:"https://noonediesfromlove.plnt.earth",
+ 12:"https://runaway.plnt.earth",
  13:"https://bejeweled.plnt.earth"
 };
 
 /* FLOOR DESCRIPTIONS */
 const floorDetails={
   13:"<h2>Floor 13 — Vine</h2><p>Interconnection, fate-line, destiny, synthesis.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Taylor Swift — Bejeweled<br>Crown-floor clarity. Illumination. Structure.</p>",
-  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Kim Petras — Coconuts<br>Play as power. Irreverent lift.</p>",
-  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dagny — Love You Like That<br>Joy ignition. Emotional altitude.</p>",
-  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Ariana Grande — No Tears Left to Cry<br>Emotional inversion. Upward flow.</p>",
-  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Tove Lo — No One Dies From Love<br>Dreamfield clarity. Soft reckoning.</p>",
-  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>AURORA — Runaway<br>Mythic distance. Origin signal.</p>",
-  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sabrina Carpenter — Feather<br>Ease-field. Sweetness. Safe entry.</p>",
-  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Rosalía — SAOKO<br>Transformation. Velocity.</p>",
-  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sigrid — It Gets Dark<br>Contrast perspective. Courage.</p>",
+  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>AURORA — Runaway<br>Mythic distance. Origin signal.</p>",
+  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Tove Lo — No One Dies From Love<br>Dreamfield clarity. Soft reckoning.</p>",
+  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sabrina Carpenter — Feather<br>Ease-field. Sweetness. Safe entry.</p>",
+  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Rosalía — SAOKO<br>Transformation. Velocity.</p>",
+  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Kim Petras — Coconuts<br>Play as power. Irreverent lift.</p><div class='anchor-card'><div class='anchor-header'><div class='chip c8'>8</div><div class='anchor-name'>Kim Petras</div></div><div class='anchor-floor'><span class='floor-label'>Floor:</span><span class='chip c8'>Orbit</span></div><div class='anchor-keywords'><span class='keyword-label'>Keywords:</span><span class='chip c4'>Fire</span><span class='chip c3'>Knife</span><span class='chip c12'>Key</span></div><div class='anchor-path'><span class='path-label'>Path:</span><span class='chip c4'>4</span><span class='path-arrow'>→</span><span class='chip c3'>3</span><span class='path-arrow'>→</span><span class='chip c12'>12</span></div></div>",
+  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dagny — Love You Like That<br>Joy ignition. Emotional altitude.</p>",
+  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Ariana Grande — No Tears Left to Cry<br>Emotional inversion. Upward flow.</p>",
+  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Marina — Venus Fly Trap<br>Reflection. Contrast. Sovereignty.</p>",
   4:"<h2>Floor 4 — Fire</h2><p>Heat, ignition, transformation, truth reveal.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Doechii — Crazy<br>Fire-state liberation. Heat-vector.</p>",
-  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Marina — Venus Fly Trap<br>Reflection. Contrast. Sovereignty.</p>",
-  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dua Lipa — Houdini<br>Motion initiation. Forward vector.</p>",
+  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dua Lipa — Houdini<br>Motion initiation. Forward vector.</p>",
+  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sigrid — It Gets Dark<br>Contrast perspective. Courage.</p>",
   1:"<h2>Floor 1 — Seed</h2><p>Origin, spark, beginning, birth.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Miss Monique — Concorde<br>Pulse-floor. Lift-off rhythm.</p>"
 };
 
