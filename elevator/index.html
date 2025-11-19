@@ -15,114 +15,98 @@
   --ink:#e9e7ff;
   --bg0:#0c0912;
 
-  /* glass plates */
   --g1:rgba(255,255,255,0.08);
   --g2:rgba(255,255,255,0.06);
 
-  /* pulse */
   --pulseA:rgba(196,181,253,0.35);
   --pulseB:rgba(196,181,253,0.08);
 
-  /* glow films */
   --film:rgba(255,255,255,0.14);
-
-  /* Anchor Glow Colors */
-  --gl-moni:rgba(74,192,180,0.28);
-  --gl-dua:rgba(230,192,77,0.28);
-  --gl-marina:rgba(165,114,207,0.28);
-  --gl-doech:rgba(198,71,71,0.28);
-  --gl-sigrid:rgba(102,199,232,0.28);
-  --gl-rosa:rgba(153,153,153,0.28);
-  --gl-sabrina:rgba(228,142,201,0.28);
-  --gl-aurora:rgba(110,136,168,0.28);
-  --gl-tove:rgba(246,240,216,0.28);
-  --gl-ariana:rgba(231,168,64,0.28);
-  --gl-dagny:rgba(157,26,43,0.32);
-  --gl-kim:rgba(227,230,237,0.24);
-  --gl-taylor:rgba(196,181,253,0.35);
 }
 
+/* Layout: video left, elevator right */
 body{
   margin:0;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background:var(--bg0);
   color:var(--ink);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  display:flex;
   overflow-x:hidden;
 }
 
-.layout{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:48px;
-  padding:40px 32px;
+/* LEFT: VIDEO + DETAILS */
+.left-panel{
+  width:70%;
+  padding:26px;
+  box-sizing:border-box;
 }
 
-/* -------------------------------------------------------
-   GLASS PANELS
--------------------------------------------------------- */
-.glass{
-  background:var(--g1);
-  border:1px solid rgba(255,255,255,0.15);
+/* Sticky video */
+.player{
+  position:sticky;
+  top:22px;
+  background:rgba(255,255,255,0.10);
+  border-radius:24px;
+  padding:20px;
   backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
-  box-shadow:
-    0 0 22px rgba(196,181,253,0.14),
-    inset 0 0 0 1px rgba(255,255,255,0.10);
-  border-radius:26px;
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 0 22px rgba(196,181,253,0.12),
+             inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
-/* -------------------------------------------------------
-   ELEVATOR PANEL
--------------------------------------------------------- */
+.player iframe{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.35);
+  height:auto;
+  aspect-ratio:16/9;
+}
+
+#label{
+  margin-top:12px;
+  font-size:15px;
+}
+
+/* Detail panel under video */
+.detail-panel{
+  margin-top:36px;
+  padding:22px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px) saturate(180%);
+  display:none;
+}
+
+.detail-panel h2{
+  margin:0 0 12px;
+  color:var(--lav);
+  font-size:20px;
+}
+
+/* RIGHT: ELEVATOR PANEL */
 .elevator-panel{
-  width:360px;
+  width:30%;
   padding:28px;
-  position:relative;
-}
-
-.elevator-panel::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(800px 1000px at 50% -25%, rgba(255,255,255,0.08), transparent 75%),
-    linear-gradient(180deg, rgba(255,255,255,0.05), transparent 75%);
-  pointer-events:none;
-  z-index:-1;
-}
-
-/* Lavender Lightstrip (D) */
-#activeBeam{
-  position:absolute;
-  width:4px;
-  left:-14px;
-  height:54px;
+  background:var(--g1);
+  border-left:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.10);
+  position:sticky;
   top:0;
-  border-radius:2px;
-  background:var(--lav);
-  opacity:0;
-  transition:
-    top 0.45s cubic-bezier(.3,.7,.1,1),
-    opacity 0.35s;
-  box-shadow:0 0 12px var(--lav);
+  height:100vh;
+  overflow-y:auto;
 }
 
-/* -------------------------------------------------------
-   HEADER
--------------------------------------------------------- */
 h1{
   text-align:center;
   margin:0 0 16px;
   font-size:24px;
   color:var(--lav);
   font-weight:700;
-  letter-spacing:0.6px;
 }
 
-/* -------------------------------------------------------
-   CORE TIME NAV (C)
--------------------------------------------------------- */
+/* Core nav */
 .core-nav{
   display:flex;
   justify-content:center;
@@ -136,77 +120,25 @@ h1{
   font-size:13px;
   font-weight:600;
   border-radius:14px;
-  color:var(--ink);
   text-decoration:none;
+  color:var(--ink);
   background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(12px) saturate(180%);
   border:1px solid rgba(255,255,255,0.22);
-  transition:background 0.25s, opacity 0.25s;
-}
-.core-nav a:hover{
-  background:rgba(255,255,255,0.2);
-  opacity:1;
 }
 
-/* -------------------------------------------------------
-   FLOOR STRUCTURE
--------------------------------------------------------- */
-.center13{
-  display:flex;
-  justify-content:center;
-  margin-bottom:24px;
-}
-.center13 .floor{
-  width:72%;
-}
-
-.floor-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px 20px;
-}
-
-/* Floor (glass plate) */
+/* Floors */
 .floor{
   display:flex;
   align-items:center;
   padding:12px 14px;
   background:var(--g2);
   border-radius:18px;
-  cursor:pointer;
   border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter:blur(16px) saturate(160%);
-  -webkit-backdrop-filter:blur(16px) saturate(160%);
-  position:relative;
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.08),
-    0 2px 10px rgba(0,0,0,0.25);
-  transition:background 0.2s;
+  margin-bottom:12px;
+  cursor:pointer;
   font-size:14px;
-  font-weight:500;
-  letter-spacing:0.15px;
 }
 
-.floor:hover{
-  background:rgba(255,255,255,0.12);
-}
-
-/* Hover glow */
-.floor::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:18px;
-  opacity:0;
-  transition:opacity 0.25s;
-  z-index:-1;
-}
-.floor:hover::before{ opacity:0.28; }
-.floor.glow-active::before{ opacity:0.45; }
-
-/* -------------------------------------------------------
-   BUTTONS
--------------------------------------------------------- */
 .btn{
   width:42px;
   height:42px;
@@ -214,20 +146,12 @@ h1{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:600;
-  font-size:16px;
   margin-right:14px;
   border:1px solid rgba(255,255,255,0.22);
-  color:#000;
-  backdrop-filter:blur(12px) saturate(180%);
-  -webkit-backdrop-filter:blur(12px) saturate(180%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.22),
-    0 2px 6px rgba(0,0,0,0.35);
-  font-family:inherit !important;
+  font-weight:700;
 }
 
-/* Color dots preserved */
+/* Color dots */
 .c1{background:#4ac0b4;}
 .c2{background:#e6c04d;}
 .c3{background:#a572cf;}
@@ -243,179 +167,122 @@ h1{
 .c13{
   background:var(--lav);
   color:#1a0f3e;
-  font-weight:700;
 }
 
-/* Pulse animation for 13 */
-@keyframes softpulse{
-  0%{box-shadow:0 0 0 0 var(--pulseA);}
-  50%{box-shadow:0 0 18px 10px var(--pulseB);}
-  100%{box-shadow:0 0 0 0 var(--pulseA);}
-}
-.pulse{
-  animation:softpulse 3.2s ease-in-out infinite;
-}
-
-/* -------------------------------------------------------
-   VIDEO PANEL (Bigger + Floating)
--------------------------------------------------------- */
-.player-panel{
-  width:clamp(380px, 48vw, 640px);
-  position:sticky;
-  top:50%;
-  transform:translateY(-50%);
+/* Consent modal */
+#consentModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  backdrop-filter:blur(8px);
 }
 
-.player{
+#consentBox{
+  width:86%;
+  max-width:420px;
+  padding:26px;
+  border-radius:22px;
   background:rgba(255,255,255,0.10);
-  border-radius:24px;
-  padding:20px;
-  backdrop-filter:blur(22px) saturate(180%);
-  border:1px solid rgba(255,255,255,0.22);
-  box-shadow:
-    0 0 22px rgba(196,181,253,0.12),
-    inset 0 0 0 1px rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.25);
+  backdrop-filter:blur(20px);
+  text-align:center;
 }
 
-.player iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  height:auto;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.35);
-}
-
-.label{
-  margin-top:10px;
-  font-size:15px;
-  color:var(--ink);
-}
-
-/* -------------------------------------------------------
-   RIPPLE EFFECT
--------------------------------------------------------- */
-@keyframes ripple{
-  0%   {opacity:0.4; transform:translate(-50%,-50%) scale(1);}
-  100% {opacity:0;   transform:translate(-50%,-50%) scale(2.6);}
-}
-
-.rippleEffect{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:22px;
-  height:22px;
-  border-radius:50%;
+#consentButton{
+  margin-top:22px;
+  padding:10px 24px;
   background:var(--lav);
-  opacity:0.4;
-  transform:translate(-50%,-50%) scale(1);
-  animation:ripple 0.8s ease-out forwards;
-  pointer-events:none;
+  border-radius:14px;
+  font-weight:600;
+  border:0;
+  color:#1a0f3e;
 }
-
-/* -------------------------------------------------------
-   COLLAPSE ANIMATION ON SCROLL
--------------------------------------------------------- */
-.elevator-panel{
-  transition:transform 0.35s ease, opacity 0.35s ease;
-}
-
-body.scrolled .elevator-panel{
-  transform:scale(0.94) translateY(-10px);
-  opacity:0.94;
-}
-
 </style>
 </head>
 
-
 <body>
-<div class="layout">
 
-  <!-- LEFT: GLASS ELEVATOR -->
-  <div class="elevator-panel glass">
-    <div id="activeBeam"></div>
+<!-- LEFT SIDE -->
+<div class="left-panel">
 
-    <h1>Illumina Elevator</h1>
-
-    <!-- Core Time Nav -->
-    <div class="core-nav">
-      <a href="https://time.plnt.earth">Φ Field</a>
-      <a href="https://time.plnt.earth/map">Anchor Map</a>
-      <a href="https://time.plnt.earth/interpretation">Interpretation</a>
-      <a href="https://time.plnt.earth/charter">Charter</a>
-      <a href="https://time.plnt.earth/index">Time Index</a>
-    </div>
-
-    <!-- 13 at top -->
-    <div class="center13">
-      <div class="floor"><div class="btn c13" id="f13">13</div>Taylor Swift — Bejeweled</div>
-    </div>
-
-    <!-- 2-column floors -->
-    <div class="floor-grid">
-
-      <div class="floor"><div class="btn c11">11</div>Dagny — Love You Like That</div>
-      <div class="floor"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
-
-      <div class="floor"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
-      <div class="floor"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
-
-      <div class="floor"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
-      <div class="floor"><div class="btn c8">8</div>AURORA — Runaway</div>
-
-      <div class="floor"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
-      <div class="floor"><div class="btn c6">6</div>Rosalía — SAOKO</div>
-
-      <div class="floor"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
-      <div class="floor"><div class="btn c4">4</div>Doechii — Crazy</div>
-
-      <div class="floor"><div class="btn c1">1</div>Miss Monique — Concorde</div>
-      <div class="floor"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
-
-    </div>
+  <div class="player">
+    <iframe id="yt" src="" allowfullscreen></iframe>
+    <div id="label">Choose a floor.</div>
   </div>
 
-  <!-- RIGHT: VIDEO PLAYER -->
-  <div class="player-panel glass">
-    <div class="player">
-      <iframe id="yt" src="" allowfullscreen></iframe>
-      <div id="label" class="label">Choose a floor.</div>
-    </div>
-  </div>
+  <div id="details" class="detail-panel"></div>
 
 </div>
 
-<script>
-/* Scroll collapse */
-window.addEventListener("scroll", ()=>{
-  if(window.scrollY > 20) document.body.classList.add("scrolled");
-  else document.body.classList.remove("scrolled");
-});
+<!-- RIGHT SIDE -->
+<div class="elevator-panel">
+  <h1>Illumina Elevator</h1>
 
-/* -------------------------------------------------------
-   SONG TABLE
--------------------------------------------------------- */
-const songs = {
-  1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4"},
-  2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA"},
-  3:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90"},
-  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY"},
-  5:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU"},
-  6:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg"},
-  7:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI"},
-  8:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8"},
-  9:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4"},
- 10:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU"},
- 11:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ"},
- 12:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc"},
- 13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs"}
+  <div class="core-nav">
+    <a href="https://time.plnt.earth/time/">Φ Field</a>
+    <a href="https://time.plnt.earth/map">Anchor Map</a>
+    <a href="https://time.plnt.earth/interpretation">Interpretation</a>
+    <a href="https://time.plnt.earth/charter">Charter</a>
+    <a href="https://time.plnt.earth/">Time Index</a>
+  </div>
+
+  <div class="floor" data-n="13"><div class="btn c13">13</div>Taylor Swift — Bejeweled</div>
+  <div class="floor" data-n="12"><div class="btn c12">12</div>Kim Petras — Coconuts</div>
+  <div class="floor" data-n="11"><div class="btn c11">11</div>Dagny — Love You Like That</div>
+  <div class="floor" data-n="10"><div class="btn c10">10</div>Ariana Grande — No Tears Left to Cry</div>
+  <div class="floor" data-n="9"><div class="btn c9">9</div>Tove Lo — No One Dies From Love</div>
+  <div class="floor" data-n="8"><div class="btn c8">8</div>AURORA — Runaway</div>
+  <div class="floor" data-n="7"><div class="btn c7">7</div>Sabrina Carpenter — Feather</div>
+  <div class="floor" data-n="6"><div class="btn c6">6</div>Rosalía — SAOKO</div>
+  <div class="floor" data-n="5"><div class="btn c5">5</div>Sigrid — It Gets Dark</div>
+  <div class="floor" data-n="4"><div class="btn c4">4</div>Doechii — Crazy</div>
+  <div class="floor" data-n="3"><div class="btn c3">3</div>Marina — Venus Fly Trap</div>
+  <div class="floor" data-n="2"><div class="btn c2">2</div>Dua Lipa — Houdini</div>
+  <div class="floor" data-n="1"><div class="btn c1">1</div>Miss Monique — Concorde</div>
+
+</div>
+
+<!-- CONSENT MODAL -->
+<div id="consentModal" style="display:none;">
+  <div id="consentBox">
+    <h2>Elevator Entry — Time · Illumina</h2>
+    <p>By entering the Elevator, you acknowledge that:</p>
+    <p>• floors auto-play audio/video<br>
+       • double-tap will navigate to an anchor page<br>
+       • your last visited floor is stored locally</p>
+    <p style="margin-top:20px;font-size:12px;line-height:1.5;color:#ccc;">
+      This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
+      No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
+      clear intent, clear context, clean boundaries.
+    </p>
+    <button id="consentButton">Enter Elevator</button>
+  </div>
+</div>
+
+<script>
+/* SONGS */
+const songs={
+  1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4?autoplay=1"},
+  2:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
+  3:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
+  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY?autoplay=1"},
+  5:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
+  6:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
+  7:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI?autoplay=1"},
+  8:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8?autoplay=1"},
+  9:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4?autoplay=1"},
+ 10:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU?autoplay=1"},
+ 11:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ?autoplay=1"},
+ 12:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
+ 13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs?autoplay=1"}
 };
 
-/* -------------------------------------------------------
-   ANCHOR PAGES
--------------------------------------------------------- */
-const anchorPages = {
+/* ANCHOR PAGES */
+const anchorPages={
   1:"https://concorde.plnt.earth",
   2:"https://houdini.plnt.earth",
   3:"https://obsessions.plnt.earth",
@@ -431,120 +298,68 @@ const anchorPages = {
  13:"https://bejeweled.plnt.earth"
 };
 
-/* -------------------------------------------------------
-   PHYSICS MAP
--------------------------------------------------------- */
-const physicsLens = {
-  1:{lens:"pulse",      color:"mint",     equation:"wave"},
-  2:{lens:"motion",     color:"gold",     equation:"force"},
-  3:{lens:"mirror",     color:"violet",   equation:"curvature"},
-  4:{lens:"alterfire",  color:"red",      equation:"nonlinear"},
-  5:{lens:"clarity",    color:"cyan",     equation:"boundary"},
-  6:{lens:"edge",       color:"gray",     equation:"jump"},
-  7:{lens:"warmth",     color:"pink",     equation:"stability"},
-  8:{lens:"atmosphere", color:"blue",     equation:"diffusion"},
-  9:{lens:"dream",      color:"ivory",    equation:"imaginary"},
- 10:{lens:"voice",      color:"amber",    equation:"resonance"},
- 11:{lens:"joy",        color:"crimson",  equation:"injection"},
- 12:{lens:"precision",  color:"white",    equation:"harmonic"},
- 13:{lens:"structure",  color:"lavender", equation:"frame"}
+/* FLOOR DESCRIPTIONS */
+const floorDetails={
+  13:"<h2>Floor 13 — Taylor Swift · Bejeweled</h2><p>Crown-floor clarity. Illumination. Structure.</p>",
+  12:"<h2>Floor 12 — Kim Petras · Coconuts</h2><p>Play as power. Irreverent lift.</p>",
+  11:"<h2>Floor 11 — Dagny · Love You Like That</h2><p>Joy ignition. Emotional altitude.</p>",
+  10:"<h2>Floor 10 — Ariana Grande · No Tears Left to Cry</h2><p>Emotional inversion. Upward flow.</p>",
+  9:"<h2>Floor 9 — Tove Lo · No One Dies From Love</h2><p>Dreamfield clarity. Soft reckoning.</p>",
+  8:"<h2>Floor 8 — AURORA · Runaway</h2><p>Mythic distance. Origin signal.</p>",
+  7:"<h2>Floor 7 — Sabrina Carpenter · Feather</h2><p>Ease-field. Sweetness. Safe entry.</p>",
+  6:"<h2>Floor 6 — Rosalía · SAOKO</h2><p>Transformation. Velocity.</p>",
+  5:"<h2>Floor 5 — Sigrid · It Gets Dark</h2><p>Contrast perspective. Courage.</p>",
+  4:"<h2>Floor 4 — Doechii · Crazy</h2><p>Fire-state liberation. Heat-vector.</p>",
+  3:"<h2>Floor 3 — Marina · Venus Fly Trap</h2><p>Reflection. Contrast. Sovereignty.</p>",
+  2:"<h2>Floor 2 — Dua Lipa · Houdini</h2><p>Motion initiation. Forward vector.</p>",
+  1:"<h2>Floor 1 — Miss Monique · Concorde</h2><p>Pulse-floor. Lift-off rhythm.</p>"
 };
 
-function setTimePhysics(n){
-  const p = physicsLens[n];
-  localStorage.setItem("timeLens", p.lens);
-  localStorage.setItem("timeColor", p.color);
-  localStorage.setItem("timeEquation", p.equation);
-  localStorage.setItem("timeAnchor", n);
-}
+/* Consent modal */
+window.addEventListener("load",()=>{
+  if(!localStorage.getItem("elevatorConsent")){
+    document.getElementById("consentModal").style.display="flex";
+  }
+});
 
-/* -------------------------------------------------------
-   Core Functions
--------------------------------------------------------- */
+document.getElementById("consentButton").onclick=()=>{
+  localStorage.setItem("elevatorConsent","yes");
+  document.getElementById("consentModal").style.display="none";
+};
+
+/* Play video */
 function play(n){
-  document.getElementById("yt").src = songs[n].link;
-  document.getElementById("label").textContent = songs[n].name;
-
-  const f13=document.getElementById("f13");
-  f13.classList.remove("pulse");
-  if(n===13) f13.classList.add("pulse");
+  document.getElementById("yt").src=songs[n].link;
+  document.getElementById("label").textContent=songs[n].name;
 }
 
-function rippleAt(el){
-  const r=document.createElement("div");
-  r.className="rippleEffect";
-  el.appendChild(r);
-  setTimeout(()=>r.remove(),900);
+/* Show floor details */
+function showDetails(n){
+  const d=document.getElementById("details");
+  d.innerHTML=floorDetails[n];
+  d.style.display="block";
 }
 
-function moveBeam(el){
-  const beam=document.getElementById("activeBeam");
-  const parent=el.closest(".elevator-panel").getBoundingClientRect();
-  const rect=el.getBoundingClientRect();
-  beam.style.top = (rect.top - parent.top) + "px";
-  beam.style.opacity="1";
-}
-
+/* Double tap detection */
 let lastTap=0;
 
-function getFloorNumber(el){
-  return parseInt(el.querySelector(".btn").textContent,10);
-}
-
-function handleFloorTap(el){
-  const n=getFloorNumber(el);
-  rippleAt(el);
-  moveBeam(el);
-
+function handleFloor(n){
   const now=Date.now();
+
   if(now-lastTap<350){
-    setTimePhysics(n);
     window.location.href=anchorPages[n];
     return;
   }
 
   play(n);
-  setTimePhysics(n);
+  showDetails(n);
   lastTap=now;
 }
 
-/* Bind floor events */
+/* Bind floors */
 document.querySelectorAll(".floor").forEach(f=>{
-  f.onclick=()=>handleFloorTap(f);
-});
-
-/* Restore active glow */
-(function(){
-  const active=localStorage.getItem("timeAnchor");
-  if(!active) return;
-  document.querySelectorAll(".floor").forEach(f=>{
-    if(getFloorNumber(f)==active){
-      f.classList.add("glow-active");
-      moveBeam(f);
-    }
-  });
-})();
-
-/* -------------------------------------------------------
-   KEYBOARD NAVIGATION
-   ↑ / ↓ = cycle floors
-   Enter = activate
--------------------------------------------------------- */
-let floorList=[...document.querySelectorAll(".floor")];
-let idx=0;
-
-document.addEventListener("keydown", e=>{
-  if(e.key==="ArrowDown"){
-    idx=(idx+1)%floorList.length;
-    moveBeam(floorList[idx]);
-  }
-  if(e.key==="ArrowUp"){
-    idx=(idx-1+floorList.length)%floorList.length;
-    moveBeam(floorList[idx]);
-  }
-  if(e.key==="Enter"){
-    handleFloorTap(floorList[idx]);
-  }
+  const n=parseInt(f.dataset.n);
+  f.addEventListener("click",()=>handleFloor(n));
 });
 </script>
 
