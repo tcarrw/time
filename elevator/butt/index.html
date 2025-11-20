@@ -24,6 +24,7 @@
   --film:rgba(255,255,255,0.14);
 }
 
+/* Layout: video left, elevator right */
 body{
   margin:0;
   background:var(--bg0);
@@ -40,6 +41,7 @@ body{
   box-sizing:border-box;
 }
 
+/* Sticky video */
 .player{
   position:sticky;
   top:22px;
@@ -56,6 +58,7 @@ body{
   width:100%;
   border-radius:20px;
   border:1px solid rgba(255,255,255,0.35);
+  height:auto;
   aspect-ratio:16/9;
 }
 
@@ -64,6 +67,7 @@ body{
   font-size:15px;
 }
 
+/* Detail panel under video */
 .detail-panel{
   margin-top:36px;
   padding:22px;
@@ -102,6 +106,7 @@ h1{
   font-weight:700;
 }
 
+/* Core nav */
 .core-nav{
   display:flex;
   justify-content:center;
@@ -121,6 +126,7 @@ h1{
   border:1px solid rgba(255,255,255,0.22);
 }
 
+/* Floor grid layout */
 .floors-container{
   display:flex;
   flex-direction:column;
@@ -139,6 +145,7 @@ h1{
   gap:12px;
 }
 
+/* Individual floor card */
 .floor{
   display:flex;
   flex-direction:column;
@@ -173,26 +180,17 @@ h1{
 
 .floor-text{
   line-height:1.4;
+  word-wrap:break-word;
   max-width:100%;
 }
 
-/* BUTTON COLORS */
-.c1{background:#4ac0b4;}
-.c2{background:#e6c04d;}
-.c3{background:#a572cf;}
-.c4{background:#c64747;}
-.c5{background:#66c7e8;}
-.c6{background:#999999;}
-.c7{background:#e48ec9;}
-.c8{background:#6e88a8;}
-.c9{background:#f6f0d8;color:#1a0f3e;}
-.c10{background:#e7a840;color:#1a0f3e;}
-.c11{background:#9d1a2b;}
-.c12{background:#e3e6ed;color:#1a0f3e;}
-.c13{background:var(--lav);color:#1a0f3e;}
-
+/* Responsive: stack on small screens */
 @media(max-width:768px){
-  .floors-grid{grid-template-columns:1fr;}
+  .floors-grid{
+    grid-template-columns:1fr;
+  }
+  
+  /* Reorder floors to descend 13->1 on mobile */
   .floor[data-n="12"]{order:1;}
   .floor[data-n="11"]{order:2;}
   .floor[data-n="10"]{order:3;}
@@ -205,6 +203,24 @@ h1{
   .floor[data-n="3"]{order:10;}
   .floor[data-n="2"]{order:11;}
   .floor[data-n="1"]{order:12;}
+}
+
+/* Color dots */
+.c1{background:#4ac0b4;}
+.c2{background:#e6c04d;}
+.c3{background:#a572cf;}
+.c4{background:#c64747;}
+.c5{background:#66c7e8;}
+.c6{background:#999999;}
+.c7{background:#e48ec9;}
+.c8{background:#6e88a8;}
+.c9{background:#f6f0d8;color:#1a0f3e;}
+.c10{background:#e7a840;color:#1a0f3e;}
+.c11{background:#9d1a2b;}
+.c12{background:#e3e6ed;color:#1a0f3e;}
+.c13{
+  background:var(--lav);
+  color:#1a0f3e;
 }
 
 /* Consent modal */
@@ -239,21 +255,79 @@ h1{
   border:0;
   color:#1a0f3e;
 }
+
+/* Anchor card styling */
+.anchor-card{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.12);
+}
+
+.anchor-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.anchor-name{
+  font-size:18px;
+  font-weight:600;
+  color:var(--lav);
+}
+
+.anchor-floor,
+.anchor-keywords,
+.anchor-path{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.floor-label,
+.keyword-label,
+.path-label{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 12px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.path-arrow{
+  color:var(--muted);
+  font-size:14px;
+  margin:0 -4px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- LEFT PANEL -->
+<!-- LEFT SIDE -->
 <div class="left-panel">
+
   <div class="player">
-    <iframe id="yt" src=""></iframe>
+    <iframe id="yt" src="" allowfullscreen></iframe>
     <div id="label">Choose a floor.</div>
   </div>
+
   <div id="details" class="detail-panel"></div>
+
 </div>
 
-<!-- RIGHT PANEL -->
+<!-- RIGHT SIDE -->
 <div class="elevator-panel">
   <h1>Illumina Elevator</h1>
 
@@ -266,83 +340,95 @@ h1{
   </div>
 
   <div class="floors-container">
-
-    <!-- Floor 13 -->
+    <!-- Floor 13 centered -->
     <div class="floor-13">
       <div class="floor" data-n="13">
         <div class="btn c13">13</div>
-        <div class="floor-text">Imaginary Time</div>
+        <div class="floor-text">Vine</div>
       </div>
     </div>
 
-    <!-- Floors 1–12 -->
+    <!-- Floors 1-12 in 2 columns (odd left, even right) -->
     <div class="floors-grid">
-
       <div class="floor" data-n="11">
         <div class="btn c11">11</div>
-        <div class="floor-text">Compression</div>
+        <div class="floor-text">Echo</div>
       </div>
       <div class="floor" data-n="12">
         <div class="btn c12">12</div>
-        <div class="floor-text">Zero-Distance Light</div>
+        <div class="floor-text">Key</div>
       </div>
 
       <div class="floor" data-n="9">
         <div class="btn c9">9</div>
-        <div class="floor-text">Entropy ↓</div>
+        <div class="floor-text">Glass</div>
       </div>
       <div class="floor" data-n="10">
         <div class="btn c10">10</div>
-        <div class="floor-text">Acceleration</div>
+        <div class="floor-text">Pulse</div>
       </div>
 
       <div class="floor" data-n="7">
         <div class="btn c7">7</div>
-        <div class="floor-text">Resonance</div>
+        <div class="floor-text">Gate</div>
       </div>
       <div class="floor" data-n="8">
         <div class="btn c8">8</div>
-        <div class="floor-text">Observer Frame</div>
+        <div class="floor-text">Orbit</div>
       </div>
 
       <div class="floor" data-n="5">
         <div class="btn c5">5</div>
-        <div class="floor-text">Frequency Lock</div>
+        <div class="floor-text">Crown</div>
       </div>
       <div class="floor" data-n="6">
         <div class="btn c6">6</div>
-        <div class="floor-text">Phase Boundary</div>
+        <div class="floor-text">River</div>
       </div>
 
       <div class="floor" data-n="3">
         <div class="btn c3">3</div>
-        <div class="floor-text">Recursion</div>
+        <div class="floor-text">Knife</div>
       </div>
       <div class="floor" data-n="4">
         <div class="btn c4">4</div>
-        <div class="floor-text">Thermal Spike</div>
+        <div class="floor-text">Fire</div>
       </div>
 
       <div class="floor" data-n="1">
         <div class="btn c1">1</div>
-        <div class="floor-text">Ground State</div>
+        <div class="floor-text">Seed</div>
       </div>
       <div class="floor" data-n="2">
         <div class="btn c2">2</div>
-        <div class="floor-text">Signal Ignition</div>
+        <div class="floor-text">Breath</div>
       </div>
-
     </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);font-size:13px;line-height:1.6;color:var(--muted);text-align:center;">
+    <a href="https://earth.plnt.earth" style="color:var(--lav);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
   </div>
 
 </div>
 
-<!-- Consent -->
-<div id="consentModal">
+<!-- CONSENT MODAL -->
+<div id="consentModal" style="display:none;">
   <div id="consentBox">
     <h2>Elevator Entry — Time · Illumina</h2>
-    <p>By entering the Elevator, you acknowledge:</p>
-    <p>• floors auto-play<br>• double-tap navigates to anchor<br>• last floor stored locally</p>
+    <p>By entering the Elevator, you acknowledge that:</p>
+    <p>• floors auto-play audio/video<br>
+       • double-tap will navigate to an anchor page<br>
+       • your last visited floor is stored locally</p>
+    <p style="margin-top:16px;font-size:13px;line-height:1.5;color:#b8e6b8;">
+      <strong>Privacy:</strong> This site has no trackers, no external libraries, and no logs. All consent is stored locally in your browser only.
+    </p>
+    <p style="margin-top:16px;font-size:12px;line-height:1.5;color:#ccc;">
+      This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
+      No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
+      clear intent, clear context, clean boundaries.
+    </p>
     <button id="consentButton">Enter Elevator</button>
   </div>
 </div>
@@ -351,14 +437,14 @@ h1{
 /* SONGS */
 const songs={
   1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4?autoplay=1"},
-  2:{name:"Sigrid — It Gets Dark",   link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
-  3:{name:"Dua Lipa — Houdini",       link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
-  4:{name:"Doechii — Crazy",          link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY?autoplay=1"},
-  5:{name:"Marina — Venus Fly Trap",  link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
+  2:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
+  3:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
+  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY?autoplay=1"},
+  5:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
   6:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU?autoplay=1"},
-  7:{name:"Dagny — Love You Like That",link:"https://www.youtube-nocookie.com/embed/bnQBqinwlwQ?autoplay=1"},
-  8:{name:"Kim Petras — Coconuts",    link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
-  9:{name:"Rosalía — SAOKO",          link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
+  7:{name:"Dagny — Somebody",link:"https://www.youtube-nocookie.com/embed/qO-U2WlgroQ?autoplay=1"},
+  8:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
+  9:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
  10:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI?autoplay=1"},
  11:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4?autoplay=1"},
  12:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8?autoplay=1"},
@@ -382,87 +468,24 @@ const anchorPages={
  13:"https://bejeweled.plnt.earth"
 };
 
-/* PHYSICS FLOOR DESCRIPTIONS */
+/* FLOOR DESCRIPTIONS */
 const floorDetails={
-  13:`<h2>Imaginary Time (Floor 13)</h2>
-      τ = i·t — the mirror axis. Non-linear time. Reflection → transformation.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Taylor Swift — Bejeweled · Crown-frequency alignment.
-      </div>`,
-
-  12:`<h2>Zero-Distance Light (Floor 12)</h2>
-      Δx → 0. Pure thought. Time without motion.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      AURORA — Runaway · origin-light symmetry.
-      </div>`,
-
-  11:`<h2>Compression (Floor 11)</h2>
-      Emotional density. Pressure before expansion.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Tove Lo — No One Dies From Love · dream-weight tension.
-      </div>`,
-
-  10:`<h2>Acceleration (Floor 10)</h2>
-      a > 0. Motion begins. Inertia flips direction.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Sabrina Carpenter — Feather · effortless momentum.
-      </div>`,
-
-  9:`<h2>Entropy ↓ (Floor 9)</h2>
-      Noise collapses. Order forms.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Rosalía — SAOKO · shape-shift mechanics.
-      </div>`,
-
-  8:`<h2>Observer Frame (Floor 8)</h2>
-      Choosing the coordinate system.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Kim Petras — Coconuts · irreverent reference-frame rotation.
-      </div>`,
-
-  7:`<h2>Resonance (Floor 7)</h2>
-      Emotional frequency matching.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Dagny — Love You Like That · joy-frequency uplift.
-      </div>`,
-
-  6:`<h2>Phase Boundary (Floor 6)</h2>
-      ∂state/∂t = 0. Threshold. Preparation for flip.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Ariana Grande — No Tears Left to Cry · inversion mechanic.
-      </div>`,
-
-  5:`<h2>Frequency Lock (Floor 5)</h2>
-      Stabilization. Carrier-wave coherence.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Marina — Venus Fly Trap · sovereign resonance.
-      </div>`,
-
-  4:`<h2>Thermal Spike (Floor 4)</h2>
-      Sudden heat release. Overdrive clarity.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Doechii — Crazy · ignition threshold.
-      </div>`,
-
-  3:`<h2>Recursion (Floor 3)</h2>
-      Revisiting earlier states with new insight.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Dua Lipa — Houdini · re-entry vector.
-      </div>`,
-
-  2:`<h2>Signal Ignition (Floor 2)</h2>
-      First motion. Breath → direction.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Sigrid — It Gets Dark · courage vector.
-      </div>`,
-
-  1:`<h2>Ground State (Floor 1)</h2>
-      Minimum energy. Origin frame.
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);">
-      Miss Monique — Concorde · base-frequency lift.
-      </div>`
+  13:"<h2>Floor 13 — Vine</h2><p>Interconnection, fate-line, destiny, synthesis.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Taylor Swift — Bejeweled<br>Crown-floor clarity. Illumination. Structure.</p>",
+  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>AURORA — Runaway<br>Mythic distance. Origin signal.</p>",
+  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Tove Lo — No One Dies From Love<br>Dreamfield clarity. Soft reckoning.</p>",
+  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sabrina Carpenter — Feather<br>Ease-field. Sweetness. Safe entry.</p>",
+  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Rosalía — SAOKO<br>Transformation. Velocity.</p>",
+  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Kim Petras — Coconuts<br>Play as power. Irreverent lift.</p><div class='anchor-card'><div class='anchor-header'><div class='chip c8'>8</div><div class='anchor-name'>Kim Petras</div></div><div class='anchor-floor'><span class='floor-label'>Floor:</span><span class='chip c8'>Orbit</span></div><div class='anchor-keywords'><span class='keyword-label'>Keywords:</span><span class='chip c4'>Fire</span><span class='chip c3'>Knife</span><span class='chip c12'>Key</span></div><div class='anchor-path'><span class='path-label'>Path:</span><span class='chip c4'>4</span><span class='path-arrow'>→</span><span class='chip c3'>3</span><span class='path-arrow'>→</span><span class='chip c12'>12</span></div></div>",
+  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dagny — Somebody<br>Emotional clarity. Honest entry. Direct heart-state.</p>",
+  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Ariana Grande — No Tears Left to Cry<br>Emotional inversion. Upward flow.</p>",
+  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Marina — Venus Fly Trap<br>Reflection. Contrast. Sovereignty.</p>",
+  4:"<h2>Floor 4 — Fire</h2><p>Heat, ignition, transformation, truth reveal.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Doechii — Crazy<br>Fire-state liberation. Heat-vector.</p>",
+  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dua Lipa — Houdini<br>Motion initiation. Forward vector.</p>",
+  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sigrid — It Gets Dark<br>Contrast perspective. Courage.</p>",
+  1:"<h2>Floor 1 — Seed</h2><p>Origin, spark, beginning, birth.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Miss Monique — Concorde<br>Pulse-floor. Lift-off rhythm.</p>"
 };
 
+/* Consent modal - always show */
 window.addEventListener("load",()=>{
   document.getElementById("consentModal").style.display="flex";
 });
@@ -471,27 +494,36 @@ document.getElementById("consentButton").onclick=()=>{
   document.getElementById("consentModal").style.display="none";
 };
 
+/* Play video */
 function play(n){
   document.getElementById("yt").src=songs[n].link;
   document.getElementById("label").textContent=songs[n].name;
 }
 
+/* Show floor details */
 function showDetails(n){
   const d=document.getElementById("details");
   d.innerHTML=floorDetails[n];
   d.style.display="block";
 }
 
+/* Double tap detection */
 let lastTap=0;
 
 function handleFloor(n){
   const now=Date.now();
-  if(now-lastTap<350){ window.location.href=anchorPages[n]; return; }
+
+  if(now-lastTap<350){
+    window.location.href=anchorPages[n];
+    return;
+  }
+
   play(n);
   showDetails(n);
   lastTap=now;
 }
 
+/* Bind floors */
 document.querySelectorAll(".floor").forEach(f=>{
   const n=parseInt(f.dataset.n);
   f.addEventListener("click",()=>handleFloor(n));
