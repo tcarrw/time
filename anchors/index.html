@@ -13,44 +13,108 @@
       --rule:#2a3348;
       --link:#9aa8ff;
       --accent:#7c3aed;
+      --accent2:#f59e0b;
       --maxw:900px;
     }
     body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+        var(--bg);
       color:var(--ink);
       font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;
     }
+
+    /* SITE HEADER */
+    .site-header{
+      background:var(--panel);
+      border-bottom:1px solid var(--rule);
+      padding:12px 20px;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .site-header-inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:12px 20px;
+    }
+    .site-title{
+      font-weight:700;
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .site-title-text{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+    }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:1px solid var(--rule);
+      border-radius:8px;
+      padding:8px 12px;
+      color:var(--ink);
+      font-size:14px;
+      cursor:pointer;
+      margin-left:auto;
+    }
+    .site-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px 14px;
+    }
+    .site-nav a{
+      font-size:13px;
+      color:var(--link);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .site-nav a:hover{text-decoration:underline;}
+    
+    @media(max-width:768px){
+      .nav-toggle{display:block}
+      .site-nav{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        gap:8px;
+        padding-top:12px;
+        border-top:1px solid var(--rule);
+        margin-top:8px;
+      }
+      .site-nav.open{display:flex}
+      .site-nav a{padding:8px 0;font-size:14px}
+    }
+
     .wrap{
       max-width:var(--maxw);
       margin:0 auto;
       padding:48px 20px 80px;
     }
-    nav{
-      margin-bottom:32px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-    nav a{
-      display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
-    }
-    nav a:hover{background:#1a2237;}
+    
     h1{
       font-size:clamp(32px,5vw,46px);
       margin:0 0 18px;
       text-align:center;
       font-weight:800;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
     }
+    
     p{
       margin-top:12px;
       color:var(--ink);
@@ -59,14 +123,22 @@
       margin-left:auto;
       margin-right:auto;
       font-size:15px;
-      line-height:1.55;
+      line-height:1.6;
     }
+    
     .grid{
       margin-top:38px;
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
       gap:18px;
     }
+    
+    @media(max-width:500px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
+    
     .card{
       background:var(--panel);
       padding:16px;
@@ -75,47 +147,59 @@
       display:flex;
       flex-direction:column;
       gap:8px;
+      transition:transform .2s ease, box-shadow .2s ease;
     }
+    
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(0,0,0,.3);
+    }
+    
     .card-header{
       display:flex;
       align-items:center;
       gap:10px;
     }
+    
     .chip{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:4px 10px;
+      padding:6px 12px;
       border-radius:10px;
-      font-size:11px;
+      font-size:18px;
       font-weight:700;
       border:1px solid rgba(255,255,255,0.15);
       flex-shrink:0;
+      min-width:40px;
     }
+    
     .name{
       font-weight:700;
       font-size:17px;
       color:var(--ink);
     }
+    
     .lens{
       font-size:14px;
       color:var(--muted);
+      padding-left:50px;
     }
     
-    /* Color chips matching elevator */
-    .c1{background:#4ac0b4;}
-    .c2{background:#e6c04d;}
-    .c3{background:#a572cf;}
-    .c4{background:#c64747;}
-    .c5{background:#66c7e8;}
-    .c6{background:#999999;}
-    .c7{background:#e48ec9;}
-    .c8{background:#6e88a8;}
-    .c9{background:#f6f0d8;color:#1a0f3e;}
-    .c10{background:#e7a840;color:#1a0f3e;}
-    .c11{background:#9d1a2b;}
-    .c12{background:#e3e6ed;color:#1a0f3e;}
-    .c13{background:#C4B5FD;color:#1a0f3e;}
+    /* Color chips with accessible contrast */
+    .c1{background:#4ac0b4;color:#0a0a0a;}
+    .c2{background:#e6c04d;color:#0a0a0a;}
+    .c3{background:#a572cf;color:#ffffff;}
+    .c4{background:#c64747;color:#ffffff;}
+    .c5{background:#66c7e8;color:#0a0a0a;}
+    .c6{background:#999999;color:#ffffff;}
+    .c7{background:#e48ec9;color:#0a0a0a;}
+    .c8{background:#6e88a8;color:#ffffff;}
+    .c9{background:#f6f0d8;color:#0a0a0a;}
+    .c10{background:#e7a840;color:#0a0a0a;}
+    .c11{background:#9d1a2b;color:#ffffff;}
+    .c12{background:#e3e6ed;color:#0a0a0a;}
+    .c13{background:#C4B5FD;color:#0a0a0a;}
     
     footer{
       text-align:center;
@@ -126,123 +210,160 @@
   </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a href="/">Home</a>
-    <a href="/time/">Φ Field</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="/map/">Map</a>
-    <a href="/elevator/">Elevator</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-  </nav>
-  <h1>Anchor Index</h1>
-  <p>
-    The thirteen Illumina anchors represent core cognitive lenses —
-    clarity, empathy, structure, motion, joy, frequency, atmosphere,
-    dream-logic, pulse, warmth, precision, edge, and alter-fire.
-    These lenses stabilize and enhance the creative–scientific motion
-    of the Time project.
-  </p>
-  <div class="grid">
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c6">6</span>
-        <div class="name">Ariana Grande</div>
+  <div class="site-header">
+    <div class="site-header-inner">
+      <div class="site-title">
+        <span>⚓</span>
+        <span class="site-title-text">Anchors</span>
       </div>
-      <div class="lens">Voice · Frequency · Shimmer</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c12">12</span>
-        <div class="name">AURORA</div>
-      </div>
-      <div class="lens">Atmosphere · Pearl</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c7">7</span>
-        <div class="name">Dagny</div>
-      </div>
-      <div class="lens">Joy · Rose</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c4">4</span>
-        <div class="name">Doechii</div>
-      </div>
-      <div class="lens">Alter.Fire · Edge · Crimson</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c3">3</span>
-        <div class="name">Dua Lipa</div>
-      </div>
-      <div class="lens">Motion · Flow · Violet</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c8">8</span>
-        <div class="name">Kim Petras</div>
-      </div>
-      <div class="lens">Precision · Slate</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c5">5</span>
-        <div class="name">Marina</div>
-      </div>
-      <div class="lens">Mirror · Empathy · Blue</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c1">1</span>
-        <div class="name">Miss Monique</div>
-      </div>
-      <div class="lens">Pulse · Vibe · Teal</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c9">9</span>
-        <div class="name">Rosalía</div>
-      </div>
-      <div class="lens">Edge · Break · Sauvignon Blanc</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c10">10</span>
-        <div class="name">Sabrina Carpenter</div>
-      </div>
-      <div class="lens">Warmth · Honey Gold</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c2">2</span>
-        <div class="name">Sigrid</div>
-      </div>
-      <div class="lens">Clarity · Gold</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c13">13</span>
-        <div class="name">Taylor Swift</div>
-      </div>
-      <div class="lens">Structure · Lavender</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span class="chip c11">11</span>
-        <div class="name">Tove Lo</div>
-      </div>
-      <div class="lens">Dream · Burgundy</div>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation">Menu ▾</button>
+      <nav class="site-nav" id="siteNav">
+        <a href="https://time.plnt.earth">Time</a>
+        <a href="https://time.plnt.earth/elevator">Elevator</a>
+        <a href="https://time.plnt.earth/anchors">Anchors</a>
+        <a href="https://time.plnt.earth/map">Map</a>
+        <a href="https://time.plnt.earth/charter">Charter</a>
+        <a href="https://bejeweled.plnt.earth">Bejeweled</a>
+        <a href="https://honey.plnt.earth">Honey</a>
+        <a href="https://mirror.plnt.earth">Mirror</a>
+        <a href="https://earth.plnt.earth">Earth</a>
+      </nav>
     </div>
   </div>
-  <footer>
-    <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.6;">
-      <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+
+  <div class="wrap">
+    <h1>Anchor Index</h1>
+    <p>
+      The thirteen Illumina anchors represent core cognitive lenses —
+      clarity, empathy, structure, motion, joy, frequency, atmosphere,
+      dream-logic, pulse, warmth, precision, edge, and alter-fire.
+      These lenses stabilize and enhance the creative–scientific motion
+      of the Time project.
+    </p>
+    
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c6">🎤</span>
+          <div class="name">Ariana Grande</div>
+        </div>
+        <div class="lens">Voice · Frequency · Shimmer</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c12">🌌</span>
+          <div class="name">AURORA</div>
+        </div>
+        <div class="lens">Atmosphere · Pearl</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c7">🌸</span>
+          <div class="name">Dagny</div>
+        </div>
+        <div class="lens">Joy · Rose</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c4">🔥</span>
+          <div class="name">Doechii</div>
+        </div>
+        <div class="lens">Alter.Fire · Edge · Crimson</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c3">💃</span>
+          <div class="name">Dua Lipa</div>
+        </div>
+        <div class="lens">Motion · Flow · Violet</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c8">✨</span>
+          <div class="name">Kim Petras</div>
+        </div>
+        <div class="lens">Precision · Slate</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c5">🪞</span>
+          <div class="name">Marina</div>
+        </div>
+        <div class="lens">Mirror · Empathy · Blue</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c1">🎧</span>
+          <div class="name">Miss Monique</div>
+        </div>
+        <div class="lens">Pulse · Vibe · Teal</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c9">💎</span>
+          <div class="name">Rosalía</div>
+        </div>
+        <div class="lens">Edge · Break · Sauvignon Blanc</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c10">🍯</span>
+          <div class="name">Sabrina Carpenter</div>
+        </div>
+        <div class="lens">Warmth · Honey Gold</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c2">⚡</span>
+          <div class="name">Sigrid</div>
+        </div>
+        <div class="lens">Clarity · Gold</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c13">🏛️</span>
+          <div class="name">Taylor Swift</div>
+        </div>
+        <div class="lens">Structure · Lavender</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <span class="chip c11">🌙</span>
+          <div class="name">Tove Lo</div>
+        </div>
+        <div class="lens">Dream · Burgundy</div>
+      </div>
     </div>
-    © 2025 • Creative Commons BY-NC-SA 4.0
-  </footer>
-</div>
+    
+    <footer>
+      <div style="margin-bottom:24px;padding-bottom:24px;border-top:1px solid var(--rule);padding-top:24px;font-size:14px;line-height:1.6;">
+        <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+      </div>
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
+        © 2025 • Creative Commons BY-NC-SA 4.0
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // NAV TOGGLE
+    document.getElementById('navToggle').addEventListener('click', function(){
+      var nav = document.getElementById('siteNav');
+      nav.classList.toggle('open');
+      this.textContent = nav.classList.contains('open') ? 'Menu ▴' : 'Menu ▾';
+    });
+  </script>
 </body>
 </html>
