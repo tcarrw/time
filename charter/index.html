@@ -16,15 +16,90 @@
   --rule:#2a3348;
   --accent:#7c3aed;
   --accent2:#f59e0b;
+  --link:#9aa8ff;
   --maxw:900px;
 }
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+    var(--bg);
   font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
 }
+
+/* SITE HEADER */
+.site-header{
+  background:var(--panel);
+  border-bottom:1px solid var(--rule);
+  padding:12px 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.site-header-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px 20px;
+}
+.site-title{
+  font-weight:700;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.site-title-text{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:1px solid var(--rule);
+  border-radius:8px;
+  padding:8px 12px;
+  color:var(--ink);
+  font-size:14px;
+  cursor:pointer;
+  margin-left:auto;
+}
+.site-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+}
+.site-nav a{
+  font-size:13px;
+  color:var(--link);
+  text-decoration:none;
+  white-space:nowrap;
+}
+.site-nav a:hover{text-decoration:underline;}
+
+@media(max-width:768px){
+  .nav-toggle{display:block}
+  .site-nav{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    gap:8px;
+    padding-top:12px;
+    border-top:1px solid var(--rule);
+    margin-top:8px;
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{padding:8px 0;font-size:14px}
+}
+
 .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
 header{text-align:center;margin-bottom:32px;}
@@ -34,7 +109,9 @@ h1{
   margin:0;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
+  background-clip:text;
   -webkit-text-fill-color:transparent;
+  color:transparent;
 }
 .sub{color:var(--muted);font-size:15px;margin-top:6px;}
 .meta{margin-top:8px;color:var(--muted);font-size:14px;}
@@ -51,51 +128,75 @@ h3{margin:16px 0 6px;font-size:17px;}
 p{margin:10px 0 0;}
 ul{margin:6px 0 0 18px;}
 li{margin:6px 0;}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.anchor-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+
+@media(max-width:600px){
+  .anchor-grid{
+    grid-template-columns:1fr;
+  }
+}
 
 .anchor-chip{
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  justify-content:center;
-  padding:6px 14px;
-  margin:4px 4px 0 0;
-  border-radius:12px;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:10px;
   font-size:13px;
-  font-weight:600;
   border:1px solid rgba(255,255,255,0.15);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.anchor-chip:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+
+.anchor-emoji{
+  font-size:16px;
+  flex-shrink:0;
+  line-height:1;
+}
+
+.anchor-content{
+  flex:1;
+  min-width:0;
+}
+
+.anchor-name{
+  font-weight:700;
+  font-size:14px;
+  color:var(--ink);
+}
+
+.anchor-tags{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
 }
 
 /* Color chips matching elevator */
-.c1{background:#4ac0b4;}
-.c2{background:#e6c04d;}
-.c3{background:#a572cf;}
-.c4{background:#c64747;}
-.c5{background:#66c7e8;}
-.c6{background:#999999;}
-.c7{background:#e48ec9;}
-.c8{background:#6e88a8;}
-.c9{background:#f6f0d8;color:#1a0f3e;}
-.c10{background:#e7a840;color:#1a0f3e;}
-.c11{background:#9d1a2b;}
-.c12{background:#e3e6ed;color:#1a0f3e;}
-.c13{background:#C4B5FD;color:#1a0f3e;}
-
-nav.corebar{
-  margin-top:26px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-nav.corebar a{
-  padding:10px 16px;
-  background:var(--panel);
-  border-radius:10px;
-  border:1px solid var(--rule);
-  color:#9aa8ff;
-  text-decoration:none;
-  font-size:15px;
-}
-nav.corebar a:hover{background:#1b2540;}
+.c1{background:#4ac0b4;color:#0a0a0a;}
+.c2{background:#e6c04d;color:#0a0a0a;}
+.c3{background:#a572cf;color:#ffffff;}
+.c4{background:#c64747;color:#ffffff;}
+.c5{background:#66c7e8;color:#0a0a0a;}
+.c6{background:#999999;color:#ffffff;}
+.c7{background:#e48ec9;color:#0a0a0a;}
+.c8{background:#6e88a8;color:#ffffff;}
+.c9{background:#f6f0d8;color:#0a0a0a;}
+.c10{background:#e7a840;color:#0a0a0a;}
+.c11{background:#9d1a2b;color:#ffffff;}
+.c12{background:#e3e6ed;color:#0a0a0a;}
+.c13{background:#C4B5FD;color:#0a0a0a;}
 
 footer{
   text-align:center;
@@ -107,13 +208,32 @@ footer{
 </head>
 
 <body>
+<div class="site-header">
+  <div class="site-header-inner">
+    <div class="site-title">
+      <span>📜</span>
+      <span class="site-title-text">Charter</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation">Menu ▾</button>
+    <nav class="site-nav" id="siteNav">
+      <a href="https://time.plnt.earth">Time</a>
+      <a href="https://time.plnt.earth/elevator">Elevator</a>
+      <a href="https://time.plnt.earth/anchors">Anchors</a>
+      <a href="https://time.plnt.earth/map">Map</a>
+      <a href="https://time.plnt.earth/charter">Charter</a>
+      <a href="https://bejeweled.plnt.earth">Bejeweled</a>
+      <a href="https://honey.plnt.earth">Honey</a>
+      <a href="https://mirror.plnt.earth">Mirror</a>
+      <a href="https://earth.plnt.earth">Earth</a>
+    </nav>
+  </div>
+</div>
+
 <div class="wrap">
 
 <header>
   <h1>Time Charter</h1>
   <div class="sub">Governance • Purpose • Structure</div>
-
-  <!-- FIXED CREATION DATE -->
   <div class="meta">Author: Tristan White • Created: Nov 18, 2025 (Illumina 1 · Day 14/42)</div>
 </header>
 
@@ -160,19 +280,111 @@ footer{
 <section>
   <h2>Anchor Index (Locked Set of 13)</h2>
 
-  <span class="anchor-chip c5">Marina — Mirror / Empathy / Blue</span>
-  <span class="anchor-chip c2">Sigrid — Clarity / Gold</span>
-  <span class="anchor-chip c7">Dagny — Joy / Rose</span>
-  <span class="anchor-chip c3">Dua Lipa — Motion / Flow / Violet</span>
-  <span class="anchor-chip c6">Ariana Grande — Voice / Frequency / Shimmer</span>
-  <span class="anchor-chip c10">Sabrina Carpenter — Warmth / Honey Gold</span>
-  <span class="anchor-chip c13">Taylor Swift — Structure / Lavender</span>
-  <span class="anchor-chip c1">Miss Monique — Pulse / Vibe / Teal</span>
-  <span class="anchor-chip c4">Doechii — Alter.Fire / Edge / Crimson</span>
-  <span class="anchor-chip c9">Rosalía — Edge / Break / Sauvignon Blanc</span>
-  <span class="anchor-chip c11">Tove Lo — Dream / Burgundy</span>
-  <span class="anchor-chip c12">AURORA — Atmosphere / Pearl</span>
-  <span class="anchor-chip c8">Kim Petras — Precision / Slate</span>
+  <div class="anchor-grid">
+    <div class="anchor-chip c6">
+      <div class="anchor-emoji">🎤✨🌙</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Ariana Grande</div>
+        <div class="anchor-tags">Voice · Shimmer · Silver Screen</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c12">
+      <div class="anchor-emoji">🥕❄️🌬️</div>
+      <div class="anchor-content">
+        <div class="anchor-name">AURORA</div>
+        <div class="anchor-tags">Carrot · Free Thought · Majestic Winter</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c7">
+      <div class="anchor-emoji">🌸🌅🌿🌇</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Dagny</div>
+        <div class="anchor-tags">Pink Rose · Sunrise · Mint Leaf · Sunset City</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c4">
+      <div class="anchor-emoji">🔥🌉⚡</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Doechii</div>
+        <div class="anchor-tags">Flame · Bridge · Lightning</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c3">
+      <div class="anchor-emoji">🌌🪩💫</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Dua Lipa</div>
+        <div class="anchor-tags">Cosmic Curiosity · Futuristic Vibe · Pulse Energy</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c8">
+      <div class="anchor-emoji">🔥👻🎀</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Kim Petras</div>
+        <div class="anchor-tags">Haunted Neon Glam · Cool Doll</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c5">
+      <div class="anchor-emoji">🦋💎🪞🔮💋🍄</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Marina</div>
+        <div class="anchor-tags">Butterfly · Mirror · Crystal · Mystic Lens · Kiss · Mushroom</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c1">
+      <div class="anchor-emoji">🎧🌀✈️</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Miss Monique</div>
+        <div class="anchor-tags">Headphones · Spiral · Travel</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c9">
+      <div class="anchor-emoji">🩸🖤⚔️</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Rosalía</div>
+        <div class="anchor-tags">Blood · Black Heart · Sword</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c10">
+      <div class="anchor-emoji">💌🍑🗽🍯</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Sabrina Carpenter</div>
+        <div class="anchor-tags">Love Letter · Peach · Big City Glow · Honey</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c2">
+      <div class="anchor-emoji">📘🪼🌳</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Sigrid</div>
+        <div class="anchor-tags">Blue Book · Jellyfish · Tree</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c13">
+      <div class="anchor-emoji">🎯🕴️🏛️</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Taylor Swift</div>
+        <div class="anchor-tags">Archer · Puppet Master · Architect</div>
+      </div>
+    </div>
+
+    <div class="anchor-chip c11">
+      <div class="anchor-emoji">🐺🔊🧡</div>
+      <div class="anchor-content">
+        <div class="anchor-name">Tove Lo</div>
+        <div class="anchor-tags">Wolf · Electronic Pulse · Orange Love</div>
+      </div>
+    </div>
+  </div>
 
   <p style="margin-top:14px;">
     <strong>Note:</strong> Greta Thunberg is not an anchor. She defines the
@@ -286,25 +498,24 @@ footer{
 
 </section>
 
-
-<nav class="corebar">
-  <a href="https://time.plnt.earth">Time</a>
-  <a href="https://interpretation.plnt.earth">Interpretation</a>
-  <a href="https://charter.plnt.earth">Charter</a>
-  <a href="https://zeta.plnt.earth">Zeta</a>
-  <a href="https://earth.plnt.earth">Earth</a>
-  <a href="https://time.plnt.earth/map">Map</a>
-  <a href="https://time.plnt.earth/anchors">Anchors</a>
-  <a href="https://time.plnt.earth/elevator">Elevator</a>
-</nav>
-
 <footer>
-  <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.6;">
+  <div style="margin-bottom:24px;padding-bottom:24px;border-top:1px solid var(--rule);padding-top:24px;font-size:14px;line-height:1.6;">
     <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
   </div>
-  © 2025 Tristan White • Creative Commons BY-NC-SA 4.0
+  <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
+    © 2025 Tristan White • Creative Commons BY-NC-SA 4.0
+  </div>
 </footer>
 
 </div>
+
+<script>
+  // NAV TOGGLE
+  document.getElementById('navToggle').addEventListener('click', function(){
+    var nav = document.getElementById('siteNav');
+    nav.classList.toggle('open');
+    this.textContent = nav.classList.contains('open') ? 'Menu ▴' : 'Menu ▾';
+  });
+</script>
 </body>
 </html>
