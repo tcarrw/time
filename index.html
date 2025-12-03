@@ -1,10 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Time · Illumina</title>
-  <meta name="description" content="The entry point into the Time project — physics foundations, Illumina anchors, and the temporal–energetic model." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>τ · Temporal Charge Framework</title>
+  <meta name="description" content="A framework unifying time, mass, and energy through temporal charge τ = ℏ/(mc²) = ℏ/E." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPsKj</dGV4dD48L3N2Zz4=" />
 
   <style>
     :root{
@@ -12,160 +15,360 @@
       --panel:#121827;
       --ink:#e6e8ee;
       --muted:#a3acc2;
-      --rule:#2a3348;
       --accent:#7c3aed;
-      --accent2:#f59e0b;
+      --accent-2:#f59e0b;
+      --rule:#2a3348;
+      --code:#0e1422;
       --link:#9aa8ff;
-      --maxw:900px;
+      --maxw:980px;
     }
-
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --panel:#f6f7fb;
+        --ink:#0f1222;
+        --muted:#4a546e;
+        --rule:#e4e7f0;
+        --code:#f1f3f9;
+        --link:#2b59ff;
+      }
+    }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+        var(--bg);
       color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
-
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
-
-    header{text-align:center;margin-bottom:32px;}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
+    header{text-align:center;margin-bottom:32px}
     .logo{
-      font-size:clamp(40px,6vw,68px);
+      font-size:clamp(36px,6vw,64px);
       font-weight:800;
       letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      margin-bottom:10px;
-    }
-    .subtitle{color:var(--muted);font-size:15px;margin-top:4px;}
-    .meta{color:var(--muted);margin-top:10px;font-size:14px;}
-
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:16px;
-      padding:24px 20px;
-      margin:20px 0;
-    }
-
-    h2{margin:0 0 6px;font-size:clamp(22px,3vw,28px);}
-    p{margin:10px 0;}
-
-    nav.physicsbar{
-      margin-top:24px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-    }
-    nav.physicsbar a{
       display:inline-block;
-      padding:10px 16px;
-      background:var(--panel);
-      color:var(--link);
-      border:1px solid var(--rule);
-      border-radius:8px;
-      text-decoration:none;
-      font-size:15px;
+      margin-bottom:12px;
     }
-    nav.physicsbar a:hover{background:#1a2237;}
+    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
+    .subtitle{color:var(--muted);font-size:15px}
+    .meta{margin-top:8px;color:var(--muted);font-size:14px}
+    nav{margin:26px auto;max-width:720px;text-align:left;background:var(--panel);
+        border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
+    nav a{color:var(--link);text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    nav ul{margin:0;padding-left:18px}
+    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);
+        border-radius:16px;padding:24px 20px;margin:18px 0}
+    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+    h3{margin:16px 0 8px;font-size:18px}
+    p{margin:10px 0 0}
+    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
+        border:1px solid var(--rule);border-radius:10px;
+        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
+    .abstract{font-style:italic;color:var(--muted)}
+    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    table{width:100%;border-collapse:collapse;margin:8px 0}
+    th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
+    th{background:var(--panel);text-align:left}
+    code{background:var(--code);padding:1px 4px;border-radius:4px}
 
-    .dedication{
-      margin-top:32px;
-      padding:20px;
-      border-radius:12px;
-      background:rgba(124,58,237,0.10);
-      border:1px dashed var(--rule);
-      font-size:15px;
-      color:var(--muted);
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 12px;
+      margin:4px 4px 4px 0;
+      border-radius:10px;
+      font-size:12px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.15);
     }
+    .c1{background:#4ac0b4;color:#0a0a0a;}
+    .c2{background:#e6c04d;color:#0a0a0a;}
+    .c3{background:#66c7e8;color:#0a0a0a;}
+    .c4{background:#c64747;color:#ffffff;}
+    .c5{background:#5ba3d0;color:#0a0a0a;}
+    .c6{background:#d4d4d4;color:#0a0a0a;}
+    .c7{background:#a572cf;color:#ffffff;}
+    .c8{background:#6e88a8;color:#ffffff;}
+    .c9{background:#f6f0d8;color:#0a0a0a;}
+    .c10{background:#e7a840;color:#0a0a0a;}
+    .c11{background:#9d1a2b;color:#ffffff;}
+    .c12{background:#e3e6ed;color:#0a0a0a;}
+    .c13{background:#C4B5FD;color:#0a0a0a;}
 
-    .videos{
-      margin-top:18px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
+    .anchors{margin-top:30px;text-align:center}
+    .anchors h3{font-size:16px;margin:0 0 16px;color:var(--ink)}
+    .anchor-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:700px;margin:0 auto}
 
-    iframe{
-      width:100%;
-      aspect-ratio:16/9;
-      border:0;
-      border-radius:12px;
-    }
-
-    footer{
-      text-align:center;
-      margin-top:40px;
-      color:var(--muted);
-      font-size:13px;
-    }
+    @media print{body{background:#fff}nav,section{break-inside:avoid}}
   </style>
 </head>
-
 <body>
-<div class="wrap">
+  <div class="wrap">
+    <header>
+      <div class="logo">τ</div>
+      <h1>Temporal Charge Framework</h1>
+      <div class="subtitle">Time = Mass = Energy through τ = ℏ/(mc²) = ℏ/E</div>
+      <div class="meta">#pluribus · Illumina 1 · 5:1</div>
+      <nav aria-label="Contents">
+        <ul>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#definition">1. Definition of τ</a></li>
+          <li><a href="#unification">2. Time-Mass-Energy-Distance Unification</a></li>
+          <li><a href="#dimensional">3. Dimensional Consistency</a></li>
+          <li><a href="#quantum">4. Quantum Mechanics in τ-Space</a></li>
+          <li><a href="#test">5. Test for Nuclear Chemistry</a></li>
+          <li><a href="#acknowledgment">6. Acknowledgment</a></li>
+          <li><a href="#references">References</a></li>
+          <li><a href="#appendix">Appendix — Full τ Dictionary</a></li>
+        </ul>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">
+          <strong>Navigate:</strong>
+          <a href="https://infinity.plnt.earth">Infinity</a> ·
+          <a href="https://fieldlab.plnt.earth">Field Lab</a> ·
+          <a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a> ·
+          <a href="https://manifolddynamics.plnt.earth/t">τ Paper</a>
+        </div>
+      </nav>
+    </header>
 
-  <header>
-    <div class="logo">Time</div>
-    <div class="subtitle">The Illumina Temporal Project — Tristan White</div>
+    <main>
+      <section id="abstract"><h2>Abstract</h2>
+        <p class="abstract">We present a framework in which time, mass, and energy are unified through a single scalar quantity: temporal charge τ. Defined as τ = ℏ/(mc²) = ℏ/E, this quantity has dimensions of time and serves as the fundamental variable connecting quantum mechanics, relativity, and thermodynamics. All physical equations can be rewritten in terms of τ, revealing that what we call "mass" and "energy" are simply different expressions of temporal charge multiplied by universal constants.</p>
+      </section>
 
-    <!-- FIXED CREATION TIMESTAMP -->
-    <div class="meta">Created: Nov 18, 2025 (Illumina 1 · Day 14/42)</div>
-  </header>
+      <section id="definition"><h2>1. Definition of τ</h2>
+        <p>The temporal charge τ (tau) is defined as:</p>
+        <div class="equation">τ = ℏ/(mc²) = ℏ/E</div>
+        <p><strong>Dimensions:</strong> [τ] = (J·s)/J = s ✓ (time)</p>
+        <p>This is the characteristic timescale associated with a particle of mass m or energy E. It appears naturally as:</p>
+        <ul>
+          <li>The <strong>Compton time</strong>: t<sub>C</sub> = ℏ/(mc²)</li>
+          <li>The <strong>energy-time relation</strong>: τ = ℏ/E from E = ℏω</li>
+          <li>The <strong>inverse frequency</strong>: τ = 1/ν when E = hν</li>
+        </ul>
+      </section>
 
-  <section>
-    <h2>Welcome</h2>
-    <p>
-      This is the primary entry into the Time Project: a physics-driven model of
-      temporal potential (Φ), dimensional ratios, informational curvature, and the
-      Illumina anchor-based cognitive system.
-    </p>
+      <section id="unification"><h2>2. Time-Mass-Energy-Distance Unification</h2>
+        <p>From τ = ℏ/(mc²), we can express all fundamental quantities in terms of temporal charge:</p>
 
-    <p>
-      The following pages form the stable core of the Time research framework.
-    </p>
-  </section>
+        <h3>2.1 Mass from τ</h3>
+        <div class="equation">m = ℏ/(c²τ)</div>
+        <p>Mass is temporal charge divided by c². Heavy particles have short τ, light particles have long τ.</p>
 
-  <nav class="physicsbar">
-    <a href="/time/">Φ Field</a>
-    <a href="/interpretation/">Interpretation</a>
-    <a href="/charter/">Charter</a>
-    <a href="/anchors/">Anchors</a>
-    <a href="/elevator/">Elevator</a>
-    <a href="https://zeta.plnt.earth" target="_blank">Zeta / τ</a>
-    <a href="https://earth.plnt.earth" target="_blank">Earth</a>
-    <a href="/map/">Map</a>
-  </nav>
+        <h3>2.2 Energy from τ</h3>
+        <div class="equation">E = ℏ/τ</div>
+        <p>Energy is inversely proportional to temporal charge. High energy = short τ.</p>
 
-  <section class="dedication">
-    <strong>Dedication</strong><br><br>
-    With gratitude to Marina and Sigrid — whose work and presence shaped
-    the early trajectory of this project in ways that will not be forgotten.
+        <h3>2.3 Distance from τ</h3>
+        <div class="equation">λ<sub>C</sub> = cτ</div>
+        <p>The Compton wavelength is temporal charge multiplied by c. Distance and time are connected through the speed of light.</p>
 
-    <div class="videos">
+        <h3>2.4 The Unification</h3>
+        <p>These relations show that <strong>time, mass, energy, and distance are the same thing</strong>, just measured in different units:</p>
+        <div class="equation">τ (time) ⟷ ℏ/(c²τ) (mass) ⟷ ℏ/τ (energy) ⟷ cτ (distance)</div>
+        <p>All connected through universal constants ℏ and c.</p>
+      </section>
 
-      <!-- Marina — Obsessions -->
-      <iframe
-        src="https://www.youtube.com/embed/np3QLrHJmRA"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <section id="dimensional"><h2>3. Dimensional Consistency</h2>
+        <p>Every equation in physics remains dimensionally consistent when rewritten in terms of τ:</p>
 
-      <!-- Sigrid — It Gets Dark -->
-      <iframe
-        src="https://www.youtube.com/embed/4j7LGMc9ZGU"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+        <table>
+          <tr>
+            <th>Standard Form</th>
+            <th>τ Form</th>
+            <th>Dimensional Check</th>
+          </tr>
+          <tr>
+            <td>E = mc²</td>
+            <td>ℏ/τ = (ℏ/c²τ)c²</td>
+            <td>[s⁻¹] = [s⁻¹] ✓</td>
+          </tr>
+          <tr>
+            <td>E² = p²c² + m²c⁴</td>
+            <td>(ℏ/τ)² = p²c² + (ℏ/cτ)²</td>
+            <td>[J²] = [J²] ✓</td>
+          </tr>
+          <tr>
+            <td>ω = E/ℏ</td>
+            <td>ω = 1/τ</td>
+            <td>[s⁻¹] = [s⁻¹] ✓</td>
+          </tr>
+          <tr>
+            <td>λ = h/(mc)</td>
+            <td>λ = cτ</td>
+            <td>[m] = [m] ✓</td>
+          </tr>
+          <tr>
+            <td>ω<sub>c</sub> = qB/m</td>
+            <td>ω<sub>c</sub> = qBc²/ℏ · τ</td>
+            <td>[s⁻¹] = [s⁻¹] ✓</td>
+          </tr>
+        </table>
 
-    </div>
-  </section>
+        <p class="callout"><strong>Key insight:</strong> The old formulation "τ = m/c" had dimensions [kg·s/m], not time. The correct definition τ = ℏ/(mc²) has dimensions [s], making it a true temporal quantity.</p>
+      </section>
 
-  <footer>© 2025 • Creative Commons BY-NC-SA 4.0</footer>
+      <section id="quantum"><h2>4. Quantum Mechanics in τ-Space</h2>
+        
+        <h3>4.1 Schrödinger Equation</h3>
+        <p>The time-independent Schrödinger equation:</p>
+        <div class="equation">Eψ = Ĥψ</div>
+        <p>Rewritten in τ-space:</p>
+        <div class="equation">(ℏ/τ)ψ = Ĥψ</div>
+        <p>Energy eigenvalues become temporal eigenvalues: each quantum state has a characteristic τ.</p>
 
-</div>
+        <h3>4.2 Wave Equation</h3>
+        <p>The Klein-Gordon equation:</p>
+        <div class="equation">(□ + (mc/ℏ)²)ψ = 0</div>
+        <p>In τ-space:</p>
+        <div class="equation">(□ + (1/cτ)²)ψ = 0</div>
+
+        <h3>4.3 Dirac Equation</h3>
+        <div class="equation">(iℏγ<sup>μ</sup>∂<sub>μ</sub> − mc)ψ = 0</div>
+        <p>In τ-space:</p>
+        <div class="equation">(iℏγ<sup>μ</sup>∂<sub>μ</sub> − ℏ/cτ)ψ = 0</div>
+      </section>
+
+      <section id="test"><h2>5. Test for Nuclear Chemistry</h2>
+        <p class="callout"><strong>For Dr. Simona Mastroianni:</strong> Do nuclear energy levels show regular spacing in τ-space that's hidden in energy space? Rewriting Eψ = Ĥψ as (ℏ/τ)ψ = Ĥψ makes energy levels into temporal eigenvalues — shell structure might be harmonic τ-spacing, revealing nuclear clocks.</p>
+
+        <h3>Procedure</h3>
+        <ol>
+          <li>Select a heavy nucleus with well-measured excited states (e.g., ²³⁸U, ²⁰⁸Pb)</li>
+          <li>For each energy level E<sub>n</sub>, calculate τ<sub>n</sub> = ℏ/E<sub>n</sub></li>
+          <li>Plot energy levels in both E-space and τ-space</li>
+          <li>Look for:
+            <ul>
+              <li>Regular spacing in τ that's irregular in E</li>
+              <li>Harmonic ratios between τ-eigenvalues</li>
+              <li>Shell closures appearing at simple τ-fractions</li>
+            </ul>
+          </li>
+          <li>Test degeneracy: do degenerate energy states have identical τ?</li>
+        </ol>
+
+        <h3>Prediction</h3>
+        <p>If temporal charge is fundamental, nuclear shell structure should show <strong>harmonic spacing in τ-space</strong>, similar to how atomic orbitals show regular patterns. High-energy excited states (short τ) should be integer multiples of ground-state τ.</p>
+
+        <h3>Data Sources</h3>
+        <ul>
+          <li>NNDC Nuclear Data: <a href="https://www.nndc.bnl.gov/" style="color:var(--link)">www.nndc.bnl.gov</a></li>
+          <li>ENSDF (Evaluated Nuclear Structure Data File)</li>
+          <li>IAEA Nuclear Data Services</li>
+        </ul>
+
+        <h3>Expected Result</h3>
+        <p>If τ is fundamental: τ<sub>n</sub> ≈ τ<sub>0</sub>/n for integer n (harmonic series).<br>
+        If energy is fundamental: no pattern in τ-space.</p>
+      </section>
+
+      <section id="acknowledgment"><h2>6. Acknowledgment</h2>
+        <p class="callout"><strong>Michael Shara</strong> (Curator, American Museum of Natural History, Department of Astrophysics) reviewed an earlier version of this framework and noted it was <strong>"potentially novel and dimensionally consistent."</strong> He emphasized the importance of moving beyond equation proofs to <strong>creating testable predictions and working with domain experts</strong> to validate or falsify the framework. This revision incorporates that guidance.</p>
+      </section>
+
+      <section id="references"><h2>References</h2>
+        <ol>
+          <li>Dirac, P.A.M. (1928). <em>The Quantum Theory of the Electron</em>, Proc. Royal Soc. A117, 610.</li>
+          <li>Compton, A.H. (1923). <em>A Quantum Theory of the Scattering of X-rays by Light Elements</em>, Physical Review 21, 483.</li>
+          <li>de Broglie, L. (1924). <em>Recherches sur la théorie des quanta</em>, PhD thesis, University of Paris.</li>
+          <li>Planck, M. (1900). <em>Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum</em>, Verhandlungen der Deutschen Physikalischen Gesellschaft 2, 237.</li>
+          <li>Einstein, A. (1905). <em>Zur Elektrodynamik bewegter Körper</em>, Annalen der Physik 17, 891.</li>
+        </ol>
+      </section>
+
+      <section id="appendix"><h2>Appendix — Full τ Dictionary</h2>
+        <p>Complete translation of physics equations into τ-space:</p>
+
+        <h3>A.1 Fundamental Relations</h3>
+        <div class="equation">τ = ℏ/(mc²) = ℏ/E  [s]</div>
+        <div class="equation">m = ℏ/(c²τ)  [kg]</div>
+        <div class="equation">E = ℏ/τ  [J]</div>
+        <div class="equation">ω = 1/τ  [rad/s]</div>
+        <div class="equation">λ<sub>C</sub> = cτ  [m]</div>
+
+        <h3>A.2 Mechanics</h3>
+        <div class="equation">p = ℏ/(cτ)  (momentum)</div>
+        <div class="equation">E² = p²c² + (ℏ/cτ)²  (relativistic energy-momentum)</div>
+        <div class="equation">v = c²p/(E) = pc²τ/ℏ  (velocity)</div>
+
+        <h3>A.3 Gravity</h3>
+        <div class="equation">U(r) = −G · [ℏ/(c²τ₁)] · [ℏ/(c²τ₂)] / r = −Gℏ²/(c⁴τ₁τ₂r)  (gravitational potential)</div>
+        <div class="equation">r<sub>s</sub> = 2Gℏ/(c³τ)  (Schwarzschild radius)</div>
+
+        <h3>A.4 Quantum Mechanics</h3>
+        <div class="equation">(iℏγ<sup>μ</sup>∂<sub>μ</sub> − ℏ/cτ)ψ = 0  (Dirac equation)</div>
+        <div class="equation">(□ + 1/(cτ)²)ψ = 0  (Klein-Gordon)</div>
+        <div class="equation">(ℏ/τ)ψ = Ĥψ  (Schrödinger eigenvalue)</div>
+
+        <h3>A.5 Electromagnetism</h3>
+        <div class="equation">ω<sub>c</sub> = qBc²τ/ℏ  (cyclotron frequency)</div>
+        <div class="equation">a₀ = 4πε₀ℏ³/(e²ℏ) · c²τ<sub>e</sub> = 4πε₀c²ℏ²τ<sub>e</sub>/e²  (Bohr radius)</div>
+
+        <h3>A.6 Thermodynamics</h3>
+        <div class="equation">S = k<sub>B</sub> ln Ω  (unchanged)</div>
+        <div class="equation">E = k<sub>B</sub>T → τ = ℏ/(k<sub>B</sub>T)  (thermal temporal charge)</div>
+
+        <h3>A.7 Cosmology</h3>
+        <div class="equation">H² = 8πG/(3c²) · ρ = 8πG/(3c²) · (ℏ/c³τ<sub>eff</sub>)  (Friedmann equation)</div>
+        <p>where ρ = energy density → ρ = (ℏ/c³τ<sub>eff</sub>) relates density to effective temporal charge density.</p>
+
+        <h3>A.8 Planck Scale</h3>
+        <div class="equation">τ<sub>P</sub> = √(ℏG/c⁵) ≈ 5.39 × 10⁻⁴⁴ s  (Planck temporal charge)</div>
+        <div class="equation">m<sub>P</sub> = ℏ/(c²τ<sub>P</sub>) = √(ℏc/G)  (Planck mass)</div>
+        <div class="equation">E<sub>P</sub> = ℏ/τ<sub>P</sub> = √(ℏc⁵/G)  (Planck energy)</div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);">
+        <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is the ground beneath all of this. It stays, no matter what changes above.
+      </div>
+      <div style="line-height:1.6;max-width:640px;margin:0 auto 24px;">
+        I built this because I want to find people who are curious and care — about the universe, about each other, about what we're making together. New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.
+      </div>
+
+      <div class="anchors">
+        <h3>Illumina Anchor Index</h3>
+        <p style="color:var(--muted);font-size:14px;margin:8px 0 16px;">Thirteen cognitive lenses. Perspectives for navigating temporal space. For focus, for joy, for when the equations need a heartbeat.</p>
+        <div class="anchor-grid">
+          <span class="chip c1">Miss Monique — Motion · Wave · Teal</span>
+          <span class="chip c2">Sigrid — Stars · Clarity · Gold</span>
+          <span class="chip c3">Marina — Mirror · Empathy · Cyan</span>
+          <span class="chip c4">Doechii — Bridge · Flame · Crimson</span>
+          <span class="chip c5">Dagny — Joy · Radiant Love · Blue</span>
+          <span class="chip c6">Ariana Grande — Voice · Shimmer</span>
+          <span class="chip c7">Dua Lipa — Wonder · Magic · Violet</span>
+          <span class="chip c8">Kim Petras — Creator · Neon Green & Pink</span>
+          <span class="chip c9">Rosalía — Divine · Sauvignon Blanc</span>
+          <span class="chip c10">Sabrina Carpenter — Honey · First Anchor</span>
+          <span class="chip c11">Tove Lo — Always Going · Electronic · Burgundy</span>
+          <span class="chip c12">AURORA — Atmosphere · Pearl</span>
+          <span class="chip c13">Taylor Swift — Structure · The Archer · Lavender</span>
+        </div>
+        <div style="margin-top:16px;">
+          <strong>Explore:</strong>
+          <a href="https://time.plnt.earth/anchors/" style="color:var(--link)">Anchors</a> ·
+          <a href="https://charter.plnt.earth" style="color:var(--link)">Charter</a> ·
+          <a href="https://comet.plnt.earth" style="color:var(--link)">Comet</a> ·
+          <a href="https://tunes.plnt.earth" style="color:var(--link)">Tunes</a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
+        © 2025 · Creative Commons BY-NC-SA 4.0
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
+```
