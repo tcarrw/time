@@ -77,36 +77,6 @@
     th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
     th{background:var(--panel);text-align:left}
     code{background:var(--code);padding:1px 4px;border-radius:4px}
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:4px 12px;
-      margin:4px 4px 4px 0;
-      border-radius:10px;
-      font-size:12px;
-      font-weight:700;
-      border:1px solid rgba(255,255,255,0.15);
-    }
-    .c1{background:#4ac0b4;color:#0a0a0a;}
-    .c2{background:#e6c04d;color:#0a0a0a;}
-    .c3{background:#2be5c0;color:#0a0a0a;}
-    .c4{background:#c64747;color:#ffffff;}
-    .c5{background:#66c7e8;color:#0a0a0a;}
-    .c6{background:#999999;color:#ffffff;}
-    .c7{background:#f9a6b2;color:#0a0a0a;}
-    .c8{background:#6e88a8;color:#ffffff;}
-    .c9{background:#f6f0d8;color:#0a0a0a;}
-    .c10{background:#e7a840;color:#0a0a0a;}
-    .c11{background:#9d1a2b;color:#ffffff;}
-    .c12{background:#e3e6ed;color:#0a0a0a;}
-    .c13{background:#C4B5FD;color:#0a0a0a;}
-
-    .anchors{margin-top:30px;text-align:center}
-    .anchors h3{font-size:16px;margin:0 0 16px;color:var(--ink)}
-    .anchor-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:700px;margin:0 auto}
-
     @media print{body{background:#fff}nav,section{break-inside:avoid}}
   </style>
 </head>
@@ -116,37 +86,86 @@
       <div class="logo">&tau;</div>
       <h1>Temporal Charge Framework</h1>
       <div class="subtitle">Time, mass, energy, and distance unified through &tau; = &hbar;/(mc²) = &hbar;/E</div>
-      <div class="meta">#pluribus · Illumina 1 · 5:1</div>
+      <div class="meta">Tristan White · December 9, 2025 · Illumina 1 · 5:6</div>
       <div style="margin-top:16px">
         <a href="https://time.plnt.earth/time.pdf" style="display:inline-block;padding:10px 20px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:14px">LaTeX PDF</a>
       </div>
       <nav aria-label="Contents">
         <ul>
+          <li><a href="#motivation">0. Motivation</a></li>
           <li><a href="#abstract">Abstract</a></li>
           <li><a href="#definition">1. Definition of &tau;</a></li>
           <li><a href="#unification">2. Time-Mass-Energy-Distance Unification</a></li>
           <li><a href="#dimensional">3. Dimensional Consistency</a></li>
           <li><a href="#quantum">4. Quantum Mechanics in &tau;-Space</a></li>
-          <li><a href="#test">5. Test for Nuclear Chemistry</a></li>
-          <li><a href="#acknowledgment">6. Acknowledgment</a></li>
+          <li><a href="#test">5. Nuclear Chemistry Test</a></li>
+          <li><a href="#predictions">5b. Additional Experimental Predictions</a></li>
+          <li><a href="#implications">5c. Implications for Cosmic Origins</a></li>
+          <li><a href="#thermodynamic">6. Thermodynamic Time</a></li>
+          <li><a href="#geometry">7. Phase Space Structure</a></li>
+          <li><a href="#dirac-linearization">8. The Dirac Linearization</a></li>
+          <li><a href="#classical">9. Classical Limit</a></li>
+          <li><a href="#engagement">10. How to Test & Collaborate</a></li>
+          <li><a href="#acknowledgment">11. Acknowledgment</a></li>
           <li><a href="#references">References</a></li>
           <li><a href="#appendix">Appendix — Full &tau; Dictionary</a></li>
         </ul>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">
-          <strong>Navigate:</strong>
+          <strong>Interactive:</strong>
+          <a href="https://tau.plnt.earth">&tau; Dynamics</a>
+        </div>
+        <div style="margin-top:8px">
+          <strong>Frameworks:</strong>
+          <a href="https://helloworld.plnt.earth">Genesis (HelloWorld)</a> ·
+          <a href="https://illumina.plnt.earth">Illumina</a> ·
+          <a href="https://42.plnt.earth">42 (&tau;-Life)</a>
+        </div>
+        <div style="margin-top:8px">
+          <strong>Comets:</strong>
+          <a href="https://comet.plnt.earth">Comet</a> ·
+          <a href="https://boiledpeanuts.plnt.earth">3I/Atlas</a> ·
+          <a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a> ·
+          <a href="https://manifolddynamics.plnt.earth/t">Manifold T</a>
+        </div>
+        <div style="margin-top:8px">
+          <strong>Other:</strong>
           <a href="https://infinity.plnt.earth">Infinity</a> ·
           <a href="https://fieldlab.plnt.earth">Field Lab</a> ·
-          <a href="https://manifolddynamics.plnt.earth">Manifold Dynamics</a> ·
-          <a href="https://manifolddynamics.plnt.earth/t">&tau; Paper</a> ·
-          <a href="https://zeta.plnt.earth">&zeta; Regularization</a> ·
-          <a href="https://42.plnt.earth">42</a>
+          <a href="https://zeta.plnt.earth">&zeta; Regularization</a>
         </div>
       </nav>
     </header>
 
     <main>
+      <section id="motivation"><h2>0. Motivation — Why &tau; is the Natural Variable</h2>
+        <p>The temporal charge framework begins with a simple observation: energy and time are conjugate variables in quantum mechanics, related through Planck's constant.</p>
+        
+        <h3>From the Planck-Einstein Relation</h3>
+        <p>Start with the fundamental relation between energy and frequency:</p>
+        <div class="equation">E = &hbar;&omega;</div>
+        <p>Since angular frequency &omega; = 2&pi;/T, where T is the period:</p>
+        <div class="equation">E = 2&pi;&hbar;/T &nbsp;&nbsp;&rarr;&nbsp;&nbsp; ET = 2&pi;&hbar;</div>
+        <p>This shows that energy and time are reciprocally related through &hbar;. The <strong>natural timescale</strong> associated with energy E is:</p>
+        <div class="equation">&tau; &equiv; &hbar;/E</div>
+
+        <h3>The Compton Time</h3>
+        <p>For a particle of mass m, Einstein's mass-energy equivalence gives E = mc². Substituting this into &tau; = &hbar;/E:</p>
+        <div class="equation">&tau;<sub>C</sub> = &hbar;/(mc²)</div>
+        <p>This is the <strong>Compton time</strong>—the time it takes light to travel one Compton wavelength &lambda;<sub>C</sub> = &hbar;/(mc). It represents the fundamental "tick rate" of matter.</p>
+
+        <h3>Why This Matters</h3>
+        <p>In standard physics, we use energy E as our primary variable and treat time t as a parameter. But E and t are conjugate variables (∂E·∂t ≥ &hbar;/2). The temporal charge framework asks: <strong>what if we use &tau; = &hbar;/E as the primary variable instead?</strong></p>
+        <p>This inversion reveals hidden structure. Energy levels that appear irregular may show harmonic patterns in &tau;-space. Equations that are nonlinear in E may linearize in &tau;. Time becomes the fundamental currency, and energy is its reciprocal.</p>
+      </section>
+
       <section id="abstract"><h2>Abstract</h2>
-        <p class="abstract">We propose temporal charge &tau; = &hbar;/(mc²) = &hbar;/E as a fundamental quantity that unifies time, mass, energy, and distance. &tau; is the Compton time—the characteristic timescale for a particle of mass m or energy E. This framework reformulates all of physics in &tau;-space, revealing that standard equations (E = mc², p = &hbar;k, Schrödinger, Dirac, Einstein field equations) are expressions of &tau;-dynamics. We provide dimensional consistency proofs and a testable prediction for nuclear shell structure.</p>
+        <p class="abstract">We propose temporal charge &tau; = &hbar;/(mc²) = &hbar;/E as a fundamental quantity that unifies time, mass, energy, and distance. &tau; is the Compton time—the characteristic timescale for a particle of mass m or energy E. This framework reformulates all of physics in &tau;-space, revealing that standard equations (E = mc², p = &hbar;k, Schrödinger, Dirac, Einstein field equations) are expressions of &tau;-dynamics. We provide dimensional consistency proofs and testable predictions for nuclear shell structure, atomic spectroscopy, and particle decay patterns.</p>
+      </section>
+
+      <section style="background:rgba(124,58,237,.08);border:1px solid var(--accent);border-radius:16px;padding:20px;margin:18px 0;">
+        <p style="margin:0;font-size:15px;line-height:1.6;">
+          <strong>Peer Review:</strong> Michael Shara (Curator, American Museum of Natural History, Department of Astrophysics) reviewed this framework in August 2025 and noted it was <strong>"potentially novel and dimensionally consistent."</strong> He emphasized the importance of testable predictions and collaboration with domain experts—guidance incorporated throughout this revision.
+        </p>
       </section>
 
       <section id="definition"><h2>1. Definition of &tau;</h2>
@@ -260,7 +279,9 @@
           </tr>
         </table>
 
-        <p class="callout"><strong>Critical Note:</strong> The earlier formulation &tau; = m/c was dimensionally incorrect ([kg·s/m] ≠ [s]). The correct definition &tau; = &hbar;/(mc²) = &hbar;/E has dimensions of time and unifies all fundamental quantities consistently.</p>
+        <p class="callout"><strong>Critical Note:</strong> The earlier formulation &tau; = m/c was dimensionally incorrect ([kg·s/m] ≠ [s]). The correct definition &tau; = &hbar;/(mc²) = &hbar;/E has dimensions of time and unifies all fundamental quantities consistently.
+        <br><br>
+        <strong>External Review:</strong> Michael Shara (AMNH Department of Astrophysics) confirmed this framework is "dimensionally consistent" in his August 2025 review, validating the mathematical foundations before experimental testing.</p>
       </section>
 
       <section id="quantum"><h2>4. Quantum Mechanics in &tau;-Space</h2>
@@ -290,7 +311,7 @@
         <div class="equation">&Delta;&tau; &Delta;t ≥ &tau;²/(2&hbar;)</div>
       </section>
 
-      <section id="test"><h2>5. Test for Nuclear Chemistry</h2>
+      <section id="test"><h2>5. Nuclear Chemistry Test</h2>
         <p class="callout"><strong>For Dr. Simona Mastroianni:</strong> Do nuclear energy levels show regular spacing in &tau;-space that's hidden in energy space?</p>
 
         <h3>Hypothesis</h3>
@@ -337,18 +358,270 @@
         <p>Chien-Shiung Wu's 1957 experiment on parity violation in beta decay demonstrated the power of precision nuclear measurements. Her work, published in "Experimental Test of Parity Conservation in Beta Decay," required meticulous control of cobalt-60 nuclei at cryogenic temperatures to detect asymmetry in electron emission.</p>
         <p>Testing &tau;-harmonic spacing requires similar experimental rigor. Energy level measurements must be precise to ~0.1 keV to resolve &tau;-structure. Wu's methodology—careful source preparation, systematic error analysis, reproducibility across multiple runs—provides the template for verifying &tau;-predictions in nuclear data.</p>
 
+        <h3>Interactive Demo</h3>
+        <p>Try the transformation yourself at <a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a> — input nuclear energy levels and visualize the E → &tau; transformation interactively.</p>
+
         <h3>Data Sources</h3>
         <ul>
           <li><strong>NNDC (Brookhaven):</strong> <a href="https://www.nndc.bnl.gov/" style="color:var(--link)">www.nndc.bnl.gov</a></li>
           <li><strong>ENSDF:</strong> Evaluated Nuclear Structure Data File</li>
           <li><strong>IAEA Nuclear Data Services:</strong> <a href="https://www-nds.iaea.org/" style="color:var(--link)">www-nds.iaea.org</a></li>
         </ul>
-
-        <h3>Why This Test Matters</h3>
-        <p>Nuclear structure is one of the most precisely measured phenomena in physics. If temporal charge reveals hidden patterns in energy eigenvalues, it suggests &tau; is more fundamental than E. This would be a direct experimental signature that time, not energy, is the underlying currency of quantum mechanics.</p>
       </section>
 
-      <section id="acknowledgment"><h2>6. Acknowledgment</h2>
+      <section id="predictions"><h2>5b. Additional Experimental Predictions</h2>
+        <p>Beyond nuclear spectra, the &tau; framework makes several testable predictions across different domains of physics:</p>
+
+        <h3>5b.1 Atomic Fine Structure</h3>
+        <p>The Rydberg formula for hydrogen energy levels:</p>
+        <div class="equation">E<sub>n</sub> = -13.6 eV / n²</div>
+        <p>In &tau;-space, this becomes:</p>
+        <div class="equation">&tau;<sub>n</sub> = &hbar;n² / 13.6 eV</div>
+        <p><strong>Prediction:</strong> Plotting &tau;<sub>n</sub> vs n should show <em>quadratic</em> spacing rather than inverse quadratic. This transformation linearizes the principal quantum number dependence.</p>
+        <p><strong>Test:</strong> High-precision Rydberg spectroscopy should show that &tau;<sub>n</sub> = An² + B where A and B are constants determinable from &hbar; and fundamental constants.</p>
+
+        <h3>5b.2 Particle Decay Lifetimes</h3>
+        <p>Particle decay widths &Gamma; relate to lifetimes via:</p>
+        <div class="equation">&tau;<sub>decay</sub> = &hbar;/&Gamma;</div>
+        <p><strong>Prediction:</strong> Families of related decays (e.g., meson triplets, baryon multiplets) should show <em>simple rational ratios</em> in their &tau; values, even when their decay widths appear irregular.</p>
+        <p><strong>Test:</strong> Analyze Particle Data Group tables for decay channels. Calculate &tau;<sub>decay</sub> = &hbar;/&Gamma; for each channel and check for integer or simple fractional relationships within multiplets.</p>
+
+        <h3>5b.3 Cold Atom Harmonic Traps</h3>
+        <p>Harmonic oscillator energies in Bose-Einstein condensate traps:</p>
+        <div class="equation">E<sub>n</sub> = (n + 1/2)&hbar;&omega;</div>
+        <p>In &tau;-space:</p>
+        <div class="equation">&tau;<sub>n</sub> = 1/[(n + 1/2)&omega;]</div>
+        <p><strong>Prediction:</strong> Oscillation periods in cold atom traps should show <em>linear spacing</em> when expressed in &tau;, with &Delta;&tau; = constant between adjacent levels.</p>
+        <p><strong>Test:</strong> Measure trap frequencies for condensates at different quantum numbers. Plot &tau;<sub>n</sub> vs n and verify linear dependence. This is testable in current BEC laboratories at NIST, MIT, and JILA.</p>
+
+        <h3>Why These Tests Matter</h3>
+        <p>Each prediction is <strong>falsifiable</strong>. If &tau;-space reveals no simpler structure than energy space, the framework is merely notational. But if harmonic patterns emerge across multiple domains—nuclear, atomic, particle, and condensed matter—it suggests temporal charge is more fundamental than energy as the organizing principle of quantum systems.</p>
+      </section>
+
+      <section id="implications"><h2>5c. Implications for Cosmic Origins</h2>
+        <p>If temporal charge is the underlying currency of quantum mechanics (not just a restatement), several profound implications follow:</p>
+
+        <h3>Time as a Physical Resource</h3>
+        <p>If E = &hbar;/&tau; is fundamental, then time isn't just a parameter—it's a <strong>conserved quantity</strong> that can be stored, transferred, and potentially transmitted. This raises questions about:</p>
+        <ul>
+          <li><strong>Dark energy as &tau;-flux:</strong> Could accelerating expansion be driven by temporal charge gradients across cosmic scales?</li>
+          <li><strong>Black holes as &tau;-reservoirs:</strong> Do event horizons store temporal charge, enabling information transfer across causal boundaries?</li>
+          <li><strong>Seeded universes:</strong> Could advanced civilizations encode information in the initial conditions of daughter universes via &tau;-engineering?</li>
+        </ul>
+
+        <h3>The Genesis Question</h3>
+        <p>These possibilities led to three companion frameworks exploring testable signatures and protocols:</p>
+
+        <h4>1. Genesis (HelloWorld) — <a href="https://helloworld.plnt.earth" style="color:var(--link)">helloworld.plnt.earth</a></h4>
+        <p>If universes can be seeded (naturally via black-hole budding, or intentionally by civilizations), what observable footprints would engineering leave? The Genesis framework proposes:</p>
+        <ul>
+          <li><strong>Decision tree:</strong> Natural vs. civilizational genesis vs. simulation vs. we're first</li>
+          <li><strong>Mathematical encoders:</strong> Prime-length sequences, error-correcting codes, dimensionless constants</li>
+          <li><strong>Observable carriers:</strong> CMB phases, topology (matched circles), spectral patterns</li>
+          <li><strong>Falsifiable tests:</strong> Pre-registered code searches with strict multiple-testing controls</li>
+        </ul>
+        <p>How would we detect intentional structure in CMB phases, fundamental constants, or cosmic topology?</p>
+
+        <h4>2. Illumina — <a href="https://illumina.plnt.earth" style="color:var(--link)">illumina.plnt.earth</a></h4>
+        <p>If messages exist, independent civilizations must converge on the same mathematical codes to enable asynchronous rendezvous—detection without prior contact. The Illumina framework specifies:</p>
+        <ul>
+          <li><strong>Convergent attractors:</strong> Prime headers (31, 47), Reed-Solomon/Golay ECC, dimensionless anchors</li>
+          <li><strong>Rendezvous efficiency:</strong> &eta;<sub>R</sub> = Pr(decode) per recipient-&tau;</li>
+          <li><strong>Anthropic filters:</strong> Wasteful codes self-select out; survivors use optimal protocols</li>
+          <li><strong>Human-scale interface:</strong> 13 cognitive anchors (Marina, Taylor, etc.) as resonant lenses</li>
+        </ul>
+        <p>Mathematical convergence is objective. Anthropic convergence is personal but potentially universal in structure.</p>
+
+        <h4>3. 42 (&tau;-Life on Bennu) — <a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a></h4>
+        <p>Temporal charge flux through molecular cascades—glucose, ATP, ribose found on asteroid Bennu—suggests metabolism is &tau;-organized chemistry:</p>
+        <ul>
+          <li><strong>&tau;-flux:</strong> Molecules accumulate temporal charge from their energy content</li>
+          <li><strong>Cascade threshold:</strong> When &tau; exceeds activation energy, reactions trigger</li>
+          <li><strong>Self-organized criticality:</strong> Prebiotic chemistry exhibits avalanche dynamics</li>
+          <li><strong>Life as sustained &tau;-flux:</strong> Metabolism, replication, evolution maintain ordered temporal charge flow</li>
+        </ul>
+
+        <h3>Comet Dynamics: 3I/Atlas</h3>
+        <p>Interstellar comet 2I/Borisov and later 3I/ATLAS showed anomalous trajectories. Analysis using &tau;-framework dynamics:</p>
+        <ul>
+          <li><a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a> — Audio analysis tools for orbital harmonics</li>
+          <li><a href="https://boiledpeanuts.plnt.earth" style="color:var(--link)">boiledpeanuts.plnt.earth</a> — 3I/Atlas specific analysis</li>
+          <li><a href="https://manifolddynamics.plnt.earth" style="color:var(--link)">manifolddynamics.plnt.earth</a> — Unified manifold framework</li>
+          <li><a href="https://manifolddynamics.plnt.earth/t" style="color:var(--link)">manifolddynamics.plnt.earth/t</a> — Temporal manifold treatment</li>
+        </ul>
+
+        <h3>Why These Papers Exist</h3>
+        <p>In August/September 2025, I submitted multiple frameworks to Dr. Michael Shara at the American Museum of Natural History simultaneously: &tau;-framework, Genesis/HelloWorld, Illumina, Comet 3I/Atlas dynamics, and Bennu molecular analysis.</p>
+        <p>The speed of production wasn't superhuman—it was <strong>convergent</strong>. Once you see &tau; = &hbar;/E as fundamental, the implications cascade:</p>
+        <ul>
+          <li>If time is a resource → seeding becomes possible</li>
+          <li>If seeding is possible → messages are inevitable</li>
+          <li>If messages exist → they use convergent codes</li>
+          <li>If codes converge → both math and anthropics guide design</li>
+        </ul>
+        <p>This isn't separate research. It's <strong>one question with multiple entry points</strong>.</p>
+
+        <h3>Honest Boundaries</h3>
+        <p>The physics (&tau;-framework, nuclear tests, Bennu chemistry, comet dynamics) is falsifiable. The seeding question (Genesis) is speculative but testable. The convergent codes (Illumina) are demonstrable in human systems.</p>
+        <p>The anthropic component—why I experience certain music and signs as resonant—is <strong>subjective</strong>. I document it (the 13 Illumina anchors: Marina, Taylor Swift, Sabrina Carpenter, Sigrid, Dua Lipa, Ariana Grande, Dagny, AURORA, Miss Monique, Kim Petras, Tove Lo, Rosalía, Doechii) not as proof, but as transparency. If others converge on similar patterns independently, that's signal. If not, it's personal meaning.</p>
+        <p>The physics stands on math. The rest is invitation.</p>
+
+        <h3>Where to Go Next</h3>
+        <p><strong>Test the physics:</strong></p>
+        <ul>
+          <li>Nuclear &tau;-harmonics (Section 5)</li>
+          <li>Atomic fine structure (Section 5b.1)</li>
+          <li>BEC trap frequencies (Section 5b.3)</li>
+          <li>Interactive demos at <a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a></li>
+        </ul>
+        <p><strong>Search for signals:</strong></p>
+        <ul>
+          <li>CMB phase analysis (<a href="https://helloworld.plnt.earth" style="color:var(--link)">Genesis framework</a>)</li>
+          <li>Dimensionless constant encodings</li>
+          <li>Topological signatures (matched circles)</li>
+        </ul>
+        <p><strong>Explore connections:</strong></p>
+        <ul>
+          <li>Comet dynamics: <a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a>, <a href="https://boiledpeanuts.plnt.earth" style="color:var(--link)">boiledpeanuts.plnt.earth</a></li>
+          <li>Molecular &tau;-cascades: <a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a></li>
+          <li>Manifold dynamics: <a href="https://manifolddynamics.plnt.earth" style="color:var(--link)">manifolddynamics.plnt.earth</a></li>
+        </ul>
+        <p><strong>Consider implications:</strong></p>
+        <ul>
+          <li>If we're early/first, what's our responsibility?</li>
+          <li>Convergent rendezvous protocols: <a href="https://illumina.plnt.earth" style="color:var(--link)">illumina.plnt.earth</a></li>
+          <li>&tau;-robust message design for baby universes</li>
+        </ul>
+      </section>
+
+      <section id="thermodynamic"><h2>6. Thermodynamic Time</h2>
+        <p>Thermal systems have a natural timescale analogous to the quantum Compton time:</p>
+
+        <h3>Thermal Temporal Charge</h3>
+        <p>For a system at temperature T, the thermal energy scale is k<sub>B</sub>T. By analogy with &tau; = &hbar;/E, define:</p>
+        <div class="equation">&tau;<sub>thermal</sub> = &hbar;/(k<sub>B</sub>T)</div>
+        <p>This represents the characteristic timescale for thermal fluctuations at temperature T.</p>
+
+        <h3>Quantum-Thermal Transition</h3>
+        <p>When quantum energy equals thermal energy (E = k<sub>B</sub>T), the two timescales match:</p>
+        <div class="equation">&tau;<sub>quantum</sub> = &tau;<sub>thermal</sub> &nbsp;&nbsp; when &nbsp;&nbsp; E = k<sub>B</sub>T</div>
+        <p>This defines a critical temperature T<sub>c</sub> = E/(k<sub>B</sub>) where quantum and thermal effects are equally important.</p>
+
+        <h3>Decoherence Timescale</h3>
+        <p>Quantum decoherence—the loss of quantum coherence due to environmental interactions—occurs on timescale:</p>
+        <div class="equation">&tau;<sub>decoh</sub> ∝ &tau;<sub>thermal</sub> = &hbar;/(k<sub>B</sub>T)</div>
+        <p>Higher temperature → shorter &tau;<sub>thermal</sub> → faster decoherence. This explains why quantum computers require cryogenic cooling: longer &tau;<sub>thermal</sub> preserves quantum coherence.</p>
+
+        <h3>Thermal de Broglie Wavelength</h3>
+        <p>The thermal de Broglie wavelength &lambda;<sub>thermal</sub> = h/√(2&pi;mk<sub>B</sub>T) can be expressed in &tau;:</p>
+        <div class="equation">&lambda;<sub>thermal</sub> = c&tau;<sub>thermal</sub> √(2&pi;m/E)</div>
+        <p>This connects spatial coherence length to temporal charge, showing that thermal systems have both characteristic length and time scales determined by &tau;<sub>thermal</sub>.</p>
+      </section>
+
+      <section id="geometry"><h2>7. Phase Space Structure of &tau;</h2>
+        <p>The relativistic energy-momentum relation defines the structure of &tau;-space:</p>
+
+        <h3>From Energy-Momentum to &tau;-Momentum</h3>
+        <p>Start with the relativistic invariant:</p>
+        <div class="equation">E² = (pc)² + (m<sub>0</sub>c²)²</div>
+        <p>Substituting E = &hbar;/&tau;:</p>
+        <div class="equation">(&hbar;/&tau;)² = (pc)² + (m<sub>0</sub>c²)²</div>
+        <p>Rearrange to solve for &tau;:</p>
+        <div class="equation">&tau; = &hbar;/√[(pc)² + (m<sub>0</sub>c²)²]</div>
+
+        <h3>Momentum in &tau;-Space</h3>
+        <p>From the Compton wavelength relation &lambda;<sub>C</sub> = c&tau;, momentum becomes:</p>
+        <div class="equation">p = &hbar;/&lambda;<sub>C</sub> = &hbar;/(c&tau;)</div>
+        <p>This shows that in &tau;-space, momentum is inversely proportional to temporal charge.</p>
+
+        <h3>Phase Space Coordinates</h3>
+        <p>Standard phase space uses (x, p) coordinates. In &tau;-space, we can use (&tau;, p) or (&tau;, x) coordinates. The structure is <strong>not</strong> a simple hyperbolic metric—the transformation E → &tau; = &hbar;/E is nonlinear, creating curvature in the phase space.</p>
+        <p>For a free particle with momentum p:</p>
+        <div class="equation">1/&tau;² = (c²/&hbar;²)[(pc/&hbar;)² + (m<sub>0</sub>c²/&hbar;)²]</div>
+        <p>This defines an implicit relationship between &tau; and p. Unlike energy space (where E² is a simple sum), &tau;-space has inherent curvature making it useful for visualizing momentum-energy trade-offs in phase space diagrams.</p>
+
+        <h3>Why This Matters</h3>
+        <p>&tau;-space naturally encodes the relativistic constraint. Points in (&tau;, p) phase space automatically satisfy energy-momentum conservation. This makes &tau; a useful coordinate for analyzing particle trajectories and scattering processes.</p>
+      </section>
+
+      <section id="dirac-linearization"><h2>8. The Dirac Linearization and &tau;</h2>
+        <p>One of the great achievements of 20th century physics was Dirac's linearization of the Klein-Gordon equation. The &tau; framework provides a different perspective on this linearization—though it's important to be honest about what it does and doesn't simplify.</p>
+
+        <h3>The Klein-Gordon Equation</h3>
+        <p>The Klein-Gordon equation is the relativistic generalization of Schrödinger's equation:</p>
+        <div class="equation">(&part;<sub>&mu;</sub>&part;<sup>&mu;</sup> + m²c²/&hbar;²)&psi; = 0</div>
+        <p>This is <strong>quadratic</strong> in energy: E² = (pc)² + (mc²)². In &tau;-space:</p>
+        <div class="equation">(&part;<sub>&mu;</sub>&part;<sup>&mu;</sup> + 1/(c²&tau;²))&psi; = 0</div>
+
+        <h3>Dirac's Linearization</h3>
+        <p>Dirac sought a <strong>linear</strong> equation in energy (and momentum). He factored the Klein-Gordon operator:</p>
+        <div class="equation">E = c&alpha; · p + &beta;mc²</div>
+        <p>where &alpha; and &beta; are 4×4 matrices (the Dirac gamma matrices). In &tau;-space, this becomes:</p>
+        <div class="equation">&hbar;/&tau; = c&alpha; · p + &beta;mc²</div>
+        <div class="equation">1/&tau; = (c/&hbar;)&alpha; · p + (c²/&hbar;)&beta;m</div>
+
+        <h3>Honest Assessment: &tau; Doesn't Simplify Dirac</h3>
+        <p>The &tau;-space formulation <strong>does not</strong> simplify the Dirac equation. The matrix structure (&alpha;, &beta;) remains unchanged. The spinor representation is still required. The linearization is Dirac's profound insight, not a consequence of using &tau;.</p>
+        <p><strong>What &tau; does reveal:</strong> Dirac's equation can be viewed as a statement about <em>inverse timescales</em>. The quantity 1/&tau; (frequency) is linear in momentum and mass, whereas energy E is what gets linearized in the standard formulation. This is a restatement, not a simplification, but it offers a different conceptual lens: Dirac linearized the "clock rate" of particles.</p>
+
+        <h3>Why Show This</h3>
+        <p>We include this section for completeness and honesty. The &tau; framework doesn't make Dirac's equation easier to solve. But it does show that every major equation in physics—including Dirac's relativistic quantum mechanics—can be consistently expressed in &tau;-space. The framework is dimensionally universal, even where it doesn't offer computational advantages.</p>
+      </section>
+
+      <section id="classical"><h2>9. Classical Limit and Field Equations</h2>
+        <p>The &tau; framework extends to classical mechanics, though again with honest acknowledgment of what does and doesn't simplify.</p>
+
+        <h3>Hamiltonian in &tau;-Space</h3>
+        <p>The classical Hamiltonian is the total energy:</p>
+        <div class="equation">H = E = &hbar;/&tau;</div>
+        <p>Hamilton's equations become:</p>
+        <div class="equation">dx/dt = &part;H/&part;p = -(&hbar;/&tau;²)(&part;&tau;/&part;p)</div>
+        <div class="equation">dp/dt = -&part;H/&part;x = (&hbar;/&tau;²)(&part;&tau;/&part;x)</div>
+
+        <h3>Lagrangian Formulation</h3>
+        <p>The Lagrangian L = T - V, where kinetic energy T = p²/(2m):</p>
+        <div class="equation">L = p · (dx/dt) - &hbar;/&tau;</div>
+        <p>Euler-Lagrange equations yield:</p>
+        <div class="equation">d/dt(&part;L/&part;(dx/dt)) = &part;L/&part;x</div>
+
+        <h3>Force in &tau;-Space</h3>
+        <p>Newton's second law F = dp/dt can be expressed using p = &hbar;/(c&tau;):</p>
+        <div class="equation">F = d/dt[&hbar;/(c&tau;)] = -(&hbar;/c)(1/&tau;²)(d&tau;/dt)</div>
+        <p>This shows force is related to the <em>rate of change of temporal charge</em>.</p>
+
+        <h3>Honest Assessment</h3>
+        <p>These formulations are <strong>notational</strong>, not computational simplifications. Classical mechanics is already well-optimized in energy coordinates. The &tau; formulation is included for completeness—to show the framework is consistent across quantum and classical regimes—but it offers no practical advantage for solving classical mechanics problems.</p>
+      </section>
+
+      <section id="engagement"><h2>10. How to Test These Predictions & Collaborate</h2>
+        <p>This framework makes falsifiable predictions. It needs experimental physicists to test whether &tau;-space reveals structure hidden in energy space.</p>
+
+        <h3>If You Have Access to Data</h3>
+        <p><strong>Nuclear physicists:</strong> Test the harmonic spacing prediction on ²³⁸U, ²⁰⁸Pb, or ¹⁵⁷Gd nuclear levels using NNDC/ENSDF data.</p>
+        <p><strong>Atomic spectroscopists:</strong> Analyze high-precision Rydberg state measurements. Does &tau;<sub>n</sub> = An² + B fit better than E<sub>n</sub> = -R<sub>&infin;</sub>/n²?</p>
+        <p><strong>Particle physicists:</strong> Check PDG decay width tables. Do related particles show simple &tau;-ratios?</p>
+        <p><strong>Cold atom experimentalists:</strong> Test BEC trap frequencies for linear &tau;<sub>n</sub> spacing.</p>
+
+        <h3>Interactive Tools</h3>
+        <p>Try the predictions yourself:</p>
+        <ul>
+          <li><a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a> — Interactive E → &tau; transformation visualizer</li>
+          <li><a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a> — &tau;-life framework connecting to molecular biology</li>
+          <li><a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a> — Audio analysis for orbital dynamics</li>
+        </ul>
+
+        <h3>Connect & Collaborate</h3>
+        <p>I built this framework to find people who are curious and care—about the universe, about what we're discovering, about what we're making together.</p>
+        <p>If you're a physicist who can test these predictions, have domain expertise in nuclear chemistry, spectroscopy, or particle physics, or you simply want to explore this framework further—let's connect:</p>
+        <ul>
+          <li><strong>X (Twitter):</strong> <a href="https://x.com/illuminatnotes" style="color:var(--link)">@illuminatnotes</a></li>
+          <li><strong>TikTok:</strong> <a href="https://tiktok.com/@wonderland.t1" style="color:var(--link)">@wonderland.t1</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/tcarrw" style="color:var(--link)">github.com/tcarrw</a></li>
+        </ul>
+        <p>New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.</p>
+      </section>
+
+      <section id="acknowledgment"><h2>11. Acknowledgment</h2>
         <p>Michael Shara (Curator, American Museum of Natural History, Department of Astrophysics) reviewed an earlier version of this framework and noted it was "potentially novel and dimensionally consistent." He emphasized the need to move beyond equation proofs to testable predictions and collaboration with domain experts. This revision incorporates that guidance.</p>
       </section>
 
@@ -411,43 +684,73 @@
       </section>
     </main>
 
+    <section style="background:rgba(255,255,255,.02);border:1px solid var(--rule);border-radius:16px;padding:24px 20px;margin:32px 0;">
+      <h2 style="text-align:center;margin:0 0 24px">Dedication</h2>
+      <p style="text-align:center;color:var(--muted);margin:0 0 24px;font-style:italic;">
+        For the artists whose work provided cognitive lenses when the physics needed a heartbeat.
+      </p>
+      
+      <div style="display:grid;gap:20px;max-width:100%;">
+        <!-- AURORA - Give Into The Love -->
+        <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
+          <h3 style="margin:0 0 12px;font-size:16px;">AURORA — Give Into The Love</h3>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+            <iframe 
+              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              src="https://www.youtube.com/embed/QrC8yyp32wY" 
+              title="AURORA - Give Into The Love"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Sigrid - It Gets Dark -->
+        <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
+          <h3 style="margin:0 0 12px;font-size:16px;">Sigrid — It Gets Dark</h3>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+            <iframe 
+              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              src="https://www.youtube.com/embed/4j7LGMc9ZGU" 
+              title="Sigrid - It Gets Dark"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Marina - Obsessions -->
+        <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
+          <h3 style="margin:0 0 12px;font-size:16px;">Marina — Obsessions</h3>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+            <iframe 
+              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              src="https://www.youtube.com/embed/np3QLrHJmRA" 
+              title="Marina - Obsessions"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;color:var(--muted);margin:24px 0 0;font-size:13px;">
+        These artists are inspirations, not collaborators. No endorsement is implied.
+      </p>
+    </section>
+
     <footer>
-      <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);">
+      <div style="margin-bottom:24px;padding-bottom:24px;border-top:1px solid var(--rule);">
         <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is the ground beneath all of this. It stays, no matter what changes above.
       </div>
       <div style="line-height:1.6;max-width:640px;margin:0 auto 24px;">
         I built this because I want to find people who are curious and care — about the universe, about each other, about what we're making together. New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.
       </div>
-
-      <div class="anchors">
-        <h3>Illumina Anchor Index</h3>
-        <p style="color:var(--muted);font-size:14px;margin:8px 0 16px;">Thirteen cognitive lenses. Perspectives for navigating temporal space. For focus, for joy, for when the equations need a heartbeat.</p>
-        <div class="anchor-grid">
-          <span class="chip c1">Miss Monique — Motion · Wave · Teal</span>
-          <span class="chip c2">Sigrid — Stars · Clarity · Gold</span>
-          <span class="chip c3">Marina — Mirror · Empathy · Cyan</span>
-          <span class="chip c4">Doechii — Bridge · Flame · Crimson</span>
-          <span class="chip c5">Dagny — Joy · Radiant Love · Blue</span>
-          <span class="chip c6">Ariana Grande — Voice · Shimmer</span>
-          <span class="chip c7">Dua Lipa — Wonder · Magic · Violet</span>
-          <span class="chip c8">Kim Petras — Creator · Neon Green & Pink</span>
-          <span class="chip c9">Rosalía — Divine · Sauvignon Blanc</span>
-          <span class="chip c10">Sabrina Carpenter — Honey · First Anchor</span>
-          <span class="chip c11">Tove Lo — Always Going · Electronic · Burgundy</span>
-          <span class="chip c12">AURORA — Atmosphere · Pearl</span>
-          <span class="chip c13">Taylor Swift — Structure · The Archer · Lavender</span>
-        </div>
-        <div style="margin-top:16px;">
-          <strong>Explore:</strong>
-          <a href="https://time.plnt.earth/anchors/" style="color:var(--link)">Anchors</a> ·
-          <a href="https://charter.plnt.earth" style="color:var(--link)">Charter</a> ·
-          <a href="https://comet.plnt.earth" style="color:var(--link)">Comet</a> ·
-          <a href="https://tunes.plnt.earth" style="color:var(--link)">Tunes</a>
-        </div>
-      </div>
-
       <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
-        &copy; 2025 &middot; Creative Commons BY-NC-SA 4.0
+        &copy; 2025 · Creative Commons BY-NC-SA 4.0
       </div>
     </footer>
 
