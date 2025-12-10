@@ -88,10 +88,21 @@
       <div class="logo">&tau;</div>
       <h1>Unified Temporal Framework</h1>
       <div class="subtitle">Quantum and relativistic formulations unified: &tau; = &hbar;/E = E/c³ at bridge energy E = √(&hbar;c³)</div>
-      <div class="meta">Tristan White · December 9, 2025 · Illumina 1 · 5:7</div>
+      <div class="meta">Tristan White · December 10, 2025 · #pluribus · Illumina 1 · 6:1</div>
       <div style="margin-top:16px">
         <a href="https://time.plnt.earth/time.pdf" style="display:inline-block;padding:10px 20px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:14px">LaTeX PDF</a>
       </div>
+
+      <!-- Hero Callout -->
+      <div class="callout" style="margin:24px auto;max-width:720px;text-align:left;">
+        <strong>Core Claim:</strong> Temporal charge τ = ℏ/E (quantum) and T = E/c³ (relativistic) unify at bridge energy E = √(ℏc³), making τ potentially more fundamental than energy.
+        <br><br>
+        <strong>Falsifiable Test:</strong> Nuclear decay modes with different mechanisms should show universal τ-scaling if this framework is correct.
+        <br><br>
+        <strong>Primary Test Protocol:</strong> 
+        <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">zeta.plnt.earth</a>
+      </div>
+
       <nav aria-label="Contents">
         <ul>
           <li><a href="#abstract">Abstract</a></li>
@@ -113,6 +124,11 @@
           <li><a href="#acknowledgment">16. Acknowledgment</a></li>
           <li><a href="#references">References</a></li>
         </ul>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);background:rgba(245,158,11,0.08);padding:12px;border-radius:8px;">
+          <strong>⚡ Primary Experimental Test:</strong> 
+          <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">Nuclear Decay Universal Scaling</a>
+          <br><span style="font-size:13px;color:var(--muted);">Falsifiable test using existing NNDC data — zeta.plnt.earth</span>
+        </div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">
           <strong>Interactive:</strong>
           <a href="https://tau.plnt.earth">&tau; Dynamics</a>
@@ -177,6 +193,45 @@
       <li>Temporal quantum fluctuations match classical temporal flow</li>
     </ul>
     <p>Below this energy, use &tau; = &hbar;/E. Above it, use T = E/c³. At the bridge, they are identical.</p>
+
+    <h3>Visual Regime Map</h3>
+    <div style="margin:24px 0;text-align:center;">
+      <svg width="600" height="200" viewBox="0 0 600 200" style="max-width:100%;height:auto;">
+        <!-- Background -->
+        <rect x="0" y="0" width="600" height="200" fill="var(--panel)" stroke="var(--rule)"/>
+        
+        <!-- Quantum Regime -->
+        <rect x="20" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
+        <text x="120" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Quantum Regime</text>
+        <text x="120" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &lt; √(ℏc³)</text>
+        <text x="120" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">τ = ℏ/E</text>
+        <text x="120" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Nuclear physics</text>
+        
+        <!-- Bridge -->
+        <rect x="240" y="40" width="120" height="120" fill="rgba(245,158,11,0.1)" stroke="var(--accent-2)"/>
+        <text x="300" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Bridge</text>
+        <text x="300" y="90" text-anchor="middle" fill="var(--accent-2)" font-size="13" font-weight="bold">E_bridge</text>
+        <text x="300" y="110" text-anchor="middle" fill="var(--muted)" font-size="11">333 TeV</text>
+        <text x="300" y="130" text-anchor="middle" fill="var(--ink)" font-size="12">τ = T</text>
+        
+        <!-- Relativistic Regime -->
+        <rect x="380" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
+        <text x="480" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Relativistic Regime</text>
+        <text x="480" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &gt; √(ℏc³)</text>
+        <text x="480" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">T = E/c³</text>
+        <text x="480" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Cosmology</text>
+        
+        <!-- Arrow -->
+        <path d="M 30,180 L 570,180" stroke="var(--accent-2)" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="300" y="195" text-anchor="middle" fill="var(--muted)" font-size="11">Increasing Energy →</text>
+        
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="var(--accent-2)" />
+          </marker>
+        </defs>
+      </svg>
+    </div>
   </section>
 
   <section id="bridge"><h2>3. Bridge Energy</h2>
@@ -292,6 +347,10 @@
     <div class="equation">T = √(&hbar;c³)/c³ = √(&hbar;/c³)</div>
     <div class="equation">&tau; = T ✓</div>
     <p>Both formulations yield identical values at the bridge energy, confirming they describe the same physical quantity.</p>
+
+    <div class="callout" style="margin-top:16px;">
+      <strong>Why dimensional consistency matters:</strong> Every major unification in physics (Maxwell's electromagnetism, Einstein's relativity, Dirac's quantum mechanics) started with dimensional analysis. If [τ] = [T] holds across quantum and relativistic regimes through the bridge energy, this framework deserves experimental testing.
+    </div>
   </section>
 
   <section id="noether"><h2>7. Emmy Noether & Conservation Laws</h2>
@@ -338,7 +397,7 @@
     <p>Maria Goeppert Mayer's 1949 paper "On Closed Shells in Nuclei. II" established the nuclear shell model, showing that nucleons occupy quantized energy levels analogous to electrons in atoms. Her work explained magic numbers (2, 8, 20, 28, 50, 82, 126) where nuclei show exceptional stability.</p>
 
     <h3>The &tau;-Harmonic Prediction</h3>
-    <p class="callout"><strong>For Dr. Simona Mastroianni:</strong> Do nuclear energy levels show regular spacing in &tau;-space that's hidden in energy space?</p>
+    <p class="callout"><strong>Open Question for Collaboration:</strong> Do nuclear energy levels show regular harmonic spacing in τ-space that's hidden in energy space? If τ is fundamental, Goeppert Mayer's shell structure should manifest as harmonic τ-spacing rather than the irregular energy spacing we currently observe. This is a question I'd love to explore with nuclear physicists who have access to high-precision spectroscopic data.</p>
     <p>If &tau; is fundamental, Goeppert Mayer's shell structure should manifest as <strong>harmonic &tau;-spacing</strong>:</p>
     <div class="equation">E<sub>n</sub> = E<sub>0</sub> × n &nbsp;&nbsp;&rarr;&nbsp;&nbsp; &tau;<sub>n</sub> = &tau;<sub>0</sub>/n</div>
     <p>Energy levels appear irregular (compressed at low E, spread at high E) but &tau;-levels should show simple harmonic patterns: &tau;<sub>n</sub> = &tau;<sub>0</sub>/n.</p>
@@ -382,27 +441,39 @@
   <section id="predictions"><h2>11. Experimental Predictions</h2>
     <p>The unified framework makes testable predictions across energy scales:</p>
 
-    <h3>11.1 Nuclear &tau;-Harmonics (Quantum Regime)</h3>
+    <h3>11.1 Nuclear Decay Universal Scaling (Primary Test)</h3>
+    <div class="callout" style="background:rgba(124,58,237,0.08);border-color:var(--accent);">
+      <strong>Falsifiable Prediction:</strong> α, β, and γ decay modes should show universal τ-scaling.
+      <br><br>
+      <strong>Test:</strong> Plot log(t₁/₂) vs log(ℏ/Q) for all three decay modes.
+      <br>• If <strong>τ is fundamental</strong> → single universal curve
+      <br>• If <strong>energy is fundamental</strong> → three distinct curves
+      <br><br>
+      <strong>Full test protocol:</strong> <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">zeta.plnt.earth</a>
+      <br><strong>Data source:</strong> NNDC nuclear database (test can be run now)
+    </div>
+
+    <h3>11.2 Nuclear &tau;-Harmonics (Quantum Regime)</h3>
     <p><strong>Prediction:</strong> Nuclear energy levels show &tau;<sub>n</sub> = &tau;<sub>0</sub>/n spacing.</p>
     <p><strong>Test:</strong> NNDC nuclear data, high-precision spectroscopy.</p>
     <p><strong>Observable:</strong> Linear &tau; spacing vs quantum number n.</p>
 
-    <h3>11.2 Atomic Fine Structure (Quantum Regime)</h3>
+    <h3>11.3 Atomic Fine Structure (Quantum Regime)</h3>
     <p><strong>Prediction:</strong> Rydberg states show &tau;<sub>n</sub> = An² + B (quadratic in n).</p>
     <p><strong>Test:</strong> Optical lattice clocks, hydrogen spectroscopy.</p>
     <p><strong>Observable:</strong> &tau;<sub>n</sub> fits A n² better than E<sub>n</sub> fits -R/n².</p>
 
-    <h3>11.3 Temporal Redshift (Bridge/Relativistic Regime)</h3>
+    <h3>11.4 Temporal Redshift (Bridge/Relativistic Regime)</h3>
     <p><strong>Prediction:</strong> Photons in varying temporal fields: E<sub>photon</sub> = E₀(1 + &Phi;<sub>t</sub>/c⁶).</p>
     <p><strong>Test:</strong> Quasar absorption lines, gravitational wave sources.</p>
     <p><strong>Observable:</strong> Additional redshift &Delta;&lambda;/&lambda; ~ 10⁻¹⁸.</p>
 
-    <h3>11.4 Dark Energy Equation of State (Relativistic Regime)</h3>
+    <h3>11.5 Dark Energy Equation of State (Relativistic Regime)</h3>
     <p><strong>Prediction:</strong> w(z) ≠ -1 due to temporal pressure P<sub>t</sub> = &rho;<sub>t</sub>c⁶/3.</p>
     <p><strong>Test:</strong> Type Ia supernovae, BAO, weak lensing at high z.</p>
     <p><strong>Observable:</strong> w(z) ~ -1 + &delta;w where &delta;w ~ 10⁻² at z > 2.</p>
 
-    <h3>11.5 Chronon Quantization (Planck Scale)</h3>
+    <h3>11.6 Chronon Quantization (Planck Scale)</h3>
     <p><strong>Prediction:</strong> Time quantizes at E<sub>chronon</sub> = &hbar;c³/t<sub>Planck</sub> ≈ 1.22 × 10¹⁹ GeV.</p>
     <p><strong>Test:</strong> Quantum gravity experiments, Planck-scale physics.</p>
     <p><strong>Observable:</strong> Discrete temporal structure, modified dispersion relations.</p>
@@ -492,15 +563,69 @@
   <section id="engagement"><h2>15. How to Test & Collaborate</h2>
     <p>This framework makes falsifiable predictions across domains:</p>
 
-    <h3>If You Have Access to Data</h3>
-    <p><strong>Nuclear physicists:</strong> Test &tau;-harmonics on ²³⁸U, ²⁰⁸Pb using NNDC data.</p>
-    <p><strong>Atomic spectroscopists:</strong> Test &tau;<sub>n</sub> = An² vs E<sub>n</sub> = -R/n² in Rydberg states.</p>
-    <p><strong>Cosmologists:</strong> Test w(z) deviations from -1 at high redshift.</p>
-    <p><strong>Experimentalists:</strong> Atomic clock networks for temporal field detection.</p>
+    <h3>Specific Ways to Help:</h3>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Nuclear Physicists:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Run the nuclear decay universal scaling test (<a href="https://zeta.plnt.earth" style="color:var(--link)">zeta.plnt.earth</a>)</li>
+        <li>Test τ-harmonics on ²³⁸U, ²⁰⁸Pb using NNDC data</li>
+        <li>Review dimensional consistency against shell models</li>
+        <li>Identify best isotope candidates for clean data</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Atomic Spectroscopists:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Test τ<sub>n</sub> = An² vs E<sub>n</sub> = -R/n² in Rydberg states</li>
+        <li>Use optical lattice clocks for temporal field detection</li>
+        <li>Measure fine structure with τ-parametrization</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Cosmologists:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Test w(z) deviations from -1 at high redshift</li>
+        <li>Look for temporal field signatures in CMB</li>
+        <li>Analyze BAO and weak lensing for temporal pressure effects</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Theoretical Physicists:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Check compatibility with known symmetries</li>
+        <li>Derive QFT predictions for τ-correlations</li>
+        <li>Examine connection to quantum gravity approaches</li>
+        <li>Explore bridge energy implications for unification</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Experimentalists:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Design atomic clock network tests for temporal field gradients</li>
+        <li>Precision measurements near bridge energy scale</li>
+        <li>Develop protocols for τ-measurement in different systems</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
+      <strong>□ Anyone:</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li>Share with physicists who have NNDC access</li>
+        <li>Critique the mathematics—where does it break?</li>
+        <li>Connect me with researchers at national labs</li>
+        <li>Explore interactive tools at <a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a></li>
+      </ul>
+    </div>
 
     <h3>Interactive Tools</h3>
     <ul>
       <li><a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a> — E → &tau; transformation visualizer</li>
+      <li><a href="https://zeta.plnt.earth" style="color:var(--link)">zeta.plnt.earth</a> — Nuclear decay universal scaling test</li>
       <li><a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a> — Molecular temporal dynamics</li>
       <li><a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a> — Orbital analysis tools</li>
     </ul>
@@ -537,68 +662,22 @@
   </section>
 </main>
 
-<section style="background:rgba(255,255,255,.02);border:1px solid var(--rule);border-radius:16px;padding:24px 20px;margin:32px 0;">
-  <h2 style="text-align:center;margin:0 0 24px">Dedication</h2>
-  <p style="text-align:center;color:var(--muted);margin:0 0 24px;font-style:italic;">
-    For the artists whose work provided cognitive lenses when the physics needed a heartbeat.
-  </p>
-  
-  <div style="display:grid;gap:20px;max-width:100%;">
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
-      <h3 style="margin:0 0 12px;font-size:16px;">AURORA — Give Into The Love</h3>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
-        <iframe 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;"
-          src="https://www.youtube.com/embed/QrC8yyp32wY" 
-          title="AURORA - Give Into The Love"
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
-      <h3 style="margin:0 0 12px;font-size:16px;">Sigrid — It Gets Dark</h3>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
-        <iframe 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;"
-          src="https://www.youtube.com/embed/4j7LGMc9ZGU" 
-          title="Sigrid - It Gets Dark"
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;">
-      <h3 style="margin:0 0 12px;font-size:16px;">Marina — Obsessions</h3>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
-        <iframe 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;"
-          src="https://www.youtube.com/embed/np3QLrHJmRA" 
-          title="Marina - Obsessions"
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
-
-  <p style="text-align:center;color:var(--muted);margin:24px 0 0;font-size:13px;">
-    These artists are inspirations, not collaborators. No endorsement is implied.
-  </p>
-</section>
-
 <footer>
-  <div style="margin-bottom:24px;padding-bottom:24px;border-top:1px solid var(--rule);">
+  <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);">
     <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is the ground beneath all of this. It stays, no matter what changes above.
   </div>
   <div style="line-height:1.6;max-width:640px;margin:0 auto 24px;">
     I built this because I want to find people who are curious and care — about the universe, about each other, about what we're making together. New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.
   </div>
+
+  <div style="margin-top:16px;">
+    <strong>Explore:</strong>
+    <a href="https://zeta.plnt.earth" style="color:var(--link)">Zeta Test</a> ·
+    <a href="https://charter.plnt.earth" style="color:var(--link)">Charter</a> ·
+    <a href="https://comet.plnt.earth" style="color:var(--link)">Comet</a> ·
+    <a href="https://manifolddynamics.plnt.earth" style="color:var(--link)">Manifold</a>
+  </div>
+
   <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
     &copy; 2025 · Creative Commons BY-NC-SA 4.0
   </div>
