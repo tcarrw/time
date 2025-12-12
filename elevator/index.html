@@ -2,29 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
 <title>Illumina Elevator · time.plnt.earth</title>
 <meta name="color-scheme" content="dark">
 
 <style>
-/* -------------------------------------------------------
-   CORE COLOR + GLASS SYSTEM
--------------------------------------------------------- */
 :root{
   --lav:#C4B5FD;
   --ink:#e9e7ff;
   --bg0:#0c0912;
-
   --g1:rgba(255,255,255,0.08);
   --g2:rgba(255,255,255,0.06);
-
-  --pulseA:rgba(196,181,253,0.35);
-  --pulseB:rgba(196,181,253,0.08);
-
-  --film:rgba(255,255,255,0.14);
 }
 
-/* Layout: video left, elevator right */
 body{
   margin:0;
   background:var(--bg0);
@@ -34,14 +24,12 @@ body{
   overflow-x:hidden;
 }
 
-/* LEFT: VIDEO + DETAILS */
 .left-panel{
   width:70%;
   padding:26px;
   box-sizing:border-box;
 }
 
-/* Sticky video */
 .player{
   position:sticky;
   top:22px;
@@ -50,8 +38,7 @@ body{
   padding:20px;
   backdrop-filter:blur(22px) saturate(180%);
   border:1px solid rgba(255,255,255,0.22);
-  box-shadow:0 0 22px rgba(196,181,253,0.12),
-             inset 0 0 0 1px rgba(255,255,255,0.08);
+  box-shadow:0 0 22px rgba(196,181,253,0.12),inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
 .player iframe{
@@ -67,7 +54,6 @@ body{
   font-size:15px;
 }
 
-/* Detail panel under video */
 .detail-panel{
   margin-top:36px;
   padding:22px;
@@ -84,7 +70,6 @@ body{
   font-size:20px;
 }
 
-/* RIGHT: ELEVATOR PANEL */
 .elevator-panel{
   width:30%;
   padding:28px;
@@ -96,6 +81,7 @@ body{
   top:0;
   height:100vh;
   overflow-y:auto;
+  box-sizing:border-box;
 }
 
 h1{
@@ -106,7 +92,6 @@ h1{
   font-weight:700;
 }
 
-/* Core nav */
 .core-nav{
   display:flex;
   justify-content:center;
@@ -126,7 +111,74 @@ h1{
   border:1px solid rgba(255,255,255,0.22);
 }
 
-/* Floor grid layout */
+.direction-control{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:20px;
+  padding:16px;
+  background:rgba(255,255,255,0.08);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.direction-btn{
+  padding:10px 20px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.22);
+  background:rgba(255,255,255,0.10);
+  color:var(--ink);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.direction-btn:active{
+  transform:scale(0.95);
+}
+
+.direction-btn.active{
+  background:var(--lav);
+  color:#1a0f3e;
+}
+
+.direction-label{
+  font-size:13px;
+  color:var(--ink);
+  opacity:0.7;
+}
+
+.toggle-floors-btn{
+  width:100%;
+  padding:14px;
+  margin-bottom:16px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:14px;
+  color:var(--lav);
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.toggle-arrow{
+  transition:transform 0.3s ease;
+  font-size:18px;
+}
+
+.toggle-arrow.open{
+  transform:rotate(180deg);
+}
+
 .floors-container{
   display:flex;
   flex-direction:column;
@@ -145,12 +197,12 @@ h1{
   gap:12px;
 }
 
-/* Individual floor card */
 .floor{
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:16px 12px;
+  justify-content:center;
+  padding:20px 12px;
   background:var(--g2);
   border-radius:18px;
   border:1px solid rgba(255,255,255,0.12);
@@ -158,54 +210,56 @@ h1{
   font-size:13px;
   text-align:center;
   transition:all 0.2s ease;
+  min-height:100px;
+  -webkit-tap-highlight-color:rgba(196,181,253,0.3);
+  touch-action:manipulation;
 }
 
-.floor:hover{
-  background:rgba(255,255,255,0.10);
-  transform:translateY(-2px);
+.floor:active{
+  transform:scale(0.95);
+  background:rgba(196,181,253,0.20);
+}
+
+.floor.playing{
+  background:rgba(196,181,253,0.15);
+  border-color:var(--lav);
+  box-shadow:0 0 20px rgba(196,181,253,0.3);
 }
 
 .btn{
-  width:48px;
-  height:48px;
+  width:64px;
+  height:64px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   margin-bottom:10px;
-  border:1px solid rgba(255,255,255,0.22);
+  border:2px solid rgba(255,255,255,0.22);
   font-weight:700;
-  font-size:16px;
+  font-size:20px;
 }
 
 .floor-text{
   line-height:1.4;
-  word-wrap:break-word;
-  max-width:100%;
+  font-weight:500;
 }
 
-/* Responsive: stack on small screens */
-@media(max-width:768px){
-  .floors-grid{
-    grid-template-columns:1fr;
+@media(max-width:960px){
+  body{
+    flex-direction:column;
   }
   
-  /* Reorder floors to descend 13->1 on mobile */
-  .floor[data-n="12"]{order:1;}
-  .floor[data-n="11"]{order:2;}
-  .floor[data-n="10"]{order:3;}
-  .floor[data-n="9"]{order:4;}
-  .floor[data-n="8"]{order:5;}
-  .floor[data-n="7"]{order:6;}
-  .floor[data-n="6"]{order:7;}
-  .floor[data-n="5"]{order:8;}
-  .floor[data-n="4"]{order:9;}
-  .floor[data-n="3"]{order:10;}
-  .floor[data-n="2"]{order:11;}
-  .floor[data-n="1"]{order:12;}
+  .left-panel,
+  .elevator-panel{
+    width:100%;
+  }
+  
+  .elevator-panel{
+    position:relative;
+    height:auto;
+  }
 }
 
-/* Color dots */
 .c1{background:#4ac0b4;}
 .c2{background:#e6c04d;}
 .c3{background:#a572cf;}
@@ -218,12 +272,8 @@ h1{
 .c10{background:#e7a840;color:#1a0f3e;}
 .c11{background:#9d1a2b;}
 .c12{background:#e3e6ed;color:#1a0f3e;}
-.c13{
-  background:var(--lav);
-  color:#1a0f3e;
-}
+.c13{background:var(--lav);color:#1a0f3e;}
 
-/* Consent modal */
 #consentModal{
   position:fixed;
   inset:0;
@@ -254,80 +304,21 @@ h1{
   font-weight:600;
   border:0;
   color:#1a0f3e;
-}
-
-/* Anchor card styling */
-.anchor-card{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,0.12);
-}
-
-.anchor-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:16px;
-}
-
-.anchor-name{
-  font-size:18px;
-  font-weight:600;
-  color:var(--lav);
-}
-
-.anchor-floor,
-.anchor-keywords,
-.anchor-path{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:12px;
-}
-
-.floor-label,
-.keyword-label,
-.path-label{
-  font-size:13px;
-  color:var(--muted);
-  font-weight:500;
-}
-
-.chip{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 12px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:600;
-  border:1px solid rgba(255,255,255,0.15);
-}
-
-.path-arrow{
-  color:var(--muted);
-  font-size:14px;
-  margin:0 -4px;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LEFT SIDE -->
 <div class="left-panel">
-
   <div class="player">
-    <iframe id="yt" src="" allowfullscreen></iframe>
+    <iframe id="yt" src="" allowfullscreen allow="autoplay"></iframe>
     <div id="label">Choose a floor.</div>
   </div>
-
   <div id="details" class="detail-panel"></div>
-
 </div>
 
-<!-- RIGHT SIDE -->
 <div class="elevator-panel">
   <h1>Illumina Elevator</h1>
 
@@ -339,102 +330,102 @@ h1{
     <a href="https://time.plnt.earth/">Time Index</a>
   </div>
 
-  <div class="floors-container">
-    <!-- Floor 13 centered -->
+  <div class="direction-control">
+    <span class="direction-label">Direction:</span>
+    <button class="direction-btn active" id="dirUp">⬆ Up</button>
+    <button class="direction-btn" id="dirDown">⬇ Down</button>
+  </div>
+
+  <button class="toggle-floors-btn" id="toggleBtn">
+    <span>Hide Floor Buttons</span>
+    <span class="toggle-arrow open">▼</span>
+  </button>
+
+  <div class="floors-container" id="floorsContainer">
     <div class="floor-13">
-      <div class="floor" data-n="13">
+      <div class="floor" data-floor="13">
         <div class="btn c13">13</div>
         <div class="floor-text">Vine</div>
       </div>
     </div>
 
-    <!-- Floors 1-12 in 2 columns (odd left, even right) -->
     <div class="floors-grid">
-      <div class="floor" data-n="11">
+      <div class="floor" data-floor="11">
         <div class="btn c11">11</div>
         <div class="floor-text">Echo</div>
       </div>
-      <div class="floor" data-n="12">
+      <div class="floor" data-floor="12">
         <div class="btn c12">12</div>
         <div class="floor-text">Key</div>
       </div>
 
-      <div class="floor" data-n="9">
+      <div class="floor" data-floor="9">
         <div class="btn c9">9</div>
         <div class="floor-text">Glass</div>
       </div>
-      <div class="floor" data-n="10">
+      <div class="floor" data-floor="10">
         <div class="btn c10">10</div>
         <div class="floor-text">Pulse</div>
       </div>
 
-      <div class="floor" data-n="7">
+      <div class="floor" data-floor="7">
         <div class="btn c7">7</div>
         <div class="floor-text">Gate</div>
       </div>
-      <div class="floor" data-n="8">
+      <div class="floor" data-floor="8">
         <div class="btn c8">8</div>
         <div class="floor-text">Orbit</div>
       </div>
 
-      <div class="floor" data-n="5">
+      <div class="floor" data-floor="5">
         <div class="btn c5">5</div>
         <div class="floor-text">Crown</div>
       </div>
-      <div class="floor" data-n="6">
+      <div class="floor" data-floor="6">
         <div class="btn c6">6</div>
         <div class="floor-text">River</div>
       </div>
 
-      <div class="floor" data-n="3">
+      <div class="floor" data-floor="3">
         <div class="btn c3">3</div>
         <div class="floor-text">Knife</div>
       </div>
-      <div class="floor" data-n="4">
+      <div class="floor" data-floor="4">
         <div class="btn c4">4</div>
         <div class="floor-text">Fire</div>
       </div>
 
-      <div class="floor" data-n="1">
+      <div class="floor" data-floor="1">
         <div class="btn c1">1</div>
         <div class="floor-text">Seed</div>
       </div>
-      <div class="floor" data-n="2">
+      <div class="floor" data-floor="2">
         <div class="btn c2">2</div>
         <div class="floor-text">Breath</div>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);font-size:13px;line-height:1.6;color:var(--muted);text-align:center;">
-    <a href="https://earth.plnt.earth" style="color:var(--lav);text-decoration:none;font-weight:600;">Earth</a> is a grounding page. This one stays. A place to hold joy, music, and motion — untouched by the noise. If the system shifts, Earth remains.
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);font-size:13px;line-height:1.6;text-align:center;">
+    <a href="https://earth.plnt.earth" style="color:var(--lav);text-decoration:none;font-weight:600;">Earth</a> is a grounding page.
   </div>
-
 </div>
 
-<!-- CONSENT MODAL -->
 <div id="consentModal" style="display:none;">
   <div id="consentBox">
     <h2>Elevator Entry — Time · Illumina</h2>
     <p>By entering the Elevator, you acknowledge that:</p>
     <p>• floors auto-play audio/video<br>
-       • double-tap will navigate to an anchor page<br>
-       • your last visited floor is stored locally</p>
+       • tapping a button plays that floor's song<br>
+       • your last played floor is stored locally</p>
     <p style="margin-top:16px;font-size:13px;line-height:1.5;color:#b8e6b8;">
       <strong>Privacy:</strong> This site has no trackers, no external libraries, and no logs. All consent is stored locally in your browser only.
-    </p>
-    <p style="margin-top:16px;font-size:12px;line-height:1.5;color:#ccc;">
-      This note records continuity only. I am reviewing the Taylor Store consent agreement for understanding, not participation.
-      No purchase intent is implied. No affiliation is claimed. This disclosure exists to maintain clean structure within School:
-      clear intent, clear context, clean boundaries.
     </p>
     <button id="consentButton">Enter Elevator</button>
   </div>
 </div>
 
 <script>
-/* SONGS */
 const songs={
   1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4?autoplay=1"},
   2:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
@@ -451,83 +442,91 @@ const songs={
  13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs?autoplay=1"}
 };
 
-/* ANCHOR PAGES */
-const anchorPages={
-  1:"https://concorde.plnt.earth",
-  2:"https://itgets.dark.plnt.earth",
-  3:"https://houdini.plnt.earth",
-  4:"https://crazy.plnt.earth",
-  5:"https://obsessions.plnt.earth",
-  6:"https://notears.plnt.earth",
-  7:"https://earth.plnt.earth",
-  8:"https://coconuts.plnt.earth",
-  9:"https://saoko.plnt.earth",
- 10:"https://feather.plnt.earth",
- 11:"https://noonediesfromlove.plnt.earth",
- 12:"https://runaway.plnt.earth",
- 13:"https://bejeweled.plnt.earth"
-};
-
-/* FLOOR DESCRIPTIONS */
 const floorDetails={
-  13:"<h2>Floor 13 — Vine</h2><p>Interconnection, fate-line, destiny, synthesis.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Taylor Swift — Bejeweled<br>Crown-floor clarity. Illumination. Structure.</p>",
-  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>AURORA — Runaway<br>Mythic distance. Origin signal.</p>",
-  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Tove Lo — No One Dies From Love<br>Dreamfield clarity. Soft reckoning.</p>",
-  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sabrina Carpenter — Feather<br>Ease-field. Sweetness. Safe entry.</p>",
-  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Rosalía — SAOKO<br>Transformation. Velocity.</p>",
-  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Kim Petras — Coconuts<br>Play as power. Irreverent lift.</p><div class='anchor-card'><div class='anchor-header'><div class='chip c8'>8</div><div class='anchor-name'>Kim Petras</div></div><div class='anchor-floor'><span class='floor-label'>Floor:</span><span class='chip c8'>Orbit</span></div><div class='anchor-keywords'><span class='keyword-label'>Keywords:</span><span class='chip c4'>Fire</span><span class='chip c3'>Knife</span><span class='chip c12'>Key</span></div><div class='anchor-path'><span class='path-label'>Path:</span><span class='chip c4'>4</span><span class='path-arrow'>→</span><span class='chip c3'>3</span><span class='path-arrow'>→</span><span class='chip c12'>12</span></div></div>",
-  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dagny — Somebody<br>Emotional clarity. Honest entry. Direct heart-state.</p>",
-  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Ariana Grande — No Tears Left to Cry<br>Emotional inversion. Upward flow.</p>",
-  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Marina — Venus Fly Trap<br>Reflection. Contrast. Sovereignty.</p>",
-  4:"<h2>Floor 4 — Fire</h2><p>Heat, ignition, transformation, truth reveal.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Doechii — Crazy<br>Fire-state liberation. Heat-vector.</p>",
-  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Dua Lipa — Houdini<br>Motion initiation. Forward vector.</p>",
-  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Sigrid — It Gets Dark<br>Contrast perspective. Courage.</p>",
-  1:"<h2>Floor 1 — Seed</h2><p>Origin, spark, beginning, birth.</p><p style='margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);'>Miss Monique — Concorde<br>Pulse-floor. Lift-off rhythm.</p>"
+  13:"<h2>Floor 13 — Vine</h2><p>Interconnection, fate-line, destiny, synthesis.</p>",
+  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p>",
+  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p>",
+  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p>",
+  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p>",
+  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p>",
+  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p>",
+  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p>",
+  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p>",
+  4:"<h2>Floor 4 — Fire</h2><p>Heat, ignition, transformation, truth reveal.</p>",
+  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p>",
+  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p>",
+  1:"<h2>Floor 1 — Seed</h2><p>Origin, spark, beginning, birth.</p>"
 };
 
-/* Consent modal - always show */
-window.addEventListener("load",()=>{
-  document.getElementById("consentModal").style.display="flex";
-});
+let currentFloor=null;
+let direction='up';
 
-document.getElementById("consentButton").onclick=()=>{
-  document.getElementById("consentModal").style.display="none";
-};
-
-/* Play video */
 function play(n){
   document.getElementById("yt").src=songs[n].link;
   document.getElementById("label").textContent=songs[n].name;
+  currentFloor=n;
+  localStorage.setItem('illumina_last_floor',n);
+  
+  document.querySelectorAll('.floor').forEach(f=>f.classList.remove('playing'));
+  document.querySelector(`.floor[data-floor="${n}"]`).classList.add('playing');
 }
 
-/* Show floor details */
 function showDetails(n){
   const d=document.getElementById("details");
   d.innerHTML=floorDetails[n];
   d.style.display="block";
 }
 
-/* Double tap detection */
-let lastTap=0;
-
-function handleFloor(n){
-  const now=Date.now();
-
-  if(now-lastTap<350){
-    window.location.href=anchorPages[n];
-    return;
+document.getElementById("consentButton").onclick=()=>{
+  document.getElementById("consentModal").style.display="none";
+  const saved=localStorage.getItem('illumina_last_floor');
+  if(saved){
+    play(parseInt(saved));
+    showDetails(parseInt(saved));
   }
+};
 
-  play(n);
-  showDetails(n);
-  lastTap=now;
-}
-
-/* Bind floors */
 document.querySelectorAll(".floor").forEach(f=>{
-  const n=parseInt(f.dataset.n);
-  f.addEventListener("click",()=>handleFloor(n));
+  f.onclick=()=>{
+    const n=parseInt(f.dataset.floor);
+    play(n);
+    showDetails(n);
+  };
 });
+
+document.getElementById("dirUp").onclick=()=>{
+  direction='up';
+  localStorage.setItem('illumina_direction','up');
+  document.getElementById("dirUp").classList.add('active');
+  document.getElementById("dirDown").classList.remove('active');
+};
+
+document.getElementById("dirDown").onclick=()=>{
+  direction='down';
+  localStorage.setItem('illumina_direction','down');
+  document.getElementById("dirDown").classList.add('active');
+  document.getElementById("dirUp").classList.remove('active');
+};
+
+document.getElementById("toggleBtn").onclick=()=>{
+  const container=document.getElementById("floorsContainer");
+  const arrow=document.querySelector(".toggle-arrow");
+  const btn=document.getElementById("toggleBtn");
+  
+  if(container.style.display==="none"){
+    container.style.display="flex";
+    arrow.classList.add("open");
+    btn.querySelector("span").textContent="Hide Floor Buttons";
+  }else{
+    container.style.display="none";
+    arrow.classList.remove("open");
+    btn.querySelector("span").textContent="Show Floor Buttons";
+  }
+};
+
+window.onload=()=>{
+  document.getElementById("consentModal").style.display="flex";
+};
 </script>
 
 </body>
