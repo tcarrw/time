@@ -38,14 +38,12 @@ body{
   padding:20px;
   backdrop-filter:blur(22px) saturate(180%);
   border:1px solid rgba(255,255,255,0.22);
-  box-shadow:0 0 22px rgba(196,181,253,0.12),inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
 .player iframe{
   width:100%;
   border-radius:20px;
   border:1px solid rgba(255,255,255,0.35);
-  height:auto;
   aspect-ratio:16/9;
 }
 
@@ -55,19 +53,17 @@ body{
 }
 
 .detail-panel{
-  margin-top:36px;
+  margin-top:30px;
   padding:22px;
   border-radius:20px;
   background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter:blur(20px) saturate(180%);
   display:none;
 }
 
 .detail-panel h2{
-  margin:0 0 12px;
+  margin:0 0 10px;
   color:var(--lav);
-  font-size:20px;
 }
 
 .elevator-panel{
@@ -75,69 +71,33 @@ body{
   padding:28px;
   background:var(--g1);
   border-left:1px solid rgba(255,255,255,0.15);
-  backdrop-filter:blur(22px) saturate(180%);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.10);
   position:sticky;
   top:0;
   height:100vh;
   overflow-y:auto;
-  box-sizing:border-box;
 }
 
 h1{
   text-align:center;
   margin:0 0 16px;
-  font-size:24px;
   color:var(--lav);
-  font-weight:700;
-}
-
-.core-nav{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:26px;
-}
-
-.core-nav a{
-  padding:6px 14px;
-  font-size:13px;
-  font-weight:600;
-  border-radius:14px;
-  text-decoration:none;
-  color:var(--ink);
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.22);
 }
 
 .direction-control{
   display:flex;
-  align-items:center;
   justify-content:center;
-  gap:16px;
-  margin-bottom:20px;
-  padding:16px;
-  background:rgba(255,255,255,0.08);
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.12);
+  gap:12px;
+  margin-bottom:18px;
 }
 
 .direction-btn{
-  padding:10px 20px;
+  padding:10px 18px;
   border-radius:12px;
   border:1px solid rgba(255,255,255,0.22);
   background:rgba(255,255,255,0.10);
   color:var(--ink);
-  font-size:14px;
-  font-weight:600;
   cursor:pointer;
-  transition:all 0.2s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-
-.direction-btn:active{
-  transform:scale(0.95);
+  font-weight:600;
 }
 
 .direction-btn.active{
@@ -145,119 +105,55 @@ h1{
   color:#1a0f3e;
 }
 
-.direction-label{
-  font-size:13px;
-  color:var(--ink);
-  opacity:0.7;
-}
-
-.toggle-floors-btn{
-  width:100%;
-  padding:14px;
-  margin-bottom:16px;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.22);
-  border-radius:14px;
-  color:var(--lav);
-  font-size:15px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.2s ease;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  -webkit-tap-highlight-color:transparent;
-}
-
-.toggle-arrow{
-  transition:transform 0.3s ease;
-  font-size:18px;
-}
-
-.toggle-arrow.open{
-  transform:rotate(180deg);
-}
-
 .floors-container{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.floor-13{
-  display:flex;
-  justify-content:center;
-  margin-bottom:8px;
-}
-
-.floors-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
 .floor{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:20px 12px;
   background:var(--g2);
   border-radius:18px;
   border:1px solid rgba(255,255,255,0.12);
-  cursor:pointer;
-  font-size:13px;
+  padding:16px 10px;
   text-align:center;
-  transition:all 0.2s ease;
-  min-height:100px;
-  -webkit-tap-highlight-color:rgba(196,181,253,0.3);
-  touch-action:manipulation;
-}
-
-.floor:active{
-  transform:scale(0.95);
-  background:rgba(196,181,253,0.20);
+  cursor:pointer;
 }
 
 .floor.playing{
   background:rgba(196,181,253,0.15);
   border-color:var(--lav);
-  box-shadow:0 0 20px rgba(196,181,253,0.3);
 }
 
 .btn{
-  width:64px;
-  height:64px;
+  width:54px;
+  height:54px;
   border-radius:50%;
+  margin:0 auto 8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom:10px;
-  border:2px solid rgba(255,255,255,0.22);
   font-weight:700;
-  font-size:20px;
 }
 
-.floor-text{
-  line-height:1.4;
-  font-weight:500;
+.footer{
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  font-size:13px;
+  text-align:center;
+}
+
+.footer a{
+  color:var(--lav);
+  text-decoration:none;
+  font-weight:600;
 }
 
 @media(max-width:960px){
-  body{
-    flex-direction:column;
-  }
-  
-  .left-panel,
-  .elevator-panel{
-    width:100%;
-  }
-  
-  .elevator-panel{
-    position:relative;
-    height:auto;
-  }
+  body{flex-direction:column;}
+  .left-panel,.elevator-panel{width:100%;}
+  .elevator-panel{height:auto;position:relative;}
 }
 
 .c1{background:#4ac0b4;}
@@ -265,7 +161,7 @@ h1{
 .c3{background:#a572cf;}
 .c4{background:#c64747;}
 .c5{background:#66c7e8;}
-.c6{background:#999999;}
+.c6{background:#999;}
 .c7{background:#e48ec9;}
 .c8{background:#6e88a8;}
 .c9{background:#f6f0d8;color:#1a0f3e;}
@@ -282,28 +178,24 @@ h1{
   align-items:center;
   justify-content:center;
   z-index:999;
-  backdrop-filter:blur(8px);
 }
 
 #consentBox{
-  width:86%;
-  max-width:420px;
-  padding:26px;
-  border-radius:22px;
   background:rgba(255,255,255,0.10);
   border:1px solid rgba(255,255,255,0.25);
-  backdrop-filter:blur(20px);
+  border-radius:22px;
+  padding:26px;
   text-align:center;
+  max-width:420px;
 }
 
 #consentButton{
-  margin-top:22px;
+  margin-top:20px;
   padding:10px 24px;
   background:var(--lav);
+  border:0;
   border-radius:14px;
   font-weight:600;
-  border:0;
-  color:#1a0f3e;
   cursor:pointer;
 }
 </style>
@@ -313,7 +205,7 @@ h1{
 
 <div class="left-panel">
   <div class="player">
-    <iframe id="yt" src="" allowfullscreen allow="autoplay"></iframe>
+    <iframe id="yt" src="" allow="autoplay" allowfullscreen></iframe>
     <div id="label">Choose a floor.</div>
   </div>
   <div id="details" class="detail-panel"></div>
@@ -322,211 +214,137 @@ h1{
 <div class="elevator-panel">
   <h1>Illumina Elevator</h1>
 
-  <div class="core-nav">
-    <a href="https://time.plnt.earth/time/">Φ Field</a>
-    <a href="https://time.plnt.earth/map">Anchor Map</a>
-    <a href="https://time.plnt.earth/interpretation">Interpretation</a>
-    <a href="https://time.plnt.earth/charter">Charter</a>
-    <a href="https://time.plnt.earth/">Time Index</a>
-  </div>
-
   <div class="direction-control">
-    <span class="direction-label">Direction:</span>
-    <button class="direction-btn active" id="dirUp">⬆ Up</button>
-    <button class="direction-btn" id="dirDown">⬇ Down</button>
+    <button id="dirUp" class="direction-btn active">⬆ Up</button>
+    <button id="dirDown" class="direction-btn">⬇ Down</button>
   </div>
 
-  <button class="toggle-floors-btn" id="toggleBtn">
-    <span>Hide Floor Buttons</span>
-    <span class="toggle-arrow open">▼</span>
-  </button>
-
-  <div class="floors-container" id="floorsContainer">
-    <div class="floor-13">
-      <div class="floor" data-floor="13">
-        <div class="btn c13">13</div>
-        <div class="floor-text">Vine</div>
-      </div>
-    </div>
-
-    <div class="floors-grid">
-      <div class="floor" data-floor="11">
-        <div class="btn c11">11</div>
-        <div class="floor-text">Echo</div>
-      </div>
-      <div class="floor" data-floor="12">
-        <div class="btn c12">12</div>
-        <div class="floor-text">Key</div>
-      </div>
-
-      <div class="floor" data-floor="9">
-        <div class="btn c9">9</div>
-        <div class="floor-text">Glass</div>
-      </div>
-      <div class="floor" data-floor="10">
-        <div class="btn c10">10</div>
-        <div class="floor-text">Pulse</div>
-      </div>
-
-      <div class="floor" data-floor="7">
-        <div class="btn c7">7</div>
-        <div class="floor-text">Gate</div>
-      </div>
-      <div class="floor" data-floor="8">
-        <div class="btn c8">8</div>
-        <div class="floor-text">Orbit</div>
-      </div>
-
-      <div class="floor" data-floor="5">
-        <div class="btn c5">5</div>
-        <div class="floor-text">Crown</div>
-      </div>
-      <div class="floor" data-floor="6">
-        <div class="btn c6">6</div>
-        <div class="floor-text">River</div>
-      </div>
-
-      <div class="floor" data-floor="3">
-        <div class="btn c3">3</div>
-        <div class="floor-text">Knife</div>
-      </div>
-      <div class="floor" data-floor="4">
-        <div class="btn c4">4</div>
-        <div class="floor-text">Fire</div>
-      </div>
-
-      <div class="floor" data-floor="1">
-        <div class="btn c1">1</div>
-        <div class="floor-text">Seed</div>
-      </div>
-      <div class="floor" data-floor="2">
-        <div class="btn c2">2</div>
-        <div class="floor-text">Breath</div>
-      </div>
-    </div>
+  <div class="floors-container">
+    <div class="floor" data-floor="13"><div class="btn c13">13</div>Vine</div>
+    <div class="floor" data-floor="12"><div class="btn c12">12</div>Key</div>
+    <div class="floor" data-floor="11"><div class="btn c11">11</div>Echo</div>
+    <div class="floor" data-floor="10"><div class="btn c10">10</div>Pulse</div>
+    <div class="floor" data-floor="9"><div class="btn c9">9</div>Glass</div>
+    <div class="floor" data-floor="8"><div class="btn c8">8</div>Orbit</div>
+    <div class="floor" data-floor="7"><div class="btn c7">7</div>Gate</div>
+    <div class="floor" data-floor="6"><div class="btn c6">6</div>River</div>
+    <div class="floor" data-floor="5"><div class="btn c5">5</div>Crown</div>
+    <div class="floor" data-floor="4"><div class="btn c4">4</div>Fire</div>
+    <div class="floor" data-floor="3"><div class="btn c3">3</div>Knife</div>
+    <div class="floor" data-floor="2"><div class="btn c2">2</div>Breath</div>
+    <div class="floor" data-floor="1"><div class="btn c1">1</div>Seed</div>
   </div>
 
-  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);font-size:13px;line-height:1.6;text-align:center;">
-    <a href="https://earth.plnt.earth" style="color:var(--lav);text-decoration:none;font-weight:600;">Earth</a> is a grounding page.
+  <div class="footer">
+    <a href="https://earth.plnt.earth">Earth</a> ·
+    <a href="https://t9.plnt.earth">t9 🗼</a>
   </div>
 </div>
 
-<div id="consentModal" style="display:none;">
+<div id="consentModal">
   <div id="consentBox">
-    <h2>Elevator Entry — Time · Illumina</h2>
-    <p>By entering the Elevator, you acknowledge that:</p>
-    <p>• floors auto-play audio/video<br>
-       • tapping a button plays that floor's song<br>
-       • your last played floor is stored locally</p>
-    <p style="margin-top:16px;font-size:13px;line-height:1.5;color:#b8e6b8;">
-      <strong>Privacy:</strong> This site has no trackers, no external libraries, and no logs. All consent is stored locally in your browser only.
-    </p>
+    <h2>Elevator Entry</h2>
+    <p>Videos auto-play on floor selection.<br>Playback queues by direction.</p>
     <button id="consentButton">Enter Elevator</button>
   </div>
 </div>
 
 <script>
+const yt=document.getElementById("yt");
+const label=document.getElementById("label");
+const details=document.getElementById("details");
+
 const songs={
-  1:{name:"Miss Monique — Concorde",link:"https://www.youtube-nocookie.com/embed/1ZjkfZ6v6v4?autoplay=1"},
-  2:{name:"Sigrid — It Gets Dark",link:"https://www.youtube-nocookie.com/embed/4j7LGMc9ZGU?autoplay=1"},
-  3:{name:"Dua Lipa — Houdini",link:"https://www.youtube-nocookie.com/embed/suAR1PYFNYA?autoplay=1"},
-  4:{name:"Doechii — Crazy",link:"https://www.youtube-nocookie.com/embed/0aQ9Q0hRTwY?autoplay=1"},
-  5:{name:"Marina — Venus Fly Trap",link:"https://www.youtube-nocookie.com/embed/F1JTlnHGa90?autoplay=1"},
-  6:{name:"Ariana Grande — No Tears Left to Cry",link:"https://www.youtube-nocookie.com/embed/ffxKSjUwKdU?autoplay=1"},
-  7:{name:"Dagny — Somebody",link:"https://www.youtube-nocookie.com/embed/qO-U2WlgroQ?autoplay=1"},
-  8:{name:"Kim Petras — Coconuts",link:"https://www.youtube-nocookie.com/embed/ite2vY5qihc?autoplay=1"},
-  9:{name:"Rosalía — SAOKO",link:"https://www.youtube-nocookie.com/embed/6o7bCAZSxsg?autoplay=1"},
- 10:{name:"Sabrina Carpenter — Feather",link:"https://www.youtube-nocookie.com/embed/kLbn61Z4LDI?autoplay=1"},
- 11:{name:"Tove Lo — No One Dies From Love",link:"https://www.youtube-nocookie.com/embed/CMWLX0KXwF4?autoplay=1"},
- 12:{name:"AURORA — Runaway",link:"https://www.youtube-nocookie.com/embed/d_HlPboLRL8?autoplay=1"},
- 13:{name:"Taylor Swift — Bejeweled",link:"https://www.youtube-nocookie.com/embed/b7QlX3yR2xs?autoplay=1"}
+  1:{name:"Miss Monique — Concorde",id:"1ZjkfZ6v6v4"},
+  2:{name:"Sigrid — It Gets Dark",id:"4j7LGMc9ZGU"},
+  3:{name:"Dua Lipa — Houdini",id:"suAR1PYFNYA"},
+  4:{name:"Doechii — Crazy",id:"0aQ9Q0hRTwY"},
+  5:{name:"Marina — Venus Fly Trap",id:"F1JTlnHGa90"},
+  6:{name:"Ariana Grande — No Tears Left to Cry",id:"ffxKSjUwKdU"},
+  7:{name:"Dagny — Somebody",id:"qO-U2WlgroQ"},
+  8:{name:"Kim Petras — Coconuts",id:"ite2vY5qihc"},
+  9:{name:"Rosalía — SAOKO",id:"6o7bCAZSxsg"},
+ 10:{name:"Sabrina Carpenter — Feather",id:"kLbn61Z4LDI"},
+ 11:{name:"Tove Lo — No One Dies From Love",id:"CMWLX0KXwF4"},
+ 12:{name:"AURORA — Runaway",id:"d_HlPboLRL8"},
+ 13:{name:"Taylor Swift — Bejeweled",id:"b7QlX3yR2xs"}
 };
 
 const floorDetails={
-  13:"<h2>Floor 13 — Vine</h2><p>Interconnection, fate-line, destiny, synthesis.</p>",
-  12:"<h2>Floor 12 — Key</h2><p>Unlocking, choice, opening hidden path.</p>",
-  11:"<h2>Floor 11 — Echo</h2><p>Repetition, myth rewriting, recursion.</p>",
-  10:"<h2>Floor 10 — Pulse</h2><p>Rhythm, heart, energy, alignment.</p>",
-  9:"<h2>Floor 9 — Glass</h2><p>Transparency, reflection, honesty.</p>",
-  8:"<h2>Floor 8 — Orbit</h2><p>Movement, cycle, return, pattern.</p>",
-  7:"<h2>Floor 7 — Gate</h2><p>Threshold, test, crossing, decision.</p>",
-  6:"<h2>Floor 6 — River</h2><p>Flow, adaptability, emotional course.</p>",
-  5:"<h2>Floor 5 — Crown</h2><p>School, mastery, structure, identity.</p>",
-  4:"<h2>Floor 4 — Fire</h2><p>Heat, ignition, transformation, truth reveal.</p>",
-  3:"<h2>Floor 3 — Knife</h2><p>Cut, choice, separation, clarity.</p>",
-  2:"<h2>Floor 2 — Breath</h2><p>Air, wind, voice ignition, first motion.</p>",
-  1:"<h2>Floor 1 — Seed</h2><p>Origin, spark, beginning, birth.</p>"
+  13:`<h2>Floor 13 — Vine</h2><p>Midnights. The muse is internal.</p>`,
+  12:`<h2>Floor 12 — Key</h2><p>You open it.</p>`,
+  11:`<h2>Floor 11 — Echo</h2><p>What repeats.</p>`,
+  10:`<h2>Floor 10 — Pulse</h2><p>Midnight rhythm.</p>`,
+  9:`<h2>Floor 9 — Glass</h2><p>The mirror stays.</p>`,
+  8:`<h2>Floor 8 — Orbit</h2><p>Return paths.</p>`,
+  7:`<h2>Floor 7 — Gate</h2><p>The test.</p>`,
+  6:`<h2>Floor 6 — River</h2><p>Flow.</p>`,
+  5:`<h2>Floor 5 — Crown</h2><p>Authorship.</p>`,
+  4:`<h2>Floor 4 — Fire</h2><p>Heat clarifies.</p>`,
+  3:`<h2>Floor 3 — Knife</h2><p>Clean cut.</p>`,
+  2:`<h2>Floor 2 — Breath</h2><p>Voice forms.</p>`,
+  1:`<h2>Floor 1 — Seed</h2><p>Beginning.</p>`
 };
 
-let currentFloor=null;
-let direction='up';
+let direction="up";
+let queue=[];
+let current=null;
 
-function play(n){
-  document.getElementById("yt").src=songs[n].link;
-  document.getElementById("label").textContent=songs[n].name;
-  currentFloor=n;
-  localStorage.setItem('illumina_last_floor',n);
-  
-  document.querySelectorAll('.floor').forEach(f=>f.classList.remove('playing'));
-  document.querySelector(`.floor[data-floor="${n}"]`).classList.add('playing');
-}
-
-function showDetails(n){
-  const d=document.getElementById("details");
-  d.innerHTML=floorDetails[n];
-  d.style.display="block";
-}
-
-document.getElementById("consentButton").onclick=()=>{
-  document.getElementById("consentModal").style.display="none";
-  const saved=localStorage.getItem('illumina_last_floor');
-  if(saved){
-    play(parseInt(saved));
-    showDetails(parseInt(saved));
+function buildQueue(start){
+  queue=[];
+  if(direction==="up"){
+    for(let i=start;i<=13;i++) queue.push(i);
+  }else{
+    for(let i=start;i>=1;i--) queue.push(i);
   }
-};
+}
+
+function playNext(){
+  if(queue.length===0) return;
+  const n=queue.shift();
+  current=n;
+  yt.src=`https://www.youtube-nocookie.com/embed/${songs[n].id}?autoplay=1&enablejsapi=1`;
+  label.textContent=songs[n].name;
+  details.innerHTML=floorDetails[n];
+  details.style.display="block";
+  document.querySelectorAll(".floor").forEach(f=>f.classList.remove("playing"));
+  document.querySelector(`.floor[data-floor="${n}"]`).classList.add("playing");
+}
+
+yt.addEventListener("load",()=>{
+  // noop
+});
+
+window.addEventListener("message",e=>{
+  if(e.data?.event==="onStateChange" && e.data.info===0){
+    playNext();
+  }
+});
 
 document.querySelectorAll(".floor").forEach(f=>{
   f.onclick=()=>{
-    const n=parseInt(f.dataset.floor);
-    play(n);
-    showDetails(n);
+    const n=+f.dataset.floor;
+    buildQueue(n);
+    playNext();
   };
 });
 
-document.getElementById("dirUp").onclick=()=>{
-  direction='up';
-  localStorage.setItem('illumina_direction','up');
-  document.getElementById("dirUp").classList.add('active');
-  document.getElementById("dirDown").classList.remove('active');
+dirUp.onclick=()=>{
+  direction="up";
+  dirUp.classList.add("active");
+  dirDown.classList.remove("active");
 };
 
-document.getElementById("dirDown").onclick=()=>{
-  direction='down';
-  localStorage.setItem('illumina_direction','down');
-  document.getElementById("dirDown").classList.add('active');
-  document.getElementById("dirUp").classList.remove('active');
+dirDown.onclick=()=>{
+  direction="down";
+  dirDown.classList.add("active");
+  dirUp.classList.remove("active");
 };
 
-document.getElementById("toggleBtn").onclick=()=>{
-  const container=document.getElementById("floorsContainer");
-  const arrow=document.querySelector(".toggle-arrow");
-  const btn=document.getElementById("toggleBtn");
-  
-  if(container.style.display==="none"){
-    container.style.display="flex";
-    arrow.classList.add("open");
-    btn.querySelector("span").textContent="Hide Floor Buttons";
-  }else{
-    container.style.display="none";
-    arrow.classList.remove("open");
-    btn.querySelector("span").textContent="Show Floor Buttons";
-  }
+consentButton.onclick=()=>{
+  consentModal.style.display="none";
 };
 
-window.onload=()=>{
-  document.getElementById("consentModal").style.display="flex";
-};
 </script>
 
 </body>
