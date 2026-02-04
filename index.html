@@ -9,7 +9,7 @@
   <meta name="description" content="Unified framework unifying quantum (τ = ℏ/E) and relativistic (T = E/c³) time at bridge energy E = √(ℏc³) ≈ 333 TeV. Falsifiable predictions for nuclear decay, atomic spectroscopy, and dark energy. Dimensional consistency validated by AMNH." />
 
   <!-- Keywords -->
-  <meta name="keywords" content="temporal charge, tau physics, quantum time, relativistic time, bridge energy, nuclear decay, tau harmonics, dark energy, time quantization, Emmy Noether, Maria Goeppert Mayer, Chien-Shiung Wu, dimensional analysis, testable predictions, nuclear physics, quantum mechanics, cosmology" />
+  <meta name="keywords" content="temporal charge, tau physics, quantum time, relativistic time, bridge energy, nuclear decay, tau harmonics, dark energy, time quantization, Emmy Noether, Maria Goeppert Mayer, Chien-Shiung Wu, Renate Loll, Carlo Rovelli, dimensional analysis, testable predictions, nuclear physics, quantum mechanics, cosmology" />
 
   <!-- Author / Dates -->
   <meta name="author" content="Tristan White" />
@@ -95,6 +95,18 @@
         "author": "Chien-Shiung Wu",
         "name": "Experimental Test of Parity Conservation in Beta Decay",
         "datePublished": "1957"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "author": "Renate Loll",
+        "name": "Causal Dynamical Triangulations and the Quest for Quantum Gravity",
+        "datePublished": "2019"
+      },
+      {
+        "@type": "Book",
+        "author": "Carlo Rovelli",
+        "name": "The Order of Time",
+        "datePublished": "2018"
       }
     ],
     "mentions": [
@@ -172,11 +184,13 @@
     h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
     h3{margin:16px 0 8px;font-size:18px}
     p{margin:10px 0 0}
+    ul,ol{margin:10px 0 0}
     .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
         border:1px solid var(--rule);border-radius:10px;
         font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
     .abstract{font-style:italic;color:var(--muted)}
     .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
+    .scopebox{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(124,58,237,.08)}
     footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
     table{width:100%;border-collapse:collapse;margin:8px 0}
     th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
@@ -202,7 +216,7 @@
         <br><br>
         <strong>Falsifiable Test:</strong> Nuclear decay modes with different mechanisms should show universal τ-scaling if this framework is correct.
         <br><br>
-        <strong>Primary Test Protocol:</strong> 
+        <strong>Primary Test Protocol:</strong>
         <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">zeta.plnt.earth</a>
       </div>
 
@@ -212,6 +226,7 @@
           <li><a href="#motivation">1. Motivation</a></li>
           <li><a href="#unification">2. The Unification: &tau; = T</a></li>
           <li><a href="#bridge">3. Bridge Energy</a></li>
+          <li><a href="#scale-bridge">3A. Scale-Recursive Bridge Structure</a></li>
           <li><a href="#quantum-regime">4. Quantum Regime (&tau; = &hbar;/E)</a></li>
           <li><a href="#relativistic-regime">5. Relativistic Regime (T = E/c³)</a></li>
           <li><a href="#dimensional">6. Dimensional Consistency</a></li>
@@ -227,21 +242,25 @@
           <li><a href="#acknowledgment">16. Acknowledgment</a></li>
           <li><a href="#references">References</a></li>
         </ul>
+
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);background:rgba(245,158,11,0.08);padding:12px;border-radius:8px;">
-          <strong>⚡ Primary Experimental Test:</strong> 
+          <strong>⚡ Primary Experimental Test:</strong>
           <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">Nuclear Decay Universal Scaling</a>
           <br><span style="font-size:13px;color:var(--muted);">Falsifiable test using existing NNDC data — zeta.plnt.earth</span>
         </div>
+
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">
           <strong>Interactive:</strong>
           <a href="https://tau.plnt.earth">&tau; Dynamics</a>
         </div>
+
         <div style="margin-top:8px">
           <strong>Frameworks:</strong>
           <a href="https://helloworld.plnt.earth">Genesis</a> ·
           <a href="https://illumina.plnt.earth/τ">Illumina</a> ·
           <a href="https://42.plnt.earth">42</a>
         </div>
+
         <div style="margin-top:8px">
           <strong>Comets:</strong>
           <a href="https://comet.plnt.earth">Comet</a> ·
@@ -250,7 +269,6 @@
         </div>
       </nav>
     </header>
-
 
 <main>
   <section id="abstract"><h2>Abstract</h2>
@@ -300,34 +318,29 @@
     <h3>Visual Regime Map</h3>
     <div style="margin:24px 0;text-align:center;">
       <svg width="600" height="200" viewBox="0 0 600 200" style="max-width:100%;height:auto;">
-        <!-- Background -->
         <rect x="0" y="0" width="600" height="200" fill="var(--panel)" stroke="var(--rule)"/>
-        
-        <!-- Quantum Regime -->
+
         <rect x="20" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
         <text x="120" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Quantum Regime</text>
         <text x="120" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &lt; √(ℏc³)</text>
         <text x="120" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">τ = ℏ/E</text>
         <text x="120" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Nuclear physics</text>
-        
-        <!-- Bridge -->
+
         <rect x="240" y="40" width="120" height="120" fill="rgba(245,158,11,0.1)" stroke="var(--accent-2)"/>
         <text x="300" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Bridge</text>
         <text x="300" y="90" text-anchor="middle" fill="var(--accent-2)" font-size="13" font-weight="bold">E_bridge</text>
         <text x="300" y="110" text-anchor="middle" fill="var(--muted)" font-size="11">333 TeV</text>
         <text x="300" y="130" text-anchor="middle" fill="var(--ink)" font-size="12">τ = T</text>
-        
-        <!-- Relativistic Regime -->
+
         <rect x="380" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
         <text x="480" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Relativistic Regime</text>
         <text x="480" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &gt; √(ℏc³)</text>
         <text x="480" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">T = E/c³</text>
         <text x="480" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Cosmology</text>
-        
-        <!-- Arrow -->
+
         <path d="M 30,180 L 570,180" stroke="var(--accent-2)" stroke-width="2" marker-end="url(#arrowhead)"/>
         <text x="300" y="195" text-anchor="middle" fill="var(--muted)" font-size="11">Increasing Energy →</text>
-        
+
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
             <polygon points="0 0, 10 3, 0 6" fill="var(--accent-2)" />
@@ -361,6 +374,43 @@
       <tr><td>E ≈ √(&hbar;c³)</td><td>&tau; = T (unified)</td><td>Crossover regime, quantum-classical transition</td></tr>
       <tr><td>E ≫ √(&hbar;c³)</td><td>T = E/c³</td><td>Cosmology, black holes, temporal field dynamics</td></tr>
     </table>
+  </section>
+
+  <section id="scale-bridge"><h2>3A. Scale-Recursive Bridge Structure</h2>
+    <p>The bridge energy derived above,</p>
+    <div class="equation">E<sub>*</sub> = √(&hbar;c³)</div>
+    <p>defines the energy at which the quantum expression for temporal scale (<span class="equation" style="display:inline-block;margin:0;padding:4px 8px;white-space:nowrap;">&tau; = &hbar;/E</span>) and the relativistic expression (<span class="equation" style="display:inline-block;margin:0;padding:4px 8px;white-space:nowrap;">T = E/c³</span>) become numerically identical. This equality is best interpreted as a <strong>local crossover condition</strong>, not as a unique or global feature of nature.</p>
+
+    <p>Physics is already formulated as a hierarchy of effective theories, each valid within a limited domain of scale. Nuclear, atomic, and cosmological systems are characterized by distinct degrees of freedom and renormalized parameters, yet they remain connected by consistent transformation rules. Within this context, the bridge condition should be interpreted as a <strong>scale-local matching point</strong> wherever quantum discreteness and relativistic energy–time structure both apply to the same system.</p>
+
+    <h3>Scale-Local Formulation</h3>
+    <p>At an arbitrary effective scale <em>s</em>, one may write:</p>
+    <div class="equation">&tau;<sub>q</sub><sup>(s)</sup> = &hbar;<sub>s</sub>/E &nbsp;&nbsp;&nbsp;&nbsp; T<sub>r</sub><sup>(s)</sup> = E/c<sub>s</sub>³</div>
+    <p>leading to a local crossover energy:</p>
+    <div class="equation">E<sub>*</sub>(s) = √(&hbar;<sub>s</sub> c<sub>s</sub>³)</div>
+
+    <p>The appearance of multiple bridge energies is therefore not an additional hypothesis, but a direct consequence of scale separation and renormalization. Each bridge corresponds to a narrow crossover regime in which the two temporal descriptions coincide. Outside such regions, one formulation dominates and the other reduces to an approximation.</p>
+
+    <p>This perspective is consistent with symmetry-based reasoning rooted in Emmy Noether's work (invariants define structure), and it is compatible with Goeppert Mayer's shell framework (structure becomes simple after the correct change of variables). It also aligns with modern treatments of scale-dependent temporal behavior in quantum gravity (e.g., causal approaches) and with relational views of time that emphasize dependence on the physical context rather than a universal external clock.</p>
+
+    <p>The empirical relevance of such crossovers depends on precision measurements that probe the correct regime with sufficient control—an experimental standard exemplified by Wu's work in nuclear physics.</p>
+
+    <div class="scopebox" style="margin-top:16px;">
+      <strong>Clarification (Scope and Interpretation)</strong><br>
+      This section does <strong>not</strong> assert that &tau;-unification is ubiquitous, nor that all systems operate near a bridge energy.<br><br>
+      It asserts instead that whenever quantum and relativistic descriptions overlap within a single effective system, a &tau;-based crossover must exist as a matter of dimensional consistency.<br><br>
+      Most systems lie far from such crossovers. When a system approaches one, &tau; becomes the natural organizing variable and may reveal regularities obscured in energy-space.
+    </div>
+
+    <div style="margin-top:14px;">
+      <strong>Adjacent work (optional):</strong>
+      <a href="https://darkenergy.plnt.earth" style="color:var(--link);text-decoration:none;">darkenergy.plnt.earth</a> ·
+      <a href="https://fractals.plnt.earth" style="color:var(--link);text-decoration:none;">fractals.plnt.earth</a> ·
+      <a href="https://contact.plnt.earth" style="color:var(--link);text-decoration:none;">contact.plnt.earth</a>
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">
+        These are downstream extensions and are not required to evaluate the quantum-mechanical claims made here.
+      </div>
+    </div>
   </section>
 
   <section id="quantum-regime"><h2>4. Quantum Regime: &tau; = &hbar;/E</h2>
@@ -664,6 +714,29 @@
   </section>
 
   <section id="engagement"><h2>15. How to Test & Collaborate</h2>
+    <p>I am seeking collaborators interested in testing whether time-based reparameterization can expose structure hidden in energy-based descriptions, using modern precision data; ongoing experimental notes and coordination are maintained at <a href="https://fieldlab.plnt.earth" style="color:var(--link);font-weight:600;">fieldlab.plnt.earth</a>.</p>
+
+    <h3>Field Collaboration Request</h3>
+    <div style="background:rgba(124,58,237,0.08);border:1px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;">
+      <p style="margin:0 0 8px;">
+        I am seeking collaboration with researchers interested in testing whether time-based reparameterization reveals structure hidden in energy-based descriptions.
+      </p>
+      <p style="margin:0 0 8px;">
+        This work is grounded in standard quantum mechanics and effective field theory. It does not propose new particles or forces. It proposes that certain systems become simpler when described using time-derived quantities rather than energy alone.
+      </p>
+      <p style="margin:0 0 8px;">
+        The Copenhagen interpretation remains essential here. Measurement, operational definition, and experimental context matter. Any proposed structure must survive contact with real data, not just formal elegance.
+      </p>
+      <p style="margin:0 0 8px;">
+        Future study matters because we now have precision tools that did not exist when quantum foundations were first established. Nuclear databases, atomic clocks, and high-resolution spectroscopy make it possible to test whether alternative parameterizations expose real regularities or collapse under scrutiny.
+      </p>
+      <p style="margin:0;">
+        A dedicated collaboration space and experimental notes are maintained at
+        <a href="https://fieldlab.plnt.earth" style="color:var(--link);font-weight:600;text-decoration:none;">fieldlab.plnt.earth</a>.
+        This is intended as a working environment, not a conclusion.
+      </p>
+    </div>
+
     <p>This framework makes falsifiable predictions across domains:</p>
 
     <h3>Specific Ways to Help:</h3>
@@ -737,7 +810,7 @@
     <p>I built this to find people who are curious and care—about the universe, about discovery, about what we're making together.</p>
     <ul>
       <li><strong>X:</strong> <a href="https://x.com/plntearth" style="color:var(--link)">@plntearth</a></li>
-      <li><strong>TikTok:</strong> <a href="https://tiktok.com/@plntearth.t" style="color:var(--link)">@plntearth.t</a></li>
+      <li><strong>TikTok:</strong> <a href="https://tiktok.com/@froot.plnt.earth" style="color:var(--link)">@froot.plnt.earth</a></li>
       <li><strong>GitHub:</strong> <a href="https://github.com/tcarrw" style="color:var(--link)">github.com/tcarrw</a></li>
     </ul>
     <p>New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.</p>
@@ -761,6 +834,8 @@
       <li>Schrödinger, E. (1926). <em>Quantisierung als Eigenwertproblem</em>, Annalen der Physik 79(4): 361–376.</li>
       <li>Riess, A.G. et al. (1998). <em>Observational Evidence from Supernovae for an Accelerating Universe</em>, The Astronomical Journal 116(3): 1009–1038.</li>
       <li>Planck Collaboration (2020). <em>Planck 2018 results. VI. Cosmological parameters</em>, Astronomy & Astrophysics 641: A6.</li>
+      <li>Loll, R. (2019). <em>Causal Dynamical Triangulations and the Quest for Quantum Gravity</em>. In: D. Oriti (ed.), <em>Approaches to Quantum Gravity</em> / review literature on CDT.</li>
+      <li>Rovelli, C. (2018). <em>The Order of Time</em>. Riverhead Books.</li>
     </ol>
   </section>
 </main>
@@ -785,7 +860,6 @@
     &copy; 2025 · Creative Commons BY-NC-SA 4.0
   </div>
 </footer>
-
 
   </div>
 </body>
