@@ -1,866 +1,919 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Core Meta -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>τ (Tau) · Unified Temporal Framework | Quantum-Relativistic Time Unification</title>
-  <meta name="description" content="Unified framework unifying quantum (τ = ℏ/E) and relativistic (T = E/c³) time at bridge energy E = √(ℏc³) ≈ 333 TeV. Falsifiable predictions for nuclear decay, atomic spectroscopy, and dark energy. Dimensional consistency validated by AMNH." />
-
-  <!-- Keywords -->
-  <meta name="keywords" content="temporal charge, tau physics, quantum time, relativistic time, bridge energy, nuclear decay, tau harmonics, dark energy, time quantization, Emmy Noether, Maria Goeppert Mayer, Chien-Shiung Wu, Renate Loll, Carlo Rovelli, dimensional analysis, testable predictions, nuclear physics, quantum mechanics, cosmology" />
-
-  <!-- Author / Dates -->
-  <meta name="author" content="Tristan White" />
-  <meta name="date" content="2025-12-10" />
-  <meta name="dcterms.created" content="2025-12-10" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://time.plnt.earth/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://time.plnt.earth/" />
-  <meta property="og:title" content="τ (Tau) · Unified Temporal Framework" />
-  <meta property="og:description" content="Complete unification of quantum and relativistic time formulations. Quantum τ = ℏ/E and relativistic T = E/c³ meet at bridge energy 333 TeV. Includes falsifiable nuclear decay test." />
-  <meta property="og:site_name" content="Temporal Charge Framework" />
-  <meta property="article:published_time" content="2025-12-10" />
-  <meta property="article:author" content="Tristan White" />
-  <meta property="article:tag" content="temporal charge" />
-  <meta property="article:tag" content="theoretical physics" />
-  <meta property="article:tag" content="quantum mechanics" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://time.plnt.earth/" />
-  <meta name="twitter:title" content="τ (Tau) · Unified Temporal Framework" />
-  <meta name="twitter:description" content="Unifying quantum and relativistic time at bridge energy 333 TeV. Falsifiable test: nuclear decay universal scaling." />
-  <meta name="twitter:site" content="@illuminatnotes" />
-  <meta name="twitter:creator" content="@illuminatnotes" />
-
-  <!-- Robots -->
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <meta name="googlebot" content="index, follow" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "Unified Temporal Framework: Quantum and Relativistic Time Unification",
-    "alternativeHeadline": "Temporal Charge τ: Bridging Quantum and Relativistic Regimes",
-    "description": "Complete unified framework where quantum (τ = ℏ/E) and relativistic (T = E/c³) time formulations meet at bridge energy E = √(ℏc³) ≈ 333 TeV",
-    "author": {
-      "@type": "Person",
-      "name": "Tristan White",
-      "url": "https://x.com/illuminatnotes"
-    },
-    "datePublished": "2025-12-10",
-    "publisher": {
-      "@type": "Organization",
-      "name": "plnt.earth"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://time.plnt.earth/"
-    },
-    "about": [
-      {
-        "@type": "DefinedTerm",
-        "name": "Temporal Charge",
-        "description": "A fundamental quantity τ = ℏ/E (quantum regime) = E/c³ (relativistic regime) unifying time, energy, and mass"
-      },
-      {
-        "@type": "DefinedTerm",
-        "name": "Bridge Energy",
-        "description": "The characteristic energy E = √(ℏc³) ≈ 333 TeV where quantum and relativistic formulations converge"
-      }
-    ],
-    "citation": [
-      {
-        "@type": "ScholarlyArticle",
-        "author": "Emmy Noether",
-        "name": "Invariante Variationsprobleme",
-        "datePublished": "1918"
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "author": "Maria Goeppert Mayer",
-        "name": "On Closed Shells in Nuclei. II",
-        "datePublished": "1949"
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "author": "Chien-Shiung Wu",
-        "name": "Experimental Test of Parity Conservation in Beta Decay",
-        "datePublished": "1957"
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "author": "Renate Loll",
-        "name": "Causal Dynamical Triangulations and the Quest for Quantum Gravity",
-        "datePublished": "2019"
-      },
-      {
-        "@type": "Book",
-        "author": "Carlo Rovelli",
-        "name": "The Order of Time",
-        "datePublished": "2018"
-      }
-    ],
-    "mentions": [
-      {
-        "@type": "Person",
-        "name": "Michael Shara",
-        "affiliation": "American Museum of Natural History",
-        "jobTitle": "Curator, Department of Astrophysics"
-      }
-    ],
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
-  }
-  </script>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMGIwZjE5Ii8+PHRleHQgeD0iMTYiIHk9IjIxIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ1cmwoI2cpIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPiZ0YXU7PC90ZXh0Pjwvc3ZnPg==" />
-
-  <style>
-    :root{
-      --bg:#0b0f19;
-      --panel:#121827;
-      --ink:#e6e8ee;
-      --muted:#a3acc2;
-      --accent:#7c3aed;
-      --accent-2:#f59e0b;
-      --rule:#2a3348;
-      --code:#0e1422;
-      --link:#9aa8ff;
-      --maxw:980px;
-    }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#ffffff;
-        --panel:#f6f7fb;
-        --ink:#0f1222;
-        --muted:#4a546e;
-        --rule:#e4e7f0;
-        --code:#f1f3f9;
-        --link:#2b59ff;
-      }
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
-        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
-        var(--bg);
-      color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    }
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
-    header{text-align:center;margin-bottom:32px}
-    .logo{
-      font-size:clamp(36px,6vw,64px);
-      font-weight:800;
-      letter-spacing:2px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      display:inline-block;
-      margin-bottom:12px;
-    }
-    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
-    .subtitle{color:var(--muted);font-size:15px}
-    .meta{margin-top:8px;color:var(--muted);font-size:14px}
-    nav{margin:26px auto;max-width:720px;text-align:left;background:var(--panel);
-        border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
-    nav a{color:var(--link);text-decoration:none}
-    nav a:hover{text-decoration:underline}
-    nav ul{margin:0;padding-left:18px}
-    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);
-        border-radius:16px;padding:24px 20px;margin:18px 0}
-    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
-    h3{margin:16px 0 8px;font-size:18px}
-    p{margin:10px 0 0}
-    ul,ol{margin:10px 0 0}
-    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
-        border:1px solid var(--rule);border-radius:10px;
-        font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
-    .abstract{font-style:italic;color:var(--muted)}
-    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
-    .scopebox{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(124,58,237,.08)}
-    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
-    table{width:100%;border-collapse:collapse;margin:8px 0}
-    th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
-    th{background:var(--panel);text-align:left}
-    code{background:var(--code);padding:1px 4px;border-radius:4px}
-    @media print{body{background:#fff}nav,section{break-inside:avoid}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>TIME · Temporal Foundations | plnt.earth</title>
+<meta name="description" content="An Illumina research program investigating the foundations of time through mathematical reconstruction, theoretical development, and falsifiable tests.">
+<link rel="canonical" href="https://time.plnt.earth/">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#080b12;--panel:#101725;--panel2:#0c1320;
+  --ink:#e9edf5;--muted:#9ba8bd;--soft:#697991;--line:#263247;
+  --accent:#9b8cff;--accent2:#79d5c8;--warn:#e6bd75;
+  --bad:#e58d91;--good:#8bd2ad;--max:1080px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;
+  background:
+    radial-gradient(900px 600px at 10% -10%,rgba(115,94,220,.13),transparent 65%),
+    radial-gradient(800px 500px at 100% 0%,rgba(70,160,160,.08),transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font:16px/1.72 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+a{color:#b6b0ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+header{padding:72px 0 30px;text-align:center}
+.kicker,.eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent2);font-weight:700
+}
+.mark{
+  font-size:clamp(3.5rem,10vw,6.5rem);line-height:1.05;
+  font-family:Georgia,serif;color:var(--accent);margin:12px 0
+}
+h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.045em;margin:0}
+h2{font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.025em;margin:0 0 14px}
+h3{font-size:1.08rem;margin:26px 0 8px}
+p{margin:10px 0;color:#d5dce8}
+.subtitle{font-size:1.08rem;color:var(--muted);max-width:700px;margin:18px auto 0}
+.lead{font-size:1.13rem;color:#c4cede;max-width:850px}
+.meta{font-size:.82rem;color:var(--soft);margin-top:20px}
+.statusline{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px auto}
+.pill{border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:.75rem;color:var(--muted)}
+.pill.good{border-color:#315a48;color:var(--good)}
+.pill.warn{border-color:#685436;color:var(--warn)}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.92);backdrop-filter:blur(14px);border-block:1px solid var(--line)}
+.navinner{display:flex;gap:18px;align-items:center;overflow:auto;white-space:nowrap;padding:12px 0;font-size:.82rem}
+.navbrand{font-weight:800;letter-spacing:.12em;color:var(--ink);margin-right:8px}
+.navinner a{color:var(--muted)}
+.navinner a:hover{color:var(--ink)}
+main{padding:28px 0 70px}
+section{padding:34px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+section:last-child{border-bottom:0}
+.small{font-size:.87rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+  border:1px solid var(--line);border-radius:15px;padding:19px
+}
+.card h3{margin:0 0 8px}
+.callout{
+  border:1px solid var(--line);border-left:3px solid var(--accent);
+  background:var(--panel2);border-radius:10px;padding:17px 19px;margin:18px 0
+}
+.callout.good{border-left-color:var(--good)}
+.callout.warn{border-left-color:var(--warn)}
+.callout.bad{border-left-color:var(--bad)}
+.eq{
+  display:block;overflow-x:auto;background:#070c15;border:1px solid #202b3d;
+  border-radius:10px;padding:16px 18px;margin:13px 0;
+  font:1.03rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;
+  color:#e7e3ff;white-space:nowrap
+}
+.eq.center{text-align:center}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.9rem}
+th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.025)}
+td{color:#d6deea}
+.tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;white-space:nowrap}
+.tag.good{color:var(--good)}
+.tag.warn{color:var(--warn)}
+.tag.bad{color:var(--bad)}
+ul,ol{padding-left:22px;color:#d5dce8}
+li{margin:6px 0}
+details{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin:12px 0;background:rgba(255,255,255,.015)}
+summary{cursor:pointer;font-weight:650;color:#dce3ef}
+details p{margin-bottom:0}
+button{
+  background:#25213f;color:#e9edf5;border:1px solid #514a7c;
+  border-radius:9px;padding:9px 13px;cursor:pointer;font:inherit
+}
+button:disabled{opacity:.5;cursor:wait}
+footer{padding:35px 0 55px;text-align:center;color:var(--soft);font-size:.83rem}
+footer a{margin:0 7px}
+@media(max-width:720px){
+  .wrap{width:min(100% - 28px,var(--max))}
+  header{padding:50px 0 24px}
+  .grid{grid-template-columns:1fr}
+  section{padding:27px 0}
+  table{font-size:.82rem}
+  th,td{padding:9px 7px}
+}
+@media print{
+  body{background:#fff;color:#111}
+  nav{display:none}
+  .card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}
+  p,li,td{color:#222}
+  a{color:#333}
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">&tau;</div>
-      <h1>Unified Temporal Framework</h1>
-      <div class="subtitle">Quantum and relativistic formulations unified: &tau; = &hbar;/E = E/c³ at bridge energy E = √(&hbar;c³)</div>
-      <div class="meta">Tristan White · December 10, 2025 · #pluribus · Illumina 1 · 6:1</div>
-      <div style="margin-top:16px">
-        <a href="https://time.plnt.earth/time.pdf" style="display:inline-block;padding:10px 20px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:14px">LaTeX PDF</a>
+<header class="wrap">
+  <div class="kicker">plnt.earth · research record · v6.0</div>
+  <div class="mark">τ</div>
+  <h1>Temporal Foundations</h1>
+  <p class="subtitle">An Illumina research project: six weeks of focused investigation, followed by a lunar-aligned rest and integration period.</p>
+  <div class="meta" id="liveMeta">Loading lunar research calendar…</div>
+  <div class="statusline">
+    <span class="pill good">Established physics preserved</span>
+    <span class="pill warn">New theory not established</span>
+    <span class="pill">Historical hypotheses archived</span>
+  </div>
+</header>
+
+<nav aria-label="Primary navigation">
+  <div class="wrap navinner">
+    <span class="navbrand">TIME</span>
+    <a href="#overview">Overview</a>
+    <a href="#foundations">Foundations</a>
+    <a href="#compton">Compton</a>
+    <a href="#audit">Audit</a>
+    <a href="#experiments">Experiments</a>
+    <a href="#register">Equation register</a>
+    <a href="#archive">Archive</a>
+    <a href="#illumina">Illumina calendar</a>
+    <a href="#stages">Research stages</a>
+    <a href="#network">PLNT network</a>
+    <a href="#references">References</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="overview">
+  <div class="eyebrow">01 · Scope</div>
+  <h2>What this project is—and is not</h2>
+  <p class="lead">This site documents a research effort that began as the Unified Temporal–Energetic Geometry (UTEG) framework. An independent audit identified valid quantum-mechanical relationships alongside serious dimensional and interpretive errors in the original unification claims.</p>
+  <div class="callout good">
+    <strong>Current scientific position.</strong>
+    The characteristic quantum timescale τ<sub>E</sub> = ℏ/E and the reduced Compton relationships are valid within their stated domains. They follow from established quantum mechanics and special relativity. They do not, by themselves, establish a new temporal field, a new spacetime geometry, or a theory of everything.
+  </div>
+  <p>The purpose of this page is to preserve the useful mathematics, clearly retire invalid claims, keep negative results visible, and define what evidence would be needed before proposing new physics.</p>
+  <div class="grid">
+    <div class="card"><h3>Established foundations</h3><p>Quantum phase evolution, rest energy, reduced Compton wavelength, and reduced Compton time.</p></div>
+    <div class="card"><h3>Open research questions</h3><p>Whether a time-based reparameterization reveals independently testable structure beyond standard theory.</p></div>
+    <div class="card"><h3>Historical proposals</h3><p>The original Φ-field, wave-equation, nuclear-harmonic, and cosmological ideas are retained as unverified research history.</p></div>
+    <div class="card"><h3>Negative evidence</h3><p>The reported failure of the original universal nuclear-decay scaling prediction remains part of the record.</p></div>
+  </div>
+</section>
+
+<section id="foundations">
+  <div class="eyebrow">02 · Quantum foundation</div>
+  <h2>Energy and characteristic quantum time</h2>
+  <p>For a stationary energy eigenstate, quantum evolution is described by a phase factor:</p>
+  <div class="eq center">Ψ(t) = Ψ(0) exp(−iEt/ℏ)</div>
+  <p>The phase is θ(t) = Et/ℏ. Defining the characteristic timescale as the time required for a one-radian phase change gives:</p>
+  <div class="eq center">τ<sub>E</sub> = ℏ/E</div>
+  <p>Dimensional check:</p>
+  <div class="eq">[ℏ/E] = (J·s)/J = s</div>
+  <div class="callout good"><strong>Preserved relationship.</strong> τ<sub>E</sub> is a characteristic phase-evolution timescale associated with a specified energy. It is not automatically a particle lifetime, the age of a system, or a universal clock period.</div>
+  <h3>Important interpretation limits</h3>
+  <ul>
+    <li>The energy E must be specified: for example, an energy eigenvalue, a transition energy, or a rest energy.</li>
+    <li>Adding a constant to a Hamiltonian changes the overall quantum phase convention without changing ordinary observables. Therefore ℏ/E is not always an invariant, directly measurable clock reading.</li>
+    <li>For negative or zero energy references, the expression requires additional care; the simple positive-energy timescale interpretation assumes E &gt; 0.</li>
+    <li>The full phase period is 2πℏ/E, not ℏ/E.</li>
+  </ul>
+  <h3>Energy–time relations</h3>
+  <div class="eq center">ΔE · Δt ≥ ℏ/2</div>
+  <p>This shorthand must be interpreted in a specified operational context. Time is generally an evolution parameter in ordinary quantum mechanics, not an operator universally interchangeable with position. The Mandelstam–Tamm relation connects energy spread to the time required for a specified observable or state to change appreciably.</p>
+</section>
+
+<section id="compton">
+  <div class="eyebrow">03 · Relativistic connection</div>
+  <h2>Compton time and wavelength</h2>
+  <p>For a particle of invariant rest mass m, special relativity gives its rest energy:</p>
+  <div class="eq center">E<sub>0</sub> = mc²</div>
+  <p>Using this energy in the characteristic quantum timescale gives the reduced Compton time:</p>
+  <div class="eq center">τ<sub>C</sub> = ℏ/(mc²)</div>
+  <p>The reduced Compton wavelength is:</p>
+  <div class="eq center">λ̄<sub>C</sub> = ℏ/(mc)</div>
+  <p>These yield the exact relationship:</p>
+  <div class="eq center">τ<sub>C</sub> = λ̄<sub>C</sub>/c</div>
+  <div class="callout good"><strong>Preserve.</strong> The reduced Compton time is the reduced Compton wavelength divided by the speed of light. This is an established relationship, not evidence that a particle literally circulates around a wavelength at speed c.</div>
+  <h3>Reduced time versus full phase period</h3>
+  <div class="eq center">T<sub>C</sub> = 2πℏ/(mc²) = 2πτ<sub>C</sub></div>
+  <p>The distinction between an angular-frequency timescale and a complete oscillation period must be maintained in all future calculations.</p>
+  <h3>Domain and interpretation</h3>
+  <p>These expressions apply to a massive particle's rest-energy scale. For a moving particle, total energy and rest energy must not be conflated. For massless particles, the rest-mass Compton expressions do not apply.</p>
+</section>
+
+<section id="audit">
+  <div class="eyebrow">04 · Independent audit</div>
+  <h2>Retired claims and dimensional findings</h2>
+  <p>The original UTEG attempted to identify the quantum timescale ℏ/E with E/c³ and, using E = mc², with m/c. That identification fails dimensional analysis.</p>
+  <h3>Why E/c³ is not time</h3>
+  <div class="eq">[E/c³] = (kg·m²·s⁻²)/(m³·s⁻³) = kg·s/m</div>
+  <p>This is not the dimension of time.</p>
+  <h3>Why m/c is not time</h3>
+  <div class="eq">[m/c] = kg/(m·s⁻¹) = kg·s/m</div>
+  <p>This is also not the dimension of time. The identity E/c³ = m/c follows algebraically from E = mc², but it does not turn either expression into a time quantity.</p>
+  <h3>The proposed 333 TeV bridge</h3>
+  <p>The original equality ℏ/E = E/c³ was rearranged to produce:</p>
+  <div class="eq">E² = ℏc³</div>
+  <p>The algebraic rearrangement is formal, but the equality being rearranged is dimensionally invalid. In SI units, ℏc³ does not have dimensions of energy squared. Consequently √(ℏc³) is not an energy, and the claimed 333 TeV bridge has no valid derivation from the original equations.</p>
+  <div class="callout bad"><strong>Retired from the active framework:</strong> E/c³ as a time quantity; m/c as a time quantity; ℏ/E = E/c³; and the 333 TeV bridge energy. These are not presented as predictions or physical laws.</div>
+  <p class="small">Retiring the derivation does not assert that the numerical value 333 TeV is experimentally excluded. It means the original argument does not establish it as a meaningful energy scale.</p>
+</section>
+
+<section id="experiments">
+  <div class="eyebrow">05 · Experimental record</div>
+  <h2>Predictions, tests, and negative results</h2>
+  <h3>Nuclear Decay Universal Scaling</h3>
+  <div class="callout bad"><strong>Reported negative result.</strong> The original project record states that the proposed universal scaling across nuclear decay modes was tested and did not support the prediction. The result is retained as a negative outcome, not reclassified as confirmation.</div>
+  <table>
+    <tr><th>Field</th><th>Record</th></tr>
+    <tr><td>Hypothesis</td><td>Different nuclear decay mechanisms would follow a universal temporal scaling relationship.</td></tr>
+    <tr><td>Original project</td><td>Zeta nuclear-decay test, associated with zeta.plnt.earth.</td></tr>
+    <tr><td>Outcome recorded</td><td>Reported failure of the universal scaling prediction.</td></tr>
+    <tr><td>Audit interpretation</td><td>The tested universal-scaling hypothesis is not supported by the reported result.</td></tr>
+    <tr><td>Reproducibility status</td><td>The full dataset, code, protocol, uncertainty budget, and statistical analysis have not been independently inspected for this revision.</td></tr>
+  </table>
+  <p>A complete publication-quality record should link the exact dataset, analysis code, selection criteria, exclusions, statistical model, and uncertainty analysis. Until these are available for independent reproduction, the site labels this as a reported negative result rather than claiming an independently reproduced falsification.</p>
+  <h3>Other ideas from the original proposal</h3>
+  <table>
+    <tr><th>Proposal</th><th>Current classification</th></tr>
+    <tr><td>Nuclear energy-level “τ-harmonics”</td><td>Unverified historical hypothesis. Reparameterizing levels by ℏ/E alone does not establish new structure.</td></tr>
+    <tr><td>Rydberg-state τ patterns</td><td>Unverified. Any proposed pattern must be compared with the standard spectrum and account for the nonlinear transformation.</td></tr>
+    <tr><td>Atomic-clock temporal-field signatures</td><td>No validated field model or quantitative prediction established.</td></tr>
+    <tr><td>Additional cosmological redshift</td><td>Unsupported historical proposal; no validated derivation.</td></tr>
+    <tr><td>Dark energy from a temporal field</td><td>Unsupported historical proposal; no established field dynamics or observational fit.</td></tr>
+    <tr><td>Planck-scale time quantization</td><td>Not established by the Compton relationships or the original UTEG equations.</td></tr>
+  </table>
+</section>
+
+<section id="register">
+  <div class="eyebrow">06 · Technical appendix</div>
+  <h2>Equation register</h2>
+  <p>Symbols and status are recorded explicitly. “Established” means supported within the stated assumptions by existing physics; it does not mean the expression is a new UTEG discovery.</p>
+  <table>
+    <tr><th>ID</th><th>Equation</th><th>Units / assumptions</th><th>Derivation / interpretation</th><th>Status</th></tr>
+    <tr><td>U-01</td><td>E₀ = mc²</td><td>E₀: J; m: kg; c: m/s. Rest energy.</td><td>Special relativity.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-02</td><td>Ψ(t)=Ψ(0)e<sup>−iEt/ℏ</sup></td><td>Energy eigenstate; t in seconds.</td><td>Quantum phase evolution.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-03</td><td>τ<sub>E</sub>=ℏ/E</td><td>Seconds; specified positive energy scale.</td><td>One-radian phase-evolution timescale.</td><td class="tag good">Preserve</td></tr>
+    <tr><td>U-04</td><td>ΔE Δt ≥ ℏ/2</td><td>J·s on both sides; context-dependent.</td><td>Energy–time uncertainty relation; operational interpretation required.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-05</td><td>τ<sub>C</sub>=ℏ/(mc²)</td><td>Seconds; massive particle at rest.</td><td>U-03 with rest energy E₀=mc².</td><td class="tag good">Preserve</td></tr>
+    <tr><td>U-06</td><td>λ̄<sub>C</sub>=ℏ/(mc)</td><td>Metres; massive particle.</td><td>Reduced Compton wavelength.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-07</td><td>τ<sub>C</sub>=λ̄<sub>C</sub>/c</td><td>Seconds.</td><td>Algebraic consequence of U-05 and U-06.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-08</td><td>T<sub>C</sub>=2πℏ/(mc²)</td><td>Seconds; rest-energy phase period.</td><td>Full 2π phase period.</td><td class="tag good">Established</td></tr>
+    <tr><td>U-09</td><td>Φ=E/(ρ₀c³)</td><td>If ρ₀ is mass density, Φ has units m²·s.</td><td>Historical definition; no supported temporal-potential interpretation.</td><td class="tag warn">Unverified</td></tr>
+    <tr><td>U-10</td><td>∇Φ=∇E/(ρ₀c³)</td><td>Requires spatially constant ρ₀ and c.</td><td>Conditional constant-factor differentiation.</td><td class="tag warn">Conditional</td></tr>
+    <tr><td>U-11</td><td>∇²Φ=∇²E/(ρ₀c³)</td><td>Requires spatially constant ρ₀ and c.</td><td>Conditional constant-factor Laplacian.</td><td class="tag warn">Conditional</td></tr>
+    <tr><td>U-12</td><td>∂²Φ/∂t²=c<sub>eff</sub>²∇²Φ+S</td><td>Requires [S]=[Φ]/s² and c<sub>eff</sub> in m/s.</td><td>Wave-equation form; no established field or dynamics supplied.</td><td class="tag warn">Unverified</td></tr>
+    <tr><td>U-13</td><td>T=E/c³</td><td>kg·s/m, not seconds.</td><td>Original relativistic-time claim.</td><td class="tag bad">Retired</td></tr>
+    <tr><td>U-14</td><td>t=m/c</td><td>kg·s/m, not seconds.</td><td>Original mass-time claim.</td><td class="tag bad">Retired</td></tr>
+    <tr><td>U-15</td><td>E=√(ℏc³)</td><td>Does not have energy dimensions.</td><td>Derived from an invalid equality.</td><td class="tag bad">Retired</td></tr>
+    <tr><td>U-16</td><td>Universal nuclear-decay scaling</td><td>Requires reproducible data and statistical record.</td><td>Original proposed prediction; reported negative result.</td><td class="tag bad">Negative result</td></tr>
+  </table>
+  <h3>Symbol definitions</h3>
+  <table>
+    <tr><th>Symbol</th><th>Definition</th><th>SI unit</th></tr>
+    <tr><td>ℏ</td><td>Reduced Planck constant</td><td>J·s</td></tr>
+    <tr><td>c</td><td>Speed of light in vacuum</td><td>m/s</td></tr>
+    <tr><td>E</td><td>Specified energy (state whether rest, total, or transition energy)</td><td>J</td></tr>
+    <tr><td>m</td><td>Invariant rest mass</td><td>kg</td></tr>
+    <tr><td>τ<sub>E</sub></td><td>Energy-associated characteristic quantum timescale</td><td>s</td></tr>
+    <tr><td>τ<sub>C</sub></td><td>Reduced Compton time</td><td>s</td></tr>
+    <tr><td>λ̄<sub>C</sub></td><td>Reduced Compton wavelength</td><td>m</td></tr>
+    <tr><td>ρ₀</td><td>Historical reference-density parameter; original definition requires verification</td><td>Unspecified in original proposal</td></tr>
+    <tr><td>Φ</td><td>Historical proposed temporal potential; interpretation unresolved</td><td>Depends on definition</td></tr>
+    <tr><td>c<sub>eff</sub></td><td>Historical proposed effective propagation speed</td><td>m/s if used as a wave speed</td></tr>
+    <tr><td>S</td><td>Historical proposed source term</td><td>[Φ]/s² in the proposed PDE</td></tr>
+  </table>
+</section>
+
+<section id="archive">
+  <div class="eyebrow">07 · Historical record</div>
+  <h2>Original UTEG proposals</h2>
+  <p>The following ideas appeared in the original framework. They are retained to preserve the development history, but they are not active scientific claims.</p>
+
+  <details><summary>Original temporal-potential field Φ</summary>
+    <p>The original proposal defined Φ = E/(ρ₀c³), then introduced spatial derivatives and a wave-equation form. If ρ₀ is mass density, Φ has dimensions of area multiplied by time, not time. A physical field interpretation, transformation law, action, source, and boundary conditions were not established. The definition and PDE are therefore archived as unverified.</p>
+  </details>
+
+  <details><summary>Original temporal-field Lagrangian and modified Einstein equations</summary>
+    <p>The original page proposed an added temporal-field Lagrangian, a temporal stress-energy contribution, and modified gravitational equations. These expressions were not derived from a dimensionally and physically specified field model. They are archived as speculative proposals, not a viable extension of general relativity.</p>
+  </details>
+
+  <details><summary>Original cosmological and dark-energy claims</summary>
+    <p>The original page associated a temporal field with dark energy, an equation-of-state deviation, redshift signatures, and singularity resolution. No validated derivation or fit to observational data was supplied. These claims are not retained as predictions.</p>
+  </details>
+
+  <details><summary>Original nuclear τ-harmonic proposal</summary>
+    <p>The original page proposed converting nuclear levels Eₙ to τₙ=ℏ/Eₙ and looking for simple patterns. A nonlinear reparameterization can change the visual appearance of a dataset; a meaningful claim requires a specified model, a justified level index, comparison against standard nuclear structure models, uncertainty propagation, and out-of-sample predictive performance. The proposed harmonic pattern remains unverified.</p>
+  </details>
+
+  <details><summary>Original Noether interpretation</summary>
+    <p>The original page suggested that energy conservation implied a new τ-conservation law. If τ is defined as ℏ/E and E is constant, then dτ/dt=−ℏE⁻²(dE/dt)=0 follows directly by differentiation. This is a mathematical consequence of the definition, not a new Noether charge or independent conservation law. Noether's theorem must be applied to a specified action and continuous symmetry.</p>
+  </details>
+
+  <details><summary>Original quantum equations rewritten in τ notation</summary>
+    <p>Substituting m=ℏ/(c²τ) into an existing equation is a change of variables or parameterization, provided the assumptions are valid. It does not establish that τ is a new independent physical degree of freedom. The standard Schrödinger and Dirac equations remain the governing equations in their usual formulations.</p>
+  </details>
+
+  <details><summary>Historical acknowledgement and correspondence</summary>
+    <p>The original page reported that Michael Shara reviewed the expressions E/c³ and m/c in August 2025 and described them as dimensionally consistent. This website does not independently verify the correspondence or its precise context. The present audit's dimensional calculation shows that, in SI units, neither expression has dimensions of time. The historical report should not be represented as endorsement of UTEG or as validation of those expressions.</p>
+  </details>
+</section>
+
+<section id="roadmap">
+  <div class="eyebrow">08 · Research program</div>
+  <h2>What would move the research forward?</h2>
+  <p>The surviving question is narrower and more defensible:</p>
+  <div class="callout"><strong>Can a physically meaningful relationship between quantum characteristic timescales and independently measurable phenomena be established beyond what standard quantum mechanics and relativity already predict?</strong></div>
+  <h3>Research sequence</h3>
+  <ol>
+    <li><strong>Fix definitions.</strong> Specify the physical energy used in every τ=ℏ/E calculation and distinguish rest, transition, and eigenstate energies.</li>
+    <li><strong>Reproduce the negative test.</strong> Publish the original nuclear-decay dataset, analysis, code, exclusions, uncertainties, and protocol so the reported failure can be independently checked.</li>
+    <li><strong>Establish a null model.</strong> Compare any proposed τ-space pattern against the standard energy-space description and relevant established nuclear or atomic models.</li>
+    <li><strong>Pre-register a new hypothesis.</strong> Specify the observable, sample selection, mathematical prediction, uncertainty model, and falsification criterion before examining confirmatory data.</li>
+    <li><strong>Require new explanatory or predictive value.</strong> A change of variables alone is not new physics. A candidate result must improve prediction, reveal an invariant structure, or produce a distinct measurable consequence.</li>
+    <li><strong>Only then consider new dynamics.</strong> A temporal field would require a well-defined field variable, units, symmetries, covariant dynamics, coupling to known matter, conservation laws, and experimental constraints.</li>
+  </ol>
+  <div class="callout warn"><strong>Research discipline.</strong> Do not invent a replacement equation to repair a failed one. New equations should enter the framework only after their variables, units, assumptions, derivation, and testable consequences have been independently justified.</div>
+  <p>Possible future domains include nuclear spectroscopy and precision atomic measurements. These are research directions, not current UTEG predictions.</p>
+</section>
+
+<section id="illumina">
+  <div class="eyebrow">09 · Illumina cycle</div>
+  <h2>A live lunar rhythm for the research</h2>
+  <p class="lead">TIME follows alternating astronomical Full Moons. Each designated Full Moon launches a new Illumina cycle: 42 calendar days of active research, followed by a rest and integration interval that lasts until the next designated Full Moon.</p>
+  <div class="callout good"><strong>Calendar rules.</strong> The original Illumina 1 Full Moon on 5 November 2025 is the fixed anchor. Every second Full Moon after that is a launch. Days 1–42 are active; the remaining days before the next launch are rest days. The break is not forced to exactly 17 days.</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3 id="currentCycleTitle">Current cycle</h3>
+      <div class="eq" id="currentCycleState">Calculating…</div>
+      <p id="currentCycleDates" class="small">Loading astronomical phase data.</p>
+      <div class="eq" id="cycleProgressText">—</div>
+      <div style="height:9px;background:#202b3d;border-radius:99px;overflow:hidden;margin:10px 0 4px">
+        <div id="cycleProgressBar" style="height:100%;width:0;background:linear-gradient(90deg,#9b8cff,#79d5c8);border-radius:99px;transition:width .3s"></div>
       </div>
-
-      <!-- Hero Callout -->
-      <div class="callout" style="margin:24px auto;max-width:720px;text-align:left;">
-        <strong>Core Claim:</strong> Temporal charge τ = ℏ/E (quantum) and T = E/c³ (relativistic) unify at bridge energy E = √(ℏc³), making τ potentially more fundamental than energy.
-        <br><br>
-        <strong>Falsifiable Test:</strong> Nuclear decay modes with different mechanisms should show universal τ-scaling if this framework is correct.
-        <br><br>
-        <strong>Primary Test Protocol:</strong>
-        <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">zeta.plnt.earth</a>
-      </div>
-
-      <nav aria-label="Contents">
-        <ul>
-          <li><a href="#abstract">Abstract</a></li>
-          <li><a href="#motivation">1. Motivation</a></li>
-          <li><a href="#unification">2. The Unification: &tau; = T</a></li>
-          <li><a href="#bridge">3. Bridge Energy</a></li>
-          <li><a href="#scale-bridge">3A. Scale-Recursive Bridge Structure</a></li>
-          <li><a href="#quantum-regime">4. Quantum Regime (&tau; = &hbar;/E)</a></li>
-          <li><a href="#relativistic-regime">5. Relativistic Regime (T = E/c³)</a></li>
-          <li><a href="#dimensional">6. Dimensional Consistency</a></li>
-          <li><a href="#noether">7. Emmy Noether & Conservation Laws</a></li>
-          <li><a href="#quantum-mechanics">8. Quantum Mechanics in &tau;-Space</a></li>
-          <li><a href="#goeppert-mayer">9. Maria Goeppert Mayer & Nuclear Tests</a></li>
-          <li><a href="#wu">10. Chien-Shiung Wu & Experimental Precision</a></li>
-          <li><a href="#predictions">11. Experimental Predictions</a></li>
-          <li><a href="#temporal-field">12. Temporal Field Theory</a></li>
-          <li><a href="#cosmology">13. Cosmological Implications</a></li>
-          <li><a href="#connections">14. Connection to Other Frameworks</a></li>
-          <li><a href="#engagement">15. How to Test & Collaborate</a></li>
-          <li><a href="#acknowledgment">16. Acknowledgment</a></li>
-          <li><a href="#references">References</a></li>
-        </ul>
-
-        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);background:rgba(245,158,11,0.08);padding:12px;border-radius:8px;">
-          <strong>⚡ Primary Experimental Test:</strong>
-          <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">Nuclear Decay Universal Scaling</a>
-          <br><span style="font-size:13px;color:var(--muted);">Falsifiable test using existing NNDC data — zeta.plnt.earth</span>
-        </div>
-
-        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">
-          <strong>Interactive:</strong>
-          <a href="https://tau.plnt.earth">&tau; Dynamics</a>
-        </div>
-
-        <div style="margin-top:8px">
-          <strong>Frameworks:</strong>
-          <a href="https://helloworld.plnt.earth">Genesis</a> ·
-          <a href="https://illumina.plnt.earth/τ">Illumina</a> ·
-          <a href="https://42.plnt.earth">42</a>
-        </div>
-
-        <div style="margin-top:8px">
-          <strong>Comets:</strong>
-          <a href="https://comet.plnt.earth">Comet</a> ·
-          <a href="https://boiledpeanuts.plnt.earth">3I/Atlas</a> ·
-          <a href="https://manifolddynamics.plnt.earth">Manifold</a>
-        </div>
-      </nav>
-    </header>
-
-<main>
-  <section id="abstract"><h2>Abstract</h2>
-    <p class="abstract">We propose a unified temporal framework where quantum (&tau; = &hbar;/E) and relativistic (T = E/c³) formulations describe the same fundamental quantity. These expressions meet at bridge energy E = √(&hbar;c³), creating a seamless transition between quantum and classical regimes. Time, mass, energy, and distance emerge as different manifestations of temporal charge. This framework reformulates physics to reveal: (1) harmonic spacing in nuclear energy levels when expressed as &tau;, (2) dark energy as temporal field dynamics, (3) time quantization at Planck scale, and (4) testable predictions for atomic clocks, spectroscopy, and cosmological observations.</p>
-  </section>
-
-  <section style="background:rgba(124,58,237,.08);border:1px solid var(--accent);border-radius:16px;padding:20px;margin:18px 0;">
-    <p style="margin:0;font-size:15px;line-height:1.6;">
-      <strong>Peer Review:</strong> Michael Shara (Curator, American Museum of Natural History, Department of Astrophysics) reviewed the temporal energy formulation (T = E/c³, t = m/c) in August 2025 and confirmed it is <strong>dimensionally consistent</strong>. He emphasized the importance of testable predictions and collaboration with domain experts—guidance incorporated throughout this unified revision.
-    </p>
-  </section>
-
-  <section id="motivation"><h2>1. Motivation — Why Two Formulations?</h2>
-    <p>Physics has two natural ways to describe temporal phenomena:</p>
-
-    <h3>Quantum Perspective: &tau; = &hbar;/E</h3>
-    <p>In quantum mechanics, energy and time are conjugate variables related through Planck's constant. The Planck-Einstein relation E = &hbar;&omega; implies a natural timescale &tau; = &hbar;/E (the Compton time). This formulation dominates at <strong>low energies</strong> where quantum effects are primary.</p>
-
-    <h3>Relativistic Perspective: T = E/c³</h3>
-    <p>In relativity, time emerges as an energy field with its own dynamics. The relation T = E/c³ treats temporal intervals as energy density divided by c³, making time an active participant in cosmic evolution. This formulation dominates at <strong>high energies</strong> where relativistic effects matter.</p>
-
-    <h3>The Question</h3>
-    <p>Are these two different physical quantities, or the same quantity viewed from different energy scales? We propose they are <strong>identical</strong>—just different parametrizations that meet at a characteristic bridge energy.</p>
-  </section>
-
-  <section id="unification"><h2>2. The Unification: &tau; = T</h2>
-    <div class="callout">
-      <strong>Central Claim:</strong> Temporal charge &tau; and temporal energy T are the same physical quantity expressed in different regimes.
+      <p id="cycleProgressCaption" class="small">—</p>
     </div>
-
-    <h3>Setting Them Equal</h3>
-    <p>If &tau; = T, then:</p>
-    <div class="equation">&hbar;/E = E/c³</div>
-    <p>Rearranging:</p>
-    <div class="equation">E² = &hbar;c³</div>
-    <p>This defines a characteristic energy scale where both formulations coincide.</p>
-
-    <h3>Physical Interpretation</h3>
-    <p>The equation E² = &hbar;c³ is not arbitrary—it represents the energy where:</p>
-    <ul>
-      <li>Quantum uncertainty (∂E·∂t ~ &hbar;) equals relativistic energy density (E/c³)</li>
-      <li>Particle wavelength (~/E) equals its gravitational radius (~/E)</li>
-      <li>Temporal quantum fluctuations match classical temporal flow</li>
-    </ul>
-    <p>Below this energy, use &tau; = &hbar;/E. Above it, use T = E/c³. At the bridge, they are identical.</p>
-
-    <h3>Visual Regime Map</h3>
-    <div style="margin:24px 0;text-align:center;">
-      <svg width="600" height="200" viewBox="0 0 600 200" style="max-width:100%;height:auto;">
-        <rect x="0" y="0" width="600" height="200" fill="var(--panel)" stroke="var(--rule)"/>
-
-        <rect x="20" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
-        <text x="120" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Quantum Regime</text>
-        <text x="120" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &lt; √(ℏc³)</text>
-        <text x="120" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">τ = ℏ/E</text>
-        <text x="120" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Nuclear physics</text>
-
-        <rect x="240" y="40" width="120" height="120" fill="rgba(245,158,11,0.1)" stroke="var(--accent-2)"/>
-        <text x="300" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Bridge</text>
-        <text x="300" y="90" text-anchor="middle" fill="var(--accent-2)" font-size="13" font-weight="bold">E_bridge</text>
-        <text x="300" y="110" text-anchor="middle" fill="var(--muted)" font-size="11">333 TeV</text>
-        <text x="300" y="130" text-anchor="middle" fill="var(--ink)" font-size="12">τ = T</text>
-
-        <rect x="380" y="40" width="200" height="120" fill="rgba(124,58,237,0.1)" stroke="var(--accent)"/>
-        <text x="480" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="bold">Relativistic Regime</text>
-        <text x="480" y="90" text-anchor="middle" fill="var(--ink)" font-size="12">E &gt; √(ℏc³)</text>
-        <text x="480" y="115" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold">T = E/c³</text>
-        <text x="480" y="145" text-anchor="middle" fill="var(--muted)" font-size="11">Cosmology</text>
-
-        <path d="M 30,180 L 570,180" stroke="var(--accent-2)" stroke-width="2" marker-end="url(#arrowhead)"/>
-        <text x="300" y="195" text-anchor="middle" fill="var(--muted)" font-size="11">Increasing Energy →</text>
-
-        <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <polygon points="0 0, 10 3, 0 6" fill="var(--accent-2)" />
-          </marker>
-        </defs>
-      </svg>
+    <div class="card">
+      <h3>Next launch</h3>
+      <div class="eq" id="nextLaunchDate">—</div>
+      <p id="nextLaunchMeta" class="small">—</p>
+      <h3>Rest interval</h3>
+      <div class="eq" id="restDates">—</div>
+      <p id="restMeta" class="small">—</p>
     </div>
-  </section>
+  </div>
 
-  <section id="bridge"><h2>3. Bridge Energy</h2>
-    <p>From E² = &hbar;c³, we derive the bridge energy:</p>
-    <div class="equation">E<sub>bridge</sub> = √(&hbar;c³)</div>
-    <p>Evaluating numerically:</p>
-    <ul>
-      <li>&hbar; = 1.054571817 × 10⁻³⁴ J·s</li>
-      <li>c³ = (299,792,458 m/s)³ ≈ 2.69 × 10²⁵ m³/s³</li>
-      <li>E<sub>bridge</sub> = √(1.055 × 10⁻³⁴ × 2.69 × 10²⁵) ≈ √(2.84 × 10⁻⁹) ≈ 5.33 × 10⁻⁵ J</li>
-    </ul>
-    <p>Converting to more familiar units:</p>
-    <div class="equation">E<sub>bridge</sub> ≈ 3.33 × 10¹⁴ eV = 333 TeV</div>
-    <p>This is approximately <strong>10⁵ times lower than Planck energy</strong> (~10¹⁹ GeV), but still far above Standard Model energies (~100 GeV at LHC).</p>
+  <div class="callout" id="moonDataStatus" role="status" aria-live="polite">Loading Full Moon dates from the U.S. Naval Observatory…</div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <button id="refreshMoonData" type="button">Refresh lunar data</button>
+    <span class="small" id="timezoneLabel">Calendar dates use this device’s time zone.</span>
+  </div>
 
-    <h3>At the Bridge</h3>
-    <div class="equation">&tau;<sub>bridge</sub> = &hbar;/E<sub>bridge</sub> = E<sub>bridge</sub>/c³ ≈ 1.98 × 10⁻²⁹ s</div>
-    <p>This timescale is <strong>10¹⁵ times larger than Planck time</strong>, representing a natural crossover between quantum and relativistic temporal dynamics.</p>
-
-    <h3>Regime Map</h3>
+  <h3>Upcoming Illumina launches</h3>
+  <div style="overflow-x:auto">
     <table>
-      <tr><th>Energy Scale</th><th>Dominant Formulation</th><th>Physics</th></tr>
-      <tr><td>E ≪ √(&hbar;c³)</td><td>&tau; = &hbar;/E</td><td>Quantum mechanics, atomic physics, chemistry</td></tr>
-      <tr><td>E ≈ √(&hbar;c³)</td><td>&tau; = T (unified)</td><td>Crossover regime, quantum-classical transition</td></tr>
-      <tr><td>E ≫ √(&hbar;c³)</td><td>T = E/c³</td><td>Cosmology, black holes, temporal field dynamics</td></tr>
+      <thead><tr><th>Cycle</th><th>Full Moon launch</th><th>Day 42 ends</th><th>Rest interval</th><th>Next launch</th></tr></thead>
+      <tbody id="launchTableBody"><tr><td colspan="5">Waiting for lunar data…</td></tr></tbody>
     </table>
-  </section>
-
-  <section id="scale-bridge"><h2>3A. Scale-Recursive Bridge Structure</h2>
-    <p>The bridge energy derived above,</p>
-    <div class="equation">E<sub>*</sub> = √(&hbar;c³)</div>
-    <p>defines the energy at which the quantum expression for temporal scale (<span class="equation" style="display:inline-block;margin:0;padding:4px 8px;white-space:nowrap;">&tau; = &hbar;/E</span>) and the relativistic expression (<span class="equation" style="display:inline-block;margin:0;padding:4px 8px;white-space:nowrap;">T = E/c³</span>) become numerically identical. This equality is best interpreted as a <strong>local crossover condition</strong>, not as a unique or global feature of nature.</p>
-
-    <p>Physics is already formulated as a hierarchy of effective theories, each valid within a limited domain of scale. Nuclear, atomic, and cosmological systems are characterized by distinct degrees of freedom and renormalized parameters, yet they remain connected by consistent transformation rules. Within this context, the bridge condition should be interpreted as a <strong>scale-local matching point</strong> wherever quantum discreteness and relativistic energy–time structure both apply to the same system.</p>
-
-    <h3>Scale-Local Formulation</h3>
-    <p>At an arbitrary effective scale <em>s</em>, one may write:</p>
-    <div class="equation">&tau;<sub>q</sub><sup>(s)</sup> = &hbar;<sub>s</sub>/E &nbsp;&nbsp;&nbsp;&nbsp; T<sub>r</sub><sup>(s)</sup> = E/c<sub>s</sub>³</div>
-    <p>leading to a local crossover energy:</p>
-    <div class="equation">E<sub>*</sub>(s) = √(&hbar;<sub>s</sub> c<sub>s</sub>³)</div>
-
-    <p>The appearance of multiple bridge energies is therefore not an additional hypothesis, but a direct consequence of scale separation and renormalization. Each bridge corresponds to a narrow crossover regime in which the two temporal descriptions coincide. Outside such regions, one formulation dominates and the other reduces to an approximation.</p>
-
-    <p>This perspective is consistent with symmetry-based reasoning rooted in Emmy Noether's work (invariants define structure), and it is compatible with Goeppert Mayer's shell framework (structure becomes simple after the correct change of variables). It also aligns with modern treatments of scale-dependent temporal behavior in quantum gravity (e.g., causal approaches) and with relational views of time that emphasize dependence on the physical context rather than a universal external clock.</p>
-
-    <p>The empirical relevance of such crossovers depends on precision measurements that probe the correct regime with sufficient control—an experimental standard exemplified by Wu's work in nuclear physics.</p>
-
-    <div class="scopebox" style="margin-top:16px;">
-      <strong>Clarification (Scope and Interpretation)</strong><br>
-      This section does <strong>not</strong> assert that &tau;-unification is ubiquitous, nor that all systems operate near a bridge energy.<br><br>
-      It asserts instead that whenever quantum and relativistic descriptions overlap within a single effective system, a &tau;-based crossover must exist as a matter of dimensional consistency.<br><br>
-      Most systems lie far from such crossovers. When a system approaches one, &tau; becomes the natural organizing variable and may reveal regularities obscured in energy-space.
-    </div>
-
-    <div style="margin-top:14px;">
-      <strong>Adjacent work (optional):</strong>
-      <a href="https://darkenergy.plnt.earth" style="color:var(--link);text-decoration:none;">darkenergy.plnt.earth</a> ·
-      <a href="https://fractals.plnt.earth" style="color:var(--link);text-decoration:none;">fractals.plnt.earth</a> ·
-      <a href="https://contact.plnt.earth" style="color:var(--link);text-decoration:none;">contact.plnt.earth</a>
-      <div style="font-size:13px;color:var(--muted);margin-top:6px;">
-        These are downstream extensions and are not required to evaluate the quantum-mechanical claims made here.
-      </div>
-    </div>
-  </section>
-
-  <section id="quantum-regime"><h2>4. Quantum Regime: &tau; = &hbar;/E</h2>
-    <p>At energies below E<sub>bridge</sub>, the quantum formulation dominates:</p>
-
-    <h3>Definition</h3>
-    <div class="equation">&tau; = &hbar;/(mc²) = &hbar;/E</div>
-    <p>where:</p>
-    <ul>
-      <li>&tau; = temporal charge (Compton time)</li>
-      <li>&hbar; = reduced Planck constant</li>
-      <li>m = mass</li>
-      <li>E = total energy</li>
-    </ul>
-
-    <h3>Physical Meaning</h3>
-    <p>&tau; is the characteristic timescale for a particle of mass m or energy E. It represents:</p>
-    <ul>
-      <li>The quantum "clock speed" of a particle</li>
-      <li>The period for matter-energy oscillations</li>
-      <li>The time light takes to cross one Compton wavelength</li>
-    </ul>
-
-    <h3>Key Relations</h3>
-    <div class="equation">m = &hbar;/(c²&tau;)</div>
-    <div class="equation">E = &hbar;/&tau;</div>
-    <div class="equation">&lambda;<sub>C</sub> = c&tau;</div>
-    <div class="equation">&omega; = 1/&tau;</div>
-    <p>Mass, energy, length, and frequency all emerge from &tau;.</p>
-  </section>
-
-  <section id="relativistic-regime"><h2>5. Relativistic Regime: T = E/c³</h2>
-    <p>At energies above E<sub>bridge</sub>, the relativistic formulation dominates:</p>
-
-    <h3>Fundamental Postulates</h3>
-    <div class="callout">
-      <strong>Postulate 1:</strong> Time = Distance (geometric equivalence)
-      <br>
-      <strong>Postulate 2:</strong> Time = Energy (energetic equivalence)
-    </div>
-
-    <h3>Primary Equations</h3>
-    <div class="equation">T = E/c³</div>
-    <div class="equation">t = m/c</div>
-    <p>where:</p>
-    <ul>
-      <li>T = temporal energy field</li>
-      <li>t = temporal interval</li>
-      <li>E = total energy</li>
-      <li>m = mass</li>
-    </ul>
-
-    <h3>Connection to Einstein</h3>
-    <p>Combining T = E/c³ with E = mc²:</p>
-    <div class="equation">T = mc²/c³ = m/c = t</div>
-    <p>This shows temporal energy, mass-time equivalence, and Einstein's mass-energy are unified.</p>
-
-    <h3>Temporal Field Dynamics</h3>
-    <p>In this regime, time is not a passive coordinate but an active energy field with:</p>
-    <ul>
-      <li>Energy density: &rho;<sub>t</sub> = T²c⁶</li>
-      <li>Temporal pressure: P<sub>t</sub> = &rho;<sub>t</sub>c⁶/3</li>
-      <li>Field equations coupling to spacetime curvature</li>
-    </ul>
-  </section>
-
-  <section id="dimensional"><h2>6. Dimensional Consistency</h2>
-    <p>Both formulations must be dimensionally consistent. We verify:</p>
-
-    <h3>Quantum Formulation: &tau; = &hbar;/E</h3>
-    <table>
-      <tr><th>Equation</th><th>Dimensions</th><th>Result</th></tr>
-      <tr><td>&tau; = &hbar;/E</td><td>[J·s]/[J] = [s]</td><td>✓ Time</td></tr>
-      <tr><td>m = &hbar;/(c²&tau;)</td><td>[J·s]/([m/s]²[s]) = [kg]</td><td>✓ Mass</td></tr>
-      <tr><td>&lambda;<sub>C</sub> = c&tau;</td><td>[m/s][s] = [m]</td><td>✓ Length</td></tr>
-    </table>
-
-    <h3>Relativistic Formulation: T = E/c³</h3>
-    <div class="callout">
-      <strong>Michael Shara Validation:</strong> The temporal energy relations T = E/c³ and t = m/c were reviewed and confirmed dimensionally consistent by Dr. Michael Shara (AMNH, August 2025). This validates the relativistic regime independently of the quantum formulation.
-    </div>
-    <p>The formulation treats T and t as fundamental temporal quantities with their own dimensional structure within the framework of energetic equivalence (Time = Energy).</p>
-
-    <h3>Bridge Consistency</h3>
-    <p>At E = E<sub>bridge</sub> = √(&hbar;c³):</p>
-    <div class="equation">&tau; = &hbar;/√(&hbar;c³) = √(&hbar;/c³)</div>
-    <div class="equation">T = √(&hbar;c³)/c³ = √(&hbar;/c³)</div>
-    <div class="equation">&tau; = T ✓</div>
-    <p>Both formulations yield identical values at the bridge energy, confirming they describe the same physical quantity.</p>
-
-    <div class="callout" style="margin-top:16px;">
-      <strong>Why dimensional consistency matters:</strong> Every major unification in physics (Maxwell's electromagnetism, Einstein's relativity, Dirac's quantum mechanics) started with dimensional analysis. If [τ] = [T] holds across quantum and relativistic regimes through the bridge energy, this framework deserves experimental testing.
-    </div>
-  </section>
-
-  <section id="noether"><h2>7. Emmy Noether & Conservation Laws</h2>
-    <p>Emmy Noether's 1918 theorem established that every continuous symmetry of a physical system corresponds to a conservation law:</p>
-    <ul>
-      <li>Time-translation symmetry → energy conservation</li>
-      <li>Space-translation symmetry → momentum conservation</li>
-      <li>Rotational symmetry → angular momentum conservation</li>
-    </ul>
-
-    <h3>Noether's Theorem in &tau;-Space</h3>
-    <p>The unified framework inherits these symmetries. Since both &tau; = &hbar;/E and T = E/c³ relate temporal quantities to energy, <strong>energy conservation implies &tau;-conservation</strong> under time evolution.</p>
-    <p>In the quantum regime:</p>
-    <div class="equation">d&tau;/dt = -(&hbar;/E²)(dE/dt) = 0 &nbsp; (when dE/dt = 0)</div>
-    <p>In the relativistic regime:</p>
-    <div class="equation">dT/dt = (1/c³)(dE/dt) = 0 &nbsp; (when dE/dt = 0)</div>
-    <p>Noether's insight ensures that &tau;-dynamics respects all known conservation laws while revealing new structure in how time, mass, and energy transform into one another.</p>
-  </section>
-
-  <section id="quantum-mechanics"><h2>8. Quantum Mechanics in &tau;-Space</h2>
-    <p>Standard quantum mechanics can be reformulated entirely in &tau;-coordinates:</p>
-
-    <h3>8.1 Schrödinger Equation</h3>
-    <p>Substituting m = &hbar;/(c²&tau;) and E = &hbar;/&tau; into the time-dependent Schrödinger equation:</p>
-    <div class="equation">i&hbar; &part;&psi;/&part;t = &hbar;²/(2m) &nabla;²&psi; + V&psi;</div>
-    <p>yields:</p>
-    <div class="equation">i &part;&psi;/&part;t = (c²&tau;/2) &nabla;²&psi; + (V/&hbar;)&psi;</div>
-
-    <h3>8.2 Dirac Equation</h3>
-    <p>The Dirac equation (i&gamma;<sup>&mu;</sup>&part;<sub>&mu;</sub> - mc/&hbar;)&psi; = 0 becomes:</p>
-    <div class="equation">(i&gamma;<sup>&mu;</sup>&part;<sub>&mu;</sub> - 1/(c&tau;))&psi; = 0</div>
-
-    <h3>8.3 Quantum-Relativistic Transition</h3>
-    <p>The temporal uncertainty principle extends to both regimes:</p>
-    <div class="equation">&Delta;E &Delta;t ≥ &hbar;/2</div>
-    <p>In &tau;-space:</p>
-    <div class="equation">&Delta;&tau; &Delta;t ≥ &tau;²/(2&hbar;)</div>
-    <p>In T-space (high energy):</p>
-    <div class="equation">&Delta;T &Delta;t ≥ &hbar;/(2&Psi;<sub>temporal</sub>)</div>
-    <p>where &Psi;<sub>temporal</sub> = &alpha;|quantum⟩ + &beta;|relativistic⟩ describes the superposition of regimes.</p>
-  </section>
-
-  <section id="goeppert-mayer"><h2>9. Maria Goeppert Mayer & Nuclear Tests</h2>
-    <p>Maria Goeppert Mayer's 1949 paper "On Closed Shells in Nuclei. II" established the nuclear shell model, showing that nucleons occupy quantized energy levels analogous to electrons in atoms. Her work explained magic numbers (2, 8, 20, 28, 50, 82, 126) where nuclei show exceptional stability.</p>
-
-    <h3>The &tau;-Harmonic Prediction</h3>
-    <p class="callout"><strong>Open Question for Collaboration:</strong> Do nuclear energy levels show regular harmonic spacing in τ-space that's hidden in energy space? If τ is fundamental, Goeppert Mayer's shell structure should manifest as harmonic τ-spacing rather than the irregular energy spacing we currently observe. This is a question I'd love to explore with nuclear physicists who have access to high-precision spectroscopic data.</p>
-    <p>If &tau; is fundamental, Goeppert Mayer's shell structure should manifest as <strong>harmonic &tau;-spacing</strong>:</p>
-    <div class="equation">E<sub>n</sub> = E<sub>0</sub> × n &nbsp;&nbsp;&rarr;&nbsp;&nbsp; &tau;<sub>n</sub> = &tau;<sub>0</sub>/n</div>
-    <p>Energy levels appear irregular (compressed at low E, spread at high E) but &tau;-levels should show simple harmonic patterns: &tau;<sub>n</sub> = &tau;<sub>0</sub>/n.</p>
-
-    <h3>Test Procedure</h3>
-    <ol>
-      <li>Select heavy nucleus (²³⁸U, ²⁰⁸Pb, ¹⁵⁷Gd) with well-measured excited states</li>
-      <li>Extract energy levels from NNDC or ENSDF</li>
-      <li>Calculate &tau;<sub>n</sub> = &hbar;/E<sub>n</sub> for each level</li>
-      <li>Plot E<sub>n</sub> vs n and &tau;<sub>n</sub> vs n side-by-side</li>
-      <li>Test: Does &tau;<sub>n</sub> ≈ &tau;<sub>0</sub>/n?</li>
-    </ol>
-
-    <h3>Interactive Demo</h3>
-    <p>Try the transformation at <a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a> — input nuclear energy levels and visualize E → &tau; transformation.</p>
-  </section>
-
-  <section id="wu"><h2>10. Chien-Shiung Wu & Experimental Precision</h2>
-    <p>Chien-Shiung Wu's 1957 experiment on parity violation in beta decay demonstrated the power of precision nuclear measurements. Her work required meticulous control of cobalt-60 nuclei at cryogenic temperatures to detect asymmetry in electron emission—published in "Experimental Test of Parity Conservation in Beta Decay."</p>
-
-    <h3>Wu's Methodology Applied to &tau;-Tests</h3>
-    <p>Testing &tau;-harmonic spacing requires similar experimental rigor:</p>
-    <ul>
-      <li>Energy level precision: ~0.1 keV to resolve &tau;-structure</li>
-      <li>Systematic error control: temperature, source preparation</li>
-      <li>Reproducibility: multiple runs across different labs</li>
-      <li>Statistical significance: proper null hypothesis testing</li>
-    </ul>
-    <p>Wu's template—careful source preparation, systematic error analysis, reproducibility—provides the gold standard for verifying &tau;-predictions in nuclear data.</p>
-
-    <h3>Current Experimental Capabilities</h3>
-    <p>Modern nuclear spectroscopy (gamma-ray detectors, particle accelerators) achieves:</p>
-    <ul>
-      <li>Energy resolution: &Delta;E/E ~ 10⁻⁶ (germanium detectors)</li>
-      <li>Timing resolution: ~1 ns (scintillation detectors)</li>
-      <li>Level precision: 0.01-0.1 keV (NNDC database)</li>
-    </ul>
-    <p>These capabilities are <strong>sufficient to test &tau;-harmonics now</strong>.</p>
-  </section>
-
-  <section id="predictions"><h2>11. Experimental Predictions</h2>
-    <p>The unified framework makes testable predictions across energy scales:</p>
-
-    <h3>11.1 Nuclear Decay Universal Scaling (Primary Test)</h3>
-    <div class="callout" style="background:rgba(124,58,237,0.08);border-color:var(--accent);">
-      <strong>Falsifiable Prediction:</strong> α, β, and γ decay modes should show universal τ-scaling.
-      <br><br>
-      <strong>Test:</strong> Plot log(t₁/₂) vs log(ℏ/Q) for all three decay modes.
-      <br>• If <strong>τ is fundamental</strong> → single universal curve
-      <br>• If <strong>energy is fundamental</strong> → three distinct curves
-      <br><br>
-      <strong>Full test protocol:</strong> <a href="https://zeta.plnt.earth" style="color:var(--link);font-weight:600;">zeta.plnt.earth</a>
-      <br><strong>Data source:</strong> NNDC nuclear database (test can be run now)
-    </div>
-
-    <h3>11.2 Nuclear &tau;-Harmonics (Quantum Regime)</h3>
-    <p><strong>Prediction:</strong> Nuclear energy levels show &tau;<sub>n</sub> = &tau;<sub>0</sub>/n spacing.</p>
-    <p><strong>Test:</strong> NNDC nuclear data, high-precision spectroscopy.</p>
-    <p><strong>Observable:</strong> Linear &tau; spacing vs quantum number n.</p>
-
-    <h3>11.3 Atomic Fine Structure (Quantum Regime)</h3>
-    <p><strong>Prediction:</strong> Rydberg states show &tau;<sub>n</sub> = An² + B (quadratic in n).</p>
-    <p><strong>Test:</strong> Optical lattice clocks, hydrogen spectroscopy.</p>
-    <p><strong>Observable:</strong> &tau;<sub>n</sub> fits A n² better than E<sub>n</sub> fits -R/n².</p>
-
-    <h3>11.4 Temporal Redshift (Bridge/Relativistic Regime)</h3>
-    <p><strong>Prediction:</strong> Photons in varying temporal fields: E<sub>photon</sub> = E₀(1 + &Phi;<sub>t</sub>/c⁶).</p>
-    <p><strong>Test:</strong> Quasar absorption lines, gravitational wave sources.</p>
-    <p><strong>Observable:</strong> Additional redshift &Delta;&lambda;/&lambda; ~ 10⁻¹⁸.</p>
-
-    <h3>11.5 Dark Energy Equation of State (Relativistic Regime)</h3>
-    <p><strong>Prediction:</strong> w(z) ≠ -1 due to temporal pressure P<sub>t</sub> = &rho;<sub>t</sub>c⁶/3.</p>
-    <p><strong>Test:</strong> Type Ia supernovae, BAO, weak lensing at high z.</p>
-    <p><strong>Observable:</strong> w(z) ~ -1 + &delta;w where &delta;w ~ 10⁻² at z > 2.</p>
-
-    <h3>11.6 Chronon Quantization (Planck Scale)</h3>
-    <p><strong>Prediction:</strong> Time quantizes at E<sub>chronon</sub> = &hbar;c³/t<sub>Planck</sub> ≈ 1.22 × 10¹⁹ GeV.</p>
-    <p><strong>Test:</strong> Quantum gravity experiments, Planck-scale physics.</p>
-    <p><strong>Observable:</strong> Discrete temporal structure, modified dispersion relations.</p>
-  </section>
-
-  <section id="temporal-field"><h2>12. Temporal Field Theory</h2>
-    <p>In the relativistic regime (T = E/c³), time becomes a dynamical field:</p>
-
-    <h3>12.1 Extended Lagrangian</h3>
-    <div class="equation">S = ∫d⁴x √(-g)[R/(16&pi;G) + L<sub>matter</sub> + L<sub>temporal</sub> + L<sub>interaction</sub>]</div>
-    <p>where L<sub>temporal</sub> = -(1/2)g<sup>&mu;&nu;</sup>&part;<sub>&mu;</sub>T &part;<sub>&nu;</sub>T - V(T).</p>
-
-    <h3>12.2 Modified Einstein Equations</h3>
-    <div class="equation">G<sub>&mu;&nu;</sub> = 8&pi;G(T<sub>&mu;&nu;</sub><sup>matter</sup> + T<sub>&mu;&nu;</sub><sup>temporal</sup>)</div>
-    <p>The temporal stress-energy T<sub>&mu;&nu;</sub><sup>temporal</sup> acts as an effective fluid.</p>
-
-    <h3>12.3 Temporal Pressure</h3>
-    <div class="equation">P<sub>t</sub> = &rho;<sub>t</sub>c⁶/3</div>
-    <p>This pressure drives cosmic acceleration without requiring a cosmological constant &Lambda;.</p>
-  </section>
-
-  <section id="cosmology"><h2>13. Cosmological Implications</h2>
-    <p>The unified framework naturally explains:</p>
-
-    <h3>13.1 Dark Energy from Temporal Field</h3>
-    <p>Dark energy density (~10⁻⁹ J/m³) = ground state of temporal field:</p>
-    <div class="equation">&rho;<sub>dark</sub> = ⟨T²⟩<sub>vacuum</sub>c⁶</div>
-    <p>This provides a dynamical origin for dark energy rather than fine-tuning &Lambda;.</p>
-
-    <h3>13.2 Acceleration Without &Lambda;</h3>
-    <p>Temporal pressure P<sub>t</sub> = &rho;<sub>t</sub>c⁶/3 naturally produces negative effective pressure, driving acceleration.</p>
-
-    <h3>13.3 Time Quantization</h3>
-    <p>At Planck scale, &Delta;t<sub>min</sub> = t<sub>Planck</sub> ≈ 5.39 × 10⁻⁴⁴ s, resolving singularities.</p>
-
-    <h3>13.4 Spectroscopic Signatures</h3>
-    <p>Atomic clocks should detect temporal field fluctuations as frequency variations.</p>
-  </section>
-
-  <section id="connections"><h2>14. Connection to Other Frameworks</h2>
-    <p>The unified temporal framework connects to companion research on cosmic origins:</p>
-
-    <h3>14.1 Genesis (HelloWorld) — <a href="https://helloworld.plnt.earth" style="color:var(--link)">helloworld.plnt.earth</a></h3>
-    <p>If temporal energy can be engineered at Planck densities, civilizations could:</p>
-    <ul>
-      <li>Store information in temporal field configurations</li>
-      <li>Encode messages in black hole initial conditions</li>
-      <li>Use temporal pressure to influence structure formation</li>
-    </ul>
-
-    <h3>14.2 Illumina — <a href="https://illumina.plnt.earth/τ" style="color:var(--link)">illumina.plnt.earth/τ</a></h3>
-    <p>If temporal energy messages exist, convergent protocols:</p>
-    <ul>
-      <li>Prime-length temporal sequences (T-harmonics)</li>
-      <li>Error-correcting codes in temporal configurations</li>
-      <li>Dimensionless anchors across regimes</li>
-    </ul>
-
-    <h3>14.3 42 (Molecular) — <a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a></h3>
-    <p>At molecular scales:</p>
-    <ul>
-      <li>t = m/c → activation timescales</li>
-      <li>Molecular cascades as temporal field excitations</li>
-      <li>Life = sustained temporal energy flux</li>
-      <li>Bennu samples (glucose, ATP, ribose) = T-storage molecules</li>
-    </ul>
-
-    <h3>14.4 Comets</h3>
-    <p>Interstellar comets may show temporal field signatures:</p>
-    <ul>
-      <li><a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a> — Orbital analysis</li>
-      <li><a href="https://boiledpeanuts.plnt.earth" style="color:var(--link)">boiledpeanuts.plnt.earth</a> — 3I/Atlas dynamics</li>
-      <li><a href="https://manifolddynamics.plnt.earth" style="color:var(--link)">manifolddynamics.plnt.earth</a> — Unified manifold treatment</li>
-    </ul>
-
-    <h3>Why These Papers Exist</h3>
-    <p>In August/September 2025, I submitted multiple frameworks to Dr. Michael Shara at AMNH simultaneously. The speed wasn't superhuman—it was <strong>convergent</strong>. Once you see &tau; = T as fundamental:</p>
-    <ul>
-      <li>If temporal energy can be stored → seeding becomes possible</li>
-      <li>If seeding is possible → messages are inevitable</li>
-      <li>If messages exist → convergent codes emerge</li>
-      <li>If temporal pressure drives expansion → dark energy explained</li>
-    </ul>
-    <p>This is one framework with multiple observable consequences.</p>
-  </section>
-
-  <section id="engagement"><h2>15. How to Test & Collaborate</h2>
-    <p>I am seeking collaborators interested in testing whether time-based reparameterization can expose structure hidden in energy-based descriptions, using modern precision data; ongoing experimental notes and coordination are maintained at <a href="https://fieldlab.plnt.earth" style="color:var(--link);font-weight:600;">fieldlab.plnt.earth</a>.</p>
-
-    <h3>Field Collaboration Request</h3>
-    <div style="background:rgba(124,58,237,0.08);border:1px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;">
-      <p style="margin:0 0 8px;">
-        I am seeking collaboration with researchers interested in testing whether time-based reparameterization reveals structure hidden in energy-based descriptions.
-      </p>
-      <p style="margin:0 0 8px;">
-        This work is grounded in standard quantum mechanics and effective field theory. It does not propose new particles or forces. It proposes that certain systems become simpler when described using time-derived quantities rather than energy alone.
-      </p>
-      <p style="margin:0 0 8px;">
-        The Copenhagen interpretation remains essential here. Measurement, operational definition, and experimental context matter. Any proposed structure must survive contact with real data, not just formal elegance.
-      </p>
-      <p style="margin:0 0 8px;">
-        Future study matters because we now have precision tools that did not exist when quantum foundations were first established. Nuclear databases, atomic clocks, and high-resolution spectroscopy make it possible to test whether alternative parameterizations expose real regularities or collapse under scrutiny.
-      </p>
-      <p style="margin:0;">
-        A dedicated collaboration space and experimental notes are maintained at
-        <a href="https://fieldlab.plnt.earth" style="color:var(--link);font-weight:600;text-decoration:none;">fieldlab.plnt.earth</a>.
-        This is intended as a working environment, not a conclusion.
-      </p>
-    </div>
-
-    <p>This framework makes falsifiable predictions across domains:</p>
-
-    <h3>Specific Ways to Help:</h3>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Nuclear Physicists:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Run the nuclear decay universal scaling test (<a href="https://zeta.plnt.earth" style="color:var(--link)">zeta.plnt.earth</a>)</li>
-        <li>Test τ-harmonics on ²³⁸U, ²⁰⁸Pb using NNDC data</li>
-        <li>Review dimensional consistency against shell models</li>
-        <li>Identify best isotope candidates for clean data</li>
-      </ul>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Atomic Spectroscopists:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Test τ<sub>n</sub> = An² vs E<sub>n</sub> = -R/n² in Rydberg states</li>
-        <li>Use optical lattice clocks for temporal field detection</li>
-        <li>Measure fine structure with τ-parametrization</li>
-      </ul>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Cosmologists:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Test w(z) deviations from -1 at high redshift</li>
-        <li>Look for temporal field signatures in CMB</li>
-        <li>Analyze BAO and weak lensing for temporal pressure effects</li>
-      </ul>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Theoretical Physicists:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Check compatibility with known symmetries</li>
-        <li>Derive QFT predictions for τ-correlations</li>
-        <li>Examine connection to quantum gravity approaches</li>
-        <li>Explore bridge energy implications for unification</li>
-      </ul>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Experimentalists:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Design atomic clock network tests for temporal field gradients</li>
-        <li>Precision measurements near bridge energy scale</li>
-        <li>Develop protocols for τ-measurement in different systems</li>
-      </ul>
-    </div>
-
-    <div style="background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;margin:12px 0;">
-      <strong>□ Anyone:</strong>
-      <ul style="margin:8px 0 0;padding-left:20px;">
-        <li>Share with physicists who have NNDC access</li>
-        <li>Critique the mathematics—where does it break?</li>
-        <li>Connect me with researchers at national labs</li>
-        <li>Explore interactive tools at <a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a></li>
-      </ul>
-    </div>
-
-    <h3>Interactive Tools</h3>
-    <ul>
-      <li><a href="https://tau.plnt.earth" style="color:var(--link)">tau.plnt.earth</a> — E → &tau; transformation visualizer</li>
-      <li><a href="https://zeta.plnt.earth" style="color:var(--link)">zeta.plnt.earth</a> — Nuclear decay universal scaling test</li>
-      <li><a href="https://42.plnt.earth" style="color:var(--link)">42.plnt.earth</a> — Molecular temporal dynamics</li>
-      <li><a href="https://comet.plnt.earth" style="color:var(--link)">comet.plnt.earth</a> — Orbital analysis tools</li>
-    </ul>
-
-    <h3>Connect</h3>
-    <p>I built this to find people who are curious and care—about the universe, about discovery, about what we're making together.</p>
-    <ul>
-      <li><strong>X:</strong> <a href="https://x.com/plntearth" style="color:var(--link)">@plntearth</a></li>
-      <li><strong>TikTok:</strong> <a href="https://tiktok.com/@froot.plnt.earth" style="color:var(--link)">@froot.plnt.earth</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/tcarrw" style="color:var(--link)">github.com/tcarrw</a></li>
-    </ul>
-    <p>New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.</p>
-  </section>
-
-  <section id="acknowledgment"><h2>16. Acknowledgment</h2>
-    <p>Michael Shara (Curator, American Museum of Natural History, Department of Astrophysics) reviewed the temporal energy formulation (T = E/c³, t = m/c) in August 2025 and confirmed it is dimensionally consistent. He emphasized the importance of testable predictions and collaboration with domain experts. This unified revision incorporates that guidance while integrating the quantum formulation (&tau; = &hbar;/E) into a seamless framework.</p>
-  </section>
-
-  <section id="references"><h2>References</h2>
-    <ol>
-      <li>Noether, E. (1918). <em>Invariante Variationsprobleme</em>, Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen: 235–257.</li>
-      <li>Goeppert Mayer, M. (1949). <em>On Closed Shells in Nuclei. II</em>, Physical Review 75(12): 1969–1970.</li>
-      <li>Wu, C.S. et al. (1957). <em>Experimental Test of Parity Conservation in Beta Decay</em>, Physical Review 105(4): 1413–1415.</li>
-      <li>Einstein, A. (1905). <em>Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?</em>, Annalen der Physik 18(13): 639–641.</li>
-      <li>Einstein, A. (1916). <em>Die Grundlage der allgemeinen Relativitätstheorie</em>, Annalen der Physik 354(7): 769–822.</li>
-      <li>Dirac, P.A.M. (1928). <em>The Quantum Theory of the Electron</em>, Proceedings of the Royal Society A 117(778): 610–624.</li>
-      <li>Planck, M. (1900). <em>Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum</em>, Verhandlungen der Deutschen Physikalischen Gesellschaft 2: 237–245.</li>
-      <li>Compton, A.H. (1923). <em>A Quantum Theory of the Scattering of X-rays by Light Elements</em>, Physical Review 21(5): 483–502.</li>
-      <li>Heisenberg, W. (1927). <em>Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik</em>, Zeitschrift für Physik 43(3–4): 172–198.</li>
-      <li>Schrödinger, E. (1926). <em>Quantisierung als Eigenwertproblem</em>, Annalen der Physik 79(4): 361–376.</li>
-      <li>Riess, A.G. et al. (1998). <em>Observational Evidence from Supernovae for an Accelerating Universe</em>, The Astronomical Journal 116(3): 1009–1038.</li>
-      <li>Planck Collaboration (2020). <em>Planck 2018 results. VI. Cosmological parameters</em>, Astronomy & Astrophysics 641: A6.</li>
-      <li>Loll, R. (2019). <em>Causal Dynamical Triangulations and the Quest for Quantum Gravity</em>. In: D. Oriti (ed.), <em>Approaches to Quantum Gravity</em> / review literature on CDT.</li>
-      <li>Rovelli, C. (2018). <em>The Order of Time</em>. Riverhead Books.</li>
-    </ol>
-  </section>
+  </div>
+
+  <p class="small">Astronomical phase timestamps are supplied by the U.S. Naval Observatory. The API reports the instant of the geocentric Full Moon in Universal Time; this page converts that instant into the device’s local calendar date. The displayed Illumina day is based on local calendar-day boundaries, not elapsed 24-hour blocks from the exact phase instant.</p>
+  <p class="small">The page retrieves annual phase data when opened, caches successful results in this browser, and recalculates the current cycle automatically. An internet connection is needed to refresh astronomical data. If the source is unavailable, previously cached data is used when available.</p>
+  <p class="small">Source: <a href="https://aa.usno.navy.mil/data/api" target="_blank" rel="noopener">U.S. Naval Observatory — Astronomical Data API</a> · <a href="https://aa.usno.navy.mil/faq/moon_phases" target="_blank" rel="noopener">How lunar phases are defined</a>.</p>
+
+  <h3>How each Illumina cycle is used</h3>
+  <ol>
+    <li><strong>Days 1–7 · Orientation:</strong> define the question, gather primary literature, and write down assumptions.</li>
+    <li><strong>Days 8–21 · Deep work:</strong> derive, compare, and challenge the mathematical structure.</li>
+    <li><strong>Days 22–35 · Testing:</strong> run analytical checks, simulations, and comparisons with established results.</li>
+    <li><strong>Days 36–42 · Synthesis:</strong> write the report, update the equation register, document failures, and decide what comes next.</li>
+    <li><strong>Rest interval · Integration:</strong> step away from active research; preserve notes and prepare the next cycle without forcing progress.</li>
+  </ol>
+</section>
+
+<section id="stages">
+  <div class="eyebrow">10 · Multi-cycle research program</div>
+  <h2>Nine stages toward a defensible theory of time</h2>
+  <p class="lead">This is a proposed four-to-six-month program, paced by Illumina cycles. The order is deliberate: establish the foundations before proposing new dynamics, and do not move to experiments until a genuinely novel quantitative prediction survives theoretical scrutiny.</p>
+  <div class="callout"><strong>Central research question.</strong> Can a more fundamental description of time be derived that is mathematically coherent, recovers established physics in its tested domains, and yields at least one distinct, falsifiable prediction?</div>
+  <p><strong>Working hypothesis:</strong> investigate relational descriptions of time and spacetime as the primary conceptual direction. Treat the Riemann zeta function, spectral statistics, and random-matrix theory as a supporting mathematical branch only. No physical connection is assumed.</p>
+
+  <details open>
+    <summary>Stage 1 · Reconstruct and audit the original UTEG proposal</summary>
+    <p><strong>Timing:</strong> Illumina 7 completion / first research milestone.</p>
+    <p><strong>Objective:</strong> create a complete, traceable inventory of original claims, equations, definitions, assumptions, predictions, and reported tests.</p>
+    <p><strong>Work:</strong> dimensional analysis; derive every equation from stated premises; separate definitions from laws; identify circular reasoning; preserve negative results and historical versions.</p>
+    <p><strong>Deliverables:</strong> audited equation register, claim-by-claim status table, reproducibility checklist for the nuclear-decay scaling test, and a concise audit report.</p>
+    <p><strong>Advance gate:</strong> every surviving equation has defined variables, units, assumptions, and a derivation—or is explicitly marked conjectural.</p>
+    <p class="small"><strong>Research prompt:</strong> “Audit the original UTEG framework as a skeptical mathematical physicist. Do not repair an equation by guessing. For each claim, state its premises, derive it step by step, check dimensions and limiting cases, compare it with established theory, and classify it as valid, redundant, unsupported, contradicted, or unresolved. Preserve failures. Identify the smallest set of legitimate open questions.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 2 · Map the modern theories of time</summary>
+    <p><strong>Objective:</strong> understand how time is treated in classical mechanics, special and general relativity, quantum mechanics, quantum field theory, thermodynamics, and quantum gravity.</p>
+    <p><strong>Work:</strong> distinguish coordinate time, proper time, parameter time, relational time, emergent time, and thermodynamic arrows; map major approaches and their open problems.</p>
+    <p><strong>Deliverables:</strong> annotated literature review, concept map, glossary, and a table of unresolved problems.</p>
+    <p><strong>Advance gate:</strong> identify a specific gap not already answered by an established framework.</p>
+    <p class="small"><strong>Research prompt:</strong> “Prepare a rigorous literature map of the physical concept of time. Prioritize primary papers and authoritative reviews. Compare the roles of time in Newtonian mechanics, relativity, quantum theory, thermodynamics, and quantum-gravity programs. Separate consensus from active debate. Identify open problems and explain what a new model would need to add.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 3 · Establish the mathematical reference framework</summary>
+    <p><strong>Objective:</strong> formalize the standard structures any candidate model must recover.</p>
+    <p><strong>Work:</strong> quantum phase evolution; energy eigenstates and characteristic times; energy-time relations and their operational meanings; four-vectors, proper time, Lorentz invariance, and the metric; action principles and symmetries.</p>
+    <p><strong>Deliverables:</strong> derivation notebook, notation standard, units table, and reference equations.</p>
+    <p><strong>Advance gate:</strong> reproduce the standard results without changing their physical meaning.</p>
+    <p class="small"><strong>Research prompt:</strong> “Build a self-contained mathematical reference for time in quantum mechanics and relativity. Derive each equation from standard postulates or established results. Clarify the interpretation and limitations of τ=ℏ/E, Compton time, proper time, and energy-time uncertainty. Do not treat a characteristic timescale as a new time dimension without evidence.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 4 · Develop a relational temporal model</summary>
+    <p><strong>Objective:</strong> formulate the primary speculative direction without presuming it is correct.</p>
+    <p><strong>Work:</strong> define what physical systems or events are related; specify observables and state variables; decide whether time is fundamental, relational, emergent, or merely a parameter; propose a minimal mathematical structure and compare it with existing relational approaches.</p>
+    <p><strong>Deliverables:</strong> candidate axioms, definitions, toy model, and explicit list of assumptions.</p>
+    <p><strong>Advance gate:</strong> the model is unambiguous and is not just a relabeling of standard time.</p>
+    <p class="small"><strong>Research prompt:</strong> “Explore whether a relational description of temporal order or duration can be formulated consistently. Begin with the smallest possible model. Define its entities, observables, mathematical objects, and operational meaning. Compare it to existing relational-time approaches. Try to show that the proposal is redundant, inconsistent, or empirically empty before developing it further.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 5 · Recover known quantum mechanics</summary>
+    <p><strong>Objective:</strong> determine whether the candidate framework can reproduce standard quantum predictions in the regimes where they are established.</p>
+    <p><strong>Work:</strong> recover unitary evolution, the Schrödinger equation, stationary states, transition probabilities, and appropriate conservation laws; identify any new assumptions or degrees of freedom.</p>
+    <p><strong>Deliverables:</strong> explicit recovery derivations, worked examples, and counterexamples.</p>
+    <p><strong>Advance gate:</strong> no disagreement with established quantum results without a clearly defined and experimentally excluded or supported domain.</p>
+    <p class="small"><strong>Research prompt:</strong> “Test whether the proposed relational temporal model can recover standard quantum mechanics. Derive, do not assert, the relevant equations and predictions. Check simple systems first. Identify exactly where the model matches, differs, or fails. If it only changes notation, state that plainly.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 6 · Test relativistic and gravitational compatibility</summary>
+    <p><strong>Objective:</strong> establish whether the candidate is compatible with Lorentz symmetry and the tested structure of general relativity.</p>
+    <p><strong>Work:</strong> transformation properties, causal structure, proper time, covariance, equivalence principle constraints, conservation, and coupling to matter/fields if applicable.</p>
+    <p><strong>Deliverables:</strong> covariance analysis, limiting-case checks, and a compatibility report.</p>
+    <p><strong>Advance gate:</strong> no preferred frame or violation of established constraints unless the model predicts a quantitatively bounded, testable deviation.</p>
+    <p class="small"><strong>Research prompt:</strong> “Stress-test the candidate model against special and general relativity. Identify its transformation properties, causal structure, and operational clocks. Check Lorentz invariance, covariance, proper-time behavior, and known experimental constraints. Derive the Newtonian and weak-field limits where relevant. Reject unsupported claims of unification.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 7 · Investigate spectra, zeta functions, and random matrices</summary>
+    <p><strong>Objective:</strong> investigate whether spectral mathematics offers a useful structural analogy or a rigorously derivable connection.</p>
+    <p><strong>Work:</strong> review spectral theory, quantum chaos, random-matrix universality, nuclear/atomic spectra, and the Riemann zeta function. Treat the Riemann hypothesis as a mathematical problem—not evidence for a temporal theory.</p>
+    <p><strong>Deliverables:</strong> literature map, reproducible numerical notebook, null comparisons, and a statement of whether a genuine bridge exists.</p>
+    <p><strong>Advance gate:</strong> any proposed connection must be derived and distinguishable from analogy or numerology.</p>
+    <p class="small"><strong>Research prompt:</strong> “Examine spectral statistics and the Riemann zeta function as a possible supporting mathematical direction. Determine what is rigorously known, what is conjectural, and whether any mapping to the candidate temporal model can be derived. Compare against null models and random-matrix baselines. Do not infer a physical connection from visual similarity or numerical coincidence.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 8 · Derive novel predictions and attempt falsification</summary>
+    <p><strong>Objective:</strong> find out whether the candidate makes a prediction that standard models do not already make.</p>
+    <p><strong>Work:</strong> define a measurable observable, parameter ranges, effect size, uncertainty budget, null hypothesis, selection rules, and preregistered falsification criteria. Begin with analytic calculations, simulations, and existing public data.</p>
+    <p><strong>Deliverables:</strong> prediction memo, reproducible code, preregistration draft, and a go/no-go decision.</p>
+    <p><strong>Advance gate:</strong> no new experiment is proposed until a quantitative prediction is distinct, feasible, and robust against known confounds.</p>
+    <p class="small"><strong>Research prompt:</strong> “Act as a hostile independent reviewer. Search for a novel, quantitative prediction of the candidate framework. Compare it with the standard model and realistic null models. Estimate effect size and uncertainty. Identify confounds and conditions that would falsify the prediction. If no distinct prediction exists, recommend stopping or returning to theory.”</p>
+  </details>
+
+  <details>
+    <summary>Stage 9 · Independent review and manuscript</summary>
+    <p><strong>Objective:</strong> produce a clear, reproducible account suitable for external criticism.</p>
+    <p><strong>Work:</strong> write the theory and its limits; document derivations, data, code, negative findings, and unresolved questions; request independent review from relevant specialists.</p>
+    <p><strong>Deliverables:</strong> manuscript, appendices, reproducibility package, and a record of reviewer feedback.</p>
+    <p><strong>Advance gate:</strong> claims are proportional to evidence; the work is ready for criticism, not presented as a completed theory of everything.</p>
+    <p class="small"><strong>Research prompt:</strong> “Write an independent-review-ready manuscript describing the research question, mathematical framework, derivations, relation to existing literature, tests, limitations, and negative results. Remove promotional language. Clearly distinguish established results, hypotheses, and open conjectures. Include enough detail for another researcher to reproduce every calculation.”</p>
+  </details>
+
+  <h3>Standard instruction for every research session</h3>
+  <div class="eq">Do not assume the temporal framework is correct. Attempt to disprove it.</div>
+  <ul>
+    <li>Never introduce an equation without defining every symbol, checking units, and showing a derivation.</li>
+    <li>Distinguish mathematical consistency from physical truth.</li>
+    <li>Compare every proposed result with established theory and a null model.</li>
+    <li>Preserve negative results; do not quietly discard failed hypotheses.</li>
+    <li>Use theoretical work, simulations, and existing data first. Propose new experiments only after a novel prediction survives review.</li>
+  </ul>
+  <h3>Required record at the end of every stage</h3>
+  <p>Each stage must leave four permanent artifacts: <strong>a research report, an equation register, a list of unresolved questions, and an explicit advance / revise / stop decision.</strong></p>
+</section>
+
+<section id="network">
+  <div class="eyebrow">11 · PLNT Earth research network</div>
+  <h2>Connected projects</h2>
+  <p>These companion projects are part of the broader PLNT Earth ecosystem and provide context, tools, or parallel explorations. They are not presented as evidence for TIME or as validation of its hypotheses.</p>
+  <div class="grid">
+    <div class="card"><h3>Comet</h3><p><a href="https://comet.plnt.earth">comet.plnt.earth</a><br><span class="small">Astronomical and orbital investigations.</span></p></div>
+    <div class="card"><h3>Manifold Dynamics</h3><p><a href="https://manifolddynamics.plnt.earth">manifolddynamics.plnt.earth</a><br><span class="small">Geometric and mathematical explorations.</span></p></div>
+    <div class="card"><h3>Genesis</h3><p><a href="https://helloworld.plnt.earth">helloworld.plnt.earth</a><br><span class="small">Foundational questions and cosmic origins.</span></p></div>
+    <div class="card"><h3>42</h3><p><a href="https://42.plnt.earth">42.plnt.earth</a><br><span class="small">Molecular and biological investigations.</span></p></div>
+    <div class="card"><h3>Illumina</h3><p><a href="https://illumina.plnt.earth">illumina.plnt.earth</a><br><span class="small">The creative and cyclical framework hosting this research project.</span></p></div>
+    <div class="card"><h3>Zeta</h3><p><a href="https://zeta.plnt.earth">zeta.plnt.earth</a><br><span class="small">Original nuclear-decay scaling test record and associated material.</span></p></div>
+    <div class="card"><h3>Tau</h3><p><a href="https://tau.plnt.earth">tau.plnt.earth</a><br><span class="small">Historical energy-to-timescale visualization.</span></p></div>
+    <div class="card"><h3>Field Lab</h3><p><a href="https://fieldlab.plnt.earth">fieldlab.plnt.earth</a><br><span class="small">Research coordination and experimental notes.</span></p></div>
+    <div class="card"><h3>Boiled Peanuts</h3><p><a href="https://boiledpeanuts.plnt.earth">boiledpeanuts.plnt.earth</a><br><span class="small">A separate astronomical observation and research thread.</span></p></div>
+    <div class="card"><h3>GitHub</h3><p><a href="https://github.com/tcarrw">github.com/tcarrw</a><br><span class="small">Project source and related development.</span></p></div>
+  </div>
+</section>
+
+<section id="references">
+  <div class="eyebrow">12 · Literature</div>
+  <h2>References and further reading</h2>
+  <ol>
+    <li>Planck, M. (1900). “Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum.” <em>Verhandlungen der Deutschen Physikalischen Gesellschaft</em>, 2, 237–245.</li>
+    <li>Einstein, A. (1905). “Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?” <em>Annalen der Physik</em>, 18, 639–641.</li>
+    <li>Compton, A. H. (1923). “A Quantum Theory of the Scattering of X-rays by Light Elements.” <em>Physical Review</em>, 21, 483–502.</li>
+    <li>Schrödinger, E. (1926). “Quantisierung als Eigenwertproblem.” <em>Annalen der Physik</em>, 79, 361–376.</li>
+    <li>Heisenberg, W. (1927). “Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik.” <em>Zeitschrift für Physik</em>, 43, 172–198.</li>
+    <li>Dirac, P. A. M. (1928). “The Quantum Theory of the Electron.” <em>Proceedings of the Royal Society A</em>, 117, 610–624.</li>
+    <li>Mandelstam, L. and Tamm, I. (1945). “The Uncertainty Relation Between Energy and Time in Non-Relativistic Quantum Mechanics.” <em>Journal of Physics (USSR)</em>, 9, 249–254.</li>
+    <li>Goeppert Mayer, M. (1949). “On Closed Shells in Nuclei. II.” <em>Physical Review</em>, 75, 1969–1970.</li>
+    <li>Wu, C. S. et al. (1957). “Experimental Test of Parity Conservation in Beta Decay.” <em>Physical Review</em>, 105, 1413–1415.</li>
+    <li>Einstein, A. (1916). “Die Grundlage der allgemeinen Relativitätstheorie.” <em>Annalen der Physik</em>, 354, 769–822.</li>
+    <li>Mohr, P. J., Newell, D. B., Taylor, B. N., and Tiesinga, E. (2025). “CODATA Recommended Values of the Fundamental Physical Constants: 2022.” <em>Reviews of Modern Physics</em>.</li>
+    <li>Busch, P. (2008). “The Time–Energy Uncertainty Relation.” In <em>Time in Quantum Mechanics</em>, 2nd ed., Springer.</li>
+  </ol>
+  <p class="small">The historical UTEG page also listed Noether, Loll, and Rovelli in its intellectual context. Those works may inform broader discussions of symmetry, quantum gravity, and the nature of time, but they do not validate the original UTEG equations.</p>
+</section>
+
+<section id="contact">
+  <div class="eyebrow">13 · Project continuity</div>
+  <h2>Research record and source</h2>
+  <p>This page is the corrected scientific record. Related project spaces are linked for historical continuity; their existence should not be read as independent evidence for the claims archived here.</p>
+  <div class="grid">
+    <div class="card"><h3>Experimental history</h3><p><a href="https://zeta.plnt.earth">zeta.plnt.earth</a><br><span class="small">Original nuclear-decay scaling test and associated project material.</span></p></div>
+    <div class="card"><h3>Interactive exploration</h3><p><a href="https://tau.plnt.earth">tau.plnt.earth</a><br><span class="small">Historical energy-to-timescale visualization.</span></p></div>
+    <div class="card"><h3>Research notes</h3><p><a href="https://fieldlab.plnt.earth">fieldlab.plnt.earth</a><br><span class="small">Project coordination and experimental notes.</span></p></div>
+    <div class="card"><h3>Project source</h3><p><a href="https://github.com/tcarrw">GitHub</a><br><span class="small">Source and related project work.</span></p></div>
+  </div>
+</section>
+
 </main>
 
-<footer>
-  <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);">
-    <a href="https://earth.plnt.earth" style="color:var(--accent);text-decoration:none;font-weight:600;">Earth</a> is the ground beneath all of this. It stays, no matter what changes above.
-  </div>
-  <div style="line-height:1.6;max-width:640px;margin:0 auto 24px;">
-    I built this because I want to find people who are curious and care — about the universe, about each other, about what we're making together. New physics isn't just equations. It's the world those equations let us build. If you feel that, you're already here. Let's go.
-  </div>
-
-  <div style="margin-top:16px;">
-    <strong>Explore:</strong>
-    <a href="https://zeta.plnt.earth" style="color:var(--link)">Zeta Test</a> ·
-    <a href="https://charter.plnt.earth" style="color:var(--link)">Charter</a> ·
-    <a href="https://comet.plnt.earth" style="color:var(--link)">Comet</a> ·
-    <a href="https://manifolddynamics.plnt.earth" style="color:var(--link)">Manifold</a>
-  </div>
-
-  <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--rule);">
-    &copy; 2025 · Creative Commons BY-NC-SA 4.0
-  </div>
+<footer class="wrap">
+  <p>TIME · Temporal Foundations · plnt.earth</p>
+  <p>Version 6.0 · Live Illumina Research Calendar</p>
+  <p>Scientific status is stated explicitly. Historical hypotheses are preserved; unsupported claims are not presented as established physics.</p>
+  <p><a href="https://earth.plnt.earth">Earth</a> · <a href="https://plnt.earth">plnt.earth</a></p>
 </footer>
 
-  </div>
+<script>
+(() => {
+  "use strict";
+
+  // Illumina 1 is permanently anchored to the original Full Moon.
+  // Every second Full Moon after that anchor becomes a new launch.
+  const ANCHOR_DAY = "2025-11-05";
+  const CACHE_KEY = "time.illumina.usno.phases.v1";
+  const ACTIVE_DAYS = 42;
+  const FIRST_YEAR = 2025;
+  const MAX_FUTURE_YEARS = 10;
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+
+  const $ = id => document.getElementById(id);
+
+  const dateParts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year:"numeric",
+    month:"2-digit",
+    day:"2-digit"
+  });
+
+  const dateLong = new Intl.DateTimeFormat(undefined, {
+    timeZone:"UTC",
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+  });
+
+  const dateShort = new Intl.DateTimeFormat(undefined, {
+    timeZone:"UTC",
+    year:"numeric",
+    month:"short",
+    day:"numeric"
+  });
+
+  const dateTimeLong = new Intl.DateTimeFormat(undefined, {
+    timeZone,
+    year:"numeric",
+    month:"short",
+    day:"numeric",
+    hour:"numeric",
+    minute:"2-digit",
+    timeZoneName:"short"
+  });
+
+  function localKey(date) {
+    const parts = Object.fromEntries(
+      dateParts.formatToParts(date)
+        .filter(p => p.type !== "literal")
+        .map(p => [p.type,p.value])
+    );
+    return `${parts.year}-${parts.month}-${parts.day}`;
+  }
+
+  function keyToUTCDate(key) {
+    const [y,m,d] = key.split("-").map(Number);
+    return new Date(Date.UTC(y,m-1,d));
+  }
+
+  function addDays(key,n) {
+    const d = keyToUTCDate(key);
+    d.setUTCDate(d.getUTCDate()+n);
+    return d.toISOString().slice(0,10);
+  }
+
+  function dayDifference(a,b) {
+    return Math.round(
+      (keyToUTCDate(b)-keyToUTCDate(a))/86400000
+    );
+  }
+
+  function prettyKey(key,style="long") {
+    const d = keyToUTCDate(key);
+    return (style==="short" ? dateShort : dateLong).format(d);
+  }
+
+  function parsePhase(p) {
+    if (!p || p.phase!=="Full Moon") return null;
+
+    const y=Number(p.year);
+    const m=Number(p.month);
+    const d=Number(p.day);
+    const match=String(p.time || "00:00").match(/^(\d{1,2}):(\d{2})/);
+
+    if (!y || !m || !d || !match) return null;
+
+    return new Date(Date.UTC(
+      y,m-1,d,Number(match[1]),Number(match[2])
+    ));
+  }
+
+  function normalizePhaseData(payload) {
+    if (payload?.error) throw new Error(payload.error);
+    if (!Array.isArray(payload?.phasedata)) {
+      throw new Error("Unexpected USNO response format.");
+    }
+
+    return payload.phasedata
+      .map(parsePhase)
+      .filter(Boolean)
+      .map(d=>d.toISOString());
+  }
+
+  async function fetchYear(year) {
+    const url=`https://aa.usno.navy.mil/api/moon/phases/year?year=${year}`;
+    const response=await fetch(url,{cache:"no-store"});
+
+    if (!response.ok) {
+      throw new Error(`USNO request failed for ${year} (${response.status}).`);
+    }
+
+    return normalizePhaseData(await response.json());
+  }
+
+  function readCache() {
+    try {
+      const raw=localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const parsed=JSON.parse(raw);
+      return Array.isArray(parsed?.fullMoons) ? parsed.fullMoons : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function writeCache(fullMoons) {
+    try {
+      localStorage.setItem(CACHE_KEY,JSON.stringify({
+        savedAt:new Date().toISOString(),
+        fullMoons
+      }));
+    } catch (_) {}
+  }
+
+  async function getFullMoons() {
+    const cached=readCache();
+    const thisYear=new Date().getFullYear();
+    const lastYear=Math.min(
+      2100,
+      Math.max(2035,thisYear+MAX_FUTURE_YEARS)
+    );
+
+    const years=[];
+    for(let y=FIRST_YEAR;y<=lastYear;y++) years.push(y);
+
+    if(cached?.length) renderCalendar(cached,"cached");
+
+    const results=await Promise.all(years.map(fetchYear));
+    const all=[...new Set(results.flat())].sort();
+
+    if (!all.some(x=>x.slice(0,10)===ANCHOR_DAY)) {
+      throw new Error("The original 5 November 2025 anchor was not found in the lunar data.");
+    }
+
+    writeCache(all);
+    return all;
+  }
+
+  function buildLaunches(fullMoonISO) {
+    const anchorIndex=fullMoonISO.findIndex(
+      x=>x.slice(0,10)===ANCHOR_DAY
+    );
+
+    if(anchorIndex<0) {
+      throw new Error("Illumina 1 anchor Full Moon is missing.");
+    }
+
+    return fullMoonISO
+      .slice(anchorIndex)
+      .filter((_,index)=>index%2===0)
+      .map((iso,index)=>({
+        cycle:index+1,
+        instant:new Date(iso),
+        localDate:localKey(new Date(iso))
+      }));
+  }
+
+  function renderCalendar(fullMoonISO,source) {
+    const launches=buildLaunches(fullMoonISO);
+    const todayKey=localKey(new Date());
+
+    let currentIndex=-1;
+
+    for(let i=0;i<launches.length;i++) {
+      if(launches[i].localDate<=todayKey) currentIndex=i;
+      else break;
+    }
+
+    if(currentIndex<0 || currentIndex+1>=launches.length) {
+      throw new Error("The lunar dataset does not yet contain both the current and next Illumina launch.");
+    }
+
+    const current=launches[currentIndex];
+    const next=launches[currentIndex+1];
+
+    const launchKey=current.localDate;
+    const nextKey=next.localDate;
+
+    const dayNumber=dayDifference(launchKey,todayKey)+1;
+    const workEndKey=addDays(launchKey,ACTIVE_DAYS-1);
+    const restStartKey=addDays(workEndKey,1);
+    const restDays=Math.max(0,dayDifference(restStartKey,nextKey));
+    const restEndKey=addDays(nextKey,-1);
+
+    const isActive=dayNumber>=1 && dayNumber<=ACTIVE_DAYS;
+    const isRest=dayNumber>ACTIVE_DAYS;
+
+    const activeProgress=Math.min(
+      100,Math.max(0,dayNumber/ACTIVE_DAYS*100)
+    );
+
+    const restElapsed=isRest
+      ? dayDifference(restStartKey,todayKey)+1
+      : 0;
+
+    const restProgress=restDays
+      ? Math.min(100,Math.max(0,restElapsed/restDays*100))
+      : 0;
+
+    const progress=isActive ? activeProgress : (isRest ? restProgress : 0);
+    const status=isActive ? "Active research" : "Rest & integration";
+    const daysLeft=isActive
+      ? ACTIVE_DAYS-dayNumber
+      : dayDifference(todayKey,nextKey);
+
+    $("liveMeta").textContent=
+      `Illumina ${current.cycle} · ${
+        isActive
+          ? `Day ${dayNumber} of 42`
+          : `Rest period · ${Math.max(1,restElapsed)} of ${restDays} days`
+      } · ${prettyKey(todayKey)}`;
+
+    $("currentCycleTitle").textContent=
+      `Illumina ${current.cycle} · ${status}`;
+
+    $("currentCycleState").textContent=isActive
+      ? `Day ${dayNumber} / 42 · ${daysLeft} active ${daysLeft===1?"day":"days"} remaining`
+      : `Rest & integration · ${restElapsed} / ${restDays} days`;
+
+    $("currentCycleDates").textContent=
+      `Launch: ${prettyKey(launchKey)} · Day 42: ${prettyKey(workEndKey)} · Next launch: ${prettyKey(nextKey)}`;
+
+    $("cycleProgressText").textContent=
+      `${Math.round(progress)}% through the ${isActive?"active cycle":"rest interval"}`;
+
+    $("cycleProgressBar").style.width=`${progress}%`;
+
+    $("cycleProgressCaption").textContent=isActive
+      ? `${prettyKey(launchKey)} through ${prettyKey(workEndKey)} · active research`
+      : `${prettyKey(restStartKey)} through ${prettyKey(restEndKey)} · integration break`;
+
+    $("nextLaunchDate").textContent=
+      `Illumina ${next.cycle} · ${prettyKey(nextKey)}`;
+
+    $("nextLaunchMeta").textContent=
+      `Exact Full Moon: ${dateTimeLong.format(next.instant)} · ${dayDifference(todayKey,nextKey)} calendar days from today`;
+
+    $("restDates").textContent=restDays
+      ? `${prettyKey(restStartKey)} – ${prettyKey(restEndKey)}`
+      : "No rest days before next launch";
+
+    $("restMeta").textContent=
+      `${restDays} calendar ${restDays===1?"day":"days"} between the 42-day work period and the next Full Moon launch.`;
+
+    const statusNode=$("moonDataStatus");
+    statusNode.className=source==="cached"?"callout warn":"callout good";
+
+    statusNode.textContent=source==="cached"
+      ? `Showing previously cached USNO lunar data while the live refresh is in progress. Time zone: ${timeZone}.`
+      : `Lunar data current · ${fullMoonISO.length} Full Moon timestamps loaded · source: U.S. Naval Observatory · time zone: ${timeZone}.`;
+
+    const upcoming=launches.slice(
+      Math.max(0,currentIndex-1),
+      currentIndex+9
+    );
+
+    $("launchTableBody").innerHTML=upcoming.map(item=>{
+      const idx=launches.findIndex(x=>x.cycle===item.cycle);
+      const following=launches[idx+1];
+      if(!following) return "";
+
+      const end=addDays(item.localDate,ACTIVE_DAYS-1);
+      const restStart=addDays(end,1);
+      const restCount=Math.max(
+        0,dayDifference(restStart,following.localDate)
+      );
+      const restEnd=addDays(following.localDate,-1);
+      const isCurrent=item.cycle===current.cycle;
+
+      return `<tr${isCurrent?' style="background:rgba(155,140,255,.08)"':""}>
+        <td>${isCurrent?"<strong>":""}Illumina ${item.cycle}${isCurrent?"</strong>":""}</td>
+        <td>${prettyKey(item.localDate,"short")}</td>
+        <td>${prettyKey(end,"short")}</td>
+        <td>${restCount} days<br><span class="small">${prettyKey(restStart,"short")} – ${prettyKey(restEnd,"short")}</span></td>
+        <td>${prettyKey(following.localDate,"short")}</td>
+      </tr>`;
+    }).join("");
+
+    $("timezoneLabel").textContent=
+      `Dates shown in ${timeZone}. Exact Full Moon moments are shown in local time.`;
+  }
+
+  async function refresh() {
+    $("moonDataStatus").className="callout";
+    $("moonDataStatus").textContent=
+      "Refreshing Full Moon dates from the U.S. Naval Observatory…";
+    $("refreshMoonData").disabled=true;
+
+    try {
+      const dates=await getFullMoons();
+      renderCalendar(dates,"live");
+    } catch(error) {
+      const cached=readCache();
+
+      if(cached?.length) {
+        renderCalendar(cached,"cached");
+        $("moonDataStatus").textContent+=
+          ` Live refresh failed: ${error.message} Cached dates are being used.`;
+      } else {
+        $("moonDataStatus").className="callout bad";
+        $("moonDataStatus").textContent=
+          `Unable to load astronomical data: ${error.message} Open this page with an internet connection and try Refresh lunar data.`;
+        $("liveMeta").textContent=
+          "Lunar calendar unavailable · refresh required";
+      }
+    } finally {
+      $("refreshMoonData").disabled=false;
+    }
+  }
+
+  $("refreshMoonData").addEventListener("click",refresh);
+  refresh();
+
+  // Recalculate the current day at local midnight.
+  function scheduleMidnightRefresh() {
+    const now=new Date();
+    const tomorrow=new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()+1
+    );
+
+    const delay=tomorrow-now+1000;
+
+    setTimeout(()=>{
+      const cached=readCache();
+      if(cached?.length) renderCalendar(cached,"cached");
+      scheduleMidnightRefresh();
+    },delay);
+  }
+
+  scheduleMidnightRefresh();
+})();
+</script>
+
 </body>
 </html>
