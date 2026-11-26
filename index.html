@@ -6,119 +6,74 @@
 <meta name="color-scheme" content="dark">
 <title>TIME · Temporal Foundations | plnt.earth</title>
 <meta name="description" content="An Illumina research program investigating the foundations of time through mathematical reconstruction, theoretical development, and falsifiable tests.">
+<meta name="author" content="Tristan White">
+<meta name="date" content="2026-11-26">
 <link rel="canonical" href="https://time.plnt.earth/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TIME · Temporal–Energetic Research">
+<meta property="og:description" content="A transparent research record: established relationships, historical hypotheses, negative results, and open questions.">
+<meta property="og:url" content="https://time.plnt.earth/">
 <style>
 :root{
-  color-scheme:dark;
-  --bg:#080b12;--panel:#101725;--panel2:#0c1320;
+  color-scheme:dark;--bg:#080b12;--panel:#101725;--panel2:#0c1320;
   --ink:#e9edf5;--muted:#9ba8bd;--soft:#697991;--line:#263247;
-  --accent:#9b8cff;--accent2:#79d5c8;--warn:#e6bd75;
-  --bad:#e58d91;--good:#8bd2ad;--max:1080px
+  --accent:#9b8cff;--accent2:#79d5c8;--warn:#e6bd75;--bad:#e58d91;
+  --good:#8bd2ad;--max:1080px
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{
-  margin:0;
-  background:
-    radial-gradient(900px 600px at 10% -10%,rgba(115,94,220,.13),transparent 65%),
-    radial-gradient(800px 500px at 100% 0%,rgba(70,160,160,.08),transparent 60%),
-    var(--bg);
-  color:var(--ink);
-  font:16px/1.72 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
-}
-a{color:#b6b0ff;text-decoration:none}
-a:hover{text-decoration:underline}
+body{margin:0;background:radial-gradient(900px 600px at 10% -10%,rgba(115,94,220,.13),transparent 65%),radial-gradient(800px 500px at 100% 0%,rgba(70,160,160,.08),transparent 60%),var(--bg);color:var(--ink);font:16px/1.72 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:#b6b0ff;text-decoration:none}a:hover{text-decoration:underline}
 .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
 header{padding:72px 0 30px;text-align:center}
-.kicker,.eyebrow{
-  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--accent2);font-weight:700
-}
-.mark{
-  font-size:clamp(3.5rem,10vw,6.5rem);line-height:1.05;
-  font-family:Georgia,serif;color:var(--accent);margin:12px 0
-}
+.kicker,.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+.mark{font-size:clamp(3.5rem,10vw,6.5rem);line-height:1.05;font-family:Georgia,serif;color:var(--accent);margin:12px 0}
 h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.045em;margin:0}
-h2{font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.025em;margin:0 0 14px}
-h3{font-size:1.08rem;margin:26px 0 8px}
-p{margin:10px 0;color:#d5dce8}
 .subtitle{font-size:1.08rem;color:var(--muted);max-width:700px;margin:18px auto 0}
-.lead{font-size:1.13rem;color:#c4cede;max-width:850px}
 .meta{font-size:.82rem;color:var(--soft);margin-top:20px}
 .statusline{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px auto}
 .pill{border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:.75rem;color:var(--muted)}
-.pill.good{border-color:#315a48;color:var(--good)}
-.pill.warn{border-color:#685436;color:var(--warn)}
+.pill.good{border-color:#315a48;color:var(--good)}.pill.warn{border-color:#685436;color:var(--warn)}
 nav{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.92);backdrop-filter:blur(14px);border-block:1px solid var(--line)}
 .navinner{display:flex;gap:18px;align-items:center;overflow:auto;white-space:nowrap;padding:12px 0;font-size:.82rem}
 .navbrand{font-weight:800;letter-spacing:.12em;color:var(--ink);margin-right:8px}
-.navinner a{color:var(--muted)}
-.navinner a:hover{color:var(--ink)}
+.navinner a{color:var(--muted)}.navinner a:hover{color:var(--ink)}
 main{padding:28px 0 70px}
-section{padding:34px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
 section:last-child{border-bottom:0}
-.small{font-size:.87rem;color:var(--muted)}
+h2{font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.025em;margin:0 0 14px}
+h3{font-size:1.08rem;margin:26px 0 8px}
+p{margin:10px 0;color:#d5dce8}
+.lead{font-size:1.13rem;color:#c4cede;max-width:850px}
+.muted{color:var(--muted)}.small{font-size:.87rem;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
-  border:1px solid var(--line);border-radius:15px;padding:19px
-}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:15px;padding:19px}
 .card h3{margin:0 0 8px}
-.callout{
-  border:1px solid var(--line);border-left:3px solid var(--accent);
-  background:var(--panel2);border-radius:10px;padding:17px 19px;margin:18px 0
-}
-.callout.good{border-left-color:var(--good)}
-.callout.warn{border-left-color:var(--warn)}
-.callout.bad{border-left-color:var(--bad)}
-.eq{
-  display:block;overflow-x:auto;background:#070c15;border:1px solid #202b3d;
-  border-radius:10px;padding:16px 18px;margin:13px 0;
-  font:1.03rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;
-  color:#e7e3ff;white-space:nowrap
-}
+.callout{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel2);border-radius:10px;padding:17px 19px;margin:18px 0}
+.callout.good{border-left-color:var(--good)}.callout.warn{border-left-color:var(--warn)}.callout.bad{border-left-color:var(--bad)}
+.eq{display:block;overflow-x:auto;background:#070c15;border:1px solid #202b3d;border-radius:10px;padding:16px 18px;margin:13px 0;font:1.03rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e7e3ff;white-space:nowrap}
 .eq.center{text-align:center}
 table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.9rem}
 th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:top}
 th{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.025)}
 td{color:#d6deea}
 .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;white-space:nowrap}
-.tag.good{color:var(--good)}
-.tag.warn{color:var(--warn)}
-.tag.bad{color:var(--bad)}
-ul,ol{padding-left:22px;color:#d5dce8}
-li{margin:6px 0}
+.tag.good{color:var(--good)}.tag.warn{color:var(--warn)}.tag.bad{color:var(--bad)}
+ul,ol{padding-left:22px;color:#d5dce8}li{margin:6px 0}
 details{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin:12px 0;background:rgba(255,255,255,.015)}
 summary{cursor:pointer;font-weight:650;color:#dce3ef}
 details p{margin-bottom:0}
-button{
-  background:#25213f;color:#e9edf5;border:1px solid #514a7c;
-  border-radius:9px;padding:9px 13px;cursor:pointer;font:inherit
-}
-button:disabled{opacity:.5;cursor:wait}
+.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#dcd7ff}
 footer{padding:35px 0 55px;text-align:center;color:var(--soft);font-size:.83rem}
 footer a{margin:0 7px}
-@media(max-width:720px){
-  .wrap{width:min(100% - 28px,var(--max))}
-  header{padding:50px 0 24px}
-  .grid{grid-template-columns:1fr}
-  section{padding:27px 0}
-  table{font-size:.82rem}
-  th,td{padding:9px 7px}
-}
-@media print{
-  body{background:#fff;color:#111}
-  nav{display:none}
-  .card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}
-  p,li,td{color:#222}
-  a{color:#333}
-}
+.anchor{scroll-margin-top:90px}
+@media(max-width:720px){.wrap{width:min(100% - 28px,var(--max))}header{padding:50px 0 24px}.grid{grid-template-columns:1fr}section{padding:27px 0}table{font-size:.82rem}th,td{padding:9px 7px}}
+@media print{body{background:#fff;color:#111}.nav{display:none}.card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}p,li,td{color:#222}a{color:#333}}
 </style>
 </head>
-
 <body>
 <header class="wrap">
-  <div class="kicker">plnt.earth · research record · v6.0</div>
+  <div class="kicker">plnt.earth · research record · v7.0</div>
   <div class="mark">τ</div>
   <h1>Temporal Foundations</h1>
   <p class="subtitle">An Illumina research project: six weeks of focused investigation, followed by a lunar-aligned rest and integration period.</p>
@@ -130,33 +85,19 @@ footer a{margin:0 7px}
   </div>
 </header>
 
-<nav aria-label="Primary navigation">
-  <div class="wrap navinner">
-    <span class="navbrand">TIME</span>
-    <a href="#overview">Overview</a>
-    <a href="#foundations">Foundations</a>
-    <a href="#compton">Compton</a>
-    <a href="#audit">Audit</a>
-    <a href="#experiments">Experiments</a>
-    <a href="#register">Equation register</a>
-    <a href="#archive">Archive</a>
-    <a href="#illumina">Illumina calendar</a>
-    <a href="#stages">Research stages</a>
-    <a href="#network">PLNT network</a>
-    <a href="#references">References</a>
-  </div>
-</nav>
+<nav aria-label="Primary navigation"><div class="wrap navinner">
+  <span class="navbrand">TIME</span>
+  <a href="#overview">Overview</a><a href="#foundations">Foundations</a><a href="#compton">Compton</a>
+  <a href="#audit">Audit</a><a href="#experiments">Experiments</a><a href="#register">Equation register</a>
+  <a href="#archive">Archive</a><a href="#illumina">Illumina calendar</a><a href="#stages">Research stages</a><a href="#network">PLNT network</a><a href="#references">References</a>
+</div></nav>
 
 <main class="wrap">
-
-<section id="overview">
+<section id="overview" class="anchor">
   <div class="eyebrow">01 · Scope</div>
   <h2>What this project is—and is not</h2>
   <p class="lead">This site documents a research effort that began as the Unified Temporal–Energetic Geometry (UTEG) framework. An independent audit identified valid quantum-mechanical relationships alongside serious dimensional and interpretive errors in the original unification claims.</p>
-  <div class="callout good">
-    <strong>Current scientific position.</strong>
-    The characteristic quantum timescale τ<sub>E</sub> = ℏ/E and the reduced Compton relationships are valid within their stated domains. They follow from established quantum mechanics and special relativity. They do not, by themselves, establish a new temporal field, a new spacetime geometry, or a theory of everything.
-  </div>
+  <div class="callout good"><strong>Current scientific position.</strong> The characteristic quantum timescale τ<sub>E</sub> = ℏ/E and the reduced Compton relationships are valid within their stated domains. They follow from established quantum mechanics and special relativity. They do not, by themselves, establish a new temporal field, a new spacetime geometry, or a theory of everything.</div>
   <p>The purpose of this page is to preserve the useful mathematics, clearly retire invalid claims, keep negative results visible, and define what evidence would be needed before proposing new physics.</p>
   <div class="grid">
     <div class="card"><h3>Established foundations</h3><p>Quantum phase evolution, rest energy, reduced Compton wavelength, and reduced Compton time.</p></div>
@@ -166,7 +107,7 @@ footer a{margin:0 7px}
   </div>
 </section>
 
-<section id="foundations">
+<section id="foundations" class="anchor">
   <div class="eyebrow">02 · Quantum foundation</div>
   <h2>Energy and characteristic quantum time</h2>
   <p>For a stationary energy eigenstate, quantum evolution is described by a phase factor:</p>
@@ -188,7 +129,7 @@ footer a{margin:0 7px}
   <p>This shorthand must be interpreted in a specified operational context. Time is generally an evolution parameter in ordinary quantum mechanics, not an operator universally interchangeable with position. The Mandelstam–Tamm relation connects energy spread to the time required for a specified observable or state to change appreciably.</p>
 </section>
 
-<section id="compton">
+<section id="compton" class="anchor">
   <div class="eyebrow">03 · Relativistic connection</div>
   <h2>Compton time and wavelength</h2>
   <p>For a particle of invariant rest mass m, special relativity gives its rest energy:</p>
@@ -207,7 +148,7 @@ footer a{margin:0 7px}
   <p>These expressions apply to a massive particle's rest-energy scale. For a moving particle, total energy and rest energy must not be conflated. For massless particles, the rest-mass Compton expressions do not apply.</p>
 </section>
 
-<section id="audit">
+<section id="audit" class="anchor">
   <div class="eyebrow">04 · Independent audit</div>
   <h2>Retired claims and dimensional findings</h2>
   <p>The original UTEG attempted to identify the quantum timescale ℏ/E with E/c³ and, using E = mc², with m/c. That identification fails dimensional analysis.</p>
@@ -225,7 +166,7 @@ footer a{margin:0 7px}
   <p class="small">Retiring the derivation does not assert that the numerical value 333 TeV is experimentally excluded. It means the original argument does not establish it as a meaningful energy scale.</p>
 </section>
 
-<section id="experiments">
+<section id="experiments" class="anchor">
   <div class="eyebrow">05 · Experimental record</div>
   <h2>Predictions, tests, and negative results</h2>
   <h3>Nuclear Decay Universal Scaling</h3>
@@ -251,7 +192,7 @@ footer a{margin:0 7px}
   </table>
 </section>
 
-<section id="register">
+<section id="register" class="anchor">
   <div class="eyebrow">06 · Technical appendix</div>
   <h2>Equation register</h2>
   <p>Symbols and status are recorded explicitly. “Established” means supported within the stated assumptions by existing physics; it does not mean the expression is a new UTEG discovery.</p>
@@ -291,41 +232,34 @@ footer a{margin:0 7px}
   </table>
 </section>
 
-<section id="archive">
+<section id="archive" class="anchor">
   <div class="eyebrow">07 · Historical record</div>
   <h2>Original UTEG proposals</h2>
-  <p>The following ideas appeared in the original framework. They are retained to preserve the development history, but they are not active scientific claims.</p>
-
+  <p>The following ideas appeared in the original December 2025 framework. They are retained to preserve the development history, but they are not active scientific claims.</p>
   <details><summary>Original temporal-potential field Φ</summary>
     <p>The original proposal defined Φ = E/(ρ₀c³), then introduced spatial derivatives and a wave-equation form. If ρ₀ is mass density, Φ has dimensions of area multiplied by time, not time. A physical field interpretation, transformation law, action, source, and boundary conditions were not established. The definition and PDE are therefore archived as unverified.</p>
   </details>
-
   <details><summary>Original temporal-field Lagrangian and modified Einstein equations</summary>
     <p>The original page proposed an added temporal-field Lagrangian, a temporal stress-energy contribution, and modified gravitational equations. These expressions were not derived from a dimensionally and physically specified field model. They are archived as speculative proposals, not a viable extension of general relativity.</p>
   </details>
-
   <details><summary>Original cosmological and dark-energy claims</summary>
     <p>The original page associated a temporal field with dark energy, an equation-of-state deviation, redshift signatures, and singularity resolution. No validated derivation or fit to observational data was supplied. These claims are not retained as predictions.</p>
   </details>
-
   <details><summary>Original nuclear τ-harmonic proposal</summary>
     <p>The original page proposed converting nuclear levels Eₙ to τₙ=ℏ/Eₙ and looking for simple patterns. A nonlinear reparameterization can change the visual appearance of a dataset; a meaningful claim requires a specified model, a justified level index, comparison against standard nuclear structure models, uncertainty propagation, and out-of-sample predictive performance. The proposed harmonic pattern remains unverified.</p>
   </details>
-
   <details><summary>Original Noether interpretation</summary>
     <p>The original page suggested that energy conservation implied a new τ-conservation law. If τ is defined as ℏ/E and E is constant, then dτ/dt=−ℏE⁻²(dE/dt)=0 follows directly by differentiation. This is a mathematical consequence of the definition, not a new Noether charge or independent conservation law. Noether's theorem must be applied to a specified action and continuous symmetry.</p>
   </details>
-
   <details><summary>Original quantum equations rewritten in τ notation</summary>
     <p>Substituting m=ℏ/(c²τ) into an existing equation is a change of variables or parameterization, provided the assumptions are valid. It does not establish that τ is a new independent physical degree of freedom. The standard Schrödinger and Dirac equations remain the governing equations in their usual formulations.</p>
   </details>
-
   <details><summary>Historical acknowledgement and correspondence</summary>
     <p>The original page reported that Michael Shara reviewed the expressions E/c³ and m/c in August 2025 and described them as dimensionally consistent. This website does not independently verify the correspondence or its precise context. The present audit's dimensional calculation shows that, in SI units, neither expression has dimensions of time. The historical report should not be represented as endorsement of UTEG or as validation of those expressions.</p>
   </details>
 </section>
 
-<section id="roadmap">
+<section id="roadmap" class="anchor">
   <div class="eyebrow">08 · Research program</div>
   <h2>What would move the research forward?</h2>
   <p>The surviving question is narrower and more defensible:</p>
@@ -343,12 +277,11 @@ footer a{margin:0 7px}
   <p>Possible future domains include nuclear spectroscopy and precision atomic measurements. These are research directions, not current UTEG predictions.</p>
 </section>
 
-<section id="illumina">
+<section id="illumina" class="anchor">
   <div class="eyebrow">09 · Illumina cycle</div>
   <h2>A live lunar rhythm for the research</h2>
   <p class="lead">TIME follows alternating astronomical Full Moons. Each designated Full Moon launches a new Illumina cycle: 42 calendar days of active research, followed by a rest and integration interval that lasts until the next designated Full Moon.</p>
   <div class="callout good"><strong>Calendar rules.</strong> The original Illumina 1 Full Moon on 5 November 2025 is the fixed anchor. Every second Full Moon after that is a launch. Days 1–42 are active; the remaining days before the next launch are rest days. The break is not forced to exactly 17 days.</div>
-
   <div class="grid">
     <div class="card">
       <h3 id="currentCycleTitle">Current cycle</h3>
@@ -369,25 +302,21 @@ footer a{margin:0 7px}
       <p id="restMeta" class="small">—</p>
     </div>
   </div>
-
-  <div class="callout" id="moonDataStatus" role="status" aria-live="polite">Loading Full Moon dates from the U.S. Naval Observatory…</div>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <button id="refreshMoonData" type="button">Refresh lunar data</button>
-    <span class="small" id="timezoneLabel">Calendar dates use this device’s time zone.</span>
+  <div class="callout" id="moonDataStatus" role="status" aria-live="polite">Calculating astronomical Full Moon instants locally…</div>
+  <div class="row" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <button id="refreshMoonData" type="button" style="background:#25213f;color:#e9edf5;border:1px solid #514a7c;border-radius:9px;padding:9px 13px;cursor:pointer;font:inherit">Recalculate calendar</button>
+    <span class="small" id="timezoneLabel">Detecting this device’s time zone…</span>
   </div>
-
   <h3>Upcoming Illumina launches</h3>
   <div style="overflow-x:auto">
     <table>
-      <thead><tr><th>Cycle</th><th>Full Moon launch</th><th>Day 42 ends</th><th>Rest interval</th><th>Next launch</th></tr></thead>
-      <tbody id="launchTableBody"><tr><td colspan="5">Waiting for lunar data…</td></tr></tbody>
+      <thead><tr><th>Cycle</th><th>Full Moon launch · local instant</th><th>Day 42 ends</th><th>Rest interval</th><th>Next launch</th></tr></thead>
+      <tbody id="launchTableBody"><tr><td colspan="5">Calculating lunar phases…</td></tr></tbody>
     </table>
   </div>
-
-  <p class="small">Astronomical phase timestamps are supplied by the U.S. Naval Observatory. The API reports the instant of the geocentric Full Moon in Universal Time; this page converts that instant into the device’s local calendar date. The displayed Illumina day is based on local calendar-day boundaries, not elapsed 24-hour blocks from the exact phase instant.</p>
-  <p class="small">The page retrieves annual phase data when opened, caches successful results in this browser, and recalculates the current cycle automatically. An internet connection is needed to refresh astronomical data. If the source is unavailable, previously cached data is used when available.</p>
-  <p class="small">Source: <a href="https://aa.usno.navy.mil/data/api" target="_blank" rel="noopener">U.S. Naval Observatory — Astronomical Data API</a> · <a href="https://aa.usno.navy.mil/faq/moon_phases" target="_blank" rel="noopener">How lunar phases are defined</a>.</p>
-
+  <p class="small">Full Moon instants are calculated in the browser using the periodic corrections in Jean Meeus, <em>Astronomical Algorithms</em>, 2nd edition, Chapter 49. The calculation produces a dynamical-time (TT) Julian date; the page subtracts an estimated ΔT = TT − UT1 to obtain an approximate UTC instant, then displays that same instant in the visitor’s local time zone. UT1 is treated as UTC to within the sub-second range relevant to this calendar.</p>
+  <p class="small">No API, network request, external library, or cached lunar dataset is required. The embedded ΔT table uses annual IERS/USNO values through 2025 and a documented 0.15-second-per-year extrapolation beyond the table. Future ΔT is uncertain, so displayed future instants are astronomical estimates, not second-level guarantees. The Full Moon is a global geocentric event; only its displayed clock time and calendar date vary by time zone.</p>
+  <p class="small">References: <a href="https://maia.usno.navy.mil/products/deltaT" target="_blank" rel="noopener">USNO · ΔT data</a> · <a href="https://maia.usno.navy.mil/products/bulletin-a.htm" target="_blank" rel="noopener">IERS Bulletin A · Earth orientation</a> · <a href="https://github.com/soniakeys/meeus/blob/master/v3/moonphase/moonphase.go" target="_blank" rel="noopener">Meeus Chapter 49 reference implementation</a>.</p>
   <h3>How each Illumina cycle is used</h3>
   <ol>
     <li><strong>Days 1–7 · Orientation:</strong> define the question, gather primary literature, and write down assumptions.</li>
@@ -398,7 +327,7 @@ footer a{margin:0 7px}
   </ol>
 </section>
 
-<section id="stages">
+<section id="stages" class="anchor">
   <div class="eyebrow">10 · Multi-cycle research program</div>
   <h2>Nine stages toward a defensible theory of time</h2>
   <p class="lead">This is a proposed four-to-six-month program, paced by Illumina cycles. The order is deliberate: establish the foundations before proposing new dynamics, and do not move to experiments until a genuinely novel quantitative prediction survives theoretical scrutiny.</p>
@@ -500,7 +429,7 @@ footer a{margin:0 7px}
   <p>Each stage must leave four permanent artifacts: <strong>a research report, an equation register, a list of unresolved questions, and an explicit advance / revise / stop decision.</strong></p>
 </section>
 
-<section id="network">
+<section id="network" class="anchor">
   <div class="eyebrow">11 · PLNT Earth research network</div>
   <h2>Connected projects</h2>
   <p>These companion projects are part of the broader PLNT Earth ecosystem and provide context, tools, or parallel explorations. They are not presented as evidence for TIME or as validation of its hypotheses.</p>
@@ -518,7 +447,7 @@ footer a{margin:0 7px}
   </div>
 </section>
 
-<section id="references">
+<section id="references" class="anchor">
   <div class="eyebrow">12 · Literature</div>
   <h2>References and further reading</h2>
   <ol>
@@ -538,7 +467,7 @@ footer a{margin:0 7px}
   <p class="small">The historical UTEG page also listed Noether, Loll, and Rovelli in its intellectual context. Those works may inform broader discussions of symmetry, quantum gravity, and the nature of time, but they do not validate the original UTEG equations.</p>
 </section>
 
-<section id="contact">
+<section id="contact" class="anchor">
   <div class="eyebrow">13 · Project continuity</div>
   <h2>Research record and source</h2>
   <p>This page is the corrected scientific record. Related project spaces are linked for historical continuity; their existence should not be read as independent evidence for the claims archived here.</p>
@@ -549,12 +478,11 @@ footer a{margin:0 7px}
     <div class="card"><h3>Project source</h3><p><a href="https://github.com/tcarrw">GitHub</a><br><span class="small">Source and related project work.</span></p></div>
   </div>
 </section>
-
 </main>
 
 <footer class="wrap">
   <p>TIME · Temporal Foundations · plnt.earth</p>
-  <p>Version 6.0 · Live Illumina Research Calendar</p>
+  <p>Version 7.0 · Offline Meeus Lunar Calendar</p>
   <p>Scientific status is stated explicitly. Historical hypotheses are preserved; unsupported claims are not presented as established physics.</p>
   <p><a href="https://earth.plnt.earth">Earth</a> · <a href="https://plnt.earth">plnt.earth</a></p>
 </footer>
@@ -563,354 +491,263 @@ footer a{margin:0 7px}
 (() => {
   "use strict";
 
-  // Illumina 1 is permanently anchored to the original Full Moon.
-  // Every second Full Moon after that anchor becomes a new launch.
-  const ANCHOR_DAY = "2025-11-05";
-  const CACHE_KEY = "time.illumina.usno.phases.v1";
+  // Offline lunar-phase engine: Meeus, Astronomical Algorithms, 2nd ed., ch. 49.
+  // The calculation returns a Full Moon instant in TT; ΔT = TT - UT1 converts
+  // it to UT1. UT1 is approximated as UTC (difference < 0.9 s by UTC design).
+  const ANCHOR_UTC_DAY = "2025-11-05";
   const ACTIVE_DAYS = 42;
   const FIRST_YEAR = 2025;
   const MAX_FUTURE_YEARS = 10;
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
-
   const $ = id => document.getElementById(id);
-
   const dateParts = new Intl.DateTimeFormat("en-CA", {
-    timeZone,
-    year:"numeric",
-    month:"2-digit",
-    day:"2-digit"
+    timeZone, year: "numeric", month: "2-digit", day: "2-digit"
   });
-
   const dateLong = new Intl.DateTimeFormat(undefined, {
-    timeZone:"UTC",
-    year:"numeric",
-    month:"long",
-    day:"numeric"
+    timeZone: "UTC", year: "numeric", month: "long", day: "numeric"
   });
-
   const dateShort = new Intl.DateTimeFormat(undefined, {
-    timeZone:"UTC",
-    year:"numeric",
-    month:"short",
-    day:"numeric"
+    timeZone: "UTC", year: "numeric", month: "short", day: "numeric"
   });
-
   const dateTimeLong = new Intl.DateTimeFormat(undefined, {
-    timeZone,
-    year:"numeric",
-    month:"short",
-    day:"numeric",
-    hour:"numeric",
-    minute:"2-digit",
-    timeZoneName:"short"
+    timeZone, year: "numeric", month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit", second: "2-digit", timeZoneName: "short"
   });
 
-  function localKey(date) {
-    const parts = Object.fromEntries(
-      dateParts.formatToParts(date)
-        .filter(p => p.type !== "literal")
-        .map(p => [p.type,p.value])
-    );
-    return `${parts.year}-${parts.month}-${parts.day}`;
+  // Annual observed ΔT values (TT − UT1), seconds, 1972–2025.
+  // Values are annual reference points; interpolation is used between years.
+  // Beyond 2025, a modest +0.15 s/year extrapolation is used and is explicitly
+  // treated as an estimate, not a live Earth-orientation measurement.
+  const DELTA_T_FIRST_YEAR = 1972;
+  const DELTA_T = [
+    42.23,43.37,44.49,45.48,46.46,47.52,48.53,49.59,50.54,51.38,
+    52.17,52.96,53.79,54.34,54.87,55.32,55.82,56.30,56.86,57.57,
+    58.31,59.12,59.98,60.78,61.63,62.29,62.97,63.47,63.83,64.09,
+    64.30,64.47,64.57,64.69,64.85,65.15,65.46,65.78,66.07,66.32,
+    66.60,66.91,67.28,67.64,68.10,68.59,68.97,69.22,69.36,69.36,
+    69.18,69.04,69.18,69.30
+  ];
+
+  const rad = Math.PI / 180;
+  const sinD = degrees => Math.sin(degrees * rad);
+  const mod360 = x => ((x % 360) + 360) % 360;
+
+  function decimalYear(date) {
+    const start = Date.UTC(date.getUTCFullYear(), 0, 1);
+    const end = Date.UTC(date.getUTCFullYear() + 1, 0, 1);
+    return date.getUTCFullYear() + (date.getTime() - start) / (end - start);
   }
 
+  function deltaTSeconds(yearValue) {
+    const lastYear = DELTA_T_FIRST_YEAR + DELTA_T.length - 1;
+    if (yearValue >= lastYear) {
+      return DELTA_T[DELTA_T.length - 1] + 0.15 * (yearValue - lastYear);
+    }
+    if (yearValue <= DELTA_T_FIRST_YEAR) return DELTA_T[0];
+    const index = yearValue - DELTA_T_FIRST_YEAR;
+    const lower = Math.floor(index);
+    const fraction = index - lower;
+    return DELTA_T[lower] * (1 - fraction) + DELTA_T[lower + 1] * fraction;
+  }
+
+  function fullMoonJDE(k) {
+    const T = k / 1236.85;
+    const T2 = T * T, T3 = T2 * T, T4 = T3 * T;
+    const E = 1 - 0.002516 * T - 0.0000074 * T2;
+    const M = mod360(2.5534 + 29.10535670*k - 0.0000014*T2 - 0.00000011*T3);
+    const Mp = mod360(201.5643 + 385.81693528*k + 0.0107582*T2 + 0.00001238*T3 - 0.000000058*T4);
+    const F = mod360(160.7108 + 390.67050284*k - 0.0016118*T2 - 0.00000227*T3 + 0.000000011*T4);
+    const Om = mod360(124.7746 - 1.56375588*k + 0.0020672*T2 + 0.00000215*T3);
+
+    const mean = 2451550.09766 + 29.530588861*k + 0.00015437*T2
+      - 0.000000150*T3 + 0.00000000073*T4;
+
+    let correction =
+      -0.40614*sinD(Mp) + 0.17302*E*sinD(M) + 0.01614*sinD(2*Mp) +
+       0.01043*sinD(2*F) + 0.00734*E*sinD(Mp-M) - 0.00515*E*sinD(Mp+M) +
+       0.00209*E*E*sinD(2*M) - 0.00111*sinD(Mp-2*F) - 0.00057*sinD(Mp+2*F) +
+       0.00056*E*sinD(2*Mp+M) - 0.00042*sinD(3*Mp) + 0.00042*E*sinD(M+2*F) +
+       0.00038*E*sinD(M-2*F) - 0.00024*E*sinD(2*Mp-M) - 0.00017*sinD(Om) -
+       0.00007*sinD(Mp+2*M) + 0.00004*sinD(2*Mp-2*F) + 0.00004*sinD(3*M) +
+       0.00003*sinD(Mp+M-2*F) + 0.00003*sinD(2*Mp+2*F) - 0.00003*sinD(Mp+M+2*F) +
+       0.00003*sinD(Mp-M+2*F) - 0.00002*sinD(Mp-M-2*F) - 0.00002*sinD(3*Mp+M) +
+       0.00002*sinD(4*Mp);
+
+    const A = [
+      299.77+0.107408*k-0.009173*T2, 251.88+0.016321*k,
+      251.83+26.651886*k, 349.42+36.412478*k, 84.66+18.206239*k,
+      141.74+53.303771*k, 207.14+2.453732*k, 154.84+7.306860*k,
+      34.52+27.261239*k, 207.19+0.121824*k, 291.34+1.844379*k,
+      161.72+24.198154*k, 239.56+25.513099*k, 331.55+3.592518*k
+    ];
+    const C = [0.000325,0.000165,0.000164,0.000126,0.000110,0.000062,0.000060,
+      0.000056,0.000047,0.000042,0.000040,0.000037,0.000035,0.000023];
+    for (let i = 0; i < A.length; i++) correction += C[i] * sinD(A[i]);
+    return mean + correction;
+  }
+
+  function jdToDate(jd) {
+    return new Date((jd - 2440587.5) * 86400000);
+  }
+
+  function calculateFullMoon(k) {
+    const jde = fullMoonJDE(k); // Terrestrial Time (TT)
+    const roughDate = jdToDate(jde);
+    const dt = deltaTSeconds(decimalYear(roughDate));
+    const utcDate = jdToDate(jde - dt / 86400);
+    return { k, instant: utcDate, iso: utcDate.toISOString(), deltaT: dt };
+  }
+
+  function generateFullMoons() {
+    const now = new Date();
+    const lastYear = Math.min(2100, Math.max(2035, now.getFullYear() + MAX_FUTURE_YEARS));
+    const startDecimalYear = FIRST_YEAR;
+    const endDecimalYear = lastYear + 1;
+    // Integer lunation count plus 0.5 denotes Full Moon in Meeus chapter 49.
+    let k = Math.floor((startDecimalYear - 2000) * 12.3685 - 0.5) + 0.5;
+    const endK = (endDecimalYear - 2000) * 12.3685 + 1;
+    const events = [];
+    for (; k <= endK; k += 1) {
+      const event = calculateFullMoon(k);
+      const y = event.instant.getUTCFullYear();
+      if (y >= FIRST_YEAR - 1 && y <= lastYear + 1) events.push(event);
+    }
+    return events.sort((a,b) => a.instant - b.instant);
+  }
+
+  function localKey(date) {
+    const parts = Object.fromEntries(dateParts.formatToParts(date)
+      .filter(p => p.type !== "literal").map(p => [p.type, p.value]));
+    return `${parts.year}-${parts.month}-${parts.day}`;
+  }
   function keyToUTCDate(key) {
     const [y,m,d] = key.split("-").map(Number);
     return new Date(Date.UTC(y,m-1,d));
   }
-
-  function addDays(key,n) {
+  function addDays(key, n) {
     const d = keyToUTCDate(key);
     d.setUTCDate(d.getUTCDate()+n);
     return d.toISOString().slice(0,10);
   }
-
   function dayDifference(a,b) {
-    return Math.round(
-      (keyToUTCDate(b)-keyToUTCDate(a))/86400000
-    );
+    return Math.round((keyToUTCDate(b)-keyToUTCDate(a))/86400000);
+  }
+  function prettyKey(key, style="long") {
+    return (style === "short" ? dateShort : dateLong).format(keyToUTCDate(key));
   }
 
-  function prettyKey(key,style="long") {
-    const d = keyToUTCDate(key);
-    return (style==="short" ? dateShort : dateLong).format(d);
+  function buildLaunches(events) {
+    const anchorIndex = events.findIndex(e => e.iso.slice(0,10) === ANCHOR_UTC_DAY);
+    if (anchorIndex < 0) throw new Error("The calculated 5 November 2025 Full Moon anchor was not found.");
+    return events.slice(anchorIndex).filter((_,i) => i % 2 === 0).map((event,index) => ({
+      cycle: index + 1,
+      instant: event.instant,
+      localDate: localKey(event.instant),
+      deltaT: event.deltaT,
+      k: event.k
+    }));
   }
 
-  function parsePhase(p) {
-    if (!p || p.phase!=="Full Moon") return null;
-
-    const y=Number(p.year);
-    const m=Number(p.month);
-    const d=Number(p.day);
-    const match=String(p.time || "00:00").match(/^(\d{1,2}):(\d{2})/);
-
-    if (!y || !m || !d || !match) return null;
-
-    return new Date(Date.UTC(
-      y,m-1,d,Number(match[1]),Number(match[2])
-    ));
-  }
-
-  function normalizePhaseData(payload) {
-    if (payload?.error) throw new Error(payload.error);
-    if (!Array.isArray(payload?.phasedata)) {
-      throw new Error("Unexpected USNO response format.");
-    }
-
-    return payload.phasedata
-      .map(parsePhase)
-      .filter(Boolean)
-      .map(d=>d.toISOString());
-  }
-
-  async function fetchYear(year) {
-    const url=`https://aa.usno.navy.mil/api/moon/phases/year?year=${year}`;
-    const response=await fetch(url,{cache:"no-store"});
-
-    if (!response.ok) {
-      throw new Error(`USNO request failed for ${year} (${response.status}).`);
-    }
-
-    return normalizePhaseData(await response.json());
-  }
-
-  function readCache() {
-    try {
-      const raw=localStorage.getItem(CACHE_KEY);
-      if (!raw) return null;
-      const parsed=JSON.parse(raw);
-      return Array.isArray(parsed?.fullMoons) ? parsed.fullMoons : null;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function writeCache(fullMoons) {
-    try {
-      localStorage.setItem(CACHE_KEY,JSON.stringify({
-        savedAt:new Date().toISOString(),
-        fullMoons
-      }));
-    } catch (_) {}
-  }
-
-  async function getFullMoons() {
-    const cached=readCache();
-    const thisYear=new Date().getFullYear();
-    const lastYear=Math.min(
-      2100,
-      Math.max(2035,thisYear+MAX_FUTURE_YEARS)
-    );
-
-    const years=[];
-    for(let y=FIRST_YEAR;y<=lastYear;y++) years.push(y);
-
-    if(cached?.length) renderCalendar(cached,"cached");
-
-    const results=await Promise.all(years.map(fetchYear));
-    const all=[...new Set(results.flat())].sort();
-
-    if (!all.some(x=>x.slice(0,10)===ANCHOR_DAY)) {
-      throw new Error("The original 5 November 2025 anchor was not found in the lunar data.");
-    }
-
-    writeCache(all);
-    return all;
-  }
-
-  function buildLaunches(fullMoonISO) {
-    const anchorIndex=fullMoonISO.findIndex(
-      x=>x.slice(0,10)===ANCHOR_DAY
-    );
-
-    if(anchorIndex<0) {
-      throw new Error("Illumina 1 anchor Full Moon is missing.");
-    }
-
-    return fullMoonISO
-      .slice(anchorIndex)
-      .filter((_,index)=>index%2===0)
-      .map((iso,index)=>({
-        cycle:index+1,
-        instant:new Date(iso),
-        localDate:localKey(new Date(iso))
-      }));
-  }
-
-  function renderCalendar(fullMoonISO,source) {
-    const launches=buildLaunches(fullMoonISO);
-    const todayKey=localKey(new Date());
-
-    let currentIndex=-1;
-
-    for(let i=0;i<launches.length;i++) {
-      if(launches[i].localDate<=todayKey) currentIndex=i;
+  function renderCalendar(events) {
+    const launches = buildLaunches(events);
+    const now = new Date();
+    const todayKey = localKey(now);
+    let currentIndex = -1;
+    for (let i=0; i<launches.length; i++) {
+      if (launches[i].instant <= now) currentIndex = i;
       else break;
     }
-
-    if(currentIndex<0 || currentIndex+1>=launches.length) {
-      throw new Error("The lunar dataset does not yet contain both the current and next Illumina launch.");
+    if (currentIndex < 0 || currentIndex + 1 >= launches.length) {
+      throw new Error("The local lunar calculation does not yet contain both the current and next Illumina launch.");
     }
 
-    const current=launches[currentIndex];
-    const next=launches[currentIndex+1];
+    const current = launches[currentIndex];
+    const next = launches[currentIndex+1];
+    const launchKey = current.localDate;
+    const nextKey = next.localDate;
+    const dayNumber = dayDifference(launchKey,todayKey)+1;
+    const workEndKey = addDays(launchKey,ACTIVE_DAYS-1);
+    const restStartKey = addDays(workEndKey,1);
+    const restDays = Math.max(0,dayDifference(restStartKey,nextKey));
+    const restEndKey = addDays(nextKey,-1);
+    const isActive = dayNumber >= 1 && dayNumber <= ACTIVE_DAYS;
+    const isRest = dayNumber > ACTIVE_DAYS;
+    const activeProgress = Math.min(100,Math.max(0,dayNumber/ACTIVE_DAYS*100));
+    const restElapsed = isRest ? dayDifference(restStartKey,todayKey)+1 : 0;
+    const restProgress = restDays ? Math.min(100,Math.max(0,restElapsed/restDays*100)) : 0;
+    const progress = isActive ? activeProgress : (isRest ? restProgress : 0);
+    const status = isActive ? "Active research" : "Rest & integration";
+    const daysLeft = isActive ? ACTIVE_DAYS-dayNumber : dayDifference(todayKey,nextKey);
 
-    const launchKey=current.localDate;
-    const nextKey=next.localDate;
-
-    const dayNumber=dayDifference(launchKey,todayKey)+1;
-    const workEndKey=addDays(launchKey,ACTIVE_DAYS-1);
-    const restStartKey=addDays(workEndKey,1);
-    const restDays=Math.max(0,dayDifference(restStartKey,nextKey));
-    const restEndKey=addDays(nextKey,-1);
-
-    const isActive=dayNumber>=1 && dayNumber<=ACTIVE_DAYS;
-    const isRest=dayNumber>ACTIVE_DAYS;
-
-    const activeProgress=Math.min(
-      100,Math.max(0,dayNumber/ACTIVE_DAYS*100)
-    );
-
-    const restElapsed=isRest
-      ? dayDifference(restStartKey,todayKey)+1
-      : 0;
-
-    const restProgress=restDays
-      ? Math.min(100,Math.max(0,restElapsed/restDays*100))
-      : 0;
-
-    const progress=isActive ? activeProgress : (isRest ? restProgress : 0);
-    const status=isActive ? "Active research" : "Rest & integration";
-    const daysLeft=isActive
-      ? ACTIVE_DAYS-dayNumber
-      : dayDifference(todayKey,nextKey);
-
-    $("liveMeta").textContent=
-      `Illumina ${current.cycle} · ${
-        isActive
-          ? `Day ${dayNumber} of 42`
-          : `Rest period · ${Math.max(1,restElapsed)} of ${restDays} days`
-      } · ${prettyKey(todayKey)}`;
-
-    $("currentCycleTitle").textContent=
-      `Illumina ${current.cycle} · ${status}`;
-
-    $("currentCycleState").textContent=isActive
+    $("liveMeta").textContent = `Illumina ${current.cycle} · ${isActive ? `Day ${dayNumber} of 42` : `Rest period · ${Math.max(1,restElapsed)} of ${restDays} days`} · ${prettyKey(todayKey)}`;
+    $("currentCycleTitle").textContent = `Illumina ${current.cycle} · ${status}`;
+    $("currentCycleState").textContent = isActive
       ? `Day ${dayNumber} / 42 · ${daysLeft} active ${daysLeft===1?"day":"days"} remaining`
       : `Rest & integration · ${restElapsed} / ${restDays} days`;
-
-    $("currentCycleDates").textContent=
-      `Launch: ${prettyKey(launchKey)} · Day 42: ${prettyKey(workEndKey)} · Next launch: ${prettyKey(nextKey)}`;
-
-    $("cycleProgressText").textContent=
-      `${Math.round(progress)}% through the ${isActive?"active cycle":"rest interval"}`;
-
-    $("cycleProgressBar").style.width=`${progress}%`;
-
-    $("cycleProgressCaption").textContent=isActive
+    $("currentCycleDates").textContent = `Launch: ${dateTimeLong.format(current.instant)} · Day 42: ${prettyKey(workEndKey)} · Next launch: ${dateTimeLong.format(next.instant)}`;
+    $("cycleProgressText").textContent = `${Math.round(progress)}% through the ${isActive?"active cycle":"rest interval"}`;
+    $("cycleProgressBar").style.width = `${progress}%`;
+    $("cycleProgressCaption").textContent = isActive
       ? `${prettyKey(launchKey)} through ${prettyKey(workEndKey)} · active research`
       : `${prettyKey(restStartKey)} through ${prettyKey(restEndKey)} · integration break`;
 
-    $("nextLaunchDate").textContent=
-      `Illumina ${next.cycle} · ${prettyKey(nextKey)}`;
+    $("nextLaunchDate").textContent = `Illumina ${next.cycle} · ${dateTimeLong.format(next.instant)}`;
+    $("nextLaunchMeta").textContent = `Calculated Full Moon instant · ${dayDifference(todayKey,nextKey)} local calendar ${dayDifference(todayKey,nextKey)===1?"day":"days"} from today · ΔT estimate ${next.deltaT.toFixed(2)} s`;
+    $("restDates").textContent = restDays ? `${prettyKey(restStartKey)} – ${prettyKey(restEndKey)}` : "No rest days before next launch";
+    $("restMeta").textContent = `${restDays} calendar ${restDays===1?"day":"days"} between the 42-day work period and the next Full Moon launch.`;
 
-    $("nextLaunchMeta").textContent=
-      `Exact Full Moon: ${dateTimeLong.format(next.instant)} · ${dayDifference(todayKey,nextKey)} calendar days from today`;
+    const statusNode = $("moonDataStatus");
+    statusNode.className = "callout good";
+    statusNode.textContent = `Calculated locally · Meeus Chapter 49 · ${events.length} Full Moon instants · no API or network request · local time zone: ${timeZone}.`;
 
-    $("restDates").textContent=restDays
-      ? `${prettyKey(restStartKey)} – ${prettyKey(restEndKey)}`
-      : "No rest days before next launch";
-
-    $("restMeta").textContent=
-      `${restDays} calendar ${restDays===1?"day":"days"} between the 42-day work period and the next Full Moon launch.`;
-
-    const statusNode=$("moonDataStatus");
-    statusNode.className=source==="cached"?"callout warn":"callout good";
-
-    statusNode.textContent=source==="cached"
-      ? `Showing previously cached USNO lunar data while the live refresh is in progress. Time zone: ${timeZone}.`
-      : `Lunar data current · ${fullMoonISO.length} Full Moon timestamps loaded · source: U.S. Naval Observatory · time zone: ${timeZone}.`;
-
-    const upcoming=launches.slice(
-      Math.max(0,currentIndex-1),
-      currentIndex+9
-    );
-
-    $("launchTableBody").innerHTML=upcoming.map(item=>{
-      const idx=launches.findIndex(x=>x.cycle===item.cycle);
-      const following=launches[idx+1];
-      if(!following) return "";
-
-      const end=addDays(item.localDate,ACTIVE_DAYS-1);
-      const restStart=addDays(end,1);
-      const restCount=Math.max(
-        0,dayDifference(restStart,following.localDate)
-      );
-      const restEnd=addDays(following.localDate,-1);
-      const isCurrent=item.cycle===current.cycle;
-
-      return `<tr${isCurrent?' style="background:rgba(155,140,255,.08)"':""}>
+    const upcoming = launches.slice(Math.max(0,currentIndex-1),currentIndex+9);
+    $("launchTableBody").innerHTML = upcoming.map(item => {
+      const idx = launches.findIndex(x => x.cycle===item.cycle);
+      const following = launches[idx+1];
+      if (!following) return "";
+      const end = addDays(item.localDate,ACTIVE_DAYS-1);
+      const restStart = addDays(end,1);
+      const restCount = Math.max(0,dayDifference(restStart,following.localDate));
+      const restEnd = addDays(following.localDate,-1);
+      const isCurrent = item.cycle===current.cycle;
+      return `<tr${isCurrent?' style="background:rgba(155,140,255,.08)"':''}>
         <td>${isCurrent?"<strong>":""}Illumina ${item.cycle}${isCurrent?"</strong>":""}</td>
-        <td>${prettyKey(item.localDate,"short")}</td>
+        <td>${dateTimeLong.format(item.instant)}</td>
         <td>${prettyKey(end,"short")}</td>
         <td>${restCount} days<br><span class="small">${prettyKey(restStart,"short")} – ${prettyKey(restEnd,"short")}</span></td>
-        <td>${prettyKey(following.localDate,"short")}</td>
+        <td>${dateTimeLong.format(following.instant)}</td>
       </tr>`;
     }).join("");
 
-    $("timezoneLabel").textContent=
-      `Dates shown in ${timeZone}. Exact Full Moon moments are shown in local time.`;
+    $("timezoneLabel").textContent = `All event times shown in ${timeZone}. Illumina day numbers use local calendar dates.`;
   }
 
-  async function refresh() {
-    $("moonDataStatus").className="callout";
-    $("moonDataStatus").textContent=
-      "Refreshing Full Moon dates from the U.S. Naval Observatory…";
-    $("refreshMoonData").disabled=true;
-
+  function refresh() {
+    const button = $("refreshMoonData");
+    button.disabled = true;
+    $("moonDataStatus").className = "callout";
+    $("moonDataStatus").textContent = "Calculating Full Moon instants locally…";
     try {
-      const dates=await getFullMoons();
-      renderCalendar(dates,"live");
-    } catch(error) {
-      const cached=readCache();
-
-      if(cached?.length) {
-        renderCalendar(cached,"cached");
-        $("moonDataStatus").textContent+=
-          ` Live refresh failed: ${error.message} Cached dates are being used.`;
-      } else {
-        $("moonDataStatus").className="callout bad";
-        $("moonDataStatus").textContent=
-          `Unable to load astronomical data: ${error.message} Open this page with an internet connection and try Refresh lunar data.`;
-        $("liveMeta").textContent=
-          "Lunar calendar unavailable · refresh required";
-      }
+      const events = generateFullMoons();
+      renderCalendar(events);
+    } catch (error) {
+      $("moonDataStatus").className = "callout bad";
+      $("moonDataStatus").textContent = `Lunar calculation error: ${error.message}`;
+      $("liveMeta").textContent = "Lunar calendar unavailable";
     } finally {
-      $("refreshMoonData").disabled=false;
+      button.disabled = false;
     }
   }
 
   $("refreshMoonData").addEventListener("click",refresh);
   refresh();
 
-  // Recalculate the current day at local midnight.
+  // Recalculate at local midnight so day numbers advance without a page reload.
   function scheduleMidnightRefresh() {
-    const now=new Date();
-    const tomorrow=new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate()+1
-    );
-
-    const delay=tomorrow-now+1000;
-
-    setTimeout(()=>{
-      const cached=readCache();
-      if(cached?.length) renderCalendar(cached,"cached");
-      scheduleMidnightRefresh();
-    },delay);
+    const now = new Date();
+    const tomorrow = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
+    setTimeout(() => { refresh(); scheduleMidnightRefresh(); },tomorrow-now+1000);
   }
-
   scheduleMidnightRefresh();
 })();
 </script>
