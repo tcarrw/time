@@ -5,15 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>TIME v8.0 · Experimental Foundations of Time | plnt.earth</title>
-<meta name="description" content="An experimental-first research program investigating time through quantum phase, proper time, action, spatial geometry, and falsifiable tests.">
+<meta name="description" content="A research program investigating possible inherited information, signal recognition, and the deeper physical structure of time.">
 <meta name="author" content="Tristan White">
 <meta name="date" content="2026-11-27">
 <link rel="canonical" href="https://time.plnt.earth/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="TIME v8.0 · Experimental Foundations of Time">
-<meta property="og:description" content="A transparent research record separating established physics, historical hypotheses, research gaps, and testable predictions.">
+<meta property="og:description" content="A research record connecting a working contact hypothesis, Zipf-based information detection, signal decoding, and testable questions about time.">
 <meta property="og:url" content="https://time.plnt.earth/">
-
 <style>
 :root{
   color-scheme:dark;--bg:#080b12;--panel:#101725;--panel2:#0c1320;
@@ -24,8 +23,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:radial-gradient(900px 600px at 10% -10%,rgba(115,94,220,.13),transparent 65%),radial-gradient(800px 500px at 100% 0%,rgba(70,160,160,.08),transparent 60%),var(--bg);color:var(--ink);font:16px/1.72 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:#b6b0ff;text-decoration:none}
-a:hover{text-decoration:underline}
+a{color:#b6b0ff;text-decoration:none}a:hover{text-decoration:underline}
 .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
 header{padding:72px 0 30px;text-align:center}
 .kicker,.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700}
@@ -35,13 +33,11 @@ h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.045em;marg
 .meta{font-size:.82rem;color:var(--soft);margin-top:20px}
 .statusline{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px auto}
 .pill{border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:.75rem;color:var(--muted)}
-.pill.good{border-color:#315a48;color:var(--good)}
-.pill.warn{border-color:#685436;color:var(--warn)}
+.pill.good{border-color:#315a48;color:var(--good)}.pill.warn{border-color:#685436;color:var(--warn)}
 nav{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.92);backdrop-filter:blur(14px);border-block:1px solid var(--line)}
 .navinner{display:flex;gap:18px;align-items:center;overflow:auto;white-space:nowrap;padding:12px 0;font-size:.82rem}
 .navbrand{font-weight:800;letter-spacing:.12em;color:var(--ink);margin-right:8px}
-.navinner a{color:var(--muted)}
-.navinner a:hover{color:var(--ink)}
+.navinner a{color:var(--muted)}.navinner a:hover{color:var(--ink)}
 main{padding:28px 0 70px}
 section{padding:34px 0;border-bottom:1px solid var(--line)}
 section:last-child{border-bottom:0}
@@ -49,15 +45,12 @@ h2{font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.025em;margin:0 0 14px}
 h3{font-size:1.08rem;margin:26px 0 8px}
 p{margin:10px 0;color:#d5dce8}
 .lead{font-size:1.13rem;color:#c4cede;max-width:850px}
-.muted{color:var(--muted)}
-.small{font-size:.87rem;color:var(--muted)}
+.muted{color:var(--muted)}.small{font-size:.87rem;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:15px;padding:19px}
 .card h3{margin:0 0 8px}
 .callout{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel2);border-radius:10px;padding:17px 19px;margin:18px 0}
-.callout.good{border-left-color:var(--good)}
-.callout.warn{border-left-color:var(--warn)}
-.callout.bad{border-left-color:var(--bad)}
+.callout.good{border-left-color:var(--good)}.callout.warn{border-left-color:var(--warn)}.callout.bad{border-left-color:var(--bad)}
 .eq{display:block;overflow-x:auto;background:#070c15;border:1px solid #202b3d;border-radius:10px;padding:16px 18px;margin:13px 0;font:1.03rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e7e3ff;white-space:nowrap}
 .eq.center{text-align:center}
 table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.9rem}
@@ -65,11 +58,8 @@ th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vert
 th{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.025)}
 td{color:#d6deea}
 .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;white-space:nowrap}
-.tag.good{color:var(--good)}
-.tag.warn{color:var(--warn)}
-.tag.bad{color:var(--bad)}
-ul,ol{padding-left:22px;color:#d5dce8}
-li{margin:6px 0}
+.tag.good{color:var(--good)}.tag.warn{color:var(--warn)}.tag.bad{color:var(--bad)}
+ul,ol{padding-left:22px;color:#d5dce8}li{margin:6px 0}
 details{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin:12px 0;background:rgba(255,255,255,.015)}
 summary{cursor:pointer;font-weight:650;color:#dce3ef}
 details p{margin-bottom:0}
@@ -77,36 +67,21 @@ details p{margin-bottom:0}
 footer{padding:35px 0 55px;text-align:center;color:var(--soft);font-size:.83rem}
 footer a{margin:0 7px}
 .anchor{scroll-margin-top:90px}
-@media(max-width:720px){
-  .wrap{width:min(100% - 28px,var(--max))}
-  header{padding:50px 0 24px}
-  .grid{grid-template-columns:1fr}
-  section{padding:27px 0}
-  table{font-size:.82rem}
-  th,td{padding:9px 7px}
-}
-@media print{
-  body{background:#fff;color:#111}
-  .nav{display:none}
-  .card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}
-  p,li,td{color:#222}
-  a{color:#333}
-}
+@media(max-width:720px){.wrap{width:min(100% - 28px,var(--max))}header{padding:50px 0 24px}.grid{grid-template-columns:1fr}section{padding:27px 0}table{font-size:.82rem}th,td{padding:9px 7px}}
+@media print{body{background:#fff;color:#111}.nav{display:none}.card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}p,li,td{color:#222}a{color:#333}}
+
 .buttonlink{display:inline-block;border:1px solid var(--line);border-radius:9px;padding:8px 12px;color:var(--ink);background:var(--panel);font-size:.88rem}
 .status{font-weight:750;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase}
-.status.established{color:var(--good)}
-.status.hypothesis{color:var(--warn)}
-.status.retired{color:var(--bad)}
+.status.established{color:var(--good)}.status.hypothesis{color:var(--warn)}.status.retired{color:var(--bad)}
 .note{font-size:.84rem;color:var(--muted)}
 </style>
 </head>
-
 <body>
 <header class="wrap">
   <div class="kicker">plnt.earth · research record · v8.0</div>
   <div class="mark">τ</div>
   <h1>Experimental Foundations of Time</h1>
-  <p class="subtitle">An Illumina research program: reconstruct the original question, investigate established physics, and pursue measurable tests of temporal evolution.</p>
+  <p class="subtitle">A research program investigating possible inherited information, signal recognition, and the deeper physical structure of time.</p>
   <div class="meta" id="liveMeta">Loading lunar research calendar…</div>
   <div class="statusline">
     <span class="pill good">Established physics preserved</span>
@@ -114,196 +89,157 @@ footer a{margin:0 7px}
     <span class="pill">Testability is the objective</span>
   </div>
 </header>
-
-<nav aria-label="Primary navigation">
-  <div class="wrap navinner">
-    <span class="navbrand">TIME</span>
-    <a href="#overview">Overview</a>
-    <a href="#origin">Origin</a>
-    <a href="#foundations">Foundations</a>
-    <a href="#research">Research questions</a>
-    <a href="#tests">Testable program</a>
-    <a href="#register">Equation register</a>
-    <a href="#archive">Archive</a>
-    <a href="#illumina">Illumina</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#network">PLNT network</a>
-    <a href="#references">References</a>
-  </div>
-</nav>
-
+<nav aria-label="Primary navigation"><div class="wrap navinner">
+  <span class="navbrand">TIME</span>
+  <a href="#overview">Overview</a><a href="#origin">Origin &amp; architecture</a><a href="#foundations">Foundations</a>
+  <a href="#research">Research questions</a><a href="#tests">Synchronization &amp; clocks</a><a href="#register">Equation register</a>
+  <a href="#archive">Archive</a><a href="#illumina">Illumina</a><a href="#roadmap">Roadmap</a><a href="#network">PLNT network</a><a href="#references">References</a>
+</div></nav>
 <main class="wrap">
-
 <section id="overview" class="anchor">
   <div class="eyebrow">01 · Mission and status</div>
-  <h2>The experimental foundations of time</h2>
-  <p class="lead">TIME is an Illumina research program investigating what physical time is, how it relates to energy and spatial geometry, and whether open questions about temporal evolution can be turned into measurable tests.</p>
-
-  <div class="callout good">
-    <strong>Current position.</strong>
-    The original UTEG equation identifying time with E/c³ or m/c fails dimensional analysis and is retired as a physical time equation. That failure does not settle the broader questions that motivated the work. This version preserves the original hypothesis as history and restarts the scientific program from established physics.
-  </div>
-
+  <h2>Information, contact, and the foundations of time</h2>
+  <p class="lead">TIME investigates two connected possibilities: that information may have been deliberately or structurally embedded in our universe by an older civilization or an earlier cosmic lineage, and that the search for such information may reveal a deeper relationship among time, energy, information, and spacetime.</p>
+  <div class="callout"><strong>Working premise.</strong> For the purpose of generating predictions, this program assumes that contact or information transfer across extreme cosmic boundaries is possible. This is a research premise, not an established fact. The task is to determine what physical mechanism could carry information, what observable signature it would leave, and whether that signature can be recognized and decoded.</div>
   <div class="grid">
-    <div class="card">
-      <h3>Central question</h3>
-      <p>Can new, experimentally distinguishable information about time be found in the relationships among quantum phase, energy, action, spatial displacement, and relativistic proper time?</p>
-    </div>
-    <div class="card">
-      <h3>Research standard</h3>
-      <p>Every proposed advance must define its quantities, derive its mathematics, compare against established theory, and specify an observable that could prove it wrong.</p>
-    </div>
-    <div class="card">
-      <h3>What is established</h3>
-      <p>Quantum phase evolution, action principles, relativistic proper time, Compton scales, and precision clock physics.</p>
-    </div>
-    <div class="card">
-      <h3>What remains open</h3>
-      <p>Whether a particular unresolved regime or observable reveals new temporal structure beyond standard quantum mechanics and relativity.</p>
-    </div>
+    <div class="card"><h3>Contact hypothesis</h3><p>Information from an older civilization, an earlier cosmic lineage, or another physically connected domain may be encoded in structures or relationships that persist in our universe.</p></div>
+    <div class="card"><h3>Detection architecture</h3><p>Zipf and related statistical methods help search for candidate structure; Lighthouse provides recognition and synchronization; Boiled Peanuts provides framing, error correction, decoding, and verification.</p></div>
+    <div class="card"><h3>Temporal question</h3><p>Could the information-bearing structure also reveal an unrecognized relationship among temporal intervals, quantum phase, energy, and spacetime geometry?</p></div>
+    <div class="card"><h3>Scientific standard</h3><p>Separate the working premise from evidence. Define candidate signals, compare them with strong physical and statistical null models, test decoding on held-out data, and derive independent temporal predictions.</p></div>
   </div>
-
-  <p class="small">This is a research program, not a claim that a new theory of time has been discovered. The goal is a testable result; a new equation is useful only if it adds physical content.</p>
+  <p class="small">The contact premise and the temporal-physics question can be investigated independently. A signal need not prove a new theory of time, and a new temporal relationship need not prove contact. The research asks whether evidence eventually connects them.</p>
+  <div class="callout warn"><strong>Historical equation status.</strong> The original UTEG expression T = E/c³ = m/c fails dimensional analysis and remains retired as a physical time equation. Preserving the broader research question does not restore that expression or assume a replacement.</div>
 </section>
 
 <section id="origin" class="anchor">
-  <div class="eyebrow">02 · Historical reconstruction</div>
-  <h2>Where the project began</h2>
-  <p class="lead">The original question was exploratory: what if time were fundamentally related to distance and energy, and what if that relationship involved a higher-order rate of change—by analogy with the progression from position to velocity to acceleration?</p>
-
-  <div class="callout">
-    <strong>Reconstructed original intuition.</strong>
-    Distance and energy might be two expressions of a more fundamental physical quantity, with time emerging from their deeper relationship. This is a historical hypothesis to investigate, not an established result.
-  </div>
-
+  <div class="eyebrow">02 · Origin and working hypothesis</div>
+  <h2>From the original time question to a search for inherited information</h2>
+  <p class="lead">The project began by asking whether time, distance, and energy might be connected through a deeper physical relationship. The current direction adds a second question: if information could be carried into our universe from an older civilization or an earlier cosmic lineage, what traces would it leave, and could those traces reveal something about time?</p>
   <h3>The original proposed expression</h3>
   <div class="eq center">T = E/c³ = m/c</div>
-  <p>This expression followed from the original attempt to identify an energy- and mass-related quantity with time. In SI units, both E/c³ and m/c have dimensions kg·s/m, not seconds. The algebraic identity between them follows from E = mc², but neither is a time quantity.</p>
-
-  <div class="callout bad">
-    <strong>Retired claim.</strong>
-    T = E/c³ = m/c is not retained as a valid equation for time. No replacement equation is assumed.
+  <p>The expression followed from an attempt to identify an energy- and mass-related quantity with time. In SI units, both E/c³ and m/c have dimensions kg·s/m, not seconds. Their algebraic equality follows from E = mc², but neither side is a time quantity.</p>
+  <div class="callout bad"><strong>Retired claim.</strong> T = E/c³ = m/c is not a valid equation for time. No replacement equation is assumed. The dimensional failure retires conclusions that depend on this identification, but it does not settle every question that motivated the original investigation.</div>
+  <h3>Current working hypothesis: inherited information and contact</h3>
+  <p>For research purposes, assume that contact is possible: an older civilization, an earlier universe in a cosmic lineage, or another physically connected domain may have encoded information in a way that survives into our observable universe. The encoding need not resemble ordinary language or arrive as a conventional radio transmission. It could be carried by statistical relationships, temporal patterns, correlations, boundary conditions, or other persistent physical structure.</p>
+  <p>This premise does not decide who the sender is, whether the source is biological, whether the mechanism involves black holes or daughter universes, or whether the information was intentionally sent. Those are alternative mechanisms to investigate, not assumptions required by the detection program.</p>
+  <h3>Zipf as a discovery tool</h3>
+  <p>Zipf's law and related rank-frequency statistics are candidate tools for searching data that appears random or unstructured. The goal is not simply to find a power law. The goal is to identify a reproducible statistical fingerprint, characterize its residual structure, and determine whether that structure supports a stable decoding procedure. Zipf-like distributions can also arise from ordinary processes, so the analysis must compare against realistic null models, preserve blind test data, and account for the full search space.</p>
+  <h3>Lighthouse and Boiled Peanuts as the recognition and decoding architecture</h3>
+  <div class="grid">
+    <div class="card"><h3>Lighthouse · Recognize and synchronize</h3><p><a href="https://lighthouse.plnt.earth">lighthouse.plnt.earth</a></p><p>A recognizable beacon or temporal signature helps a receiver acquire a candidate signal, estimate its timing, synchronize, and distinguish it from noise and false alarms.</p><p class="status hypothesis">Detection and synchronization method</p></div>
+    <div class="card"><h3>Boiled Peanuts · Frame, decode, verify</h3><p><a href="https://boiledpeanuts.plnt.earth">boiledpeanuts.plnt.earth</a></p><p>The courier, beacon, and astronomical-address design supplies a model for message framing, checksums, error correction, reconstruction, and independent verification. It is an engineering architecture to test, not evidence that a cosmic message has been found.</p><p class="status hypothesis">Encoding and verification method</p></div>
+    <div class="card"><h3>Contact · Search for the fingerprint</h3><p><a href="https://contact.plnt.earth">contact.plnt.earth</a></p><p>Cross-scale and rank-frequency ideas motivate searches for statistical structure in physical data. Each proposed signature needs a precise definition, a physical data source, null models, and a decoding or validation criterion.</p><p class="status hypothesis">Working detection hypothesis</p></div>
+    <div class="card"><h3>TIME · Investigate temporal structure</h3><p>TIME studies whether the same information-bearing patterns could be expressed through event intervals, phase relationships, clock correlations, energy scales, or spacetime geometry.</p><p class="status hypothesis">Foundational physics question</p></div>
   </div>
-
-  <h3>Why preserve the original question?</h3>
-  <p>A failed dimensional identification invalidates conclusions that depend on that identification; it does not automatically answer every independent question that inspired it. The research task is to reconstruct the intuition precisely, compare it with existing work, and determine whether any part can be reformulated into a well-defined, testable proposition.</p>
-
-  <h3>Historical branches</h3>
-  <p>Manifold Dynamics, Dark Energy, Intelligence, Zeta, Illumina, the Elevator, and the anchor system developed in the context of the original temporal hypothesis. Their historical connection should be documented honestly. Their existence or symbolic meaning is not evidence for a physical theory. Their scientific claims will be reassessed only after the foundational research identifies a defensible connection.</p>
+  <div class="callout"><strong>How the pieces fit.</strong> Zipf is a candidate search and fingerprinting method. Lighthouse addresses recognition, acquisition, and synchronization. Boiled Peanuts addresses message structure, error correction, decoding, and verification. TIME investigates the physical and temporal principles that could make an information pattern persist. The architecture is a research program; its success in a designed communication test would not by itself establish extraterrestrial or inter-universe contact.</div>
+  <h3>Two discoveries may be related, but neither is a prerequisite for the other</h3>
+  <ol>
+    <li><strong>Information discovery:</strong> identify a reproducible, decodable structure in physical data that is not adequately explained by known processes or analysis artifacts.</li>
+    <li><strong>Temporal discovery:</strong> derive a dimensionally consistent relationship involving time, energy, phase, information, or geometry that makes a new measurable prediction.</li>
+  </ol>
+  <p>A result in either direction can guide the other. We do not need to prove the contact hypothesis before studying temporal physics, or discover a new time equation before testing whether physical data contains recoverable information.</p>
+  <h3>Other project branches</h3>
+  <p>Heat Death supplies the long-term thermodynamic motivation: whether information and observers can persist as usable free-energy gradients diminish. Manifold Dynamics may provide mathematical tools for geometry or topology once its specific claims are audited. Dark Energy, Zeta, Intelligence, Illumina, Anchors, Elevator, and the other branches remain part of the project's history and supporting work; they are not presumed to demonstrate a shared mechanism.</p>
 </section>
 
 <section id="foundations" class="anchor">
   <div class="eyebrow">03 · Established physics</div>
   <h2>Relationships we can safely build from</h2>
-
   <h3>Quantum phase and energy</h3>
   <div class="eq center">Ψ(t) = Ψ(0) exp(−iEt/ℏ)</div>
   <p>For an energy eigenstate, the phase evolves at angular frequency ω = E/ℏ, relative to the chosen energy reference. A characteristic one-radian phase timescale is:</p>
   <div class="eq center">τ<sub>E</sub> = ℏ/E</div>
   <p class="note">This is a characteristic phase scale for a specified positive energy, not automatically a lifetime, universal clock period, or directly observable absolute time. A constant shift of the Hamiltonian changes global phase without changing ordinary observables. The full 2π phase period is 2πℏ/E.</p>
-
   <h3>Rest energy and Compton scales</h3>
   <div class="eq center">E<sub>0</sub> = mc²</div>
-  <div class="eq center">τ<sub>C</sub> = ℏ/(mc²)       λ̄<sub>C</sub> = ℏ/(mc)</div>
+  <div class="eq center">τ<sub>C</sub> = ℏ/(mc²)       λ̄<sub>C</sub> = ℏ/(mc)</div>
   <div class="eq center">τ<sub>C</sub> = λ̄<sub>C</sub>/c</div>
   <p>These are established scales for a massive particle. Their relation is a useful connection between a length scale and a time scale, but it does not show that time and distance are identical or that a particle literally travels around its Compton wavelength.</p>
-
   <h3>Action connects energy, momentum, distance, and time</h3>
   <div class="eq center">S = ∫ (p · dx − H dt)</div>
   <p>In Hamiltonian form, both p · dx and H dt have units of action (energy multiplied by time). This is a rigorous meeting point for spatial displacement and energy-time evolution. For a free massive relativistic particle, the action can also be written, with the usual sign convention, as:</p>
   <div class="eq center">S = −mc² ∫ dτ</div>
   <p>Here τ is proper time along the worldline. These established expressions are not a derivation of a new temporal substance, but they provide a principled starting point for the original distance–energy intuition.</p>
-
   <h3>Higher derivatives: what the analogy does and does not say</h3>
-  <div class="eq center">v = dx/dt    a = d²x/dt²    j = d³x/dt³</div>
+  <div class="eq center">v = dx/dt    a = d²x/dt²    j = d³x/dt³</div>
   <p>The original “higher-order” idea referred to derivatives such as velocity and acceleration—not extra dimensions. We can investigate higher derivatives of dynamical quantities, phase, or action, but a derivative with respect to time presupposes a time parameter. Reversing that relationship requires a clearly defined operational clock or a relational model; it cannot be done by notation alone.</p>
-
   <h3>Action derivatives and elapsed time</h3>
   <p>In suitable autonomous Hamilton–Jacobi formulations, the derivative of the characteristic action with respect to energy is related to elapsed time (with endpoint and convention choices specified). This is established mechanics, not a new discovery. A research opportunity would have to identify a regime where higher-order action information leads to a new measurable prediction rather than merely restating known dynamics.</p>
 </section>
 
 <section id="research" class="anchor">
   <div class="eyebrow">04 · Open research questions</div>
-  <h2>Questions before equations</h2>
-
+  <h2>Questions that connect detection and temporal physics</h2>
   <div class="grid">
-    <div class="card">
-      <h3>01 · Quantum phase and proper time</h3>
-      <p>How should internal quantum evolution be described when a clock's motion and gravitational environment are themselves quantum degrees of freedom?</p>
-      <p class="status hypothesis">Research frontier</p>
-    </div>
-    <div class="card">
-      <h3>02 · Wave-like and event-like time</h3>
-      <p>Can we operationally distinguish continuous phase evolution from discrete clock transitions and measurement events? This is not a claim that time itself has wave-particle duality.</p>
-      <p class="status hypothesis">Conceptual question</p>
-    </div>
-    <div class="card">
-      <h3>03 · Action, energy, and displacement</h3>
-      <p>Do derivatives or invariants of action encode useful temporal observables beyond established Hamilton–Jacobi and relativistic results?</p>
-      <p class="status hypothesis">Mathematical investigation</p>
-    </div>
-    <div class="card">
-      <h3>04 · Relational time</h3>
-      <p>Under what conditions can temporal order or duration be defined through correlations between physical systems, and what measurements distinguish competing clock models?</p>
-      <p class="status hypothesis">Established active field</p>
-    </div>
+    <div class="card"><h3>01 · What could an inherited signal look like?</h3><p>Which physical observables could preserve information across extreme cosmic timescales or a universe-generating transition: initial conditions, correlations, spectra, topology, event timing, or relationships among constants?</p><p class="status hypothesis">Working contact hypothesis</p></div>
+    <div class="card"><h3>02 · Can Zipf reveal a candidate fingerprint?</h3><p>Do rank-frequency distributions or deviations from them reveal structure in physical data that is robust across datasets, analysis choices, and realistic null models? Can the residual pattern support repeatable decoding?</p><p class="status hypothesis">Statistical detection question</p></div>
+    <div class="card"><h3>03 · Can the pattern be recognized and decoded?</h3><p>Can a receiver identify a candidate signature, synchronize to it, reconstruct a payload, correct errors, and independently verify the result using Lighthouse and Boiled Peanuts principles?</p><p class="status hypothesis">Communications and information question</p></div>
+    <div class="card"><h3>04 · Is there a temporal fingerprint?</h3><p>Could information be encoded in event intervals, phase relationships, frequency ratios, clock correlations, or other temporal structures rather than in spatial patterns alone?</p><p class="status hypothesis">Temporal-structure hypothesis</p></div>
+    <div class="card"><h3>05 · What new physics of time is possible?</h3><p>Do quantum phase, proper time, action, energy, and geometry contain an unresolved relationship that yields predictions beyond established quantum mechanics and relativity?</p><p class="status hypothesis">Foundational physics question</p></div>
+    <div class="card"><h3>06 · What could preserve information?</h3><p>Could black-hole processes, cosmic boundary conditions, topology, or daughter-universe scenarios provide a physically consistent channel? What survives, and what would be observable?</p><p class="status hypothesis">Mechanism question</p></div>
   </div>
-
-  <div class="callout warn">
-    <strong>Novelty rule.</strong>
-    “Time is relational,” “time emerges,” “time is wave-like,” and “energy is related to frequency” are not new claims by themselves. Each has substantial prior literature. Novelty must be established for a precise mechanism, result, observable, or test—not for a broad intuition.
-  </div>
-
+  <div class="callout warn"><strong>Zipf is a candidate detector, not a verdict.</strong> A Zipf-like distribution by itself does not establish a sender. Natural mixtures and other ordinary processes can produce heavy-tailed or rank-frequency patterns. The target is a reproducible residual fingerprint plus a decoding result that beats strong null models and survives blind replication.</div>
   <h3>What would count as progress?</h3>
   <ul>
-    <li>A derivation that reveals a nontrivial result not already contained in a known formulation.</li>
-    <li>A quantitative prediction that differs from the standard model within a specified regime.</li>
-    <li>A new analysis of existing data that survives appropriate null models and independent checks.</li>
-    <li>A feasible experimental protocol with a defined observable, uncertainty budget, and falsification criterion.</li>
+    <li>A preregistered statistical signature that is recovered in held-out physical data and is rare under realistic null ensembles.</li>
+    <li>A decoding procedure that reconstructs the same payload or invariant structure independently, with known error rates and no post-hoc tuning.</li>
+    <li>A temporal correlation or phase relationship that adds predictive information beyond standard models and survives instrument/systematic checks.</li>
+    <li>A mathematically consistent temporal model with a distinct quantitative prediction, a feasible test, and a clear falsification criterion.</li>
+    <li>A physically plausible transmission mechanism connecting the proposed encoding to an observable in our universe.</li>
   </ul>
+  <p class="small">A statistical anomaly, successful decoding of a deliberately designed test signal, and evidence of an external sender are three different levels of result. The program must state exactly which level has been achieved.</p>
 </section>
 
 <section id="tests" class="anchor">
-  <div class="eyebrow">05 · Experimental-first program</div>
-  <h2>First candidate: quantum clocks and proper time</h2>
-  <p class="lead">A promising near-term route is to study how internal clock evolution couples to quantum motion and relativistic proper time. This connects energy, phase, spatial trajectories, and time while providing observables that precision-clock experiments can access.</p>
-
-  <div class="callout good">
-    <strong>Why this candidate?</strong>
-    A 2026 Physical Review Letters paper by Sorci, Foo, Pikovski, Sanner, and Leibfried develops a Hamiltonian treatment of trapped-ion clocks and predicts regimes where motion–clock entanglement and quantum corrections to proper-time dynamics could become observable. It identifies state-of-the-art trapped-ion clocks as a possible experimental platform. This is a published theoretical proposal, not a claim that the proposed effect has already been experimentally confirmed.
-  </div>
-
-  <h3>Proposed research question</h3>
-  <p>Can an experimentally feasible trapped-ion clock protocol distinguish a fully quantum treatment of clock proper-time evolution from an effective description using a classical proper-time parameter, after known systematic effects are included?</p>
-
+  <div class="eyebrow">05 · Detection and experimental program</div>
+  <h2>From statistical fingerprint to synchronized decoding</h2>
+  <p class="lead">The first practical branch is to build and validate the detection architecture that the contact hypothesis requires. In parallel, TIME investigates whether temporal physics offers a deeper explanation or a second way to find the same information.</p>
+  <h3>Work package 0 · Zipf and information-fingerprint analysis</h3>
+  <p>Build a reproducible analysis pipeline that searches a defined physical dataset for rank-frequency structure and information-bearing residuals. Begin with synthetic data and well-characterized public datasets before interpreting any astronomical anomaly as a candidate contact signal.</p>
+  <table>
+    <tr><th>Element</th><th>Research specification</th></tr>
+    <tr><td>Candidate data</td><td>Preselected physical observations such as event counts, spectral features, timing intervals, or spatial/cosmological structures. Define each observable and selection rule before analysis.</td></tr>
+    <tr><td>Zipf analysis</td><td>Estimate rank-frequency behavior, compare power-law and non-power-law alternatives, quantify uncertainty, and test sensitivity to binning, thresholds, sample size, and ranking choices.</td></tr>
+    <tr><td>Residual structure</td><td>Test whether deviations from fitted distributions contain repeatable correlations, compressible structure, or a decodable pattern beyond what the fitted model predicts.</td></tr>
+    <tr><td>Null models</td><td>Use physically motivated simulations, shuffled and phase-randomized controls where appropriate, mixtures of ordinary processes, selection/instrument models, and held-out synthetic controls.</td></tr>
+    <tr><td>Validation</td><td>Preregister statistics and thresholds; correct for the number of datasets, scales, and transformations searched; reserve blind data; reproduce the result with an independent pipeline.</td></tr>
+    <tr><td>Falsification</td><td>The signature is reproduced by ordinary nulls, disappears under blind validation, depends on post-hoc choices, or cannot support stable decoding.</td></tr>
+    <tr><td>First deliverable</td><td>Open analysis code, data provenance, simulated signal and null ensembles, a statistical report, and a clear detection/no-detection decision.</td></tr>
+  </table>
+  <div class="callout warn"><strong>Interpretation boundary.</strong> Zipf-like behavior or an unusual residual is not proof of communication. A stronger result would require a stable fingerprint, a successful independent decoding procedure, and evidence that the result is not explained by ordinary physical processes or analysis artifacts.</div>
+  <h3>Work package 1 · Lighthouse recognition and synchronization</h3>
+  <p>Use a known, deliberately designed signal to validate the receiver architecture. This tests whether a candidate pattern can be acquired and synchronized under realistic uncertainty before attempting to recognize any naturally occurring pattern.</p>
+  <table>
+    <tr><th>Element</th><th>Benchmark design</th></tr>
+    <tr><td>Signal families</td><td>Periodic pulses, candidate prime-spaced gaps, and established synchronization or pseudorandom sequences as controls.</td></tr>
+    <tr><td>Receiver conditions</td><td>Unknown start time, clock offset and drift, timing jitter, missing pulses, background noise, and multiple candidate signals.</td></tr>
+    <tr><td>Observables</td><td>Detection probability, false-alarm rate, timing error, acquisition time, and robustness as signal-to-noise ratio changes.</td></tr>
+    <tr><td>Baseline</td><td>Matched filtering or normalized correlation against established sequences, with equal signal energy and equal search conditions.</td></tr>
+    <tr><td>Jupiter / Io reference</td><td>Optional ephemeris-key experiment: encode a known epoch and test independent reconstruction within a preregistered tolerance. It is a shared reference, not assumed to be a universal clock.</td></tr>
+    <tr><td>Falsification</td><td>The proposed beacon offers no advantage over standard sequences, or the apparent advantage disappears under fair controls and multiple-testing correction.</td></tr>
+  </table>
+  <h3>Work package 2 · Boiled Peanuts decoding and verification</h3>
+  <p>Use the courier/beacon/address architecture to test the complete message path: framing, synchronization, payload recovery, error correction, checksum verification, and independent reconstruction. Compare proposed codes and beacon structures with established communications methods. Document the exact payload length, symbol alphabet, code rate, channel assumptions, and decoder behavior.</p>
+  <p>The engineering demonstration should establish that the architecture works when the message is deliberately encoded. A separate scientific challenge is whether any naturally occurring physical data contains a compatible, independently recoverable structure.</p>
+  <h3>Work package 3 · Temporal signatures and quantum clocks</h3>
+  <p>Investigate whether information-bearing patterns may appear in event intervals, phase evolution, clock correlations, or relationships between energy and proper time. Begin with established quantum phase and relativistic clock theory; look for a specific observable that adds predictive content beyond current models.</p>
+  <div class="callout good"><strong>Concrete starting point.</strong> Sorci, Foo, Pikovski, Sanner, and Leibfried's 2026 Physical Review Letters paper develops a theoretical proposal for quantum signatures of proper time in trapped-ion optical clocks. It is a nearby published research direction, not an already confirmed experimental discovery. Reproduce its predictions before claiming an extension.</div>
   <table>
     <tr><th>Element</th><th>Research specification</th></tr>
     <tr><td>System</td><td>Trapped-ion optical clock with controlled motional states; begin with published parameters and accessible regimes.</td></tr>
-    <tr><td>Observable</td><td>Clock transition phase, coherence/visibility, and correlations or entanglement between internal clock state and motional state.</td></tr>
+    <tr><td>Observable</td><td>Clock transition phase, coherence/visibility, and correlations between internal clock state and motional state.</td></tr>
     <tr><td>Baseline</td><td>Standard relativistic time-dilation and quantum-clock Hamiltonian predictions, including known Doppler, trap, motional, and environmental corrections.</td></tr>
-    <tr><td>Candidate comparison</td><td>Classical proper-time parameter treatment versus a quantum treatment of motion and internal clock evolution.</td></tr>
-    <tr><td>Falsification</td><td>No statistically resolvable difference at achievable precision, or complete agreement with the baseline after systematics and uncertainty are included.</td></tr>
-    <tr><td>First deliverable</td><td>Independent derivation and reproduction of the published model, parameter study, and a go/no-go feasibility memo. Do not claim a novel effect before the literature comparison.</td></tr>
+    <tr><td>Research question</td><td>Can a fully quantum treatment of clock proper-time evolution be distinguished from an effective description using a classical proper-time parameter?</td></tr>
+    <tr><td>Falsification</td><td>No resolvable difference at achievable precision, or full agreement with the baseline after systematic effects and uncertainties are included.</td></tr>
   </table>
-
-  <h3>Other test routes to compare</h3>
-  <ul>
-    <li><strong>Quantum-clock interferometry:</strong> compare phase accumulation along paths with different proper times, with internal clock degrees of freedom treated quantum mechanically.</li>
-    <li><strong>Relational-clock models:</strong> test whether conditioning on a physical clock reproduces ordinary dynamics and identify where clock imperfections change measurable predictions.</li>
-    <li><strong>Action-based analysis:</strong> identify an observable whose dependence on energy derivatives of action is not already captured by standard Hamilton–Jacobi theory.</li>
-  </ul>
-
-  <div class="callout warn">
-    <strong>Important boundary.</strong>
-    The 2026 trapped-ion paper already establishes a nearby research direction. Our task is to reproduce it, map the current literature, and find a genuinely unresolved extension—not to present its published predictions as our own discovery.
-  </div>
+  <h3>How the work packages connect</h3>
+  <p>Zipf searches for a candidate statistical fingerprint. Lighthouse tests recognition and temporal acquisition. Boiled Peanuts tests decoding and message verification. The quantum-clock and temporal-structure program asks whether time itself supplies a deeper physical organizing principle. Success in one package does not automatically validate the others; a shared mechanism must be derived and tested.</p>
 </section>
 
 <section id="register" class="anchor">
   <div class="eyebrow">06 · Technical appendix</div>
   <h2>Equation and claim register</h2>
   <p>“Established” means valid within stated assumptions. “Candidate” means a question for investigation, not an accepted law. “Retired” means the original interpretation is not supported.</p>
-
   <table>
     <tr><th>ID</th><th>Expression</th><th>Meaning / assumptions</th><th>Status</th></tr>
     <tr><td>T-01</td><td>E₀ = mc²</td><td>Rest energy in special relativity.</td><td class="status established">Established</td></tr>
@@ -321,8 +257,11 @@ footer a{margin:0 7px}
     <tr><td>T-13</td><td>ℏ/E = E/c³</td><td>Dimensionally inconsistent equality; any energy bridge derived from it is invalid.</td><td class="status retired">Retired</td></tr>
     <tr><td>T-14</td><td>Time has wave-particle duality</td><td>Broad analogy only; requires operational definitions and a distinct test.</td><td class="status hypothesis">Unproven question</td></tr>
     <tr><td>T-15</td><td>Time emerges from a common distance–energy structure</td><td>Historical motivating hypothesis; no derivation established.</td><td class="status hypothesis">Open hypothesis</td></tr>
+    <tr><td>I-01</td><td>Inherited-information / contact hypothesis</td><td>Working premise that information from an older civilization or earlier cosmic lineage could be encoded in observable physical structure; mechanism and evidence unknown.</td><td class="status hypothesis">Working hypothesis</td></tr>
+    <tr><td>I-02</td><td>Zipf or rank-frequency fingerprint</td><td>Candidate statistical search method. A rank-frequency fit alone does not establish a sender; residual structure and blind decoding tests are required.</td><td class="status hypothesis">Candidate method</td></tr>
+    <tr><td>I-03</td><td>Lighthouse + Boiled Peanuts architecture</td><td>Designed recognition, synchronization, framing, error-correction, and verification workflow. Engineering demonstration is distinct from finding a naturally occurring cosmic message.</td><td class="status hypothesis">Testable method</td></tr>
+    <tr><td>I-04</td><td>Temporal information fingerprint</td><td>Possibility that inherited information is encoded in event timing, phase relationships, or clock correlations; no specific physical signature established.</td><td class="status hypothesis">Open hypothesis</td></tr>
   </table>
-
   <h3>Dimensional audit of the retired expression</h3>
   <div class="eq">[E/c³] = [m/c] = kg·s/m ≠ s</div>
   <p>The algebraic identity E/c³ = m/c follows from E = mc². It does not make either side a time. The former proposed “333 TeV bridge” obtained by rearranging ℏ/E = E/c³ is also retired because the equality is dimensionally invalid; the number is not established as a physical energy scale by that derivation.</p>
@@ -332,53 +271,20 @@ footer a{margin:0 7px}
   <div class="eyebrow">07 · Historical record</div>
   <h2>Preserved hypotheses and negative results</h2>
   <p>The following items are retained to document the project's development. Their inclusion is not endorsement.</p>
-
-  <details>
-    <summary>Original UTEG temporal potential Φ</summary>
-    <p>The historical definition Φ = E/(ρ₀c³), its spatial derivatives, and proposed wave equation lacked a sufficiently specified physical field, transformation law, action, source, and boundary conditions. They remain archived as unverified proposals.</p>
-  </details>
-
-  <details>
-    <summary>Original field Lagrangian and modified Einstein equations</summary>
-    <p>The proposed temporal-field Lagrangian and stress-energy contributions were not derived from a fully defined, dimensionally consistent model. They are not active equations.</p>
-  </details>
-
-  <details>
-    <summary>Original cosmological and dark-energy claims</summary>
-    <p>The proposed temporal explanation of dark energy, additional redshift effects, and singularity resolution lacked a validated derivation and observational fit. These are historical hypotheses, not predictions.</p>
-  </details>
-
-  <details>
-    <summary>Original nuclear τ-harmonic and universal decay scaling proposals</summary>
-    <p>The original project record reports that the proposed universal scaling across nuclear decay modes was not supported. The complete dataset, code, protocol, exclusions, uncertainties, and statistical analysis still require independent inspection before describing the result as independently reproduced.</p>
-  </details>
-
-  <details>
-    <summary>Original Noether interpretation</summary>
-    <p>If τ is defined as ℏ/E and E is constant, then dτ/dt = −ℏE⁻²(dE/dt) = 0 follows directly from the definition. This is not a new Noether charge. Noether's theorem requires a specified action and continuous symmetry.</p>
-  </details>
-
-  <details>
-    <summary>Wave–particle intuition about time</summary>
-    <p>The original discussion considered whether time might have wave-like and particle-like aspects. This is preserved as a motivating analogy. Quantum systems exhibit wave–particle duality; that fact does not establish that time itself is a wave or a particle. A research version must define what is oscillating, what is discrete, how it is measured, and what differs from existing quantum-clock theory.</p>
-  </details>
-
-  <details>
-    <summary>Connection to Illumina, anchors, and companion projects</summary>
-    <p>The creative and research branches grew in the context of the original temporal hypothesis. Their historical origin should remain visible. Symbolic, musical, and organizational meaning is distinct from scientific evidence; any physical connection must be demonstrated independently.</p>
-  </details>
+  <details><summary>Original UTEG temporal potential Φ</summary><p>The historical definition Φ = E/(ρ₀c³), its spatial derivatives, and proposed wave equation lacked a sufficiently specified physical field, transformation law, action, source, and boundary conditions. They remain archived as unverified proposals.</p></details>
+  <details><summary>Original field Lagrangian and modified Einstein equations</summary><p>The proposed temporal-field Lagrangian and stress-energy contributions were not derived from a fully defined, dimensionally consistent model. They are not active equations.</p></details>
+  <details><summary>Original cosmological and dark-energy claims</summary><p>The proposed temporal explanation of dark energy, additional redshift effects, and singularity resolution lacked a validated derivation and observational fit. These are historical hypotheses, not predictions.</p></details>
+  <details><summary>Original nuclear τ-harmonic and universal decay scaling proposals</summary><p>The original project record reports that the proposed universal scaling across nuclear decay modes was not supported. The complete dataset, code, protocol, exclusions, uncertainties, and statistical analysis still require independent inspection before describing the result as independently reproduced.</p></details>
+  <details><summary>Original Noether interpretation</summary><p>If τ is defined as ℏ/E and E is constant, then dτ/dt = −ℏE⁻²(dE/dt) = 0 follows directly from the definition. This is not a new Noether charge. Noether's theorem requires a specified action and continuous symmetry.</p></details>
+  <details><summary>Wave–particle intuition about time</summary><p>The original discussion considered whether time might have wave-like and particle-like aspects. This is preserved as a motivating analogy. Quantum systems exhibit wave–particle duality; that fact does not establish that time itself is a wave or a particle. A research version must define what is oscillating, what is discrete, how it is measured, and what differs from existing quantum-clock theory.</p></details>
+  <details><summary>Connection to Illumina, anchors, and companion projects</summary><p>The creative and research branches grew in the context of the original temporal hypothesis. Their historical origin should remain visible. Symbolic, musical, and organizational meaning is distinct from scientific evidence; any physical connection must be demonstrated independently.</p></details>
 </section>
 
 <section id="illumina" class="anchor">
   <div class="eyebrow">09 · Illumina cycle</div>
   <h2>A live lunar rhythm for the research</h2>
   <p class="lead">TIME follows alternating astronomical Full Moons. Each designated Full Moon launches a new Illumina cycle: 42 calendar days of active research, followed by a rest and integration interval that lasts until the next designated Full Moon.</p>
-
-  <div class="callout good">
-    <strong>Calendar rules.</strong>
-    The original Illumina 1 Full Moon on 5 November 2025 is the fixed anchor. Every second Full Moon after that is a launch. Days 1–42 are active; the remaining days before the next launch are rest days. The break is not forced to exactly 17 days.
-  </div>
-
+  <div class="callout good"><strong>Calendar rules.</strong> The original Illumina 1 Full Moon on 5 November 2025 is the fixed anchor. Every second Full Moon after that is a launch. Days 1–42 are active; the remaining days before the next launch are rest days. The break is not forced to exactly 17 days.</div>
   <div class="grid">
     <div class="card">
       <h3 id="currentCycleTitle">Current cycle</h3>
@@ -390,7 +296,6 @@ footer a{margin:0 7px}
       </div>
       <p id="cycleProgressCaption" class="small">—</p>
     </div>
-
     <div class="card">
       <h3>Next launch</h3>
       <div class="eq" id="nextLaunchDate">—</div>
@@ -400,42 +305,21 @@ footer a{margin:0 7px}
       <p id="restMeta" class="small">—</p>
     </div>
   </div>
-
   <div class="callout" id="moonDataStatus" role="status" aria-live="polite">Calculating astronomical Full Moon instants locally…</div>
-
   <div class="row" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <button id="refreshMoonData" type="button" style="background:#25213f;color:#e9edf5;border:1px solid #514a7c;border-radius:9px;padding:9px 13px;cursor:pointer;font:inherit">Recalculate calendar</button>
     <span class="small" id="timezoneLabel">Detecting this device’s time zone…</span>
   </div>
-
   <h3>Upcoming Illumina launches</h3>
   <div style="overflow-x:auto">
     <table>
-      <thead>
-        <tr>
-          <th>Cycle</th>
-          <th>Full Moon launch · local instant</th>
-          <th>Day 42 ends</th>
-          <th>Rest interval</th>
-          <th>Next launch</th>
-        </tr>
-      </thead>
-      <tbody id="launchTableBody">
-        <tr><td colspan="5">Calculating lunar phases…</td></tr>
-      </tbody>
+      <thead><tr><th>Cycle</th><th>Full Moon launch · local instant</th><th>Day 42 ends</th><th>Rest interval</th><th>Next launch</th></tr></thead>
+      <tbody id="launchTableBody"><tr><td colspan="5">Calculating lunar phases…</td></tr></tbody>
     </table>
   </div>
-
   <p class="small">Full Moon instants are calculated in the browser using the periodic corrections in Jean Meeus, <em>Astronomical Algorithms</em>, 2nd edition, Chapter 49. The calculation produces a dynamical-time (TT) Julian date; the page subtracts an estimated ΔT = TT − UT1 to obtain an approximate UTC instant, then displays that same instant in the visitor’s local time zone. UT1 is treated as UTC to within the sub-second range relevant to this calendar.</p>
-
   <p class="small">No API, network request, external library, or cached lunar dataset is required. The embedded ΔT table uses annual IERS/USNO values through 2025 and a documented 0.15-second-per-year extrapolation beyond the table. Future ΔT is uncertain, so displayed future instants are astronomical estimates, not second-level guarantees. The Full Moon is a global geocentric event; only its displayed clock time and calendar date vary by time zone.</p>
-
-  <p class="small">References:
-    <a href="https://maia.usno.navy.mil/products/deltaT" target="_blank" rel="noopener">USNO · ΔT data</a> ·
-    <a href="https://maia.usno.navy.mil/products/bulletin-a.htm" target="_blank" rel="noopener">IERS Bulletin A · Earth orientation</a> ·
-    <a href="https://github.com/soniakeys/meeus/blob/master/v3/moonphase/moonphase.go" target="_blank" rel="noopener">Meeus Chapter 49 reference implementation</a>.
-  </p>
-
+  <p class="small">References: <a href="https://maia.usno.navy.mil/products/deltaT" target="_blank" rel="noopener">USNO · ΔT data</a> · <a href="https://maia.usno.navy.mil/products/bulletin-a.htm" target="_blank" rel="noopener">IERS Bulletin A · Earth orientation</a> · <a href="https://github.com/soniakeys/meeus/blob/master/v3/moonphase/moonphase.go" target="_blank" rel="noopener">Meeus Chapter 49 reference implementation</a>.</p>
   <h3>How each Illumina cycle is used</h3>
   <ol>
     <li><strong>Days 1–7 · Orientation:</strong> define the question, gather primary literature, and write down assumptions.</li>
@@ -448,142 +332,50 @@ footer a{margin:0 7px}
 
 <section id="roadmap" class="anchor">
   <div class="eyebrow">09 · Multi-cycle research program</div>
-  <h2>From original intuition to a test</h2>
-  <p class="lead">The sequence is deliberately experimental-first. We begin by reconstructing and learning, then reproduce existing results, locate a genuine gap, and only then propose a new test.</p>
-
-  <div class="callout">
-    <strong>Governing question.</strong>
-    Can a precise, physically meaningful relationship involving temporal evolution, energy, action, and spatial geometry produce an observable result that is not already predicted by established physics?
-  </div>
-
-  <details open>
-    <summary>Stage 1 · Reconstruct the original hypothesis</summary>
-    <p><strong>Objective:</strong> document the initial intuition that time may emerge from a common structure involving distance and energy, and that higher-order derivatives may be relevant.</p>
-    <p><strong>Work:</strong> reconstruct the derivation of T=E/c³=m/c; identify each assumption and transformation; separate the original idea from later theoretical branches; preserve the dimensional failure.</p>
-    <p><strong>Deliverables:</strong> historical reconstruction, claim map, and corrected equation register.</p>
-    <p><strong>Advance gate:</strong> no ambiguity about what was originally proposed and which conclusions depended on it.</p>
-    <p class="small"><strong>Research prompt:</strong> “Reconstruct the original temporal hypothesis from the project record. Do not repair the original equation by guessing. Explain the intended relationship among distance, energy, time, and higher-order derivatives. Identify every mathematical step, hidden assumption, dimensional issue, and downstream claim. Separate historical motivation from established physics.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 2 · Map established theories and prior work</summary>
-    <p><strong>Objective:</strong> identify what is already known about time in relativity, quantum mechanics, quantum clocks, relational time, thermodynamics, and quantum gravity.</p>
-    <p><strong>Work:</strong> prioritize primary papers and authoritative reviews; include Page–Wootters, thermal time, quantum-clock theory, action principles, and recent proper-time interferometry proposals.</p>
-    <p><strong>Deliverables:</strong> annotated literature map, terminology glossary, and explicit list of open problems.</p>
-    <p><strong>Advance gate:</strong> identify a specific question not already answered by an existing paper or experiment.</p>
-    <p class="small"><strong>Research prompt:</strong> “Prepare a rigorous literature review of operational and theoretical approaches to time. Compare standard clock time, proper time, quantum phase, relational time, thermal time, and emergent-time proposals. For each, identify assumptions, established results, unresolved issues, and experiments. Do not call a broad existing idea novel.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 3 · Reproduce the mathematical foundations</summary>
-    <p><strong>Objective:</strong> independently derive quantum phase evolution, Compton scales, relativistic proper time, action principles, and the Hamilton–Jacobi relation between action and elapsed time.</p>
-    <p><strong>Deliverables:</strong> derivation notebook, units table, limiting-case checks, and reference equation set.</p>
-    <p><strong>Advance gate:</strong> reproduce standard results and understand their domains and operational meanings.</p>
-    <p class="small"><strong>Research prompt:</strong> “Derive the standard relations among energy, phase, action, spatial displacement, and proper time. State assumptions and conventions. Check units and invariance. Explain exactly what each formula measures and what it does not imply. Do not reinterpret established formulas as new physics.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 4 · Reproduce the quantum proper-time clock proposal</summary>
-    <p><strong>Objective:</strong> independently reproduce the 2026 trapped-ion clock theory and determine the parameter regimes in which quantum corrections to proper-time dynamics could be observed.</p>
-    <p><strong>Work:</strong> reconstruct the Hamiltonian, identify motion–clock coupling, quantify predicted phase/coherence signatures, and list experimental systematics.</p>
-    <p><strong>Deliverables:</strong> reproducible calculation, parameter sweep, and feasibility memo.</p>
-    <p><strong>Advance gate:</strong> calculations agree with the source paper and the experimental requirements are realistically stated.</p>
-    <p class="small"><strong>Research prompt:</strong> “Independently reproduce Sorci et al., ‘Quantum Signatures of Proper Time in Optical Ion Clocks’ (Physical Review Letters 136, 163602, 2026). Derive the Hamiltonian and predicted observables. Reproduce figures or numerical claims where possible. Separate the paper's predictions from experimental observations. Identify parameter regimes, systematic errors, and any unaddressed testable extension.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 5 · Investigate wave-like phase and discrete clock events</summary>
-    <p><strong>Objective:</strong> turn the wave–particle intuition into precise operational questions without assuming time itself is a quantum particle.</p>
-    <p><strong>Work:</strong> define phase evolution, clock transitions, measurement events, coherence, interference, and the role of the clock as a quantum system. Compare with established quantum clock models.</p>
-    <p><strong>Deliverables:</strong> operational definitions and candidate observables.</p>
-    <p><strong>Advance gate:</strong> the hypothesis says exactly what is measured and differs from standard quantum theory.</p>
-    <p class="small"><strong>Research prompt:</strong> “Analyze whether the phrase ‘wave-like and particle-like time’ can be converted into an operationally precise hypothesis. Distinguish time as a parameter, a clock observable, phase evolution, discrete transitions, and measurement events. Map all prior work. Propose a test only if it yields a prediction not already contained in standard quantum-clock theory.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 6 · Investigate action, energy, and spatial geometry</summary>
-    <p><strong>Objective:</strong> determine whether action-based relationships or higher-order derivatives yield new temporal observables.</p>
-    <p><strong>Work:</strong> study S=∫(p·dx−Hdt), the relativistic particle action, Hamilton–Jacobi theory, and derivatives with respect to energy. Check endpoint conventions, gauge/reference dependence, and whether any result is a reparameterization only.</p>
-    <p><strong>Deliverables:</strong> derivation report and list of nonredundant candidate observables.</p>
-    <p><strong>Advance gate:</strong> any candidate adds information or predictive power beyond the established formalism.</p>
-    <p class="small"><strong>Research prompt:</strong> “Investigate action as a bridge among energy, momentum, spatial displacement, and time. Derive the relevant Hamilton–Jacobi relations and their assumptions. Explore higher derivatives only where mathematically justified. Compare each result with existing mechanics and reject mere changes of variables.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 7 · Identify a genuine research gap</summary>
-    <p><strong>Objective:</strong> choose one narrow question where the literature review shows an unresolved issue and an observable is accessible.</p>
-    <p><strong>Work:</strong> compare competing models, identify null hypotheses, assess data and apparatus, estimate effect sizes, and consult relevant specialists or published experimental constraints.</p>
-    <p><strong>Deliverables:</strong> research-gap memo and ranked candidate experiments.</p>
-    <p><strong>Advance gate:</strong> novelty is documented and the test can distinguish at least two predictions.</p>
-    <p class="small"><strong>Research prompt:</strong> “Act as a skeptical research reviewer. Find a narrowly defined unresolved question at the intersection of quantum phase, proper time, action, and spatial geometry. Search primary literature. Show what has already been done. Define the standard-model prediction, alternative prediction, observable, feasibility, and exact novelty claim. If no gap survives, recommend stopping.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 8 · Derive predictions and design the test</summary>
-    <p><strong>Objective:</strong> produce a quantitative prediction and an experiment or existing-data analysis that could falsify it.</p>
-    <p><strong>Work:</strong> specify observables, parameters, calibration, systematics, sample selection, statistical model, uncertainty budget, preregistration, and exclusion criteria.</p>
-    <p><strong>Deliverables:</strong> prediction memo, reproducible code, test protocol, and go/no-go decision.</p>
-    <p><strong>Advance gate:</strong> a predicted difference is larger than or meaningfully comparable to achievable uncertainty and robust against confounds.</p>
-    <p class="small"><strong>Research prompt:</strong> “Develop a falsifiable test for the selected hypothesis. Derive quantitative predictions under standard physics and the candidate model. Specify the observable, instrument, required precision, systematic effects, sample size or data volume, statistical test, null hypothesis, and preregistered rejection criterion. Do not proceed if the models are observationally indistinguishable.”</p>
-  </details>
-
-  <details>
-    <summary>Stage 9 · Independent review and publication package</summary>
-    <p><strong>Objective:</strong> prepare a reproducible account that invites criticism.</p>
-    <p><strong>Deliverables:</strong> manuscript, derivations, code, data provenance, negative results, limitations, and external-review record.</p>
-    <p><strong>Advance gate:</strong> claims are proportional to evidence and another researcher can reproduce the work.</p>
-    <p class="small"><strong>Research prompt:</strong> “Write an independent-review-ready report. Clearly distinguish established physics, prior literature, original hypotheses, derived results, predictions, and observations. Include reproducibility materials and negative results. Remove unsupported claims and promotional language.”</p>
-  </details>
-
+  <h2>From contact hypothesis to a temporal test</h2>
+  <p class="lead">The program has two tracks: build a rigorous method for finding and decoding possible inherited information, and independently investigate whether time has a deeper physical structure. The tracks may converge, but neither is assumed to prove the other.</p>
+  <div class="callout"><strong>Governing question.</strong> If information from an older civilization or earlier cosmic lineage could reach us, what physical signature would it leave, how could we recognize and decode it, and could the same investigation reveal a new relationship involving time?</div>
+  <details open><summary>Stage 1 · Reconstruct the original hypothesis</summary><p><strong>Objective:</strong> document the initial intuition that time may emerge from a common structure involving distance and energy, and that higher-order derivatives may be relevant.</p><p><strong>Work:</strong> reconstruct the derivation of T=E/c³=m/c; identify each assumption and transformation; separate the original idea from later theoretical branches; preserve the dimensional failure.</p><p><strong>Deliverables:</strong> historical reconstruction, claim map, and corrected equation register.</p><p><strong>Advance gate:</strong> no ambiguity about what was originally proposed and which conclusions depended on it.</p><p class="small"><strong>Research prompt:</strong> “Reconstruct the original temporal hypothesis from the project record. Do not repair the original equation by guessing. Explain the intended relationship among distance, energy, time, and higher-order derivatives. Identify every mathematical step, hidden assumption, dimensional issue, and downstream claim. Separate historical motivation from established physics.”</p></details>
+  <details><summary>Stage 2 · Map established theories and prior work</summary><p><strong>Objective:</strong> identify what is already known about time in relativity, quantum mechanics, quantum clocks, relational time, thermodynamics, and quantum gravity.</p><p><strong>Work:</strong> prioritize primary papers and authoritative reviews; include Page–Wootters, thermal time, quantum-clock theory, action principles, and recent proper-time interferometry proposals.</p><p><strong>Deliverables:</strong> annotated literature map, terminology glossary, and explicit list of open problems.</p><p><strong>Advance gate:</strong> identify a specific question not already answered by an existing paper or experiment.</p><p class="small"><strong>Research prompt:</strong> “Prepare a rigorous literature review of operational and theoretical approaches to time. Compare standard clock time, proper time, quantum phase, relational time, thermal time, and emergent-time proposals. For each, identify assumptions, established results, unresolved issues, and experiments. Do not call a broad existing idea novel.”</p></details>
+  <details><summary>Stage 3 · Reproduce the mathematical foundations</summary><p><strong>Objective:</strong> independently derive quantum phase evolution, Compton scales, relativistic proper time, action principles, and the Hamilton–Jacobi relation between action and elapsed time.</p><p><strong>Deliverables:</strong> derivation notebook, units table, limiting-case checks, and reference equation set.</p><p><strong>Advance gate:</strong> reproduce standard results and understand their domains and operational meanings.</p><p class="small"><strong>Research prompt:</strong> “Derive the standard relations among energy, phase, action, spatial displacement, and proper time. State assumptions and conventions. Check units and invariance. Explain exactly what each formula measures and what it does not imply. Do not reinterpret established formulas as new physics.”</p></details>
+  <details><summary>Stage 4 · Formalize the inherited-information and contact hypothesis</summary><p><strong>Objective:</strong> state what is being assumed for research purposes and enumerate physically distinct ways information might be encoded into our observable universe.</p><p><strong>Work:</strong> distinguish deliberate communication from inherited initial conditions; consider temporal patterns, rank-frequency structure, correlations, spectra, topology, and boundary conditions. Do not assume a particular sender, mechanism, or cosmological scenario.</p><p><strong>Deliverables:</strong> hypothesis specification, candidate signal families, mechanism map, and a list of observations that would count against the premise.</p><p><strong>Advance gate:</strong> each candidate has an observable definition and a plausible path from encoding to detection.</p><p class="small"><strong>Research prompt:</strong> “Assume for hypothesis construction that contact or information inheritance is physically possible. Enumerate mechanisms by which an older civilization or earlier cosmic lineage could encode information into observable physical structure. Separate intentional messages from non-intentional inherited conditions. For each mechanism, identify what survives, what we could measure, and what would falsify it. Do not present the premise as established fact.”</p></details>
+  <details><summary>Stage 5 · Develop the Zipf-based fingerprint detector</summary><p><strong>Objective:</strong> determine whether Zipf and related rank-frequency statistics can identify candidate information-bearing structure in apparently random physical data.</p><p><strong>Work:</strong> compare power-law, lognormal, mixture, and physically motivated alternatives; test residual correlations and decoding; use synthetic signals, realistic null ensembles, preregistered analysis, and held-out data.</p><p><strong>Deliverables:</strong> reproducible statistical pipeline, null-model suite, blind-validation protocol, and decoder interface.</p><p><strong>Advance gate:</strong> a candidate fingerprint is stable under reasonable analysis choices, rare under strong nulls, and supports independent recovery of a predefined structure.</p><p class="small"><strong>Research prompt:</strong> “Design a rigorous Zipf-based detector for possible information embedded in physical data. Do not assume Zipf is universal or that a power law proves communication. Compare plausible distribution families, test residual information, control the look-elsewhere effect, use held-out data, and specify what successful decoding would mean.”</p></details>
+  <details><summary>Stage 6 · Validate the complete Lighthouse / Boiled Peanuts chain</summary><p><strong>Objective:</strong> demonstrate that a known encoded signal can be found, synchronized, decoded, error-corrected, and independently verified under realistic noise.</p><p><strong>Work:</strong> Lighthouse tests acquisition and synchronization; Boiled Peanuts tests framing, payload, checksum, error correction, and reconstruction. Compare against standard communications methods at equal energy and search complexity.</p><p><strong>Deliverables:</strong> end-to-end simulator, encoder/decoder, reproducible test vectors, error-rate report, and independent implementation test.</p><p><strong>Advance gate:</strong> an independent receiver recovers the predefined payload at the predicted error rate, or the design is revised based on the failure.</p><p class="small"><strong>Research prompt:</strong> “Implement the Lighthouse and Boiled Peanuts concepts as an end-to-end communication benchmark. Define the signal, synchronization, header, payload, checksum, error-correction code, channel noise, and decoder. Compare with established baselines. Verify that an independent implementation recovers exactly the same payload. Keep this engineering result separate from claims of cosmic contact.”</p></details>
+  <details><summary>Stage 7 · Reproduce the quantum proper-time clock proposal</summary><p><strong>Objective:</strong> independently reproduce the 2026 trapped-ion clock theory and determine the parameter regimes in which quantum corrections to proper-time dynamics could be observed.</p><p><strong>Work:</strong> reconstruct the Hamiltonian, identify motion–clock coupling, quantify predicted phase/coherence signatures, and list experimental systematics.</p><p><strong>Deliverables:</strong> reproducible calculation, parameter sweep, and feasibility memo.</p><p><strong>Advance gate:</strong> calculations agree with the source paper and the experimental requirements are realistically stated.</p><p class="small"><strong>Research prompt:</strong> “Independently reproduce Sorci et al., ‘Quantum Signatures of Proper Time in Optical Ion Clocks’ (Physical Review Letters 136, 163602, 2026). Derive the Hamiltonian and predicted observables. Reproduce figures or numerical claims where possible. Separate the paper's predictions from experimental observations. Identify parameter regimes, systematic errors, and any unaddressed testable extension.”</p></details>
+  <details><summary>Stage 8 · Investigate wave-like phase and discrete clock events</summary><p><strong>Objective:</strong> turn the wave–particle intuition into precise operational questions without assuming time itself is a quantum particle.</p><p><strong>Work:</strong> define phase evolution, clock transitions, measurement events, coherence, interference, and the role of the clock as a quantum system. Compare with established quantum clock models.</p><p><strong>Deliverables:</strong> operational definitions and candidate observables.</p><p><strong>Advance gate:</strong> the hypothesis says exactly what is measured and differs from standard quantum theory.</p><p class="small"><strong>Research prompt:</strong> “Analyze whether the phrase ‘wave-like and particle-like time’ can be converted into an operationally precise hypothesis. Distinguish time as a parameter, a clock observable, phase evolution, discrete transitions, and measurement events. Map all prior work. Propose a test only if it yields a prediction not already contained in standard quantum-clock theory.”</p></details>
+  <details><summary>Stage 9 · Investigate action, energy, and spatial geometry</summary><p><strong>Objective:</strong> determine whether action-based relationships or higher-order derivatives yield new temporal observables.</p><p><strong>Work:</strong> study S=∫(p·dx−Hdt), the relativistic particle action, Hamilton–Jacobi theory, and derivatives with respect to energy. Check endpoint conventions, gauge/reference dependence, and whether any result is a reparameterization only.</p><p><strong>Deliverables:</strong> derivation report and list of nonredundant candidate observables.</p><p><strong>Advance gate:</strong> any candidate adds information or predictive power beyond the established formalism.</p><p class="small"><strong>Research prompt:</strong> “Investigate action as a bridge among energy, momentum, spatial displacement, and time. Derive the relevant Hamilton–Jacobi relations and their assumptions. Explore higher derivatives only where mathematically justified. Compare each result with existing mechanics and reject mere changes of variables.”</p></details>
+  <details><summary>Stage 10 · Identify a genuine research gap</summary><p><strong>Objective:</strong> choose one narrow question from either the inherited-information detection track or the temporal-physics track where the literature review shows an unresolved issue and an observable is accessible.</p><p><strong>Work:</strong> compare competing models, identify null hypotheses, assess data and apparatus, estimate effect sizes, and consult relevant specialists or published experimental constraints.</p><p><strong>Deliverables:</strong> research-gap memo and ranked candidate experiments.</p><p><strong>Advance gate:</strong> novelty is documented and the test can distinguish at least two predictions.</p><p class="small"><strong>Research prompt:</strong> “Act as a skeptical research reviewer. Find a narrowly defined unresolved question in either inherited-information detection (Zipf statistics, decoding, cosmological signatures) or temporal physics (quantum phase, proper time, action, and geometry). Search primary literature. Show what has already been done. Define the standard-model prediction, alternative prediction, observable, feasibility, and exact novelty claim. If no gap survives, recommend stopping.”</p></details>
+  <details><summary>Stage 11 · Derive predictions and design the test</summary><p><strong>Objective:</strong> produce a quantitative prediction and an experiment or existing-data analysis that could falsify it.</p><p><strong>Work:</strong> specify observables, parameters, calibration, systematics, sample selection, statistical model, uncertainty budget, preregistration, and exclusion criteria.</p><p><strong>Deliverables:</strong> prediction memo, reproducible code, test protocol, and go/no-go decision.</p><p><strong>Advance gate:</strong> a predicted difference is larger than or meaningfully comparable to achievable uncertainty and robust against confounds.</p><p class="small"><strong>Research prompt:</strong> “Develop a falsifiable test for the selected hypothesis. Derive quantitative predictions under standard physics and the candidate model. Specify the observable, instrument, required precision, systematic effects, sample size or data volume, statistical test, null hypothesis, and preregistered rejection criterion. Do not proceed if the models are observationally indistinguishable.”</p></details>
+  <details><summary>Stage 12 · Independent review and publication package</summary><p><strong>Objective:</strong> prepare a reproducible account that invites criticism.</p><p><strong>Deliverables:</strong> manuscript, derivations, code, data provenance, negative results, limitations, and external-review record.</p><p><strong>Advance gate:</strong> claims are proportional to evidence and another researcher can reproduce the work.</p><p class="small"><strong>Research prompt:</strong> “Write an independent-review-ready report. Clearly distinguish established physics, prior literature, original hypotheses, derived results, predictions, and observations. Include reproducibility materials and negative results. Remove unsupported claims and promotional language.”</p></details>
   <h3>Standing instruction for every research session</h3>
   <div class="eq">Try to falsify the hypothesis before trying to extend it.</div>
-  <ul>
-    <li>Never introduce an equation without defining every symbol, checking units, and deriving it.</li>
-    <li>Compare every proposal with the strongest relevant established model and a realistic null model.</li>
-    <li>Distinguish theoretical predictions from experimental observations.</li>
-    <li>Preserve negative results and document uncertainty.</li>
-    <li>End every stage with an explicit advance / revise / stop decision.</li>
-  </ul>
+  <ul><li>Never introduce an equation without defining every symbol, checking units, and deriving it.</li><li>Compare every proposal with the strongest relevant established model and a realistic null model.</li><li>Distinguish theoretical predictions from experimental observations.</li><li>Preserve negative results and document uncertainty.</li><li>End every stage with an explicit advance / revise / stop decision.</li></ul>
 </section>
 
 <section id="network" class="anchor">
-  <div class="eyebrow">10 · PLNT Earth research network</div>
-  <h2>Connected projects and historical context</h2>
-  <p>These projects are linked for continuity and coordination. Their inclusion does not constitute evidence for TIME or establish a shared physical mechanism.</p>
-
+  <div class="eyebrow">10 · Research network and provenance</div>
+  <h2>Pages contributing to the research program</h2>
+  <p>The active research connections are organized by function in the detection and temporal-physics program. This is a working architecture, not a claim that the pages already demonstrate one common physical mechanism.</p>
+  <h3>Contact and information-detection architecture</h3>
   <div class="grid">
-    <div class="card">
-      <h3>Manifold Dynamics</h3>
-      <p><a href="https://manifolddynamics.plnt.earth">manifolddynamics.plnt.earth</a><br><span class="small">Geometric and mathematical explorations; historical branch to be reassessed against the revised foundations.</span></p>
-    </div>
-    <div class="card">
-      <h3>Dark Energy</h3>
-      <p><a href="https://darkenergy.plnt.earth">darkenergy.plnt.earth</a><br><span class="small">Cosmological research; no temporal-field explanation is established.</span></p>
-    </div>
-    <div class="card">
-      <h3>Intelligence</h3>
-      <p><a href="https://intelligence.plnt.earth">intelligence.plnt.earth</a><br><span class="small">Historical investigation of temporal ideas in cognition and biological dynamics.</span></p>
-    </div>
-    <div class="card">
-      <h3>Zeta</h3>
-      <p><a href="https://zeta.plnt.earth">zeta.plnt.earth</a><br><span class="small">Mathematical and nuclear-decay research history, including the reported negative scaling result.</span></p>
-    </div>
-    <div class="card">
-      <h3>Illumina</h3>
-      <p><a href="https://illumina.plnt.earth">illumina.plnt.earth</a><br><span class="small">Creative and cyclical framework hosting this research rhythm.</span></p>
-    </div>
-    <div class="card">
-      <h3>Field Lab</h3>
-      <p><a href="https://fieldlab.plnt.earth">fieldlab.plnt.earth</a><br><span class="small">Research coordination and experimental notes.</span></p>
-    </div>
-    <div class="card">
-      <h3>Froot and the anchors</h3>
-      <p><a href="https://plnt.earth">plnt.earth</a><br><span class="small">Creative work whose historical origin is connected to the original temporal exploration; not a scientific validation.</span></p>
-    </div>
-    <div class="card">
-      <h3>GitHub</h3>
-      <p><a href="https://github.com/tcarrw">github.com/tcarrw</a><br><span class="small">Project source and development record.</span></p>
-    </div>
+    <div class="card"><h3>Contact</h3><p><a href="https://contact.plnt.earth">contact.plnt.earth</a><br><span class="small">Working inherited-information hypothesis, cross-scale patterns, and candidate statistical fingerprints. Predictions require operational definitions and independent tests.</span></p></div>
+    <div class="card"><h3>Lighthouse</h3><p><a href="https://lighthouse.plnt.earth">lighthouse.plnt.earth</a><br><span class="small">Beacon recognition, signal acquisition, temporal synchronization, and receiver testing.</span></p></div>
+    <div class="card"><h3>Boiled Peanuts</h3><p><a href="https://boiledpeanuts.plnt.earth">boiledpeanuts.plnt.earth</a><br><span class="small">Message framing, astronomical addressing, checksums, error correction, decoding, and independent reconstruction.</span></p></div>
+  </div>
+  <h3>Foundational physical context</h3>
+  <div class="grid">
+    <div class="card"><h3>TIME</h3><p>Temporal evolution, quantum phase, proper time, action, energy, and the search for a mathematically consistent extension of established physics.</p></div>
+    <div class="card"><h3>Heat Death</h3><p><a href="https://heatdeath.plnt.earth">heatdeath.plnt.earth</a><br><span class="small">Long-term persistence, entropy, free-energy gradients, and the physical limits of observers and information processing.</span></p></div>
+    <div class="card"><h3>Manifold Dynamics</h3><p><a href="https://manifolddynamics.plnt.earth">manifolddynamics.plnt.earth</a><br><span class="small">Potential mathematical support for geometry and topology; specific claims require a separate audit before use.</span></p></div>
+    <div class="card"><h3>Dark Energy</h3><p><a href="https://darkenergy.plnt.earth">darkenergy.plnt.earth</a><br><span class="small">Cosmological context for expansion and possible cosmic boundary scenarios; no inherited-information mechanism is established.</span></p></div>
+  </div>
+  <h3>Historical and supporting branches</h3>
+  <div class="grid">
+    <div class="card"><h3>Intelligence</h3><p><a href="https://intelligence.plnt.earth">intelligence.plnt.earth</a><br><span class="small">Historical investigation of temporal ideas in cognition and biological dynamics.</span></p></div>
+    <div class="card"><h3>Zeta</h3><p><a href="https://zeta.plnt.earth">zeta.plnt.earth</a><br><span class="small">Mathematical and nuclear-decay research history, including the reported negative scaling result.</span></p></div>
+    <div class="card"><h3>Illumina and Field Lab</h3><p><a href="https://illumina.plnt.earth">illumina.plnt.earth</a> · <a href="https://fieldlab.plnt.earth">fieldlab.plnt.earth</a><br><span class="small">Research cadence, coordination, protocols, and project notes.</span></p></div>
+    <div class="card"><h3>Anchors, Elevator, and Froot</h3><p><a href="https://plnt.earth">plnt.earth</a><br><span class="small">Preserved as part of the original project's creative and historical development, not as current experimental evidence.</span></p></div>
+    <div class="card"><h3>GitHub</h3><p><a href="https://github.com/tcarrw">github.com/tcarrw</a><br><span class="small">Project source and development record.</span></p></div>
   </div>
 </section>
 
@@ -591,7 +383,6 @@ footer a{margin:0 7px}
   <div class="eyebrow">11 · Selected literature</div>
   <h2>References and starting points</h2>
   <p>These references establish relevant prior art and current research context. They do not validate the original UTEG equation or the broader hypotheses archived here.</p>
-
   <ol>
     <li>Page, D. N. and Wootters, W. K. (1983). “Evolution without evolution: Dynamics described by stationary observables.” <em>Physical Review D</em>, 27, 2885. <a href="https://doi.org/10.1103/PhysRevD.27.2885" target="_blank" rel="noopener">DOI</a>.</li>
     <li>Connes, A. and Rovelli, C. (1994). “Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation in General Covariant Quantum Theories.” <em>Classical and Quantum Gravity</em>, 11, 2899. <a href="https://arxiv.org/abs/gr-qc/9406019" target="_blank" rel="noopener">arXiv</a>.</li>
@@ -608,53 +399,39 @@ footer a{margin:0 7px}
 <section id="contact" class="anchor">
   <div class="eyebrow">12 · Research integrity</div>
   <h2>What this record promises</h2>
-
-  <div class="callout good">
-    <strong>TIME does not claim a completed theory.</strong>
-    It records an evolving research program. Established results are labeled as established; hypotheses remain hypotheses; retired equations remain visible; negative results are preserved; and new claims require derivations and tests.
-  </div>
-
-  <p>Each research stage must leave four permanent artifacts: a research report, an equation register, a list of unresolved questions, and an explicit advance / revise / stop decision.</p>
+  <div class="callout good"><strong>TIME does not claim a completed theory.</strong> It records an evolving research program. Established results are labeled as established; hypotheses remain hypotheses; retired equations remain visible; negative results are preserved; and new claims require derivations and tests.</div>
+  <p>The contact premise may be adopted for hypothesis construction, but every empirical claim must still be evaluated against ordinary physical explanations. Each research stage must leave a research report, an equation register, a list of unresolved questions, reproducible code/data where applicable, and an explicit advance / revise / stop decision.</p>
   <p class="small">Historical versions should be archived rather than silently overwritten. This page is the current research direction, not a retroactive rewrite of how the project developed.</p>
 </section>
-
 </main>
-
 <footer class="wrap">
   <p>TIME · Experimental Foundations of Time · plnt.earth</p>
   <p>Version 8.0 · Offline Meeus Lunar Calendar</p>
   <p>Historical hypotheses are preserved; scientific claims are evaluated by derivation, comparison, and test.</p>
   <p><a href="https://earth.plnt.earth">Earth</a> · <a href="https://plnt.earth">plnt.earth</a></p>
 </footer>
-
 <script>
 (() => {
   "use strict";
 
   // Offline lunar-phase engine: Meeus, Astronomical Algorithms, 2nd ed., ch. 49.
   // The calculation returns a Full Moon instant in TT; ΔT = TT - UT1 converts
-  // it to UT1. UT1 is approximated as UTC (difference < 0.9 s by UTC design.
-
+  // it to UT1. UT1 is approximated as UTC (difference < 0.9 s by UTC design).
   const ANCHOR_UTC_DAY = "2025-11-05";
   const ACTIVE_DAYS = 42;
   const FIRST_YEAR = 2025;
   const MAX_FUTURE_YEARS = 10;
-
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
   const $ = id => document.getElementById(id);
-
   const dateParts = new Intl.DateTimeFormat("en-CA", {
     timeZone, year: "numeric", month: "2-digit", day: "2-digit"
   });
-
   const dateLong = new Intl.DateTimeFormat(undefined, {
     timeZone: "UTC", year: "numeric", month: "long", day: "numeric"
   });
-
   const dateShort = new Intl.DateTimeFormat(undefined, {
     timeZone: "UTC", year: "numeric", month: "short", day: "numeric"
   });
-
   const dateTimeLong = new Intl.DateTimeFormat(undefined, {
     timeZone, year: "numeric", month: "short", day: "numeric",
     hour: "numeric", minute: "2-digit", second: "2-digit", timeZoneName: "short"
@@ -664,9 +441,7 @@ footer a{margin:0 7px}
   // Values are annual reference points; interpolation is used between years.
   // Beyond 2025, a modest +0.15 s/year extrapolation is used and is explicitly
   // treated as an estimate, not a live Earth-orientation measurement.
-
   const DELTA_T_FIRST_YEAR = 1972;
-
   const DELTA_T = [
     42.23,43.37,44.49,45.48,46.46,47.52,48.53,49.59,50.54,51.38,
     52.17,52.96,53.79,54.34,54.87,55.32,55.82,56.30,56.86,57.57,
@@ -688,26 +463,20 @@ footer a{margin:0 7px}
 
   function deltaTSeconds(yearValue) {
     const lastYear = DELTA_T_FIRST_YEAR + DELTA_T.length - 1;
-
     if (yearValue >= lastYear) {
       return DELTA_T[DELTA_T.length - 1] + 0.15 * (yearValue - lastYear);
     }
-
     if (yearValue <= DELTA_T_FIRST_YEAR) return DELTA_T[0];
-
     const index = yearValue - DELTA_T_FIRST_YEAR;
     const lower = Math.floor(index);
     const fraction = index - lower;
-
     return DELTA_T[lower] * (1 - fraction) + DELTA_T[lower + 1] * fraction;
   }
 
   function fullMoonJDE(k) {
     const T = k / 1236.85;
     const T2 = T * T, T3 = T2 * T, T4 = T3 * T;
-
     const E = 1 - 0.002516 * T - 0.0000074 * T2;
-
     const M = mod360(2.5534 + 29.10535670*k - 0.0000014*T2 - 0.00000011*T3);
     const Mp = mod360(201.5643 + 385.81693528*k + 0.0107582*T2 + 0.00001238*T3 - 0.000000058*T4);
     const F = mod360(160.7108 + 390.67050284*k - 0.0016118*T2 - 0.00000227*T3 + 0.000000011*T4);
@@ -734,14 +503,9 @@ footer a{margin:0 7px}
       34.52+27.261239*k, 207.19+0.121824*k, 291.34+1.844379*k,
       161.72+24.198154*k, 239.56+25.513099*k, 331.55+3.592518*k
     ];
-
-    const C = [
-      0.000325,0.000165,0.000164,0.000126,0.000110,0.000062,0.000060,
-      0.000056,0.000047,0.000042,0.000040,0.000037,0.000035,0.000023
-    ];
-
+    const C = [0.000325,0.000165,0.000164,0.000126,0.000110,0.000062,0.000060,
+      0.000056,0.000047,0.000042,0.000040,0.000037,0.000035,0.000023];
     for (let i = 0; i < A.length; i++) correction += C[i] * sinD(A[i]);
-
     return mean + correction;
   }
 
@@ -754,13 +518,7 @@ footer a{margin:0 7px}
     const roughDate = jdToDate(jde);
     const dt = deltaTSeconds(decimalYear(roughDate));
     const utcDate = jdToDate(jde - dt / 86400);
-
-    return {
-      k,
-      instant: utcDate,
-      iso: utcDate.toISOString(),
-      deltaT: dt
-    };
+    return { k, instant: utcDate, iso: utcDate.toISOString(), deltaT: dt };
   }
 
   function generateFullMoons() {
@@ -768,56 +526,42 @@ footer a{margin:0 7px}
     const lastYear = Math.min(2100, Math.max(2035, now.getFullYear() + MAX_FUTURE_YEARS));
     const startDecimalYear = FIRST_YEAR;
     const endDecimalYear = lastYear + 1;
-
     // Integer lunation count plus 0.5 denotes Full Moon in Meeus chapter 49.
     let k = Math.floor((startDecimalYear - 2000) * 12.3685 - 0.5) + 0.5;
     const endK = (endDecimalYear - 2000) * 12.3685 + 1;
-
     const events = [];
-
     for (; k <= endK; k += 1) {
       const event = calculateFullMoon(k);
       const y = event.instant.getUTCFullYear();
-
       if (y >= FIRST_YEAR - 1 && y <= lastYear + 1) events.push(event);
     }
-
     return events.sort((a,b) => a.instant - b.instant);
   }
 
   function localKey(date) {
     const parts = Object.fromEntries(dateParts.formatToParts(date)
       .filter(p => p.type !== "literal").map(p => [p.type, p.value]));
-
     return `${parts.year}-${parts.month}-${parts.day}`;
   }
-
   function keyToUTCDate(key) {
     const [y,m,d] = key.split("-").map(Number);
     return new Date(Date.UTC(y,m-1,d));
   }
-
   function addDays(key, n) {
     const d = keyToUTCDate(key);
     d.setUTCDate(d.getUTCDate()+n);
     return d.toISOString().slice(0,10);
   }
-
   function dayDifference(a,b) {
     return Math.round((keyToUTCDate(b)-keyToUTCDate(a))/86400000);
   }
-
   function prettyKey(key, style="long") {
     return (style === "short" ? dateShort : dateLong).format(keyToUTCDate(key));
   }
 
   function buildLaunches(events) {
     const anchorIndex = events.findIndex(e => e.iso.slice(0,10) === ANCHOR_UTC_DAY);
-
-    if (anchorIndex < 0) {
-      throw new Error("The calculated 5 November 2025 Full Moon anchor was not found.");
-    }
-
+    if (anchorIndex < 0) throw new Error("The calculated 5 November 2025 Full Moon anchor was not found.");
     return events.slice(anchorIndex).filter((_,i) => i % 2 === 0).map((event,index) => ({
       cycle: index + 1,
       instant: event.instant,
@@ -831,67 +575,48 @@ footer a{margin:0 7px}
     const launches = buildLaunches(events);
     const now = new Date();
     const todayKey = localKey(now);
-
     let currentIndex = -1;
-
     for (let i=0; i<launches.length; i++) {
       if (launches[i].instant <= now) currentIndex = i;
       else break;
     }
-
     if (currentIndex < 0 || currentIndex + 1 >= launches.length) {
       throw new Error("The local lunar calculation does not yet contain both the current and next Illumina launch.");
     }
 
     const current = launches[currentIndex];
     const next = launches[currentIndex+1];
-
     const launchKey = current.localDate;
     const nextKey = next.localDate;
-
     const dayNumber = dayDifference(launchKey,todayKey)+1;
     const workEndKey = addDays(launchKey,ACTIVE_DAYS-1);
     const restStartKey = addDays(workEndKey,1);
     const restDays = Math.max(0,dayDifference(restStartKey,nextKey));
     const restEndKey = addDays(nextKey,-1);
-
     const isActive = dayNumber >= 1 && dayNumber <= ACTIVE_DAYS;
     const isRest = dayNumber > ACTIVE_DAYS;
-
     const activeProgress = Math.min(100,Math.max(0,dayNumber/ACTIVE_DAYS*100));
     const restElapsed = isRest ? dayDifference(restStartKey,todayKey)+1 : 0;
     const restProgress = restDays ? Math.min(100,Math.max(0,restElapsed/restDays*100)) : 0;
-
     const progress = isActive ? activeProgress : (isRest ? restProgress : 0);
     const status = isActive ? "Active research" : "Rest & integration";
     const daysLeft = isActive ? ACTIVE_DAYS-dayNumber : dayDifference(todayKey,nextKey);
 
     $("liveMeta").textContent = `Illumina ${current.cycle} · ${isActive ? `Day ${dayNumber} of 42` : `Rest period · ${Math.max(1,restElapsed)} of ${restDays} days`} · ${prettyKey(todayKey)}`;
-
     $("currentCycleTitle").textContent = `Illumina ${current.cycle} · ${status}`;
-
     $("currentCycleState").textContent = isActive
       ? `Day ${dayNumber} / 42 · ${daysLeft} active ${daysLeft===1?"day":"days"} remaining`
       : `Rest & integration · ${restElapsed} / ${restDays} days`;
-
     $("currentCycleDates").textContent = `Launch: ${dateTimeLong.format(current.instant)} · Day 42: ${prettyKey(workEndKey)} · Next launch: ${dateTimeLong.format(next.instant)}`;
-
     $("cycleProgressText").textContent = `${Math.round(progress)}% through the ${isActive?"active cycle":"rest interval"}`;
-
     $("cycleProgressBar").style.width = `${progress}%`;
-
     $("cycleProgressCaption").textContent = isActive
       ? `${prettyKey(launchKey)} through ${prettyKey(workEndKey)} · active research`
       : `${prettyKey(restStartKey)} through ${prettyKey(restEndKey)} · integration break`;
 
     $("nextLaunchDate").textContent = `Illumina ${next.cycle} · ${dateTimeLong.format(next.instant)}`;
-
     $("nextLaunchMeta").textContent = `Calculated Full Moon instant · ${dayDifference(todayKey,nextKey)} local calendar ${dayDifference(todayKey,nextKey)===1?"day":"days"} from today · ΔT estimate ${next.deltaT.toFixed(2)} s`;
-
-    $("restDates").textContent = restDays
-      ? `${prettyKey(restStartKey)} – ${prettyKey(restEndKey)}`
-      : "No rest days before next launch";
-
+    $("restDates").textContent = restDays ? `${prettyKey(restStartKey)} – ${prettyKey(restEndKey)}` : "No rest days before next launch";
     $("restMeta").textContent = `${restDays} calendar ${restDays===1?"day":"days"} between the 42-day work period and the next Full Moon launch.`;
 
     const statusNode = $("moonDataStatus");
@@ -899,19 +624,15 @@ footer a{margin:0 7px}
     statusNode.textContent = `Calculated locally · Meeus Chapter 49 · ${events.length} Full Moon instants · no API or network request · local time zone: ${timeZone}.`;
 
     const upcoming = launches.slice(Math.max(0,currentIndex-1),currentIndex+9);
-
     $("launchTableBody").innerHTML = upcoming.map(item => {
       const idx = launches.findIndex(x => x.cycle===item.cycle);
       const following = launches[idx+1];
-
       if (!following) return "";
-
       const end = addDays(item.localDate,ACTIVE_DAYS-1);
       const restStart = addDays(end,1);
       const restCount = Math.max(0,dayDifference(restStart,following.localDate));
       const restEnd = addDays(following.localDate,-1);
       const isCurrent = item.cycle===current.cycle;
-
       return `<tr${isCurrent?' style="background:rgba(155,140,255,.08)"':''}>
         <td>${isCurrent?"<strong>":""}Illumina ${item.cycle}${isCurrent?"</strong>":""}</td>
         <td>${dateTimeLong.format(item.instant)}</td>
@@ -927,10 +648,8 @@ footer a{margin:0 7px}
   function refresh() {
     const button = $("refreshMoonData");
     button.disabled = true;
-
     $("moonDataStatus").className = "callout";
     $("moonDataStatus").textContent = "Calculating Full Moon instants locally…";
-
     try {
       const events = generateFullMoons();
       renderCalendar(events);
@@ -950,13 +669,8 @@ footer a{margin:0 7px}
   function scheduleMidnightRefresh() {
     const now = new Date();
     const tomorrow = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
-
-    setTimeout(() => {
-      refresh();
-      scheduleMidnightRefresh();
-    },tomorrow-now+1000);
+    setTimeout(() => { refresh(); scheduleMidnightRefresh(); },tomorrow-now+1000);
   }
-
   scheduleMidnightRefresh();
 })();
 </script>
