@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>TIME v8.0 · Experimental Foundations of Time | plnt.earth</title>
+<title>TIME v9.0 · Experimental Foundations of Time | plnt.earth</title>
 <meta name="description" content="A research program investigating possible inherited information, signal recognition, and the deeper physical structure of time.">
 <meta name="author" content="Tristan White">
 <meta name="date" content="2026-11-27">
 <link rel="canonical" href="https://time.plnt.earth/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TIME v8.0 · Experimental Foundations of Time">
+<meta property="og:title" content="TIME v9.0 · Experimental Foundations of Time">
 <meta property="og:description" content="A research record connecting a working contact hypothesis, Zipf-based information detection, signal decoding, and testable questions about time.">
 <meta property="og:url" content="https://time.plnt.earth/">
 <style>
@@ -47,6 +47,7 @@ p{margin:10px 0;color:#d5dce8}
 .lead{font-size:1.13rem;color:#c4cede;max-width:850px}
 .muted{color:var(--muted)}.small{font-size:.87rem;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.grid>*{min-width:0}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:15px;padding:19px}
 .card h3{margin:0 0 8px}
 .callout{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel2);border-radius:10px;padding:17px 19px;margin:18px 0}
@@ -68,7 +69,7 @@ footer{padding:35px 0 55px;text-align:center;color:var(--soft);font-size:.83rem}
 footer a{margin:0 7px}
 .anchor{scroll-margin-top:90px}
 @media(max-width:720px){.wrap{width:min(100% - 28px,var(--max))}header{padding:50px 0 24px}.grid{grid-template-columns:1fr}section{padding:27px 0}table{font-size:.82rem}th,td{padding:9px 7px}}
-@media print{body{background:#fff;color:#111}.nav{display:none}.card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}p,li,td{color:#222}a{color:#333}}
+@media print{body{background:#fff;color:#111}nav{display:none}.card,.callout,.eq{background:#fff;color:#111;border-color:#aaa}p,li,td{color:#222}a{color:#333}}
 
 .buttonlink{display:inline-block;border:1px solid var(--line);border-radius:9px;padding:8px 12px;color:var(--ink);background:var(--panel);font-size:.88rem}
 .status{font-weight:750;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase}
@@ -78,7 +79,7 @@ footer a{margin:0 7px}
 </head>
 <body>
 <header class="wrap">
-  <div class="kicker">plnt.earth · research record · v8.0</div>
+  <div class="kicker">plnt.earth · research record · v9.0</div>
   <div class="mark">τ</div>
   <h1>Experimental Foundations of Time</h1>
   <p class="subtitle">A research program investigating possible inherited information, signal recognition, and the deeper physical structure of time.</p>
@@ -93,22 +94,53 @@ footer a{margin:0 7px}
   <span class="navbrand">TIME</span>
   <a href="#overview">Overview</a><a href="#origin">Origin &amp; architecture</a><a href="#foundations">Foundations</a>
   <a href="#research">Research questions</a><a href="#tests">Synchronization &amp; clocks</a><a href="#register">Equation register</a>
-  <a href="#archive">Archive</a><a href="#illumina">Illumina</a><a href="#roadmap">Roadmap</a><a href="#network">PLNT network</a><a href="#references">References</a>
+  <a href="#archive">Archive</a><a href="#illumina">Illumina</a><a href="#roadmap">Roadmap</a><a href="#network">PLNT network</a><a href="#references">References</a><a href="#contact">Integrity</a>
 </div></nav>
 <main class="wrap">
 <section id="overview" class="anchor">
-  <div class="eyebrow">01 · Mission and status</div>
-  <h2>Information, contact, and the foundations of time</h2>
-  <p class="lead">TIME investigates two connected possibilities: that information may have been deliberately or structurally embedded in our universe by an older civilization or an earlier cosmic lineage, and that the search for such information may reveal a deeper relationship among time, energy, information, and spacetime.</p>
-  <div class="callout"><strong>Working premise.</strong> For the purpose of generating predictions, this program assumes that contact or information transfer across extreme cosmic boundaries is possible. This is a research premise, not an established fact. The task is to determine what physical mechanism could carry information, what observable signature it would leave, and whether that signature can be recognized and decoded.</div>
+  <div class="eyebrow">01 · Premise and approach</div>
+  <h2>If a civilization could seed a universe, what would it have to do to leave a message?</h2>
+  <p class="lead">TIME starts from a thought experiment, not an observation. Suppose a deep enough theory of time and energy lets a civilization survive heat death, travel across space and time, or seed new universes. It would then have a reason to leave a message in whatever it seeds. If we might one day do that, an older civilization, or an earlier universe in a chained lineage, may already have done it to ours. The program asks what such a message would have to look like, and what that requirement implies about the physics of time.</p>
+  <div class="callout"><strong>Working premise.</strong> For hypothesis construction, assume that one-way information transfer into our universe from a prior one is physically possible. This is a research premise, not an established fact. It is not a simulation hypothesis. The mechanism is left open: black holes, dark energy, a boundary or bounce, or something not yet named. The task is to ask what would have to be true for the premise to hold, and where its consequences could be observed.</div>
+
+  <h3>The argument, step by step</h3>
+  <p>Each step can fail independently, and each is labeled by how well supported it currently is.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Step</th><th>Claim</th><th>Status</th></tr>
+    <tr><td>1 · Motive</td><td>An advanced civilization facing heat death would want to persist beyond its universe, and a creator of a new universe would want to be able to communicate with it.</td><td class="status hypothesis">Plausible, not testable alone</td></tr>
+    <tr><td>2 · Capability</td><td>A complete theory of time, energy and spacetime would allow universe creation or controlled boundary crossing.</td><td class="status hypothesis">Speculative</td></tr>
+    <tr><td>3 · Encoding</td><td>Information can be written into the new universe at creation, in whatever parameters the underlying theory leaves free.</td><td class="status hypothesis">Depends on step 2</td></tr>
+    <tr><td>4 · Survival and detection</td><td>The encoding survives cosmic evolution and can be recognized from inside, without the sender's conventions.</td><td class="status hypothesis">Constrained by physics (below)</td></tr>
+  </table></div>
+
+  <h3>Two sides, one coupling</h3>
+  <p>The program attacks from two directions and does not require either to be proven first.</p>
   <div class="grid">
-    <div class="card"><h3>Contact hypothesis</h3><p>Information from an older civilization, an earlier cosmic lineage, or another physically connected domain may be encoded in structures or relationships that persist in our universe.</p></div>
-    <div class="card"><h3>Detection architecture</h3><p>Zipf and related statistical methods help search for candidate structure; Lighthouse provides recognition and synchronization; Boiled Peanuts provides framing, error correction, decoding, and verification.</p></div>
-    <div class="card"><h3>Temporal question</h3><p>Could the information-bearing structure also reveal an unrecognized relationship among temporal intervals, quantum phase, energy, and spacetime geometry?</p></div>
-    <div class="card"><h3>Scientific standard</h3><p>Separate the working premise from evidence. Define candidate signals, compare them with strong physical and statistical null models, test decoding on held-out data, and derive independent temporal predictions.</p></div>
+    <div class="card"><h3>The message side</h3><p>What could a surviving, recognizable, decodable signal look like, and how would we search for it in data that appears random? Zipf and related statistics are candidate tools, not verdicts.</p><p class="status hypothesis">Detection question</p></div>
+    <div class="card"><h3>The time side</h3><p>Do quantum phase, proper time, action, energy and geometry contain an unrecognized relationship that makes a new, measurable prediction?</p><p class="status hypothesis">Foundational physics question</p></div>
   </div>
-  <p class="small">The contact premise and the temporal-physics question can be investigated independently. A signal need not prove a new theory of time, and a new temporal relationship need not prove contact. The research asks whether evidence eventually connects them.</p>
-  <div class="callout warn"><strong>Historical equation status.</strong> The original UTEG expression T = E/c³ = m/c fails dimensional analysis and remains retired as a physical time equation. Preserving the broader research question does not restore that expression or assume a replacement.</div>
+  <div class="callout good"><strong>The coupling: writable parameters.</strong> A sender can only write into what the underlying theory leaves free: dimensionless constants, initial conditions, topology. Quantities the theory fixes cannot carry a message. So a theory of time that identifies which parameters are free also identifies where to search. In the other direction, a decodable structure in those parameters would constrain what the theory can be. Progress on either side narrows the other, and neither needs to be established first.</div>
+
+  <h3>Three problems any one-way sender must solve</h3>
+  <p>The structure of the Lighthouse, Jupiter and Carrier Pigeon pages is kept here as a concept: any one-way message to an unknown receiver faces the same three problems. These are requirements of the channel, not guesses about a mind. The older sibling pages implement them with details that predate this version and may differ from current positions.</p>
+  <div class="grid">
+    <div class="card"><h3>Acquisition · Beacon</h3><p>How does a receiver notice that something is there? In the cosmic setting: a structure that is non-random and recognizable without knowing the code, sitting where randomness would otherwise be expected.</p><p class="status hypothesis">Lighthouse</p></div>
+    <div class="card"><h3>Shared reference · Address and clock</h3><p>How do sender and receiver agree on location and timing without shared units? The sender must anchor to dimensionless quantities or ratios of natural timescales. <strong>This role is the time question seen from the sender's side:</strong> a unit-free definition of time is exactly what a theory of time would supply.</p><p class="status hypothesis">Jupiter / ephemeris key</p></div>
+    <div class="card"><h3>Durable payload · Courier</h3><p>How does the content survive the gap between sending and reading, and how can a receiver verify it? Place it in the most durable carrier and frame it with synchronization, error correction and a checksum.</p><p class="status hypothesis">Carrier Pigeon / Boiled Peanuts</p></div>
+    <div class="card"><h3>Self-authentication</h3><p>A checksum or error-correcting code gives a pass/fail test. A random sequence passes a 16-bit check about 1 time in 65,000 per attempt, which makes false-alarm rates quantifiable once the search space is accounted for. This works only for framings we can guess; sender-agnostic searches need compressibility and entropy-based tests.</p><p class="status hypothesis">Verification principle</p></div>
+  </div>
+
+  <h3>How strong is each constraint?</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Layer</th><th>Basis</th><th>Examples</th><th>Testability</th></tr>
+    <tr><td>1 · Forced by channel physics</td><td>Requirements any message must meet to arrive</td><td>Survives about 13.8 billion years of evolution, so it lives in conserved or invariant quantities; readable without shared units, so it is dimensionless</td><td>Strongest; each follows from the physics</td></tr>
+    <tr><td>2 · Convergent design</td><td>Natural solutions to the three problems above</td><td>Beacon, shared clock or address, durable framed payload</td><td>Each specific sender-model predicts a signature and can be excluded</td></tr>
+    <tr><td>3 · Intent and psychology</td><td>Guesses about what a sender would choose</td><td>Preferred symbols, encodings, cultural content</td><td>Weakest; kept separate and labeled</td></tr>
+  </table></div>
+  <p class="small">Any single sender-model is falsifiable if it predicts a specific signature. The family of all sender-models is not: no result rules out every possible sender. The program therefore aims to bound the search, as SETI does, not to refute the premise outright. Null results are expected and are results.</p>
+
+  <div class="callout warn"><strong>Zipf is a candidate detector, not a verdict.</strong> Natural processes and even random typing produce Zipf-like distributions without any sender. The target is residual structure that survives comparison with realistic null models: for example, conditional entropy across block lengths, compressibility, and decoding that passes an independent check on held-out data.</div>
+  <div class="callout warn"><strong>Historical equation status.</strong> The original UTEG expression T = E/c³ = m/c fails dimensional analysis and remains retired as a physical time equation. Earlier sibling pages (Contact, Heat Death, Lighthouse, Boiled Peanuts) were written before this change and are unchanged; this page supersedes them where they differ. Preserving the broader research question does not restore the expression or assume a replacement.</div>
 </section>
 
 <section id="origin" class="anchor">
@@ -188,6 +220,49 @@ footer a{margin:0 7px}
     <li>A physically plausible transmission mechanism connecting the proposed encoding to an observable in our universe.</li>
   </ul>
   <p class="small">A statistical anomaly, successful decoding of a deliberately designed test signal, and evidence of an external sender are three different levels of result. The program must state exactly which level has been achieved.</p>
+  <h3>Candidate carriers: where a message could live</h3>
+  <p>If a sender can only write into what the underlying theory leaves free, and the message must survive cosmic evolution, the search space shrinks to a short list. This table is a structured set of hypotheses. An entry is a place to look, not a claim that anything is there.</p>
+  <div style="overflow-x:auto">
+  <table>
+    <tr><th>Carrier</th><th>Why it could survive</th><th>Existing data</th><th>What a theory of time would settle</th><th>Main null / confound</th></tr>
+    <tr>
+      <td><strong>Dimensionless constants</strong><br><span class="small">couplings, mass ratios</span></td>
+      <td>Invariant, unit-free, readable without shared conventions. Strongest on Layer 1.</td>
+      <td>Laboratory measurements and astrophysical limits on variation over cosmic time.</td>
+      <td>Whether each constant is free or derived. A derived constant cannot carry a message.</td>
+      <td>Numerology. The look-elsewhere effect is enormous unless encodings are preregistered. Capacity is limited by measurement precision.</td>
+    </tr>
+    <tr>
+      <td><strong>Primordial fluctuation spectrum</strong><br><span class="small">CMB, large-scale structure</span></td>
+      <td>Set at creation and largely preserved. A natural place for initial conditions.</td>
+      <td>Full-sky CMB maps and large-scale structure surveys.</td>
+      <td>What sets the initial conditions, and whether the spectrum is free or constrained.</td>
+      <td>Good null: a Gaussian random field has well-defined statistics. Capacity is bounded by cosmic variance, since there is one sky, and by foregrounds.</td>
+    </tr>
+    <tr>
+      <td><strong>Global topology</strong><br><span class="small">shape of space</span></td>
+      <td>A discrete invariant that evolution does not scramble.</td>
+      <td>Searches for repeated patterns in the CMB. Limited coverage so far.</td>
+      <td>How global topology relates to temporal structure.</td>
+      <td>Low capacity. A nontrivial topology may be natural, not encoded.</td>
+    </tr>
+    <tr>
+      <td><strong>Ratios of natural timescales</strong><br><span class="small">address and clock role</span></td>
+      <td>Unit-free time anchors. The most direct overlap between the message question and the time question.</td>
+      <td>Derived from known values, so no new data is required to begin.</td>
+      <td>Directly the TIME side: which timescale ratios a time theory singles out.</td>
+      <td>Dirac-style large-number coincidences are often explained by other means. Treat matches as a hypothesis to test, not a finding.</td>
+    </tr>
+    <tr>
+      <td><strong>Event-timing structure</strong><br><span class="small">intervals, phase, clock correlations</span></td>
+      <td>Weak. Event streams evolve and carry astrophysical structure, so survival requires a tie to conserved quantities.</td>
+      <td>Pulsar timing, transient arrival times, precision clock comparisons.</td>
+      <td>The temporal-fingerprint question itself.</td>
+      <td>Astrophysical processes and instrumental systematics dominate unless carefully modeled.</td>
+    </tr>
+  </table>
+  </div>
+  <p class="small"><strong>Screening rule.</strong> Before searching a carrier, estimate its information capacity from measurement precision, cosmic variance and available data. A carrier that cannot hold a decodable payload is not worth searching. Then rank carriers by survival strength, capacity, available data and the quality of the null model. Boundary and crossing mechanisms, such as black holes or a cosmological bounce, are routes by which information might reach a carrier, not carriers themselves; claims about them remain contested and need their own audit.</p>
 </section>
 
 <section id="tests" class="anchor">
@@ -281,7 +356,7 @@ footer a{margin:0 7px}
 </section>
 
 <section id="illumina" class="anchor">
-  <div class="eyebrow">09 · Illumina cycle</div>
+  <div class="eyebrow">08 · Illumina cycle</div>
   <h2>A live lunar rhythm for the research</h2>
   <p class="lead">TIME follows alternating astronomical Full Moons. Each designated Full Moon launches a new Illumina cycle: 42 calendar days of active research, followed by a rest and integration interval that lasts until the next designated Full Moon.</p>
   <div class="callout good"><strong>Calendar rules.</strong> The original Illumina 1 Full Moon on 5 November 2025 is the fixed anchor. Every second Full Moon after that is a launch. Days 1–42 are active; the remaining days before the next launch are rest days. The break is not forced to exactly 17 days.</div>
@@ -406,7 +481,7 @@ footer a{margin:0 7px}
 </main>
 <footer class="wrap">
   <p>TIME · Experimental Foundations of Time · plnt.earth</p>
-  <p>Version 8.0 · Offline Meeus Lunar Calendar</p>
+  <p>Version 9.0 · Offline Meeus Lunar Calendar</p>
   <p>Historical hypotheses are preserved; scientific claims are evaluated by derivation, comparison, and test.</p>
   <p><a href="https://earth.plnt.earth">Earth</a> · <a href="https://plnt.earth">plnt.earth</a></p>
 </footer>
